@@ -6,6 +6,9 @@ declare global {
     interface Element extends VNode {}
     // tslint:disable no-empty-interface
     interface ElementClass extends Vue {}
+    interface ElementAttributesProperty {
+      $props: {}; // specify the property name to use
+    }
     interface IntrinsicElements {
       [elem: string]: any;
     }
