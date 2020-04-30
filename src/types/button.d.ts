@@ -2,7 +2,7 @@ export interface ButtonProps {
   /**
    * The button variant
    */
-  variant?: "default" | "inverted";
+  variant?: "default" | "inverted" | "tag";
   /**
    * The button size
    */
