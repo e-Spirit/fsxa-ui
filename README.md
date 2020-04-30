@@ -25,5 +25,15 @@ npm run test:unit
 npm run lint
 ```
 
+### Run Storybook in dev mode
+```
+npm run storybook:serve
+```
+
+### Build Storybook
+```
+npm run storybook:build
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
