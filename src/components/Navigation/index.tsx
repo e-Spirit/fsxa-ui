@@ -1,39 +1,44 @@
 import { TsxComponent } from "@/types";
 import "./style.css";
 import Component from "vue-class-component";
-import { NavigationProps, NavigationItem } from "@/types/navigation";
+import { NavigationProps, BaseNavigationItem } from "@/types/navigation";
 import { Prop } from "vue-property-decorator";
 import { PropType } from "vue";
 
 @Component({
   name: "Navigation"
 })
-class Navigation extends TsxComponent<NavigationProps> {
+class Navigation<Item extends BaseNavigationItem> extends TsxComponent<
+  NavigationProps<Item>
+> {
   @Prop({
-    type: Array as PropType<NavigationProps["items"]>,
+    type: Array as PropType<NavigationProps<Item>["items"]>,
     required: true
   })
-  items!: NavigationProps["items"];
-  @Prop({ type: String }) activePath!: NavigationProps["activePath"];
+  items!: NavigationProps<Item>["items"];
   @Prop({ type: Function, required: true })
-  handleNavClick!: NavigationProps["handleNavClick"];
+  handleNavClick!: NavigationProps<Item>["handleNavClick"];
+  @Prop({ type: Function })
+  isActiveItem: NavigationProps<Item>["isActiveItem"];
+  @Prop({ type: Number, default: 3 }) depth!: number;
 
-  renderItem(item: NavigationItem, depth: number, maxDepth = 3) {
+  renderItem(item: Item, depth: number) {
+    const isActive = this.isActiveItem ? this.isActiveItem(item) : false;
     return (
       <li class="navigation-item">
         <a
-          class={`nav-link ${item.path === this.activePath && "active"}`}
-          href={item.path}
+          class={`nav-link ${isActive ? "active" : ""}`}
+          href="#"
           onClick={() => {
             event?.preventDefault();
             this.handleNavClick(item);
           }}
         >
           {item.label}
-          {item.children && depth < maxDepth && (
+          {item.children && depth < this.depth && (
             <ul class="navigation">
               {item.children.map(item =>
-                this.renderItem(item, depth + 1, maxDepth)
+                this.renderItem(item as Item, depth + 1)
               )}
             </ul>
           )}

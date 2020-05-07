@@ -1,57 +1,62 @@
 import Navigation from "@/components/Navigation";
 import { CreateElement } from "vue";
 import { decorate } from "@storybook/addon-actions";
+import { BaseNavigationItem } from "@/types/navigation";
+
+export interface NavigationItem extends BaseNavigationItem {
+  id: string;
+  children: NavigationItem[];
+}
 
 export default {
   title: "Navigation",
   component: Navigation
 };
-const activePath = "/home";
 const firstArg = decorate([args => args.slice(0, 1)]);
 export const withText = () => ({
   render: (h: CreateElement) => (
     <div class="bg-gray-200 w-full h-full">
-      <Navigation
+      <Navigation<NavigationItem>
         items={[
           {
+            id: "123",
             label: "Home",
-            path: "/home",
             children: []
           },
           {
+            id: "124",
             label: "Security",
-            path: "/security",
             children: []
           },
           {
+            id: "125",
             label: "Products",
-            path: "/products",
             children: [
               {
+                id: "126",
                 label: "Smart Door Lock",
-                path: "/products/smart-door-lock",
                 children: [
                   {
+                    id: "127",
                     label: "Smart Door Lock",
-                    path: "/products/smart-door-lock",
                     children: []
                   },
                   {
+                    id: "128",
                     label: "Motion Detector",
-                    path: "/products/motion-detector",
                     children: []
                   }
                 ]
               },
               {
+                id: "129",
                 label: "Motion Detector",
-                path: "/products/motion-detector",
                 children: []
               }
             ]
           }
         ]}
-        activePath={activePath}
+        isActiveItem={item => item.id === "123"}
         handleNavClick={firstArg.action("handleNavClick")}
       />
     </div>
