@@ -1,6 +1,8 @@
 import Button from "@/components/Button";
 import "./../utils.css";
 import { CreateElement } from "vue";
+import InteractiveComponent from "@/components/internal/InteractiveComponent";
+import { ButtonProps } from "@/types/button";
 
 export default {
   title: "Button",
@@ -30,6 +32,36 @@ export const Sizes = () => ({
       <Button size="sm">Size = sm</Button>
       <Button size="md">Size = md</Button>
       <Button size="lg">Size = lg</Button>
+    </div>
+  )
+});
+
+export const playground = () => ({
+  render: (h: CreateElement) => (
+    <div class="w-full h-full p-5">
+      <InteractiveComponent<ButtonProps>
+        title="Button"
+        subtitle="Check out the cool button features by playing with its properties"
+        renderComponent={props => {
+          return <Button {...{ props }}>Das ist mein Button</Button>;
+        }}
+        changeableProps={[
+          {
+            key: "variant",
+            type: "select",
+            label: "Variant",
+            options: ["default", "inverted", "tag"],
+            default: "default"
+          },
+          {
+            key: "size",
+            type: "select",
+            label: "Size",
+            options: ["sm", "md", "lg"],
+            default: "md"
+          }
+        ]}
+      />
     </div>
   )
 });

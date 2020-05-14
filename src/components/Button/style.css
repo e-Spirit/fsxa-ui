@@ -1,27 +1,30 @@
-.button {
-    @apply cursor-pointer uppercase font-semibold tracking-wider;
+.Button {
+  @apply cursor-pointer uppercase font-semibold tracking-wider;
 }
-.button.sm {
-    @apply button px-4 py-2 text-xs;
+
+.Button--size--sm {
+  @apply px-4 py-2 text-xs;
 }
-.button.md {
-    @apply button px-5 py-2 text-sm;
+.Button--size--md {
+  @apply px-5 py-2 text-sm;
 }
-.button.lg {
-    @apply button px-8 py-5 text-base;
+.Button--size--lg {
+  @apply px-8 py-5 text-base;
 }
-.button.default {
-    @apply button bg-black text-white;
+
+.Button--variant--default {
+  @apply bg-black border-black border text-white;
 }
-.button.inverted {
-    @apply button border-white border text-white transition-colors duration-200 ease-linear;
+.Button--variant--inverted {
+  @apply border-white border text-white transition-colors duration-200 ease-linear;
 }
-.button.tag {
-    @apply button bg-gray-300 transition-colors duration-200 ease-linear;
+.Button--variant--inverted:hover {
+  @apply bg-white text-gray-800;
 }
-.button.tag:hover {
-    @apply button bg-black text-white;
+
+.Button--variant--tag {
+  @apply bg-gray-300 transition-colors duration-200 ease-linear;
 }
-.button.inverted:hover {
-    @apply bg-white text-gray-800;
+.Button--variant--tag:hover {
+  @apply bg-black text-white;
 }

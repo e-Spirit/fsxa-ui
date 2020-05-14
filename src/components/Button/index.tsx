@@ -13,7 +13,7 @@ class Button extends TsxComponent<ButtonProps> {
   render() {
     return (
       <button
-        class={`button rounded-sm lg:rounded-lg shadow-sm ${this.size} ${this.variant}`}
+        class={`Button Button--size--${this.size} Button--variant--${this.variant}`}
       >
         {this.$slots.default && this.$slots.default}
       </button>

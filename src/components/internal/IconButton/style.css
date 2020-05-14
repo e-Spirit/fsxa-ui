@@ -1,0 +1,13 @@
+.IconButton--wrapper
+{
+    @apply bg-gray-200 text-xs text-gray-500 leading-none border-2 border-gray-200 rounded-full inline-flex overflow-hidden;   
+}
+.IconButton--btn {
+    @apply w-full h-full px-4 py-2 outline-none;
+}
+.IconButton--btn:focus, .IconButton--btn:active {
+    @apply outline-none;
+}
+.IconButton--btn.active {
+    @apply bg-pink-700 text-white rounded-full;
+}

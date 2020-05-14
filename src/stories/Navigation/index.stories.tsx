@@ -1,11 +1,10 @@
 import Navigation from "@/components/Navigation";
 import { CreateElement } from "vue";
 import { decorate } from "@storybook/addon-actions";
-import { BaseNavigationItem } from "@/types/navigation";
+import { NavigationItemBase } from "@/types/navigation";
 
-export interface NavigationItem extends BaseNavigationItem {
+export interface NavigationItem extends NavigationItemBase<NavigationItem> {
   id: string;
-  children: NavigationItem[];
 }
 
 export default {
