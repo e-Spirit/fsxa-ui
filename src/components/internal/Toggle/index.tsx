@@ -1,4 +1,4 @@
-import { TsxComponent } from "@/types";
+import * as tsx from "vue-tsx-support";
 import Component from "vue-class-component";
 import { Prop } from "vue-property-decorator";
 import "./style.css";
@@ -14,7 +14,7 @@ export interface ToggleProps {
 @Component({
   name: "Toggle"
 })
-class Toggle extends TsxComponent<ToggleProps> {
+class Toggle extends tsx.Component<ToggleProps> {
   @Prop({ required: true }) labels!: ToggleProps["labels"];
   @Prop({ required: true }) active!: ToggleProps["active"];
   @Prop({ required: true }) handleToggle!: ToggleProps["handleToggle"];

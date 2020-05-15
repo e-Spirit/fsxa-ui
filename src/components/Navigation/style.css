@@ -3,7 +3,7 @@
 }
 
 .navigation > .navigation-item {
-    @apply inline-block;
+    @apply inline-block relative;
 }
 
 .nav-link {
@@ -21,7 +21,7 @@
     transition: top 200ms, left 200ms;
 }
 
-.nav-link:hover > .navigation {
+.navigation-item:hover > .navigation {
     @apply block absolute shadow-sm opacity-100 visible;
     top: 100%;
 }
@@ -42,7 +42,7 @@
     top: 0;
 }
 
-.navigation .navigation .nav-link:hover > .navigation {
+.navigation .navigation .navigation-item:hover > .navigation {
     @apply block absolute shadow-sm opacity-100 visible;
     left: 100%;
     top: 0;

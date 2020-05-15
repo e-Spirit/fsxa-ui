@@ -1,4 +1,4 @@
-import { TsxComponent } from "@/types";
+import * as tsx from "vue-tsx-support";
 import { Component, Prop } from "vue-property-decorator";
 import SelectInput from "./components/SelectInput";
 import "./style.css";
@@ -13,21 +13,15 @@ import TextInput from "./components/TextInput";
 @Component({
   name: "InteractiveComponent"
 })
-class InteractiveComponent<ComponentProps> extends TsxComponent<
-  InteractiveComponentProps<ComponentProps>
+class InteractiveComponent<P> extends tsx.Component<
+  InteractiveComponentProps<P>
 > {
   @Prop({ required: true, type: Function })
-  renderComponent!: InteractiveComponentProps<
-    ComponentProps
-  >["renderComponent"];
+  renderComponent!: InteractiveComponentProps<P>["renderComponent"];
   @Prop({ required: true })
-  changeableProps!: InteractiveComponentProps<
-    ComponentProps
-  >["changeableProps"];
-  @Prop({ required: true }) title!: InteractiveComponentProps<
-    ComponentProps
-  >["title"];
-  @Prop() subtitle: InteractiveComponentProps<ComponentProps>["subtitle"];
+  changeableProps!: InteractiveComponentProps<P>["changeableProps"];
+  @Prop({ required: true }) title!: InteractiveComponentProps<P>["title"];
+  @Prop() subtitle: InteractiveComponentProps<P>["subtitle"];
 
   viewMode = "light";
   showProperties = false;
@@ -45,7 +39,7 @@ class InteractiveComponent<ComponentProps> extends TsxComponent<
     };
   }
 
-  get componentProps() {
+  get P() {
     return this.changeableProps.reduce((result, entry) => {
       return {
         ...result,
@@ -62,7 +56,7 @@ class InteractiveComponent<ComponentProps> extends TsxComponent<
     this.viewMode = value;
   }
 
-  renderInputElement(definition: PropertyDefinition<ComponentProps>) {
+  renderInputElement(definition: PropertyDefinition<P>) {
     switch (definition.type) {
       case "string":
         return (
@@ -128,7 +122,7 @@ class InteractiveComponent<ComponentProps> extends TsxComponent<
               this.viewMode === "dark" ? "dark" : ""
             } ${this.showProperties ? "with-sidebar" : ""}`}
           >
-            {this.renderComponent(this.componentProps as ComponentProps)}
+            {this.renderComponent(this.P as P)}
           </div>
           <div
             class={`InteractiveComponent--Sidebar ${

@@ -1,22 +1,21 @@
-import { TsxComponent } from "@/types";
+import * as tsx from "vue-tsx-support";
 import { Prop, Component } from "vue-property-decorator";
 
-export interface SelectInputProps<T> {
-  options: T[];
+export interface SelectInputProps {
+  options: string[];
   label: string;
-  value: T | undefined;
-  handleChange: (value: T | undefined) => void;
+  value?: string;
+  handleChange: (value?: string) => void;
 }
 @Component({
   name: "SelectInput"
 })
-class SelectInput<T> extends TsxComponent<SelectInputProps<T>> {
-  @Prop({ required: true, type: Function }) handleChange!: SelectInputProps<
-    T
-  >["handleChange"];
-  @Prop({ required: true }) value!: SelectInputProps<T>["value"];
-  @Prop({ required: true }) options!: SelectInputProps<T>["options"];
-  @Prop({ required: true }) label!: SelectInputProps<T>["label"];
+class SelectInput extends tsx.Component<SelectInputProps> {
+  @Prop({ required: true, type: Function })
+  handleChange!: SelectInputProps["handleChange"];
+  @Prop({ required: true }) value!: SelectInputProps["value"];
+  @Prop({ required: true }) options!: SelectInputProps["options"];
+  @Prop({ required: true }) label!: SelectInputProps["label"];
 
   render() {
     return (

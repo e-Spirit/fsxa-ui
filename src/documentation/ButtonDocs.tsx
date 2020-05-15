@@ -1,4 +1,4 @@
-import { TsxComponent } from "@/types";
+import * as tsx from "vue-tsx-support";
 import Component from "vue-class-component";
 import { ButtonProps } from "@/types/button";
 import InteractiveComponent from "@/components/internal/InteractiveComponent";
@@ -7,7 +7,7 @@ import Button from "@/components/Button";
 @Component({
   name: "ButtonDocs"
 })
-class ButtonDocs extends TsxComponent {
+class ButtonDocs extends tsx.Component<{}> {
   render() {
     return (
       <div class="w-full h-full p-10">

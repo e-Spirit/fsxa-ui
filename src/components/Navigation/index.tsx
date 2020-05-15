@@ -4,14 +4,14 @@ import Component from "vue-class-component";
 import { Prop } from "vue-property-decorator";
 import { PropType } from "vue";
 import { NavigationItemBase, NavigationProps } from "@/types/fsxa-ui";
-import { TsxComponent } from "@/types";
+import * as tsx from "vue-tsx-support";
 
 @Component({
   name: "Navigation"
 })
 class Navigation<
   Item extends NavigationItemBase<Item> = any
-> extends TsxComponent<NavigationProps<Item>> {
+> extends tsx.Component<NavigationProps<Item>> {
   @Prop({
     type: Array as PropType<NavigationProps<Item>["items"]>,
     required: true
@@ -36,14 +36,14 @@ class Navigation<
           }}
         >
           {item.label}
-          {item.children && currentDepth < this.depth && (
-            <ul class="navigation">
-              {item.children.map(item =>
-                this.renderItem(item as Item, currentDepth + 1)
-              )}
-            </ul>
-          )}
         </a>
+        {item.children && currentDepth < this.depth && (
+          <ul class="navigation">
+            {item.children.map(item =>
+              this.renderItem(item as Item, currentDepth + 1)
+            )}
+          </ul>
+        )}
       </li>
     );
   }

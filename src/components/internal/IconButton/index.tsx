@@ -1,4 +1,4 @@
-import { TsxComponent } from "@/types";
+import * as tsx from "vue-tsx-support";
 import Component from "vue-class-component";
 import "./style.css";
 import { Prop } from "vue-property-decorator";
@@ -10,7 +10,7 @@ export interface IconButtonProps {
 @Component({
   name: "IconButton"
 })
-class IconButton extends TsxComponent<IconButtonProps> {
+class IconButton extends tsx.Component<IconButtonProps> {
   @Prop() active: IconButtonProps["active"];
   @Prop() handleClick: IconButtonProps["handleClick"];
 

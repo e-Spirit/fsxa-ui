@@ -1,4 +1,4 @@
-import { TsxComponent } from "@/types";
+import * as tsx from "vue-tsx-support";
 import Component from "vue-class-component";
 import "./../assets/tailwind.css";
 
@@ -8,7 +8,7 @@ import "./../assets/tailwind.css";
 @Component({
   name: "TailwindDecorator"
 })
-class TailwindDecorator extends TsxComponent {
+class TailwindDecorator extends tsx.Component<{}> {
   render() {
     return <div class="w-full h-full">{this.$slots.default}</div>;
   }
