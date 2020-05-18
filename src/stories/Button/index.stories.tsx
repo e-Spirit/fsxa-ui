@@ -11,27 +11,12 @@ export default {
 
 export const Variants = () => ({
   render: (h: CreateElement) => (
-    <div class="w-full bg-gray-200 p-20 space-x-2">
+    <div class="w-full bg-gray-200 p-20 space-x-5">
       <h2>Variants</h2>
-      <Button variant="default">Variant = default</Button>
-      <Button variant="inverted">Variant = inverted</Button>
-      <Button variant="tag">Variant = Tag</Button>
-      <h2>Sizes</h2>
-      <Button size="sm" variant="tag">
-        Size = sm
-      </Button>
-      <Button size="md">Size = md</Button>
-      <Button size="lg">Size = lg</Button>
-    </div>
-  )
-});
-
-export const Sizes = () => ({
-  render: (h: CreateElement) => (
-    <div class="w-full p-20 space-x-2">
-      <Button size="sm">Size = sm</Button>
-      <Button size="md">Size = md</Button>
-      <Button size="lg">Size = lg</Button>
+      <Button variant="default">default</Button>
+      <Button variant="inverted">inverted</Button>
+      <Button variant="tag">tag</Button>
+      <Button variant="animated">animated</Button>
     </div>
   )
 });
@@ -50,15 +35,8 @@ export const playground = () => ({
             key: "variant",
             type: "select",
             label: "Variant",
-            options: ["default", "inverted", "tag"],
+            options: ["default", "inverted", "tag", "animated"],
             default: "default"
-          },
-          {
-            key: "size",
-            type: "select",
-            label: "Size",
-            options: ["sm", "md", "lg"],
-            default: "md"
           }
         ]}
       />

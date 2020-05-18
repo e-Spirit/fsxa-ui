@@ -293,7 +293,8 @@ module.exports = {
     }),
     inset: {
       "0": "0",
-      auto: "auto"
+      auto: "auto",
+      "1/2": "50%"
     },
     letterSpacing: {
       tighter: "-0.05em",
@@ -370,6 +371,7 @@ module.exports = {
     },
     opacity: {
       "0": "0",
+      "20": "0.2",
       "25": "0.25",
       "50": "0.5",
       "75": "0.75",
@@ -562,6 +564,7 @@ module.exports = {
     },
     scale: {
       "0": "0",
+      "25": ".25",
       "50": ".5",
       "75": ".75",
       "90": ".9",
@@ -606,7 +609,8 @@ module.exports = {
       colors: "background-color, border-color, color, fill, stroke",
       opacity: "opacity",
       shadow: "box-shadow",
-      transform: "transform"
+      transform: "transform",
+      size: "width, height"
     },
     transitionTimingFunction: {
       linear: "linear",

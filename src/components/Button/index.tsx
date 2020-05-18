@@ -8,14 +8,14 @@ import { ButtonProps } from "@/types/button";
 })
 class Button extends tsx.Component<ButtonProps> {
   @Prop({ type: String, default: "default" }) variant!: ButtonProps["variant"];
-  @Prop({ type: String, default: "lg" }) size!: ButtonProps["size"];
 
   render() {
+    const content = this.$slots.default;
     return (
-      <button
-        class={`Button Button--size--${this.size} Button--variant--${this.variant}`}
-      >
-        {this.$slots.default && this.$slots.default}
+      <button class={`Button Button--variant--${this.variant}`}>
+        {this.variant === "animated"
+          ? [<span>{content}</span>, <em />]
+          : content}
       </button>
     );
   }
