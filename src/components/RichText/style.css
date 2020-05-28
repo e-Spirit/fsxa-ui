@@ -1,0 +1,9 @@
+.RichText * {
+    @apply inline;
+}
+
+.RichText [data-fs-style="format.standard"] {
+}
+.RichText [data-fs-style="format.span_yellow_text"] {
+    @apply text-highlight;
+}

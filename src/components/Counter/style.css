@@ -1,0 +1,9 @@
+.Counter--Separator-Wrapper {
+    @apply flex items-center mb-5;
+}
+
+.Counter--Separator {
+    @apply bg-white;
+    height: 3px;
+    width: 50px;
+}

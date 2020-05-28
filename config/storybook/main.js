@@ -1,5 +1,6 @@
 // eslint-disable-next-line
 const path = require("path");
+require("vue-tsx-support/enable-check");
 
 module.exports = {
   stories: ["../../src/**/*.stories.(js|jsx|ts|tsx|mdx)"],
@@ -25,7 +26,7 @@ module.exports = {
         }
       }
     },
-    "@storybook/addon-knobs",
-    "@storybook/addon-links"
+    "@storybook/addon-links",
+    "@storybook/addon-viewport"
   ]
 };

@@ -22,6 +22,8 @@ module.exports = {
       black: "#000",
       white: "#fff",
 
+      highlight: "var(--fsxa-text-highlight-color)",
+
       gray: {
         100: "#f7fafc",
         200: "#edf2f7",
@@ -375,6 +377,7 @@ module.exports = {
       "25": "0.25",
       "50": "0.5",
       "75": "0.75",
+      "80": "0.8",
       "100": "1"
     },
     order: {

@@ -1,4 +1,3 @@
-import * as tsx from "vue-tsx-support";
 import { Component, Prop } from "vue-property-decorator";
 import SelectInput from "./components/SelectInput";
 import "./style.css";
@@ -9,11 +8,12 @@ import {
   PropertyDefinition
 } from "@/types/internal";
 import TextInput from "./components/TextInput";
+import BaseComponent from "@/components/BaseComponent";
 
 @Component({
   name: "InteractiveComponent"
 })
-class InteractiveComponent<P> extends tsx.Component<
+class InteractiveComponent<P> extends BaseComponent<
   InteractiveComponentProps<P>
 > {
   @Prop({ required: true, type: Function })

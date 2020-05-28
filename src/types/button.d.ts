@@ -1,4 +1,5 @@
 export interface ButtonProps {
+  handleClick?: () => void;
   /**
    * The button variant
    */

@@ -37,3 +37,7 @@ npm run storybook:build
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+### Existing CSS-Variables:
+- --fsxa-text-highlight-color

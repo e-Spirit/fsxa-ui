@@ -1,5 +1,5 @@
-import * as tsx from "vue-tsx-support";
 import { Prop, Component } from "vue-property-decorator";
+import BaseComponent from "@/components/BaseComponent";
 
 export interface TextInputProps {
   value: string;
@@ -9,7 +9,7 @@ export interface TextInputProps {
 @Component({
   name: "TextInput"
 })
-class TextInput<T> extends tsx.Component<TextInputProps> {
+class TextInput<T> extends BaseComponent<TextInputProps> {
   @Prop({ required: true, type: Function })
   handleChange!: TextInputProps["handleChange"];
   @Prop({ required: true }) value!: TextInputProps["value"];

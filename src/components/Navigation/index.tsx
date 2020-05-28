@@ -1,17 +1,16 @@
-import Vue from "vue";
 import "./style.css";
 import Component from "vue-class-component";
 import { Prop } from "vue-property-decorator";
 import { PropType } from "vue";
 import { NavigationItemBase, NavigationProps } from "@/types/fsxa-ui";
-import * as tsx from "vue-tsx-support";
+import BaseComponent from "../BaseComponent";
 
 @Component({
   name: "Navigation"
 })
 class Navigation<
   Item extends NavigationItemBase<Item> = any
-> extends tsx.Component<NavigationProps<Item>> {
+> extends BaseComponent<NavigationProps<Item>> {
   @Prop({
     type: Array as PropType<NavigationProps<Item>["items"]>,
     required: true

@@ -1,7 +1,7 @@
 .Button {
   @apply cursor-pointer uppercase inline-block;
 }
-.Button:hover, .Button:active {
+.Button:focus, .Button:active {
   @apply outline-none;
 }
 
@@ -59,15 +59,4 @@
 .Button--variant--tag:hover {
   @apply bg-black text-white;
 }
-
-/**.Button--size--sm {
-  @apply px-4 py-2 text-xs;
-}
-.Button--size--md {
-  @apply px-5 py-2 text-sm;
-}
-.Button--size--lg {
-  @apply px-8 py-5 text-base;
-}**/
-
 

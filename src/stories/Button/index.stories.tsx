@@ -1,5 +1,4 @@
 import Button from "@/components/Button";
-import "./../utils.css";
 import { CreateElement } from "vue";
 import InteractiveComponent from "@/components/internal/InteractiveComponent";
 import { ButtonProps } from "@/types/button";
@@ -28,7 +27,11 @@ export const playground = () => ({
         title="Button"
         subtitle="Check out the cool button features by playing with its properties"
         renderComponent={props => {
-          return <Button {...{ props }}>Das ist mein Button</Button>;
+          return (
+            <Button {...{ props }}>
+              {(props.variant || "default").toUpperCase()}
+            </Button>
+          );
         }}
         changeableProps={[
           {
