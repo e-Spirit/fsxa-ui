@@ -1,10 +1,29 @@
 import { CreateElement } from "vue";
 import InterestingFactsSection from "@/components/Sections/InterestingFactsSection";
 import NewsTeaserSection from "@/components/Sections/NewsTeaserSection";
+import WelcomeSection from "@/components/Sections/WelcomeSection";
 
 export default {
   title: "FSXA Sections",
 };
+
+export const welcome = () => ({
+  render: (h: CreateElement) => (
+    <WelcomeSection
+      props={{
+        headline: `<div data-fs-style="format.standard">YOUR <div data-fs-style=format.span_yellow_text">INDIVIDUAL</div> HOME</div>`,
+        image: {
+          src:
+            "https://enterpriseqa.e-spirit.cloud/media/img/Block-Bleistift-Kaffee.jpg",
+          previewId: "blafasel",
+        },
+        jumboHeadline: "Smart Living",
+        kicker: "Welcome",
+        text: `<div data-fs-style="format.standard">With simple functions and tools, our Smart Living customers can create their own individual home. From light control to central media control.</div>`,
+      }}
+    />
+  ),
+});
 
 export const interestingFacts = () => ({
   render: (h: CreateElement) => (

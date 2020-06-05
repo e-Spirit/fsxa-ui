@@ -23,3 +23,15 @@ export interface InterestingFactsSectionProps {
 export class InterestingFactsSection extends FSXABaseComponent<
   InterestingFactsSectionProps
 > {}
+
+export interface WelcomeSectionProps {
+  headline: string;
+  jumboHeadline: string;
+  kicker: string;
+  text: string;
+  image?: {
+    src: string;
+    previewId: string;
+  };
+}
+export class WelcomeSection extends FSXABaseComponent<WelcomeSectionProps> {}

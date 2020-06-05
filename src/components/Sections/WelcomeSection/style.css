@@ -1,0 +1,11 @@
+.WelcomeSection--ImageWrapper {
+    @apply ml-24 relative z-0;
+}
+.WelcomeSection--ImageWrapper:before {
+    @apply absolute top-0 left-0 -ml-16 mt-16 w-full h-full z-auto;
+    content: "";
+    border: 30px solid rgba(0,0,0,.1);
+}
+.WelcomeSection--ImageWrapper img {
+    @apply relative z-10;
+}

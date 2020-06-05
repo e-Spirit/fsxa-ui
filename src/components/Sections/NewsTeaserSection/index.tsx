@@ -18,6 +18,7 @@ class NewsTeaserSection extends FSXABaseComponent<NewsTeaserSectionProps> {
 
   render() {
     // loop over first 3 items
+    console.log("NewsTeaserSection Props", this.$props);
     return (
       <div class="NewsTeaserSection">
         <FSXAContainer>

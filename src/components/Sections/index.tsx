@@ -1,7 +1,9 @@
-import InterestingFacts from "./InterestingFactsSection";
-import NewsTeaser from "./NewsTeaserSection";
+import InterestingFactsSection from "./InterestingFactsSection";
+import NewsTeaserSection from "./NewsTeaserSection";
+import WelcomeSection from "./WelcomeSection";
 
 export default {
-  InterestingFacts,
-  NewsTeaser,
+  InterestingFactsSection,
+  NewsTeaserSection,
+  WelcomeSection,
 };

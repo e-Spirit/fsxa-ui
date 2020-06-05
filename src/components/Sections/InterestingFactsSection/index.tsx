@@ -23,6 +23,7 @@ class InterestingFactsSection extends FSXABaseComponent<
   @Prop() backgroundImage: InterestingFactsSectionProps["backgroundImage"];
 
   render() {
+    console.log("InterestingFactsSection Props", this.$props);
     return (
       <div class="InterestingFactsSection">
         {this.backgroundImage && (
