@@ -1,0 +1,9 @@
+.FSXARichText * {
+    @apply inline;
+}
+
+.FSXARichText [data-fs-style="format.standard"] {
+}
+.FSXARichText [data-fs-style="format.span_yellow_text"] {
+    @apply text-highlight;
+}

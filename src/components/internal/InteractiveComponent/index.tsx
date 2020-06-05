@@ -5,13 +5,13 @@ import Toggle from "../Toggle";
 import IconButton from "../IconButton";
 import {
   InteractiveComponentProps,
-  PropertyDefinition
+  PropertyDefinition,
 } from "@/types/internal";
 import TextInput from "./components/TextInput";
-import BaseComponent from "@/components/BaseComponent";
+import BaseComponent from "@/components/FSXABaseComponent";
 
 @Component({
-  name: "InteractiveComponent"
+  name: "InteractiveComponent",
 })
 class InteractiveComponent<P> extends BaseComponent<
   InteractiveComponentProps<P>
@@ -32,10 +32,10 @@ class InteractiveComponent<P> extends BaseComponent<
       ...this.changeableProps.reduce(
         (result, entry) => ({
           ...result,
-          [entry.key as string]: entry.default
+          [entry.key as string]: entry.default,
         }),
-        {}
-      )
+        {},
+      ),
     };
   }
 
@@ -43,7 +43,7 @@ class InteractiveComponent<P> extends BaseComponent<
     return this.changeableProps.reduce((result, entry) => {
       return {
         ...result,
-        [entry.key]: this.$data[entry.key as string]
+        [entry.key]: this.$data[entry.key as string],
       };
     }, {});
   }
@@ -63,7 +63,7 @@ class InteractiveComponent<P> extends BaseComponent<
           <TextInput
             handleChange={this.handleStoredValueChange.bind(
               this,
-              definition.key as string
+              definition.key as string,
             )}
             value={this.$data[definition.key as string]}
             label={definition.label}
@@ -74,7 +74,7 @@ class InteractiveComponent<P> extends BaseComponent<
           <SelectInput
             handleChange={this.handleStoredValueChange.bind(
               this,
-              definition.key as string
+              definition.key as string,
             )}
             options={definition.options}
             value={this.$data[definition.key as string]}

@@ -4,7 +4,7 @@ const purgecss = require("@fullhuman/postcss-purgecss")({
   content: [
     "./src/**/*.html",
     "./src/**/*.css",
-    "./src/**/*.tsx"
+    "./src/**/*.tsx",
     // etc.
   ],
 
@@ -17,13 +17,14 @@ const purgecss = require("@fullhuman/postcss-purgecss")({
     const innerMatches = content.match(/[^<>"'`\s.()]*[^<>"'`\s.():]/g) || [];
 
     return broadMatches.concat(innerMatches);
-  }
+  },
 });
 
 module.exports = {
   plugins: [
     require("tailwindcss"),
+    require("postcss-nested"),
     require("autoprefixer"),
-    ...(process.env.NODE_ENV === "production" ? [purgecss] : [])
-  ]
+    ...(process.env.NODE_ENV === "production" ? [purgecss] : []),
+  ],
 };

@@ -1,5 +1,5 @@
 import { Prop, Component } from "vue-property-decorator";
-import BaseComponent from "@/components/BaseComponent";
+import BaseComponent from "@/components/FSXABaseComponent";
 
 export interface TextInputProps {
   value: string;
@@ -7,7 +7,7 @@ export interface TextInputProps {
   handleChange: (value: string) => void;
 }
 @Component({
-  name: "TextInput"
+  name: "TextInput",
 })
 class TextInput<T> extends BaseComponent<TextInputProps> {
   @Prop({ required: true, type: Function })

@@ -1,7 +1,7 @@
 import Component from "vue-class-component";
 import { Prop } from "vue-property-decorator";
 import "./style.css";
-import BaseComponent from "@/components/BaseComponent";
+import BaseComponent from "@/components/FSXABaseComponent";
 
 export interface ToggleProps {
   labels: {
@@ -12,7 +12,7 @@ export interface ToggleProps {
   handleToggle: (value: boolean) => void;
 }
 @Component({
-  name: "Toggle"
+  name: "Toggle",
 })
 class Toggle extends BaseComponent<ToggleProps> {
   @Prop({ required: true }) labels!: ToggleProps["labels"];

@@ -1,6 +1,6 @@
 import Component from "vue-class-component";
 import { Prop } from "vue-property-decorator";
-import BaseComponent from "../BaseComponent";
+import FSXABaseComponent from "../FSXABaseComponent";
 
 export interface Slide<Data = any> {
   previewId: string;
@@ -11,9 +11,9 @@ export interface SliderProps<SlideData = any> {
   slides: Slide<SlideData>[];
 }
 @Component({
-  name: "Slider"
+  name: "Slider",
 })
-class Slider extends BaseComponent<SliderProps> {
+class Slider extends FSXABaseComponent<SliderProps> {
   @Prop({ required: true }) slides!: SliderProps["slides"];
 
   wrapperWidth = 0;
@@ -71,7 +71,7 @@ class Slider extends BaseComponent<SliderProps> {
               class="absolute top-0 transition-all duration-1000"
               style={{
                 left: `${this.currentSlide * this.wrapperWidth * -1}px`,
-                width: `${this.trackWidth}px`
+                width: `${this.trackWidth}px`,
               }}
             >
               {this.slides.map(this.renderSlide)}
