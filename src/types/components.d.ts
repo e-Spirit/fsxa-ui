@@ -7,13 +7,6 @@ export interface FSXAImageReference {
 
 export class FSXABaseComponent<Props> extends tsx.Component<Props> {}
 
-export interface FSXABaseSectionProps<Payload> {
-  payload: Payload;
-}
-export class FSXABaseSection<Payload = {}> extends FSXABaseComponent<
-  FSXABaseSectionProps<Payload>
-> {}
-
 export interface FSXAButtonProps {
   /**
    * The button variant
