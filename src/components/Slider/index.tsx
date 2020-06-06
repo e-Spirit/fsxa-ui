@@ -1,6 +1,6 @@
 import Component from "vue-class-component";
 import { Prop } from "vue-property-decorator";
-import FSXABaseComponent from "../FSXABaseComponent";
+import FSXABaseComponent from "@/components/FSXABaseComponent";
 
 export interface Slide<Data = any> {
   previewId: string;

@@ -1,7 +1,7 @@
 import { Component, Prop } from "vue-property-decorator";
 import "./style.css";
 import { FSXAButtonProps } from "@/types/components";
-import FSXABaseComponent from "../FSXABaseComponent";
+import FSXABaseComponent from "@/components/FSXABaseComponent";
 
 @Component({
   name: "FSXAButton",

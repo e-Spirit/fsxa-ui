@@ -1,10 +1,10 @@
-import * as tsx from "vue-tsx-support";
 import Component from "vue-class-component";
+import { FSXABaseComponent } from "@/types/components";
 
 @Component({
-  name: "ButtonDocs"
+  name: "ButtonDocs",
 })
-class ButtonDocs extends tsx.Component<{}> {
+class ButtonDocs extends FSXABaseComponent<{}> {
   render() {
     return (
       <div class="w-full h-full p-10">

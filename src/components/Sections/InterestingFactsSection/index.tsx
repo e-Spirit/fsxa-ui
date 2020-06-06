@@ -26,7 +26,7 @@ class InterestingFactsSection extends FSXABaseComponent<
 
   render() {
     return (
-      <div class="InterestingFactsSection">
+      <div class="InterestingFactsSection py-12 md:py-16 lg:py-20">
         {this.backgroundImage && (
           <FSXAImage
             class="InterestingFactsSection--BackgroundImage"

@@ -1,6 +1,5 @@
 import "vue-tsx-support/enable-check";
 import "./assets/tailwind.css";
-export { default as FSXABaseComponent } from "./components/FSXABaseComponent";
 export { default as FSXAButton } from "./components/FSXAButton";
 export { default as FSXANavigation } from "./components/FSXANavigation";
 export { default as FSXAImage } from "./components/FSXAImage";

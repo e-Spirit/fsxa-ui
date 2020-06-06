@@ -1,11 +1,12 @@
-import * as tsx from "vue-tsx-support";
+import Vue from "vue";
+import { Component } from "vue-tsx-support";
+
+export class FSXABaseComponent<Props> extends Component<Props> {}
 
 export interface FSXAImageReference {
   src: string;
   previewId: string;
 }
-
-export class FSXABaseComponent<Props> extends tsx.Component<Props> {}
 
 export interface FSXAButtonProps {
   /**

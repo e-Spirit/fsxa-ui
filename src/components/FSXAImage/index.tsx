@@ -1,5 +1,5 @@
 import { Prop, Component } from "vue-property-decorator";
-import FSXABaseComponent from "../FSXABaseComponent";
+import FSXABaseComponent from "@/components/FSXABaseComponent";
 import { FSXAImageProps } from "@/types/components";
 
 @Component({

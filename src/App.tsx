@@ -1,10 +1,11 @@
-import * as tsx from "vue-tsx-support";
 import { Component } from "vue-property-decorator";
+import Vue from "vue";
+import FSXAButton from "./components/FSXAButton";
 
 @Component
-class App extends tsx.Component<{}> {
+class App extends Vue {
   render() {
-    return <div>App</div>;
+    return <FSXAButton variant="animated" />;
   }
 }
 export default App;

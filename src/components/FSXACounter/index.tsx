@@ -1,7 +1,7 @@
 import Component from "vue-class-component";
 import { Prop } from "vue-property-decorator";
 import "./style.css";
-import FSXABaseComponent from "../FSXABaseComponent";
+import FSXABaseComponent from "@/components/FSXABaseComponent";
 import { FSXACounterProps } from "@/types/components";
 
 @Component({

@@ -1,4 +1,4 @@
-import FSXABaseComponent from "../FSXABaseComponent";
+import FSXABaseComponent from "@/components/FSXABaseComponent";
 import FSXAContainer from "../FSXAContainer";
 import { Prop, Component } from "vue-property-decorator";
 import "./style.css";
@@ -46,7 +46,7 @@ class FSXAFooter extends FSXABaseComponent<FSXAFooterProps> {
                       class={`FSXAFooter--Link ${
                         link.isActive ? "active" : ""
                       }`}
-                      onClick={event => {
+                      onClick={(event: MouseEvent) => {
                         event.preventDefault();
                         this.handleClick(link);
                       }}

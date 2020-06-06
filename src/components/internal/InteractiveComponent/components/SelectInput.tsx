@@ -1,5 +1,5 @@
 import { Prop, Component } from "vue-property-decorator";
-import BaseComponent from "@/components/FSXABaseComponent";
+import FSXABaseComponent from "@/components/FSXABaseComponent";
 
 export interface SelectInputProps {
   options: string[];
@@ -10,7 +10,7 @@ export interface SelectInputProps {
 @Component({
   name: "SelectInput",
 })
-class SelectInput extends BaseComponent<SelectInputProps> {
+class SelectInput extends FSXABaseComponent<SelectInputProps> {
   @Prop({ required: true, type: Function })
   handleChange!: SelectInputProps["handleChange"];
   @Prop({ required: true }) value!: SelectInputProps["value"];

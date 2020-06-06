@@ -1,7 +1,7 @@
 export enum PropertyType {
   STRING = "string",
   NUMBER = "number",
-  SELECT = "select"
+  SELECT = "select",
 }
 export interface PropDefinition<P> {
   key: keyof P;

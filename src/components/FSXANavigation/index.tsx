@@ -3,7 +3,7 @@ import Component from "vue-class-component";
 import { Prop } from "vue-property-decorator";
 import { PropType } from "vue";
 import { FSXANavigationProps, FSXANavigationItem } from "@/types/components";
-import FSXABaseComponent from "../FSXABaseComponent";
+import FSXABaseComponent from "@/components/FSXABaseComponent";
 
 @Component({
   name: "FSXANavigation",

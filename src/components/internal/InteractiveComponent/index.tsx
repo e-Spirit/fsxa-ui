@@ -8,12 +8,12 @@ import {
   PropertyDefinition,
 } from "@/types/internal";
 import TextInput from "./components/TextInput";
-import BaseComponent from "@/components/FSXABaseComponent";
+import FSXABaseComponent from "@/components/FSXABaseComponent";
 
 @Component({
   name: "InteractiveComponent",
 })
-class InteractiveComponent<P> extends BaseComponent<
+class InteractiveComponent<P> extends FSXABaseComponent<
   InteractiveComponentProps<P>
 > {
   @Prop({ required: true, type: Function })

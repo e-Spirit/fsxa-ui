@@ -1,4 +1,4 @@
-import FSXABaseComponent from "../FSXABaseComponent";
+import FSXABaseComponent from "@/components/FSXABaseComponent";
 import Component from "vue-class-component";
 import "./style.css";
 import { Prop } from "vue-property-decorator";
@@ -42,7 +42,7 @@ class FSXANewsTeaserItem extends FSXABaseComponent<FSXANewsTeaserItemProps> {
           <a
             href="#"
             class="FSXANewsTeaserItem--ReadMore"
-            onClick={event => {
+            onClick={(event: MouseEvent) => {
               event.preventDefault();
               this.handleClick && this.handleClick();
             }}

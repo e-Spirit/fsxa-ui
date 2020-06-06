@@ -1,4 +1,4 @@
-import FSXABaseComponent from "./FSXABaseComponent";
+import FSXABaseComponent from "@/components/FSXABaseComponent";
 import { Prop, Component } from "vue-property-decorator";
 
 const getClassName = (width?: Widths, prefix?: string) => {
