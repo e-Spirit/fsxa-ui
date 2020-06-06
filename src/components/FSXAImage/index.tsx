@@ -6,12 +6,21 @@ import { FSXAImageProps } from "@/types/components";
   name: "FSXAImage",
 })
 class FSXAImage extends FSXABaseComponent<FSXAImageProps> {
-  @Prop({ required: true }) src!: FSXAImageProps["src"];
+  @Prop() src!: FSXAImageProps["src"];
   @Prop({ default: "0" }) opacity: FSXAImageProps["opacity"];
+  @Prop({ default: false }) zoom: FSXAImageProps["zoom"];
+
   render() {
+    const imageClassnames = ["w-full min-h-full object-cover"];
+    if (this.zoom)
+      imageClassnames.push(
+        "transform transition-transform duration-10000 hover:scale-150",
+      );
     return (
       <div class="w-full h-full overflow-hidden">
-        <img class="w-full min-h-full object-cover" src={this.src} />
+        {this.src ? (
+          <img class={imageClassnames.join(" ")} src={this.src} />
+        ) : null}
         <div
           class={`absolute top-0 left-0 w-full h-full pointer-events-none bg-black opacity-${this.opacity}`}
         />

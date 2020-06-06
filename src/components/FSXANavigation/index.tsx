@@ -34,7 +34,7 @@ class FSXANavigation extends FSXABaseComponent<FSXANavigationProps> {
         >
           {item.label}
         </a>
-        {item.children && currentDepth < this.depth && (
+        {item.children.length > 0 && currentDepth < this.depth && (
           <ul class="FSXANavigation--Navigation">
             {item.children.map(item => this.renderItem(item, currentDepth + 1))}
           </ul>

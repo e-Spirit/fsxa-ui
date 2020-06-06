@@ -1,0 +1,7 @@
+.FSXARow.reverse {
+    direction: rtl;
+
+    *  {
+        direction: ltr;
+    }
+}

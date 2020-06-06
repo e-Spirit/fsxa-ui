@@ -632,6 +632,7 @@ module.exports = {
       "500": "500ms",
       "700": "700ms",
       "1000": "1000ms",
+      "10000": "10000ms",
     },
     transitionDelay: {
       "75": "75ms",
@@ -686,7 +687,7 @@ module.exports = {
     lineHeight: ["responsive"],
     listStylePosition: ["responsive"],
     listStyleType: ["responsive"],
-    margin: ["responsive"],
+    margin: ["responsive", "first", "last"],
     maxHeight: ["responsive"],
     maxWidth: ["responsive"],
     minHeight: ["responsive"],

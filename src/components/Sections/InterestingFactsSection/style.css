@@ -1,13 +1,13 @@
 .InterestingFactsSection {
-    @apply w-full py-24 relative bg-fixed bg-center bg-cover;
+    @apply w-full relative bg-fixed bg-center bg-cover;
 }
 
 .InterestingFactsSection--BackgroundImage {
-    @apply absolute top-0 left-0 overflow-hidden;
+    @apply absolute top-0 left-0 overflow-hidden z-0;
 }
 
 .InterestingFactsSection--Content {
-    @apply uppercase text-white px-8 py-16 relative;
+    @apply uppercase text-white px-8 py-12 mr-4 relative;
     border: 15px solid white;
     border-right: 0px;
 }

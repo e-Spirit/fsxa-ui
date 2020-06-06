@@ -6,6 +6,10 @@ import { Prop } from "vue-property-decorator";
 import "./style.css";
 import FSXAHeadline from "@/components/FSXAHeadline";
 import FSXAContainer from "@/components/FSXAContainer";
+import FSXARow from "@/components/FSXARow";
+import FSXACol from "@/components/FSXACol";
+// eslint-disable-next-line
+const ImageSrc = require("./../../../assets/dots.png");
 
 @Component({
   name: "NewsTeaserSection",
@@ -18,43 +22,45 @@ class NewsTeaserSection extends FSXABaseComponent<NewsTeaserSectionProps> {
 
   render() {
     // loop over first 3 items
-    console.log("NewsTeaserSection Props", this.$props);
     return (
-      <div class="NewsTeaserSection">
+      <div
+        class="py-12 md:py-16 lg:py-20"
+        style={{ background: `url(${ImageSrc})` }}
+      >
         <FSXAContainer>
           <FSXAHeadline as="h2" class="text-4xl uppercase font-bold mb-8">
             {this.headline}
           </FSXAHeadline>
           <div class="NewsTeaserSection--Separator" />
-          <div class="w-full flex space-x-8 space-x-reverse flex-col lg:flex-row-reverse py-10">
-            <div class="w-full lg:w-1/2">
-              <FSXANewsTeaserItem
-                props={{
-                  ...this.items[0],
-                  handleClick: () => this.handleItemClick(this.items[0]),
-                }}
-                latest
-              />
-            </div>
-            <div class="w-full lg:w-1/2 space-y-8 mt-24 lg:mt-0">
-              <div class="w-full" style={{ height: "250px" }}>
+          <FSXARow>
+            <FSXACol width="12" lg_width="6">
+              <div class="w-full h-64 mb-4 md:mb-12">
+                <FSXANewsTeaserItem
+                  props={{
+                    ...this.items[0],
+                    handleClick: () => this.handleItemClick(this.items[0]),
+                  }}
+                />
+              </div>
+              <div class="w-full h-64">
                 <FSXANewsTeaserItem
                   props={{
                     ...this.items[1],
-                    handleClick: () => this.handleItemClick(this.items[0]),
+                    handleClick: () => this.handleItemClick(this.items[1]),
                   }}
                 />
               </div>
-              <div class="w-full" style={{ height: "250px" }}>
-                <FSXANewsTeaserItem
-                  props={{
-                    ...this.items[2],
-                    handleClick: () => this.handleItemClick(this.items[0]),
-                  }}
-                />
-              </div>
-            </div>
-          </div>
+            </FSXACol>
+            <FSXACol width="12" lg_width="6">
+              <FSXANewsTeaserItem
+                props={{
+                  ...this.items[2],
+                  handleClick: () => this.handleItemClick(this.items[2]),
+                }}
+                latest
+              />
+            </FSXACol>
+          </FSXARow>
         </FSXAContainer>
       </div>
     );

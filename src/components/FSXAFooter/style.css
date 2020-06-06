@@ -1,0 +1,16 @@
+.FSXAFooter--LinkWrapper {
+    @apply inline-block text-black;
+    &:not(:last-child):after {
+        @apply px-2;
+        content: "/";
+    }
+}
+
+.FSXAFooter--Link {
+    &.active {
+        @apply text-gray-700;
+    }
+    &:hover {
+        @apply text-gray-700 transition-colors transform duration-300;
+    }
+}

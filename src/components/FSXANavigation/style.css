@@ -16,7 +16,7 @@
 
 /** second level navigation **/
 .FSXANavigation--Navigation .FSXANavigation--Navigation {
-    @apply absolute block invisible opacity-0 left-0;
+    @apply absolute block invisible opacity-0 left-0 border-l border-r border-gray-200;
     top: 115%;
     transition: top 200ms, left 200ms;
 }
@@ -44,6 +44,14 @@
 
 .FSXANavigation--Navigation .FSXANavigation--Navigation .FSXANavigation--Item:hover > .FSXANavigation--Navigation {
     @apply block absolute shadow-sm opacity-100 visible;
-    left: 100%;
+    left: calc(100% + 1px);
     top: 0;
+}
+
+.FSXANavigation--Navigation .FSXANavigation--Navigation:last-child .FSXANavigation--Item > .FSXANavigation--Navigation {
+    left: -115%;
+}
+
+.FSXANavigation--Navigation .FSXANavigation--Navigation:last-child .FSXANavigation--Item:hover > .FSXANavigation--Navigation {
+    left: calc(-100% - 2px);
 }

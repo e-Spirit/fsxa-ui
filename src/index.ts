@@ -7,4 +7,6 @@ export { default as FSXAImage } from "./components/FSXAImage";
 export { default as FSXARichText } from "./components/FSXARichText";
 export { default as InteractiveComponent } from "./components/internal/InteractiveComponent";
 export { default as FSXACounter } from "./components/FSXACounter";
+export { default as FSXAContainer } from "./components/FSXAContainer";
+export { default as FSXAFooter } from "./components/FSXAFooter";
 export { default as Sections } from "./components/Sections";

@@ -1,7 +1,4 @@
 .NewsTeaserSection {
-    @apply w-full pt-40;
-    background: url(/dots.png);
-
     & .NewsTeaserSection--Separator {
         @apply bg-black;
         height: 3px;

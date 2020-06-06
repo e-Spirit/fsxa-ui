@@ -36,8 +36,9 @@ export interface FSXAHeadlineProps {
 export class FSXAHeadline extends FSXABaseComponent<FSXAHeadlineProps> {}
 
 export interface FSXAImageProps {
-  src: string;
+  src?: string;
   opacity?: "0" | "40" | "80" | "100";
+  zoom?: boolean;
 }
 export class FSXAImage extends FSXABaseComponent<FSXAImageProps> {}
 
@@ -90,9 +91,28 @@ export interface FSXANewsTeaserItemProps {
   date: string;
   description: string;
   handleClick?: () => void;
-  image: FSXAImageReference;
+  image?: FSXAImageReference;
   latest?: boolean;
 }
 export class FSXANewsTeaser extends FSXABaseComponent<
   FSXANewsTeaserItemProps
 > {}
+
+export interface FSXAContainerProps {
+  paddingOnly?: boolean;
+}
+export class FSXAContainer extends FSXABaseComponent<FSXAContainerProps> {}
+
+export interface FSXAFooterLink {
+  previewId: string;
+  referenceId: string;
+  referenceType: "page" | "fragment";
+  isActive: boolean;
+  label: string;
+}
+export interface FSXAFooterProps {
+  copyright: string;
+  handleClick: (item: FSXAFooterLink) => void;
+  links: FSXAFooterLink[];
+}
+export class FSXAFooter extends FSXABaseComponent<FSXAFooterProps> {}
