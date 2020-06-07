@@ -1,4 +1,8 @@
-import { FSXABaseComponent, FSXANewsTeaserItemProps } from "./components";
+import {
+  FSXABaseComponent,
+  FSXANewsTeaserItemProps,
+  Breadcrumb,
+} from "./components";
 
 export interface NewsTeaserSectionProps {
   headline: string;
@@ -33,5 +37,15 @@ export interface WelcomeSectionProps {
     src: string;
     previewId: string;
   };
+  buttonText: string;
+  handleButtonClick?: () => void;
 }
 export class WelcomeSection extends FSXABaseComponent<WelcomeSectionProps> {}
+
+export interface HeaderSectionProps {
+  backgroundImage?: string;
+  title: string;
+  breadcrumbs: Breadcrumb[];
+  handleItemClick?: (item: Breadcrumb) => void;
+}
+export class HeaderSection extends FSXABaseComponent<HeaderSectionProps> {}

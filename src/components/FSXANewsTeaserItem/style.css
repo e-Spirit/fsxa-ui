@@ -32,7 +32,7 @@
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
-            height: 6rem;
+            height: 5.6rem;
 
             &:hover {
                 @apply text-gray-500 transform transition-colors duration-200 cursor-pointer;

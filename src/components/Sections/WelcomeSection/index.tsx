@@ -20,6 +20,8 @@ class WelcomeSection extends FSXABaseComponent<WelcomeSectionProps> {
   @Prop({ required: true }) kicker!: WelcomeSectionProps["kicker"];
   @Prop({ required: true }) text!: WelcomeSectionProps["text"];
   @Prop() image: WelcomeSectionProps["image"];
+  @Prop({ required: true }) buttonText!: WelcomeSectionProps["buttonText"];
+  @Prop() handleButtonClick: WelcomeSectionProps["handleButtonClick"];
 
   render() {
     return (
@@ -37,9 +39,11 @@ class WelcomeSection extends FSXABaseComponent<WelcomeSectionProps> {
               <FSXARichText class="text-xs mb-6" text={this.text} />
               <FSXAButton
                 variant="animated"
-                handleClick={() => console.log("Clicked")}
+                handleClick={() =>
+                  this.handleButtonClick && this.handleButtonClick()
+                }
               >
-                Read More
+                {this.buttonText}
               </FSXAButton>
             </FSXACol>
             <FSXACol lg_width="7" class="mb-12">
@@ -54,34 +58,6 @@ class WelcomeSection extends FSXABaseComponent<WelcomeSectionProps> {
               ) : null}
             </FSXACol>
           </FSXARow>
-          {/**<div class="w-full flex flex-col md:flex-row sm:items-center">
-            <div class="md:w-5/12 px-4">
-              <span class="uppercase font-light text-2xl lg:text-3xl">
-                {this.kicker}
-              </span>
-              <FSXARichText
-                class="text-3xl lg:text-4xl font-semibold mt-2 lg:mt-5 mb-3 lg:mb-6"
-                text={this.headline}
-              />
-              <FSXARichText class="text-xs mb-6" text={this.text} />
-              <FSXAButton
-                variant="animated"
-                handleClick={() => console.log("Clicked")}
-              >
-                Read More
-              </FSXAButton>
-            </div>
-            <div class="md:w-7/12 px-4 mt-16 md:mt-0">
-              {this.image ? (
-                <div class="WelcomeSection--ImageWrapper">
-                  <FSXAImage
-                    data-preview-id={this.image.previewId}
-                    src={this.image.src}
-                  />
-                </div>
-              ) : null}
-            </div>
-              </div>**/}
         </FSXAContainer>
       </div>
     );

@@ -1,11 +1,34 @@
 import { CreateElement } from "vue";
 import InterestingFactsSection from "@/components/Sections/InterestingFactsSection";
 import NewsTeaserSection from "@/components/Sections/NewsTeaserSection";
+import HeaderSection from "@/components/Sections/HeaderSection";
 import WelcomeSection from "@/components/Sections/WelcomeSection";
 
 export default {
   title: "FSXA Sections",
 };
+
+export const header = () => ({
+  render: (h: CreateElement) => (
+    <HeaderSection
+      backgroundImage="https://demoprod.e-spirit.cloud/comspace/smartlivingglobal/Images/Content/Controlpanel-on-a-tablet_header_banner.jpg"
+      title="EXPLORE THE WORLD OF SMART LIVING"
+      breadcrumbs={[
+        {
+          referenceId: "dsfgh",
+          referenceType: "PageRef",
+          label: "Home",
+        },
+        {
+          referenceId: "dsfgh",
+          referenceType: "PageRef",
+          label: "Our Solutions",
+        },
+      ]}
+      handleItemClick={console.log}
+    />
+  ),
+});
 
 export const welcome = () => ({
   render: (h: CreateElement) => (
@@ -18,6 +41,7 @@ export const welcome = () => ({
       }}
       jumboHeadline="Smart Living"
       kicker="Welcome"
+      buttonText="Read More"
       text={`<div data-fs-style="format.standard">With simple functions and tools, our Smart Living customers can create their own individual home. From light control to central media control.</div>`}
     />
   ),

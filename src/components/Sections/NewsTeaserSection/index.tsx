@@ -22,6 +22,7 @@ class NewsTeaserSection extends FSXABaseComponent<NewsTeaserSectionProps> {
 
   render() {
     // loop over first 3 items
+    if (this.items.length < 3) return null;
     return (
       <div
         class="py-12 md:py-16 lg:py-20"
@@ -36,27 +37,30 @@ class NewsTeaserSection extends FSXABaseComponent<NewsTeaserSectionProps> {
             <FSXACol width="12" lg_width="6">
               <div class="w-full h-64 mb-4 md:mb-12">
                 <FSXANewsTeaserItem
-                  props={{
-                    ...this.items[0],
-                    handleClick: () => this.handleItemClick(this.items[0]),
-                  }}
+                  title={this.items[0].title}
+                  date={this.items[0].date}
+                  description={this.items[0].description}
+                  handleClick={() => this.handleItemClick(this.items[0])}
+                  image={this.items[0].image}
                 />
               </div>
               <div class="w-full h-64">
                 <FSXANewsTeaserItem
-                  props={{
-                    ...this.items[1],
-                    handleClick: () => this.handleItemClick(this.items[1]),
-                  }}
+                  title={this.items[1].title}
+                  date={this.items[1].date}
+                  description={this.items[1].description}
+                  handleClick={() => this.handleItemClick(this.items[1])}
+                  image={this.items[1].image}
                 />
               </div>
             </FSXACol>
             <FSXACol width="12" lg_width="6">
               <FSXANewsTeaserItem
-                props={{
-                  ...this.items[2],
-                  handleClick: () => this.handleItemClick(this.items[2]),
-                }}
+                title={this.items[2].title}
+                date={this.items[2].date}
+                description={this.items[2].description}
+                handleClick={() => this.handleItemClick(this.items[2])}
+                image={this.items[2].image}
                 latest
               />
             </FSXACol>

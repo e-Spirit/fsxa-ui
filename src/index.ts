@@ -8,4 +8,5 @@ export { default as InteractiveComponent } from "./components/internal/Interacti
 export { default as FSXACounter } from "./components/FSXACounter";
 export { default as FSXAContainer } from "./components/FSXAContainer";
 export { default as FSXAFooter } from "./components/FSXAFooter";
+export { default as FSXABreadcrumbs } from "./components/FSXABreadcrumbs";
 export { default as Sections } from "./components/Sections";

@@ -1,5 +1,6 @@
 import Vue from "vue";
 import { Component } from "vue-tsx-support";
+import { InteractiveComponentProps } from "./internal";
 
 export class FSXABaseComponent<Props> extends Component<Props> {}
 
@@ -110,3 +111,19 @@ export interface FSXAFooterProps {
   links: FSXAFooterLink[];
 }
 export class FSXAFooter extends FSXABaseComponent<FSXAFooterProps> {}
+
+export class InteractiveComponent<Props> extends FSXABaseComponent<
+  InteractiveComponentProps<Props>
+> {}
+
+export interface Breadcrumb {
+  referenceId: string;
+  referenceType: string;
+  label: string;
+}
+
+export interface FSXABreadcrumbsProps {
+  items: Breadcrumb[];
+  handleItemClick?: (item: Breadcrumb) => void;
+}
+export class FSXABreadcrumbs extends FSXABaseComponent<FSXABreadcrumbsProps> {}
