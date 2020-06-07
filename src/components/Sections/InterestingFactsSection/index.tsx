@@ -7,6 +7,7 @@ import FSXARichText from "@/components/FSXARichText";
 import FSXACounter from "@/components/FSXACounter";
 import FSXAContainer from "@/components/FSXAContainer";
 import FSXARow from "@/components/FSXARow";
+import FSXAHeadline from "@/components/FSXAHeadline";
 import FSXACol, { Widths } from "@/components/FSXACol";
 
 @Component({
@@ -38,10 +39,16 @@ class InterestingFactsSection extends FSXABaseComponent<
           <FSXARow>
             <FSXACol lg_width="6">
               <div class="InterestingFactsSection--Content">
-                <span class="font-light text-4xl">{this.tagline}</span>
-                <h2 class="text-highlight text-5xl font-bold leading-none mt-6 mb-5">
+                <FSXAHeadline as="span" size="xl" weight="light">
+                  {this.tagline}
+                </FSXAHeadline>
+                <FSXAHeadline
+                  as="h2"
+                  class="text-highlight leading-none"
+                  size="xxl"
+                >
                   {this.headline}
-                </h2>
+                </FSXAHeadline>
                 <FSXARichText
                   text={this.text}
                   class="text-lg font-light mb-6 text-white"
@@ -54,7 +61,7 @@ class InterestingFactsSection extends FSXABaseComponent<
                   <FSXACol
                     data-preview-id={counter.previewId}
                     width={(12 / this.counters.length).toString() as Widths}
-                    class="mt-12 lg:mt-24"
+                    class="mt-20 lg:mt-32"
                   >
                     <FSXACounter value={counter.value} label={counter.label} />
                   </FSXACol>

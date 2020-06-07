@@ -9,6 +9,7 @@ import { WelcomeSectionProps } from "@/types/sections";
 import FSXAContainer from "@/components/FSXAContainer";
 import FSXARow from "@/components/FSXARow";
 import FSXACol from "@/components/FSXACol";
+import FSXAHeadline from "@/components/FSXAHeadline";
 
 @Component({
   name: "WelcomeSection",
@@ -37,14 +38,16 @@ class WelcomeSection extends FSXABaseComponent<WelcomeSectionProps> {
                 text={this.headline}
               />
               <FSXARichText class="text-xs mb-6" text={this.text} />
-              <FSXAButton
-                variant="animated"
-                handleClick={() =>
-                  this.handleButtonClick && this.handleButtonClick()
-                }
-              >
-                {this.buttonText}
-              </FSXAButton>
+              {this.buttonText ? (
+                <FSXAButton
+                  variant="animated"
+                  handleClick={() =>
+                    this.handleButtonClick && this.handleButtonClick()
+                  }
+                >
+                  {this.buttonText}
+                </FSXAButton>
+              ) : null}
             </FSXACol>
             <FSXACol lg_width="7" class="mb-12">
               {this.image ? (

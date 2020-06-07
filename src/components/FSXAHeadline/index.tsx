@@ -1,25 +1,28 @@
 import FSXABaseComponent from "@/components/FSXABaseComponent";
 import Component from "vue-class-component";
 import { Prop } from "vue-property-decorator";
+import "./style.css";
+import { FSXAHeadlineProps } from "@/types/fsxa-ui";
 
-export interface HeadlineProps {
-  as: "h1" | "h2" | "h3" | "h4" | "h5";
-  handleClick?: () => void;
-}
 @Component({
-  name: "Headline",
+  name: "FSXAHeadline",
 })
-class Headline extends FSXABaseComponent<HeadlineProps> {
-  @Prop({ default: "h1" }) as!: HeadlineProps["as"];
-  @Prop() handleClick!: HeadlineProps["handleClick"];
+class FSXAHeadline extends FSXABaseComponent<FSXAHeadlineProps> {
+  @Prop({ default: "h1" }) as!: FSXAHeadlineProps["as"];
+  @Prop() size!: FSXAHeadlineProps["size"];
+  @Prop() weight!: FSXAHeadlineProps["weight"];
+  @Prop() handleClick!: FSXAHeadlineProps["handleClick"];
 
   render() {
     const Element = this.as;
     return (
-      <Element onClick={() => this.handleClick && this.handleClick()}>
+      <Element
+        class={`FSXAHeadline ${this.size} ${this.weight}`}
+        onClick={() => this.handleClick && this.handleClick()}
+      >
         {this.$slots.default}
       </Element>
     );
   }
 }
-export default Headline;
+export default FSXAHeadline;

@@ -37,7 +37,7 @@ export interface WelcomeSectionProps {
     src: string;
     previewId: string;
   };
-  buttonText: string;
+  buttonText?: string;
   handleButtonClick?: () => void;
 }
 export class WelcomeSection extends FSXABaseComponent<WelcomeSectionProps> {}

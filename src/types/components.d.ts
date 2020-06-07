@@ -25,7 +25,9 @@ export interface FSXACounterProps {
 export class FSXACounter extends FSXABaseComponent<FSXACounterProps> {}
 
 export interface FSXAHeadlineProps {
-  as: "h1" | "h2" | "h3" | "h4" | "h5";
+  as: "h1" | "h2" | "h3" | "h4" | "h5" | "span";
+  size: "xxl" | "xl" | "lg" | "md" | "sm";
+  weight?: "bold" | "light";
   handleClick?: () => void;
 }
 export class FSXAHeadline extends FSXABaseComponent<FSXAHeadlineProps> {}

@@ -6,7 +6,7 @@
     }
 
     & .HeaderSection--HeadlineWrapper {
-        @apply border-white py-20 pl-8 w-48 relative mb-6;
+        @apply border-white py-20 pl-8 w-48 relative mb-6 uppercase;
         border: 10px solid;
         border-right: 0;
 

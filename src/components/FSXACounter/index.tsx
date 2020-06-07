@@ -12,7 +12,7 @@ class FSXACounter extends FSXABaseComponent<FSXACounterProps> {
   @Prop({ required: true }) label!: FSXACounterProps["label"];
   render() {
     return (
-      <div class="text-white mb-12 flex items-center justify-center flex-col">
+      <div class="text-white mt-2 mb-12 flex items-center justify-center flex-col">
         <div class="text-highlight font-bold text-4xl mb-2">{this.value}</div>
         <div class="FSXACounter--Separator-Wrapper">
           <div class="FSXACounter--Separator" />

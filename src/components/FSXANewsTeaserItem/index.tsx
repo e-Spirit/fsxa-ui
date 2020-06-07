@@ -32,7 +32,7 @@ class FSXANewsTeaserItem extends FSXABaseComponent<FSXANewsTeaserItemProps> {
           <div class="FSXANewsTeaserItem--Date">
             <span>{this.date}</span>
           </div>
-          <FSXAHeadline as="h3" class="FSXANewsTeaserItem--Title">
+          <FSXAHeadline as="h3" class="FSXANewsTeaserItem--Title" size="sm">
             {this.title}
           </FSXAHeadline>
           <FSXARichText

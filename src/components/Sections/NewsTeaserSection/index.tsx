@@ -29,7 +29,7 @@ class NewsTeaserSection extends FSXABaseComponent<NewsTeaserSectionProps> {
         style={{ background: `url(${ImageSrc})` }}
       >
         <FSXAContainer>
-          <FSXAHeadline as="h2" class="text-4xl uppercase font-bold mb-8">
+          <FSXAHeadline as="h2" size="lg">
             {this.headline}
           </FSXAHeadline>
           <div class="NewsTeaserSection--Separator" />
