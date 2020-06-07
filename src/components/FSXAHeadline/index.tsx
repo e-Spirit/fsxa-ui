@@ -10,7 +10,7 @@ import { FSXAHeadlineProps } from "@/types/fsxa-ui";
 class FSXAHeadline extends FSXABaseComponent<FSXAHeadlineProps> {
   @Prop({ default: "h1" }) as!: FSXAHeadlineProps["as"];
   @Prop() size!: FSXAHeadlineProps["size"];
-  @Prop() weight!: FSXAHeadlineProps["weight"];
+  @Prop({ default: "bold" }) weight!: FSXAHeadlineProps["weight"];
   @Prop() handleClick!: FSXAHeadlineProps["handleClick"];
 
   render() {
