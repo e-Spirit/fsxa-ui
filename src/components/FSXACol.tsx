@@ -1,31 +1,12 @@
 import FSXABaseComponent from "@/components/FSXABaseComponent";
 import { Prop, Component } from "vue-property-decorator";
+import { FSXAColWidths, FSXAColProps } from "@/types/components";
 
-const getClassName = (width?: Widths, prefix?: string) => {
+const getClassName = (width?: FSXAColWidths, prefix?: string) => {
   const className = `col-span-${width || 12}`;
   return prefix ? `${prefix}:${className}` : className;
 };
 
-export type Widths =
-  | "1"
-  | "2"
-  | "3"
-  | "4"
-  | "5"
-  | "6"
-  | "7"
-  | "8"
-  | "9"
-  | "10"
-  | "11"
-  | "12";
-export interface FSXAColProps {
-  width?: Widths;
-  sm_width?: Widths;
-  md_width?: Widths;
-  lg_width?: Widths;
-  xl_width?: Widths;
-}
 @Component({
   name: "FSXACol",
 })

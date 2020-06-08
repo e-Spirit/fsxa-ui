@@ -12,14 +12,12 @@ export const sticky = () => ({
       links={[
         {
           label: "Contact Us",
-          previewId: "kljhghjkl",
           referenceId: "lkjhgfhjk",
           referenceType: "page",
           isActive: false,
         },
         {
           label: "Impressum",
-          previewId: "kljhghjkl",
           referenceId: "lkjhgfhjk",
           referenceType: "page",
           isActive: true,

@@ -101,7 +101,6 @@ export interface FSXAContainerProps {
 export class FSXAContainer extends FSXABaseComponent<FSXAContainerProps> {}
 
 export interface FSXAFooterLink {
-  previewId: string;
   referenceId: string;
   referenceType: "page" | "fragment";
   isActive: boolean;
@@ -129,3 +128,32 @@ export interface FSXABreadcrumbsProps {
   handleItemClick?: (item: Breadcrumb) => void;
 }
 export class FSXABreadcrumbs extends FSXABaseComponent<FSXABreadcrumbsProps> {}
+
+export type FSXAColWidths =
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "9"
+  | "10"
+  | "11"
+  | "12";
+export interface FSXAColProps {
+  width?: FSXAColWidths;
+  sm_width?: FSXAColWidths;
+  md_width?: FSXAColWidths;
+  lg_width?: FSXAColWidths;
+  xl_width?: FSXAColWidths;
+}
+export class FSXACol extends FSXABaseComponent<FSXAColProps> {}
+
+export interface FSXARowProps {
+  reverse?: boolean;
+}
+export class FSXARow extends FSXABaseComponent<FSXARowProps> {}
+
+export class FSXADevInfo extends FSXABaseComponent<{}> {}

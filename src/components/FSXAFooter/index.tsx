@@ -50,7 +50,6 @@ class FSXAFooter extends FSXABaseComponent<FSXAFooterProps> {
                         event.preventDefault();
                         this.handleClick(link);
                       }}
-                      data-preview-id={link.previewId}
                     >
                       {link.label}
                     </a>

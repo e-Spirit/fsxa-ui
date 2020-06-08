@@ -1,0 +1,17 @@
+.DevInfo {
+    @apply absolute top-0 right-0 mt-5 mr-5 rounded-lg bg-gray-800 transition-colors duration-200 transform cursor-pointer border;
+    width: 450px;
+    max-width: calc(100% - 20px);
+    max-height: calc(100% - 20px);
+    &.collapsed {
+        @apply w-8 h-8 bg-gray-600 rounded-full;
+        max-width: 100%;
+        max-height: 100%;
+        &:hover {
+            @apply bg-gray-800;
+        }
+    }
+    &:not(.collapsed) {
+        @apply px-6 pt-6 pb-4;
+    }
+}

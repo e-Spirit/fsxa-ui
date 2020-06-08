@@ -19,7 +19,6 @@ export interface InterestingFactsSectionProps {
   tagline: string;
   text: string;
   counters: Array<{
-    previewId?: string;
     value: number;
     label: string;
   }>;

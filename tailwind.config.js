@@ -1,10 +1,7 @@
 module.exports = {
-  purge: [
-    "./src/**/*.html",
-    "./src/**/*.tsx",
-    "./src/**/*.css",
-    "./src/assets/tailwind.css",
-  ],
+  purge: {
+    enabled: false,
+  },
   prefix: "",
   important: false,
   separator: ":",

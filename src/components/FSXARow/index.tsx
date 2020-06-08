@@ -2,10 +2,7 @@ import Component from "vue-class-component";
 import "./style.css";
 import FSXABaseComponent from "@/components/FSXABaseComponent";
 import { Prop } from "vue-property-decorator";
-
-export interface FSXARowProps {
-  reverse?: boolean;
-}
+import { FSXARowProps } from "@/types/components";
 
 @Component({
   name: "FSXARow",
