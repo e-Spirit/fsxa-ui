@@ -6,20 +6,22 @@ import "./style.css";
   name: "FSXADevInfo",
 })
 class FSXADevInfo extends FSXABaseComponent {
-  collapsed = false;
+  collapsed = true;
 
   render() {
     return (
       <div class={`DevInfo ${this.collapsed ? "collapsed" : ""}`}>
         <div
-          class="absolute top-0 right-0 flex w-8 h-8 items-center justify-center text-white cursor-pointer"
+          class="fixed top-0 right-0 flex w-8 h-8 items-center justify-center text-white cursor-pointer"
           onClick={() => (this.collapsed = !this.collapsed)}
         >
           <i class={`fa ${this.collapsed ? "fa-question" : "fa-times"}`} />
         </div>
-        {!this.collapsed ? (
-          <div class="rounded-lg text-white">{this.$slots.default}</div>
-        ) : null}
+        <div class="flex flex-1 pt-8 pl-4">
+          <div class="flex-1 w-full h-full overflow-x-hidden overflow-y-auto text-white pr-4 pb-4 text-xs">
+            {!this.collapsed && this.$slots.default}
+          </div>
+        </div>
       </div>
     );
   }

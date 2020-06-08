@@ -55,3 +55,7 @@
 .FSXANavigation--Navigation .FSXANavigation--Navigation:last-child .FSXANavigation--Item:hover > .FSXANavigation--Navigation {
     left: calc(-100% - 2px);
 }
+
+.FSXANavigation--Mobile {
+    height: 101px;
+}

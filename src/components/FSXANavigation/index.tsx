@@ -45,9 +45,14 @@ class FSXANavigation extends FSXABaseComponent<FSXANavigationProps> {
 
   render() {
     return (
-      <ul class="FSXANavigation--Navigation">
-        {this.items.map(item => this.renderItem(item, 0))}
-      </ul>
+      <div>
+        <ul class="FSXANavigation--Navigation hidden lg:block">
+          {this.items.map(item => this.renderItem(item, 0))}
+        </ul>
+        <div class="FSXANavigation--Mobile w-full flex items-center justify-end block lg:hidden hover:text-gray-600 text-xl cursor-pointer">
+          <i class="fa fa-bars" />
+        </div>
+      </div>
     );
   }
 }
