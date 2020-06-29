@@ -13,22 +13,25 @@ class FSXABreadcrumbs extends FSXABaseComponent<FSXABreadcrumbsProps> {
 
   render() {
     return (
-      <ul class="FSXABreadcrumbs">
-        {this.items.map(item => (
-          <li class="FSXABreadcrumbs--Item">
-            <a
-              href="#"
-              class="FSXABreadcrumbs--Link"
-              onClick={event => {
-                event.preventDefault();
-                this.handleItemClick && this.handleItemClick(item);
-              }}
-            >
-              {item.label}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <nav class="FSXABreadcrumbs" aria-label="breadcrumb">
+        <ul>
+          {this.items.map((item, index) => (
+            <li class="FSXABreadcrumbs--Item">
+              <a
+                href="#"
+                class="FSXABreadcrumbs--Link"
+                aria-current={index === this.items.length - 1 ? "page" : ""}
+                onClick={event => {
+                  event.preventDefault();
+                  this.handleItemClick && this.handleItemClick(item);
+                }}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
     );
   }
 }

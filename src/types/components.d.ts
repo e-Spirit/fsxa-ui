@@ -1,4 +1,3 @@
-import Vue from "vue";
 import { Component } from "vue-tsx-support";
 import { InteractiveComponentProps } from "./internal";
 
@@ -11,9 +10,14 @@ export interface FSXAImageReference {
 
 export interface FSXAButtonProps {
   /**
-   * The button variant
+   * Specify the variant the button should be displayed in.
+   *
+   * Possible values are: **default** | **inverted** | **tag** | **animated**
    */
   variant?: "default" | "inverted" | "tag" | "animated";
+  /**
+   * Optional callback that will be triggered, when the button is clicked
+   */
   handleClick?: () => void;
 }
 export class FSXAButton extends FSXABaseComponent<FSXAButtonProps> {}
@@ -113,8 +117,8 @@ export interface FSXAFooterProps {
 }
 export class FSXAFooter extends FSXABaseComponent<FSXAFooterProps> {}
 
-export class InteractiveComponent<Props> extends FSXABaseComponent<
-  InteractiveComponentProps<Props>
+export class InteractiveComponent extends FSXABaseComponent<
+  InteractiveComponentProps
 > {}
 
 export interface Breadcrumb {
@@ -157,3 +161,53 @@ export interface FSXARowProps {
 export class FSXARow extends FSXABaseComponent<FSXARowProps> {}
 
 export class FSXADevInfo extends FSXABaseComponent<{}> {}
+
+export type LayoutItemWidths =
+  | "0"
+  | "1/12"
+  | "2/12"
+  | "3/12"
+  | "4/12"
+  | "5/12"
+  | "6/12"
+  | "7/12"
+  | "8/12"
+  | "9/12"
+  | "10/12"
+  | "11/11"
+  | "full"
+  | "1/2"
+  | "1/3"
+  | "2/3"
+  | "1/4"
+  | "2/4"
+  | "3/4"
+  | "1/5"
+  | "2/5"
+  | "3/5"
+  | "4/5"
+  | "1/6"
+  | "2/6"
+  | "3/6"
+  | "4/6"
+  | "5/6"
+  | "auto";
+
+export interface LayoutItemProps {
+  width?: LayoutItemWidths;
+  width_sm?: LayoutItemWidths;
+  width_md?: LayoutItemWidths;
+  width_lg?: LayoutItemWidths;
+  width_xl?: LayoutItemWidths;
+  verticalAlign?: string;
+  horizontalAlign?: string;
+}
+export class LayoutItem extends FSXABaseComponent<LayoutItemProps> {}
+export interface LayoutProps {
+  gutter: boolean;
+  verticalAlign: string;
+  horizontalAlign: string;
+}
+export class Layout extends FSXABaseComponent<LayoutProps> {
+  static LayoutItem: LayoutItem;
+}

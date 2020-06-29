@@ -1,0 +1,98 @@
+import Meta from "@/components/internal/Documentation/Meta";
+
+<Meta
+  title="FSXA Pattern Library"
+/>
+
+## Install
+
+You can install FSXA-Pattern-Library via Yarn or NPM.
+
+```bash
+# with npm
+npm install fsxa-pattern-library --save
+
+# with yarn
+yarn add fsxa-pattern-library
+```
+
+## Import
+
+Import components from FSXA-Pattern-Library.
+
+```typescript
+import { FSXAPage } from "fsxa-pattern-library";
+
+<FSXAPage path={currentPath} handleRouteChange={handleRouteChange} />
+```
+
+<br />
+
+Don't forget to include the **main CSS file** from the FSXA-Pattern-Library package!
+
+```typescript
+// directly importing the css into your main component
+import "fsxa-package-library/dist/fsxa-package-library.css";
+```
+
+```css
+/* using node-style package resolution in a CSS file */
+@import "fsxa-package-library/dist/fsxa-package-library.css";
+```
+
+```html
+<!-- using plain html -->
+<link
+  href="path/to/node_modules/fsxa-package-library/dist/fsxa-package-library.css"
+  rel="preload"
+  as="style"
+/>
+```
+
+## Vuex
+
+This project uses Vuex to store asynchronous data.
+
+To facilitate the integration, we provide both a fully configured Vuex-Store and Vuex-Module.
+
+### Integrate into vue-cli project using your own Vuex-Store
+
+```typescript
+import Vue from 'vue';
+import Vuex from 'vuex';
+
+import {} from ""
+
+Vue.use(Vuex);
+
+const store = new Vuex.Store({
+  state: {
+    count: 0
+  },
+  mutations: {
+    increment (state) {
+      state.count++
+    }
+  }
+})
+store.registerModule("fsxa", )
+```
+
+### Integrate into Nuxt
+
+
+This project is using <a href="https://vuex.vuejs.org/" target="_blank">Vuex</a> for State-Management purposes.
+
+The underlying structure is exposed to you through the [FSXABaseComponent](/#/components/FSXABaseComponent).
+
+It is used to store data fetched from CaaS and the Navigation-Service and is exposed to you as a consumer to store your own data as well.
+
+## Server Side Rendering
+
+This project supports server side rendering (SSR), but can also be used without it.
+
+Required data is fetched on the client side only if it has not already been fetched in an SSR process.
+
+Thanks to the integration of [Vuex](/#/vuex-integration), client-side hydration works out of the box.
+
+For more information about SSR and how you can integrate it, see our [server side rendering section](/#/server-side-rendering).

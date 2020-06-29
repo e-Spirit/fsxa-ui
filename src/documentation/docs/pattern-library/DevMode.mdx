@@ -1,0 +1,54 @@
+import Meta from "@/components/internal/Documentation/Meta";
+
+<Meta title="DevMode" subtitle="Next generation development" />
+
+Wir möchten den Einstieg in die Entwicklung mit FirstSpirit so einfach wie möglich gestalten. Deshalb haben wir den DevMode entwickelt.
+
+
+
+
+Die PWA ist resilient aufgebaut. Das bedeutet, dass diese nicht kaputt geht, sobald es backendseitig neue Absätze gibt, die im Frontend noch nicht umgesetzt wurden. 
+
+Damit du als Frontend-Entwickler aber nun einen Startpunkt hast kannst du den DevMode aktivieren. Füge dafür einfach folgenden Eintrag zu deiner `.env` dazu.
+
+## Enabling DevMode
+
+```bash
+# /src/.env
+
+FSXA_DEV_MODE=true
+```
+
+## Features
+
+Wir haben die PWA so resilient wie möglich aufgesetzt. Das bedeutet, dass jede inhaltliche Komponente ein eigenes Error-Handling besitzt. Egal ob Navigation, Absatz, Layout oder Footer. Sollten also Inhaltsänderungen dafür sorgen, dass der Frontend-Code nicht mehr funktioniert wird schlimmstenfalls nichts mehr angezeigt. Der Rest der Seite funktioniert aber weiter wie gehabt.
+
+Inhaltstypen für die es bisher keine zugeordneten Komponenten gibt werden übergangen und nicht gerendert. Damit man als Frontend-Entwickler aber trotzdem Ansatzpunkte hat, wo Komponenten ergänzt werden müssen, haben wir den DevMode entwickelt.
+
+Das bedeutet, dass bisher unbekannte Inhaltstypen nicht dazu führen, dass die gesamte Seite nicht mehr funktioniert. , sondern schlimmstensDas bedeutet, dass neue Inhaltstypen die über das Redaktionssystem gepflegt werden nicht dazu führen, dass die App nicht mehr funktioniert. 
+Fügt man nun auf FirstSpirit-Seite neue Absatzvorlagen und Page-Layouts hinzu
+
+> TODO: Add Images
+
+### Layout-Preview
+
+### Section-Preview
+
+Normalerweise werden bei fehlendem Absatz --> Komponenten Mapping keinerlei Fehler angezeigt und die Anwendung funktioniert ganz normal weiter. Allerdings werden natürlich auch keine visuellen Elemente gerendert.
+Um dir an dieser Stelle zu helfen wird nach Aktivierung des DevModes eine Section-Preview dargestellt.
+
+Diese erklärt dir, wie du eine neue Komponente hinzufügst. Außerdem zeigt sie dir den Payload an, welcher aus dem CaaS ausgelesen wurde.
+
+Sobald der Dev-Mode aktiv ist und du die Anwendung per `npm run serve` neu gestartet hast siehst du nun pro fehlendem Absatz auf deiner Seite eine Info-Section. Diese stellt dir nützliche Informationen bereit.
+
+
+
+
+
+Den DevMode kannst du ganz einfach über mehrere Wege aktivieren:
+
+```typescript
+// add devMode property to FSXAPage
+<FSXAPage devMode />
+```
+

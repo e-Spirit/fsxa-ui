@@ -5,8 +5,8 @@ import FSXABaseComponent from "@/components/FSXABaseComponent";
 
 export interface ToggleProps {
   labels: {
-    on: string;
-    off: string;
+    on: JSX.Element | string;
+    off: JSX.Element | string;
   };
   active: boolean;
   handleToggle: (value: boolean) => void;

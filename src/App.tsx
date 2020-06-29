@@ -1,11 +1,11 @@
 import { Component } from "vue-property-decorator";
 import Vue from "vue";
-import FSXAButton from "./components/FSXAButton";
+import Documentation from "./documentation";
 
 @Component
 class App extends Vue {
   render() {
-    return <FSXAButton variant="animated" />;
+    return <Documentation />;
   }
 }
 export default App;

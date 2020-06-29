@@ -10,6 +10,7 @@ import { FSXARowProps } from "@/types/components";
 class FSXARow extends FSXABaseComponent<FSXARowProps> {
   @Prop() reverse: FSXARowProps["reverse"];
   render() {
+    console.log(this.$parent);
     return (
       <div
         class={`FSXARow ${

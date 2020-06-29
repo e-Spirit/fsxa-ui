@@ -1,0 +1,53 @@
+import Meta from "@/components/internal/Documentation/Meta";
+
+<Meta
+  title="Getting Started"
+  subtitle="FSXA-UI is really easy to get started with. Make sure to follow the guide below to get a better understanding about some of the decisions behind FSXA-UI and how to use it to kick-off your next project."
+/>
+
+## Install
+
+You can install FSXA-UI via Yarn or NPM.
+
+```bash
+# with npm
+npm install fsxa-ui --save
+
+# with yarn
+yarn add fsxa-ui
+```
+
+## Import
+
+Import components from FSXA-UI.
+
+```typescript
+import { Button } from "fsxa-ui";
+
+<Button variant="animated" handleClick={handleClick}>
+  This is my Button
+</Button>
+```
+
+<br />
+
+Don't forget to include the **main CSS file** from the FSXA-UI package!
+
+```typescript
+// directly importing the css into your main component
+import "fsxa-ui/dist/fsxa-ui.css";
+```
+
+```css
+/* using node-style package resolution in a CSS file */
+@import "fsxa-ui/dist/fsxa-ui.css";
+```
+
+```html
+<!-- using plain html -->
+<link
+  href="path/to/node_modules/fsxa-ui/dist/fsxa-ui.css"
+  rel="preload"
+  as="style"
+/>
+```

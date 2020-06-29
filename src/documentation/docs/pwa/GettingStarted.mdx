@@ -1,0 +1,149 @@
+import Meta from "@/components/internal/Documentation/Meta";
+
+<Meta title="Getting Started" subtitle="This guide will help you getting started with fsxa-pwa." />
+
+## Quickstart
+
+Set up fsxa-pwa in less than 10 minutes.
+
+### Prerequisites
+Before you can start developing, the following prerequisites must be met:
+
+- You have installed Node.js version 8.9 or above (8.11.0+ recommended)
+- You have already received your FSXA information package including your authentication details
+
+### Installation
+
+```bash
+# clone git repository
+$ git clone git@github.com:e-Spirit/fsxa-pwa.git
+
+# switch to created directory
+$ cd fsxa-pwa
+
+# install dependencies
+$ npm install
+```
+
+### Create .env-file
+
+The PWA will automatically communicate for you with the CaaS and navigation service. In order for this to be possible, however, it still needs a local .env file, which points to the individual services and contains your authentication.
+
+You should have already received this information from your contact at E-Spirit. If this is not the case, please feel free to contact us.
+
+```bash
+# src/.env
+
+# APIKey used for authentication against the CaaS
+FSXA_API_KEY= ...
+# URL pointing to your CaaS Instance
+FSXA_CAAS= ...
+# ID of your project
+FSXA_PROJECT_ID= ...
+# URL pointing to the NavigationService
+FSXA_NAVIGATION_SERVICE= ...
+# In which locale should the app be displayed`
+FSXA_LOCALE= ...
+# Which mode should be used? (preview/release)
+FSXA_MODE= ...
+# KEY:VALUE map where semicolon is used as separator (key:uuid;key:uuid)
+FSXA_REMOTES= ...
+```
+
+> The .env file is excluded automatically from git through the .gitignore file. 
+
+### Start up your local dev environment
+
+```bash
+$ npm run serve
+```
+
+You should now see your app up and running at <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>.
+
+> The PWA listens for file changes in the pages folder and any files referenced from it. It is therefore not necessary to restart the server every time.
+
+### Entry points
+
+Under the hood, the PWA uses the FSXA pattern library (pattern library) with the help of 3 different entry points.
+
+#### FSXAPage
+
+The page structure in Nuxtjs is usually represented by files and folders in the `pages` folder. However, since we do not have any static routes to define and we want to map the dynamic navigation structure from the navigation service, there is only one file in the `pages` folder.
+The `_.tsx` ultimately acts as a `catch all` route at this point and ensures that any request is routed to this generic page.
+
+To give the developer the greatest possible flexibility in routing, the pattern library does not require any routing technology. But this does not mean that you are left alone on this point.
+
+The FSXaPage expects as properties the current path and a callback, which is called on route change requests triggered by the Pattern-Library.. This function receives the new route as a parameter.
+
+As a developer, you can choose the routing technology that best fits your needs. Despite everything, you can rely on the pattern library to take over the heavy part of mapping pages to routes for you.
+
+```typescript
+// src/pages/_.tsx
+
+<FSXAPage
+    path={currentPath}
+    handleRouteChange={(nextRoute) => this.$router.push({ path: nextRoute })}
+/>
+```
+
+> In the `_.tsx` file the current route is extracted from the Vue-Router and passed to the `FSXAPage`. In case of a route change request, the new route is communicated to the Vue-Router which will handle the routing.
+
+#### Vuex Store and Module
+
+Vuex is a state-management pattern and library. It serves as a central store for all components in the pattern library. 
+
+In order for the pattern library to perform its work automatically in the background, the preconfigured Vuex store of the pattern library has to be used in Nuxt. 
+Nuxt itself has already integrated Vuex, which makes it necessary to import the Vuex store of the pattern library as a module. For this use case, the Pattern Library provides a Vuex module as well.
+
+Similar to the pages, Vuex modules are represented by files in the `src/store` folder. In the `src/store/fsxa.ts` we now import the function `getFSXAModule` and configure it with our environment variables. 
+Then the result is exported and getters, mutations and actions as well as the state of the FSXA module are injected into the Vuex-Store.
+
+```typescript
+// src/store/fsxa.ts
+
+import { getFSXAModule, FSXAApi } from 'fsxa-pattern-library'
+import axios from 'axios'
+
+export default getFSXAModule(
+  new FSXAApi(axios, {
+    apiKey: process.env.FSXA_API_KEY as string,
+    mode: process.env.FSXA_MODE as 'preview' | 'release',
+    projectId: process.env.FSXA_PROJECT_ID as string,
+    remotes: process.env.FSXA_REMOTES
+      ? process.env.FSXA_REMOTES.split(';').reduce(
+          (result: any, remote: string) => {
+            const [key, value] = remote.split(':')
+            return {
+              ...result,
+              [key]: value
+            }
+          },
+          {}
+        )
+      : {},
+    caas: process.env.FSXA_CAAS as string,
+    navigationService: process.env.FSXA_NAVIGATION_SERVICE as string,
+    locale: process.env.FSXA_LOCALE as string
+  })
+)
+```
+
+Finally, we will have a look at the `src/store/index.ts`. In this Vuex module we listen to the `nuxtServerInit` action. This action is dispatched after the server side rendering is completed in Nuxt and the static HTML is delivered and the client starts the hydration.
+However, since this action is only published in the index module of the Vuex store, it is necessary to pass the payload to the FSXA module of the pattern library.
+
+So if the action `nuxtServerInit` is called, the action `setInitialStateFromServer` is dispatched including the current state of the FSXA module as payload.
+
+```
+// src/store/index.ts
+
+import { ActionTree } from 'vuex'
+import { RootState, FSXAActions } from 'fsxa-pattern-library'
+
+export interface State extends RootState {}
+export const actions: ActionTree<State, State> = {
+  // we do need to pass  the nuxtServerInit-Action to the pattern-library, through FSXAActions.setInitialStateFromServer
+  nuxtServerInit({ commit }, { store }) {
+    commit(FSXAActions.setInitialStateFromServer, store.state.fsxa)
+  }
+}
+```

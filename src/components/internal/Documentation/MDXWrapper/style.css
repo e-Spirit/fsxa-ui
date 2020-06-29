@@ -1,0 +1,70 @@
+.MDXWrapper {
+  @apply w-full h-full p-10;
+
+  h1:not(.page-headline) {
+    @apply text-2xl mb-8 font-bold;
+  }
+
+  h2 {
+    @apply text-xl mb-6 font-bold;
+
+    &:not(:first-child) {
+      @apply mt-10;
+    }
+  }
+
+  h3 {
+    @apply text-lg mb-5 font-bold;
+
+    &:not(:first-child) {
+      @apply mt-8;
+    }
+  }
+
+  h4 {
+    @apply mb-4 font-bold;
+
+    &:not(:first-child) {
+      @apply mt-6;
+    }
+  }
+
+  a {
+    @apply text-espirit font-bold;
+  }
+
+  p {
+    @apply mt-2;
+  }
+
+  blockquote {
+    @apply mt-4 px-3 py-2 bg-pink-200 rounded-lg text-sm relative pl-8 text-gray-700;
+
+    &:before {
+      @apply absolute top-1/2 left-0 text-gray-700 text-sm ml-3;
+      content: "\f129";
+      font-family: "FontAwesome";
+      margin-top: -10px;
+    }
+
+    & p {
+      @apply mt-0;
+    }
+  }
+
+  ul {
+    @apply mt-4;
+
+    li {
+      @apply pl-4 relative;
+
+      &:before {
+        @apply absolute top-1/2 left-0;
+        content: "\f111";
+        font-family: "FontAwesome";
+        margin-top: -7px;
+        font-size: 8px;
+      }
+    }
+  }
+}

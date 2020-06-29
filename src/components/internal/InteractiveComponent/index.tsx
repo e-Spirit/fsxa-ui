@@ -3,28 +3,22 @@ import SelectInput from "./components/SelectInput";
 import "./style.css";
 import Toggle from "../Toggle";
 import IconButton from "../IconButton";
-import {
-  InteractiveComponentProps,
-  PropertyDefinition,
-} from "@/types/internal";
+import { InteractiveComponentProps, Property } from "@/types/internal";
 import TextInput from "./components/TextInput";
 import FSXABaseComponent from "@/components/FSXABaseComponent";
 
 @Component({
   name: "InteractiveComponent",
 })
-class InteractiveComponent<P> extends FSXABaseComponent<
-  InteractiveComponentProps<P>
+class InteractiveComponent extends FSXABaseComponent<
+  InteractiveComponentProps
 > {
   @Prop({ required: true, type: Function })
-  renderComponent!: InteractiveComponentProps<P>["renderComponent"];
+  renderComponent!: InteractiveComponentProps["renderComponent"];
   @Prop({ required: true })
-  changeableProps!: InteractiveComponentProps<P>["changeableProps"];
-  @Prop({ required: true }) title!: InteractiveComponentProps<P>["title"];
-  @Prop() subtitle: InteractiveComponentProps<P>["subtitle"];
+  changeableProps!: InteractiveComponentProps["changeableProps"];
 
   viewMode = "light";
-  showProperties = false;
 
   data() {
     return {
@@ -56,7 +50,7 @@ class InteractiveComponent<P> extends FSXABaseComponent<
     this.viewMode = value;
   }
 
-  renderInputElement(definition: PropertyDefinition<P>) {
+  renderInputElement(definition: Property) {
     switch (definition.type) {
       case "string":
         return (
@@ -66,7 +60,7 @@ class InteractiveComponent<P> extends FSXABaseComponent<
               definition.key as string,
             )}
             value={this.$data[definition.key as string]}
-            label={definition.label}
+            label={definition.key}
           />
         );
       case "select":
@@ -76,59 +70,37 @@ class InteractiveComponent<P> extends FSXABaseComponent<
               this,
               definition.key as string,
             )}
-            options={definition.options}
+            options={definition.values || []}
             value={this.$data[definition.key as string]}
-            label={definition.label}
+            label={definition.key}
           />
         );
     }
   }
-
-  handlePropertyToggle() {
-    this.showProperties = !this.showProperties;
-  }
-
   render() {
     return (
       <div class="InteractiveComponent">
-        <div class="InteractiveComponent--Header">
-          <div class="flex-grow">
-            <h1 class="text-lg font-bold">{this.title}</h1>
-            {this.subtitle ? (
-              <h2 class="text-sm text-gray-700">{this.subtitle}</h2>
-            ) : null}
-          </div>
-          <div class="flex-grow-0 flex-shrink-0">
-            <Toggle
-              labels={{ on: "Light", off: "Dark" }}
-              active={this.viewMode === "light"}
-              handleToggle={value =>
-                this.handleViewModeChange(value ? "light" : "dark")
-              }
-            />
-          </div>
-          <div class="ml-5 -mr-5">
-            <IconButton
-              active={this.showProperties}
-              handleClick={this.handlePropertyToggle}
-            >
-              PR
-            </IconButton>
-          </div>
-        </div>
         <div class="flex w-full flex-1">
           <div
-            class={`InteractiveComponent--Content ${
+            class={`InteractiveComponent--Content with-sidebar ${
               this.viewMode === "dark" ? "dark" : ""
-            } ${this.showProperties ? "with-sidebar" : ""}`}
+            } `}
           >
-            {this.renderComponent(this.P as P)}
+            {this.renderComponent(this.P)}
+            <div class="InteractiveComponent--Overlay">
+              <div class="flex-grow-0 flex-shrink-0">
+                <Toggle
+                  labels={{ on: "Light", off: "Dark" }}
+                  active={this.viewMode === "light"}
+                  handleToggle={value =>
+                    this.handleViewModeChange(value ? "light" : "dark")
+                  }
+                />
+              </div>
+              <div class="ml-5 -mr-5"></div>
+            </div>
           </div>
-          <div
-            class={`InteractiveComponent--Sidebar ${
-              this.showProperties ? "show" : ""
-            }`}
-          >
+          <div class={`InteractiveComponent--Sidebar show`}>
             <span class="uppercase text-sm mb-2 block">Properties</span>
             {this.changeableProps.map(this.renderInputElement)}
           </div>

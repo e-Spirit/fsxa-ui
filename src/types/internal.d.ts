@@ -1,36 +1,21 @@
-export enum PropertyType {
-  STRING = "string",
-  NUMBER = "number",
-  SELECT = "select",
-}
-export interface PropDefinition<P> {
-  key: keyof P;
-  type: any;
+import { FSXABaseComponent } from "./components";
+
+export interface Property {
+  key: string;
+  type: string;
   default?: any;
-  label: string;
-}
-export interface StringPropertyDefinition<P> extends PropDefinition<P> {
-  default?: string;
-  type: "string";
-}
-export interface NumberPropertyDefinition<P> extends PropDefinition<P> {
-  default?: number;
-  type: "number";
-}
-export interface SelectPropertyDefinition<P, T = string>
-  extends PropDefinition<P> {
-  type: "select";
-  default?: T;
-  options: T[];
+  values?: string[];
+  required: boolean;
+  description: string;
 }
 
-export type PropertyDefinition<P> =
-  | StringPropertyDefinition<P>
-  | NumberPropertyDefinition<P>
-  | SelectPropertyDefinition<P>;
-export interface InteractiveComponentProps<P extends {}> {
+export interface InteractiveComponentProps {
   title: string;
   subtitle?: string;
-  renderComponent: (props: P) => any;
-  changeableProps: PropertyDefinition<P>[];
+  renderComponent: (props: any) => any;
+  changeableProps: Property[];
 }
+
+// eslint-disable-next-line
+export interface PropsTableProps {}
+export class PropsTable extends FSXABaseComponent<PropsTableProps> {}

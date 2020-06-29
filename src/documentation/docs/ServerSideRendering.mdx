@@ -1,0 +1,59 @@
+import Meta from "@/components/internal/Documentation/Meta";
+
+<Meta title="Server Side Rendering" subtitle="What is Server-Side-Rendering and why is it relevant for us?" />
+
+**Single-Page-Applications (SPA)** are on the rise and the frameworks with which you can create them become easier and offer more and more functionalities and tools.
+However, there are still some crawlers that do not have their own rendering engine and are therefore unable to pull content from these apps. Especially the crawlers of big social media companies like Facebook, Twitter, LinkedIn, Xing and co do not support this.
+
+This is a big problem when **Search Engine Optimization (SEO)** is relevant to the success of your SPA. In addition, SSR increases the speed in which your app is delivered. This is also an important factor for search engines and, of course, for the user.
+
+If you use a framework such as Vue.js for your own SPA, you have to make sure that pre-rendered HTML is delivered and that the initial rendering is happening on the client.
+
+So SSR is the process that performs the initial rendering of your SPA (which obviously includes fetching of necessary data) already on the server and returns the resulting HTML.
+This allows crawlers to consume the HTML without the need to render the JavaScript first.
+
+Vue provides mechanisms to simplify SSR. Required data can be fetched using the `serverPrefetch` method. It is recognized by the SSR process and will pause the rendering until the promise it returns is resolved.
+This *allows* us to wait on async data during the rendering process.
+
+
+```typescript
+// with class syntax
+import Vue from "vue";
+import { Component } from "vue-property-decorator";
+
+@Component
+class YourComponent extends Vue {
+    // local state, initially set to null
+    data = null;
+
+    // will be invoked by SSR process
+    serverPrefetch() {
+        // we make sure, that the SSR process is waiting until data is fetched, by returning the promise of this.fetchData()
+        return this.fetchData();
+    }
+
+    // This will only be called on the client-side
+    mounted() {
+        // You should make sure, that data fetching is triggered in the client as well since it is not always clear if a component is always used in SSR-Context
+        this.fetchData();
+    }
+
+    async fetchData() {
+        // only load data if local state is not set already
+        if (!this.data) {
+            const response = await fetchAsyncData();
+            // update local state with response
+            this.data = response;
+        }
+    }
+
+    render() {
+        // since data fetching is triggered through the serverPrefetch-method it will exist in local state (if fetching was successful)
+        console.log(this.data);
+        return (
+            // render your markup in here
+        );
+    }
+}
+export default YourComponent;
+```

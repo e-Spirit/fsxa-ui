@@ -1,0 +1,54 @@
+.PropsTable {
+  @apply w-full border-separate table-auto align-top border-gray-300 mt-5;
+  border-spacing: 0;
+
+  & span.code {
+    @apply bg-gray-200 py-1 px-2 rounded-md mx-1 text-xs;
+  }
+}
+
+.PropsTable--Header th {
+  @apply py-1 px-4 font-light text-xs text-left uppercase;
+}
+
+.PropsTable--Body {
+  & td {
+    @apply p-4 border-gray-300 border-t align-top leading-6 text-gray-700 text-sm;
+  }
+
+  & > tr:first-child td {
+    @apply border-t;
+  }
+
+  & > tr:last-child td {
+    @apply border-t border-b;
+  }
+
+  & tr > td:first-child {
+    @apply border-l;
+  }
+
+  & tr > td:last-child {
+    @apply border-r;
+  }
+
+  & > tr:first-child {
+    & td:first-child {
+      @apply rounded-tl-lg;
+    }
+
+    & td:last-child {
+      @apply rounded-tr-lg;
+    }
+  }
+
+  & > tr:last-child {
+    & td:first-child {
+      @apply rounded-bl-lg;
+    }
+
+    & td:last-child {
+      @apply rounded-br-lg;
+    }
+  }
+}
