@@ -1,6 +1,6 @@
 {
   "name": "fsxa-ui",
-  "version": "0.1.29",
+  "version": "0.1.30",
   "types": "src/types/fsxa-ui.d.ts",
   "main": "./dist/fsxa-ui.common.js",
   "author": {
