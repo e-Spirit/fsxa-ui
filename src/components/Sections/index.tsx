@@ -1,11 +1,11 @@
 import InterestingFactsSection from "./InterestingFactsSection";
 import NewsTeaserSection from "./NewsTeaserSection";
-import WelcomeSection from "./WelcomeSection";
 import HeaderSection from "./HeaderSection";
+import TeaserSection from "./TeaserSection";
 
 export default {
   InterestingFactsSection,
   NewsTeaserSection,
-  WelcomeSection,
   HeaderSection,
+  TeaserSection,
 };

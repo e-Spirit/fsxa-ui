@@ -1,4 +1,4 @@
-import { FSXABaseComponent } from "./components";
+import { Component } from "vue-tsx-support";
 
 export interface Property {
   key: string;
@@ -18,4 +18,14 @@ export interface InteractiveComponentProps {
 
 // eslint-disable-next-line
 export interface PropsTableProps {}
-export class PropsTable extends FSXABaseComponent<PropsTableProps> {}
+export class PropsTable extends Component<PropsTableProps> {}
+
+export interface DevInfoProps {
+  headline: string;
+  content?: string;
+  devModeHint: string;
+  isOverlay?: boolean;
+}
+export class DevInfo extends Component<DevInfoProps> {}
+
+export class DevInfoTarget extends Component<{}> {}

@@ -1,6 +1,5 @@
-import FSXABaseComponent from "@/components/FSXABaseComponent";
-import Component from "vue-class-component";
-import { Prop } from "vue-property-decorator";
+import BaseComponent from "@/components/BaseComponent";
+import { Component, Prop } from "vue-property-decorator";
 
 export interface PropsTableRowProps {
   value: string;
@@ -10,7 +9,7 @@ export interface PropsTableRowProps {
 @Component({
   name: "PropsTableRow",
 })
-class PropsTableRow extends FSXABaseComponent<PropsTableRowProps> {
+class PropsTableRow extends BaseComponent<PropsTableRowProps> {
   @Prop({ required: true }) value!: PropsTableRowProps["value"];
   @Prop() required: PropsTableRowProps["required"];
   render() {

@@ -1,0 +1,28 @@
+import Code from "@/components/internal/Documentation/Code";
+import ExampleLoader from "@/documentation/utils/ExampleLoader";
+import Meta from "@/components/internal/Documentation/Meta";
+import PropsTable from "@/components/internal/Documentation/PropsTable";
+import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
+
+<Meta
+  title="Image"
+  subtitle="Displays a picture with optional opacity and zoom effect"
+/>
+
+## Properties
+
+<PropsTable>
+  <PropsTableRow value="src">
+    Specify the source.
+  </PropsTableRow>
+  <PropsTableRow value="opacity">
+    Specify the opacity. Possible values are <span class="code">0</span><span class="code">40</span><span class="code">80</span><span class="code">100</span>
+  </PropsTableRow>
+  <PropsTableRow value="zoom">
+    Specify whether there should be a zoom effect when hovering. Possible values are <span class="code">true</span><span class="code">false</span>
+  </PropsTableRow>
+</PropsTable>
+
+## Example
+
+<ExampleLoader example="Image.tsx" />

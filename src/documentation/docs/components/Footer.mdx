@@ -1,0 +1,42 @@
+import Code from "@/components/internal/Documentation/Code";
+import ExampleLoader from "@/documentation/utils/ExampleLoader";
+import Meta from "@/components/internal/Documentation/Meta";
+import PropsTable from "@/components/internal/Documentation/PropsTable";
+import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
+
+<Meta
+  title="Footer"
+  subtitle="Section at the end of the page"
+/>
+
+## Properties
+
+<PropsTable>
+  <PropsTableRow value="copyright" required>
+    Specify an name which is displayed with the copyright icon.
+  </PropsTableRow>
+  <PropsTableRow value="links" required>
+    Specify an array of Links which should be rendered.
+    <ul>
+            <li>
+                <span class="code">isActive</span> determines whether the link is active
+            </li>
+            <li>
+                <span class="code">label</span> is the displayed name
+            </li>
+            <li>
+                <span class="code">referenceId</span> TODO
+            </li>
+            <li>
+                <span class="code">referenceType</span> TODO . Possible values are <span class="code">page</span><span class="code">fragment</span>
+            </li>
+        </ul>
+  </PropsTableRow>
+  <PropsTableRow value="handleClick" required>
+    Callback that will be triggered, when a link is clicked.
+  </PropsTableRow>
+</PropsTable>
+
+## Example
+
+<ExampleLoader example="Footer.tsx" />

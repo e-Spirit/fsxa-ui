@@ -1,23 +1,22 @@
-import FSXABaseComponent from "@/components/FSXABaseComponent";
-import { InterestingFactsSectionProps } from "@/types/sections";
+import BaseComponent from "@/components/BaseComponent";
 import { Prop, Component } from "vue-property-decorator";
 import "./style.css";
-import FSXAImage from "@/components/FSXAImage";
-import FSXARichText from "@/components/FSXARichText";
-import FSXACounter from "@/components/FSXACounter";
-import FSXAContainer from "@/components/FSXAContainer";
-import FSXARow from "@/components/FSXARow";
-import FSXAHeadline from "@/components/FSXAHeadline";
-import FSXACol from "@/components/FSXACol";
-import { FSXAColWidths } from "@/types/fsxa-ui";
+import Image from "@/components/Image";
+import RichText from "@/components/RichText";
+import Counter from "@/components/Counter";
+import Container from "@/components/Container";
+import Headline from "@/components/Headline";
+import Layout, { LayoutItem } from "@/components/Layout";
+import Paragraph from "@/components/Paragraph";
+import { InterestingFactsSectionProps } from "@/types/sections";
 
 @Component({
   name: "InterestingFactsSection",
 })
-class InterestingFactsSection extends FSXABaseComponent<
+class InterestingFactsSection extends BaseComponent<
   InterestingFactsSectionProps
 > {
-  @Prop({ required: true })
+  @Prop({ required: true as true })
   headline!: InterestingFactsSectionProps["headline"];
   @Prop({ required: true }) text!: InterestingFactsSectionProps["text"];
   @Prop({ required: true })
@@ -28,50 +27,46 @@ class InterestingFactsSection extends FSXABaseComponent<
 
   render() {
     return (
-      <div class="InterestingFactsSection py-12 md:py-16 lg:py-20">
+      <div class="InterestingFactsSection py-12 md:py-16 lg:py-20 text-white">
         {this.backgroundImage && (
-          <FSXAImage
+          <Image
             class="InterestingFactsSection--BackgroundImage"
             opacity="80"
-            src={this.backgroundImage}
+            data-preview-id={this.backgroundImage.previewId}
+            dimensions={this.backgroundImage.dimensions}
+            src={this.backgroundImage.src}
           />
         )}
-        <FSXAContainer>
-          <FSXARow>
-            <FSXACol lg_width="6">
+        <Container>
+          <Layout wrap>
+            <LayoutItem width="full" lg={{ width: "6/12" }}>
               <div class="InterestingFactsSection--Content">
-                <FSXAHeadline as="span" size="xl" weight="light">
+                <Headline as="span" size="xl" weight="light">
                   {this.tagline}
-                </FSXAHeadline>
-                <FSXAHeadline
+                </Headline>
+                <Headline
                   as="h2"
                   class="text-highlight leading-none"
                   size="xxl"
                 >
                   {this.headline}
-                </FSXAHeadline>
-                <FSXARichText
-                  text={this.text}
-                  class="text-lg font-light mb-6 text-white"
-                />
+                </Headline>
+                <Paragraph size="lg" weight="light">
+                  <RichText content={this.text} />
+                </Paragraph>
               </div>
-            </FSXACol>
-            <FSXACol lg_width="6">
-              <FSXARow>
+            </LayoutItem>
+            <LayoutItem width="full" lg={{ width: "6/12" }}>
+              <Layout>
                 {this.counters.map(counter => (
-                  <FSXACol
-                    width={
-                      (12 / this.counters.length).toString() as FSXAColWidths
-                    }
-                    class="mt-20 lg:mt-32"
-                  >
-                    <FSXACounter value={counter.value} label={counter.label} />
-                  </FSXACol>
+                  <LayoutItem width="full" class="mt-20 lg:mt-32">
+                    <Counter value={counter.value} label={counter.label} />
+                  </LayoutItem>
                 ))}
-              </FSXARow>
-            </FSXACol>
-          </FSXARow>
-        </FSXAContainer>
+              </Layout>
+            </LayoutItem>
+          </Layout>
+        </Container>
       </div>
     );
   }

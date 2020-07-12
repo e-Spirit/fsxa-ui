@@ -1,0 +1,29 @@
+.Page {
+  @apply w-full min-h-full relative pb-64 flex;
+  padding-top: 101px;
+}
+
+@media screen and (min-width: 960px) {
+  .Page--Header--Inner {
+    margin-left: calc(100vw - 100%);
+    margin-right: 0;
+  }
+}
+
+.Page--Header {
+  @apply fixed top-0 left-0 w-full z-10 bg-white;
+  height: 101px;
+}
+
+.Page--Header--Inner {
+  @apply w-full;
+}
+
+.Page--Content {
+  @apply w-full bg-white relative min-h-full;
+  z-index: 1;
+}
+
+.Page--Footer {
+  @apply w-full h-64 bg-gray-100 flex items-center text-xs fixed bottom-0 left-0 z-0;
+}

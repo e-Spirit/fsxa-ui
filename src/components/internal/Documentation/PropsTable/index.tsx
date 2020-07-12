@@ -1,11 +1,10 @@
-import FSXABaseComponent from "@/components/FSXABaseComponent";
+import BaseComponent from "@/components/BaseComponent";
 import Component from "vue-class-component";
 import "./style.css";
-import { PropsTableProps } from "@/types/internal";
 import PropsTableRow from "./components/PropsTableRow";
 
 @Component({ name: "PropsTable" })
-class PropsTable extends FSXABaseComponent {
+class PropsTable extends BaseComponent {
   static Row = PropsTableRow;
 
   render() {

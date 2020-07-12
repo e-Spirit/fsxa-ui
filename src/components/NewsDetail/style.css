@@ -1,0 +1,5 @@
+.NewsDetail {
+  .return-newsroom-btn {
+    @apply font-light mt-2 text-base tracking-widest;
+  }
+}

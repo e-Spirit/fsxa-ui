@@ -1,7 +1,5 @@
-.NewsTeaserSection {
-    & .NewsTeaserSection--Separator {
-        @apply bg-black;
-        height: 3px;
-        width: 50px;
-    }
+.NewsTeaserSection--Separator {
+  @apply bg-black;
+  height: 3px;
+  width: 50px;
 }

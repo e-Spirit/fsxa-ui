@@ -2,17 +2,14 @@ import { Component, Prop } from "vue-property-decorator";
 import SelectInput from "./components/SelectInput";
 import "./style.css";
 import Toggle from "../Toggle";
-import IconButton from "../IconButton";
 import { InteractiveComponentProps, Property } from "@/types/internal";
 import TextInput from "./components/TextInput";
-import FSXABaseComponent from "@/components/FSXABaseComponent";
+import BaseComponent from "@/components/BaseComponent";
 
 @Component({
   name: "InteractiveComponent",
 })
-class InteractiveComponent extends FSXABaseComponent<
-  InteractiveComponentProps
-> {
+class InteractiveComponent extends BaseComponent<InteractiveComponentProps> {
   @Prop({ required: true, type: Function })
   renderComponent!: InteractiveComponentProps["renderComponent"];
   @Prop({ required: true })

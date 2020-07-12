@@ -1,4 +1,4 @@
-import FSXABaseComponent from "@/components/FSXABaseComponent";
+import BaseComponent from "@/components/BaseComponent";
 import { Prop, Component } from "vue-property-decorator";
 import Prism from "vue-prismjs";
 import copy from "copy-to-clipboard";
@@ -6,14 +6,10 @@ import copy from "copy-to-clipboard";
 import "prismjs/themes/prism-okaidia.css";
 import "./style.css";
 import Toggle from "@/components/internal/Toggle";
+import { CodeProps } from "@/types/components";
 
-export interface CodeProps {
-  code: string;
-  language?: string;
-  exampleContent?: JSX.Element;
-}
 @Component
-class Code extends FSXABaseComponent<CodeProps> {
+class Code extends BaseComponent<CodeProps> {
   @Prop() code!: CodeProps["code"];
   @Prop() language: CodeProps["language"];
 
@@ -51,8 +47,8 @@ class Code extends FSXABaseComponent<CodeProps> {
               <Toggle
                 active={this.darkMode}
                 labels={{
-                  on: <i class="fa fa-moon-o text-gray-900" />,
-                  off: <i class="fa fa-sun-o text-gray-900" />,
+                  on: <i class="far fa-moon text-gray-900" />,
+                  off: <i class="far fa-sun text-gray-900" />,
                 }}
                 handleToggle={() => (this.darkMode = !this.darkMode)}
               />
@@ -70,7 +66,7 @@ class Code extends FSXABaseComponent<CodeProps> {
             onClick={this.copyToClipboard}
             class="Code--CopyToClipboard"
           >
-            <i class={`fa fa-${this.copied ? "check" : "copy"}`} />
+            <i class={`fas fa-${this.copied ? "check" : "copy"}`} />
           </a>
         </div>
       </div>

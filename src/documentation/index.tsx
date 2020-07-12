@@ -1,4 +1,4 @@
-import FSXABaseComponent from "@/components/FSXABaseComponent";
+import BaseComponent from "@/components/BaseComponent";
 import Component from "vue-class-component";
 import { version } from "./../../package.json";
 import MDXWrapper from "@/components/internal/Documentation/MDXWrapper";
@@ -45,6 +45,51 @@ const routes = [
         path: "/components/button",
         children: [],
       },
+      {
+        label: "Container",
+        path: "/components/container",
+        children: [],
+      },
+      {
+        label: "Counter",
+        path: "/components/counter",
+        children: [],
+      },
+      {
+        label: "Footer",
+        path: "/components/footer",
+        children: [],
+      },
+      {
+        label: "Headline",
+        path: "/components/headline",
+        children: [],
+      },
+      {
+        label: "Image",
+        path: "/components/image",
+        children: [],
+      },
+      {
+        label: "Navigation",
+        path: "/components/navigation",
+        children: [],
+      },
+      {
+        label: "NewsDetail",
+        path: "/components/newsdetail",
+        children: [],
+      },
+      {
+        label: "Quote",
+        path: "/components/quote",
+        children: [],
+      },
+      {
+        label: "RichText",
+        path: "/components/rich-text",
+        children: [],
+      },
     ],
   },
 ];
@@ -52,7 +97,7 @@ const routes = [
 @Component({
   name: "Documentation",
 })
-class Documentation extends FSXABaseComponent {
+class Documentation extends BaseComponent {
   showSidebar = false;
 
   render() {

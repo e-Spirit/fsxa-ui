@@ -1,0 +1,45 @@
+import Code from "@/components/internal/Documentation/Code";
+import ExampleLoader from "@/documentation/utils/ExampleLoader";
+import Meta from "@/components/internal/Documentation/Meta";
+import PropsTable from "@/components/internal/Documentation/PropsTable";
+import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
+
+<Meta
+  title="Navigation"
+  subtitle="Navigation allows users to navigate through your site"
+/>
+
+## Properties
+
+<PropsTable>
+  <PropsTableRow value="items" required>
+    Specify an array which should be rendered.
+    <ul>
+        <li>
+            <span class="code">label</span> is the displayed name
+        </li>
+        <li>
+            <span class="code">path</span> TODO
+        </li>
+        <li>
+            <span class="code">id</span> TODO
+        </li>
+        <li>
+            <span class="code">children</span> TODO
+        </li>
+    </ul>
+  </PropsTableRow>
+  <PropsTableRow value="handleNavClick">
+    Callback that will be triggered, when an link is clicked.
+  </PropsTableRow>
+  <PropsTableRow value="isActiveItem">
+    Call that determinates which path is activated.
+  </PropsTableRow>
+  <PropsTableRow value="depth">
+    Determinates the depth of the navigation. Default is <span class="code">3</span>
+  </PropsTableRow>
+</PropsTable>
+
+## Example
+
+<ExampleLoader example="Navigation.tsx" />

@@ -261,6 +261,7 @@ module.exports = {
         '"Courier New"',
         "monospace",
       ],
+      awesome: ['"Font Awesome 5 Free"'],
     },
     fontSize: {
       xs: "0.75rem",

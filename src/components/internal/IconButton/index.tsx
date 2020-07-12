@@ -1,7 +1,6 @@
-import Component from "vue-class-component";
+import { Component, Prop } from "vue-property-decorator";
+import BaseComponent from "@/components/BaseComponent";
 import "./style.css";
-import { Prop } from "vue-property-decorator";
-import FSXABaseComponent from "@/components/FSXABaseComponent";
 
 export interface IconButtonProps {
   active?: boolean;
@@ -10,7 +9,7 @@ export interface IconButtonProps {
 @Component({
   name: "IconButton",
 })
-class IconButton extends FSXABaseComponent<IconButtonProps> {
+class IconButton extends BaseComponent<IconButtonProps> {
   @Prop() active: IconButtonProps["active"];
   @Prop() handleClick: IconButtonProps["handleClick"];
 

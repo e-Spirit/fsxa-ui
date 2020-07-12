@@ -1,0 +1,25 @@
+import Code from "@/components/internal/Documentation/Code";
+import ExampleLoader from "@/documentation/utils/ExampleLoader";
+import Meta from "@/components/internal/Documentation/Meta";
+import PropsTable from "@/components/internal/Documentation/PropsTable";
+import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
+
+<Meta
+  title="Counter"
+  subtitle="Displays a number with a corresponding text"
+/>
+
+## Properties
+
+<PropsTable>
+  <PropsTableRow value="label" required>
+    Specify which text is displayed
+  </PropsTableRow>
+  <PropsTableRow value="value" required>
+    Specify which number is displayed
+  </PropsTableRow>
+</PropsTable>
+
+## Example
+
+<ExampleLoader example="Counter.tsx" />

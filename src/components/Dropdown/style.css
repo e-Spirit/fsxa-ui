@@ -1,0 +1,23 @@
+.Dropdown {
+  @apply relative inline-block cursor-pointer;
+
+  &:hover {
+    ul {
+      @apply block absolute shadow-sm opacity-100 visible;
+      top: 100%;
+    }
+  }
+  ul {
+    @apply absolute block invisible opacity-0 border-t border-l border-r right-0 border-gray-200;
+    top: 115%;
+    transition: top 200ms, left 200ms;
+  }
+
+  a {
+    @apply block text-sm h-full relative py-2 px-4 no-underline text-black font-sans border-b border-gray-200;
+
+    &:hover {
+      @apply bg-gray-100;
+    }
+  }
+}

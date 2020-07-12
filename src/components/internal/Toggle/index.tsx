@@ -1,7 +1,6 @@
-import Component from "vue-class-component";
-import { Prop } from "vue-property-decorator";
+import { Component, Prop } from "vue-property-decorator";
 import "./style.css";
-import FSXABaseComponent from "@/components/FSXABaseComponent";
+import BaseComponent from "@/components/BaseComponent";
 
 export interface ToggleProps {
   labels: {
@@ -14,7 +13,7 @@ export interface ToggleProps {
 @Component({
   name: "Toggle",
 })
-class Toggle extends FSXABaseComponent<ToggleProps> {
+class Toggle extends BaseComponent<ToggleProps> {
   @Prop({ required: true }) labels!: ToggleProps["labels"];
   @Prop({ required: true }) active!: ToggleProps["active"];
   @Prop({ required: true }) handleToggle!: ToggleProps["handleToggle"];

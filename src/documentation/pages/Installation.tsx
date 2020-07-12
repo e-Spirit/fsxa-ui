@@ -1,4 +1,4 @@
-import FSXABaseComponent from "@/components/FSXABaseComponent";
+import BaseComponent from "@/components/BaseComponent";
 import Component from "vue-class-component";
 import Code from "@/components/internal/Documentation/Code";
 
@@ -9,7 +9,7 @@ export const subtitle =
 @Component({
   name: "Installation",
 })
-class Installation extends FSXABaseComponent {
+class Installation extends BaseComponent {
   render() {
     return (
       <div>

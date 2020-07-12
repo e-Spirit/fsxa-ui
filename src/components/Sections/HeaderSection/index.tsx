@@ -1,16 +1,15 @@
-import Component from "vue-class-component";
-import FSXABaseComponent from "@/components/FSXABaseComponent";
-import { HeaderSectionProps } from "@/types/sections";
-import FSXAImage from "@/components/FSXAImage";
-import { Prop } from "vue-property-decorator";
-import FSXAContainer from "@/components/FSXAContainer";
+import BaseComponent from "@/components/BaseComponent";
+import Image from "@/components/Image";
+import { Component, Prop } from "vue-property-decorator";
+import Container from "@/components/Container";
 import "./style.css";
-import FSXABreadcrumbs from "@/components/FSXABreadcrumbs";
+import Breadcrumbs from "./Breadcrumbs";
+import { HeaderSectionProps } from "@/types/sections";
 
 @Component({
   name: "HeaderSection",
 })
-class HeaderSection extends FSXABaseComponent<HeaderSectionProps> {
+class HeaderSection extends BaseComponent<HeaderSectionProps> {
   @Prop({ required: true }) title!: HeaderSectionProps["title"];
   @Prop({ required: true }) breadcrumbs!: HeaderSectionProps["breadcrumbs"];
   @Prop() backgroundImage: HeaderSectionProps["backgroundImage"];
@@ -19,20 +18,24 @@ class HeaderSection extends FSXABaseComponent<HeaderSectionProps> {
   render() {
     return (
       <div class="HeaderSection">
-        <FSXAImage
-          src={this.backgroundImage}
-          class="HeaderSection--BackgroundImage"
-          opacity="80"
-        />
-        <FSXAContainer class="py-20">
+        {this.backgroundImage && (
+          <Image
+            src={this.backgroundImage.src}
+            dimensions={this.backgroundImage?.dimensions}
+            data-preview-id={this.backgroundImage?.previewId}
+            class="HeaderSection--BackgroundImage"
+            opacity="80"
+          />
+        )}
+        <Container class="py-20">
           <div class="HeaderSection--HeadlineWrapper">
             <h2>{this.title}</h2>
           </div>
-          <FSXABreadcrumbs
+          <Breadcrumbs
             items={this.breadcrumbs}
             handleItemClick={this.handleItemClick}
           />
-        </FSXAContainer>
+        </Container>
       </div>
     );
   }

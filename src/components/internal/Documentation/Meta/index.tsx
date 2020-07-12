@@ -1,6 +1,5 @@
-import FSXABaseComponent from "@/components/FSXABaseComponent";
-import Component from "vue-class-component";
-import { Prop } from "vue-property-decorator";
+import BaseComponent from "@/components/BaseComponent";
+import { Component, Prop } from "vue-property-decorator";
 
 export interface MetaProps {
   title: string;
@@ -9,7 +8,7 @@ export interface MetaProps {
 @Component({
   name: "Meta",
 })
-class Meta extends FSXABaseComponent<MetaProps> {
+class Meta extends BaseComponent<MetaProps> {
   @Prop({ required: true }) title!: MetaProps["title"];
   @Prop() subtitle: MetaProps["subtitle"];
   render() {

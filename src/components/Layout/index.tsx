@@ -1,25 +1,16 @@
-import FSXABaseComponent from "@/components/FSXABaseComponent";
-import LayoutItem from "./components/LayoutItem";
+import BaseComponent from "@/components/BaseComponent";
 import { Prop, Component } from "vue-property-decorator";
+import { LayoutProps } from "@/types/fsxa-ui";
+import LayoutItem from "./LayoutItem";
 
-export interface LayoutProps {
-  /**
-   * Should spacing be added
-   * Default: true
-   **/
-  gutter?: boolean;
-  /**
-   * Wrap overflowing columns or shrink all relative to their defined size?
-   * Default: false
-   */
-  wrap?: boolean;
-}
+/**
+ * TODO: Allow to set gutter and wrap for specific breakpoints as well
+ */
+
 @Component({
   name: "Layout",
 })
-class Layout extends FSXABaseComponent<LayoutProps> {
-  static LayoutItem = LayoutItem;
-
+class Layout extends BaseComponent<LayoutProps> {
   @Prop({ default: true }) gutter!: LayoutProps["gutter"];
   @Prop({ default: false }) wrap!: LayoutProps["wrap"];
 
@@ -36,3 +27,4 @@ class Layout extends FSXABaseComponent<LayoutProps> {
   }
 }
 export default Layout;
+export { LayoutItem };

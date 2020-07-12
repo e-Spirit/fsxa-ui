@@ -1,6 +1,5 @@
-import Component from "vue-class-component";
-import { Prop } from "vue-property-decorator";
-import FSXABaseComponent from "@/components/FSXABaseComponent";
+import { Component, Prop } from "vue-property-decorator";
+import BaseComponent from "@/components/BaseComponent";
 
 export interface Slide<Data = any> {
   previewId: string;
@@ -13,7 +12,7 @@ export interface SliderProps<SlideData = any> {
 @Component({
   name: "Slider",
 })
-class Slider extends FSXABaseComponent<SliderProps> {
+class Slider extends BaseComponent<SliderProps> {
   @Prop({ required: true }) slides!: SliderProps["slides"];
 
   wrapperWidth = 0;

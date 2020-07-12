@@ -1,0 +1,30 @@
+.Quote {
+  @apply bg-gray-200;
+  .direction {
+    @apply p-4 flex my-4;
+  }
+  .direction--left {
+    @apply flex-row;
+    .quote {
+      &:before {
+        @apply font-awesome;
+        content: "\f10d";
+      }
+    }
+  }
+  .direction--right {
+    @apply flex-row-reverse;
+    :first-child {
+      @apply ml-4;
+    }
+    > * {
+      @apply text-left;
+    }
+    .quote {
+      &:before {
+        @apply font-awesome;
+        content: "\f10e";
+      }
+    }
+  }
+}

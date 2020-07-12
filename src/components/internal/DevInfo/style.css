@@ -1,0 +1,27 @@
+.DevInfo--Content {
+  max-height: calc(100vh - 200px);
+}
+
+.DevInfo.standalone {
+  @apply overflow-x-auto;
+  max-height: calc(100vh - 300px);
+}
+
+.DevInfo--Backdrop {
+  @apply w-full h-screen flex items-center justify-center fixed pointer-events-auto;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.DevInfo--OverlayContent {
+  @apply w-full overflow-hidden;
+
+  height: 95%;
+
+  @media only screen and (min-width: 768px) {
+    height: 90%;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    height: 80%;
+  }
+}

@@ -1,6 +1,6 @@
 import Example from "@/components/internal/Documentation/Example";
 import Component from "vue-class-component";
-import FSXABaseComponent from "@/components/FSXABaseComponent";
+import BaseComponent from "@/components/BaseComponent";
 import { Prop } from "vue-property-decorator";
 
 export interface ExampleLoaderProps {
@@ -9,7 +9,7 @@ export interface ExampleLoaderProps {
 @Component({
   name: "ExampleLoader",
 })
-class ExampleLoader extends FSXABaseComponent<ExampleLoaderProps> {
+class ExampleLoader extends BaseComponent<ExampleLoaderProps> {
   @Prop({ required: true }) example!: ExampleLoaderProps["example"];
 
   render() {

@@ -1,4 +1,4 @@
-import FSXABaseComponent from "@/components/FSXABaseComponent";
+import BaseComponent from "@/components/BaseComponent";
 import Component from "vue-class-component";
 
 export const title = "ComponentsOverview";
@@ -6,7 +6,7 @@ export const subtitle = "Blakeks";
 @Component({
   name: "ComponentsOverview",
 })
-class ComponentsOverview extends FSXABaseComponent {
+class ComponentsOverview extends BaseComponent {
   render() {
     return <div>Components-Overview</div>;
   }

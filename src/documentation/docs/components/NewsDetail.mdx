@@ -1,0 +1,54 @@
+import Code from "@/components/internal/Documentation/Code";
+import ExampleLoader from "@/documentation/utils/ExampleLoader";
+import Meta from "@/components/internal/Documentation/Meta";
+import PropsTable from "@/components/internal/Documentation/PropsTable";
+import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
+
+<Meta
+  title="NewsDetail"
+  subtitle="NewsDetail is a detailed view of a news and offers the user a variety of information."
+/>
+
+## Properties
+
+<PropsTable>
+  <PropsTableRow value="headline" required>
+    Specify which headline should be displayed.
+  </PropsTableRow>
+  <PropsTableRow value="image" required>
+    Specify which image should be displayed.
+    Required attributes are:
+    <ul>
+    <li><span class="code">src</span> Source of the image</li>
+    </ul>
+  </PropsTableRow>
+  <PropsTableRow value="tags">
+      Specify which tags should be displayed. Required attributes are:
+      <ul>
+        <li><span class="code">label</span> Label of the tag</li>
+      </ul>
+
+  </PropsTableRow>
+  <PropsTableRow value="teaser">
+    Specify which teaser should be displayed above the picture.
+  </PropsTableRow>
+  <PropsTableRow value="date">
+      Specify which date should be displayed.
+  </PropsTableRow>
+  <PropsTableRow value="author">
+      Specify which author should be displayed.
+  </PropsTableRow>
+  <PropsTableRow value="handleTagClick">
+      You can pass in an optional callback that will be triggered, when a tag
+      is clicked.
+    </PropsTableRow>
+  <PropsTableRow value="handleReturnClick">
+        You can pass in an optional callback that will be triggered, when the return button
+            is clicked.
+  </PropsTableRow>
+
+</PropsTable>
+
+## Example
+
+<ExampleLoader example="NewsDetail.tsx" />

@@ -1,0 +1,23 @@
+import Code from "@/components/internal/Documentation/Code";
+import ExampleLoader from "@/documentation/utils/ExampleLoader";
+import Meta from "@/components/internal/Documentation/Meta";
+import PropsTable from "@/components/internal/Documentation/PropsTable";
+import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
+
+<Meta
+  title="Quote"
+  subtitle="A quote displays some text within a colored box next to a quotation mark"
+/>
+
+## Properties
+
+<PropsTable>
+  <PropsTableRow value="side">
+    Specify on which side the quotation mark should be. Possible Values are <span class="code">left</span> <span class="code">right</span>.
+    Default value is <span class="code">left</span>
+  </PropsTableRow>
+</PropsTable>
+
+## Examples
+
+<ExampleLoader example="Quote.tsx" />

@@ -1,17 +1,17 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 
-import { FSXAButton } from "fsxa-ui";
+import { Button } from "fsxa-ui";
 
 @Component
 export default class App extends Vue {
   render() {
     return (
       <div class="space-x-5">
-        <FSXAButton variant="default">Default</FSXAButton>
-        <FSXAButton variant="animated">Animated</FSXAButton>
-        <FSXAButton variant="inverted">Inverted</FSXAButton>
-        <FSXAButton variant="tag">Tag</FSXAButton>
+        <Button variant="default">Default</Button>
+        <Button variant="animated">Animated</Button>
+        <Button variant="inverted">Inverted</Button>
+        <Button variant="tag">Tag</Button>
       </div>
     );
   }
