@@ -77,7 +77,7 @@ const routes = [
       },
       {
         label: "NewsDetail",
-        path: "/components/newsdetail",
+        path: "/components/news-detail",
         children: [],
       },
       {
