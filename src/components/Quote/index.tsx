@@ -14,7 +14,7 @@ class FSXAQuote extends BaseComponent<QuoteProps> {
       <Container class="Quote">
         <Layout class={`direction direction--${this.side}`}>
           <div>
-            <span class="text-gray-800 text-4xl mr-10 inline-block quote w-1/4" />
+            <span class="text-gray-800 text-4xl mr-10 inline-block quote w-1/4 fas" />
           </div>
           <div class="pt-2 w-3/4">{this.$slots.default}</div>
         </Layout>

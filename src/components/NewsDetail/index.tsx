@@ -103,19 +103,19 @@ class NewsDetail extends BaseComponent<NewsDetailProps> {
             )}
             <div class="mx-auto lg:mx-px">
               <Button variant="tag" class="mr-2 border border-black">
-                <span class="fa fa-facebook" />
+                <i class="fab fa-facebook-f" />
               </Button>
               <Button variant="tag" class="mx-2 border border-black">
-                <span class="fa fa-twitter" />
+                <i class="fab fa-twitter" />
               </Button>
               <Button variant="tag" class="mx-2 border border-black">
                 <span class="fa fa-rss" />
               </Button>
               <Button variant="tag" class="mx-2 border border-black">
-                <span class="fa fa-youtube-play" />
+                <span class="fab fa-youtube" />
               </Button>
               <Button variant="tag" class="ml-2 border border-black">
-                <span class="fa fa-instagram" />
+                <i class="fab fa-instagram" />
               </Button>
             </div>
           </LayoutItem>
