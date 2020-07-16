@@ -10,7 +10,7 @@
 
     &:not(:last-child) {
       &:after {
-        @apply w-6 text-center inline-block text-white font-awesome;
+        @apply w-6 text-center inline-block text-white font-awesome font-black;
         content: "\f101";
       }
     }
