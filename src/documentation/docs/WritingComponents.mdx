@@ -1,0 +1,284 @@
+import Meta from "@/components/internal/Documentation/Meta";
+
+<Meta
+  title="Writing Components"
+  subtitle="This guide describes how you can create your own components and what you have to pay attention to"
+/>
+
+# Create you own component
+
+### Overview of the folder structure:
+
+This is a simplified version of the actual folder structure, to get a short summary.
+
+```
+src
+│
+└───components
+│   │
+│   │   index.tsx
+│   │
+│   └───Button
+|   |       index.tsx
+    |       style.css
+|   └───Container
+|   |       index.tsx
+|   |       style.css
+│   |   ...
+│
+└───documentation
+|   │
+|   │   index.tsx
+|   │
+|   └───docs
+|   |   └───components
+|   |   |   |   Button.mdx
+|   |   |   |   Container.mdx
+|   |   |   ...
+|   └───examples
+|   |   |   Button.Variants.tsx
+|   |   |   Container.tsx
+|   |   ...
+|
+└───types
+    │
+    │   components.d.ts
+```
+
+## Implementing
+
+In this example a simple component will be created, which displays some text in a specific color.
+The text will be the default slot and the color a prop.
+
+For this purpose a new folder is created, named after the component `Example`, and includes an `index.tsx`. Optional a `style.css` can be included aswell.
+<br />
+
+In the `index.tsx`-file the code for the component must be written.
+This project uses jsx with the Babel plugin for Vue. Further information can be found <a class="text-blue-500" target="_blank" href="https://vuejs.org/v2/guide/render-function.html#JSX">here</a>.
+
+
+This is how the index.tsx looks like.
+```
+import { BaseComponent } from "@/components";
+
+@Component({
+  name: "Example",
+})
+class Example extends BaseComponent<ExampleProps> {
+@Prop({ required: false, default: "black" }) color!: ExampleProps["color"];
+
+render() {
+    let colorClass = "";
+    if(color === 'black' || color === 'white') colorClass = `text-${color}`;
+    else colorClass = `text-${color}-500`;
+    return (
+      <div class={colorClass}>
+        { this.$slots.default }
+      </div>
+    );
+  }
+}
+```
+
+In this project the CSS-Framework <a target="_blank" href="https://tailwindcss.com/" class="text-blue-500">TailwindCSS</a> is used.
+
+<br />
+
+The `ExampleProps` are not yet available. It needs to be written in the file `types/components.d.ts`
+In this file a new interface needs to be created and in it all the props are described.
+<br />
+This is the interface for the example:
+
+```
+export interface ExampleProps {
+  /**
+   * color in which the text is displayed
+   *
+   * Possible values are: **black** | **white** **red** | **blue** | **green**
+   *
+   * Default value is **black**
+   */
+  color: "black" | "white" |"red" | "blue" | "green";
+}
+
+export class Example extends Component<ExampleProps> {}
+```
+
+The property needs its type and with the commentary we supplement the interface with helpful information like what this prop does, if there are possible and default values
+<br />
+It must be ensured that the component is exported.
+
+Therefore the file `types/components.d.ts` must be extended with the new component
+At the end of the file the following line needs to be added.
+
+```
+export { default as Example } from "./Example";
+```
+
+## Adding to Documentation
+
+The component does not yet appear in the documentation.
+
+<br />
+
+First we must create an example file in the `documentation/example` folder.
+In this file the created component is used and later on displayed in the documentation as a rendered component and the code is shown too.
+
+The file should be called `Example.tsx` in this case.
+First a few imports need to be done.
+
+```
+import Vue from "vue";
+import Component from "vue-class-component";
+```
+
+and the component needs to be imported.
+
+```
+import { Example } from "fsxa-ui";
+```
+
+Next is the frame for the component.
+
+```
+@Component
+export default class App extends Vue {
+  render() {
+    return (
+      <div>
+
+      </div>
+    );
+  }
+}
+```
+
+Inside this `div`-Element the new component must be added.
+Different variants can also be displayed there.
+The complete file should look like this:
+
+```
+import Vue from "vue";
+import Component from "vue-class-component";
+
+import { Example } from "fsxa-ui";
+
+@Component
+export default class App extends Vue {
+  render() {
+    return (
+      <div>
+        <Example>This is some example text in default black</Example>
+        <Example color="red">This is some example text in red</Example>
+        <Example color="white">This is some example text in white</Example>
+        <Example color="green">This is some example text in green</Example>
+        <Example color="blue">This is some example text in blue</Example>
+      </div>
+    );
+  }
+}
+
+```
+
+<br />
+
+Next up a file must be created in the `documentation/docs/components` folder.
+
+In this example it is called `Example.mdx`
+<br />
+To document the components the library <a target="_blank" href="https://github.com/mdx-js/mdx"  class="text-blue-500">MDX.js</a> is used.
+It supports the regular markdown syntax with additional features.
+<br />
+
+There are some components available so that the documentation can be better visualized.
+<br />
+
+They need to be imported:
+```
+import Meta from "@/components/internal/Documentation/Meta";
+import PropsTable from "@/components/internal/Documentation/PropsTable";
+import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
+import Code from "@/components/internal/Documentation/Code";
+import ExampleLoader from "@/documentation/utils/ExampleLoader";
+```
+
+With the `Meta` component we display the name of the new component and additional information.
+
+```
+<Meta
+  title="Example"
+  subtitle="This is an example component, which displays text."
+/>
+```
+
+With the `PropsTable` and `PropsTableRow` the props of the component are explained.
+
+```
+<PropsTable>
+  <PropsTableRow value="text" required>
+    Specify the text which is displayed.
+  </PropsTableRow>
+</PropsTable>
+```
+
+In `PropsTableRow` the user is provided which the information what the prop does, if it is required, whether only certain values are available, if there is a default value, etc.
+There should be one row for every prop.
+<br />
+
+At the end of the file there must be at least one example provided for the component.
+The `ExampleLoader` can be used.
+It shows the component and the code for it.
+For the Example component the snippet is:
+
+```
+<ExampleLoader example="Example.tsx" />
+```
+
+<br />
+Between the code snippets additional markdown can be added so that the file looks like this:
+
+```
+import Meta from "@/components/internal/Documentation/Meta";
+import PropsTable from "@/components/internal/Documentation/PropsTable";
+import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
+import Code from "@/components/internal/Documentation/Code";
+import ExampleLoader from "@/documentation/utils/ExampleLoader";
+
+<Meta
+  title="Example"
+  subtitle="This is an example component, which displays text."
+/>
+
+## Property
+
+<PropsTable>
+  <PropsTableRow value="text" required>
+    Specify the text which is displayed.
+  </PropsTableRow>
+</PropsTable>
+
+## Example
+
+<ExampleLoader example="Example.tsx" />
+
+```
+
+<br/>
+
+As last step the file must be selectable in the navigation.
+For that the `documentation/index.tsx` must be edited.
+
+All components are located under the label `Components`. There a new object must be added with the correct label and path.
+In this example this should be added:
+
+```
+{
+    label: "Example",
+    path: "/components/example",
+    children: [],
+},
+```
+
+<span class="text-red-600">Note:</span> If the component name is written in camelCase, everything in the path is written in lower case and there must be a hyphen between the words.
+
+e.g. If the component name is `MyExample` the path should be `my-example`.

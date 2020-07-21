@@ -1,0 +1,53 @@
+import Code from "@/components/internal/Documentation/Code";
+import ExampleLoader from "@/documentation/utils/ExampleLoader";
+import Meta from "@/components/internal/Documentation/Meta";
+import PropsTable from "@/components/internal/Documentation/PropsTable";
+import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
+
+<Meta
+  title="LineSeparator"
+  subtitle="The LineSeparator can be used to separate content sections"
+/>
+
+## Properties
+
+<PropsTable>
+  <PropsTableRow value="width">
+    Specify which width the separator should have. <br />
+    Possible values are <span class="code">4</span><span class="code">8</span><span class="code">16</span><span class="code">32</span><span class="code">64</span><span class="code">full</span> <br />
+    Default value is <span class="code">16</span>
+  </PropsTableRow>
+  <PropsTableRow value="sm_width">
+    Specify which width the separator should have when the screen is small <br />
+    Possible values are <span class="code">4</span><span class="code">8</span><span class="code">16</span><span class="code">32</span><span class="code">64</span><span class="code">full</span> <br />
+    If no size is specified, the next smaller one is used
+  </PropsTableRow>
+  <PropsTableRow value="md_width">
+    Specify which width the separator should have when the screen is medium <br />
+    Possible values are <span class="code">4</span><span class="code">8</span><span class="code">16</span><span class="code">32</span><span class="code">64</span><span class="code">full</span> <br />
+    If no size is specified, the next smaller one is used
+  </PropsTableRow>
+  <PropsTableRow value="lg_width">
+    Specify which width the separator should have when the screen is large <br />
+    Possible values are <span class="code">4</span><span class="code">8</span><span class="code">16</span><span class="code">32</span><span class="code">64</span><span class="code">full</span> <br />
+    If no size is specified, the next smaller one is used
+  </PropsTableRow>
+  <PropsTableRow value="xl_width">
+    Specify which width the separator should have when the screen is extra large <br />
+    Possible values are <span class="code">4</span><span class="code">8</span><span class="code">16</span><span class="code">32</span><span class="code">64</span><span class="code">full</span> <br />
+    If no size is specified, the next smaller one is used
+  </PropsTableRow>
+  <PropsTableRow value="height">
+    Specify which height the separator should have <br />
+    Possible values are <span class="code">1</span><span class="code">2</span><span class="code">4</span>
+  </PropsTableRow>
+  <PropsTableRow value="side">
+    Specify on which side the separator should be <br />
+    Possible values are <span class="code">left</span><span class="code">right</span> <br />
+    Default value is: <span class="code">left</span>
+  </PropsTableRow>
+</PropsTable>
+
+## Examples
+
+<ExampleLoader example="LineSeparator.tsx" />

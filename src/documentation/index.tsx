@@ -10,6 +10,11 @@ const routes = [
     children: [],
   },
   {
+    label: "Writing Components",
+    path: "/writing-components",
+    children: [],
+  },
+  {
     label: "PWA",
     path: "/pwa",
     children: [
@@ -88,6 +93,11 @@ const routes = [
       {
         label: "RichText",
         path: "/components/rich-text",
+        children: [],
+      },
+      {
+        label: "LineSeparator",
+        path: "/components/line-separator",
         children: [],
       },
     ],
