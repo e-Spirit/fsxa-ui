@@ -1,13 +1,13 @@
 import { HomepageLayoutProps } from "@/types/layouts";
-import BaseLayout from "@/components/Layouts/BaseLayout";
 import { Component } from "vue-property-decorator";
+import BaseComponent from "@/components/BaseComponent";
 
 @Component({
   name: "HomepageLayout",
 })
-class HomepageLayout extends BaseLayout<HomepageLayoutProps> {
+class HomepageLayout extends BaseComponent<HomepageLayoutProps> {
   render() {
-    return <div class="w-full">{this.renderContentElements(0)}</div>;
+    return <div class="w-full">{this.$slots.default}</div>;
   }
 }
 export default HomepageLayout;

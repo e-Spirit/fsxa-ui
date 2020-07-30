@@ -1,13 +1,13 @@
 import { StandardLayoutProps } from "@/types/layouts";
-import BaseLayout from "@/components/Layouts/BaseLayout";
 import { Component } from "vue-property-decorator";
+import BaseComponent from "@/components/BaseComponent";
 
 @Component({
   name: "StandardLayout",
 })
-class StandardLayout extends BaseLayout<StandardLayoutProps> {
+class StandardLayout extends BaseComponent<StandardLayoutProps> {
   render() {
-    return <div class="w-full">{this.renderContentElements(0)}</div>;
+    return <div class="w-full">{this.$slots.default}</div>;
   }
 }
 export default StandardLayout;
