@@ -45,7 +45,7 @@ class Navigation extends BaseComponent<NavigationProps> {
 
   render() {
     return (
-      <div class="flex flex-row items-center justify-center">
+      <div class="flex flex-row items-center justify-center space-x-4">
         <ul class="Navigation--Navigation hidden lg:block">
           {this.items.map(item => this.renderItem(item, 0))}
         </ul>
