@@ -1,7 +1,5 @@
-import HomepageLayout from "./HomepageLayout";
-import StandardLayout from "./StandardLayout";
+import SingleColumnLayout from "./SingleColumnLayout";
 
 export default {
-  HomepageLayout,
-  StandardLayout,
+  SingleColumnLayout,
 };

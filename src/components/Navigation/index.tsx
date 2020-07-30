@@ -45,13 +45,14 @@ class Navigation extends BaseComponent<NavigationProps> {
 
   render() {
     return (
-      <div>
+      <div class="flex flex-row items-center justify-center">
         <ul class="Navigation--Navigation hidden lg:block">
           {this.items.map(item => this.renderItem(item, 0))}
         </ul>
         <div class="Navigation--Mobile w-full flex items-center justify-end lg:hidden hover:text-gray-600 text-xl cursor-pointer">
           <i class="fas fa-bars" />
         </div>
+        {this.$slots.default}
       </div>
     );
   }
