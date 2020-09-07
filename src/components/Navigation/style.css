@@ -68,3 +68,9 @@
 .Navigation--Mobile {
   height: 101px;
 }
+.Mobile{
+  display:none;
+}
+.collapsed{
+  display: block !important;
+}
