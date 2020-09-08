@@ -72,5 +72,40 @@
   display:none;
 }
 .collapsed{
-  display: block !important;
+  display: block;
 }
+.smallicon{
+  display: none;
+}
+@media (max-width: 768px){
+  .Navigation--Item:hover > .Navigation--Navigation {
+    @apply relative w-full;
+  }
+  .Nav--Mobile{
+    @apply pt-4 pb-4 text-xl;
+  }
+  .Navigation--Item{
+    text-align: center;
+    border-top: 1px solid #E9E9E9
+  }
+  .inactive + ul{
+    display:none;
+  }
+  .Navigation--Navigation .Navigation--Navigation .Navigation--Link
+  {
+    font-size:1.2rem;
+    width:100%;
+  }
+  .Navigation--Navigation .Navigation--Navigation{
+    border-left-width:0px;
+    border-right-width:0px;
+    border-top: 1px solid #E9E9E9;
+  }
+  .smallicon{
+    display: inline;
+  }
+  .Navigation--Navigation > .Navigation--Item{
+    display:block;
+  }
+}
+
