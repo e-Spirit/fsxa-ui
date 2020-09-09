@@ -1,4 +1,4 @@
-# FSDevTools - Contribution guide lines
+# FSXA-UI - Contribution guide lines
 
 ## Contributing
 
