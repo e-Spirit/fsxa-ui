@@ -80,6 +80,7 @@
 @media (max-width: 768px){
   .Navigation--Item:hover > .Navigation--Navigation {
     @apply relative w-full;
+    height: 100%;
   }
   .Nav--Mobile{
     @apply pt-4 pb-4 text-xl;
