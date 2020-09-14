@@ -28,9 +28,13 @@ class Navigation extends BaseComponent<NavigationProps> {
       <li class="Navigation--Item">
         <a
 <<<<<<< HEAD
+<<<<<<< HEAD
           data-testid={`item-${item.id}`}
           class={`Navigation--Link ${isActive ? "active" : ""}`}
 =======
+=======
+          data-testid={`item-${item.id}`}
+>>>>>>> cb0404f... added test for mobile navigation
           class={`Navigation--Link Nav--Mobile ${
             isActive ? "active" : "inactive"
           }`}
