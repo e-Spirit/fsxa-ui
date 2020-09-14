@@ -25,6 +25,7 @@ class Navigation extends BaseComponent<NavigationProps> {
     return (
       <li class="Navigation--Item">
         <a
+          data-testid={`item-${item.id}`}
           class={`Navigation--Link ${isActive ? "active" : ""}`}
           href={item.path}
           onClick={(event: any) => {
