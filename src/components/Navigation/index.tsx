@@ -27,6 +27,7 @@ class Navigation extends BaseComponent<NavigationProps> {
     return (
       <li class="Navigation--Item">
         <a
+          data-testid={`item-${item.id}`}
           class={`Navigation--Link Nav--Mobile ${
             isActive ? "active" : "inactive"
           }`}
