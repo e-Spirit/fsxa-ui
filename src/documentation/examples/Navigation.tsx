@@ -14,7 +14,14 @@ const navItems: NavigationItem[] = [
         id: "3",
         path: "/",
         label: "Link 1.1",
-        children: [],
+        children: [
+          {
+            id: "4",
+            path: "/",
+            label: "Link 1.1.1",
+            children: [],
+          },
+        ],
       },
     ],
   },
@@ -30,10 +37,10 @@ const navItems: NavigationItem[] = [
 export default class App extends Vue {
   render() {
     return (
-      <div class="space-x-5">
+      <div class="space-x-5 mb-10 ml-64">
         <Navigation
           isActiveItem={item => item.id === "1"}
-          depth={2}
+          depth={3}
           items={navItems}
           handleNavClick={() => {
             return;
