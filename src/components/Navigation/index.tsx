@@ -27,18 +27,10 @@ class Navigation extends BaseComponent<NavigationProps> {
     return (
       <li class="Navigation--Item">
         <a
-<<<<<<< HEAD
-<<<<<<< HEAD
+
           data-testid={`item-${item.id}`}
-          class={`Navigation--Link ${isActive ? "active" : ""}`}
-=======
-=======
-          data-testid={`item-${item.id}`}
->>>>>>> cb0404f... added test for mobile navigation
-          class={`Navigation--Link Nav--Mobile ${
-            isActive ? "active" : "inactive"
-          }`}
->>>>>>> ab6e45d... added styling for mobile Navigation and the 3rd depth
+          
+          class={`Navigation--Link Nav--Mobile ${isActive ? "active" : ""}`}
           href={item.path}
           onClick={(event: any) => {
             event?.preventDefault();
@@ -47,7 +39,7 @@ class Navigation extends BaseComponent<NavigationProps> {
         >
           {item.label}
           {item.children.length > 0 ? (
-            <span class="smallicon">
+            <span class="Navigation--smallicon">
               <i class="fas fa-chevron-right ml-2"></i>
             </span>
           ) : null}
@@ -76,8 +68,8 @@ class Navigation extends BaseComponent<NavigationProps> {
             }}
           />
           <div
-            class={` Mobile absolute text-left w-full mt-12 ${
-              this.isCollapsed ? "collapsed" : ""
+            class={` Navigation--Content absolute text-left w-full mt-12 ${
+              this.isCollapsed ? "Navigation--collapsed" : ""
             }`}
           >
             <ul class="z-10 flex-initial left-0">

@@ -68,13 +68,13 @@
 .Navigation--Mobile {
   height: 101px;
 }
-.Mobile{
+.Navigation--Content{
   display:none;
 }
-.collapsed{
+.Navigation--collapsed{
   display: block;
 }
-.smallicon{
+.Navigation--smallicon{
   display: none;
 }
 @media (max-width: 768px){
@@ -89,7 +89,7 @@
     text-align: center;
     border-top: 1px solid #E9E9E9
   }
-  .inactive + ul{
+  :not(.active)+ ul{
     display:none;
   }
   .Navigation--Navigation .Navigation--Navigation .Navigation--Link
@@ -102,7 +102,7 @@
     border-right-width:0px;
     border-top: 1px solid #E9E9E9;
   }
-  .smallicon{
+  .Navigation--smallicon{
     display: inline;
   }
   .Navigation--Navigation > .Navigation--Item{
