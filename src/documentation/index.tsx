@@ -90,6 +90,26 @@ const routes = [
         path: "/components/rich-text",
         children: [],
       },
+      {
+        label: "Header-Section",
+        path: "/components/header-section",
+        children: [],
+      },
+      {
+        label: "InterestingFacts-Section",
+        path: "/components/interesting-facts-section",
+        children: [],
+      },
+      {
+        label: "NewsTeaser-Section",
+        path: "/components/news-teaser-section",
+        children: [],
+      },
+      {
+        label: "Teaser-Section",
+        path: "/components/teaser-section",
+        chhildren: [],
+      },
     ],
   },
 ];

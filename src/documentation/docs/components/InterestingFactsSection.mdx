@@ -1,0 +1,51 @@
+import Code from "@/components/internal/Documentation/Code";
+import ExampleLoader from "@/documentation/utils/ExampleLoader";
+import Meta from "@/components/internal/Documentation/Meta";
+import PropsTable from "@/components/internal/Documentation/PropsTable";
+import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
+
+<Meta
+  title="Interesting Facts Section"
+  subtitle="a complete interesting facts section"
+/>
+
+## Properties
+
+<PropsTable>
+  <PropsTableRow value="backgroundImage">
+    Requires <span class="code">ImageRef</span> which needs:
+    <ul>
+      <li>
+       <span class="code">src:String</span>
+       </li>
+       <li> 
+         <span class="code">dimension:
+        
+           {`{width: number, height: number}`} </span>
+          
+           </li>
+           <li>
+          <span class="code">previewId:Number</span> which will be needed by the FirstSpirit ContentCreator
+          </li>
+      </ul>
+      </PropsTableRow>
+      <PropsTableRow value="headline">
+        Requires <span class="code">String</span>
+        </PropsTableRow>
+            <PropsTableRow value="text">
+        Requires <span class="code">String</span>
+        </PropsTableRow>
+            <PropsTableRow value="tagline">
+        Requires <span class="code">String</span> it describes a little text above the headline
+        </PropsTableRow>
+        <PropsTableRow value="counters">
+         Requires an Array <span class="code">counter[]</span> which will need following informations: <span class="code">{`{ 
+           value: Number,
+           label: String,
+            }`}</span> 
+          </PropsTableRow>
+</PropsTable>
+
+## Example
+
+<ExampleLoader example="InterestingFactsSection.tsx" />
