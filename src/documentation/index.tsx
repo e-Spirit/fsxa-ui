@@ -101,11 +101,6 @@ const routes = [
         children: [],
       },
       {
-        label: "NewsTeaser-Section",
-        path: "/components/news-teaser-section",
-        children: [],
-      },
-      {
         label: "Teaser-Section",
         path: "/components/teaser-section",
         chhildren: [],
