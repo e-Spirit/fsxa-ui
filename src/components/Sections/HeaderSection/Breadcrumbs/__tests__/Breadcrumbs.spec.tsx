@@ -1,5 +1,4 @@
 import { render, fireEvent } from "@testing-library/vue";
-import { Breadcrumb } from "@/types/sections";
 import Breadcrumbs from "..";
 
 describe("components/Breadcrumbs", () => {

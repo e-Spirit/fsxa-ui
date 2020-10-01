@@ -41,17 +41,27 @@ class InterestingFactsSection extends BaseComponent<
           <Layout wrap>
             <LayoutItem width="full" lg={{ width: "6/12" }}>
               <div class="InterestingFactsSection--Content">
-                <Headline as="span" size="xl" weight="light">
+                <Headline
+                  as="span"
+                  size="xl"
+                  weight="light"
+                  data-testid={"interestingfactssection-tagline"}
+                >
                   {this.tagline}
                 </Headline>
                 <Headline
                   as="h2"
                   class="text-highlight leading-none"
                   size="xxl"
+                  data-testid={"interestingfactssection-headline"}
                 >
                   {this.headline}
                 </Headline>
-                <Paragraph size="lg" weight="light">
+                <Paragraph
+                  size="lg"
+                  weight="light"
+                  data-testid={"interestingfactssection-text"}
+                >
                   <RichText content={this.text} />
                 </Paragraph>
               </div>
