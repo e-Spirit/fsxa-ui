@@ -27,9 +27,13 @@ class Navigation extends BaseComponent<NavigationProps> {
     return (
       <li class="Navigation--Item">
         <a
+<<<<<<< HEAD
 
           data-testid={`item-${item.id}`}
           
+=======
+          data-testid={`item-${item.id}`}
+>>>>>>> d18c64ed72666ca73655b137faf94b390ee07b51
           class={`Navigation--Link Nav--Mobile ${isActive ? "active" : ""}`}
           href={item.path}
           onClick={(event: any) => {
