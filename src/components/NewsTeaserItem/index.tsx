@@ -21,7 +21,10 @@ class NewsTeaserItem extends BaseComponent<NewsTeaserItemProps> {
 
   render() {
     return (
-      <div class={`NewsTeaserItem ${this.latest ? "is-latest" : ""}`}>
+      <div
+        data-testid={"newsteaseritem-latest"}
+        class={`NewsTeaserItem ${this.latest ? "is-latest" : ""}`}
+      >
         {this.image && (
           <Image
             class="absolute left-0 top-0 w-full"
@@ -31,17 +34,24 @@ class NewsTeaserItem extends BaseComponent<NewsTeaserItemProps> {
           />
         )}
         <div class="NewsTeaserItem--InfoBox md:ml-0 md:mt-10 md:-mr-10">
-          <div class="NewsTeaserItem--Date">
+          <div class="NewsTeaserItem--Date" data-testid={"newsteaseritem-date"}>
             <span>{this.date}</span>
           </div>
-          <Headline as="h3" class="NewsTeaserItem--Title" size="sm">
+          <Headline
+            as="h3"
+            class="NewsTeaserItem--Title"
+            size="sm"
+            data-testid={"newsteaseritem-title"}
+          >
             {this.title}
           </Headline>
           <RichText
             class="NewsTeaserItem--Description"
+            data-testid={"newsteaseritem-description"}
             content={this.description}
           />
           <a
+            data-testid={"newsteaseritem-click"}
             href="#"
             class="NewsTeaserItem--ReadMore"
             onClick={(event: MouseEvent) => {
