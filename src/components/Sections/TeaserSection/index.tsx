@@ -28,15 +28,25 @@ class TeaserSection extends BaseComponent<TeaserSectionProps> {
         <Container>
           <Layout wrap>
             <LayoutItem width="full" lg={{ width: "5/12" }}>
-              <Headline as="h3" size="lg" weight="light">
+              <Headline
+                as="h3"
+                size="lg"
+                weight="light"
+                data-testid={"teasersection-kicker"}
+              >
                 {this.kicker}
               </Headline>
-              <Headline size="xl">
+              <Headline size="xl" data-testid={"teasersection-headline"}>
                 <RichText content={this.headline} inline />
               </Headline>
-              <RichText class="text-sm" content={this.text} />
+              <RichText
+                class="text-sm"
+                data-testid={"teasersection-text"}
+                content={this.text}
+              />
               {this.buttonText && (
                 <Button
+                  data-testid={"teasersection-button"}
                   variant="animated"
                   handleClick={() =>
                     this.handleButtonClick && this.handleButtonClick()
