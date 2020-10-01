@@ -58,19 +58,10 @@ export default class App extends Vue {
   currentItem: any = null;
   render() {
     return (
-<<<<<<< HEAD
       <div class="space-x-5 mb-10 ml-64">
         <Navigation
           isActiveItem={item => item.id === "1"}
           depth={3}
-=======
-      <div class="space-x-5 py-10" style={{ height: "500px" }}>
-        <Navigation
-          isActiveItem={item =>
-            this.currentItem && item.id === this.currentItem.id
-          }
-          depth={2}
->>>>>>> d18c64ed72666ca73655b137faf94b390ee07b51
           items={navItems}
           handleNavClick={navItem => {
             this.currentItem = navItem;
