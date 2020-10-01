@@ -4,13 +4,13 @@ import InterestingFactsSection from "..";
 describe("components/InterestingFactsSection", () => {
   it("checks if content will be passed", () => {
     const content = "this is my headline";
-    const textcontent = "this is my text";
-    const testtagline = "testtag";
-    const { container } = render(InterestingFactsSection, {
+    const textContent = "this is my text";
+    const testTagline = "testtag";
+    const { getByTestId } = render(InterestingFactsSection, {
       props: {
         headline: content,
-        text: textcontent,
-        tagline: testtagline,
+        text: textContent,
+        tagline: testTagline,
         counters: [
           {
             value: 200,
@@ -23,15 +23,9 @@ describe("components/InterestingFactsSection", () => {
         ],
       },
     });
-    const headline = container.querySelector(
-      ".InterestingFactsSection--Content [data-testid='interestingfactssection-headline']",
-    );
-    const text = container.querySelector(
-      ".InterestingFactsSection--Content [data-testid='interestingfactssection-text']",
-    );
-    const tagline = container.querySelector(
-      ".InterestingFactsSection--Content [data-testid='interestingfactssection-tagline']",
-    );
+    const headline = getByTestId("interestingfactssection-headline");
+    const text = getByTestId("interestingfactssection-text");
+    const tagline = getByTestId("interestingfactssection-tagline");
     expect(headline).toBeTruthy();
     expect(text).toBeTruthy();
     expect(tagline).toBeTruthy();
