@@ -1,35 +1,42 @@
 import { render, fireEvent } from "@testing-library/vue";
 import { Breadcrumb } from "@/types/sections";
 import Breadcrumbs from "..";
-const breadItems: Breadcrumb[] = [
-  {
-    referenceId: "1",
-    referenceType: "test",
-    path: "/",
-    label: "Link 1",
-  },
-  {
-    referenceId: "2",
-    referenceType: "test",
-    path: "/",
-    label: "Link 2",
-  },
-  {
-    referenceId: "3",
-    referenceType: "test",
-    path: "/",
-    label: "Link 3",
-  },
-];
-describe("components/HeaderSection", () => {
-  it("renders passed content as headline content", () => {
-    const content = "test";
-    const { getByText } = render(Breadcrumbs, {
+
+describe("components/Breadcrumbs", () => {
+  it("checks if handleclick has been called", async () => {
+    const spy = jest.fn();
+    const { container } = render(Breadcrumbs, {
+      slots: { default: "Content" },
       props: {
-        title: content,
-        breadcrumbs: breadItems,
+        handleItemClick: spy,
+        items: [
+          {
+            referenceId: "1",
+            referenceType: "test",
+            path: "/",
+            label: "Link 1",
+          },
+          {
+            referenceId: "2",
+            referenceType: "test",
+            path: "/",
+            label: "Link 2",
+          },
+          {
+            referenceId: "3",
+            referenceType: "test",
+            path: "/",
+            label: "Link 3",
+          },
+        ],
       },
     });
-    expect(getByText(content)).toBeTruthy();
+
+    const breadcrumb = container.querySelector(
+      ".Breadcrumbs--Item [data-testid='item-1']",
+    );
+    console.log(breadcrumb);
+    await fireEvent(breadcrumb!, new Event("click"));
+    expect(spy).toHaveBeenCalled();
   });
 });
