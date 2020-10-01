@@ -29,6 +29,7 @@ class Footer extends BaseComponent<FooterProps> {
               width="full"
               md={{ width: "1/3" }}
               class="flex justify-center items-center"
+              data-testid={"footer-copyright"}
             >
               © {this.copyright}
             </LayoutItem>
