@@ -28,6 +28,7 @@ describe("components/Footer", () => {
     const footer = getByTestId("footer-1");
     await fireEvent(footer!, new Event("click"));
     expect(spy).toHaveBeenCalled();
+    expect(spy.mock.calls[0][0].id).toEqual("1");
   });
 
   it("renders content which is passed in", () => {
