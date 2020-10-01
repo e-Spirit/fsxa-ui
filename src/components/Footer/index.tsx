@@ -41,6 +41,7 @@ class Footer extends BaseComponent<FooterProps> {
                 {this.links.map(link => (
                   <li class="FSXAFooter--LinkWrapper">
                     <a
+                      data-testid={`footer-${link.referenceId}`}
                       href="#"
                       class={`FSXAFooter--Link ${
                         link.isActive ? "active" : ""
