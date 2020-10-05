@@ -80,7 +80,10 @@ class Image extends BaseComponent<ImageProps> {
       ? this.dimensions.width / this.dimensions.height
       : null;
     return (
-      <div class={`Image w-full ${this.border ? "border" : ""}`} data-testid="imageDiv">
+      <div
+        class={`Image w-full ${this.border ? "border" : ""}`}
+        data-testid="imageDiv"
+      >
         <div class="w-full h-full overflow-hidden relative">
           <img
             src={!this.lazy || this.loaded ? this.src : ""}
