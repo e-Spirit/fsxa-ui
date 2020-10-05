@@ -8,6 +8,7 @@ describe("components/Headline", () => {
       slots: { default: content },
     });
     getByText(content);
+    expect(content).toBeTruthy();
   });
 
   it("calls handleClick callback on click", async () => {
