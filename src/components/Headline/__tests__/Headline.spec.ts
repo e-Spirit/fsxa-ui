@@ -46,9 +46,8 @@ describe("components/Headline", () => {
     const headline = getByText("Content");
     expect(headline.tagName).toEqual("H1");
 
-    const headlineClasses = headline.classList;
-    expect(headlineClasses).toContain("include-margin");
-    expect(headlineClasses).toContain("uppercase");
-    expect(headlineClasses).toContain("bold");
+    expect(headline.classList).toContain("include-margin");
+    expect(headline.classList).toContain("uppercase");
+    expect(headline.classList).toContain("bold");
   });
 });
