@@ -45,14 +45,10 @@ describe("components/Headline", () => {
     });
     const headline = getByText("Content");
     expect(headline.tagName).toEqual("H1");
-    const headlineClasses = headline.getAttribute("class");
-    if (headlineClasses == null) {
-      fail("Headline has no class!");
-    } else {
-      const headlineClassesArray = headlineClasses.split(" ");
-      expect(headlineClassesArray).toContain("include-margin");
-      expect(headlineClassesArray).toContain("uppercase");
-      expect(headlineClassesArray).toContain("bold");
-    }
+
+    const headlineClasses = headline.classList;
+    expect(headlineClasses).toContain("include-margin");
+    expect(headlineClasses).toContain("uppercase");
+    expect(headlineClasses).toContain("bold");
   });
 });
