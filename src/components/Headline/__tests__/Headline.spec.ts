@@ -7,8 +7,7 @@ describe("components/Headline", () => {
     const { getByText } = render(Headline, {
       slots: { default: content },
     });
-    getByText(content);
-    expect(content).toBeTruthy();
+    expect(getByText(content)).toBeTruthy();
   });
 
   it("calls handleClick callback on click", async () => {
