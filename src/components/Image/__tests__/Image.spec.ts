@@ -16,7 +16,7 @@ describe("components/Image", () => {
       },
     });
     const image = getByTestId("imageDiv");
-    expect(image.getAttribute("class")).not.toContain("border");
+    expect(image.classList.contains("border")).toBeFalsy;
     // expect(getAllByTestId(image, "veil").length).toEqual(0); // does not work -> workaround follows:
     expect(image.innerHTML).toContain("<img"); // make sure we actually have an <img> tag inside our image div
     expect(image.innerHTML).not.toContain("absolute"); // veil divs have class absolute
@@ -30,10 +30,10 @@ describe("components/Image", () => {
       },
     });
     const veilDiv = getByTestId("veil");
-    expect(veilDiv.getAttribute("class")).toContain("opacity-75");
+    expect(veilDiv.classList.contains("opacity-75")).toBeTruthy;
     const image = getByTestId("imageDiv");
     expect(image.innerHTML).toContain("absolute"); // veil divs have class absolute (opposite of previous test)
-    expect(image.getAttribute("class")).not.toContain("border");
+    expect(image.classList.contains("border")).toBeFalsy;
   });
 
   it("should have the border class when the border property is set", () => {
@@ -44,10 +44,10 @@ describe("components/Image", () => {
       },
     });
     const image = getByTestId("imageDiv");
-    expect(image.getAttribute("class")).toContain("border");
+    expect(image.classList.contains("border")).toBeTruthy;
   });
 
-  it("should have an img with class 'zoom' when the zoom property is set", () => {
+  it("should have an img tag with class 'zoom' when the zoom property is set", () => {
     const { getByTestId } = render(Image, {
       props: {
         src: testImage,
@@ -60,7 +60,7 @@ describe("components/Image", () => {
       fail("img tag not found");
     }
     expect(imgTag.getAttribute("src")).toEqual(testImage);
-    expect(imgTag.getAttribute("class")).toContain("zoom");
+    expect(imgTag.classList.contains("zoom")).toBeTruthy;
   });
 
   it("should not have the src attribute filled when the lazy property is set to true", () => {
