@@ -3,7 +3,7 @@ import Headline from "./../";
 
 describe("components/Headline", () => {
   it("renders passed content as headline content", () => {
-    const content = "Das ist mein Test";
+    const content = "This is my test";
     const { getByText } = render(Headline, {
       slots: { default: content },
     });
