@@ -16,12 +16,13 @@ describe("components/Image", () => {
       },
     });
     const image = getByTestId("imageDiv");
-    expect(image.classList.contains("border")).toBeFalsy;
+    expect(image.classList.contains("border")).toBe(false);
     // expect(getAllByTestId(image, "veil").length).toEqual(0); // does not work -> workaround follows:
     expect(image.innerHTML).toContain("<img"); // make sure we actually have an <img> tag inside our image div
     expect(image.innerHTML).not.toContain("absolute"); // veil divs have class absolute
   });
 
+  // ToDo: relying too much on internal structure, remove test?
   it("should be followed by 'veil' div with class 'opacity-75', if initialized with the respective property", () => {
     const { getByTestId } = render(Image, {
       props: {
@@ -30,10 +31,10 @@ describe("components/Image", () => {
       },
     });
     const veilDiv = getByTestId("veil");
-    expect(veilDiv.classList.contains("opacity-75")).toBeTruthy;
+    expect(veilDiv.classList.contains("opacity-75")).toBe(true);
     const image = getByTestId("imageDiv");
     expect(image.innerHTML).toContain("absolute"); // veil divs have class absolute (opposite of previous test)
-    expect(image.classList.contains("border")).toBeFalsy;
+    expect(image.classList.contains("border")).toBe(false);
   });
 
   it("should have the border class when the border property is set", () => {
@@ -44,7 +45,7 @@ describe("components/Image", () => {
       },
     });
     const image = getByTestId("imageDiv");
-    expect(image.classList.contains("border")).toBeTruthy;
+    expect(image.classList.contains("border")).toBe(true);
   });
 
   it("should have an img tag with class 'zoom' when the zoom property is set", () => {
@@ -60,7 +61,7 @@ describe("components/Image", () => {
       fail("img tag not found");
     }
     expect(imgTag.getAttribute("src")).toEqual(testImage);
-    expect(imgTag.classList.contains("zoom")).toBeTruthy;
+    expect(imgTag.classList.contains("zoom")).toBe(true);
   });
 
   it("should not have the src attribute filled when the lazy property is set to true", () => {
@@ -82,7 +83,10 @@ describe("components/Image", () => {
     const { getByTestId } = render(Image, {
       props: {
         src: testImage,
-        lazy: true,
+        dimensions: {
+          width: "300px",
+          height: "200px",
+        },
       },
     });
     const image = getByTestId("imageDiv");
