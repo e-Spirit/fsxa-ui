@@ -56,6 +56,11 @@ const routes = [
         children: [],
       },
       {
+        label: "Dropdown",
+        path: "/components/dropdown",
+        children: [],
+      },
+      {
         label: "Footer",
         path: "/components/footer",
         children: [],
