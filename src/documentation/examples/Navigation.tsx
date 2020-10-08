@@ -58,7 +58,7 @@ export default class App extends Vue {
   currentItem: any = null;
   render() {
     return (
-      <div class="space-x-5 mb-10 ml-64">
+      <div class="space-x-5 mb-64 ml-64 mt-10">
         <Navigation
           isActiveItem={item => item.id === "1"}
           depth={3}
