@@ -104,3 +104,8 @@ export interface HeaderSectionProps {
   handleItemClick?: (item: Breadcrumb) => void;
 }
 export class HeaderSection extends Component<HeaderSectionProps> {}
+export interface AccordeonSectionProps {
+  title: string;
+  text: string;
+}
+export class AccordeonSection extends Component<AccordeonSectionProps> {}
