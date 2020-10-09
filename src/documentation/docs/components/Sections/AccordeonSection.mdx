@@ -8,5 +8,19 @@ import AccordeonSection from "@/components/Sections/AccordeonSection";
 />
 
 for debugging purposes only
-
-<AccordeonSection />
+<div style="border:1px solid black; width:600px;">
+    <AccordeonSection 
+      dark={true} 
+      items={
+        [
+          {
+            title: 'A very long title text with some lorem ipsum that is even longer when i add more words', 
+            text: 'The first accordeon'
+          },
+          {
+            title: 'Two',
+            text: 'The second accordeon'
+          }
+        ]
+      }/>
+</div>
