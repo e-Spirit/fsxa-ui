@@ -90,6 +90,11 @@ const routes = [
         path: "/components/rich-text",
         children: [],
       },
+      {
+        label: "LineSeparator",
+        path: "/components/line-separator",
+        children: [],
+      },
     ],
   },
 ];
