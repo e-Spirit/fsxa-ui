@@ -18,3 +18,4 @@ export { default as Page } from "./Page";
 export { default as Quote } from "./Quote";
 export { default as RichText } from "./RichText";
 export { default as Sections } from "./Sections";
+export { default as LineSeparator } from "./LineSeparator";
