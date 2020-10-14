@@ -1,14 +1,18 @@
 import { Component, Prop } from "vue-property-decorator";
 import BaseComponent from "@/components/BaseComponent";
-import { AccordeonProps } from "@/types/sections";
+import { AccordeonProps } from "@/types/components";
 import "./style.css";
 
-@Component
-class Accordeon extends BaseComponent<Accordeon> {
-  @Prop({ default: true }) dark: AccordeonProps["dark"];
-  @Prop() title: AccordeonProps["title"];
-  @Prop() text: AccordeonProps["text"];
+@Component({
+  name: "Accordeon",
+})
+class Accordeon extends BaseComponent<AccordeonProps> {
+  @Prop({ default: false }) dark: AccordeonProps["dark"];
+  @Prop({ required: true }) title!: AccordeonProps["title"];
+  @Prop({ required: true }) text!: AccordeonProps["text"];
+
   isCollapsed = true;
+
   render() {
     const colorClasses = this.dark
       ? "bg-black text-white"

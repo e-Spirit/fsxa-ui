@@ -1,6 +1,6 @@
 import { Component } from "vue-tsx-support";
 import { ImageRef } from "./utils";
-import { NewsTeaserItemProps } from "./components";
+import { AccordeonProps, NewsTeaserItemProps } from "./components";
 
 export interface NewsTeaserSectionProps {
   headline: string;
@@ -104,15 +104,10 @@ export interface HeaderSectionProps {
   handleItemClick?: (item: Breadcrumb) => void;
 }
 export class HeaderSection extends Component<HeaderSectionProps> {}
-export interface AccordeonProps {
-  title: string;
-  text: string;
-  dark: boolean;
-}
-export class Accordeon extends Component<AccordeonProps> {}
+
 export interface AccordeonSectionProps {
   title?: string;
-  dark: boolean;
-  items: Accordeon[];
+  dark?: boolean;
+  items: Pick<AccordeonProps, "title" | "text">[];
 }
 export class AccordeonSection extends Component<AccordeonSectionProps> {}

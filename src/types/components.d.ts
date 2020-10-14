@@ -400,3 +400,10 @@ export interface QuoteProps {
 }
 
 export class Quote extends Component<QuoteProps> {}
+
+export interface AccordeonProps {
+  title: string;
+  text: string;
+  dark?: boolean;
+}
+export class Accordeon extends Component<AccordeonProps> {}
