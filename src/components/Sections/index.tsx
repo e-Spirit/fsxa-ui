@@ -2,12 +2,12 @@ import InterestingFactsSection from "./InterestingFactsSection";
 import NewsTeaserSection from "./NewsTeaserSection";
 import HeaderSection from "./HeaderSection";
 import TeaserSection from "./TeaserSection";
-import AccordeonSection from "./AccordeonSection";
+import AccordionSection from "./AccordionSection";
 
 export default {
   InterestingFactsSection,
   NewsTeaserSection,
   HeaderSection,
   TeaserSection,
-  AccordeonSection,
+  AccordionSection,
 };

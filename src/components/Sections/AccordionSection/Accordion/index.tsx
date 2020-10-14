@@ -1,15 +1,15 @@
 import { Component, Prop } from "vue-property-decorator";
 import BaseComponent from "@/components/BaseComponent";
-import { AccordeonProps } from "@/types/components";
+import { AccordionProps } from "@/types/components";
 import "./style.css";
 
 @Component({
-  name: "Accordeon",
+  name: "Accordion",
 })
-class Accordeon extends BaseComponent<AccordeonProps> {
-  @Prop({ default: false }) dark: AccordeonProps["dark"];
-  @Prop({ required: true }) title!: AccordeonProps["title"];
-  @Prop({ required: true }) text!: AccordeonProps["text"];
+class Accordion extends BaseComponent<AccordionProps> {
+  @Prop({ default: false }) dark: AccordionProps["dark"];
+  @Prop({ required: true }) title!: AccordionProps["title"];
+  @Prop({ required: true }) text!: AccordionProps["text"];
 
   isCollapsed = true;
 
@@ -33,7 +33,7 @@ class Accordeon extends BaseComponent<AccordeonProps> {
             <i class="fa fa-plus"></i>
           </span>
         </div>
-        <div class={`${this.isCollapsed ? "Accordeon--collapsed" : ""}`}>
+        <div class={`${this.isCollapsed ? "Accordion--collapsed" : ""}`}>
           <p>{this.text}</p>
         </div>
       </div>
@@ -41,4 +41,4 @@ class Accordeon extends BaseComponent<AccordeonProps> {
   }
 }
 
-export default Accordeon;
+export default Accordion;

@@ -401,9 +401,9 @@ export interface QuoteProps {
 
 export class Quote extends Component<QuoteProps> {}
 
-export interface AccordeonProps {
+export interface AccordionProps {
   title: string;
   text: string;
   dark?: boolean;
 }
-export class Accordeon extends Component<AccordeonProps> {}
+export class Accordion extends Component<AccordionProps> {}

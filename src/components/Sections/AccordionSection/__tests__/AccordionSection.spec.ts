@@ -1,10 +1,10 @@
 import { render, fireEvent } from "@testing-library/vue";
-import AccordeonSection from "../";
+import AccordionSection from "..";
 
-describe("components/sections/accordeon-section", () => {
+describe("components/sections/accordion-section", () => {
   describe("dark mode", () => {
     it.skip("renders a div with background-color black and white text when dark is set to true", () => {
-      const { container } = render(AccordeonSection, {
+      const { container } = render(AccordionSection, {
         slots: { default: "Content" },
         props: {
           dark: true,
@@ -16,8 +16,8 @@ describe("components/sections/accordeon-section", () => {
           ],
         },
       });
-      const firstAccordeon = container.querySelector(".Accordeon");
-      const classList = firstAccordeon?.firstElementChild?.classList;
+      const firstAccordion = container.querySelector(".Accordion");
+      const classList = firstAccordion?.firstElementChild?.classList;
       expect(classList).toContain("bg-black");
       expect(classList).toContain("text-white");
     });

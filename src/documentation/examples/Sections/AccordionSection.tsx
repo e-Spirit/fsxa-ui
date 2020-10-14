@@ -8,7 +8,7 @@ export default class App extends Vue {
   render() {
     return (
       <div style="border:1px solid black; width:600px;">
-        <Sections.AccordeonSection
+        <Sections.AccordionSection
           dark={true}
           items={[
             {
@@ -19,7 +19,7 @@ export default class App extends Vue {
             },
             {
               title: "Two",
-              text: "The second accordeon",
+              text: "The second accordion",
             },
           ]}
         />

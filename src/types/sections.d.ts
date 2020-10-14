@@ -1,6 +1,6 @@
 import { Component } from "vue-tsx-support";
 import { ImageRef } from "./utils";
-import { AccordeonProps, NewsTeaserItemProps } from "./components";
+import { AccordionProps, NewsTeaserItemProps } from "./components";
 
 export interface NewsTeaserSectionProps {
   headline: string;
@@ -105,9 +105,9 @@ export interface HeaderSectionProps {
 }
 export class HeaderSection extends Component<HeaderSectionProps> {}
 
-export interface AccordeonSectionProps {
+export interface AccordionSectionProps {
   title?: string;
   dark?: boolean;
-  items: Pick<AccordeonProps, "title" | "text">[];
+  items: Pick<AccordionProps, "title" | "text">[];
 }
-export class AccordeonSection extends Component<AccordeonSectionProps> {}
+export class AccordionSection extends Component<AccordionSectionProps> {}
