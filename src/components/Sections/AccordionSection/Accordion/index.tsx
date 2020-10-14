@@ -14,13 +14,11 @@ class Accordion extends BaseComponent<AccordionProps> {
   isCollapsed = true;
 
   render() {
-    const colorClasses = this.dark
-      ? "bg-black text-white"
-      : "bg-transparent text-black";
+    const colorClasses = this.dark ? "Accordion--Dark" : "Accordion--Light ";
     return (
-      <div class="w-full my-4">
+      <div class="Accordion">
         <div
-          class={colorClasses + " p-2 w-full clearfix cursor-pointer"}
+          class={colorClasses + " Accordion--Header clearfix"}
           onClick={event => {
             event?.preventDefault();
             this.isCollapsed = !this.isCollapsed;
@@ -29,11 +27,11 @@ class Accordion extends BaseComponent<AccordionProps> {
           <h6 class="float-left w-2/3 whitespace-no-wrap overflow-hidden">
             {this.title}
           </h6>
-          <span class="indicator float-right">
+          <span class="Accordion--Indicator float-right">
             <i class="fa fa-plus"></i>
           </span>
         </div>
-        <div class={`${this.isCollapsed ? "Accordion--collapsed" : ""}`}>
+        <div class={`${this.isCollapsed ? "Accordion--Collapsed" : ""}`}>
           <p>{this.text}</p>
         </div>
       </div>

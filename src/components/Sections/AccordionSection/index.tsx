@@ -14,7 +14,7 @@ class AccordionSection extends BaseComponent<AccordionSectionProps> {
   render() {
     return (
       <div class="md px-4">
-        {this.title && <h3>this.title</h3>}
+        {this.title && <h3>{this.title}</h3>}
         {this.items.map(item => (
           <Accordion dark={this.dark} title={item.title} text={item.text} />
         ))}

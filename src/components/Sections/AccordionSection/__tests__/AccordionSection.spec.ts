@@ -18,8 +18,7 @@ describe("components/sections/accordion-section", () => {
       });
       const firstAccordion = container.querySelector(".Accordion");
       const classList = firstAccordion?.firstElementChild?.classList;
-      expect(classList).toContain("bg-black");
-      expect(classList).toContain("text-white");
+      expect(classList).toContain("dark");
     });
   });
   describe("items prop", () => {
