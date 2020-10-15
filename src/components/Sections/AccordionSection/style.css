@@ -1,0 +1,6 @@
+.Accordion-Section--Separator {
+    @apply mt-8 w-16 h-1 bg-black;
+}
+.Accordion-Section--Title {
+    @apply font-semibold text-xl;
+}

@@ -2,6 +2,7 @@ import { Component, Prop } from "vue-property-decorator";
 import BaseComponent from "@/components/BaseComponent";
 import Accordion from "./Accordion";
 import { AccordionSectionProps } from "@/types/sections";
+import "./style.css";
 
 @Component({
   name: "AccordionSection",
@@ -14,7 +15,8 @@ class AccordionSection extends BaseComponent<AccordionSectionProps> {
   render() {
     return (
       <div class="md px-4">
-        {this.title && <h3>{this.title}</h3>}
+        {this.title && <h3 class="Accordion-Section--Title">{this.title}</h3>}
+        {this.title && <div class="Accordion-Section--Separator"></div>}
         {this.items.map(item => (
           <Accordion dark={this.dark} title={item.title} text={item.text} />
         ))}

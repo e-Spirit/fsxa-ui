@@ -12,16 +12,32 @@ class Accordion extends BaseComponent<AccordionProps> {
   @Prop({ required: true }) text!: AccordionProps["text"];
 
   isCollapsed = true;
+  textBoxClass = "Accordion--Text-Box";
+  headerClass = "Accordion--Header";
+
+  mounted() {
+    console.log("mounted");
+  }
+  toggleClass(element: Element, className: string) {
+    if (element.classList.contains(className)) {
+      element.classList.remove(className);
+    } else {
+      element.classList.add(className);
+    }
+  }
 
   render() {
-    const colorClasses = this.dark ? "Accordion--Dark" : "Accordion--Light ";
+    const colorClasses = this.dark ? "Accordion--Dark " : "Accordion--Light ";
     return (
       <div class="Accordion">
         <div
-          class={colorClasses + " Accordion--Header clearfix"}
+          class={colorClasses + this.headerClass + " clearfix"}
           onClick={event => {
             event?.preventDefault();
             this.isCollapsed = !this.isCollapsed;
+            const header = event.currentTarget as HTMLElement;
+            const textBox = header.nextElementSibling!;
+            this.toggleClass(textBox, "Accordion--Collapsed");
           }}
         >
           <h6 class="float-left w-2/3 whitespace-no-wrap overflow-hidden">
@@ -31,7 +47,7 @@ class Accordion extends BaseComponent<AccordionProps> {
             <i class="fa fa-plus"></i>
           </span>
         </div>
-        <div class={`${this.isCollapsed ? "Accordion--Collapsed" : ""}`}>
+        <div class={`${this.textBoxClass} Accordion--Collapsed`}>
           <p>{this.text}</p>
         </div>
       </div>
