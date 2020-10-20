@@ -36,11 +36,13 @@ describe("components/Navigation", () => {
       ".Navigation--Navigation [data-testid='item-1']",
     );
     const navigationMobile = container.querySelector(
-      ".Navigation--Mobile [data-testid='item-1']",
+      ".Navigation--Mobile [data-testid='item-3']",
     );
     await fireEvent(navigation!, new Event("click"));
     await fireEvent(navigationMobile!, new Event("click"));
     expect(spy).toHaveBeenCalled();
+    console.log(spy.mock.calls);
     expect(spy.mock.calls[0][0].id).toEqual("1");
+    expect(spy.mock.calls[1][0].id).toEqual("3");
   });
 });

@@ -5,8 +5,8 @@ import { Dropdown } from "fsxa-ui";
 import { Option } from "@/types/components";
 
 const testOptions: Option[] = [
-  { key: "opt1", label: "Option 1", path: "path1" },
-  { key: "opt2", label: "Option 2", path: "path2" },
+  { key: "opt1", label: "Option_1", path: "path1" },
+  { key: "opt2", label: "Option_2", path: "path2" },
 ];
 
 const handleClick = (item: Option) => {
@@ -19,7 +19,7 @@ export default class App extends Vue {
 
   render() {
     return (
-      <div class="space-x-5">
+      <div class="space-x-5 ml-32 mb-48">
         <Dropdown
           value="opt2"
           options={testOptions}
