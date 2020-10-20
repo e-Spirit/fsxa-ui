@@ -38,11 +38,10 @@ describe("components/Dropdown", () => {
       },
     });
 
-    // const option1 = container.querySelector("Dropdown");
     const optionList = container
       .getElementsByClassName("Dropdown")[0]
       .getElementsByTagName("ul")[0];
-    console.log(optionList?.innerHTML);
+    // console.log(optionList?.innerHTML);
     expect(optionList.getElementsByTagName("li").length).toBe(4);
   });
 });
