@@ -8,17 +8,43 @@ import "./style.css";
   name: "AccordionSection",
 })
 class AccordionSection extends BaseComponent<AccordionSectionProps> {
-  @Prop({ type: Boolean, default: false })
-  dark: AccordionSectionProps["dark"];
+  @Prop({ default: false }) dark: AccordionSectionProps["dark"];
   @Prop({ required: true }) items!: AccordionSectionProps["items"];
   @Prop() title: AccordionSectionProps["title"];
+
+  state = this.items.map((item, index) => {
+    return {
+      index,
+      title: item.title,
+      text: item.text,
+      open: false,
+    };
+  });
+
+  toggleCollapse(index: number) {
+    this.state = this.state.map((accordion, i) => {
+      if (i === index) {
+        accordion.open = !accordion.open;
+      } else {
+        accordion.open = false;
+      }
+      return accordion;
+    });
+  }
   render() {
     return (
       <div class="md px-4">
         {this.title && <h3 class="Accordion-Section--Title">{this.title}</h3>}
         {this.title && <div class="Accordion-Section--Separator"></div>}
-        {this.items.map(item => (
-          <Accordion dark={this.dark} title={item.title} text={item.text} />
+        {this.state.map((accordion, index) => (
+          <Accordion
+            dark={this.dark}
+            title={accordion.title}
+            text={accordion.text}
+            index={index}
+            open={accordion.open}
+            on-toggleCollapse={this.toggleCollapse}
+          />
         ))}
       </div>
     );

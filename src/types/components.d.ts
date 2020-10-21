@@ -404,6 +404,8 @@ export class Quote extends Component<QuoteProps> {}
 export interface AccordionProps {
   title: string;
   text: string;
+  index: number;
   dark?: boolean;
+  open?: boolean;
 }
 export class Accordion extends Component<AccordionProps> {}
