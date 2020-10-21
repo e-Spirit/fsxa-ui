@@ -81,6 +81,11 @@ const routes = [
         children: [],
       },
       {
+        label: "ProductListSection",
+        path: "/components/product-list-section",
+        children: [],
+      },
+      {
         label: "Quote",
         path: "/components/quote",
         children: [],

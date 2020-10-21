@@ -1,6 +1,7 @@
 import { Component } from "vue-tsx-support";
 import { ImageRef } from "./utils";
 import { NewsTeaserItemProps } from "./components";
+import { ProductListItemProps } from "./components";
 
 export interface NewsTeaserSectionProps {
   headline: string;
@@ -8,6 +9,13 @@ export interface NewsTeaserSectionProps {
   handleItemClick: (item: NewsTeaserItemProps) => void;
 }
 export class NewsTeaserSection extends Component<NewsTeaserSectionProps> {}
+
+export interface ProductListSectionProps {
+  headline: string;
+  items: ProductListItemProps[];
+}
+
+// export class ProductListSection extends Component<ProductListSectionProps> {}
 
 export interface InterestingFactsSectionProps {
   /**
