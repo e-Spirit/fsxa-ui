@@ -21,6 +21,10 @@ export default class App extends Vue {
               title: "Two",
               text: "The second accordion",
             },
+            {
+              title: "Three",
+              text: "Almost there",
+            },
           ]}
         />
         <Sections.AccordionSection

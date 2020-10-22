@@ -33,7 +33,7 @@ class AccordionSection extends BaseComponent<AccordionSectionProps> {
   }
   render() {
     return (
-      <div class="md px-4">
+      <div class="Accordion-Section md">
         {this.title && <h3 class="Accordion-Section--Title">{this.title}</h3>}
         {this.title && <div class="Accordion-Section--Separator"></div>}
         {this.state.map((accordion, index) => (
@@ -42,6 +42,7 @@ class AccordionSection extends BaseComponent<AccordionSectionProps> {
             title={accordion.title}
             text={accordion.text}
             index={index}
+            key={index}
             open={accordion.open}
             on-toggleCollapse={this.toggleCollapse}
           />

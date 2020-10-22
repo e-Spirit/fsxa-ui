@@ -1,6 +1,13 @@
+.Accordion-Section {
+    @apply px-4;
+}
 .Accordion-Section--Separator {
-    @apply mt-8 w-16 h-1 bg-black;
+    @apply mt-8; 
+    @apply w-16; 
+    @apply h-1; 
+    @apply bg-black;
 }
 .Accordion-Section--Title {
-    @apply font-semibold text-xl;
+    @apply font-semibold;
+    @apply text-xl;
 }

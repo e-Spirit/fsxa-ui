@@ -1,36 +1,33 @@
 .Accordion {
-    @apply w-full my-4;
+	@apply w-full; 
+	@apply my-4;
 }
-.Accordion--Collapsed {
-    height: 0;
-    overflow: hidden;
+.Accordion.Accordion--Open .Accordion--Text-Box {
+	max-height: 1000px;
+	transition: max-height 0.6s ease-in;
 }
-.Accordion div:not(.Accordion--Collapsed) {
-    height: 100%;
+.Accordion .Accordion--Text-Box {
+	max-height: 0px;
+	overflow-y: hidden;
+	transition: max-height 0.6s ease-out;
 }
 .Accordion--Header {
-    @apply p-2 w-full cursor-pointer;
+	@apply p-2; 
+	@apply w-full; 
+	@apply cursor-pointer;
 }
 .Accordion--Header.Accordion--Dark {
-    @apply bg-black text-white;
+	@apply bg-black; 
+	@apply text-white;
 }
 .Accordion--Header.Accordion--Light {
     background-color: #f5f5f5;
     @apply text-black;
 }
-.Accordion p, .Accordion div {
-	position: relative;
-	overflow: hidden;
-	-webkit-transition-timing-function: ease;
-	-o-transition-timing-function: ease;
-	transition-timing-function: ease;
-	-webkit-transition-duration: .35s;
-	-o-transition-duration: .35s;
-	transition-duration: .35s;
-	-webkit-transition-property: height, visibility;
-	-o-transition-property: height, visibility;
-	transition-property: height, visibility
+.Accordion .Accordion--Indicator {
+	transition: all 0.4s linear;
+	transform: translateY(0) rotate(0deg);
 }
-.Accordion--Text-box {
-
+.Accordion.Accordion.Accordion--Open .Accordion--Indicator {
+	transform: translateY(0) rotate(45deg);
 }

@@ -13,17 +13,14 @@ class Accordion extends BaseComponent<AccordionProps> {
   @Prop({ required: true }) index!: AccordionProps["index"];
   @Prop({ default: false }) open!: AccordionProps["open"];
 
-  textBoxClass = "Accordion--Text-Box";
-  headerClass = "Accordion--Header";
-
   render() {
-    const colorClass = this.dark ? "Accordion--Dark " : "Accordion--Light ";
-    const openClass = this.open ? "" : "Accordion--Collapsed";
     return (
-      <div class="Accordion">
+      <div class={"Accordion" + `${this.open ? " Accordion--Open" : ""}`}>
         <div
-          class={colorClass + this.headerClass + " clearfix"}
-          onClick={event => {
+          class={`${
+            this.dark ? "Accordion--Dark" : "Accordion--Light"
+          } Accordion--Header clearfix`}
+          onClick={() => {
             this.$emit("toggleCollapse", this.index);
           }}
         >
@@ -34,7 +31,7 @@ class Accordion extends BaseComponent<AccordionProps> {
             <i class="fa fa-plus"></i>
           </span>
         </div>
-        <div class={`${this.textBoxClass} ${openClass}`}>
+        <div class="Accordion--Text-Box">
           <p>{this.text}</p>
         </div>
       </div>
