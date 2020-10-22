@@ -321,9 +321,9 @@ export class NewsTeaserItem extends Component<NewsTeaserItemProps> {}
 export interface ProductListItemProps {
   title: string;
   description: string;
-  price: number;
+  price?: number;
 }
-export class ProductListItem extends Component<ProductListItemProps> {} // ToDo: separation ProductListItem <-> ProductListItemProps?
+export class ProductListItem extends Component<ProductListItemProps> {}
 
 export interface LoaderProps {
   renderLoader?: () => JSX.Element | null;

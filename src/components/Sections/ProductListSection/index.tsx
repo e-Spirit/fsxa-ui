@@ -4,6 +4,7 @@ import "./style.css";
 import Headline from "@/components/Headline";
 import { ProductListSectionProps } from "@/types/sections";
 import { ProductListItemProps } from "@/types/components";
+import ProductListItem from "@/components/ProductListItem";
 
 @Component({
   name: "ProductListSection",
@@ -14,9 +15,11 @@ class ProductListSection extends BaseComponent<ProductListSectionProps> {
 
   renderItem(item: ProductListItemProps) {
     return (
-      <li>
-        Item: {item.title}, {item.description}
-      </li>
+      <ProductListItem
+        title={item.title}
+        description={item.description}
+        price={item.price}
+      />
     );
   }
 
@@ -26,7 +29,8 @@ class ProductListSection extends BaseComponent<ProductListSectionProps> {
     return (
       <div class="py-12 md:py-16 lg:py-20">
         <Headline size="xl">{this.headline}</Headline>
-        <ul>{this.items.map(item => this.renderItem(item))}</ul>
+        {this.items.map(item => this.renderItem(item))}
+        <div style="clear:both;"></div>
       </div>
     );
   }

@@ -1,0 +1,8 @@
+.ProductListItem {
+  border: 2px solid pink;
+  margin: 1%;
+  min-width: 10rem;
+  width: 30%;
+  float: left;
+  padding: 1em;
+}
