@@ -9,17 +9,19 @@ export interface NewsTeaserSectionProps {
 }
 export class NewsTeaserSection extends Component<NewsTeaserSectionProps> {}
 
-export interface ProductDetailSectionProps{
+export interface ProductDetailSectionProps {
   headline: string;
   description: string;
   price: string;
-  categories:Array<{title: string}>;
-  compatibility:Array<{title:string}>;
-  buttonText:string;
+  categories: Array<{ title: string }>;
+  compatibility: Array<{ title: string }>;
+  buttonText: string;
   image?: ImageRef;
 }
 
-export class ProductDetailSection extends Component<ProductDetailSectionProps>{}
+export class ProductDetailSection extends Component<
+  ProductDetailSectionProps
+> {}
 
 export interface InterestingFactsSectionProps {
   /**
