@@ -13,8 +13,8 @@ export interface ProductDetailSectionProps {
   headline: string;
   description: string;
   price: string;
-  categories: Array<{ title: string }>;
-  compatibility: Array<{ title: string }>;
+  categories?: Array<{ title: string }>;
+  compatibility?: Array<{ title: string }>;
   buttonText: string;
   image?: ImageRef;
 }
