@@ -322,6 +322,7 @@ export interface ProductListItemProps {
   title: string;
   description: string;
   price?: number;
+  image?: string;
 }
 export class ProductListItem extends Component<ProductListItemProps> {}
 

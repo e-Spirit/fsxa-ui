@@ -15,13 +15,15 @@ class ProductListItem extends BaseComponent<ProductListItemProps> {
   @Prop({ required: true }) title!: ProductListItemProps["title"];
   @Prop({ required: true }) description!: ProductListItemProps["description"];
   @Prop({ required: true }) price!: ProductListItemProps["price"];
-
-  // @Prop() image: ProductListItemProps["image"];
+  @Prop() image: ProductListItemProps["image"];
 
   render() {
     return (
       <div class={`ProductListItem`}>
-        <div class="ProductListItem--InfoBox">
+        <div
+          class="ProductListItem--InfoBox"
+          style={`background-image:url(${this.image?.src})`}
+        >
           <Headline as="h3" class="ProductListItem--Title" size="sm">
             {this.title}
           </Headline>

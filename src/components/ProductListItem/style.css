@@ -1,8 +1,19 @@
 .ProductListItem {
-  border: 2px solid pink;
-  margin: 1%;
-  min-width: 10rem;
-  width: 30%;
-  float: left;
-  padding: 1em;
+  @apply flex w-full border-gray-200 border-2
+}
+
+@screen sm {
+  .ProductListItem {
+    @apply w-1/2}};
+
+@screen xl {
+  .ProductListItem {
+    @apply w-1/4;
+  }      
+}
+
+.ProductListItem--InfoBox {
+  @apply m-3 w-full;
+  height: 40rem;
+  transition: all .2s ease-in-out;
 }

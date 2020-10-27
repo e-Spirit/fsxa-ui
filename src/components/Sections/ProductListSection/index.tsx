@@ -2,6 +2,7 @@ import BaseComponent from "@/components/BaseComponent";
 import { Component, Prop } from "vue-property-decorator";
 import "./style.css";
 import Headline from "@/components/Headline";
+import Layout from "@/components/Layout";
 import { ProductListSectionProps } from "@/types/sections";
 import { ProductListItemProps } from "@/types/components";
 import ProductListItem from "@/components/ProductListItem";
@@ -19,6 +20,7 @@ class ProductListSection extends BaseComponent<ProductListSectionProps> {
         title={item.title}
         description={item.description}
         price={item.price}
+        image={item.image}
       />
     );
   }
@@ -27,10 +29,10 @@ class ProductListSection extends BaseComponent<ProductListSectionProps> {
     console.log("items: ", this.items);
 
     return (
-      <div class="py-12 md:py-16 lg:py-20">
+      <div class="py-12 md:py-16 lg:py-20 ProductListSection">
         <Headline size="xl">{this.headline}</Headline>
-        {this.items.map(item => this.renderItem(item))}
-        <div style="clear:both;"></div>
+        <div class="ProductListSection--Separator" />
+        <Layout wrap>{this.items.map(item => this.renderItem(item))}</Layout>
       </div>
     );
   }
