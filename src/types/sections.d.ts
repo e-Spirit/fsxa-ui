@@ -8,13 +8,16 @@ export interface NewsTeaserSectionProps {
   handleItemClick: (item: NewsTeaserItemProps) => void;
 }
 export class NewsTeaserSection extends Component<NewsTeaserSectionProps> {}
-
+export interface ProductDetailItem {
+  id: string;
+  label: string;
+}
 export interface ProductDetailSectionProps {
   headline: string;
   description: string;
   price: string;
-  categories?: Array<{ title: string }>;
-  compatibility?: Array<{ title: string }>;
+  categories?: ProductDetailItem[];
+  compatibility?: ProductDetailItem[];
   buttonText: string;
   image?: ImageRef;
 }
