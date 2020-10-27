@@ -81,6 +81,11 @@ const routes = [
         children: [],
       },
       {
+        label: "NewsTeaserSection",
+        path: "/components/news-teaser-section",
+        children: [],
+      },
+      {
         label: "Quote",
         path: "/components/quote",
         children: [],
