@@ -7,42 +7,45 @@ import { Sections } from "fsxa-ui";
 export default class App extends Vue {
   render() {
     return (
-      <div style="border:1px solid black; width:600px;">
-        <Sections.AccordionSection
-          dark={false}
-          items={[
-            {
-              title:
-                "A very long title text with some lorem ipsum that is even longer when i add more words",
-              text:
-                "Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.",
-            },
-            {
-              title: "Two",
-              text: "The second accordion",
-            },
-            {
-              title: "Three",
-              text: "Almost there",
-            },
-          ]}
-        />
-        <Sections.AccordionSection
-          dark={true}
-          title={"Dark Accordion Section with title"}
-          items={[
-            {
-              title:
-                "A very long title text with some lorem ipsum that is even longer when i add more words",
-              text:
-                "Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.",
-            },
-            {
-              title: "Two",
-              text: "The second accordion",
-            },
-          ]}
-        />
+      <div>
+        <div class="m-2 w-1/3">
+          <Sections.AccordionSection
+            dark={false}
+            title={"This title is optional"}
+            items={[
+              {
+                title: "This title is not optional",
+                text: "This text is also not optional.",
+              },
+              {
+                title: "When one accordion opens",
+                text: "Another one closes.",
+              },
+              {
+                title: "You can add as many Accordions as you want",
+                text:
+                  "And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. ",
+              },
+            ]}
+          />
+        </div>
+        <div class="m-2 w-1/2">
+          <Sections.AccordionSection
+            dark={true}
+            items={[
+              {
+                title: "This is a dark accordion section",
+                text: "And as you can see it has no title",
+              },
+              {
+                title:
+                  "The width of the Accordion depends on the width of the container",
+                text:
+                  "And the overflow is hidden. So choose your words carefully.",
+              },
+            ]}
+          />
+        </div>
       </div>
     );
   }

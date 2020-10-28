@@ -2,17 +2,14 @@
 	@apply w-full; 
 	@apply my-4;
 }
-/*.Accordion.Accordion--Open .Accordion--Text-Box {
-	max-height: 1000px;
-	transition: max-height 0.6s ease-in;
-}*/
 .Accordion--Text-Box {
 	height: 0px;
 	overflow-y: hidden;
 	transition: height 0.6s ease-out;
 }
 .Accordion--Header {
-	@apply p-2; 
+	@apply py-2;
+	@apply px-2; 
 	@apply w-full; 
 	@apply cursor-pointer;
 }
