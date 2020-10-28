@@ -8,17 +8,19 @@ const headline = "ProductList Example Headline";
 const items = [
   {
     title: "Product 1",
-    description: "p1 description",
-    price: 99,
+    description:
+      "The D1R7-TR4P cleaning robot helps you keeping your house free of dirt. It's low height and flexible design means no space will be left out.",
+    price: "$99",
     image: {
       src:
         "https://enterprisedev.e-spirit.cloud/smartlivingglobal/media/images/product-images/Vacuum-cleaner-robot-black_product_teaser.jpg",
     },
+    handleClick: console.log("product 1 clicked"),
   },
   {
     title: "Product 2",
     description: "p2 description",
-    price: 9.99,
+    price: "9.99 €",
     image: {
       src:
         "https://enterprisedev.e-spirit.cloud/smartlivingglobal/media/images/product-images/smart-door-lock-round_product_teaser.jpg",
@@ -33,7 +35,7 @@ const items = [
     },
   },
   {
-    title: "Product 4",
+    title: "Product 4 - This has a longer name",
     description: "p4 is a great product",
     price: 999,
     image: {

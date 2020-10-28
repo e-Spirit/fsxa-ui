@@ -322,7 +322,8 @@ export interface ProductListItemProps {
   title: string;
   description: string;
   price?: number;
-  image?: string;
+  image?: ImageRef;
+  handleClick?: () => void;
 }
 export class ProductListItem extends Component<ProductListItemProps> {}
 
