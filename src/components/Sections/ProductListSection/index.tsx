@@ -32,7 +32,7 @@ class ProductListSection extends BaseComponent<ProductListSectionProps> {
       <div class="py-12 md:py-16 lg:py-20 ProductListSection">
         <Headline size="xl">{this.headline}</Headline>
         <div class="ProductListSection--Separator" />
-        <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 lg:grid-cols-4 xl:gap-8">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gap-8">
           {this.items.map(item => this.renderItem(item))}
         </div>
       </div>
