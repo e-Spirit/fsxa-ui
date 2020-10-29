@@ -13,9 +13,9 @@ const items = [
     price: "$99",
     image: {
       src:
-        "https://enterprisedev.e-spirit.cloud/smartlivingglobal/media/images/product-images/Vacuum-cleaner-robot-black_product_teaser.jpg",
+        "https://images.pexels.com/photos/4013157/pexels-photo-4013157.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
     },
-    handleClick: console.log("product 1 clicked"),
+    url: "https://www.pexels.com/photo/blue-and-yellow-robot-toy-4013157/",
   },
   {
     title: "Product 2",
@@ -23,7 +23,7 @@ const items = [
     price: "9.99 €",
     image: {
       src:
-        "https://enterprisedev.e-spirit.cloud/smartlivingglobal/media/images/product-images/smart-door-lock-round_product_teaser.jpg",
+        "https://images.pexels.com/photos/1068349/pexels-photo-1068349.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
     },
   },
   {
@@ -31,7 +31,7 @@ const items = [
     description: "p3 description",
     image: {
       src:
-        "https://enterprisedev.e-spirit.cloud/smartlivingglobal/media/images/product-images/test_speaker_2_product_teaser.jpg",
+        "https://images.pexels.com/photos/4065624/pexels-photo-4065624.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
     },
   },
   {
@@ -40,22 +40,17 @@ const items = [
     price: 999,
     image: {
       src:
-        "https://enterprisedev.e-spirit.cloud/smartlivingglobal/media/images/product-images/WLAN-powerplug_product_teaser.jpg",
+        "https://images.pexels.com/photos/1269930/pexels-photo-1269930.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
     },
   },
 ];
 
 @Component
 export default class App extends Vue {
-  currentItem: any = null;
-
   render() {
     return (
       <div>
-        <ProductListSection
-          headline={headline}
-          items={items}
-        ></ProductListSection>
+        <ProductListSection headline={headline} items={items} />
       </div>
     );
   }

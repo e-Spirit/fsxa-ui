@@ -1,16 +1,5 @@
-.ProductListItem {
-  @apply w-full border-gray-200 border-0;
-  position: relative;
-}
-
-.ProductListItem > img {
-  @apply w-full;
-  margin:0px;
-  border:0px;
-}
-
 .ProductListItem--InfoBox:hover {
-  opacity:1;
+  opacity:0.9;
 }
 
 .ProductListItem--InfoBox {
@@ -18,32 +7,12 @@
   top: 0; bottom: 0; left: 0; right: 0;
   background: black;
   color: white;
-}
-
-.ProductListItem--InfoBox {
   opacity: 0;
-  -webkit-transition: all 0.5s linear;
-  -moz-transition: all 0.5s linear;
-  -ms-transition: all 0.5s linear;
-  -o-transition: all 0.5s linear;
   transition: all 0.5s linear;
   transition-property: all;
   transition-duration: 0.5s;
   transition-timing-function: linear;
   transition-delay: 0s;
-}
-
-.ProductListItem--Title {
-  margin-top: 3rem;
-}
-
-.ProductListItem--Description, .ProductListItem--Price, .ProductListItem--Title {
-  margin-left: 2rem;
-  margin-right: 1rem;
-}
-
-.ProductListItem--Description {
-  font-size: smaller;
 }
 
 .line-amiation {
@@ -71,10 +40,6 @@
   background-color: white;
   left: 20px;
   top: 20px;
-  -webkit-transition: all 0.7s linear;
-  -moz-transition: all 0.7s linear;
-  -ms-transition: all 0.7s linear;
-  -o-transition: all 0.7s linear;
   transition: all 0.7s linear;
   opacity: 0;
 }

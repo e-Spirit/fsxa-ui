@@ -2,7 +2,6 @@ import BaseComponent from "@/components/BaseComponent";
 import { Component, Prop } from "vue-property-decorator";
 import "./style.css";
 import Headline from "@/components/Headline";
-import Layout from "@/components/Layout";
 import { ProductListSectionProps } from "@/types/sections";
 import { ProductListItemProps } from "@/types/components";
 import ProductListItem from "@/components/ProductListItem";
@@ -26,8 +25,6 @@ class ProductListSection extends BaseComponent<ProductListSectionProps> {
   }
 
   render() {
-    console.log("items: ", this.items);
-
     return (
       <div class="py-12 md:py-16 lg:py-20 ProductListSection">
         <Headline size="xl">{this.headline}</Headline>
