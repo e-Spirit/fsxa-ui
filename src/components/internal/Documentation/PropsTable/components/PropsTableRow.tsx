@@ -13,7 +13,7 @@ export interface PropsTableRowProps {
 class PropsTableRow extends BaseComponent<PropsTableRowProps> {
   @Prop({ required: true }) value!: PropsTableRowProps["value"];
   @Prop({ required: true }) type!: PropsTableRowProps["type"];
-  @Prop({ required: false, default: "" })
+  @Prop({ required: false, default: "none" })
   default!: PropsTableRowProps["default"];
   @Prop() required: PropsTableRowProps["required"];
   render() {

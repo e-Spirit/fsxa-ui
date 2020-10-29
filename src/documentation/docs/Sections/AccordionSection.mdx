@@ -15,10 +15,12 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
   <PropsTableRow value="title" type="String" optional>
     The optional title of the section. When set, the separator is automatically added.
   </PropsTableRow>
-  <PropsTableRow value="items" type="Array" required>
-    An array of items which describe the individual subsections. Each item consists of a 
-    <span class="code">title</span> and a
-    <span class="code">text</span>
+  <PropsTableRow value="items" type="Array of items" required>
+    An array of items which describe the individual subsections. Each item consists of
+    <ul>
+    <li><span class="code">title: string</span></li>
+    <li><span class="code">text: string</span></li>
+    </ul>
   </PropsTableRow>
 </PropsTable>
 <ExampleLoader example="Sections/AccordionSection.tsx" />
