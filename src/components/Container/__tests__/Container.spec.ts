@@ -29,9 +29,6 @@ describe("components/Container", () => {
       "My container content with <span>two</span> <span>children</span>";
     const { getByTestId } = render(Container, {
       slots: { default: content },
-      props: {
-        fluid: true,
-      },
     });
     const container = getByTestId("container");
     expect(container.getElementsByTagName("span")).toHaveLength(2);
