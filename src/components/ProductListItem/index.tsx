@@ -20,16 +20,18 @@ class ProductListItem extends BaseComponent<ProductListItemProps> {
     return (
       <div class={`ProductListItem`}>
         <img src={this.image?.src} />
-        <div class="ProductListItem--InfoBox line-amiation">
-          <Headline as="h3" class="ProductListItem--Title" size="sm">
-            {this.title}
-          </Headline>
-          <RichText
-            class="ProductListItem--Description"
-            content={this.description}
-          />
-          <div class="ProductListItem--Price">{this.price}</div>
-        </div>
+        <a href="#">
+          <div class="ProductListItem--InfoBox line-amiation">
+            <Headline as="h3" class="ProductListItem--Title" size="sm">
+              {this.title}
+            </Headline>
+            <RichText
+              class="ProductListItem--Description"
+              content={this.description}
+            />
+            <div class="ProductListItem--Price">{this.price}</div>
+          </div>
+        </a>
       </div>
     );
   }
