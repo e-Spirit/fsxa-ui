@@ -17,9 +17,7 @@ describe("components/Image", () => {
     });
     const image = getByTestId("imageDiv");
     expect(image.classList.contains("border")).toBe(false);
-    // expect(getAllByTestId(image, "veil").length).toEqual(0); // does not work -> workaround follows:
-    expect(image.innerHTML).toContain("<img"); // make sure we actually have an <img> tag inside our image div
-    expect(image.innerHTML).not.toContain("absolute"); // veil divs have class absolute
+    expect(() => getByTestId("veil")).toThrow();
   });
 
   // ToDo: relying too much on internal structure, remove test?
@@ -32,9 +30,6 @@ describe("components/Image", () => {
     });
     const veilDiv = getByTestId("veil");
     expect(veilDiv.classList.contains("opacity-75")).toBe(true);
-    const image = getByTestId("imageDiv");
-    expect(image.innerHTML).toContain("absolute"); // veil divs have class absolute (opposite of previous test)
-    expect(image.classList.contains("border")).toBe(false);
   });
 
   it("should have the border class when the border property is set", () => {
@@ -77,19 +72,5 @@ describe("components/Image", () => {
       fail("img tag not found");
     }
     expect(imgTag.getAttribute("src")).toEqual("");
-  });
-
-  it("should do 'something' with dimensions specified", () => {
-    const { getByTestId } = render(Image, {
-      props: {
-        src: testImage,
-        dimensions: {
-          width: "300px",
-          height: "200px",
-        },
-      },
-    });
-    const image = getByTestId("imageDiv");
-    // ToDo: what can we expect here?
   });
 });
