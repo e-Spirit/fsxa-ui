@@ -36,7 +36,11 @@ class PropsTableRow extends BaseComponent<PropsTableRowProps> {
         <td>{this.$slots.default}</td>
         <td>
           {this.default ? (
-            <span class="py-1 px-2 w-auto rounded-lg text-sm bg-gray-200">
+            <span
+              class={`py-1 px-2 w-auto rounded-lg text-sm bg-gray-200 ${
+                this.default === "none" ? "text-gray-400" : ""
+              }`}
+            >
               {this.default}
             </span>
           ) : (
