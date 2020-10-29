@@ -15,9 +15,10 @@ describe("components/sections/accordion-section", () => {
           ],
         },
       });
-      const darkAccordion = container.querySelector(".Accordion");
-      const classList = darkAccordion?.firstElementChild?.classList;
-      expect(classList).toContain("Accordion--Dark");
+      const darkAccordionClassList = container.querySelector(
+        ".Accordion--Header",
+      )?.classList;
+      expect(darkAccordionClassList).toContain("Accordion--Dark");
     });
     it("renders a div with its class list containing Accordion--Light when the dark property is set to false", () => {
       const lightProps = {
@@ -33,9 +34,9 @@ describe("components/sections/accordion-section", () => {
       const { container } = render(AccordionSection, {
         props: lightProps,
       });
-      const lightAccordionClassList = container.querySelector(".Accordion")
-        ?.firstElementChild?.classList;
-
+      const lightAccordionClassList = container.querySelector(
+        ".Accordion--Header",
+      )?.classList;
       expect(lightAccordionClassList).toContain("Accordion--Light");
     });
     it("renders a div with its class list containing Accordion--Light when the dark property is not set", () => {
@@ -50,15 +51,14 @@ describe("components/sections/accordion-section", () => {
       const { container } = render(AccordionSection, {
         props: darkNotSetProps,
       });
-      const darkNotSetClassList = container.querySelector(".Accordion")
-        ?.firstElementChild?.classList;
+      const darkNotSetClassList = container.querySelector(".Accordion--Header")
+        ?.classList;
       expect(darkNotSetClassList).toContain("Accordion--Light");
     });
   });
   describe("title prop", () => {
-    let container, accordionSection: HTMLElement;
-    beforeAll(() => {
-      container = render(AccordionSection, {
+    it("should render a title and a separator when the title prop is set", () => {
+      const { container, getByText } = render(AccordionSection, {
         props: {
           title: "This is a title",
           items: [
@@ -68,19 +68,27 @@ describe("components/sections/accordion-section", () => {
             },
           ],
         },
-      }).container;
-      accordionSection = container.querySelector(
-        ".Accordion-Section",
-      )! as HTMLElement;
+      });
+      expect(getByText("This is a title")).toBeTruthy();
+      expect(
+        container.querySelector(".Accordion-Section--Separator"),
+      ).toBeTruthy();
     });
-    it("when the title prop is set the accordion-section has 3 children", () => {
-      expect(accordionSection?.childElementCount).toBe(3);
-    });
-    it("renders a title and a separator when the title prop is set", () => {
-      expect(accordionSection?.children[0].innerHTML).toBe("This is a title");
-      expect(accordionSection?.children[1].classList).toContain(
-        "Accordion-Section--Separator",
-      );
+    it("should render no title and no separator when the title prop is not set", () => {
+      const { container } = render(AccordionSection, {
+        props: {
+          items: [
+            {
+              title: "The hyrule handbook of Villains",
+              text: "Chapter 1 - Ganondorf",
+            },
+          ],
+        },
+      });
+      expect(container.querySelector(".Accordion-Section--Title")).toBeFalsy();
+      expect(
+        container.querySelector(".Accordion-Section--Separator"),
+      ).toBeFalsy();
     });
   });
   describe("items prop", () => {
@@ -94,31 +102,25 @@ describe("components/sections/accordion-section", () => {
         text: "This is a test text to test text rendering",
       },
     ];
-    let container, firstAccordion: HTMLElement;
+    let container;
     let accordions: HTMLCollectionOf<Element>;
     beforeEach(() => {
       container = render(AccordionSection, {
         props: { items },
       }).container;
       accordions = container.getElementsByClassName("Accordion");
-      firstAccordion = accordions[0] as HTMLElement;
     });
 
-    it("renders one div with class 'Accordion' for each item in the array", () => {
+    it("should render one div with class 'Accordion' for each item in the array", () => {
       expect(accordions?.length).toEqual(items.length);
     });
-    it("renders the title of an item in a div with class Accordion--Header", () => {
-      const header = firstAccordion.firstElementChild;
-      expect(header?.classList).toContain("Accordion--Header");
-      expect(header?.firstElementChild).toBeInstanceOf(HTMLHeadingElement);
-      expect(header?.firstElementChild?.innerHTML).toBe("one");
-    });
-    it("renders the text of an item in a div with class Accordion--Text-Box", () => {
-      const textBox = firstAccordion.lastElementChild;
-      expect(textBox?.classList).toContain("Accordion--Text-Box");
-      expect(textBox?.firstElementChild?.innerHTML).toBe(
-        "This is a test text to test text rendering",
-      );
+    it("should render all of the items passed as prop", () => {
+      items.forEach((item, index) => {
+        const header = accordions[index].querySelector(".Accordion--Header");
+        const textBox = accordions[index].querySelector("Accordion--Text-Box");
+        expect(header?.innerHTML.includes(item.title)).toBe(true);
+        expect(textBox?.innerHTML.includes(item.text)).toBe(true);
+      });
     });
   });
   describe("opening and closing", () => {

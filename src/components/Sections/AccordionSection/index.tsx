@@ -12,9 +12,9 @@ class AccordionSection extends BaseComponent<AccordionSectionProps> {
   @Prop({ required: true }) items!: AccordionSectionProps["items"];
   @Prop() title: AccordionSectionProps["title"];
 
+  selectedIndex: number | null = null;
   state = this.items.map((item, index) => {
     return {
-      index,
       title: item.title,
       text: item.text,
       open: false,
@@ -22,14 +22,7 @@ class AccordionSection extends BaseComponent<AccordionSectionProps> {
   });
 
   toggleCollapse(index: number) {
-    this.state = this.state.map((accordion, i) => {
-      if (i === index) {
-        accordion.open = !accordion.open;
-      } else {
-        accordion.open = false;
-      }
-      return accordion;
-    });
+    this.selectedIndex = this.selectedIndex === index ? null : index;
   }
   render() {
     return (
@@ -41,10 +34,8 @@ class AccordionSection extends BaseComponent<AccordionSectionProps> {
             dark={this.dark}
             title={accordion.title}
             text={accordion.text}
-            index={index}
-            key={index}
-            open={accordion.open}
-            on-toggleCollapse={this.toggleCollapse}
+            open={index === this.selectedIndex}
+            on-toggleCollapse={this.toggleCollapse.bind(this, index)}
           />
         ))}
       </div>

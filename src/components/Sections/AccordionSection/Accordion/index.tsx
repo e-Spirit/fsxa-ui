@@ -10,7 +10,6 @@ class Accordion extends BaseComponent<AccordionProps> {
   @Prop({ default: false }) dark: AccordionProps["dark"];
   @Prop({ required: true }) title!: AccordionProps["title"];
   @Prop({ required: true }) text!: AccordionProps["text"];
-  @Prop({ required: true }) index!: AccordionProps["index"];
   @Prop({ default: false }) open!: AccordionProps["open"];
 
   @Watch("open")
@@ -26,7 +25,6 @@ class Accordion extends BaseComponent<AccordionProps> {
   }
 
   closeAccordion(accordion: HTMLElement): void {
-    console.log("closing", this.index);
     const height = accordion.scrollHeight;
 
     const transition = accordion.style.transition;
@@ -41,7 +39,6 @@ class Accordion extends BaseComponent<AccordionProps> {
   }
 
   openAccordion(accordion: HTMLElement): void {
-    console.log("opening", this.index);
     const height = accordion.scrollHeight;
     accordion.style.height = height + "px";
 
@@ -66,7 +63,7 @@ class Accordion extends BaseComponent<AccordionProps> {
             this.dark ? "Accordion--Dark" : "Accordion--Light"
           } Accordion--Header clearfix`}
           onClick={() => {
-            this.$emit("toggleCollapse", this.index);
+            this.$emit("toggleCollapse");
           }}
         >
           <h6 class="float-left w-2/3 whitespace-no-wrap overflow-hidden">

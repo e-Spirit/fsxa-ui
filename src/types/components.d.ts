@@ -411,10 +411,6 @@ export interface AccordionProps {
    */
   text: string;
   /**
-   * The index is required for the AccordionSection in order to identify which Accordion to open or close
-   */
-  index: number;
-  /**
    * Styling choice. Default is **false**
    */
   dark?: boolean;
