@@ -117,7 +117,7 @@ describe("components/sections/accordion-section", () => {
     it("should render all of the items passed as prop", () => {
       items.forEach((item, index) => {
         const header = accordions[index].querySelector(".Accordion--Header");
-        const textBox = accordions[index].querySelector("Accordion--Text-Box");
+        const textBox = accordions[index].querySelector(".Accordion--Text-Box");
         expect(header?.innerHTML.includes(item.title)).toBe(true);
         expect(textBox?.innerHTML.includes(item.text)).toBe(true);
       });
@@ -141,7 +141,8 @@ describe("components/sections/accordion-section", () => {
       });
       const header = container.querySelector(".Accordion--Header")!;
       fireEvent(header, new MouseEvent("click")).then(() => {
-        expect(header.classList).toContain("Accordion--Open");
+        const accordion = container.querySelector(".Accordion");
+        expect(accordion?.classList).toContain("Accordion--Open");
       });
     });
     it("should close when another accordion opens", () => {
@@ -161,14 +162,16 @@ describe("components/sections/accordion-section", () => {
       });
       const header = container.querySelector(".Accordion--Header")!;
       const theOtherHeader = container.querySelector(".Accordion--Header")!;
+      const accordion = container.querySelector(".Accordion");
       fireEvent(header, new MouseEvent("click"))
         .then(() => {
-          expect(header.classList).toContain("Accordion--Open");
+          expect(accordion?.classList).toContain("Accordion--Open");
         })
         .then(() => {
           fireEvent(theOtherHeader, new MouseEvent("click")).then(() => {
-            expect(header.classList).not.toContain("Accordion--Open");
-            expect(theOtherHeader.classList).toContain("Accordion--Open");
+            const theOtherAccordion = container.querySelector(".Accordion");
+            expect(accordion?.classList).not.toContain("Accordion--Open");
+            expect(theOtherAccordion?.classList).toContain("Accordion--Open");
           });
         });
     });
