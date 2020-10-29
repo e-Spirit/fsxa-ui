@@ -402,10 +402,25 @@ export interface QuoteProps {
 export class Quote extends Component<QuoteProps> {}
 
 export interface AccordionProps {
+  /**
+   * The title of the section is whats displayed in the clickable part and whats always visible
+   */
   title: string;
+  /**
+   * The text of the section is the invisible part which becomes visible after clicking the title
+   */
   text: string;
+  /**
+   * The index is required for the AccordionSection in order to identify which Accordion to open or close
+   */
   index: number;
+  /**
+   * Styling choice. Default is **false**
+   */
   dark?: boolean;
+  /**
+   * Indicates whether the text is visible or not. Default is **false**
+   */
   open?: boolean;
 }
 export class Accordion extends Component<AccordionProps> {}
