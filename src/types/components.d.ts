@@ -409,3 +409,59 @@ export interface AccordionProps {
   open?: boolean;
 }
 export class Accordion extends Component<AccordionProps> {}
+export type ScreenPrefixes = "sm" | "md" | "lg" | "xl";
+
+export type LineSeparatorWidths = "4" | "8" | "16" | "32" | "64" | "full";
+
+export interface LineSeparatorProps {
+  /**
+   * Specify which width the separator should have
+   *
+   * Possible values are: **4** | **8** | **16** | **32** | **64** | **full**
+   *
+   * Default value is: **16**
+   */
+  width?: LineSeparatorWidths;
+  /**
+   * Specify which width the separator should have when the screen is small
+   *
+   * Possible values are: **4** | **8** | **16** | **32** | **64** | **full**
+   */
+  sm_width?: LineSeparatorWidths;
+  /**
+   * Specify which width the separator should have when the screen is medium
+   *
+   * Possible values are: **4** | **8** | **16** | **32** | **64** | **full**
+   */
+  md_width?: LineSeparatorWidths;
+  /**
+   * Specify which width the separator should have when the screen is large
+   *
+   * Possible values are: **4** | **8** | **16** | **32** | **64** | **full**
+   */
+  lg_width?: LineSeparatorWidths;
+  /**
+   * Specify which width the separator should have when the screen is extra large
+   *
+   * Possible values are: **4** | **8** | **16** | **32** | **64** | **full**
+   */
+  xl_width?: LineSeparatorWidths;
+  /**
+   * Specify which height the separator should have
+   *
+   * Possible values are: **1** | **2** | **4**
+   *
+   * Default value is: **2**
+   */
+  height?: "1" | "2" | "4";
+  /**
+   * Specify on which side the separator should be
+   *
+   * Possible values are: **left** | **right**
+   *
+   * Default value is: **left**
+   */
+  side?: "left" | "right";
+}
+
+export class LineSeparator extends Component<LineSeparatorProps> {}
