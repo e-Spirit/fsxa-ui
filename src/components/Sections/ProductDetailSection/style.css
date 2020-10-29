@@ -1,0 +1,7 @@
+.ProductDetail--ProductDetail{
+    @apply pb-64;
+    border-top-width: 4em;
+    border-right-width: 2em;
+    border-left-width: 2em;
+    border-bottom-width: 4em;
+}

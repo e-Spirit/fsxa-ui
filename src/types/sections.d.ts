@@ -17,9 +17,11 @@ export interface ProductDetailSectionProps {
   description: string;
   price: string;
   categories?: ProductDetailItem[];
-  compatibility?: ProductDetailItem[];
+  compatibilities?: ProductDetailItem[];
   buttonText: string;
   image?: ImageRef;
+  compatibilityHeadline: string;
+  categoryHeadline: string;
 }
 
 export class ProductDetailSection extends Component<
