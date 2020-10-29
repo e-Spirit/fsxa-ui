@@ -23,8 +23,8 @@
 }
 .Accordion .Accordion--Indicator {
 	transition: all 0.4s linear;
-	transform: translateY(0) rotate(0deg);
+	transform: rotate(0deg);
 }
 .Accordion.Accordion.Accordion--Open .Accordion--Indicator {
-	transform: translateY(0) rotate(45deg);
+	transform: rotate(45deg);
 }
