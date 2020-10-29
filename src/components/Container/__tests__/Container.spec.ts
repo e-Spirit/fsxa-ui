@@ -23,4 +23,17 @@ describe("components/Container", () => {
     expect(container.classList.contains("w-full")).toBe(true);
     expect(container.classList.contains("container")).toBe(false);
   });
+
+  it("renders passed children in default slot", async () => {
+    const content =
+      "My container content with <span>two</span> <span>children</span>";
+    const { getByTestId } = render(Container, {
+      slots: { default: content },
+      props: {
+        fluid: true,
+      },
+    });
+    const container = getByTestId("container");
+    expect(container.getElementsByTagName("span")).toHaveLength(2);
+  });
 });
