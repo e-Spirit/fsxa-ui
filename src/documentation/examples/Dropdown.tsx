@@ -15,8 +15,6 @@ const handleClick = (item: Option) => {
 
 @Component
 export default class App extends Vue {
-  currentItem: any = null;
-
   render() {
     return (
       <div class="space-x-5 ml-32 mb-48">
