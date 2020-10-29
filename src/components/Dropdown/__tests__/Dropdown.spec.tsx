@@ -1,8 +1,9 @@
-import { render, fireEvent } from "@testing-library/vue";
+import { render, fireEvent, getByText } from "@testing-library/vue";
 import Dropdown from "..";
 
 describe("components/Dropdown", () => {
   it("should handle a callback on click", async () => {
+    const opt1 = { key: "opt1", label: "Option 1", path: "path1" };
     const spy = jest.fn();
     const { getByTestId } = render(Dropdown, {
       slots: { default: "Content" },
@@ -10,7 +11,7 @@ describe("components/Dropdown", () => {
         handleChange: spy,
         value: "opt1",
         options: [
-          { key: "opt1", label: "Option 1", path: "path1" },
+          opt1,
           { key: "opt2", label: "Option 2", path: "path2" },
           { key: "opt3", label: "Option 3", path: "path3" },
         ],
@@ -19,29 +20,28 @@ describe("components/Dropdown", () => {
 
     const option1 = getByTestId("option-opt1");
 
-    expect(option1.innerHTML).toEqual("Option 1");
-    await fireEvent(option1!, new Event("click"));
+    expect(option1.innerHTML).toEqual(opt1.label);
+    await fireEvent(option1, new Event("click"));
     expect(spy).toHaveBeenCalled();
+    expect(spy.mock.calls[0][0]).toEqual(opt1);
   });
 
-  it("should render as many options as are provided", async () => {
+  it("should render all the options provided", async () => {
+    const optionItems = [
+      { key: "opt1", label: "Option 1", path: "path1" },
+      { key: "opt2", label: "Option 2", path: "path2" },
+      { key: "opt3", label: "Option 3", path: "path3" },
+    ];
     const { container } = render(Dropdown, {
       slots: { default: "Selection" },
       props: {
         handleChange: null,
         value: "opt2",
-        options: [
-          { key: "opt1", label: "Option 1", path: "path1" },
-          { key: "opt2", label: "Option 2", path: "path2" },
-          { key: "opt3", label: "Option 3", path: "path3" },
-        ],
+        options: optionItems,
       },
     });
-
-    const optionList = container
-      .getElementsByClassName("Dropdown")[0]
-      .getElementsByTagName("ul")[0];
-    // console.log(optionList?.innerHTML);
-    expect(optionList.getElementsByTagName("li").length).toBe(4);
+    optionItems.forEach(element => {
+      expect(getByText(container, element.label)).toBeTruthy();
+    });
   });
 });
