@@ -1,9 +1,4 @@
-import {
-  render,
-  fireEvent,
-  getByText,
-  getAllByTestId,
-} from "@testing-library/vue";
+import { render } from "@testing-library/vue";
 import Image from "./../";
 
 const testImage = "[image location]";
