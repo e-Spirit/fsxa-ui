@@ -14,6 +14,7 @@ class Accordion extends BaseComponent<AccordionProps> {
 
   @Watch("open")
   toggleOpen(open: boolean): void {
+    // eslint-disable-next-line
     const accordion = this.$el.querySelector(
       ".Accordion--Text-Box",
     )! as HTMLElement;
@@ -42,14 +43,14 @@ class Accordion extends BaseComponent<AccordionProps> {
     const height = accordion.scrollHeight;
     accordion.style.height = height + "px";
 
-    const handleTransitionEnd = (e: TransitionEvent) => {
+    const handleTransitionEnd = () => {
       accordion.style.height = "auto";
     };
 
     accordion.addEventListener(
       "transitionend",
-      (e: TransitionEvent) => {
-        handleTransitionEnd(e);
+      () => {
+        handleTransitionEnd();
       },
       { once: true },
     );

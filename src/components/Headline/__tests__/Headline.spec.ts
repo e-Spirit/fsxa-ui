@@ -1,4 +1,4 @@
-import { render, fireEvent, getByText } from "@testing-library/vue";
+import { render, fireEvent } from "@testing-library/vue";
 import Headline from "./../";
 
 describe("components/Headline", () => {

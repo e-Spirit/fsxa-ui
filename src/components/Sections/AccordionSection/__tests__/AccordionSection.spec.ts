@@ -139,6 +139,7 @@ describe("components/sections/accordion-section", () => {
           ],
         },
       });
+      // eslint-disable-next-line
       const header = container.querySelector(".Accordion--Header")!;
       fireEvent(header, new MouseEvent("click")).then(() => {
         const accordion = container.querySelector(".Accordion");
@@ -160,7 +161,9 @@ describe("components/sections/accordion-section", () => {
           ],
         },
       });
+      // eslint-disable-next-line
       const header = container.querySelector(".Accordion--Header")!;
+      // eslint-disable-next-line
       const theOtherHeader = container.querySelector(".Accordion--Header")!;
       const accordion = container.querySelector(".Accordion");
       fireEvent(header, new MouseEvent("click"))
