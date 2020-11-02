@@ -25,6 +25,7 @@ const items = [
       src:
         "https://images.pexels.com/photos/1068349/pexels-photo-1068349.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
     },
+    url: "http://e-spirit.com",
   },
   {
     title: "Product 3",
@@ -33,15 +34,18 @@ const items = [
       src:
         "https://images.pexels.com/photos/4065624/pexels-photo-4065624.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
     },
+    url: "http://e-spirit.com",
+    price: "free",
   },
   {
     title: "Product 4 - This has a longer name",
     description: "p4 is a great product",
-    price: 999,
+    price: "999",
     image: {
       src:
         "https://images.pexels.com/photos/1269930/pexels-photo-1269930.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
     },
+    url: "http://e-spirit.com",
   },
 ];
 

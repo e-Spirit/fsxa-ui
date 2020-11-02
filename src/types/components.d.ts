@@ -321,9 +321,9 @@ export class NewsTeaserItem extends Component<NewsTeaserItemProps> {}
 export interface ProductListItemProps {
   title: string;
   description: string;
-  price?: string;
+  price: string;
   image: ImageRef;
-  url?: string;
+  url: string;
 }
 export class ProductListItem extends Component<ProductListItemProps> {}
 
