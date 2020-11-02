@@ -14,8 +14,6 @@ export interface ProductListSectionProps {
   items: ProductListItemProps[];
 }
 
-// export class ProductListSection extends Component<ProductListSectionProps> {}
-
 export interface InterestingFactsSectionProps {
   /**
    * Optional reference to the background-image that should be displayed
