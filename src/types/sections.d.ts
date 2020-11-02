@@ -1,7 +1,6 @@
 import { Component } from "vue-tsx-support";
 import { ImageRef } from "./utils";
-import { NewsTeaserItemProps } from "./components";
-import { ProductListItemProps } from "./components";
+import { NewsTeaserItemProps, ProductListItemProps } from "./components";
 
 export interface NewsTeaserSectionProps {
   headline: string;

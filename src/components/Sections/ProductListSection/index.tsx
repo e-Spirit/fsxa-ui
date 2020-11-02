@@ -20,6 +20,7 @@ class ProductListSection extends BaseComponent<ProductListSectionProps> {
         description={item.description}
         price={item.price}
         image={item.image}
+        url={item.url}
       />
     );
   }
