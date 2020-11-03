@@ -14,8 +14,8 @@ class ProductListItem extends BaseComponent<ProductListItemProps> {
   @Prop({ required: true }) title!: ProductListItemProps["title"];
   @Prop({ required: true }) description!: ProductListItemProps["description"];
   @Prop({ required: true }) price!: ProductListItemProps["price"];
-  @Prop() image!: ProductListItemProps["image"];
-  @Prop() url: ProductListItemProps["url"];
+  @Prop({ required: true }) image!: ProductListItemProps["image"];
+  @Prop({ required: true }) url!: ProductListItemProps["url"];
 
   render() {
     return (
