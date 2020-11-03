@@ -5,11 +5,11 @@ export interface ButtonProps {
   /**
    * Specify the variant the button should be displayed in.
    *
-   * Possible values are: **default** | **inverted** | **tag** | **animated**
+   * Possible values are: **default** | **inverted** | **tag** | **tag-selected** | **animated**
    *
    * Default value is: **default**
    */
-  variant?: "default" | "inverted" | "tag" | "animated";
+  variant?: "default" | "inverted" | "tag" | "tag-selected" | "animated";
   /**
    * Optional callback that will be triggered, when the button is clicked
    */

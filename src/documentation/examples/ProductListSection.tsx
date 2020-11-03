@@ -49,13 +49,52 @@ const items = [
   },
 ];
 
+const filters = [
+  [
+    {
+      key: "news",
+      value: "News",
+    },
+    {
+      key: "events",
+      value: "Events",
+    },
+    {
+      key: "business",
+      value: "Business",
+    },
+  ],
+  [
+    {
+      key: "usa",
+      value: "USA",
+    },
+    {
+      key: "europe",
+      value: "Europe",
+    },
+    {
+      key: "asia",
+      value: "Asia",
+    },
+  ],
+];
+
 @Component
 export default class App extends Vue {
+  selectedFilters: string[] = [];
+
   render() {
     return (
-      <div>
-        <ProductListSection headline={headline} items={items} />
-      </div>
+      <ProductListSection
+        headline={headline}
+        items={items}
+        filters={filters}
+        handleFilterChange={selectedFilters =>
+          (this.selectedFilters = selectedFilters)
+        }
+        selectedFilters={this.selectedFilters}
+      />
     );
   }
 }

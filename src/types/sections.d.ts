@@ -12,6 +12,12 @@ export class NewsTeaserSection extends Component<NewsTeaserSectionProps> {}
 export interface ProductListSectionProps {
   headline: string;
   items: ProductListItemProps[];
+  filters: {
+    key: string;
+    value: any;
+  }[][];
+  handleFilterChange: (selectedFilters: string[]) => void;
+  selectedFilters: string[];
 }
 
 export interface InterestingFactsSectionProps {

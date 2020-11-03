@@ -20,7 +20,7 @@ class ProductListItem extends BaseComponent<ProductListItemProps> {
   render() {
     return (
       <div class={`ProductListItem w-full border-gray-200 border-0 relative`}>
-        <Image class="w-full m-0 border-0" src={this.image.src} />
+        <Image class="w-full h-full m-0 border-0" src={this.image.src} />
         <a href={`${this.url}`}>
           <div class="ProductListItem--InfoBox line-amiation">
             <Headline as="h3" class="mt-12 ml-8 mr-4" size="sm">
