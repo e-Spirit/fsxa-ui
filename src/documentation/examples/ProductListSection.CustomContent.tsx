@@ -4,7 +4,7 @@ import Component from "vue-class-component";
 import ProductListSection from "@/components/Sections/ProductListSection";
 import { Loader } from "@/components";
 
-const headline = "ProductList Example Headline";
+const headline = "ProductList (Custom Loader) Example Headline";
 
 const filters = [
   [
@@ -19,20 +19,6 @@ const filters = [
     {
       key: "business",
       value: "Business",
-    },
-  ],
-  [
-    {
-      key: "usa",
-      value: "USA",
-    },
-    {
-      key: "europe",
-      value: "Europe",
-    },
-    {
-      key: "asia",
-      value: "Asia",
     },
   ],
 ];
