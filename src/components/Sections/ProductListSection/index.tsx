@@ -66,7 +66,7 @@ class ProductListSection extends BaseComponent<ProductListSectionProps> {
             </div>
           ))}
         {this.$slots.default ? (
-          <Loader />
+          this.$slots.default
         ) : (
           <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gap-8">
             {this.items.map(item => this.renderItem(item))}
