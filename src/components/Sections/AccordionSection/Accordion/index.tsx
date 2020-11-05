@@ -44,7 +44,9 @@ class Accordion extends BaseComponent<AccordionProps> {
     accordion.style.height = height + "px";
 
     const handleTransitionEnd = () => {
-      accordion.style.height = "auto";
+      if (this.$el.classList.contains("Accordion--Open")) {
+        accordion.style.height = "auto";
+      }
     };
 
     accordion.addEventListener(
