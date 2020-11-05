@@ -17,6 +17,7 @@ export interface ProductListSectionProps {
     value: any;
   }[][];
   handleFilterChange: (selectedFilters: string[]) => void;
+  handleItemClick: () => void;
   selectedFilters: string[];
 }
 

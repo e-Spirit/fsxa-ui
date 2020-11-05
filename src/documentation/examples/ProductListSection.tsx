@@ -94,6 +94,7 @@ export default class App extends Vue {
           (this.selectedFilters = selectedFilters)
         }
         selectedFilters={this.selectedFilters}
+        handleItemClick={() => console.log("return something")}
       />
     );
   }

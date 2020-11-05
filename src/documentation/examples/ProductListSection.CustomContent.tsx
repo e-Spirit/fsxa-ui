@@ -38,6 +38,7 @@ export default class App extends Vue {
             (this.selectedFilters = selectedFilters)
           }
           selectedFilters={this.selectedFilters}
+          handleItemClick={() => console.log("return something else")}
         >
           <div class="w-full h-64 relative flex justify-center items-center">
             <Loader />

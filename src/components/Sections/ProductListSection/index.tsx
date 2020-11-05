@@ -19,6 +19,7 @@ class ProductListSection extends BaseComponent<ProductListSectionProps> {
   @Prop({ required: true }) filters!: ProductListSectionProps["filters"];
   @Prop({ required: true })
   handleFilterChange!: ProductListSectionProps["handleFilterChange"];
+  handleItemClick!: ProductListSectionProps["handleItemClick"];
 
   renderItem(item: ProductListItemProps) {
     return (
@@ -46,7 +47,9 @@ class ProductListSection extends BaseComponent<ProductListSectionProps> {
   render() {
     return (
       <div class="py-12 md:py-16 lg:py-20 ProductListSection w-full">
-        <Headline size="xl">{this.headline}</Headline>
+        <Headline size="xl" handleClick={() => this.handleItemClick}>
+          {this.headline}
+        </Headline>
         <div class="ProductListSection--Separator" />
         {this.filters &&
           this.filters.map(filterList => (
