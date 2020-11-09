@@ -11,13 +11,13 @@ export class NewsTeaserSection extends Component<NewsTeaserSectionProps> {}
 
 export interface ProductListSectionProps {
   headline: string;
-  items: ProductListItemProps[];
+  items: Omit<ProductListItemProps, "handleClick">[];
   filters: {
     key: string;
     value: any;
   }[][];
   handleFilterChange: (selectedFilters: string[]) => void;
-  handleItemClick: () => void;
+  handleItemClick: (item: any) => void;
   selectedFilters: string[];
 }
 

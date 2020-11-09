@@ -16,7 +16,19 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
   Specify a headline for the product list.
   </PropsTableRow>
   <PropsTableRow value="items">
-  Items that should be shown in the list (title: string, description: string, price: number).
+  Items that should be shown in the list (title: string, description: string, price: number, image: Image, url: string).
+  </PropsTableRow>
+  <PropsTableRow value="filters">
+  A list of filters (key: string, value: string).
+  </PropsTableRow>
+  <PropsTableRow value="selectedFilters">
+  A list of selected filters (key: string).
+  </PropsTableRow>
+  <PropsTableRow value="handleFilterChange">
+  A filter function callback.
+  </PropsTableRow>
+  <PropsTableRow value="handleItemClick">
+  A callback function for item clicks.
   </PropsTableRow>
 </PropsTable>
 

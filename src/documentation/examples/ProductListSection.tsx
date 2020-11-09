@@ -15,7 +15,7 @@ const items = [
       src:
         "https://images.pexels.com/photos/4013157/pexels-photo-4013157.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
     },
-    url: "https://www.pexels.com/photo/blue-and-yellow-robot-toy-4013157/",
+    url: "#",
   },
   {
     title: "Product 2",
@@ -25,7 +25,7 @@ const items = [
       src:
         "https://images.pexels.com/photos/1068349/pexels-photo-1068349.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
     },
-    url: "http://e-spirit.com",
+    url: "#",
   },
   {
     title: "Product 3",
@@ -34,7 +34,7 @@ const items = [
       src:
         "https://images.pexels.com/photos/4065624/pexels-photo-4065624.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
     },
-    url: "http://e-spirit.com",
+    url: "#",
     price: "free",
   },
   {
@@ -45,7 +45,7 @@ const items = [
       src:
         "https://images.pexels.com/photos/1269930/pexels-photo-1269930.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
     },
-    url: "http://e-spirit.com",
+    url: "#",
   },
 ];
 
@@ -80,6 +80,10 @@ const filters = [
   ],
 ];
 
+const handleClick = () => {
+  console.log("Item click... ");
+};
+
 @Component
 export default class App extends Vue {
   selectedFilters: string[] = [];
@@ -90,11 +94,11 @@ export default class App extends Vue {
         headline={headline}
         items={items}
         filters={filters}
+        selectedFilters={this.selectedFilters}
         handleFilterChange={selectedFilters =>
           (this.selectedFilters = selectedFilters)
         }
-        selectedFilters={this.selectedFilters}
-        handleItemClick={() => console.log("return something")}
+        handleItemClick={handleClick}
       />
     );
   }

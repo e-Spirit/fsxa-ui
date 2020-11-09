@@ -16,12 +16,19 @@ class ProductListItem extends BaseComponent<ProductListItemProps> {
   @Prop({ required: true }) price!: ProductListItemProps["price"];
   @Prop({ required: true }) image!: ProductListItemProps["image"];
   @Prop({ required: true }) url!: ProductListItemProps["url"];
+  @Prop({ required: true }) handleClick!: ProductListItemProps["handleClick"];
 
   render() {
     return (
       <div class={`ProductListItem w-full border-gray-200 border-0 relative`}>
         <Image class="w-full h-full m-0 border-0" src={this.image.src} />
-        <a href={`${this.url}`}>
+        <a
+          href={`${this.url}`}
+          onClick={event => {
+            event.preventDefault();
+            this.handleClick();
+          }}
+        >
           <div class="ProductListItem--InfoBox line-amiation">
             <Headline as="h3" class="mt-12 ml-8 mr-4" size="sm">
               {this.title}

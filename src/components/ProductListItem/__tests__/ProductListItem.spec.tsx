@@ -1,5 +1,5 @@
 import ProductListItem from "@/components/ProductListItem";
-import { render } from "@testing-library/vue";
+import { fireEvent, render } from "@testing-library/vue";
 
 describe("components/ProductListItem", () => {
   const testItem = {
@@ -12,6 +12,7 @@ describe("components/ProductListItem", () => {
         "https://images.pexels.com/photos/4013157/pexels-photo-4013157.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
     },
     url: "https://www.pexels.com/photo/blue-and-yellow-robot-toy-4013157/",
+    handleClick: {},
   };
 
   const testSetup = {
@@ -37,5 +38,23 @@ describe("components/ProductListItem", () => {
     const { container } = render(ProductListItem, testSetup);
     expect(container.innerHTML).toContain(testItem.description);
     expect(container.innerHTML).toContain(testItem.price);
+  });
+
+  it("calls handleItemClick callback on item click", async () => {
+    const spy = jest.fn();
+    const spyItem = testItem;
+    spyItem.handleClick = spy;
+    const spySetup = {
+      slots: { default: "Content" },
+      props: spyItem,
+    };
+    const { container } = render(ProductListItem, spySetup);
+    const productLink = container.getElementsByTagName("a").item(0);
+    if (productLink) {
+      await fireEvent(productLink, new Event("click"));
+      expect(spy).toHaveBeenCalled();
+    } else {
+      fail("Could not find link tag within ProductListItem");
+    }
   });
 });
