@@ -43,7 +43,7 @@ describe("components/Breadcrumbs", () => {
       label: "Link 1",
     });
   });
-  it("checks if all items have been rendered", async () => {
+  it("checks if all items have been rendered and are in the right order", async () => {
     const spy = jest.fn();
     const items = [
       {
@@ -65,15 +65,16 @@ describe("components/Breadcrumbs", () => {
         label: "Link 3",
       },
     ];
-    const { container } = render(Breadcrumbs, {
+    const { getAllByText } = render(Breadcrumbs, {
       slots: { default: "Content" },
       props: {
         handleItemClick: spy,
         items: items,
       },
     });
-    items.forEach(item => {
-      expect(item.label).toBeTruthy();
+    const matchedItems: Element[] = getAllByText(/Link/g);
+    items.forEach((item, index) => {
+      expect(matchedItems[index].textContent).toEqual(item.label);
     });
   });
 });
