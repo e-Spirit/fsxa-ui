@@ -1,0 +1,39 @@
+import Code from "@/components/internal/Documentation/Code";
+import ExampleLoader from "@/documentation/utils/ExampleLoader";
+import Meta from "@/components/internal/Documentation/Meta";
+import PropsTable from "@/components/internal/Documentation/PropsTable";
+import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
+
+<Meta
+  title="Dropdown"
+  subtitle="Dropdown displays a dropdown list with a number of different options."
+/>
+
+## Properties
+
+<PropsTable>
+  <PropsTableRow value="value">
+    The initially selected value (key).
+  </PropsTableRow>
+  <PropsTableRow value="options">
+    An array of Option elements:
+    <ul>
+        <li>
+            <span class="code">key</span> is the key to identify an option with
+        </li>
+        <li>
+            <span class="code">label</span> is the displayed name
+        </li>
+        <li>
+            <span class="code">path</span> is the path the option links to
+        </li>
+    </ul>
+  </PropsTableRow>
+  <PropsTableRow value="handleChange">
+    a function to call on dropdown changes
+  </PropsTableRow>
+</PropsTable>
+
+## Example
+
+<ExampleLoader example="Dropdown.tsx" />

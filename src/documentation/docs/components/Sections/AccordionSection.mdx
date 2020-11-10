@@ -1,0 +1,26 @@
+import Meta from "@/components/internal/Documentation/Meta";
+import ExampleLoader from "@/documentation/utils/ExampleLoader";
+import AccordionSection from "@/components/Sections/AccordionSection";
+import PropsTable from "@/components/internal/Documentation/PropsTable";
+import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
+
+<Meta
+  title="AccordionSection"
+  subtitle="The Accordion Section consists of subsections which open and close when clicked on."
+/>
+<PropsTable>
+  <PropsTableRow value="dark" optional>
+    Specifies whether the accordion should be dark or light. Possible values are
+    <span class="code">true</span>
+    <span class="code">false</span> (default)
+  </PropsTableRow>
+  <PropsTableRow value="title" optional>
+    The optional title of the section. When set, the separator is automatically added.
+  </PropsTableRow>
+  <PropsTableRow value="items" required>
+    An array of items which describe the individual subsections. Each item consists of a 
+    <span class="code">title</span> and a
+    <span class="code">text</span>
+  </PropsTableRow>
+</PropsTable>
+<ExampleLoader example="Sections/AccordionSection.tsx" />

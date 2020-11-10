@@ -1,6 +1,6 @@
 import { Component } from "vue-tsx-support";
 import { ImageRef } from "./utils";
-import { NewsTeaserItemProps } from "./components";
+import { AccordionProps, NewsTeaserItemProps } from "./components";
 
 export interface NewsTeaserSectionProps {
   headline: string;
@@ -123,3 +123,19 @@ export interface HeaderSectionProps {
   handleItemClick?: (item: Breadcrumb) => void;
 }
 export class HeaderSection extends Component<HeaderSectionProps> {}
+
+export interface AccordionSectionProps {
+  /**
+   * Optional title string. When not set, there simply won't be a title for the section.
+   */
+  title?: string;
+  /**
+   * Styling choice. Default is **false**
+   */
+  dark?: boolean;
+  /**
+   * The individual subsections consist of a non-optional title and a non-optional text.
+   */
+  items: Pick<AccordionProps, "title" | "text">[];
+}
+export class AccordionSection extends Component<AccordionSectionProps> {}

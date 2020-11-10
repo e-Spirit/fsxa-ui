@@ -41,6 +41,11 @@ const routes = [
     path: "/components",
     children: [
       {
+        label: "AccordionSection",
+        path: "/components/sections/accordion-section",
+        children: [],
+      },
+      {
         label: "Button",
         path: "/components/button",
         children: [],
@@ -53,6 +58,11 @@ const routes = [
       {
         label: "Counter",
         path: "/components/counter",
+        children: [],
+      },
+      {
+        label: "Dropdown",
+        path: "/components/dropdown",
         children: [],
       },
       {

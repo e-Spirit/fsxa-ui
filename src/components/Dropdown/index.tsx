@@ -29,6 +29,7 @@ class Dropdown extends BaseComponent<DropdownProps> {
                   event.preventDefault();
                   this.handleChange(option);
                 }}
+                data-testid={`option-${option.key}`}
               >
                 {option.label}
               </a>
