@@ -2,6 +2,7 @@ import { Component, Prop, Watch } from "vue-property-decorator";
 import BaseComponent from "@/components/BaseComponent";
 import { AccordionProps } from "@/types/components";
 import "./style.css";
+import RichText from "@/components/RichText";
 
 @Component({
   name: "Accordion",
@@ -12,13 +13,24 @@ class Accordion extends BaseComponent<AccordionProps> {
   @Prop({ required: true }) text!: AccordionProps["text"];
   @Prop({ default: false }) open!: AccordionProps["open"];
 
+  data() {
+    return {
+      isOpen: this.open,
+    };
+  }
+
   @Watch("open")
-  toggleOpen(open: boolean): void {
+  onOpen(isOpen: boolean): void {
+    this.$data.isOpen = isOpen;
+  }
+
+  @Watch("isOpen")
+  toggleOpen(isOpen: boolean): void {
     // eslint-disable-next-line
     const accordion = this.$el.querySelector(
       ".Accordion--Text-Box",
     )! as HTMLElement;
-    if (open) {
+    if (isOpen) {
       this.openAccordion(accordion);
     } else {
       this.closeAccordion(accordion);
@@ -60,16 +72,20 @@ class Accordion extends BaseComponent<AccordionProps> {
 
   render() {
     return (
-      <div class={`Accordion ${this.open ? "Accordion--Open" : ""}`}>
+      <div class={`Accordion ${this.$data.isOpen ? "Accordion--Open" : ""}`}>
         <div
           class={`${
             this.dark ? "Accordion--Dark" : "Accordion--Light"
           } Accordion--Header clearfix`}
           onClick={() => {
-            this.$emit("toggleCollapse");
+            typeof this.$listeners?.toggleCollapse === "function"
+              ? this.$emit("toggleCollapse")
+              : (this.$data.isOpen = !this.$data.isOpen);
           }}
         >
-          <h6 class="float-left w-2/3 whitespace-no-wrap overflow-hidden">
+          <h6
+            class={`float-left w-2/3 whitespace-no-wrap overflow-hidden uppercase`}
+          >
             {this.title}
           </h6>
           <span class="Accordion--Indicator float-right">
@@ -77,7 +93,7 @@ class Accordion extends BaseComponent<AccordionProps> {
           </span>
         </div>
         <div class="Accordion--Text-Box">
-          <p>{this.text}</p>
+          <RichText content={this.text} />
         </div>
       </div>
     );

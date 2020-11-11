@@ -146,7 +146,7 @@ describe("components/sections/accordion-section", () => {
         expect(accordion?.classList).toContain("Accordion--Open");
       });
     });
-    it("should close when another accordion opens", () => {
+    it("should close when another accordion opens", done => {
       const { container } = render(AccordionSection, {
         props: {
           items: [
@@ -161,20 +161,21 @@ describe("components/sections/accordion-section", () => {
           ],
         },
       });
-      // eslint-disable-next-line
-      const header = container.querySelector(".Accordion--Header")!;
-      // eslint-disable-next-line
-      const theOtherHeader = container.querySelector(".Accordion--Header")!;
-      const accordion = container.querySelector(".Accordion");
+      const [header, theOtherHeader] = container.querySelectorAll(
+        ".Accordion--Header",
+      );
+      const [accordion, theOtherAccordion] = container.querySelectorAll(
+        ".Accordion",
+      );
       fireEvent(header, new MouseEvent("click"))
         .then(() => {
-          expect(accordion?.classList).toContain("Accordion--Open");
+          expect(accordion.classList).toContain("Accordion--Open");
         })
         .then(() => {
           fireEvent(theOtherHeader, new MouseEvent("click")).then(() => {
-            const theOtherAccordion = container.querySelector(".Accordion");
-            expect(accordion?.classList).not.toContain("Accordion--Open");
-            expect(theOtherAccordion?.classList).toContain("Accordion--Open");
+            expect(accordion.classList).not.toContain("Accordion--Open");
+            expect(theOtherAccordion.classList).toContain("Accordion--Open");
+            done();
           });
         });
     });
