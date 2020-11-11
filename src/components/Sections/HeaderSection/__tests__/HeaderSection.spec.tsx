@@ -32,4 +32,22 @@ describe("components/HeaderSection", () => {
     });
     expect(getByText(content)).toBeTruthy();
   });
+
+  it("correctly consumes the specified background image", () => {
+    const content = "My test headline";
+    const imageSource = "image source url";
+    const { container } = render(HeaderSection, {
+      props: {
+        title: content,
+        backgroundImage: { src: imageSource },
+        breadcrumbs: breadItems,
+      },
+    });
+    expect(
+      container
+        .querySelector(".HeaderSection--BackgroundImage")
+        ?.querySelector("img")
+        ?.getAttribute("src"),
+    ).toEqual(imageSource);
+  });
 });

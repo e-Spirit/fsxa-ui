@@ -18,7 +18,6 @@ class TeaserSection extends BaseComponent<TeaserSectionProps> {
   @Prop({ required: false }) buttonText: TeaserSectionProps["buttonText"];
   @Prop({ required: false })
   handleButtonClick: TeaserSectionProps["handleButtonClick"];
-  @Prop({ required: false }) tagline: TeaserSectionProps["tagline"];
   @Prop({ required: false })
   image: TeaserSectionProps["image"];
 

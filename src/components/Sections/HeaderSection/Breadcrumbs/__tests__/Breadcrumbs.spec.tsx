@@ -43,6 +43,7 @@ describe("components/Breadcrumbs", () => {
       label: "Link 1",
     });
   });
+
   it("checks if all items have been rendered and are in the right order", async () => {
     const spy = jest.fn();
     const items = [
