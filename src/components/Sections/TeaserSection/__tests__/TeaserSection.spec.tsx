@@ -34,7 +34,7 @@ describe("components/TeaserSections", () => {
       },
     });
     const button = getByTestId("teasersection-button");
-    await fireEvent(button!, new Event("click"));
+    await fireEvent(button, new Event("click"));
     expect(spy).toHaveBeenCalled();
   });
 
