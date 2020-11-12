@@ -23,16 +23,16 @@ describe("components/NewsTeaserItem", () => {
     const title = "title test";
     const date = "02.02.2020";
     const description = "desc test";
-    const { getByTestId } = render(NewsTeaserItem, {
+    const { getByText } = render(NewsTeaserItem, {
       props: {
         title: title,
         date: date,
         description: description,
       },
     });
-    const titleTest = getByTestId("newsteaseritem-title");
-    const dateTest = getByTestId("newsteaseritem-date");
-    const descTest = getByTestId("newsteaseritem-description");
+    const titleTest = getByText("title test");
+    const dateTest = getByText("02.02.2020");
+    const descTest = getByText("desc test");
     expect(titleTest).toBeTruthy();
     expect(dateTest).toBeTruthy();
     expect(descTest).toBeTruthy();
