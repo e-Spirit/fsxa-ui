@@ -4,12 +4,12 @@ import RichText from "./../";
 describe("components/RichText", () => {
   it("checks if the content will be passed in", () => {
     const content = "test";
-    const { getByTestId } = render(RichText, {
+    const { getByText } = render(RichText, {
       props: {
         content: content,
       },
     });
-    const contentTest = getByTestId("richtext-content");
+    const contentTest = getByText("test");
     expect(contentTest).toBeTruthy;
   });
   it("checks if inline works", () => {
