@@ -29,6 +29,35 @@ describe("components/Footer", () => {
     await fireEvent(footer!, new Event("click"));
     expect(spy).toHaveBeenCalled();
   });
+  it("checks if all items have been rendered", async () => {
+    const spy = jest.fn();
+    const copyright = "this is my copyright";
+    const links = [
+      {
+        referenceId: 1,
+        referenceType: "page",
+        isActive: true,
+        label: "footer1",
+      },
+      {
+        referenceId: 2,
+        referenceType: "page",
+        isActive: false,
+        label: "footer2",
+      },
+    ];
+    const { getAllByText } = render(Footer, {
+      props: {
+        copyright: copyright,
+        links: links,
+        handleClick: spy,
+      },
+    });
+    const matchedItems: Element[] = getAllByText(/footer/g);
+    links.forEach((link, index) => {
+      expect(matchedItems[index].textContent).toEqual(link.label);
+    });
+  });
 
   it("renders content which is passed in", () => {
     const spy = jest.fn();
@@ -53,7 +82,7 @@ describe("components/Footer", () => {
         handleClick: spy,
       },
     });
-    const copyRightTest = getByText("copyright");
+    const copyRightTest = getByText(`© ${copyright}`);
     expect(copyRightTest).toBeTruthy();
   });
 });
