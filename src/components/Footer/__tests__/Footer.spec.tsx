@@ -32,8 +32,8 @@ describe("components/Footer", () => {
 
   it("renders content which is passed in", () => {
     const spy = jest.fn();
-    const copyright = "this is my copyright";
-    const { getByTestId } = render(Footer, {
+    const copyright = "copyright";
+    const { getByText } = render(Footer, {
       props: {
         copyright: copyright,
         links: [
@@ -53,7 +53,7 @@ describe("components/Footer", () => {
         handleClick: spy,
       },
     });
-    const copyRightTest = getByTestId("footer-copyright");
+    const copyRightTest = getByText("copyright");
     expect(copyRightTest).toBeTruthy();
   });
 });
