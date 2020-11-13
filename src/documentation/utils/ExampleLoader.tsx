@@ -21,7 +21,13 @@ class ExampleLoader extends BaseComponent<ExampleLoaderProps> {
       throw new Error(
         `Could not find file in @/documentation/examples/examples/${this.example}`,
       );
-    return <Example renderCallback={content.default} code={code.default} />;
+    return (
+      <Example
+        filename={this.example}
+        renderCallback={content.default}
+        code={code.default}
+      />
+    );
   }
 }
 export default ExampleLoader;

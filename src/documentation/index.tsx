@@ -151,10 +151,10 @@ const routes = [
   name: "Documentation",
 })
 class Documentation extends BaseComponent {
-  showSidebar = false;
-
   render() {
-    return (
+    return this.$route.meta.singleView ? (
+      <router-view />
+    ) : (
       <div class="w-full min-h-full flex">
         <div class="md:w-1/3 lg:w-1/4 md:max-w-xs border-r border-gray-300 hidden md:block p-5">
           <div class="p-5 flex items-center">
