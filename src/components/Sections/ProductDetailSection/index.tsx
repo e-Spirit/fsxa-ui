@@ -10,6 +10,7 @@ import Container from "@/components/Container";
 import Layout from "@/components/Layout";
 import "./style.css";
 import Accordion from "@/components/Sections/AccordionSection/Accordion";
+import { ImageRef } from "@/types/utils";
 @Component({
   name: "ProductDetailSection",
 })
@@ -31,6 +32,19 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
   @Prop()
   handleButtonClick: ProductDetailSectionProps["handleButtonClick"];
 
+  renderImage(image: ImageRef) {
+    return (
+      <div class="w-full h-64 mb-4 mb-12 lg:mb-20 xl:mb-56 pr-20">
+        <Image
+          border={true}
+          zoom={true}
+          class="ProductDetail--Image"
+          src={image.src}
+        ></Image>
+      </div>
+    );
+  }
+
   render() {
     return (
       <div class="py-12 md:py-16 lg:py-20">
@@ -42,14 +56,7 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
                 lg={{ width: "1/2" }}
                 class="mb-16 lg:mb-0"
               >
-                <div class="w-full h-64 mb-4 md:mb-12 pr-20">
-                  <Image
-                    border={true}
-                    zoom={true}
-                    class="ProductDetail--Image"
-                    src={this.images[0].src}
-                  ></Image>
-                </div>
+                {this.images.map(image => this.renderImage(image))}
               </LayoutItem>
             )}
             <LayoutItem

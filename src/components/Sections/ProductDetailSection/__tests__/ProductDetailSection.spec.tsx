@@ -1,5 +1,5 @@
 import { ProductProperty } from "@/types/sections";
-import { render } from "@testing-library/vue";
+import { fireEvent, render } from "@testing-library/vue";
 import ProductDetailSection from "./../";
 
 const handleClick = () => {
@@ -9,11 +9,9 @@ const description =
   "The Smart Door Lock SRT-456 is a mechanical look which can be unlocked with a PIN or your smartphone. In addition you can use the camera with integrated face recognition to allow only certain people to unlock the door.";
 const headline = "Smart Door Lock SRT-456";
 const price = "$ 239 (RLP)";
-const src1 =
-  "https://enterprisedev.e-spirit.cloud/media/img/Bötzow-Brauerei_Gelände_1900.jpg";
-const src2 =
-  "https://enterprisedev.e-spirit.cloud/smartlivingglobal/Images/Product-Images/Smart-door-lock-round_product_teaser.jpg";
-const buttonText = "search specialized Dealer";
+const src1 = "image_1_src";
+const src2 = "image_2_src";
+const buttonText = "search specialized dealer";
 
 const propertyList: ProductProperty[] = [
   {
@@ -26,7 +24,7 @@ const propertyList: ProductProperty[] = [
     ],
   },
   {
-    title: "Compatibilities",
+    title: "Compatibility",
     properties: [
       {
         id: "1",
@@ -47,7 +45,7 @@ const propertyList: ProductProperty[] = [
 const foldableContentList: Record<string, string> = {
   Delivery: `<ul class="list-disc px-10 py-4"><li>mechanical lock</li><li>camera with integrated face recognition</li><li>wireless numpad</li><li>operation manual</li></ul>`,
   "Installation instructions": "<p>Fix it at the door. Ready.</p>",
-  Compatibilities: `<ul class="list-disc px-10 py-4"><li>Google Home</li><li>Amazon Alexa</li><li>Bosch Smart Home</li></ul>`,
+  Compatibility: `<ul class="list-disc px-10 py-4"><li>Google Home</li><li>Amazon Alexa</li><li>Bosch Smart Home</li></ul>`,
 };
 
 const componentProperties = {
@@ -97,7 +95,6 @@ describe("components/sections/ProductDetailSection", () => {
     });
     expect(container).toBeTruthy();
     expectToExist(container, [
-      "ProductDetail--Image",
       "ProductDetail--Headline",
       "ProductDetail--Description",
       "ProductDetail--Price",
@@ -105,6 +102,7 @@ describe("components/sections/ProductDetailSection", () => {
     ]);
 
     expectToExistNTimes(container, [
+      { key: "ProductDetail--Image", expectedInstanceCount: 2 },
       { key: "ProductDetail--Property--Headline", expectedInstanceCount: 2 },
       { key: "ProductDetail--Property--List", expectedInstanceCount: 2 },
       { key: "ProductDetail--Accordion", expectedInstanceCount: 3 },
@@ -130,5 +128,21 @@ describe("components/sections/ProductDetailSection", () => {
       "ProductDetail--Property--List",
       "ProductDetail--Accordion",
     ]);
+  });
+
+  it("calls handleButtonClick callback on click", async () => {
+    const spy = jest.fn();
+    const { getByText } = render(ProductDetailSection, {
+      props: {
+        handleButtonClick: spy,
+        headline,
+        buttonText,
+        description,
+        price,
+      },
+    });
+    const button = getByText(buttonText);
+    await fireEvent(button, new Event("click"));
+    expect(spy).toHaveBeenCalled();
   });
 });

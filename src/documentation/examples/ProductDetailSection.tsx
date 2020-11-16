@@ -8,10 +8,10 @@ const description =
 const headline = "Smart Door Lock SRT-456";
 const price = "$ 239 (RLP)";
 const src1 =
-  "https://enterprisedev.e-spirit.cloud/media/img/Bötzow-Brauerei_Gelände_1900.jpg";
+  "https://images.pexels.com/photos/279810/pexels-photo-279810.jpeg?auto=compress&cs=tinysrgb&h=650&w=940";
 const src2 =
-  "https://enterprisedev.e-spirit.cloud/smartlivingglobal/Images/Product-Images/Smart-door-lock-round_product_teaser.jpg";
-const button = "search specialized Dealer";
+  "https://images.pexels.com/photos/259832/pexels-photo-259832.jpeg?auto=compress&cs=tinysrgb&h=650&w=940";
+const button = "search specialized dealer";
 
 const propertyList: ProductProperty[] = [
   {
@@ -24,7 +24,7 @@ const propertyList: ProductProperty[] = [
     ],
   },
   {
-    title: "Compatibilities",
+    title: "Compatibility",
     properties: [
       {
         id: "1",
@@ -45,11 +45,11 @@ const propertyList: ProductProperty[] = [
 const foldableContentList: Record<string, string> = {
   Delivery: `<ul class="list-disc px-10 py-4"><li>mechanical lock</li><li>camera with integrated face recognition</li><li>wireless numpad</li><li>operation manual</li></ul>`,
   "Installation instructions": "<p>Fix it at the door. Ready.</p>",
-  Compatibilities: `<ul class="list-disc px-10 py-4"><li>Google Home</li><li>Amazon Alexa</li><li>Bosch Smart Home</li></ul>`,
+  Compatibility: `<ul class="list-disc px-10 py-4"><li>Google Home</li><li>Amazon Alexa</li><li>Bosch Smart Home</li></ul>`,
 };
 
 function handleClick() {
-  return;
+  console.log("Button clicked!");
 }
 
 @Component
