@@ -5,3 +5,7 @@
     border-left-width: 2em;
     border-bottom-width: 4em;
 }
+
+.ProductDetail--Button {
+    letter-spacing: 0.15em;
+}

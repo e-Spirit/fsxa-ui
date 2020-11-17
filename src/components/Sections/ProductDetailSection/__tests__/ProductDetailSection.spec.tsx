@@ -107,6 +107,46 @@ describe("components/sections/ProductDetailSection", () => {
       { key: "ProductDetail--Property--List", expectedInstanceCount: 2 },
       { key: "ProductDetail--Accordion", expectedInstanceCount: 3 },
     ]);
+
+    expect(
+      container.querySelector(`.ProductDetail--Headline`)?.textContent,
+    ).toEqual(headline);
+    expect(
+      container.querySelector(`.ProductDetail--Description`)?.textContent,
+    ).toEqual(description);
+    expect(
+      container.querySelector(`.ProductDetail--Price`)?.textContent,
+    ).toEqual(price);
+    expect(
+      container.querySelector(`.ProductDetail--Button`)?.textContent,
+    ).toEqual(buttonText);
+
+    container
+      .querySelectorAll(`.ProductDetail--Property--Headline`)
+      .forEach((headline, index) => {
+        expect(headline.textContent).toEqual(propertyList[index].title);
+      });
+
+    const propertyNodes = container.querySelectorAll(
+      `.ProductDetail--Property--List`,
+    );
+    expect(propertyNodes[0].textContent).toEqual("Door Locks");
+    expect(propertyNodes[1].textContent).toEqual(
+      "Google HomeAmazon AlexaBosch Smart Home",
+    );
+
+    const accordionNodes = container.querySelectorAll(
+      `.ProductDetail--Accordion`,
+    );
+    expect(accordionNodes[0].textContent).toEqual(
+      "Deliverymechanical lockcamera with integrated face recognitionwireless numpadoperation manual",
+    );
+    expect(accordionNodes[1].textContent).toEqual(
+      "Installation instructionsFix it at the door. Ready.",
+    );
+    expect(accordionNodes[2].textContent).toEqual(
+      "CompatibilityGoogle HomeAmazon AlexaBosch Smart Home",
+    );
   });
 
   it("should render only elements passed to it", () => {

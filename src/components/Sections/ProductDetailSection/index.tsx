@@ -8,6 +8,7 @@ import Paragraph from "@/components/Paragraph";
 import Button from "@/components/Button";
 import Container from "@/components/Container";
 import Layout from "@/components/Layout";
+import RichText from "@/components/RichText";
 import "./style.css";
 import Accordion from "@/components/Sections/AccordionSection/Accordion";
 import { ImageRef } from "@/types/utils";
@@ -17,7 +18,7 @@ import { ImageRef } from "@/types/utils";
 class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
   @Prop({ required: true })
   headline!: ProductDetailSectionProps["headline"];
-  @Prop({ required: true })
+  @Prop()
   buttonText!: ProductDetailSectionProps["buttonText"];
   @Prop()
   propertyList!: ProductDetailSectionProps["propertyList"];
@@ -34,7 +35,7 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
 
   renderImage(image: ImageRef) {
     return (
-      <div class="w-full h-64 mb-4 mb-12 lg:mb-20 xl:mb-56 pr-20">
+      <div class="w-full mb-2 md:mb-6 lg:mb-16 xl:mb-56 pr-20">
         <Image
           border={true}
           zoom={true}
@@ -116,8 +117,11 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
                             title={key}
                             key={key}
                             class="ProductDetail--Accordion"
-                            text={this.foldableContentList![key]}
-                          />
+                          >
+                            <RichText
+                              content={this.foldableContentList![key]}
+                            />
+                          </Accordion>
                         ))}
                       </LayoutItem>
                     )}

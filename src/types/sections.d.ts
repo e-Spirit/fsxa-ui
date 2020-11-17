@@ -46,7 +46,7 @@ export interface ProductDetailSectionProps {
    *
    * The button is only rendered, when `buttonText` is provided.
    */
-  buttonText: string;
+  buttonText?: string;
   /**
    * Optional list of product properties that will be rendered into bullet lists under the `price`.
    * Each `propertyList`-entry results in a new bullet list with a custom `title`.
@@ -183,6 +183,6 @@ export interface AccordionSectionProps {
   /**
    * The individual subsections consist of a non-optional title and a non-optional text.
    */
-  items: Pick<AccordionProps, "title" | "text">[];
+  items: Array<{ title: string; text: string }>;
 }
 export class AccordionSection extends Component<AccordionSectionProps> {}

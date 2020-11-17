@@ -26,10 +26,11 @@ class AccordionSection extends BaseComponent<AccordionSectionProps> {
           <Accordion
             dark={this.dark}
             title={item.title}
-            text={item.text}
             open={index === this.selectedIndex}
             on-toggleCollapse={this.toggleCollapse.bind(this, index)}
-          />
+          >
+            <p>{item.text}</p>
+          </Accordion>
         ))}
       </div>
     );

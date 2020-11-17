@@ -407,10 +407,6 @@ export interface AccordionProps {
    */
   title: string;
   /**
-   * The text of the section is the invisible part which becomes visible after clicking the title
-   */
-  text: string;
-  /**
    * Styling choice. Default is **false**
    */
   dark?: boolean;

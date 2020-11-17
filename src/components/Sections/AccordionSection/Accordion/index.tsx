@@ -2,7 +2,6 @@ import { Component, Prop, Watch } from "vue-property-decorator";
 import BaseComponent from "@/components/BaseComponent";
 import { AccordionProps } from "@/types/components";
 import "./style.css";
-import RichText from "@/components/RichText";
 
 @Component({
   name: "Accordion",
@@ -10,18 +9,13 @@ import RichText from "@/components/RichText";
 class Accordion extends BaseComponent<AccordionProps> {
   @Prop({ default: false }) dark: AccordionProps["dark"];
   @Prop({ required: true }) title!: AccordionProps["title"];
-  @Prop({ required: true }) text!: AccordionProps["text"];
   @Prop({ default: false }) open!: AccordionProps["open"];
 
-  data() {
-    return {
-      isOpen: this.open,
-    };
-  }
+  private isOpen = this.open;
 
   @Watch("open")
   onOpen(isOpen: boolean): void {
-    this.$data.isOpen = isOpen;
+    this.isOpen = isOpen;
   }
 
   @Watch("isOpen")
@@ -72,7 +66,7 @@ class Accordion extends BaseComponent<AccordionProps> {
 
   render() {
     return (
-      <div class={`Accordion ${this.$data.isOpen ? "Accordion--Open" : ""}`}>
+      <div class={`Accordion ${this.isOpen ? "Accordion--Open" : ""}`}>
         <div
           class={`${
             this.dark ? "Accordion--Dark" : "Accordion--Light"
@@ -80,7 +74,7 @@ class Accordion extends BaseComponent<AccordionProps> {
           onClick={() => {
             typeof this.$listeners?.toggleCollapse === "function"
               ? this.$emit("toggleCollapse")
-              : (this.$data.isOpen = !this.$data.isOpen);
+              : (this.isOpen = !this.isOpen);
           }}
         >
           <h6
@@ -92,9 +86,7 @@ class Accordion extends BaseComponent<AccordionProps> {
             <i class="fa fa-plus"></i>
           </span>
         </div>
-        <div class="Accordion--Text-Box">
-          <RichText content={this.text} />
-        </div>
+        <div class="Accordion--Text-Box">{this.$slots.default}</div>
       </div>
     );
   }
