@@ -1,0 +1,45 @@
+.FullWidthImageSliderSection--Slide--animate-in {
+  .Image {
+    @apply opacity-100;
+  }
+
+  .Content,
+  .Description,
+  .CTA-Button {
+    @apply translate-y-0 ease-in-out;
+  }
+
+  .Content {
+    transform: translateZ(0);
+    @apply delay-200;
+  }
+
+  .Description {
+    transform: translateZ(0);
+    @apply delay-300;
+  }
+
+  .CTA-Button {
+    transform: translateZ(0);
+    @apply delay-400;
+  }
+}
+
+.FullWidthImageSliderSection--Slide--animate-out {
+  .Image {
+    @apply opacity-0 delay-400;
+  }
+
+  .Content {
+    @apply translate-y-full delay-300;
+  }
+
+  .Description,
+  .CTA-Button {
+    @apply translate-y-32;
+  }
+
+  .Description {
+    @apply delay-200;
+  }
+}

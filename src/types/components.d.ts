@@ -120,17 +120,25 @@ export interface ImageProps {
    */
   lazy?: boolean;
   /**
-   * The src of the image that should be displayed
+   * The src of the image that should be displayed.
    *
-   * You either need to specify `renderImage` or `src`
+   * Note: If you are passing additional resolutions, this image src will be used as fallback
    */
   src: string;
+
   /**
-   * TODO: Implement ImageKit.io support for users. This helps the user-perception and adds value to the site
-   *
-   * Pass in dimensions of the image. This is used to display a decent placeholder and avoid flickering
+   * All available resolutions of your image that will be combined into a srcset statement
    */
-  dimensions?: Dimensions;
+  resolutions?: Record<
+    string,
+    {
+      url: string;
+      width: number;
+      height: number;
+    }
+  >;
+
+  sizes?: string;
   /**
    * Should the shift / border effect be applied?
    *

@@ -9,10 +9,11 @@ import { RichTextProps } from "@/types/components";
 class RichText extends BaseComponent<RichTextProps> {
   @Prop({ required: true }) content!: RichTextProps["content"];
   @Prop({ required: false, default: false }) inline!: RichTextProps["inline"];
+
   render() {
     return (
       <div
-        class={`RichText ${this.inline ? "inline" : ""}`}
+        class={`RichText ${this.inline ? "RichText--inline" : ""}`}
         domPropsInnerHTML={this.content}
       />
     );

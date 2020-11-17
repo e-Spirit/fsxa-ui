@@ -33,8 +33,9 @@ class InterestingFactsSection extends BaseComponent<
             class="InterestingFactsSection--BackgroundImage"
             opacity="80"
             data-preview-id={this.backgroundImage.previewId}
-            dimensions={this.backgroundImage.dimensions}
             src={this.backgroundImage.src}
+            resolutions={this.backgroundImage.resolutions}
+            sizes="100vw"
           />
         )}
         <Container>

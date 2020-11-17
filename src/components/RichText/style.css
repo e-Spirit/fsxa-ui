@@ -1,8 +1,8 @@
-.RichText.inline * {
-  @apply inline;
+.RichText--inline * {
+  @apply inline-block;
 }
 
-.RichText:not(.inline) {
+.RichText:not(.RichText--inline) {
   @apply mb-6;
 
   p {

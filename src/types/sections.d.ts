@@ -104,3 +104,48 @@ export interface HeaderSectionProps {
   handleItemClick?: (item: Breadcrumb) => void;
 }
 export class HeaderSection extends Component<HeaderSectionProps> {}
+
+export interface FullWidthImageSliderSectionSlide {
+  /**
+   * A resolution map which provides the width / height and url for each resolution
+   *
+   * The Section will automatically make sure, that the correct image is referenced
+   */
+  image: Record<
+    string,
+    {
+      url: string;
+      width: number;
+      height: number;
+    }
+  >;
+  /**
+   * The title of the slide that will be animated in.
+   *
+   * Note: This can contain RichText
+   */
+  title: string;
+  /**
+   * The description that will be animated. Makre sure that you do not use too much text.
+   *
+   * Note: This can contain RichText
+   */
+  description: string;
+  /**
+   * The label of the button that should be displayed.
+   */
+  buttonText: string;
+}
+export interface FullWidthImageSliderSectionProps {
+  /**
+   * The slides that should be displayed. You can add additional properties to the slide-objects as well.
+   */
+  slides: FullWidthImageSliderSectionSlide[];
+  /**
+   * This callback will be invoked with the slide the button was clicked in
+   */
+  handleButtonClick: (slide: FullWidthImageSliderSectionSlide) => void;
+}
+export class FullWidthImageSliderSection extends Component<
+  FullWidthImageSliderSection
+> {}

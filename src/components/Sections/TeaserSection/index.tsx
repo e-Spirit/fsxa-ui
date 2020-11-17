@@ -50,7 +50,8 @@ class TeaserSection extends BaseComponent<TeaserSectionProps> {
               {this.image && (
                 <Image
                   src={this.image.src}
-                  dimensions={this.image.dimensions}
+                  resolutions={this.image.resolutions}
+                  sizes={`(min-width: ${this.breakpoints.lg}) calc(100vw / 12 * 7), 100vw`}
                   data-preview-id={this.image.previewId}
                   lazy
                   border

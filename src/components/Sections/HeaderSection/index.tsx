@@ -21,7 +21,8 @@ class HeaderSection extends BaseComponent<HeaderSectionProps> {
         {this.backgroundImage && (
           <Image
             src={this.backgroundImage.src}
-            dimensions={this.backgroundImage?.dimensions}
+            resolutions={this.backgroundImage.resolutions}
+            sizes="100vw"
             data-preview-id={this.backgroundImage?.previewId}
             class="HeaderSection--BackgroundImage"
             opacity="80"

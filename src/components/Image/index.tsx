@@ -29,7 +29,8 @@ const isInViewport = (element: Element, preloadMulitplier = 1.1) => {
 })
 class Image extends BaseComponent<ImageProps> {
   @Prop({ required: true }) src!: ImageProps["src"];
-  @Prop({ required: false }) dimensions: ImageProps["dimensions"];
+  @Prop() resolutions: ImageProps["resolutions"];
+  @Prop() sizes: ImageProps["sizes"];
   @Prop({ required: false }) lazy!: ImageProps["lazy"];
   @Prop({ required: false }) border!: ImageProps["border"];
   @Prop({ required: false }) zoom!: ImageProps["zoom"];
@@ -75,15 +76,28 @@ class Image extends BaseComponent<ImageProps> {
     }
   }
 
+  get isClient() {
+    return typeof window !== "undefined";
+  }
+
+  get srcset() {
+    if (!this.resolutions) return undefined;
+    return Object.values(this.resolutions)
+      .map(
+        resolution =>
+          `${resolution.url} ${resolution.width}w ${resolution.height}h`,
+      )
+      .join(", ");
+  }
+
   render() {
-    const ratio = this.dimensions
-      ? this.dimensions.width / this.dimensions.height
-      : null;
     return (
-      <div class={`Image w-full ${this.border ? "border" : ""}`}>
+      <div class={`Image w-full h-full ${this.border ? "border" : ""}`}>
         <div class="w-full h-full overflow-hidden relative">
           <img
             src={!this.lazy || this.loaded ? this.src : ""}
+            srcset={this.srcset}
+            sizes={this.sizes}
             class={`${
               this.zoom ? "zoom" : ""
             } w-full h-full object-cover object-center`}
