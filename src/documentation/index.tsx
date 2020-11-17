@@ -71,6 +71,11 @@ const routes = [
         children: [],
       },
       {
+        label: "ListSection",
+        path: "/components/list-section",
+        children: [],
+      },
+      {
         label: "Navigation",
         path: "/components/navigation",
         children: [],
@@ -81,11 +86,6 @@ const routes = [
         children: [],
       },
       {
-        label: "ProductListSection",
-        path: "/components/product-list-section",
-        children: [],
-      },
-      {
         label: "Quote",
         path: "/components/quote",
         children: [],
@@ -93,6 +93,11 @@ const routes = [
       {
         label: "RichText",
         path: "/components/rich-text",
+        children: [],
+      },
+      {
+        label: "ProductListItem",
+        path: "/components/product-list-item",
         children: [],
       },
       {
@@ -111,7 +116,6 @@ class Documentation extends BaseComponent {
   showSidebar = false;
 
   render() {
-    console.log(this.$route);
     return (
       <div class="w-full min-h-full flex">
         <div class="md:w-1/3 lg:w-1/4 md:max-w-xs border-r border-gray-300 hidden md:block p-5">

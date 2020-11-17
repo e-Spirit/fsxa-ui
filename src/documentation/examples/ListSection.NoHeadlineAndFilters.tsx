@@ -1,9 +1,8 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 
-import ProductListSection from "@/components/Sections/ProductListSection";
-
-const headline = "ProductList Example Headline";
+import ListSection from "@/components/Sections/ListSection";
+import ProductListItem from "@/components/ProductListItem";
 
 const items = [
   {
@@ -49,39 +48,8 @@ const items = [
   },
 ];
 
-const filters = [
-  [
-    {
-      key: "news",
-      value: "News",
-    },
-    {
-      key: "events",
-      value: "Events",
-    },
-    {
-      key: "business",
-      value: "Business",
-    },
-  ],
-  [
-    {
-      key: "usa",
-      value: "USA",
-    },
-    {
-      key: "europe",
-      value: "Europe",
-    },
-    {
-      key: "asia",
-      value: "Asia",
-    },
-  ],
-];
-
-const handleClick = () => {
-  console.log("Item click... ");
+const handleClick = (item: any) => {
+  console.log("Item click... ", item);
 };
 
 @Component
@@ -90,15 +58,18 @@ export default class App extends Vue {
 
   render() {
     return (
-      <ProductListSection
-        headline={headline}
+      <ListSection
         items={items}
-        filters={filters}
-        selectedFilters={this.selectedFilters}
-        handleFilterChange={selectedFilters =>
-          (this.selectedFilters = selectedFilters)
-        }
-        handleItemClick={handleClick}
+        renderItem={item => (
+          <ProductListItem
+            title={item.title}
+            description={item.description}
+            price={item.price}
+            image={item.image}
+            url={item.url}
+            handleClick={handleClick.bind(null, item)}
+          />
+        )}
       />
     );
   }

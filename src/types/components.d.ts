@@ -319,11 +319,31 @@ export interface NewsTeaserItemProps {
 export class NewsTeaserItem extends Component<NewsTeaserItemProps> {}
 
 export interface ProductListItemProps {
+  /**
+   * The title that will be displayed
+   */
   title: string;
+  /**
+   * The description that will be displayed. Can contain RichText
+   */
   description: string;
+  /**
+   * The price that will be displayed.
+   */
   price: string;
+  /**
+   * The image of the product that will be displayed in the background
+   */
   image: ImageRef;
+  /**
+   * The url that should be opened, when the item is clicked.
+   *
+   * Note: this will only be used, when SSR is active and JS is deactivated in the client
+   */
   url: string;
+  /**
+   * Callback that will be invoked, when the item is clicked
+   */
   handleClick: () => void;
 }
 export class ProductListItem extends Component<ProductListItemProps> {}

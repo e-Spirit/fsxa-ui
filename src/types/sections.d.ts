@@ -1,6 +1,6 @@
 import { Component } from "vue-tsx-support";
 import { ImageRef } from "./utils";
-import { NewsTeaserItemProps, ProductListItemProps } from "./components";
+import { NewsTeaserItemProps } from "./components";
 
 export interface NewsTeaserSectionProps {
   headline: string;
@@ -9,16 +9,35 @@ export interface NewsTeaserSectionProps {
 }
 export class NewsTeaserSection extends Component<NewsTeaserSectionProps> {}
 
-export interface ProductListSectionProps {
-  headline: string;
-  items: Omit<ProductListItemProps, "handleClick">[];
-  filters: {
+export interface ListSectionProps<Item> {
+  /**
+   * You can pass an optional headline that will be displayed in top of your items.
+   * An additional separator will be rendered as well.
+   */
+  headline?: string;
+  /**
+   * The items that should be iterated over
+   */
+  items: Item[];
+  /**
+   * Render-Prop with which you must define, how your items should get rendered
+   */
+  renderItem: (item: Item) => JSX.Element | JSX.Element[] | null;
+  /**
+   * Optional filters that will be displayed between headline and items
+   */
+  filters?: {
     key: string;
     value: any;
   }[][];
-  handleFilterChange: (selectedFilters: string[]) => void;
-  handleItemClick: (item: any) => void;
-  selectedFilters: string[];
+  /**
+   * Optional callback that will be invoked with the new selectedFilters-Array
+   */
+  handleFilterChange?: (selectedFilters: string[]) => void;
+  /**
+   * Optional Array of selected filter-keys
+   */
+  selectedFilters?: string[];
 }
 
 export interface InterestingFactsSectionProps {

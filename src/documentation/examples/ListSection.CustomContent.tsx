@@ -1,10 +1,10 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 
-import ProductListSection from "@/components/Sections/ProductListSection";
+import ListSection from "@/components/Sections/ListSection";
 import { Loader } from "@/components";
 
-const headline = "ProductList (Custom Loader) Example Headline";
+const headline = "List (Custom Loader) Example Headline";
 
 const filters = [
   [
@@ -30,20 +30,20 @@ export default class App extends Vue {
   render() {
     return (
       <div>
-        <ProductListSection
+        <ListSection
           headline={headline}
           items={[]}
+          renderItem={_ => null}
           filters={filters}
           handleFilterChange={selectedFilters =>
             (this.selectedFilters = selectedFilters)
           }
           selectedFilters={this.selectedFilters}
-          handleItemClick={() => console.log("return something else")}
         >
           <div class="w-full h-64 relative flex justify-center items-center">
             <Loader />
           </div>
-        </ProductListSection>
+        </ListSection>
       </div>
     );
   }
