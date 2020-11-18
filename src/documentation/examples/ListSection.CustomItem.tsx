@@ -85,7 +85,7 @@ export default class App extends Vue {
   render() {
     return (
       <ListSection
-        headline="Custom Item - Example"
+        headline="Custom Item - Example 2"
         items={items}
         filters={filters}
         selectedFilters={this.selectedFilters}
