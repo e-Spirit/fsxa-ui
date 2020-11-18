@@ -39,27 +39,14 @@ describe("components/ListSection", () => {
     ],
   ];
 
-  const handleMyClick = () => {
-    return;
-  };
-
-  const renderItem = (item: ProductListItemProps) => (
-    <div class="w-full h-64 bg-gray-200 flex items-center justify-center rounded-md ProductListItem">
-      {item.title}
-    </div>
-  );
-
-  const spy = jest.fn();
-
   const testSetup = {
     slots: { default: "" },
     props: {
       headline: "Test headline",
       filters: testFilters,
       selectedFilters: ["news"],
-      handleItemClick: handleMyClick,
       handleFilterChange: filterChange,
-      renderItem: spy,
+      renderItem: {},
       items: [
         {
           title: "Product 1",
@@ -94,8 +81,11 @@ describe("components/ListSection", () => {
   };
 
   it("renders as many items as provided", async () => {
-    render(ListSection, testSetup);
-    expect(spy).toBeCalledTimes(3);
+    const renderSpy = jest.fn();
+    const spySetup = testSetup;
+    testSetup.props.renderItem = renderSpy;
+    render(ListSection, spySetup);
+    expect(renderSpy).toBeCalledTimes(3);
   });
 
   it("renders the provided headline", async () => {
