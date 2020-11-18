@@ -1,7 +1,9 @@
+import ProductListItem from "@/components/ProductListItem";
+import { ProductListItemProps } from "@/types/fsxa-ui";
 import { fireEvent, render } from "@testing-library/vue";
-import ProductListSection from "..";
+import ListSection from "..";
 
-describe("components/ProductListSection", () => {
+describe("components/ListSection", () => {
   const filterChange = () => {
     return;
   };
@@ -41,6 +43,14 @@ describe("components/ProductListSection", () => {
     return;
   };
 
+  const renderItem = (item: ProductListItemProps) => (
+    <div class="w-full h-64 bg-gray-200 flex items-center justify-center rounded-md ProductListItem">
+      {item.title}
+    </div>
+  );
+
+  const spy = jest.fn();
+
   const testSetup = {
     slots: { default: "" },
     props: {
@@ -49,6 +59,7 @@ describe("components/ProductListSection", () => {
       selectedFilters: ["news"],
       handleItemClick: handleMyClick,
       handleFilterChange: filterChange,
+      renderItem: spy,
       items: [
         {
           title: "Product 1",
@@ -83,20 +94,19 @@ describe("components/ProductListSection", () => {
   };
 
   it("renders as many items as provided", async () => {
-    const { container } = render(ProductListSection, testSetup);
-    const productListItems = container.querySelectorAll(".ProductListItem");
-    expect(productListItems.length).toBe(testSetup.props.items.length);
+    render(ListSection, testSetup);
+    expect(spy).toBeCalledTimes(3);
   });
 
   it("renders the provided headline", async () => {
-    const { container } = render(ProductListSection, testSetup);
+    const { container } = render(ListSection, testSetup);
     expect(container.getElementsByTagName("h1").item(0)?.innerHTML).toEqual(
       "Test headline",
     );
   });
 
   it("renders all filter buttons", async () => {
-    const { container } = render(ProductListSection, testSetup);
+    const { container } = render(ListSection, testSetup);
     expect(container.querySelectorAll(".Button").length).toBe(6);
   });
 
@@ -104,7 +114,7 @@ describe("components/ProductListSection", () => {
     const spy = jest.fn();
     const spySetup = testSetup;
     testSetup.props.handleFilterChange = spy;
-    const { container } = render(ProductListSection, spySetup);
+    const { container } = render(ListSection, spySetup);
     const aButton = container.querySelector(".Button");
     if (aButton) {
       await fireEvent(aButton, new Event("click"));
@@ -114,26 +124,11 @@ describe("components/ProductListSection", () => {
     }
   });
 
-  it("calls handleItemClick callback on item click", async () => {
-    const spy = jest.fn();
-    const spySetup = testSetup;
-    testSetup.props.handleItemClick = spy;
-    const { container } = render(ProductListSection, spySetup);
-    const aProduct = container.querySelector(".ProductListItem");
-    const productLink = aProduct?.getElementsByTagName("a").item(0);
-    if (productLink) {
-      await fireEvent(productLink, new Event("click"));
-      expect(spy).toHaveBeenCalled();
-    } else {
-      fail("Could not find ProductListItem with a link tag");
-    }
-  });
-
   it("renders passed content as default content", () => {
     const content = "This is my test";
     const contentSetup = testSetup;
     contentSetup.slots.default = content;
-    const { getByText } = render(ProductListSection, testSetup);
+    const { getByText } = render(ListSection, testSetup);
     expect(getByText(content)).toBeTruthy();
   });
 });
