@@ -4,7 +4,7 @@ import InterestingFactsSection from "@/components/Sections/InterestingFactsSecti
 
 const text =
   "Trees get lonely too, so we'll give him a little friend. And I know you're saying, 'Oh Bob, you've done it this time.' And you may be right. No worries. No cares. Just float and wait for the wind to blow you around. La- da- da- da- dah. Just be happy.";
-const counter = [
+const counters = [
   {
     value: 12,
     label: "test",
@@ -15,7 +15,7 @@ const counter = [
   },
 ];
 const imageSrc =
-  "https://enterpriseprod.e-spirit.cloud/smartliving/media/images/Content/Couple-with-tablet-2_welcome_slider.jpg";
+  "https://images.pexels.com/photos/5592596/pexels-photo-5592596.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
 
 @Component
 export default class App extends Vue {
@@ -26,7 +26,7 @@ export default class App extends Vue {
           headline="test"
           text={text}
           tagline="123"
-          counters={counter}
+          counters={counters}
           backgroundImage={{
             src: imageSrc,
             dimensions: { width: 400, height: 400 },
