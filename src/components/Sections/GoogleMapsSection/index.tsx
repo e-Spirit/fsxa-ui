@@ -153,7 +153,6 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
       apiKey: this.apikey,
       version: "weekly",
       language: this.language,
-      libraries: ["places"],
     });
     let map: google.maps.Map;
     loader
@@ -170,8 +169,7 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
         cb(map);
       })
       .catch(err => {
-        //TODO: remove this, or improve it
-        console.error(err.message);
+        throw new Error(err);
       });
   }
   mounted() {

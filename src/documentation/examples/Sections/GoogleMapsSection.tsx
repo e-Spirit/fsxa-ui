@@ -21,7 +21,7 @@ export default class App extends Vue {
     ];
 
     return (
-      <div class="container mx-auto h-full">
+      <div class="container mx-auto h-64">
         <Sections.GoogleMapsSection
           apikey={apikey}
           title="Google Maps Section"
