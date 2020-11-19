@@ -23,10 +23,11 @@ class FullWidthImageSliderSection extends BaseComponent<
     return (
       <div class="w-full h-full bg-black overflow-hidden relative">
         <Image
-          class="opacity-0 transition-opacity duration-250 transform"
-          src={slide.image.ORIGINAL.url}
+          class="transition-opacity duration-250 transform"
+          src={slide.image.SMALL.url}
           resolutions={slide.image}
           sizes={"100vw"}
+          gradient={true}
         />
         <div class="absolute w-full h-full top-0 left-0 pointer-events-none z-0 bg-gradient-to-b to-gray-900 from-transparent"></div>
         <div class="absolute bottom-0 left-0 Content w-full transform transition-transform translate-y-full px-6 pb-16 md:px-12 md:pb-12 lg:px-16 origin-top duration-250 text-white">
@@ -163,12 +164,12 @@ class FullWidthImageSliderSection extends BaseComponent<
               <div class="pointer-events-none w-full h-full absolute top-0 left-0">
                 {this.renderArrowButton(
                   "left",
-                  this.slides[params.prevSlideIndex!].image.ORIGINAL.url,
+                  this.slides[params.prevSlideIndex!].image.SMALL.url,
                   () => params.showSlide(params.prevSlideIndex!),
                 )}
                 {this.renderArrowButton(
                   "right",
-                  this.slides[params.nextSlideIndex!].image.ORIGINAL.url,
+                  this.slides[params.nextSlideIndex!].image.SMALL.url,
                   () => params.showSlide(params.nextSlideIndex!),
                 )}
                 {this.renderStepper(

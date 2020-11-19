@@ -35,6 +35,7 @@ class Image extends BaseComponent<ImageProps> {
   @Prop({ required: false }) border!: ImageProps["border"];
   @Prop({ required: false }) zoom!: ImageProps["zoom"];
   @Prop({ required: false }) opacity!: ImageProps["opacity"];
+  @Prop({ required: false }) gradient!: ImageProps["gradient"];
 
   throttledLazyLoadHandler: any;
   loaded = false;
@@ -107,6 +108,11 @@ class Image extends BaseComponent<ImageProps> {
               class={`absolute top-0 left-0 w-full h-full pointer-events-none bg-black ${
                 opacityClasses[this.opacity]
               }`}
+            />
+          )}
+          {this.gradient && (
+            <div
+              class={`absolute top-0 left-0 w-full h-full pointer-events-none overlay-gradient`}
             />
           )}
         </div>
