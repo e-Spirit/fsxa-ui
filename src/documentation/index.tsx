@@ -46,6 +46,11 @@ const routes = [
         children: [],
       },
       {
+        label: "GoogleMapsSection",
+        path: "/components/sections/google-maps-section",
+        children: [],
+      },
+      {
         label: "Button",
         path: "/components/button",
         children: [],

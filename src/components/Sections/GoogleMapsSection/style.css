@@ -1,0 +1,12 @@
+.google-maps-description-button {
+    @apply bg-black p-2 my-4 w-auto overflow-hidden text-white cursor-pointer font-light text-sm;
+}
+.google-maps-description-button:hover {
+    @apply bg-gray-200 text-black;
+}
+.google-maps-description-button:focus {
+    outline: none;
+}
+.google-maps-description {
+    @apply w-32 text-sm;
+}

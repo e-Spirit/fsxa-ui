@@ -3,6 +3,7 @@ import NewsTeaserSection from "./NewsTeaserSection";
 import HeaderSection from "./HeaderSection";
 import TeaserSection from "./TeaserSection";
 import AccordionSection from "./AccordionSection";
+import GoogleMapsSection from "./GoogleMapsSection";
 
 export default {
   InterestingFactsSection,
@@ -10,4 +11,5 @@ export default {
   HeaderSection,
   TeaserSection,
   AccordionSection,
+  GoogleMapsSection,
 };

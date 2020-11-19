@@ -120,3 +120,60 @@ export interface AccordionSectionProps {
   items: Pick<AccordionProps, "title" | "text">[];
 }
 export class AccordionSection extends Component<AccordionSectionProps> {}
+
+export interface GoogleMapsSectionProps {
+  /**
+   * Your GoogleMaps apikey
+   */
+  apikey: string;
+  /**
+   * The location
+   */
+  startLocation?: Location;
+  /**
+   * The title text to be displayed above the map container
+   */
+  title?: string;
+  /**
+   * A number between 1 and 20 representing approximately the following zoom levels
+   * 1: World
+   * 5: Landmass/Continent
+   * 10: City
+   * 15: Streets
+   * 20: Buildings
+   * Default is 15
+   */
+  zoom?: number;
+  /**
+   * The language for the map. Default is "en".
+   * See also the list of supported languages.
+   * https://developers.google.com/maps/faq#languagesupport
+   */
+  language?: string;
+  /**
+   * An array of locations. This component will place markers at these locations which can be clicked to display additional information.
+   */
+  locations?: MapsLocation[];
+  /**
+   * The label to be displayed on the buttons in each description.
+   * Default is 'Contact Us'
+   */
+  buttonLabel?: string;
+  /**
+   * A function to handle the press of the button in the description of each location.
+   * When the function is called the current location data is passed in.
+   */
+  buttonHandle: (event: MouseEvent, location: MapsLocation) => void;
+}
+export interface MapsPosition {
+  lat: number;
+  lng: number;
+  literal?: string;
+}
+export interface MapsLocation {
+  position: MapsPosition;
+  city: string;
+  street: string;
+  description?: string;
+  name: string;
+}
