@@ -1,0 +1,45 @@
+import Meta from "@/components/internal/Documentation/Meta";
+import ExampleLoader from "@/documentation/utils/ExampleLoader";
+import AccordionSection from "@/components/Sections/AccordionSection";
+import PropsTable from "@/components/internal/Documentation/PropsTable";
+import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
+
+<Meta
+  title="GoogleMapsSection"
+  subtitle=""
+/>
+<PropsTable>
+  <PropsTableRow value="title" type="string" optional>
+    The title of the section.
+  </PropsTableRow>
+  <PropsTableRow value="apikey" type="string">
+    Your google maps apikey.
+  </PropsTableRow>
+  <PropsTableRow value="startLocation" type="MapsLocation" optional>
+    An object of type MapsLocation which contains contains a latitude and a longitude as numbers.
+    It indicates the location where the map should initially be centered to.
+    When not set, the browser will prompt the user to allow the use of their location.
+  </PropsTableRow>
+  <PropsTableRow value="zoom" type="number" default="15" optional>
+    A number between 1 and 20 representing roughly the following zoom levels
+    1: World
+    5: Landmass/Continent
+    10: City
+    15: Streets
+    20: Buildings
+  </PropsTableRow>
+  <PropsTableRow value="language" type="string" default="en" optional>
+    The language for the map and its UI elements.
+  </PropsTableRow>
+  <PropsTableRow value="locations" type="MapsLocation[]" optional>
+    An array of locations. When set, markers will be placed at the corresponding positions on the map. 
+    A location can handle the following metadata, city, street, name, description. These will be displayed when a marker is clicked.
+  </PropsTableRow>
+  <PropsTableRow value="buttonLabel" type="string" default="'Contact Us'"optional>
+    The label of the button in each marker widget.
+  </PropsTableRow>
+  <PropsTableRow value="buttonHandle" type="Function">
+    The function to be called when a button in a marker widget is clicked. When the function is called, the location data is passed into it.
+  </PropsTableRow>
+</PropsTable>
+<ExampleLoader example="Sections/GoogleMapsSection.tsx" />
