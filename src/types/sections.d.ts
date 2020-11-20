@@ -129,7 +129,7 @@ export interface GoogleMapsSectionProps {
   /**
    * The location
    */
-  startLocation?: Location;
+  startLocation?: MapsPosition;
   /**
    * The title text to be displayed above the map container
    */
@@ -168,7 +168,6 @@ export interface GoogleMapsSectionProps {
 export interface MapsPosition {
   lat: number;
   lng: number;
-  literal?: string;
 }
 export interface MapsLocation {
   position: MapsPosition;
