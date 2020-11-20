@@ -41,16 +41,6 @@ const routes = [
     path: "/components",
     children: [
       {
-        label: "AccordionSection",
-        path: "/components/sections/accordion-section",
-        children: [],
-      },
-      {
-        label: "GoogleMapsSection",
-        path: "/components/sections/google-maps-section",
-        children: [],
-      },
-      {
         label: "Button",
         path: "/components/button",
         children: [],
@@ -108,6 +98,17 @@ const routes = [
       {
         label: "LineSeparator",
         path: "/components/line-separator",
+        children: [],
+      },
+    ],
+  },
+  {
+    label: "Sections",
+    path: "/sections",
+    children: [
+      {
+        label: "AccordionSection",
+        path: "/sections/accordion-section",
         children: [],
       },
     ],

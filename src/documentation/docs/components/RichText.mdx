@@ -12,8 +12,11 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
 ## Properties
 
 <PropsTable>
-  <PropsTableRow value="text" required>
+  <PropsTableRow value="content" type="String" required>
     Specify which text is displayed.
+  </PropsTableRow>
+  <PropsTableRow value="inline" type="Boolean" default="false">
+    Specifies whether this component is displayed as block or inline.
   </PropsTableRow>
 </PropsTable>
 
