@@ -96,10 +96,7 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
   @Prop({ required: true })
   handleButtonClick!: GoogleMapsSectionProps["handleButtonClick"];
 
-  placeMarkers(
-    map: google.maps.Map,
-    ...locations: MapsLocation[]
-  ): google.maps.Marker[] {
+  placeMarkers(map: google.maps.Map, ...locations: MapsLocation[]): void {
     const renderDescriptionBox = (location: MapsLocation): Node => {
       const template = `<h2 class="font-bold">${location.name}</h2>
         <p>${location.street}</p>
@@ -117,7 +114,7 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
       return div;
     };
 
-    return locations.map((location: MapsLocation) => {
+    locations.map((location: MapsLocation) => {
       const marker = new google.maps.Marker({
         position: location.position,
         icon: markerIcon,
@@ -134,56 +131,39 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
     });
   }
 
-  getStartingLocation(callback: Function): void {
-    if (this.startLocation) {
-      callback(this.startLocation);
-    }
+  async initMap(): Promise<google.maps.Map> {
+    const center = this.startLocation || ({} as MapsPosition);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(returnedLocation => {
-        const location: MapsPosition = {} as MapsPosition;
-        location.lat = returnedLocation.coords.latitude;
-        location.lng = returnedLocation.coords.longitude;
-        callback(location);
+        center.lat = returnedLocation.coords.latitude;
+        center.lng = returnedLocation.coords.longitude;
       });
     }
-  }
-
-  initMap(center: MapsPosition, cb: Function): void {
     const loader = new Loader({
       apiKey: this.apikey,
       version: "weekly",
       language: this.language,
     });
     let map: google.maps.Map;
-    loader
-      .load()
-      .then(() => {
-        map = new google.maps.Map(
-          document.getElementById("map") as HTMLElement,
-          {
-            center,
-            zoom: this.zoom,
-            styles: DEFAULT_STYLE,
-          },
-        );
-        cb(map);
-      })
-      .catch(err => {
-        throw new Error(err);
+    try {
+      await loader.load();
+      map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+        center,
+        zoom: this.zoom,
+        styles: DEFAULT_STYLE,
       });
+    } catch (err) {
+      throw new Error(err);
+    }
+    return map;
   }
   mounted() {
     if (this.language?.length !== 2) {
       throw new Error("Language string must contain exactly 2 characters.");
     }
 
-    this.getStartingLocation((center: MapsPosition) =>
-      this.initMap(center, (map: google.maps.Map) => {
-        this.map = map;
-        if (this.locations) {
-          this.placeMarkers(map, ...this.locations);
-        }
-      }),
+    this.initMap().then(
+      map => this.locations && this.placeMarkers(map, ...this.locations),
     );
   }
   render() {
