@@ -7,7 +7,6 @@ import {
 } from "@/types/sections";
 import { LineSeparator } from "@/components";
 import { Loader } from "@googlemaps/js-api-loader";
-import "./style.css";
 // eslint-disable-next-line
 const markerIcon = require("../../../assets/Marker.png");
 
@@ -106,11 +105,11 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
         <p>${location.street}</p>
         ${location.description ? "<p>" + location.description + "</p>" : ""}
         <p>${location.city}</p>
-        <button class="google-maps-description-button">
+        <button class="bg-black text-white hover:bg-gray-300 hover:text-black focus:outline-none p-2 my-4 w-auto overflow-hidden cursor-pointer font-light text-sm">
         ${this.buttonLabel}
         </button>`;
       const div = document.createElement("div");
-      div.classList.add("google-maps-description");
+      div.classList.add("w-32", "text-sm");
       div.innerHTML = template;
       div.querySelector("button")?.addEventListener("click", event => {
         this.handleButtonClick(event, location);
