@@ -12,10 +12,10 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
 ## Properties
 
 <PropsTable>
-  <PropsTableRow value="copyright" required>
+  <PropsTableRow value="copyright" type="String" required>
     Specify an name which is displayed with the copyright icon.
   </PropsTableRow>
-  <PropsTableRow value="links" required>
+  <PropsTableRow value="links" type="Array" required>
     Specify an array of Links which should be rendered.
     <ul>
             <li>
@@ -32,7 +32,7 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
             </li>
         </ul>
   </PropsTableRow>
-  <PropsTableRow value="handleClick" required>
+  <PropsTableRow value="handleClick" type="Function" required>
     Callback that will be triggered, when a link is clicked.
   </PropsTableRow>
 </PropsTable>

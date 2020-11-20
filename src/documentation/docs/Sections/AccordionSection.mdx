@@ -9,18 +9,18 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
   subtitle="The Accordion Section consists of subsections which open and close when clicked on."
 />
 <PropsTable>
-  <PropsTableRow value="dark" optional>
-    Specifies whether the accordion should be dark or light. Possible values are
-    <span class="code">true</span>
-    <span class="code">false</span> (default)
+  <PropsTableRow value="dark" type="Boolean" default="false" optional>
+    Specifies whether the accordion should be dark or light.
   </PropsTableRow>
-  <PropsTableRow value="title" optional>
+  <PropsTableRow value="title" type="String" optional>
     The optional title of the section. When set, the separator is automatically added.
   </PropsTableRow>
-  <PropsTableRow value="items" required>
-    An array of items which describe the individual subsections. Each item consists of a 
-    <span class="code">title</span> and a
-    <span class="code">text</span>
+  <PropsTableRow value="items" type="Array of items" required>
+    An array of items which describe the individual subsections. Each item consists of
+    <ul>
+    <li><span class="code">title: string</span></li>
+    <li><span class="code">text: string</span></li>
+    </ul>
   </PropsTableRow>
 </PropsTable>
 <ExampleLoader example="Sections/AccordionSection.tsx" />

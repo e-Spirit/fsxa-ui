@@ -76,6 +76,7 @@ class Image extends BaseComponent<ImageProps> {
   }
 
   render() {
+    //TODO: use this ratio somehow
     const ratio = this.dimensions
       ? this.dimensions.width / this.dimensions.height
       : null;
