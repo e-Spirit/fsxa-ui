@@ -30,7 +30,7 @@ export default class App extends Vue {
           title="Google Maps Section"
           startLocation={startLocation}
           locations={locations}
-          buttonHandle={(e: MouseEvent, location: MapsLocation) => {
+          handleButtonClick={(e: MouseEvent, location: MapsLocation) => {
             console.log("Button pressed");
             console.log("mouse event", event);
             console.log("Data is", location);

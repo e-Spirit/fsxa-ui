@@ -94,7 +94,7 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
   @Prop({ required: false, default: "Contact Us" })
   buttonLabel!: GoogleMapsSectionProps["buttonLabel"];
   @Prop({ required: true })
-  buttonHandle!: GoogleMapsSectionProps["buttonHandle"];
+  handleButtonClick!: GoogleMapsSectionProps["handleButtonClick"];
 
   placeMarkers(
     map: google.maps.Map,
@@ -112,7 +112,7 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
       div.classList.add("google-maps-description");
       div.innerHTML = template;
       div.querySelector("button")?.addEventListener("click", event => {
-        this.buttonHandle(event, location);
+        this.handleButtonClick(event, location);
       });
       return div;
     };

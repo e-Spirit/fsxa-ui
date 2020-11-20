@@ -163,7 +163,7 @@ export interface GoogleMapsSectionProps {
    * A function to handle the press of the button in the description of each location.
    * When the function is called the current location data is passed in.
    */
-  buttonHandle: (event: MouseEvent, location: MapsLocation) => void;
+  handleButtonClick: (event: MouseEvent, location: MapsLocation) => void;
 }
 export interface MapsPosition {
   lat: number;

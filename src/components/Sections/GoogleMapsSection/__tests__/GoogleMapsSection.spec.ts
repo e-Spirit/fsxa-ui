@@ -23,7 +23,7 @@ describe("components/sections/google-maps-section", () => {
       title: "This is a title",
       locations,
       // eslint-disable-next-line
-      buttonHandle: () => {},
+      handleButtonClick: () => {},
     };
     it("should render a title", () => {
       const { getByText } = render(GoogleMapsSection, {
