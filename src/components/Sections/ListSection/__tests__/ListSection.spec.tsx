@@ -1,5 +1,3 @@
-import ProductListItem from "@/components/ProductListItem";
-import { ProductListItemProps } from "@/types/fsxa-ui";
 import { fireEvent, render } from "@testing-library/vue";
 import ListSection from "..";
 

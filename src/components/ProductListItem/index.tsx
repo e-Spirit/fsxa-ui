@@ -29,7 +29,7 @@ class ProductListItem extends BaseComponent<ProductListItemProps> {
             this.handleClick();
           }}
         >
-          <div class="ProductListItem--InfoBox line-amiation">
+          <div class="ProductListItem--InfoBox bg-black text-gray-100 absolute inset-0 opacity-0 line-amiation hover:opacity-80">
             <Headline as="h3" class="mt-12 ml-8 mr-4" size="sm">
               {this.title}
             </Headline>
