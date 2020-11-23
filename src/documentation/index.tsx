@@ -41,6 +41,11 @@ const routes = [
     path: "/components",
     children: [
       {
+        label: "Accordion",
+        path: "/components/accordion",
+        children: [],
+      },
+      {
         label: "Button",
         path: "/components/button",
         children: [],

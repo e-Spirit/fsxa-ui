@@ -1,6 +1,6 @@
 import { Component, Prop } from "vue-property-decorator";
 import BaseComponent from "@/components/BaseComponent";
-import Accordion from "./Accordion";
+import Accordion from "@/components/Accordion";
 import { AccordionSectionProps } from "@/types/sections";
 import "./style.css";
 
