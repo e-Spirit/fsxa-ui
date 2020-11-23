@@ -100,6 +100,11 @@ const routes = [
         path: "/components/line-separator",
         children: [],
       },
+      {
+        label: "ProductDetailSection",
+        path: "/components/product-detail-section",
+        children: [],
+      },
     ],
   },
   {
