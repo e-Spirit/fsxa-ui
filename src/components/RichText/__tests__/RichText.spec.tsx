@@ -6,7 +6,7 @@ describe("components/RichText", () => {
     const content = "test";
     const { getByText } = render(RichText, {
       props: {
-        content: content,
+        content,
       },
     });
     const contentTest = getByText("test");
@@ -16,13 +16,10 @@ describe("components/RichText", () => {
     const content = "test";
     const inline = true;
     const { getByTestId } = render(RichText, {
-      props: {
-        content: content,
-        inline: inline,
-      },
+      props: { content, inline },
     });
 
     const inlineTest = getByTestId("richtext-content");
-    expect(inlineTest.classList.contains("inline")).toBeTruthy();
+    expect(inlineTest.classList.contains("inline")).toBe(true);
   });
 });
