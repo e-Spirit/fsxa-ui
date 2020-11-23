@@ -33,7 +33,7 @@ export default class App extends Vue {
         <ListSection
           headline={headline}
           items={[]}
-          renderItem={_ => null}
+          renderItem={() => null}
           filters={filters}
           handleFilterChange={selectedFilters =>
             (this.selectedFilters = selectedFilters)
