@@ -36,6 +36,6 @@ describe("components/NewsTeaserItem", () => {
       props: { title, date, description, latest: true },
     });
     const latestTest = getByTestId("newsteaseritem-latest");
-    expect(latestTest!.classList.contains("is-latest")).toBeTruthy();
+    expect(latestTest!.classList.contains("is-latest")).toBe(true);
   });
 });
