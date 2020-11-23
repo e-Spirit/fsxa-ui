@@ -3,6 +3,8 @@ import NewsTeaserSection from "./NewsTeaserSection";
 import HeaderSection from "./HeaderSection";
 import TeaserSection from "./TeaserSection";
 import ListSection from "./ListSection";
+import ProductDetailSection from "./ProductDetailSection";
+import AccordionSection from "./AccordionSection";
 
 export default {
   InterestingFactsSection,
@@ -10,4 +12,6 @@ export default {
   HeaderSection,
   ListSection,
   TeaserSection,
+  ProductDetailSection,
+  AccordionSection,
 };

@@ -12,15 +12,15 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
 ## Properties
 
 <PropsTable>
-  <PropsTableRow value="variant" required>
-    Specify in which variant the button should be displayed. Possible values are
+  <PropsTableRow value="variant" type="string" required>
+    Specify in which variant the button should be displayed. Allowed values are
     <span class="code">default</span>
     <span class="code">inverted</span>
     <span class="code">tag</span>
     <span class="code">tag-selected</span>
     <span class="code">animated</span>
   </PropsTableRow>
-  <PropsTableRow value="handleClick">
+  <PropsTableRow value="handleClick" type="function">
     You can pass in an optional callback that will be triggered, when the button
     is clicked.
   </PropsTableRow>
