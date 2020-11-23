@@ -17,9 +17,9 @@ describe("components/NewsTeaserItem", () => {
     const { getByText } = render(NewsTeaserItem, {
       props: { title, date, description },
     });
-    const titleTest = getByText("title test");
-    const dateTest = getByText("02.02.2020");
-    const descTest = getByText("desc test");
+    const titleTest = getByText(title);
+    const dateTest = getByText(date);
+    const descTest = getByText(description);
     expect(titleTest).toBeTruthy();
     expect(dateTest).toBeTruthy();
     expect(descTest).toBeTruthy();
