@@ -1,0 +1,5 @@
+.ProductListSection--Separator {
+    @apply bg-black mb-6;
+    height: 3px;
+    width: 50px;
+  }

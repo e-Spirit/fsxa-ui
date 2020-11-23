@@ -61,3 +61,10 @@
 .Button--variant--tag:hover {
   @apply bg-black text-white;
 }
+
+.Button--variant--tag-selected {
+  @apply Button--variant--tag bg-black text-white;
+}
+.Button--variant--tag-selected:hover {
+  @apply bg-gray-700;
+}

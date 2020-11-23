@@ -26,60 +26,6 @@ export const routes: any = data
   })
   .filter(route => route);
 
-// generate dynamic routes
-/**const componentRoutes = Object.keys(ComponentPages).map(key => {
-  const Component = (ComponentPages as any)[key];
-  return {
-    path: key.toLowerCase(),
-    route: `/components/${key.toLowerCase()}`,
-    label: key,
-    component: Component.default,
-    meta: {
-      title: Component.title,
-      subtitle: Component.subtitle,
-    },
-    parent: "component",
-  };
-});
-export const routes = [
-  {
-    path: "/installation",
-    label: "Installation",
-    component: Installation.default,
-    meta: {
-      title: Installation.title,
-      subtitle: Installation.subtitle,
-    },
-  },
-  {
-    path: "/getting-started",
-    label: "Getting Started",
-    component: GettingStarted.default,
-    meta: {
-      title: GettingStarted.title,
-      subtitle: GettingStarted.subtitle,
-    },
-  },
-  {
-    path: "/components",
-    route: "/components",
-    label: "Components",
-    component: ComponentPage,
-    children: [
-      {
-        path: "",
-        route: "",
-        component: ComponentsOverview.default,
-        meta: {
-          title: ComponentsOverview.title,
-          subtitle: ComponentsOverview.subtitle,
-        },
-        label: "",
-      },
-      ...componentRoutes,
-    ],
-  },
-];**/
 const router = new VueRouter({
   routes,
 });
