@@ -1,11 +1,10 @@
 import { render, fireEvent, getByTestId } from "@testing-library/vue";
 import NewsTeaserItem from "./../";
-
+const title = "title test";
+const date = "02.02.2020";
+const description = "desc test";
 describe("components/NewsTeaserItem", () => {
   it("calls handleClick callback on call", async () => {
-    const title = "title test";
-    const date = "02.02.2020";
-    const description = "desc test";
     const spy = jest.fn();
     const { getByTestId } = render(NewsTeaserItem, {
       props: { title, date, description, handleClick: spy },
@@ -15,9 +14,6 @@ describe("components/NewsTeaserItem", () => {
     expect(spy).toHaveBeenCalled();
   });
   it("checks if passed content renders", () => {
-    const title = "title test";
-    const date = "02.02.2020";
-    const description = "desc test";
     const { getByText } = render(NewsTeaserItem, {
       props: { title, date, description },
     });
@@ -29,9 +25,6 @@ describe("components/NewsTeaserItem", () => {
     expect(descTest).toBeTruthy();
   });
   it("checks if latest is working on true", () => {
-    const title = "title test";
-    const date = "02.02.2020";
-    const description = "desc test";
     const { getByTestId } = render(NewsTeaserItem, {
       props: { title, date, description, latest: true },
     });
