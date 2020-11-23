@@ -76,6 +76,7 @@ class Accordion extends BaseComponent<AccordionProps> {
               ? this.$emit("toggleCollapse")
               : (this.isOpen = !this.isOpen);
           }}
+          data-testid="darkmode"
         >
           <h6
             class={`float-left w-2/3 whitespace-no-wrap overflow-hidden uppercase`}

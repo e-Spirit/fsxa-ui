@@ -19,3 +19,4 @@ export { default as Quote } from "./Quote";
 export { default as RichText } from "./RichText";
 export { default as Sections } from "./Sections";
 export { default as LineSeparator } from "./LineSeparator";
+export { default as Accordion } from "./Accordion";

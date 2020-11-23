@@ -1,0 +1,22 @@
+import Meta from "@/components/internal/Documentation/Meta";
+import ExampleLoader from "@/documentation/utils/ExampleLoader";
+import AccordionSection from "@/components/Sections/AccordionSection";
+import PropsTable from "@/components/internal/Documentation/PropsTable";
+import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
+
+<Meta
+  title="Accordion"
+  subtitle="The Accordion opens and closes when clicked on."
+/>
+<PropsTable>
+  <PropsTableRow value="dark" type="Boolean" default="false" optional>
+    Specifies whether the accordion should be dark or light.
+  </PropsTableRow>
+  <PropsTableRow value="title" type="String" optional>
+    The optional title of the section. When set, the separator is automatically added.
+  </PropsTableRow>
+  <PropsTableRow value="open" type="Boolean" required>
+    a boolean which decides if an Accordion is closed or not
+  </PropsTableRow>
+</PropsTable>
+<ExampleLoader example="Accordion.tsx" />
