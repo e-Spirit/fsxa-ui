@@ -8,12 +8,7 @@ describe("components/NewsTeaserItem", () => {
     const description = "desc test";
     const spy = jest.fn();
     const { getByTestId } = render(NewsTeaserItem, {
-      props: {
-        title: title,
-        date: date,
-        description: description,
-        handleClick: spy,
-      },
+      props: { title, date, description, handleClick: spy },
     });
     const readMore = getByTestId("newsteaseritem-click");
     await fireEvent(readMore!, new Event("click"));
@@ -24,11 +19,7 @@ describe("components/NewsTeaserItem", () => {
     const date = "02.02.2020";
     const description = "desc test";
     const { getByText } = render(NewsTeaserItem, {
-      props: {
-        title: title,
-        date: date,
-        description: description,
-      },
+      props: { title, date, description },
     });
     const titleTest = getByText("title test");
     const dateTest = getByText("02.02.2020");
@@ -42,12 +33,7 @@ describe("components/NewsTeaserItem", () => {
     const date = "02.02.2020";
     const description = "desc test";
     const { getByTestId } = render(NewsTeaserItem, {
-      props: {
-        title: title,
-        date: date,
-        description: description,
-        latest: true,
-      },
+      props: { title, date, description, latest: true },
     });
     const latestTest = getByTestId("newsteaseritem-latest");
     expect(latestTest!.classList.contains("is-latest")).toBeTruthy();
