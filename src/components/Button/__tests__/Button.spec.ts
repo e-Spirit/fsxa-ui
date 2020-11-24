@@ -7,7 +7,7 @@ describe("components/Button", () => {
     const { getByText } = render(Button, {
       slots: { default: content },
     });
-    getByText(content);
+    expect(getByText(content)).toBeTruthy();
   });
 
   it("calls handleClick callback on click", async () => {

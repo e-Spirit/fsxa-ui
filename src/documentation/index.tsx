@@ -106,6 +106,18 @@ const routes = [
         children: [],
       },
       {
+        label: "Header-Section",
+        path: "/components/header-section",
+        children: [],
+      },
+      {
+        label: "InterestingFacts-Section",
+        path: "/components/interesting-facts-section",
+        children: [],
+      },
+      {
+        label: "Teaser-Section",
+        path: "/components/teaser-section",
         label: "ProductListItem",
         path: "/components/product-list-item",
         children: [],
