@@ -41,6 +41,11 @@ const routes = [
     path: "/components",
     children: [
       {
+        label: "Accordion",
+        path: "/components/accordion",
+        children: [],
+      },
+      {
         label: "Button",
         path: "/components/button",
         children: [],
@@ -56,6 +61,11 @@ const routes = [
         children: [],
       },
       {
+        label: "Dropdown",
+        path: "/components/dropdown",
+        children: [],
+      },
+      {
         label: "Footer",
         path: "/components/footer",
         children: [],
@@ -68,6 +78,11 @@ const routes = [
       {
         label: "Image",
         path: "/components/image",
+        children: [],
+      },
+      {
+        label: "ListSection",
+        path: "/components/list-section",
         children: [],
       },
       {
@@ -103,6 +118,29 @@ const routes = [
       {
         label: "Teaser-Section",
         path: "/components/teaser-section",
+        label: "ProductListItem",
+        path: "/components/product-list-item",
+        children: [],
+      },
+      {
+        label: "LineSeparator",
+        path: "/components/line-separator",
+        children: [],
+      },
+      {
+        label: "ProductDetailSection",
+        path: "/components/product-detail-section",
+        children: [],
+      },
+    ],
+  },
+  {
+    label: "Sections",
+    path: "/sections",
+    children: [
+      {
+        label: "AccordionSection",
+        path: "/sections/accordion-section",
         children: [],
       },
     ],
@@ -116,7 +154,6 @@ class Documentation extends BaseComponent {
   showSidebar = false;
 
   render() {
-    console.log(this.$route);
     return (
       <div class="w-full min-h-full flex">
         <div class="md:w-1/3 lg:w-1/4 md:max-w-xs border-r border-gray-300 hidden md:block p-5">

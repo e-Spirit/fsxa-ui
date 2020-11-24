@@ -8,7 +8,7 @@ import { HeadlineProps } from "@/types/fsxa-ui";
 })
 class Headline extends BaseComponent<HeadlineProps> {
   @Prop({ default: "h1" }) as!: HeadlineProps["as"];
-  @Prop() size!: HeadlineProps["size"];
+  @Prop({ default: "lg" }) size!: HeadlineProps["size"];
   @Prop({ default: "bold" }) weight!: HeadlineProps["weight"];
   @Prop({ default: true }) uppercase!: HeadlineProps["uppercase"];
   @Prop({ default: true }) includeMargin!: HeadlineProps["includeMargin"];

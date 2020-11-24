@@ -12,6 +12,7 @@ export default class App extends Vue {
         <Button variant="animated">Animated</Button>
         <Button variant="inverted">Inverted</Button>
         <Button variant="tag">Tag</Button>
+        <Button variant="tag-selected">Selected Tag</Button>
       </div>
     );
   }

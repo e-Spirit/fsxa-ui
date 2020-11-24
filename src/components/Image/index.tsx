@@ -76,11 +76,15 @@ class Image extends BaseComponent<ImageProps> {
   }
 
   render() {
+    //TODO: use this ratio somehow
     const ratio = this.dimensions
       ? this.dimensions.width / this.dimensions.height
       : null;
     return (
-      <div class={`Image w-full ${this.border ? "border" : ""}`}>
+      <div
+        class={`Image w-full ${this.border ? "border" : ""}`}
+        data-testid="imageDiv"
+      >
         <div class="w-full h-full overflow-hidden relative">
           <img
             src={!this.lazy || this.loaded ? this.src : ""}
@@ -93,6 +97,7 @@ class Image extends BaseComponent<ImageProps> {
               class={`absolute top-0 left-0 w-full h-full pointer-events-none bg-black ${
                 opacityClasses[this.opacity]
               }`}
+              data-testid="veil"
             />
           )}
         </div>
