@@ -103,7 +103,7 @@ const routes = [
       {
         label: "Teaser-Section",
         path: "/components/teaser-section",
-        chhildren: [],
+        children: [],
       },
     ],
   },
