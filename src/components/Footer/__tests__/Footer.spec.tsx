@@ -28,6 +28,7 @@ describe("components/Footer", () => {
     const footer = getByTestId("footer-1");
     await fireEvent(footer!, new Event("click"));
     expect(spy).toHaveBeenCalled();
+    expect(spy.mock.calls[0][0].referenceId).toEqual(1);
   });
   it("checks if all items have been rendered", async () => {
     const spy = jest.fn();
@@ -47,11 +48,7 @@ describe("components/Footer", () => {
       },
     ];
     const { getAllByText } = render(Footer, {
-      props: {
-        copyright: copyright,
-        links: links,
-        handleClick: spy,
-      },
+      props: { copyright, links, handleClick: spy },
     });
     const matchedItems: Element[] = getAllByText(/footer/g);
     links.forEach((link, index) => {
@@ -64,7 +61,7 @@ describe("components/Footer", () => {
     const copyright = "copyright";
     const { getByText } = render(Footer, {
       props: {
-        copyright: copyright,
+        copyright,
         links: [
           {
             referenceId: 1,
