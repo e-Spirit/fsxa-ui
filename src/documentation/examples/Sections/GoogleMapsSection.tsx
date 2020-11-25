@@ -18,6 +18,15 @@ export default class App extends Vue {
         city: "Wien",
         street: "Skodagasse 13",
       },
+      {
+        position: {
+          lat: 48.113967,
+          lng: 16.246388,
+        },
+        name: "Was anderes zum Testen",
+        city: "Wien",
+        street: "Andere Gasse 12",
+      },
     ];
     const startLocation = {
       lat: 48.213967,

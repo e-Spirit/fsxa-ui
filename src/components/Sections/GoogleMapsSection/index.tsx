@@ -96,6 +96,8 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
   @Prop({ required: true })
   handleButtonClick!: GoogleMapsSectionProps["handleButtonClick"];
 
+  selectedIndex: number | null = null;
+
   placeMarkers(map: google.maps.Map, ...locations: MapsLocation[]): void {
     const renderDescriptionBox = (location: MapsLocation): Node => {
       const template = `<h2 class="font-bold">${location.name}</h2>
@@ -166,12 +168,37 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
       map => this.locations && this.placeMarkers(map, ...this.locations),
     );
   }
+  selectLocation(index: number) {
+    this.selectedIndex = index;
+  }
   render() {
     return (
       <div class="w-full h-full p-8">
         {this.title && <h3 class="font-bold text-xl">{this.title}</h3>}
         {this.title && <LineSeparator height="1"></LineSeparator>}
-        {<div class="h-full" id="map"></div>}
+        <div class="grid grid-cols-1 grid-rows-2 lg:grid-cols-4 lg:grid-rows-1 h-full border-2 border-gray-400">
+          <div class="col-span-1 lg:col-span-3" id="map"></div>
+          <div class="col-span-1 lg:col-span-1 bg-gray-100 overflow-scroll border-l-4 border-gray-400">
+            {this.locations &&
+              this.locations?.map((location, index) => (
+                <div
+                  class={`w-full h-32 py-2 px-4 border-b-2 border-gray-400 overflow-hidden cursor-pointer ${
+                    index === this.selectedIndex ? "bg-white" : ""
+                  }`}
+                  on-click={this.selectLocation.bind(this, index)}
+                >
+                  <h3 class="text-2xl font-bold" style="color:#D5DD00;">
+                    {location.name}
+                  </h3>
+                  <div class="text-sm">
+                    <p>{location.description}</p>
+                    <p>{location.street}</p>
+                    <p>{location.city}</p>
+                  </div>
+                </div>
+              ))}
+          </div>
+        </div>
       </div>
     );
   }
