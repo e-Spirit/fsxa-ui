@@ -91,39 +91,37 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
   markers: MarkerWithInfoWindow[] | null = null;
 
   @Prop() title: GoogleMapsSectionProps["title"];
-  @Prop({ required: false }) apikey!: GoogleMapsSectionProps["apikey"];
-  @Prop({ required: false })
-  startLocation!: GoogleMapsSectionProps["startLocation"];
-  @Prop({ required: false, default: 15 }) zoom!: GoogleMapsSectionProps["zoom"];
-  @Prop({ required: false, default: "en" })
-  language!: GoogleMapsSectionProps["language"];
-  @Prop({ required: false }) locations!: GoogleMapsSectionProps["locations"];
-  @Prop({ required: false, default: "Contact Us" })
+  @Prop({ required: true }) apikey!: GoogleMapsSectionProps["apikey"];
+  @Prop() startLocation!: GoogleMapsSectionProps["startLocation"];
+  @Prop({ default: 15 }) zoom!: GoogleMapsSectionProps["zoom"];
+  @Prop({ default: "en" }) language!: GoogleMapsSectionProps["language"];
+  @Prop() locations!: GoogleMapsSectionProps["locations"];
+  @Prop({ default: "Contact Us" })
   buttonLabel!: GoogleMapsSectionProps["buttonLabel"];
   @Prop({ required: true })
   handleButtonClick!: GoogleMapsSectionProps["handleButtonClick"];
 
+  private renderDescriptionBox(location: MapsLocation): Node {
+    const template = `<h2 class="font-bold">${location.name}</h2>
+      <p>${location.street}</p>
+      ${location.description ? "<p>" + location.description + "</p>" : ""}
+      <p>${location.city}</p>
+      <button class="bg-black text-white hover:bg-gray-300 hover:text-black focus:outline-none p-2 my-4 w-auto overflow-hidden cursor-pointer font-light text-sm">
+      ${this.buttonLabel}
+      </button>`;
+    const div = document.createElement("div");
+    div.classList.add("w-32", "text-sm");
+    div.innerHTML = template;
+    div.querySelector("button")?.addEventListener("click", event => {
+      this.handleButtonClick(event, location);
+    });
+    return div;
+  }
+
   placeMarkers(
     map: google.maps.Map,
-    ...locations: MapsLocation[]
+    locations: MapsLocation[],
   ): MarkerWithInfoWindow[] {
-    const renderDescriptionBox = (location: MapsLocation): Node => {
-      const template = `<h2 class="font-bold">${location.name}</h2>
-        <p>${location.street}</p>
-        ${location.description ? "<p>" + location.description + "</p>" : ""}
-        <p>${location.city}</p>
-        <button class="bg-black text-white hover:bg-gray-300 hover:text-black focus:outline-none p-2 my-4 w-auto overflow-hidden cursor-pointer font-light text-sm">
-        ${this.buttonLabel}
-        </button>`;
-      const div = document.createElement("div");
-      div.classList.add("w-32", "text-sm");
-      div.innerHTML = template;
-      div.querySelector("button")?.addEventListener("click", event => {
-        this.handleButtonClick(event, location);
-      });
-      return div;
-    };
-
     return locations.map((location: MapsLocation) => {
       const marker = new google.maps.Marker({
         position: location.position,
@@ -131,7 +129,7 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
         map,
       });
       const infoWindow = new google.maps.InfoWindow({
-        content: renderDescriptionBox(location),
+        content: this.renderDescriptionBox(location),
       });
 
       marker.addListener("click", () => {
@@ -158,17 +156,15 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
       version: "weekly",
       language: this.language,
     });
-    let map: google.maps.Map;
-    try {
-      await loader.load();
-      map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+    await loader.load();
+    const map = new google.maps.Map(
+      document.getElementById("map") as HTMLElement,
+      {
         center,
         zoom: this.zoom,
         styles: DEFAULT_STYLE,
-      });
-    } catch (err) {
-      throw new Error(err);
-    }
+      },
+    );
     return map;
   }
   mounted() {
@@ -176,12 +172,16 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
       throw new Error("Language string must contain exactly 2 characters.");
     }
 
-    this.initMap().then(map => {
-      if (this.locations) {
-        this.markers = this.placeMarkers(map, ...this.locations);
-      }
-      this.map = map;
-    });
+    this.initMap()
+      .then(map => {
+        if (this.locations) {
+          this.markers = this.placeMarkers(map, this.locations);
+        }
+        this.map = map;
+      })
+      .catch((err: Error) => {
+        throw new Error(`Error initializing map: ${err.message}`);
+      });
   }
   selectLocation(index: number) {
     this.selectedIndex = index;
