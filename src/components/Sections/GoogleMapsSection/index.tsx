@@ -1,4 +1,4 @@
-import { Component, Prop } from "vue-property-decorator";
+import { Component, Prop, Watch } from "vue-property-decorator";
 import BaseComponent from "@/components/BaseComponent";
 import {
   GoogleMapsSectionProps,
@@ -101,6 +101,20 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
   @Prop({ required: true })
   handleButtonClick!: GoogleMapsSectionProps["handleButtonClick"];
 
+  @Watch("selectedIndex")
+  handleSelectionChange(index: number) {
+    this.markers?.forEach((marker, i) => {
+      if (this.map && this.selectedIndex !== null && this.locations) {
+        if (i === index) {
+          marker.infoWindow.open(this.map, marker.marker);
+          this.map.panTo(this.locations[index].position);
+        } else {
+          marker.infoWindow.close();
+        }
+      }
+    });
+  }
+
   private renderDescriptionBox(location: MapsLocation): Node {
     const template = `<h2 class="font-bold">${location.name}</h2>
       <p>${location.street}</p>
@@ -122,7 +136,7 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
     map: google.maps.Map,
     locations: MapsLocation[],
   ): MarkerWithInfoWindow[] {
-    return locations.map((location: MapsLocation) => {
+    return locations.map((location: MapsLocation, index) => {
       const marker = new google.maps.Marker({
         position: location.position,
         icon: markerIcon,
@@ -133,8 +147,7 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
       });
 
       marker.addListener("click", () => {
-        map.setCenter(location.position);
-        infoWindow?.open(map, marker);
+        this.selectedIndex = index;
       });
       return {
         marker,
@@ -185,11 +198,6 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
   }
   selectLocation(index: number) {
     this.selectedIndex = index;
-    if (this.locations && this.markers && this.map) {
-      const marker = this.markers[index].marker;
-      this.markers[index].infoWindow.open(this.map, marker);
-      this.map?.panTo(this.locations[index].position);
-    }
   }
   render() {
     return (
