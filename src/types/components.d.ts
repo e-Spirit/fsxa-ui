@@ -1,6 +1,5 @@
 import { Component } from "vue-tsx-support";
 import { ImageRef } from "./utils";
-import { MapsPosition } from "./sections";
 
 export interface ButtonProps {
   /**

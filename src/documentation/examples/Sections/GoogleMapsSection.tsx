@@ -32,7 +32,7 @@ export default class App extends Vue {
           locations={locations}
           handleButtonClick={(e: MouseEvent, location: MapsLocation) => {
             console.log("Button pressed");
-            console.log("mouse event", event);
+            console.log("mouse event", e);
             console.log("Data is", location);
           }}
         />
