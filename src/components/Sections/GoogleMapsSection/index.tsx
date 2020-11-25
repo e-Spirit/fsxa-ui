@@ -116,15 +116,19 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
   }
 
   private renderDescriptionBox(location: MapsLocation): Node {
-    const template = `<h2 class="font-bold">${location.name}</h2>
-      <p>${location.street}</p>
-      ${location.description ? "<p>" + location.description + "</p>" : ""}
-      <p>${location.city}</p>
+    const template = `<h2 class="font-bold text-highlight text-lg">${
+      location.name
+    }</h2>
+      <div class="mt-2">
+        ${location.description ? "<p>" + location.description + "</p>" : ""}
+        <p class="mt-2">${location.street}</p>
+        <p>${location.city}</p>
+      </div>
       <button class="bg-black text-white hover:bg-gray-300 hover:text-black focus:outline-none p-2 my-4 w-auto overflow-hidden cursor-pointer font-light text-sm">
       ${this.buttonLabel}
       </button>`;
     const div = document.createElement("div");
-    div.classList.add("w-32", "text-sm");
+    div.classList.add("w-64", "text-sm");
     div.innerHTML = template;
     div.querySelector("button")?.addEventListener("click", event => {
       this.handleButtonClick(event, location);
@@ -204,25 +208,27 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
       <div class="w-full h-full p-8">
         {this.title && <h3 class="font-bold text-xl">{this.title}</h3>}
         {this.title && <LineSeparator height="1"></LineSeparator>}
-        <div class="grid grid-cols-1 grid-rows-2 lg:grid-cols-4 lg:grid-rows-1 h-full border-2 border-gray-400">
-          <div class="col-span-1 lg:col-span-3" id="map"></div>
-          <div class="col-span-1 lg:col-span-1 bg-gray-100 overflow-scroll border-l-4 border-gray-400">
+        <div class="grid grid-cols-1 grid-rows-2 lg:grid-cols-4 lg:grid-rows-1 h-full">
+          <div
+            class="col-span-1 lg:col-span-3 border-2 border-gray-400"
+            id="map"
+          ></div>
+          <div class="col-span-1 lg:col-span-1 bg-gray-100 overflow-scroll border-2 border-gray-400">
             {this.locations &&
               this.locations?.map((location, index) => (
                 <div
-                  class={`w-full h-32 py-2 px-4 border-b-2 border-gray-400 cursor-pointer ${
+                  class={`w-full py-2 px-4 border-b-2 border-gray-400 cursor-pointer overflow-hidden ${
                     index === this.selectedIndex ? "bg-white" : ""
                   }`}
                   on-click={this.selectLocation.bind(this, index)}
                 >
-                  <div class="w-full h-10 overflow-hidden">
-                    <h3 class="text-2xl font-bold" style="color:#D5DD00;">
-                      {location.name}
-                    </h3>
-                  </div>
-                  <div class="text-sm">
-                    <p>{location.description}</p>
-                    <p>{location.street}</p>
+                  <h3 class="text-2xl font-bold text-highlight break-words">
+                    {location.name}
+                  </h3>
+
+                  <div class="mt-2 text-sm">
+                    {location.description && <p>{location.description}</p>}
+                    <p class="mt-2">{location.street}</p>
                     <p>{location.city}</p>
                   </div>
                 </div>

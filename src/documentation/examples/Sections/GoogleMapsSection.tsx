@@ -15,7 +15,7 @@ export default class App extends Vue {
           lng: 16.346388,
         },
         name: "Skoda",
-        city: "Wien",
+        city: "1080 Wien",
         street: "Skodagasse 13",
       },
       {
@@ -24,7 +24,7 @@ export default class App extends Vue {
           lng: 16.246388,
         },
         name: "Was anderes zum Testen",
-        city: "Wien",
+        city: "1140 Wien",
         street: "Andere Gasse 12",
       },
       {
@@ -33,8 +33,10 @@ export default class App extends Vue {
           lng: 16.236388,
         },
         name: "Noch was zum Testen",
-        city: "Wien",
+        city: "1140 Wien",
         street: "Noch eine Gasse 23",
+        description:
+          "Hier steht noch ein langer Fließtext. Mit noch mehr Fließtext.",
       },
     ];
     const startLocation = {
