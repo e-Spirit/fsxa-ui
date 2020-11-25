@@ -102,17 +102,18 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
   handleButtonClick!: GoogleMapsSectionProps["handleButtonClick"];
 
   @Watch("selectedIndex")
-  handleSelectionChange(index: number) {
-    this.markers?.forEach((marker, i) => {
-      if (this.map && this.selectedIndex !== null && this.locations) {
-        if (i === index) {
-          marker.infoWindow.open(this.map, marker.marker);
-          this.map.panTo(this.locations[index].position);
-        } else {
-          marker.infoWindow.close();
-        }
-      }
-    });
+  handleSelectionChange(index: number, oldIndex: number) {
+    if (
+      this.map &&
+      this.selectedIndex !== null &&
+      this.locations &&
+      this.markers
+    ) {
+      const marker = this.markers[index];
+      marker.infoWindow.open(this.map, marker.marker);
+      this.map.panTo(this.locations[index].position);
+      this.markers[oldIndex].infoWindow.close();
+    }
   }
 
   private renderDescriptionBox(location: MapsLocation): Node {
@@ -160,14 +161,22 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
     });
   }
 
+  getPromisedGeolocation(options?: PositionOptions): Promise<Position> {
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject, options);
+    });
+  }
+
   async initMap(): Promise<google.maps.Map> {
-    const center = this.startLocation || ({} as MapsPosition);
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(returnedLocation => {
-        center.lat = returnedLocation.coords.latitude;
-        center.lng = returnedLocation.coords.longitude;
-      });
+    let center = {} as MapsPosition;
+    if (!this.startLocation) {
+      const userPosition = await this.getPromisedGeolocation();
+      center.lat = userPosition.coords.latitude;
+      center.lng = userPosition.coords.longitude;
+    } else {
+      center = this.startLocation;
     }
+
     const loader = new Loader({
       apiKey: this.apikey,
       version: "weekly",

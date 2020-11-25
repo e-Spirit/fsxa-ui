@@ -48,7 +48,6 @@ export default class App extends Vue {
         <Sections.GoogleMapsSection
           apikey={apikey}
           title="Google Maps Section"
-          startLocation={startLocation}
           locations={locations}
           handleButtonClick={(e: MouseEvent, location: MapsLocation) => {
             console.log("Button pressed");
