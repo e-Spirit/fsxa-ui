@@ -10,6 +10,11 @@ import { Loader } from "@googlemaps/js-api-loader";
 // eslint-disable-next-line
 const markerIcon = require("../../../assets/Marker.png");
 
+interface MarkerWithInfoWindow {
+  marker: google.maps.Marker;
+  infoWindow: google.maps.InfoWindow;
+}
+
 const DEFAULT_STYLE: google.maps.MapTypeStyle[] = [
   {
     featureType: "water",
@@ -82,6 +87,8 @@ const DEFAULT_STYLE: google.maps.MapTypeStyle[] = [
 })
 class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
   map: google.maps.Map | null = null;
+  selectedIndex: number | null = null;
+  markers: MarkerWithInfoWindow[] | null = null;
 
   @Prop() title: GoogleMapsSectionProps["title"];
   @Prop({ required: false }) apikey!: GoogleMapsSectionProps["apikey"];
@@ -96,9 +103,10 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
   @Prop({ required: true })
   handleButtonClick!: GoogleMapsSectionProps["handleButtonClick"];
 
-  selectedIndex: number | null = null;
-
-  placeMarkers(map: google.maps.Map, ...locations: MapsLocation[]): void {
+  placeMarkers(
+    map: google.maps.Map,
+    ...locations: MapsLocation[]
+  ): MarkerWithInfoWindow[] {
     const renderDescriptionBox = (location: MapsLocation): Node => {
       const template = `<h2 class="font-bold">${location.name}</h2>
         <p>${location.street}</p>
@@ -116,7 +124,7 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
       return div;
     };
 
-    locations.map((location: MapsLocation) => {
+    return locations.map((location: MapsLocation) => {
       const marker = new google.maps.Marker({
         position: location.position,
         icon: markerIcon,
@@ -127,9 +135,13 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
       });
 
       marker.addListener("click", () => {
+        map.setCenter(location.position);
         infoWindow?.open(map, marker);
       });
-      return marker;
+      return {
+        marker,
+        infoWindow,
+      };
     });
   }
 
@@ -164,12 +176,20 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
       throw new Error("Language string must contain exactly 2 characters.");
     }
 
-    this.initMap().then(
-      map => this.locations && this.placeMarkers(map, ...this.locations),
-    );
+    this.initMap().then(map => {
+      if (this.locations) {
+        this.markers = this.placeMarkers(map, ...this.locations);
+      }
+      this.map = map;
+    });
   }
   selectLocation(index: number) {
     this.selectedIndex = index;
+    if (this.locations && this.markers && this.map) {
+      const marker = this.markers[index].marker;
+      this.markers[index].infoWindow.open(this.map, marker);
+      this.map?.panTo(this.locations[index].position);
+    }
   }
   render() {
     return (
@@ -182,14 +202,16 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
             {this.locations &&
               this.locations?.map((location, index) => (
                 <div
-                  class={`w-full h-32 py-2 px-4 border-b-2 border-gray-400 overflow-hidden cursor-pointer ${
+                  class={`w-full h-32 py-2 px-4 border-b-2 border-gray-400 cursor-pointer ${
                     index === this.selectedIndex ? "bg-white" : ""
                   }`}
                   on-click={this.selectLocation.bind(this, index)}
                 >
-                  <h3 class="text-2xl font-bold" style="color:#D5DD00;">
-                    {location.name}
-                  </h3>
+                  <div class="w-full h-10 overflow-hidden">
+                    <h3 class="text-2xl font-bold" style="color:#D5DD00;">
+                      {location.name}
+                    </h3>
+                  </div>
                   <div class="text-sm">
                     <p>{location.description}</p>
                     <p>{location.street}</p>
