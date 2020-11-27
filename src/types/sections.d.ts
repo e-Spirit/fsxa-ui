@@ -169,7 +169,7 @@ export interface GoogleMapsSectionProps {
   /**
    * Url to a 50x50 image that will be used as a marker
    */
-  //markerIcon?: string;
+  markerIcon?: string;
   /**
    * You can define your own map style using https://mapstyle.withgoogle.com/
    */

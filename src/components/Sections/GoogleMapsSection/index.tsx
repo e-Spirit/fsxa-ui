@@ -8,7 +8,7 @@ import {
 import { LineSeparator } from "@/components";
 import { Loader } from "@googlemaps/js-api-loader";
 // eslint-disable-next-line
-const markerIcon = require("../../../assets/Marker.png");
+const DEFAULT_ICON = require("../../../assets/Marker.png");
 
 interface MarkerWithInfoWindow {
   marker: google.maps.Marker;
@@ -104,6 +104,7 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
   @Prop() locations: GoogleMapsSectionProps["locations"];
   @Prop() mapStyles: GoogleMapsSectionProps["mapStyles"];
   @Prop() renderInfoWindow: GoogleMapsSectionProps["renderInfoWindow"];
+  @Prop() markerIcon: GoogleMapsSectionProps["markerIcon"];
 
   @Watch("selectedIndex")
   handleSelectionChange(index: number, oldIndex: number) {
@@ -154,7 +155,7 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
     return locations.map((location: MapsLocation, index) => {
       const marker = new google.maps.Marker({
         position: location.position,
-        icon: markerIcon,
+        icon: this.markerIcon || DEFAULT_ICON,
         map,
       });
       const getContent = this.renderInfoWindow || this.renderDescriptionBox;
