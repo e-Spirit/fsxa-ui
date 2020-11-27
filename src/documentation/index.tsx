@@ -81,8 +81,8 @@ const routes = [
         children: [],
       },
       {
-        label: "ListSection",
-        path: "/components/list-section",
+        label: "LineSeparator",
+        path: "/components/line-separator",
         children: [],
       },
       {
@@ -96,6 +96,11 @@ const routes = [
         children: [],
       },
       {
+        label: "ProductListItem",
+        path: "/components/product-list-item",
+        children: [],
+      },
+      {
         label: "Quote",
         path: "/components/quote",
         children: [],
@@ -103,33 +108,6 @@ const routes = [
       {
         label: "RichText",
         path: "/components/rich-text",
-        children: [],
-      },
-      {
-        label: "Header-Section",
-        path: "/components/header-section",
-        children: [],
-      },
-      {
-        label: "InterestingFacts-Section",
-        path: "/components/interesting-facts-section",
-        children: [],
-      },
-      {
-        label: "Teaser-Section",
-        path: "/components/teaser-section",
-        label: "ProductListItem",
-        path: "/components/product-list-item",
-        children: [],
-      },
-      {
-        label: "LineSeparator",
-        path: "/components/line-separator",
-        children: [],
-      },
-      {
-        label: "ProductDetailSection",
-        path: "/components/product-detail-section",
         children: [],
       },
     ],
@@ -141,6 +119,26 @@ const routes = [
       {
         label: "AccordionSection",
         path: "/sections/accordion-section",
+        children: [],
+      },
+      {
+        label: "HeaderSection",
+        path: "/sections/header-section",
+        children: [],
+      },
+      {
+        label: "InterestingFactsSection",
+        path: "/sections/interesting-facts-section",
+        children: [],
+      },
+      {
+        label: "ListSection",
+        path: "/sections/list-section",
+        children: [],
+      },
+      {
+        label: "ProductDetailSection",
+        path: "/sections/product-detail-section",
         children: [],
       },
     ],

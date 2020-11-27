@@ -12,7 +12,7 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
 ## Properties
 
 <PropsTable>
-  <PropsTableRow value="backgroundImage">
+  <PropsTableRow value="backgroundImage" type="Object">
     Requires <span class="code">ImageRef</span> which needs:
     <ul>
       <li>
@@ -30,10 +30,10 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
       </ul>
       
       </PropsTableRow>
-      <PropsTableRow value="title">
+      <PropsTableRow value="title" type="String">
         Requires <span class="code">String</span>
         </PropsTableRow>
-        <PropsTableRow value="breadcrumbs">
+        <PropsTableRow value="breadcrumbs" type="Array">
          Requires an Array <span class="code">Breadcrumb[]</span> which will need the following information: <span class="code">{`{ 
            referenceId: number,
            referenceType: String,
@@ -41,7 +41,7 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
            label: String
             }`}</span> 
           </PropsTableRow>
-          <PropsTableRow value="handleItemClick()">
+          <PropsTableRow value="handleItemClick()" type="Function">
              You can pass in an optional callback that will be triggered, when an item
       is clicked.
             </PropsTableRow>
@@ -49,4 +49,4 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
 
 ## Example
 
-<ExampleLoader example="HeaderSection.tsx" />
+<ExampleLoader example="Sections/HeaderSection.tsx" />

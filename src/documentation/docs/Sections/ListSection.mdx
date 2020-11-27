@@ -12,40 +12,39 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
 ## Properties
 
 <PropsTable>
-  <PropsTableRow value="items" required>
+  <PropsTableRow value="items" required type="Array">
   Items that should be shown in the list (title: string, description: string, price: number, image: Image, url: string).
   </PropsTableRow>
-  <PropsTableRow value="headline">
+  <PropsTableRow value="headline" type="String">
   Specify a headline for the item list. The separator will not be displayed, if no headline is specified.
   </PropsTableRow>
-  <PropsTableRow value="filters">
+  <PropsTableRow value="filters" type="Array">
   A list of filters (key: string, value: string).
   </PropsTableRow>
-  <PropsTableRow value="selectedFilters">
+  <PropsTableRow value="selectedFilters" type="Array">
   An array of keys of the selected filters. 
   </PropsTableRow>
-  <PropsTableRow value="handleFilterChange">
+  <PropsTableRow value="handleFilterChange" type="Function">
   A callback that will be invoked when the selected filters change. The new selected filters will be passed as an argument.
   </PropsTableRow>
-  <PropsTableRow value="handleItemClick">
+  <PropsTableRow value="handleItemClick" type="Function">
   A callback that will be invoked when a list item is clicked. The clicked item will be passed as an argument.
   </PropsTableRow>
 </PropsTable>
 
 ## Examples
-
 You can define how items should be rendered via the <span class="code">renderItem</span> property:
-<ExampleLoader example="ListSection.tsx" />
+<ExampleLoader example="Sections/ListSection.tsx" />
 
 <br/>A very different, simpler rendering of items would look like this:
-<ExampleLoader example="ListSection.CustomItem.tsx" />
+<ExampleLoader example="Sections/ListSection.CustomItem.tsx" />
 
 <div class="mt-8">
 By including default content, you can override the default rendering of the list section, e.g. to show your custom loader:
 </div>
-<ExampleLoader example="ListSection.CustomContent.tsx" />
+<ExampleLoader example="Sections/ListSection.CustomContent.tsx" />
 
 <div class="mt-8">
-When no headline is passed or the filters and the corresponding properties are omitted, no ui components will be rendered: 
+When no headline is passed or the filters and the corresponding properties are omitted, no ui components will be rendered:
 </div>
-<ExampleLoader example="ListSection.NoHeadlineAndFilters.tsx" />
+<ExampleLoader example="Sections/ListSection.NoHeadlineAndFilters.tsx" />

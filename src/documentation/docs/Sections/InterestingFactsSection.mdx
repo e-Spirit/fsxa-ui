@@ -12,7 +12,7 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
 ## Properties
 
 <PropsTable>
-  <PropsTableRow value="backgroundImage">
+  <PropsTableRow value="backgroundImage" type="Object">
     Requires <span class="code">ImageRef</span> which needs:
     <ul>
       <li>
@@ -29,16 +29,16 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
           </li>
       </ul>
       </PropsTableRow>
-      <PropsTableRow value="headline">
+      <PropsTableRow value="headline" type="String">
         Requires <span class="code">String</span>
         </PropsTableRow>
-            <PropsTableRow value="text">
+            <PropsTableRow value="text" type="String">
         Requires <span class="code">String</span>
         </PropsTableRow>
-            <PropsTableRow value="tagline">
+            <PropsTableRow value="tagline" type="String">
         Requires <span class="code">String</span> it describes a little text above the headline
         </PropsTableRow>
-        <PropsTableRow value="counters">
+        <PropsTableRow value="counters" type="Array">
          Requires an array <span class="code">counters[]</span> containing objects with the following structure: <span class="code">{`{ 
            value: Number,
            label: String,
@@ -48,4 +48,4 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
 
 ## Example
 
-<ExampleLoader example="InterestingFactsSection.tsx" />
+<ExampleLoader example="Sections/InterestingFactsSection.tsx" />

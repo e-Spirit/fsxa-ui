@@ -13,32 +13,32 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
 
 <PropsTable>
   
-  <PropsTableRow value="headline" required>
+  <PropsTableRow value="headline" required type="String" >
     A headline for the ProductDetailSection.
   </PropsTableRow>
-  <PropsTableRow value="buttonText" required>
+  <PropsTableRow value="buttonText" type="String">
     Text to display on a clickable button.
   </PropsTableRow>
-  <PropsTableRow value="propertyList">
+  <PropsTableRow value="propertyList" type="Array">
     List of product property lists that will be rendered into bullet lists under the price. Each propertyList entry results in a new bullet list with a custom title.
   </PropsTableRow>
-  <PropsTableRow value="description" required>
+  <PropsTableRow value="description" required type="String">
   Description of the product that will be displayed under the headline.
   </PropsTableRow>
-  <PropsTableRow value="price" required>
+  <PropsTableRow value="price" required type="String">
   Price of the product that will be displayed under the description.
   </PropsTableRow>
-  <PropsTableRow value="images">
+  <PropsTableRow value="images" type="Array">
   List of image references that will be displayed on the left side of the section.
   </PropsTableRow>
-  <PropsTableRow value="foldableContentList">
+  <PropsTableRow value="foldableContentList" type="Record<string, string>">
   List of key -value pairs, e.g. <span class="code">key1: "value1", key2: "value2"</span> that renders to foldable (Accordion) elements. Utilizes the key as title and the value as foldable text content. The value can contain RichText formatting.
   </PropsTableRow>
-  <PropsTableRow value="handleButtonClick">
+  <PropsTableRow value="handleButtonClick" type="Function">
   Callback that is triggered when the button is clicked.
   </PropsTableRow>
 </PropsTable>
 
 ## Example
 
-<ExampleLoader example="ProductDetailSection.tsx" />
+<ExampleLoader example="Sections/ProductDetailSection.tsx" />
