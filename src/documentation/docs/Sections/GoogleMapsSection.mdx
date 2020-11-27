@@ -15,8 +15,8 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
   <PropsTableRow value="apikey" type="string">
     Your google maps apikey.
   </PropsTableRow>
-  <PropsTableRow value="startLocation" type="MapsLocation" optional>
-    An object of type MapsLocation which contains contains a latitude and a longitude as numbers.
+  <PropsTableRow value="startLocation" type="MapsPosition" optional>
+    An object of type MapsPosition which contains contains a latitude and a longitude as numbers.
     It indicates the location where the map should initially be centered to.
     When not set, the browser will prompt the user to allow the use of their location.
   </PropsTableRow>
@@ -41,6 +41,9 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
   <PropsTableRow value="handleButtonClick" type="Function" optional>
     The function to be called when a button in a marker widget is clicked. When the function is called, the location data is passed into it.
     This prop is required if the buttonLabel prop is set.
+  </PropsTableRow>
+  <PropsTableRow value="mapStyles" type="google.maps.MapTypeStyle[] | string" optional>
+    You can design your own map style using https://mapstyle.withgoogle.com/. You can export your styles as json and pass them into this prop to apply them to the map.
   </PropsTableRow>
 </PropsTable>
 <ExampleLoader example="Sections/GoogleMapsSection.tsx" />

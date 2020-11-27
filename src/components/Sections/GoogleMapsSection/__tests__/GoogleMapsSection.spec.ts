@@ -5,17 +5,6 @@ import { GoogleMapsSectionProps } from "../../../../types/sections";
 
 const apikey = process.env.VUE_APP_MAPS_APIKEY;
 
-const locations = [
-  {
-    position: {
-      lat: 48.214039,
-      lng: 16.346442,
-    },
-    name: "Skoda",
-    city: "Wien",
-    street: "Skodagasse 13",
-  },
-];
 // eslint-disable-next-line
 const handleButtonClick = () => {}
 const requiredProps = {
@@ -61,6 +50,15 @@ describe("components/sections/google-maps-section", () => {
     it("should throw an error if there is no buttonLabel prop", () => {
       const illegalProps = requiredProps;
       illegalProps.handleButtonClick = handleButtonClick;
+      expect(() =>
+        render(GoogleMapsSection, { props: illegalProps }),
+      ).toThrowError();
+    });
+  });
+  describe("given a styles prop", () => {
+    it("should throw an error if the prop as string is not parsable", () => {
+      const illegalProps = requiredProps;
+      illegalProps.mapStyles = "omg these are not styles";
       expect(() =>
         render(GoogleMapsSection, { props: illegalProps }),
       ).toThrowError();

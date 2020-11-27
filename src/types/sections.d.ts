@@ -173,7 +173,7 @@ export interface GoogleMapsSectionProps {
   /**
    * You can define your own map style using https://mapstyle.withgoogle.com/
    */
-  //mapStyle?: google.maps.MapTypeStyle[] | string;
+  mapStyles?: google.maps.MapTypeStyle[] | string;
   /**
    * You can optionally render your own info window using this handle.
    * The component will call this function and pass in a location with metadata and expect a div Element as node to be returned.

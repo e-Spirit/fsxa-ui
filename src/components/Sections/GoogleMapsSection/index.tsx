@@ -15,7 +15,7 @@ interface MarkerWithInfoWindow {
   infoWindow: google.maps.InfoWindow;
 }
 
-const DEFAULT_STYLE: google.maps.MapTypeStyle[] = [
+const DEFAULT_STYLES: google.maps.MapTypeStyle[] = [
   {
     featureType: "water",
     elementType: "geometry",
@@ -92,15 +92,17 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
 
   @Prop({ required: true }) apikey!: GoogleMapsSectionProps["apikey"];
   @Prop({ required: true }) language!: GoogleMapsSectionProps["language"];
+
   @Prop()
-  buttonLabel!: GoogleMapsSectionProps["buttonLabel"];
+  buttonLabel: GoogleMapsSectionProps["buttonLabel"];
   @Prop()
-  handleButtonClick!: GoogleMapsSectionProps["handleButtonClick"];
+  handleButtonClick: GoogleMapsSectionProps["handleButtonClick"];
 
   @Prop() title: GoogleMapsSectionProps["title"];
-  @Prop() startLocation!: GoogleMapsSectionProps["startLocation"];
-  @Prop({ default: 15 }) zoom!: GoogleMapsSectionProps["zoom"];
-  @Prop() locations!: GoogleMapsSectionProps["locations"];
+  @Prop() startLocation: GoogleMapsSectionProps["startLocation"];
+  @Prop({ default: 15 }) zoom: GoogleMapsSectionProps["zoom"];
+  @Prop() locations: GoogleMapsSectionProps["locations"];
+  @Prop() mapStyles: GoogleMapsSectionProps["mapStyles"];
 
   @Watch("selectedIndex")
   handleSelectionChange(index: number, oldIndex: number) {
@@ -173,8 +175,25 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
       navigator.geolocation.getCurrentPosition(resolve, reject, options);
     });
   }
+  getStyles(): google.maps.MapTypeStyle[] {
+    let styles = DEFAULT_STYLES;
+    if (this.mapStyles) {
+      if (typeof this.mapStyles === "string") {
+        try {
+          styles = JSON.parse(this.mapStyles) as google.maps.MapTypeStyle[];
+        } catch (error) {
+          throw new Error(
+            "Error parsing mapStyles string. Expecting valid json.",
+          );
+        }
+      } else {
+        styles = this.mapStyles;
+      }
+    }
+    return styles;
+  }
 
-  async initMap(): Promise<google.maps.Map> {
+  async initMap(styles: google.maps.MapTypeStyle[]): Promise<google.maps.Map> {
     let center = {} as MapsPosition;
     if (!this.startLocation) {
       const userPosition = await this.getPromisedGeolocation();
@@ -190,12 +209,13 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
       language: this.language,
     });
     await loader.load();
+
     const map = new google.maps.Map(
       document.getElementById("map") as HTMLElement,
       {
         center,
         zoom: this.zoom,
-        styles: DEFAULT_STYLE,
+        styles,
       },
     );
     return map;
@@ -218,8 +238,8 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
         );
       }
     }
-
-    this.initMap()
+    const styles = this.getStyles();
+    this.initMap(styles)
       .then(map => {
         if (this.locations) {
           this.markers = this.placeMarkers(map, this.locations);
