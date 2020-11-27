@@ -90,16 +90,17 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
   selectedIndex: number | null = null;
   markers: MarkerWithInfoWindow[] | null = null;
 
-  @Prop() title: GoogleMapsSectionProps["title"];
   @Prop({ required: true }) apikey!: GoogleMapsSectionProps["apikey"];
+  @Prop({ required: true }) language!: GoogleMapsSectionProps["language"];
+  @Prop()
+  buttonLabel!: GoogleMapsSectionProps["buttonLabel"];
+  @Prop()
+  handleButtonClick!: GoogleMapsSectionProps["handleButtonClick"];
+
+  @Prop() title: GoogleMapsSectionProps["title"];
   @Prop() startLocation!: GoogleMapsSectionProps["startLocation"];
   @Prop({ default: 15 }) zoom!: GoogleMapsSectionProps["zoom"];
-  @Prop({ default: "en" }) language!: GoogleMapsSectionProps["language"];
   @Prop() locations!: GoogleMapsSectionProps["locations"];
-  @Prop({ default: "Contact Us" })
-  buttonLabel!: GoogleMapsSectionProps["buttonLabel"];
-  @Prop({ required: true })
-  handleButtonClick!: GoogleMapsSectionProps["handleButtonClick"];
 
   @Watch("selectedIndex")
   handleSelectionChange(index: number, oldIndex: number) {
@@ -124,16 +125,22 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
         ${location.description ? "<p>" + location.description + "</p>" : ""}
         <p class="mt-2">${location.street}</p>
         <p>${location.city}</p>
-      </div>
-      <button class="bg-black text-white hover:bg-gray-300 hover:text-black focus:outline-none p-2 my-4 w-auto overflow-hidden cursor-pointer font-light text-sm">
-      ${this.buttonLabel}
-      </button>`;
+      </div>`;
     const div = document.createElement("div");
     div.classList.add("w-64", "text-sm");
     div.innerHTML = template;
-    div.querySelector("button")?.addEventListener("click", event => {
-      this.handleButtonClick(event, location);
-    });
+
+    if (this.buttonLabel) {
+      const button = `<button class='bg-black text-white hover:bg-gray-300 hover:text-black focus:outline-none p-2 my-4 w-auto overflow-hidden cursor-pointer font-light text-sm'>
+      ${this.buttonLabel}
+      </button>`;
+      div.querySelector("button")?.addEventListener("click", event => {
+        //since we validated this prop in the mounted hook we can safely assume that handleButtonClick is available here
+        this.handleButtonClick!(event, location);
+      });
+      div.innerHTML += button;
+    }
+
     return div;
   }
 
@@ -196,6 +203,20 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
   mounted() {
     if (this.language?.length !== 2) {
       throw new Error("Language string must contain exactly 2 characters.");
+    }
+    if (this.buttonLabel) {
+      if (!this.handleButtonClick) {
+        throw new Error(
+          "Button label was set but handler is missing. Please also set a handleButtonClick prop.",
+        );
+      }
+    }
+    if (this.handleButtonClick) {
+      if (!this.buttonLabel) {
+        throw new Error(
+          "Button handler was set but label is missing. Please also set a buttonLabel prop.",
+        );
+      }
     }
 
     this.initMap()

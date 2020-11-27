@@ -20,9 +20,7 @@ const locations = [
 const handleButtonClick = () => {}
 const requiredProps = {
   apikey,
-  buttonLabel: "label",
   language: "en",
-  handleButtonClick,
 } as GoogleMapsSectionProps;
 
 describe("components/sections/google-maps-section", () => {
@@ -47,6 +45,24 @@ describe("components/sections/google-maps-section", () => {
       ).toThrowError();
       expect(() =>
         render(GoogleMapsSection, { props: shortProps }),
+      ).toThrowError();
+    });
+  });
+  describe("given a buttonLabel prop", () => {
+    it("should throw an error if there is no handleButtonClick prop", () => {
+      const illegalProps = requiredProps;
+      illegalProps.buttonLabel = "Label";
+      expect(() =>
+        render(GoogleMapsSection, { props: illegalProps }),
+      ).toThrowError();
+    });
+  });
+  describe("given a handleButtonClick prop", () => {
+    it("should throw an error if there is no buttonLabel prop", () => {
+      const illegalProps = requiredProps;
+      illegalProps.handleButtonClick = handleButtonClick;
+      expect(() =>
+        render(GoogleMapsSection, { props: illegalProps }),
       ).toThrowError();
     });
   });
