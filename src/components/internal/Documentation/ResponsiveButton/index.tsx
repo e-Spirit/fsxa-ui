@@ -14,8 +14,8 @@ interface ResponsiveButtonProps {
 class ResponsiveButton extends BaseComponent<ResponsiveButtonProps> {
   @Prop({ required: true })
   handleOnClick!: ResponsiveButtonProps["handleOnClick"];
-  @Prop() pressed!: ResponsiveButtonProps["pressed"];
-  @Prop() dark!: ResponsiveButtonProps["dark"];
+  @Prop({ default: false }) pressed!: ResponsiveButtonProps["pressed"];
+  @Prop({ default: false }) dark!: ResponsiveButtonProps["dark"];
 
   render() {
     return (

@@ -7,7 +7,7 @@ import "prismjs/themes/prism-okaidia.css";
 import "./style.css";
 import Toggle from "@/components/internal/Toggle";
 import { CodeProps } from "@/types/components";
-import ComponentIFrame from "@/components/internal/Documentation/ComponentIFrame/ComponentIFrame";
+import ComponentIFrame from "@/components/internal/Documentation/ComponentIFrame";
 
 @Component
 class Code extends BaseComponent<CodeProps> {
