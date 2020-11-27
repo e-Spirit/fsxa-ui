@@ -15,28 +15,32 @@ export default class App extends Vue {
           lng: 16.346388,
         },
         name: "Skoda",
-        city: "1080 Wien",
+        city: "1080 Vienna",
         street: "Skodagasse 13",
+        description:
+          "If you click this marker the corresponding item in the sidebar will be selected.",
       },
       {
         position: {
           lat: 48.210967,
           lng: 16.246388,
         },
-        name: "Was anderes zum Testen",
-        city: "1140 Wien",
-        street: "Andere Gasse 12",
+        name: "A headline for testing the rendering of the headline",
+        city: "1140 Vienna",
+        street: "Some alley 12",
+        description:
+          "If you click this in the sidebar the map will center on the location of the marker.",
       },
       {
         position: {
           lat: 48.203967,
           lng: 16.236388,
         },
-        name: "Noch was zum Testen",
-        city: "1140 Wien",
-        street: "Noch eine Gasse 23",
+        name: "Another item",
+        city: "1140 Vienna",
+        street: "Some other alley 23",
         description:
-          "Hier steht noch ein langer Fließtext. Mit noch mehr Fließtext.",
+          "This item is here to test how switching between 3 items behaves.",
       },
     ];
     const startLocation = {
@@ -49,8 +53,8 @@ export default class App extends Vue {
           apikey={apikey}
           title="Google Maps Section"
           startLocation={startLocation}
-          language="de"
-          buttonLabel="Kontakt"
+          language="en"
+          buttonLabel="Contact us"
           locations={locations}
           handleButtonClick={(e: MouseEvent, location: MapsLocation) => {
             console.log("Button pressed");
