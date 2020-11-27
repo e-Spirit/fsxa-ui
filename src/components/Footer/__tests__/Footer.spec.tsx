@@ -7,7 +7,7 @@ describe("components/Footer", () => {
     const copyright = "this is my copyright";
     const { getByTestId } = render(Footer, {
       props: {
-        copyright: copyright,
+        copyright,
         links: [
           {
             referenceId: 1,
