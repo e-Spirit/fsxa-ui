@@ -43,7 +43,14 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
     This prop is required if the buttonLabel prop is set.
   </PropsTableRow>
   <PropsTableRow value="mapStyles" type="google.maps.MapTypeStyle[] | string" optional>
-    You can design your own map style using https://mapstyle.withgoogle.com/. You can export your styles as json and pass them into this prop to apply them to the map.
+    You can design your own map style <a class="text-red-900 underline" href="https://mapstyle.withgoogle.com/">here</a>. You can export your styles as json and pass them into this prop to apply them to the map.
+  </PropsTableRow>
+  <PropsTableRow value="renderInfoWindow" type="Function" optional>
+    The GoogleMapsSection will pass a location of type MapsPosition into your function and expect it to return an HTML node to render.
+  </PropsTableRow>
+  <PropsTableRow value="markerIcon" type="string" optional>
+    A custom marker icon that will be displayed at a location. The string can be a url pointing to an image or base64 encoded image data or an svg.
+    The image you use should be 50x50 in size.
   </PropsTableRow>
 </PropsTable>
 <ExampleLoader example="Sections/GoogleMapsSection.tsx" />

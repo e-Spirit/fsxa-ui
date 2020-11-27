@@ -167,7 +167,7 @@ export interface GoogleMapsSectionProps {
    */
   handleButtonClick?: (event: MouseEvent, location: MapsLocation) => void;
   /**
-   * Url to a 50x50 image that will be used as a marker
+   * Url to a 50x50 image that will be used as a marker or image data loaded with some kind of image loader.
    */
   markerIcon?: string;
   /**
