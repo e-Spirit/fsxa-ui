@@ -103,6 +103,7 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
   @Prop({ default: 15 }) zoom: GoogleMapsSectionProps["zoom"];
   @Prop() locations: GoogleMapsSectionProps["locations"];
   @Prop() mapStyles: GoogleMapsSectionProps["mapStyles"];
+  @Prop() renderInfoWindow: GoogleMapsSectionProps["renderInfoWindow"];
 
   @Watch("selectedIndex")
   handleSelectionChange(index: number, oldIndex: number) {
@@ -156,8 +157,9 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
         icon: markerIcon,
         map,
       });
+      const getContent = this.renderInfoWindow || this.renderDescriptionBox;
       const infoWindow = new google.maps.InfoWindow({
-        content: this.renderDescriptionBox(location),
+        content: getContent(location),
       });
 
       marker.addListener("click", () => {
@@ -175,6 +177,7 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
       navigator.geolocation.getCurrentPosition(resolve, reject, options);
     });
   }
+
   getStyles(): google.maps.MapTypeStyle[] {
     let styles = DEFAULT_STYLES;
     if (this.mapStyles) {

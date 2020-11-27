@@ -178,7 +178,7 @@ export interface GoogleMapsSectionProps {
    * You can optionally render your own info window using this handle.
    * The component will call this function and pass in a location with metadata and expect a div Element as node to be returned.
    */
-  //renderInfoWindow?: (location: MapsLocation) => Node;
+  renderInfoWindow?: (location: MapsLocation) => Node;
 }
 export interface MapsPosition {
   lat: number;
