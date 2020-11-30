@@ -6,7 +6,7 @@ import { GoogleMapsSectionProps } from "../../../../types/sections";
 const apikey = process.env.VUE_APP_MAPS_APIKEY;
 
 // eslint-disable-next-line
-const handleButtonClick = () => {}
+const handleButtonClick = () => {};
 const requiredProps = {
   apikey,
   language: "en",
@@ -29,12 +29,17 @@ describe("components/sections/google-maps-section", () => {
       longProps.language = "eng";
       const shortProps = requiredProps;
       shortProps.language = "e";
+      // Suppress console.error output, since we do not want to pollute the console with the expected error
+      const errorSpy = jest
+        .spyOn(console, "error")
+        .mockImplementation(async () => []);
       expect(() =>
         render(GoogleMapsSection, { props: longProps }),
       ).toThrowError();
       expect(() =>
         render(GoogleMapsSection, { props: shortProps }),
       ).toThrowError();
+      errorSpy.mockReset();
     });
   });
   describe("given a buttonLabel prop", () => {
