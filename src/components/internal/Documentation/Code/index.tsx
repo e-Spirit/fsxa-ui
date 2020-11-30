@@ -7,11 +7,13 @@ import "prismjs/themes/prism-okaidia.css";
 import "./style.css";
 import Toggle from "@/components/internal/Toggle";
 import { CodeProps } from "@/types/components";
+import ComponentIFrame from "@/components/internal/Documentation/ComponentIFrame";
 
 @Component
 class Code extends BaseComponent<CodeProps> {
   @Prop() code!: CodeProps["code"];
   @Prop() language: CodeProps["language"];
+  @Prop() filename: CodeProps["filename"];
 
   darkMode = false;
   copied = false;
@@ -42,7 +44,14 @@ class Code extends BaseComponent<CodeProps> {
       <div class={`Code ${this.darkMode ? "dark" : ""}`}>
         {this.$slots.default ? (
           <div class="Code--Example">
-            {this.$slots.default}
+            {this.filename && (
+              <ComponentIFrame
+                filename={this.filename}
+                dark={this.darkMode}
+                class="mx-auto"
+              />
+            )}
+
             <div class="Code--BackgroundToggle">
               <Toggle
                 active={this.darkMode}
