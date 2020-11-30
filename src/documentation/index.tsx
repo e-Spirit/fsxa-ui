@@ -10,33 +10,6 @@ const routes = [
     children: [],
   },
   {
-    label: "PWA",
-    path: "/pwa",
-    children: [
-      {
-        label: "Getting Started",
-        path: "/pwa/getting-started",
-        children: [],
-      },
-    ],
-  },
-  {
-    label: "Pattern-Library",
-    path: "/pattern-library",
-    children: [
-      {
-        label: "Getting Started",
-        path: "/pattern-library/getting-started",
-        children: [],
-      },
-      {
-        label: "DevMode",
-        path: "/pattern-library/dev-mode",
-        children: [],
-      },
-    ],
-  },
-  {
     label: "Components",
     path: "/components",
     children: [
@@ -81,11 +54,6 @@ const routes = [
         children: [],
       },
       {
-        label: "ListSection",
-        path: "/components/list-section",
-        children: [],
-      },
-      {
         label: "Navigation",
         path: "/components/navigation",
         children: [],
@@ -106,30 +74,12 @@ const routes = [
         children: [],
       },
       {
-        label: "Header-Section",
-        path: "/components/header-section",
-        children: [],
-      },
-      {
-        label: "InterestingFacts-Section",
-        path: "/components/interesting-facts-section",
-        children: [],
-      },
-      {
-        label: "Teaser-Section",
-        path: "/components/teaser-section",
         label: "ProductListItem",
         path: "/components/product-list-item",
-        children: [],
       },
       {
         label: "LineSeparator",
         path: "/components/line-separator",
-        children: [],
-      },
-      {
-        label: "ProductDetailSection",
-        path: "/components/product-detail-section",
         children: [],
       },
     ],
@@ -146,6 +96,31 @@ const routes = [
       {
         label: "GoogleMapsSection",
         path: "/sections/google-maps-section",
+        children: [],
+      },
+      {
+        label: "Header-Section",
+        path: "/sections/header-section",
+        children: [],
+      },
+      {
+        label: "InterestingFacts-Section",
+        path: "/sections/interesting-facts-section",
+        children: [],
+      },
+      {
+        label: "ListSection",
+        path: "/sections/list-section",
+        children: [],
+      },
+      {
+        label: "ProductDetailSection",
+        path: "/sections/product-detail-section",
+        children: [],
+      },
+      {
+        label: "Teaser-Section",
+        path: "/sections/teaser-section",
         children: [],
       },
     ],
