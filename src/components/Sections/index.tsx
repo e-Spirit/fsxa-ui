@@ -5,6 +5,7 @@ import TeaserSection from "./TeaserSection";
 import ListSection from "./ListSection";
 import ProductDetailSection from "./ProductDetailSection";
 import AccordionSection from "./AccordionSection";
+import GoogleMapsSection from "./GoogleMapsSection";
 
 export default {
   InterestingFactsSection,
@@ -14,4 +15,5 @@ export default {
   TeaserSection,
   ProductDetailSection,
   AccordionSection,
+  GoogleMapsSection,
 };

@@ -12,7 +12,7 @@
     "resolveJsonModule": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "types": ["webpack-env", "jest"],
+    "types": ["webpack-env", "jest", "googlemaps"],
     "paths": {
       "@/*": ["src/*"],
       // added this, so we do have code-completion in our examples

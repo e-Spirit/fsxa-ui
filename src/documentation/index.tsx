@@ -143,6 +143,11 @@ const routes = [
         path: "/sections/accordion-section",
         children: [],
       },
+      {
+        label: "GoogleMapsSection",
+        path: "/sections/google-maps-section",
+        children: [],
+      },
     ],
   },
 ];
