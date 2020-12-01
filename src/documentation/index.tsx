@@ -99,12 +99,12 @@ const routes = [
         children: [],
       },
       {
-        label: "Header-Section",
+        label: "HeaderSection",
         path: "/sections/header-section",
         children: [],
       },
       {
-        label: "InterestingFacts-Section",
+        label: "InterestingFactsSection",
         path: "/sections/interesting-facts-section",
         children: [],
       },
@@ -119,7 +119,7 @@ const routes = [
         children: [],
       },
       {
-        label: "Teaser-Section",
+        label: "TeaserSection",
         path: "/sections/teaser-section",
         children: [],
       },

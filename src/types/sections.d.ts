@@ -75,7 +75,7 @@ export interface ProductDetailSectionProps {
   /**
    * Specify a text for the button
    *
-   * The button is only rendered, when `buttonText` is provided.
+   * The button is only rendered when `buttonText` is provided.
    */
   buttonText?: string;
   /**
