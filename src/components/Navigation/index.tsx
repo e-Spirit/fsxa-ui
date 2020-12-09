@@ -25,10 +25,12 @@ class Navigation extends BaseComponent<NavigationProps> {
   renderItem(item: NavigationItem, currentDepth: number) {
     const isActive = this.isActiveItem ? this.isActiveItem(item) : false;
     return (
-      <li class="Navigation--Item">
+      <li class="Navigation--Item block lg:inline border-t-1 border-grey-200 lg:border-t-0 text-center lg:text-left">
         <a
           data-testid={`item-${item.id}`}
-          class={`Navigation--Link Nav--Mobile ${isActive ? "active" : ""}`}
+          class={`Navigation--Link w-full lg:w-auto pt-4 pb-4 text-xl ${
+            isActive ? "active" : ""
+          }`}
           href={item.path}
           onClick={(event: any) => {
             event?.preventDefault();
@@ -37,13 +39,13 @@ class Navigation extends BaseComponent<NavigationProps> {
         >
           {item.label}
           {item.children.length > 0 ? (
-            <span class="Navigation--smallicon">
+            <span class="inline">
               <i class="fas fa-chevron-right ml-2"></i>
             </span>
           ) : null}
         </a>
         {item.children.length > 0 && currentDepth < this.depth && (
-          <ul class="Navigation--Navigation">
+          <ul class="Navigation--Navigation border-l-0 border-r-0 border-t-1 border-grey-200 lg:border-t-0 hover:h-full hover:relative">
             {item.children.map(item => this.renderItem(item, currentDepth + 1))}
           </ul>
         )}
