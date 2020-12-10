@@ -1,81 +1,25 @@
-.Navigation--Navigation {
-  @apply m-0 p-0 list-none w-full font-sans;
+ul.mainMenu {
+    list-style: none;
+    text-transform: uppercase;
+ }
+
+ul.mainMenu > li { margin-right:1rem; }
+ul.mainMenu > li:hover { background-color:lightpink; }
+
+ul.mainMenu > li > ul {display:none}
+
+ul.mainMenu > li:hover > ul {
+    display:block;
+    transition: top 200ms, left 200ms;
 }
 
-.Navigation--Navigation > .Navigation--Item {
-  @apply inline-block relative;
+@media (min-width:1024px) {
+    ul.mainMenu > li { 
+        display: inline;
+        float: left;
+    }
+    ul.mainMenu > li > a {
+        background-color:lightblue;
+        padding-right:3rem;
+    }
 }
-
-.Navigation--Link {
-  @apply block text-sm uppercase h-full relative py-10 px-4 no-underline text-black font-sans;
-}
-
-.Navigation--Link.active {
-  @apply text-gray-600;
-}
-
-/** second level navigation **/
-.Navigation--Navigation .Navigation--Navigation {
-  @apply absolute block invisible opacity-0 left-0 border-l border-r border-gray-200;
-  top: 115%;
-  transition: top 200ms, left 200ms;
-}
-
-.Navigation--Item:hover > .Navigation--Navigation {
-  @apply block absolute shadow-sm opacity-100 visible;
-  top: 100%;
-}
-
-.Navigation--Navigation .Navigation--Navigation .Navigation--Link {
-  @apply normal-case text-xs py-2 px-4 no-underline bg-white border-gray-200 border-b transition-colors duration-150;
-  width: 200px;
-}
-
-.Navigation--Navigation .Navigation--Navigation .Navigation--Link:hover {
-  @apply bg-gray-100;
-}
-
-/** third level navigation **/
-.Navigation--Navigation .Navigation--Navigation .Navigation--Navigation {
-  @apply block absolute right-0;
-  left: 115%;
-  top: 0;
-}
-
-.Navigation--Navigation
-  .Navigation--Navigation
-  .Navigation--Item:hover
-  > .Navigation--Navigation {
-  @apply block absolute shadow-sm opacity-100 visible;
-  left: calc(100% + 1px);
-  top: 0;
-}
-
-.Navigation--Navigation
-  .Navigation--Navigation:last-child
-  .Navigation--Item
-  > .Navigation--Navigation {
-  left: -115%;
-}
-
-.Navigation--Navigation
-  .Navigation--Navigation:last-child
-  .Navigation--Item:hover
-  > .Navigation--Navigation {
-  left: calc(-100% - 2px);
-}
-
-.Navigation--Mobile {
-  height: 101px;
-}
-.Navigation--Content{
-  display:none;
-}
-.Navigation--collapsed{
-  display: block;
-}
-.Navigation--smallicon{
-  display: none;
-}
-
-

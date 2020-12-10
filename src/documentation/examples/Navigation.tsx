@@ -3,6 +3,7 @@ import Component from "vue-class-component";
 
 import { Navigation } from "fsxa-ui";
 import { NavigationItem } from "@/types/components";
+import { ProductListItem } from "@/components";
 
 const navItems: NavigationItem[] = [
   {
@@ -34,22 +35,28 @@ const navItems: NavigationItem[] = [
         id: "5",
         path: "/",
         label: "Link 2.1.",
-        children: [],
-      },
-      {
-        id: "6",
-        path: "/",
-        label: "Link 2.2",
         children: [
           {
-            id: "6",
+            id: "7",
             path: "/",
             label: "Link 2.1.1",
             children: [],
           },
         ],
       },
+      {
+        id: "6",
+        path: "/",
+        label: "Link 2.2",
+        children: [],
+      },
     ],
+  },
+  {
+    id: "8",
+    path: "/",
+    label: "Link 8",
+    children: [],
   },
 ];
 
@@ -65,6 +72,7 @@ export default class App extends Vue {
           items={navItems}
           handleNavClick={navItem => {
             this.currentItem = navItem;
+            console.log("Click on " + navItem.label);
           }}
         />
       </div>

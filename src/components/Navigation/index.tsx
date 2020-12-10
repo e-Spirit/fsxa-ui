@@ -20,17 +20,24 @@ class Navigation extends BaseComponent<NavigationProps> {
   isActiveItem: NavigationProps["isActiveItem"];
   @Prop({ type: Number, default: 3 }) depth!: number;
 
-  isCollapsed = false;
+  isCollapsed = true;
 
   renderItem(item: NavigationItem, currentDepth: number) {
     const isActive = this.isActiveItem ? this.isActiveItem(item) : false;
+    // const menuClass = (currentDepth === 0 ? "main" : "sub");
+    const submenu =
+      item.children.length === 0 ? (
+        ""
+      ) : (
+        // (currentDepth === 0 ? '<ul class="submenu">' : '<ul>');
+        <ul>
+          {item.children.map(item => this.renderItem(item, currentDepth + 1))}
+        </ul>
+      );
     return (
-      <li class="Navigation--Item block lg:inline border-t-1 border-grey-200 lg:border-t-0 text-center lg:text-left">
+      <li class="block">
         <a
           data-testid={`item-${item.id}`}
-          class={`Navigation--Link w-full lg:w-auto pt-4 pb-4 text-xl ${
-            isActive ? "active" : ""
-          }`}
           href={item.path}
           onClick={(event: any) => {
             event?.preventDefault();
@@ -44,39 +51,25 @@ class Navigation extends BaseComponent<NavigationProps> {
             </span>
           ) : null}
         </a>
-        {item.children.length > 0 && currentDepth < this.depth && (
-          <ul class="Navigation--Navigation border-l-0 border-r-0 border-t-1 border-grey-200 lg:border-t-0 hover:h-full hover:relative">
-            {item.children.map(item => this.renderItem(item, currentDepth + 1))}
-          </ul>
-        )}
+
+        {submenu}
       </li>
     );
   }
 
   render() {
     return (
-      <div>
-        <ul class="Navigation--Navigation hidden lg:block">
+      <div class="Navigation--Navigation">
+        <i
+          class="fas fa-bars dropdown block lg:hidden"
+          onClick={(event: any) => {
+            event?.preventDefault();
+            this.isCollapsed = !this.isCollapsed;
+          }}
+        />
+        <ul class={`mainMenu${this.isCollapsed ? " hidden" : ""} lg:block`}>
           {this.items.map(item => this.renderItem(item, 0))}
         </ul>
-        <div class="Navigation--Mobile w-full flex justify-end lg:hidden hover:text-gray-600 text-xl cursor-pointer">
-          <i
-            class="fas fa-bars dropdown"
-            onClick={(event: any) => {
-              event?.preventDefault();
-              this.isCollapsed = !this.isCollapsed;
-            }}
-          />
-          <div
-            class={` Navigation--Content absolute text-left w-full mt-12 ${
-              this.isCollapsed ? "Navigation--collapsed" : ""
-            }`}
-          >
-            <ul class="z-10 flex-initial left-0">
-              {this.items.map(item => this.renderItem(item, 0))}
-            </ul>
-          </div>
-        </div>
       </div>
     );
   }
