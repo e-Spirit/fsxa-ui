@@ -1,6 +1,6 @@
 import { Component } from "vue-tsx-support";
 import { ImageRef } from "./utils";
-import { AccordionProps, NewsTeaserItemProps } from "./components";
+import { NewsTeaserItemProps } from "./components";
 
 export interface NewsTeaserSectionProps {
   headline: string;
@@ -288,3 +288,4 @@ export interface MapsLocation {
   description?: string;
   name: string;
 }
+export class GoogleMapsSection extends Component<GoogleMapsSectionProps> {}
