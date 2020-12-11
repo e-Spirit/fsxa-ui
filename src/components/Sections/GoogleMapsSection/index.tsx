@@ -121,9 +121,10 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
       this.markers
     ) {
       const marker = this.markers[index];
+      const oldMarker = this.markers[oldIndex];
       marker.infoWindow.open(this.map, marker.marker);
       this.map.panTo(this.locations[index].position);
-      this.markers[oldIndex].infoWindow.close();
+      oldMarker && oldMarker.infoWindow.close();
     }
   }
 
@@ -216,7 +217,7 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
   loadApi(apikey: string, language: string): Promise<any> {
     const scriptTag = document.createElement("script");
     //should the need to load libraries ever arise, just append the parameter libaries as a comma separated string
-    scriptTag.src = `https://maps.googleapis.com/maps/api/js?key=${apikey}&language=${language}&callback=googleMapsAPILoaded`;
+    scriptTag.src = `https://maps.googleapis.com/maps/api/js?key=${apikey}&language=${language}&version=weekly&callback=googleMapsAPILoaded`;
 
     window.googleMapsAPILoaded = () => {
       const event = new CustomEvent("googleMapsAPILoaded");
