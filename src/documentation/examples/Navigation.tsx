@@ -3,7 +3,6 @@ import Component from "vue-class-component";
 
 import { Navigation } from "fsxa-ui";
 import { NavigationItem } from "@/types/components";
-import { ProductListItem } from "@/components";
 
 const navItems: NavigationItem[] = [
   {
@@ -65,17 +64,21 @@ export default class App extends Vue {
   currentItem: any = null;
   render() {
     return (
-      <div class="space-x-5 h-64 p-2 mt-10 bg-blue-100">
-        <Navigation
-          isActiveItem={item => item.id === "1"}
-          depth={3}
-          items={navItems}
-          handleNavClick={navItem => {
-            this.currentItem = navItem;
-            console.log("Click on " + navItem.label);
-          }}
-        />
-        &nbsp;
+      <div>
+        <div class="space-x-5 h-24 p-2 mt-10 bg-blue-100">
+          <Navigation
+            isActiveItem={item => item.id === "1"}
+            depth={3}
+            items={navItems}
+            handleNavClick={navItem => {
+              this.currentItem = navItem;
+              console.log("Click on " + navItem.label);
+            }}
+          />
+        </div>
+        <div class="h-24 bg-blue-200"></div>
+        <div class="h-24 bg-blue-300"></div>
+        <div class="h-24 bg-blue-400"></div>
       </div>
     );
   }

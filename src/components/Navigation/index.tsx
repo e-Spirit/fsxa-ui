@@ -24,19 +24,24 @@ class Navigation extends BaseComponent<NavigationProps> {
 
   renderItem(item: NavigationItem, currentDepth: number) {
     const isActive = this.isActiveItem ? this.isActiveItem(item) : false;
-    // const menuClass = (currentDepth === 0 ? "main" : "sub");
     const submenu =
       item.children.length === 0 ? (
         ""
       ) : (
-        // (currentDepth === 0 ? '<ul class="submenu">' : '<ul>');
         <ul>
           {item.children.map(item => this.renderItem(item, currentDepth + 1))}
         </ul>
       );
     return (
-      <li class="block">
+      <li
+        class={`text-center lg:text-left ${
+          currentDepth === 0 ? "lg:inline lg:float-left" : ""
+        }`}
+      >
         <a
+          class={`Navigation--Link p-2 ${isActive ? "active" : ""} ${
+            currentDepth === 0 ? "lg:pr-12" : ""
+          }`}
           data-testid={`item-${item.id}`}
           href={item.path}
           onClick={(event: any) => {
@@ -46,10 +51,9 @@ class Navigation extends BaseComponent<NavigationProps> {
         >
           {item.label}
           {item.children.length > 0 ? (
-            <span class="inline fas fa-chevron-right ml-2" />
+            <span class="inline fas fa-chevron-right ml-2 lg:hidden" />
           ) : null}
         </a>
-
         {submenu}
       </li>
     );
@@ -66,7 +70,11 @@ class Navigation extends BaseComponent<NavigationProps> {
           }}
         />
         <br />
-        <ul class={`mainMenu${this.isCollapsed ? " hidden" : ""} lg:block`}>
+        <ul
+          class={`mainMenu${
+            this.isCollapsed ? " hidden" : ""
+          } uppercase list-none leading-loose text-black float-right w-full text-2xl absolute lg:block lg:text-lg lg:relative lg:w-auto`}
+        >
           {this.items.map(item => this.renderItem(item, 0))}
         </ul>
       </div>
