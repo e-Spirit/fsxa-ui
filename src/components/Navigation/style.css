@@ -1,3 +1,7 @@
+ul.mainMenu {
+    min-width:50%;
+}
+
 ul.mainMenu li { 
   background-color: white;
   overflow: hidden;
@@ -8,17 +12,26 @@ ul.mainMenu > li:hover {
     background-color: white;
 }
 
-ul.mainMenu > li > ul {
+ul.mainMenu > li > div {
+    border: 1px solid purple;
+    width:10rem;
+    height:10rem;
+}
+
+ul.mainMenu > li > div > ul {
+    overflow: hidden;
     background-color: transparent;
-    position:relative;
-    left:-100%;
+    position: absolute;
+    left:-10rem;
     height:0px;
 }
 
-ul.mainMenu > li:hover > ul {
+ul.mainMenu > li:hover > div >  ul {
+    overflow:visible;
     display:block;
     left: 0px;
     height: auto;
+    width:100%;
     transition: left 1s;
 }
 

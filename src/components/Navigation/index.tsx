@@ -28,9 +28,11 @@ class Navigation extends BaseComponent<NavigationProps> {
       item.children.length === 0 ? (
         ""
       ) : (
-        <ul>
-          {item.children.map(item => this.renderItem(item, currentDepth + 1))}
-        </ul>
+        <div style="position:absolute;">
+          <ul>
+            {item.children.map(item => this.renderItem(item, currentDepth + 1))}
+          </ul>
+        </div>
       );
     return (
       <li

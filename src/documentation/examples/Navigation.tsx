@@ -38,7 +38,7 @@ const navItems: NavigationItem[] = [
           {
             id: "7",
             path: "/",
-            label: "Link 2.1.1",
+            label: "Link 2.1.1 with a long title",
             children: [],
           },
         ],
