@@ -46,9 +46,7 @@ class Navigation extends BaseComponent<NavigationProps> {
         >
           {item.label}
           {item.children.length > 0 ? (
-            <span class="inline">
-              <i class="fas fa-chevron-right ml-2"></i>
-            </span>
+            <span class="inline fas fa-chevron-right ml-2" />
           ) : null}
         </a>
 
@@ -59,7 +57,7 @@ class Navigation extends BaseComponent<NavigationProps> {
 
   render() {
     return (
-      <div class="Navigation--Navigation">
+      <div class="Navigation--Navigation text-right">
         <i
           class="fas fa-bars dropdown block lg:hidden"
           onClick={(event: any) => {
@@ -67,6 +65,7 @@ class Navigation extends BaseComponent<NavigationProps> {
             this.isCollapsed = !this.isCollapsed;
           }}
         />
+        <br />
         <ul class={`mainMenu${this.isCollapsed ? " hidden" : ""} lg:block`}>
           {this.items.map(item => this.renderItem(item, 0))}
         </ul>

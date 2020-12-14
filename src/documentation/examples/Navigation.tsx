@@ -65,7 +65,7 @@ export default class App extends Vue {
   currentItem: any = null;
   render() {
     return (
-      <div class="space-x-5 mb-64 ml-64 mt-10">
+      <div class="space-x-5 h-64 p-2 mt-10 bg-blue-100">
         <Navigation
           isActiveItem={item => item.id === "1"}
           depth={3}
@@ -75,6 +75,7 @@ export default class App extends Vue {
             console.log("Click on " + navItem.label);
           }}
         />
+        &nbsp;
       </div>
     );
   }
