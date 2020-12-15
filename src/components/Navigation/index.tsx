@@ -18,7 +18,6 @@ class Navigation extends BaseComponent<NavigationProps> {
   handleNavClick!: NavigationProps["handleNavClick"];
   @Prop({ type: Function })
   isActiveItem: NavigationProps["isActiveItem"];
-  @Prop({ type: Number, default: 3 }) depth!: number;
 
   isCollapsed = true;
 

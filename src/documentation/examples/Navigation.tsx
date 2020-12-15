@@ -87,7 +87,6 @@ export default class App extends Vue {
         <div class="space-x-5 p-2 lg:pr-20 mt-10 mb-20 h-64 bg-blue-100">
           <Navigation
             isActiveItem={item => item.id === "1"}
-            depth={3}
             items={navItems}
             handleNavClick={navItem => {
               this.currentItem = navItem;
