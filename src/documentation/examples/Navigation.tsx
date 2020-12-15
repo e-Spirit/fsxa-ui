@@ -23,6 +23,12 @@ const navItems: NavigationItem[] = [
           },
         ],
       },
+      {
+        id: "10",
+        path: "/",
+        label: "Link 1.2",
+        children: [],
+      },
     ],
   },
   {
@@ -55,7 +61,20 @@ const navItems: NavigationItem[] = [
     id: "8",
     path: "/",
     label: "Link 8",
-    children: [],
+    children: [
+      {
+        id: "9",
+        path: "/",
+        label: "Link 8.1",
+        children: [],
+      },
+      {
+        id: "11",
+        path: "/",
+        label: "Link 8.2",
+        children: [],
+      },
+    ],
   },
 ];
 
@@ -65,7 +84,7 @@ export default class App extends Vue {
   render() {
     return (
       <div>
-        <div class="space-x-5 h-24 p-2 mt-10 bg-blue-100">
+        <div class="space-x-5 p-2 lg:pr-20 mt-10 mb-20 h-64 bg-blue-100">
           <Navigation
             isActiveItem={item => item.id === "1"}
             depth={3}
@@ -76,9 +95,6 @@ export default class App extends Vue {
             }}
           />
         </div>
-        <div class="h-24 bg-blue-200"></div>
-        <div class="h-24 bg-blue-300"></div>
-        <div class="h-24 bg-blue-400"></div>
       </div>
     );
   }

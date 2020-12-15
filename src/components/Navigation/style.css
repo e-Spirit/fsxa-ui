@@ -1,7 +1,3 @@
-ul.mainMenu {
-    min-width:50%;
-}
-
 ul.mainMenu li { 
   background-color: white;
   overflow: hidden;
@@ -12,16 +8,14 @@ ul.mainMenu > li:hover {
     background-color: white;
 }
 
-ul.mainMenu > li > div {
-    border: 1px solid purple;
-    width:10rem;
-    height:10rem;
+ul.mainMenu ul {
+    position: relative;
+    left: 0px;
 }
 
 ul.mainMenu > li > div > ul {
     overflow: hidden;
     background-color: transparent;
-    position: absolute;
     left:-10rem;
     height:0px;
 }
@@ -31,12 +25,11 @@ ul.mainMenu > li:hover > div >  ul {
     display:block;
     left: 0px;
     height: auto;
-    width:100%;
     transition: left 1s;
 }
 
 /* border for all first level sub-menu entries */
-ul.mainMenu > li > ul > li {
+ul.mainMenu > li > div > ul > li {
     border-bottom: grey 1px solid;
     border-left: grey 1px solid;
 }

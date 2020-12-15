@@ -27,12 +27,16 @@ class Navigation extends BaseComponent<NavigationProps> {
     const submenu =
       item.children.length === 0 ? (
         ""
-      ) : (
-        <div style="position:absolute;">
+      ) : currentDepth === 0 ? (
+        <div class="lg:absolute lg:w-40">
           <ul>
             {item.children.map(item => this.renderItem(item, currentDepth + 1))}
           </ul>
         </div>
+      ) : (
+        <ul>
+          {item.children.map(item => this.renderItem(item, currentDepth + 1))}
+        </ul>
       );
     return (
       <li
