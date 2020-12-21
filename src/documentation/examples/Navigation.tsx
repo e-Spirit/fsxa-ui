@@ -2,77 +2,57 @@ import Vue from "vue";
 import Component from "vue-class-component";
 
 import { Navigation } from "fsxa-ui";
-import { NavigationItem } from "@/types/components";
+import { FirstLevelNavigationItem } from "@/types/components";
 
-const navItems: NavigationItem[] = [
+const navItems: FirstLevelNavigationItem[] = [
   {
-    id: "1",
+    key: "1",
     path: "/",
     label: "Link 1",
     children: [
       {
-        id: "3",
+        key: "3",
         path: "/",
         label: "Link 1.1",
-        children: [
-          {
-            id: "4",
-            path: "/",
-            label: "Link 1.1.1",
-            children: [],
-          },
-        ],
       },
       {
-        id: "10",
+        key: "10",
         path: "/",
         label: "Link 1.2",
-        children: [],
       },
     ],
   },
   {
-    id: "2",
+    key: "2",
     path: "/",
     label: "Link 2",
     children: [
       {
-        id: "5",
+        key: "5",
         path: "/",
         label: "Link 2.1.",
-        children: [
-          {
-            id: "7",
-            path: "/",
-            label: "Link 2.1.1 with a long title",
-            children: [],
-          },
-        ],
       },
       {
-        id: "6",
+        key: "6",
         path: "/",
         label: "Link 2.2",
-        children: [],
       },
     ],
   },
   {
-    id: "8",
+    key: "8",
     path: "/",
     label: "Link 8",
     children: [
       {
-        id: "9",
+        key: "9",
         path: "/",
         label: "Link 8.1",
-        children: [],
       },
       {
-        id: "11",
+        key: "11",
         path: "/",
         label: "Link 8.2",
-        children: [],
       },
     ],
   },
@@ -85,14 +65,7 @@ export default class App extends Vue {
     return (
       <div>
         <div class="space-x-5 p-2 lg:pr-20 mt-10 mb-20 h-64 bg-blue-100">
-          <Navigation
-            isActiveItem={item => item.id === "1"}
-            items={navItems}
-            handleNavClick={navItem => {
-              this.currentItem = navItem;
-              console.log("Click on " + navItem.label);
-            }}
-          />
+          <Navigation items={navItems} />
         </div>
       </div>
     );

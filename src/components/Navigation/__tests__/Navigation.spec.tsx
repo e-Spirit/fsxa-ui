@@ -1,46 +1,33 @@
 import { render, fireEvent } from "@testing-library/vue";
-import Navigation from "./../";
+import Navigation from "../components/Navigation";
 
 describe("components/Navigation", () => {
   it("calls handleClick callback on click", async () => {
     const spy = jest.fn();
-    const { container } = render(Navigation, {
+    const { getByText } = render(Navigation, {
       slots: { default: "Content" },
       props: {
-        handleNavClick: spy,
+        "on-item-click": spy,
         items: [
           {
-            id: "1",
+            key: "1",
             path: "/",
             label: "Link 1",
             children: [
               {
-                id: "3",
+                key: "3",
                 path: "/",
                 label: "Link 1.1",
-                children: [
-                  {
-                    id: "4",
-                    path: "/",
-                    label: "Link 1.1.1",
-                    children: [],
-                  },
-                ],
               },
             ],
           },
         ],
       },
     });
-    const navigation = container.querySelector(
-      ".Navigation--Navigation [data-testid='item-1']",
-    );
-    // const navigationMobile = container.querySelector(
-    //   ".Navigation--Mobile [data-testid='item-1']",
-    // );
+    const navigation = getByText("Link 1");
     await fireEvent(navigation!, new Event("click"));
     // await fireEvent(navigationMobile!, new Event("click"));
     expect(spy).toHaveBeenCalled();
-    expect(spy.mock.calls[0][0].id).toEqual("1");
+    expect(spy.mock.calls[0][0].key).toEqual("1");
   });
 });
