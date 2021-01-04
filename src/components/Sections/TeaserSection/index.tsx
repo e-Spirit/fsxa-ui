@@ -36,13 +36,11 @@ class TeaserSection extends BaseComponent<TeaserSectionProps> {
                 {this.kicker}
               </Headline>
               <Headline size="xl" data-testid={"teasersection-headline"}>
-                <RichText content={this.headline} inline />
+                <div class="inline">{this.headline}</div>
               </Headline>
-              <RichText
-                class="text-sm"
-                data-testid={"teasersection-text"}
-                content={this.text}
-              />
+              <div class="text-sm" data-testid="teasersection-text">
+                {this.text}
+              </div>
               {this.buttonText && (
                 <Button
                   data-testid={"teasersection-button"}
