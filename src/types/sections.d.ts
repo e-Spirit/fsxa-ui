@@ -67,7 +67,7 @@ export interface ProductDetailSectionProps {
   /**
    * Description of the product that will be displayed under the headline
    */
-  description: string;
+  description: any;
   /**
    * Price of the product that will be displayed under the description
    */
@@ -93,7 +93,7 @@ export interface ProductDetailSectionProps {
    *
    * The value can contain RichText-Formatting
    */
-  foldableContentList?: Record<string, string>;
+  foldableContentList?: Record<string, any>;
   /**
    * Optional callback that is triggered, when the button is clicked
    *
@@ -122,7 +122,7 @@ export interface InterestingFactsSectionProps {
   /**
    * text content that will be displayed in the info box
    */
-  text: string;
+  text: any;
   /**
    * counters that should be displayed
    */
@@ -137,17 +137,17 @@ export class InterestingFactsSection extends Component<
 
 export interface TeaserSectionProps {
   /**
-   * The headline of the Section
+   * The headline of the Section (can contain RichText formatting)
    */
-  headline: string;
+  headline: any;
   /**
    * Specify a short kicker that is displayed on top of the headline
    */
   kicker: string;
   /**
-   * Your text-content. It can contain RichText-Formatting
+   * Your text-content. It can contain RichText formatting
    */
-  text: string;
+  text: any;
   /**
    * Specify a text for the button
    *

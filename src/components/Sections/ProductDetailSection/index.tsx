@@ -118,9 +118,9 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
                             key={key}
                             class="ProductDetail--Accordion"
                           >
-                            <RichText
-                              content={this.foldableContentList![key]}
-                            />
+                            <div
+                              domPropsInnerHTML={this.foldableContentList![key]}
+                            ></div>
                           </Accordion>
                         ))}
                       </LayoutItem>

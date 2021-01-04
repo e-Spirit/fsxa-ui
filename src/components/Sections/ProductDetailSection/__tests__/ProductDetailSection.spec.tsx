@@ -42,7 +42,7 @@ const propertyList: ProductProperty[] = [
   },
 ];
 
-const foldableContentList: Record<string, string> = {
+const foldableContentList: Record<string, any> = {
   Delivery: `<ul class="list-disc px-10 py-4"><li>mechanical lock</li><li>camera with integrated face recognition</li><li>wireless numpad</li><li>operation manual</li></ul>`,
   "Installation instructions": "<p>Fix it at the door. Ready.</p>",
   Compatibility: `<ul class="list-disc px-10 py-4"><li>Google Home</li><li>Amazon Alexa</li><li>Bosch Smart Home</li></ul>`,

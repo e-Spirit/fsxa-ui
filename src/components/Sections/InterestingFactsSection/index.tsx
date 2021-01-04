@@ -2,7 +2,6 @@ import BaseComponent from "@/components/BaseComponent";
 import { Prop, Component } from "vue-property-decorator";
 import "./style.css";
 import Image from "@/components/Image";
-import RichText from "@/components/RichText";
 import Counter from "@/components/Counter";
 import Container from "@/components/Container";
 import Headline from "@/components/Headline";
@@ -62,7 +61,7 @@ class InterestingFactsSection extends BaseComponent<
                   weight="light"
                   data-testid={"interestingfactssection-text"}
                 >
-                  <RichText content={this.text} />
+                  <div>{this.text}</div>
                 </Paragraph>
               </div>
             </LayoutItem>
