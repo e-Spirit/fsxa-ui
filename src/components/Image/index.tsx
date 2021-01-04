@@ -77,9 +77,9 @@ class Image extends BaseComponent<ImageProps> {
 
   render() {
     //TODO: use this ratio somehow
-    const ratio = this.dimensions
-      ? this.dimensions.width / this.dimensions.height
-      : null;
+    // const ratio = this.dimensions
+    //   ? this.dimensions.width / this.dimensions.height
+    //   : null;
     return (
       <div
         class={`Image w-full ${this.border ? "border" : ""}`}

@@ -139,7 +139,8 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
       ${this.buttonLabel}
       </button>`;
       div.querySelector("button")?.addEventListener("click", event => {
-        //since we validated this prop in the mounted hook we can safely assume that handleButtonClick is available here
+        // since we validated this prop in the mounted hook we can safely assume that handleButtonClick is available here
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         this.handleButtonClick!(event, location);
       });
       div.innerHTML += button;

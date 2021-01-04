@@ -119,7 +119,11 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
                             class="ProductDetail--Accordion"
                           >
                             <RichText
-                              content={this.foldableContentList![key]}
+                              content={
+                                this.foldableContentList
+                                  ? this.foldableContentList[key]
+                                  : ""
+                              }
                             />
                           </Accordion>
                         ))}
