@@ -2,6 +2,7 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import { Sections } from "fsxa-ui";
 import { ProductProperty } from "@/types/sections";
+import { Container } from "@/components";
 
 const description =
   "The Smart Door Lock SRT-456 is a mechanical look which can be unlocked with a PIN or your smartphone. In addition you can use the camera with integrated face recognition to allow only certain people to unlock the door.";

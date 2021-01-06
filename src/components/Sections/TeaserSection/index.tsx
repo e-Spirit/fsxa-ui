@@ -3,7 +3,6 @@ import BaseComponent from "@/components/BaseComponent";
 import Container from "@/components/Container";
 import Layout, { LayoutItem } from "@/components/Layout";
 import Headline from "@/components/Headline";
-import RichText from "@/components/RichText";
 import Button from "@/components/Button";
 import Image from "@/components/Image";
 import { TeaserSectionProps } from "@/types/sections";

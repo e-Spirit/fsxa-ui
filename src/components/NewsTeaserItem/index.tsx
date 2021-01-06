@@ -47,8 +47,9 @@ class NewsTeaserItem extends BaseComponent<NewsTeaserItemProps> {
           <div
             class="NewsTeaserItem--Description"
             data-testid="newsteaseritem-description"
-            domPropsInnerHTML={this.description}
-          ></div>
+          >
+            {this.description}
+          </div>
           <a
             data-testid="newsteaseritem-click"
             href="#"

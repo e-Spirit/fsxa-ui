@@ -69,11 +69,6 @@ const routes = [
         children: [],
       },
       {
-        label: "RichText",
-        path: "/components/rich-text",
-        children: [],
-      },
-      {
         label: "ProductListItem",
         path: "/components/product-list-item",
       },

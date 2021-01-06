@@ -8,7 +8,6 @@ import Paragraph from "@/components/Paragraph";
 import Button from "@/components/Button";
 import Container from "@/components/Container";
 import Layout from "@/components/Layout";
-import RichText from "@/components/RichText";
 import "./style.css";
 import Accordion from "@/components/Accordion";
 import { ImageRef } from "@/types/utils";
@@ -118,9 +117,7 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
                             key={key}
                             class="ProductDetail--Accordion"
                           >
-                            <div
-                              domPropsInnerHTML={this.foldableContentList![key]}
-                            ></div>
+                            <div>{this.foldableContentList![key]}</div>
                           </Accordion>
                         ))}
                       </LayoutItem>
