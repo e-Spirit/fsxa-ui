@@ -6,13 +6,19 @@ import {
   MapsLocation,
 } from "@/types/sections";
 import { LineSeparator } from "@/components";
-import { Loader } from "@googlemaps/js-api-loader";
+
 // eslint-disable-next-line
 const DEFAULT_ICON = require("../../../assets/Marker.png");
 
 interface MarkerWithInfoWindow {
   marker: google.maps.Marker;
   infoWindow: google.maps.InfoWindow;
+}
+declare global {
+  interface Window {
+    googleMapsAPILoaded: any;
+    google: any | undefined;
+  }
 }
 
 const DEFAULT_STYLES: google.maps.MapTypeStyle[] = [
@@ -115,9 +121,10 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
       this.markers
     ) {
       const marker = this.markers[index];
+      const oldMarker = this.markers[oldIndex];
       marker.infoWindow.open(this.map, marker.marker);
       this.map.panTo(this.locations[index].position);
-      this.markers[oldIndex].infoWindow.close();
+      oldMarker && oldMarker.infoWindow.close();
     }
   }
 
@@ -197,6 +204,37 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
     }
     return styles;
   }
+  removeApi(): void {
+    document
+      .querySelectorAll('script[src^="https://maps.googleapis.com"]')
+      .forEach(script => {
+        script.remove();
+      });
+    if (typeof google !== undefined) {
+      window.google = undefined;
+    }
+  }
+
+  loadApi(apikey: string, language: string): Promise<any> {
+    const scriptTag = document.createElement("script");
+    //should the need to load libraries ever arise, just append the parameter libaries as a comma separated string
+    scriptTag.src = `https://maps.googleapis.com/maps/api/js?key=${apikey}&language=${language}&version=weekly&callback=googleMapsAPILoaded`;
+
+    window.googleMapsAPILoaded = () => {
+      const event = new CustomEvent("googleMapsAPILoaded");
+      window.dispatchEvent(event);
+    };
+
+    const api = new Promise(resolve => {
+      window.addEventListener("googleMapsAPILoaded", () => {
+        resolve();
+      });
+    });
+
+    document.head.appendChild(scriptTag);
+
+    return api;
+  }
 
   async initMap(styles: google.maps.MapTypeStyle[]): Promise<google.maps.Map> {
     let center = {} as MapsPosition;
@@ -208,12 +246,8 @@ class GoogleMapsSection extends BaseComponent<GoogleMapsSectionProps> {
       center = this.startLocation;
     }
 
-    const loader = new Loader({
-      apiKey: this.apikey,
-      version: "weekly",
-      language: this.language,
-    });
-    await loader.load();
+    this.removeApi();
+    await this.loadApi(this.apikey, this.language);
 
     const map = new google.maps.Map(
       document.getElementById("map") as HTMLElement,
