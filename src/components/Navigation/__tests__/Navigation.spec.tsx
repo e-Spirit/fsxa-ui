@@ -3,11 +3,10 @@ import Navigation from "../components/Navigation";
 
 describe("components/Navigation", () => {
   it("calls handleClick callback on click", async () => {
-    const spy = jest.fn();
-    const { getByText } = render(Navigation, {
+    const { getByText, emitted } = render(Navigation, {
       slots: { default: "Content" },
       props: {
-        "on-item-click": spy,
+        activeItemKeys: [],
         items: [
           {
             key: "1",
@@ -26,8 +25,6 @@ describe("components/Navigation", () => {
     });
     const navigation = getByText("Link 1");
     await fireEvent(navigation!, new Event("click"));
-    // await fireEvent(navigationMobile!, new Event("click"));
-    expect(spy).toHaveBeenCalled();
-    expect(spy.mock.calls[0][0].key).toEqual("1");
+    expect(emitted().itemClicked[0][0].key).toEqual("1");
   });
 });
