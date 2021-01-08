@@ -11,7 +11,15 @@ import { TeaserSectionProps } from "@/types/sections";
 @Component({
   name: "TeaserSection",
 })
-class TeaserSection extends BaseComponent<TeaserSectionProps> {
+class TeaserSection extends BaseComponent<
+  TeaserSectionProps,
+  {},
+  {
+    headline?: string;
+    kicker?: string;
+    text?: string;
+  }
+> {
   @Prop({ required: true }) headline!: TeaserSectionProps["headline"];
   @Prop({ required: true }) kicker!: TeaserSectionProps["kicker"];
   @Prop({ required: true }) text!: TeaserSectionProps["text"];
@@ -27,22 +35,34 @@ class TeaserSection extends BaseComponent<TeaserSectionProps> {
         <Container>
           <Layout wrap>
             <LayoutItem width="full" lg={{ width: "5/12" }}>
-              <Headline
-                as="h3"
-                size="lg"
-                weight="light"
-                data-testid={"teasersection-kicker"}
-              >
-                {this.kicker}
-              </Headline>
-              <Headline size="xl" data-testid={"teasersection-headline"}>
-                <RichText content={this.headline} inline />
-              </Headline>
-              <RichText
-                class="text-sm"
-                data-testid={"teasersection-text"}
-                content={this.text}
-              />
+              {this.$scopedSlots.kicker ? (
+                this.$scopedSlots.kicker(this.kicker)
+              ) : (
+                <Headline
+                  as="h3"
+                  size="lg"
+                  weight="light"
+                  data-testid={"teasersection-kicker"}
+                >
+                  {this.kicker}
+                </Headline>
+              )}
+              {this.$scopedSlots.headline ? (
+                this.$scopedSlots.headline(this.headline)
+              ) : (
+                <Headline size="xl" data-testid={"teasersection-headline"}>
+                  <RichText content={this.headline} inline />
+                </Headline>
+              )}
+              {this.$scopedSlots.text ? (
+                this.$scopedSlots.text(this.text)
+              ) : (
+                <RichText
+                  class="text-sm"
+                  data-testid={"teasersection-text"}
+                  content={this.text}
+                />
+              )}
               {this.buttonText && (
                 <Button
                   data-testid={"teasersection-button"}
