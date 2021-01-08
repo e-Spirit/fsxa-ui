@@ -1,4 +1,4 @@
-import { render } from "@testing-library/vue";
+import { render, getByTestId } from "@testing-library/vue";
 import InterestingFactsSection from "..";
 
 describe("components/InterestingFactsSection", () => {
@@ -51,5 +51,30 @@ describe("components/InterestingFactsSection", () => {
     expect(backgroundImage?.getAttribute("data-preview-id")).toBe(
       imagePreviewId,
     );
+  });
+  it("can render data using scoped slots", async () => {
+    const { getByTestId } = render(InterestingFactsSection, {
+      props: {
+        headline: content,
+        text: textContent,
+        tagline: testTagline,
+        counters: testCounters,
+      },
+      scopedSlots: {
+        headline: `<h1 data-testid="scoped-slot-headline">{{props.headline}}</h1>`,
+        text: `<p data-testid="scoped-slot-text">{{props.text}}</p>`,
+        tagline: `<span data-testid="scoped-slot-tagline">{{props.tagline}}</span>`,
+        counters: `<div data-testid="scoped-slot-counters">{{props.counters}}</div>`,
+      },
+    });
+    const scopedSlotHeadline = getByTestId("scoped-slot-headline");
+    const scopedSlotTagline = getByTestId("scoped-slot-tagline");
+    const scopedSlotText = getByTestId("scoped-slot-text");
+    const scopedSlotCounters = getByTestId("scoped-slot-counters");
+
+    expect(scopedSlotHeadline.nodeName).toBe("H1");
+    expect(scopedSlotTagline.nodeName).toBe("SPAN");
+    expect(scopedSlotText.nodeName).toBe("P");
+    expect(scopedSlotCounters.nodeName).toBe("DIV");
   });
 });
