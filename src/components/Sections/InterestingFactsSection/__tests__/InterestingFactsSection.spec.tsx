@@ -52,7 +52,7 @@ describe("components/InterestingFactsSection", () => {
       imagePreviewId,
     );
   });
-  it("can render data using scoped slots", async () => {
+  it("should replace the default rendering of headline, text, tagline and counters props when the scopedSlots are being used", async () => {
     const { getByTestId } = render(InterestingFactsSection, {
       props: {
         headline: content,
@@ -71,6 +71,15 @@ describe("components/InterestingFactsSection", () => {
     const scopedSlotTagline = getByTestId("scoped-slot-tagline");
     const scopedSlotText = getByTestId("scoped-slot-text");
     const scopedSlotCounters = getByTestId("scoped-slot-counters");
+
+    expect(() => getByTestId("interestingfactssection-headline")).toThrow();
+    expect(() => getByTestId("interestingfactssection-tagline")).toThrow();
+    expect(() => getByTestId("interestingfactssection-text")).toThrow();
+    testCounters.forEach((c, index) => {
+      expect(() =>
+        getByTestId(`interestingfactssection-counter-${index}`),
+      ).toThrow();
+    });
 
     expect(scopedSlotHeadline.nodeName).toBe("H1");
     expect(scopedSlotTagline.nodeName).toBe("SPAN");
