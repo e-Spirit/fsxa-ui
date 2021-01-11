@@ -1,31 +1,14 @@
+import { SlideProps, SliderSlots, SliderProps } from "@/types/fsxa-ui";
 import Component from "vue-class-component";
 import { Prop, Watch } from "vue-property-decorator";
 import BaseComponent from "../BaseComponent";
 
-export interface Slide {
-  animateIn?: (element: Element) => Promise<void>;
-  animateOut?: (element: Element) => Promise<void>;
-  render: () => JSX.Element;
-}
-
-export interface SliderProps {
-  visibleElements?: number;
-  infinite?: boolean;
-  animate?: boolean;
-  animationDelay?: number;
-  initialSlideIndex: number;
-  slides: Slide[];
-  renderControls?: (params: {
-    currentSlideIndex: number;
-    nextSlideIndex: number | null;
-    prevSlideIndex: number | null;
-    showSlide: (index: number) => void;
-  }) => JSX.Element | JSX.Element[];
-}
 @Component({
   name: "Slider",
 })
-class Slider extends BaseComponent<SliderProps> {
+class Slider extends BaseComponent<SliderProps, {}, SliderSlots> {
+  @Prop({ default: false })
+  animateSlideTransition!: SliderProps["animateSlideTransition"];
   @Prop({ default: 1 }) visibleElements!: SliderProps["visibleElements"];
   @Prop({ default: false }) infinite!: SliderProps["infinite"];
   @Prop({ default: false }) animate!: SliderProps["animate"];
@@ -33,14 +16,13 @@ class Slider extends BaseComponent<SliderProps> {
   @Prop({ required: true })
   initialSlideIndex!: SliderProps["initialSlideIndex"];
   @Prop({ required: true }) slides!: SliderProps["slides"];
-  @Prop() renderControls!: SliderProps["renderControls"];
 
   currentSlideIndex = this.initialSlideIndex;
   nextSlideIndexToShow: number | null = null;
 
   animationTimeout: number | null = null;
 
-  renderSlideWrapper(slide: Slide, index: number) {
+  renderSlideWrapper(slide: SlideProps, index: number) {
     const widthClasses: Record<number, string> = {
       1: "w-full",
       2: "w-1/2",
@@ -121,24 +103,28 @@ class Slider extends BaseComponent<SliderProps> {
 
   render() {
     const percentage = this.currentSlideIndex * (100 / this.visibleElements!);
-    console.log(this.breakpoints);
     return (
       <div class="flex relative flex-col h-full w-full">
         <div class="w-full flex overflow-hidden h-full">
           <div
-            class="w-full flex transform "
+            class={`w-full flex transform ${
+              this.animateSlideTransition
+                ? "duration-250 transition-transform"
+                : ""
+            }`}
             style={{ transform: `translateX(-${percentage}%)` }}
           >
             {this.slides.map(this.renderSlideWrapper)}
           </div>
         </div>
-        {this.renderControls &&
-          this.renderControls({
-            currentSlideIndex: this.currentSlideIndex,
-            prevSlideIndex: this.prevSlideIndex,
-            nextSlideIndex: this.nextSlideIndex,
-            showSlide: index => (this.nextSlideIndexToShow = index),
-          })}
+        {this.$scopedSlots.controls
+          ? this.$scopedSlots.controls({
+              currentSlideIndex: this.currentSlideIndex,
+              prevSlideIndex: this.prevSlideIndex,
+              nextSlideIndex: this.nextSlideIndex,
+              showSlide: index => (this.nextSlideIndexToShow = index),
+            })
+          : null}
       </div>
     );
   }

@@ -6,7 +6,11 @@ import Component from "vue-class-component";
 import tailwindConfig from "./../../tailwind.config";
 
 @Component
-class BaseComponent<Props = {}> extends TsxComponent<Props> {
+class BaseComponent<Props = {}, Events = {}, Slots = {}> extends TsxComponent<
+  Props,
+  Events,
+  Slots
+> {
   get breakpoints() {
     return tailwindConfig.theme.extend.screens;
   }

@@ -25,8 +25,8 @@ class NewsTeaserItem extends BaseComponent<NewsTeaserItemProps> {
         {this.image && (
           <Image
             class="absolute left-0 top-0 w-full"
-            src={this.image?.src}
-            data-preview-id={this.image?.previewId}
+            src={this.image.src}
+            previewId={this.image.previewId}
             opacity="40"
           />
         )}
