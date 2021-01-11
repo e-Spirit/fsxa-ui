@@ -1,4 +1,4 @@
-import { getByTestId, render } from "@testing-library/vue";
+import { render } from "@testing-library/vue";
 import HeaderSection from "./../";
 import { Breadcrumb } from "@/types/sections";
 const breadItems: Breadcrumb[] = [
@@ -57,13 +57,20 @@ describe("components/HeaderSection", () => {
       props: {
         title: content,
         breadcrumbs: breadItems,
+        backgroundImage: "new image",
       },
       scopedSlots: {
         breadcrumbs: `<div data-testid="scoped-slot-breadcrumbs">{{props.breadcrumbs}}</div>`,
+        backgroundImage: `<div data-testid="scoped-slot-backgroundImage">{{props.backgroundImage}}</div>`,
       },
     });
     const scopedBreadcrumbs = getByTestId("scoped-slot-breadcrumbs");
+    const scopedBackgroundImage = getByTestId("scoped-slot-backgroundImage");
+
     expect(() => getByTestId("HeaderSection-Breadcrumbs")).toThrow();
+    expect(() => getByTestId("HeaderSection-BackgroundImage")).toThrow();
+
     expect(scopedBreadcrumbs.nodeName).toBe("DIV");
+    expect(scopedBackgroundImage.nodeName).toBe("DIV");
   });
 });

@@ -2,7 +2,10 @@ import Code from "@/components/internal/Documentation/Code";
 import ExampleLoader from "@/documentation/utils/ExampleLoader";
 import Meta from "@/components/internal/Documentation/Meta";
 import PropsTable from "@/components/internal/Documentation/PropsTable";
+import SlotsTable from "@/components/internal/Documentation/SlotsTable";
 import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
+import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/components/SlotsTableRow";
+
 
 <Meta
   title="Header Section"
@@ -12,7 +15,7 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
 ## Properties
 
 <PropsTable>
-  <PropsTableRow value="backgroundImage">
+  <PropsTableRow value="backgroundImage" type="ImageRef" required>
     Requires <span class="code">ImageRef</span> which needs:
     <ul>
       <li>
@@ -30,23 +33,42 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
       </ul>
       
       </PropsTableRow>
-      <PropsTableRow value="title">
-        Requires <span class="code">String</span>
+      <PropsTableRow value="title" type="String" required>
+        The header section's title.
         </PropsTableRow>
-        <PropsTableRow value="breadcrumbs">
-         Requires an Array <span class="code">Breadcrumb[]</span> which will need the following information: <span class="code">{`{ 
+        <PropsTableRow value="breadcrumbs" type="Breadcrumb[]">
+         The Breadcrumbs array needs the following information: <span class="code">{`{ 
            referenceId: number,
            referenceType: String,
            path: "/",
            label: String
             }`}</span> 
           </PropsTableRow>
-          <PropsTableRow value="handleItemClick()">
+          <PropsTableRow value="handleItemClick()" type="callback">
              You can pass in an optional callback that will be triggered, when an item
       is clicked.
             </PropsTableRow>
 </PropsTable>
 
+## Scoped Slots
+
+<SlotsTable>
+  <SlotsTableRow value="backgroundImage">
+  The element that will be displayed where we normally show the backgroundImage.
+  </SlotsTableRow>
+  <SlotsTableRow value="breadcrumbs">
+  The element that will be displayed where we normally show navigation breadcrumbs.
+  </SlotsTableRow>
+</SlotsTable>
+
+
 ## Example
 
 <ExampleLoader example="HeaderSection.tsx" />
+
+<br />
+
+## Example with Slots
+
+<ExampleLoader example="HeaderSection.slots.tsx" />
+

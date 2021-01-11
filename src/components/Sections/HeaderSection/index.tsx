@@ -26,15 +26,19 @@ class HeaderSection extends BaseComponent<
   render() {
     return (
       <div class="HeaderSection">
-        {this.backgroundImage && (
-          <Image
-            src={this.backgroundImage.src}
-            dimensions={this.backgroundImage?.dimensions}
-            data-preview-id={this.backgroundImage?.previewId}
-            class="HeaderSection--BackgroundImage"
-            opacity="80"
-          />
-        )}
+        {this.$scopedSlots.backgroundImage
+          ? this.$scopedSlots.backgroundImage(this.backgroundImage)
+          : this.backgroundImage && (
+              <Image
+                src={this.backgroundImage.src}
+                dimensions={this.backgroundImage?.dimensions}
+                data-preview-id={this.backgroundImage?.previewId}
+                data-testid="HeaderSection--BackgroundImage"
+                class="HeaderSection--BackgroundImage"
+                opacity="80"
+              />
+            )}
+
         <Container class="py-20">
           <div class="HeaderSection--HeadlineWrapper">
             <h2>{this.title}</h2>
