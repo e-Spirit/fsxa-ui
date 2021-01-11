@@ -36,7 +36,6 @@ export default class App extends Vue {
         <HeaderSection
           backgroundImage={{
             src: imageSrc,
-            dimensions: { width: 400, height: 400 },
             previewId: "1000",
           }}
           title="test123"

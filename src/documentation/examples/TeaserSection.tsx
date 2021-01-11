@@ -20,7 +20,6 @@ export default class App extends Vue {
           tagline="text"
           image={{
             src: imageSrc,
-            dimensions: { width: 400, height: 400 },
             previewId: "1000",
           }}
         />

@@ -29,7 +29,6 @@ export default class App extends Vue {
           counters={counters}
           backgroundImage={{
             src: imageSrc,
-            dimensions: { width: 400, height: 400 },
             previewId: "1000",
           }}
         />

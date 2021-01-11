@@ -245,3 +245,91 @@ export interface FullWidthImageSliderSectionProps {
 export class FullWidthImageSliderSection extends Component<
   FullWidthImageSliderSection
 > {}
+
+export interface AccordionSectionProps {
+  /**
+   * Optional title string. When not set, there simply won't be a title for the section.
+   */
+  title?: string;
+  /**
+   * Styling choice. Default is **false**
+   */
+  dark?: boolean;
+  /**
+   * The individual subsections consist of a non-optional title and a non-optional text.
+   */
+  items: Array<{ title: string; text: string }>;
+}
+export class AccordionSection extends Component<AccordionSectionProps> {}
+
+export interface GoogleMapsSectionProps {
+  /**
+   * Your GoogleMaps apikey
+   */
+  apikey: string;
+  /**
+   * The optional starting location where the map will be centered to.
+   * If not set, the user will be prompted to allow the page access to their location and the map will be centered on the users location.
+   */
+  startLocation?: MapsPosition;
+  /**
+   * The title text to be displayed above the map container
+   */
+  title?: string;
+  /**
+   * A number between 1 and 20 representing approximately the following zoom levels
+   * 1: World
+   * 5: Landmass/Continent
+   * 10: City
+   * 15: Streets
+   * 20: Buildings
+   * Default is 15
+   */
+  zoom?: number;
+  /**
+   * The language for the map. Default is "en".
+   * See also the list of supported languages.
+   * https://developers.google.com/maps/faq#languagesupport
+   */
+  language: string;
+  /**
+   * An array of locations. This component will place markers at these locations which can be clicked to display additional information.
+   */
+  locations?: MapsLocation[];
+  /**
+   * The label to be displayed on the buttons in each info window.
+   * If you set this prop, you also have to set the handleButtonClick prop.
+   */
+  buttonLabel?: string;
+  /**
+   * A function to handle the press of the button in the description of each location.
+   * When the function is called the current location data is passed in.
+   * If you set this prop, you also have to set the buttonLabel prop.
+   */
+  handleButtonClick?: (event: MouseEvent, location: MapsLocation) => void;
+  /**
+   * Url to a 50x50 image that will be used as a marker or image data loaded with some kind of image loader.
+   */
+  markerIcon?: string;
+  /**
+   * You can define your own map style using https://mapstyle.withgoogle.com/
+   */
+  mapStyles?: any;
+  /**
+   * You can optionally render your own info window using this handle.
+   * The component will call this function and pass in a location with metadata and expect a div Element as node to be returned.
+   */
+  renderInfoWindow?: (location: MapsLocation) => Node;
+}
+export interface MapsPosition {
+  lat: number;
+  lng: number;
+}
+export interface MapsLocation {
+  position: MapsPosition;
+  city: string;
+  street: string;
+  description?: string;
+  name: string;
+}
+export class GoogleMapsSection extends Component<GoogleMapsSectionProps> {}

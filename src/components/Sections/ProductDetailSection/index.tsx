@@ -11,7 +11,7 @@ import Layout from "@/components/Layout";
 import RichText from "@/components/RichText";
 import "./style.css";
 import Accordion from "@/components/Accordion";
-import { ImageRef } from "@/types/utils";
+import { ImageRef } from "@/types/components";
 @Component({
   name: "ProductDetailSection",
 })
