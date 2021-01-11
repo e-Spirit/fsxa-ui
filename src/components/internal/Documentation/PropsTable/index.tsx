@@ -13,7 +13,9 @@ class PropsTable extends BaseComponent {
         <thead>
           <tr class="PropsTable--Header">
             <th>Parameter</th>
-            <th>Value</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Default</th>
           </tr>
         </thead>
         <tbody class="PropsTable--Body">{this.$slots.default}</tbody>

@@ -111,6 +111,7 @@ class Image extends BaseComponent<ImageProps> {
               class={`absolute top-0 left-0 w-full h-full pointer-events-none bg-black ${
                 opacityClasses[this.opacity]
               }`}
+              data-testid="veil"
             />
           )}
         </div>

@@ -14,11 +14,11 @@ export interface ButtonProps {
   /**
    * Specify the variant the button should be displayed in.
    *
-   * Possible values are: **default** | **inverted** | **tag** | **animated**
+   * Possible values are: **default** | **inverted** | **tag** | **tag-selected** | **animated**
    *
    * Default value is: **default**
    */
-  variant?: "default" | "inverted" | "tag" | "animated";
+  variant?: "default" | "inverted" | "tag" | "tag-selected" | "animated";
   /**
    * Optional callback that will be triggered, when the button is clicked
    */
@@ -338,6 +338,36 @@ export interface NewsTeaserItemProps {
 }
 export class NewsTeaserItem extends Component<NewsTeaserItemProps> {}
 
+export interface ProductListItemProps {
+  /**
+   * The title that will be displayed
+   */
+  title: string;
+  /**
+   * The description that will be displayed. Can contain RichText
+   */
+  description: string;
+  /**
+   * The price that will be displayed.
+   */
+  price: string;
+  /**
+   * The image of the product that will be displayed in the background
+   */
+  image: ImageRef;
+  /**
+   * The url that should be opened, when the item is clicked.
+   *
+   * Note: this will only be used, when SSR is active and JS is deactivated in the client
+   */
+  url: string;
+  /**
+   * Callback that will be invoked, when the item is clicked
+   */
+  handleClick: () => void;
+}
+export class ProductListItem extends Component<ProductListItemProps> {}
+
 export interface LoaderProps {
   renderLoader?: () => JSX.Element | null;
 }
@@ -421,6 +451,21 @@ export interface QuoteProps {
 
 export class Quote extends Component<QuoteProps> {}
 
+export interface AccordionProps {
+  /**
+   * The title of the section is whats displayed in the clickable part and whats always visible
+   */
+  title: string;
+  /**
+   * Styling choice. Default is **false**
+   */
+  dark?: boolean;
+  /**
+   * Indicates whether the text is visible or not. Default is **false**
+   */
+  open?: boolean;
+}
+export class Accordion extends Component<AccordionProps> {}
 export type ScreenPrefixes = "sm" | "md" | "lg" | "xl";
 
 export type LineSeparatorWidths = "4" | "8" | "16" | "32" | "64" | "full";

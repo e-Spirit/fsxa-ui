@@ -15,6 +15,7 @@ class RichText extends BaseComponent<RichTextProps> {
       <div
         class={`RichText ${this.inline ? "RichText--inline" : ""}`}
         domPropsInnerHTML={this.content}
+        data-testid="richtext-content"
       />
     );
   }

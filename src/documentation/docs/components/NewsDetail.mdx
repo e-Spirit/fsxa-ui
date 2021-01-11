@@ -12,41 +12,46 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
 ## Properties
 
 <PropsTable>
-  <PropsTableRow value="headline" required>
+  <PropsTableRow value="headline" type="String" required>
     Specify which headline should be displayed.
   </PropsTableRow>
-  <PropsTableRow value="image" required>
+  <PropsTableRow value="image" type="Object" required>
     Specify which image should be displayed.
     Required attributes are:
     <ul>
     <li><span class="code">src</span> Source of the image</li>
     </ul>
   </PropsTableRow>
-  <PropsTableRow value="tags">
+  <PropsTableRow value="tags" type="Array">
       Specify which tags should be displayed. Required attributes are:
       <ul>
         <li><span class="code">label</span> Label of the tag</li>
       </ul>
 
   </PropsTableRow>
-  <PropsTableRow value="teaser">
+  <PropsTableRow value="teaser" type="String">
     Specify which teaser should be displayed above the picture.
   </PropsTableRow>
-  <PropsTableRow value="date">
+  <PropsTableRow value="date" type="String">
       Specify which date should be displayed.
   </PropsTableRow>
-  <PropsTableRow value="author">
+  <PropsTableRow value="author" type="String">
       Specify which author should be displayed.
   </PropsTableRow>
-  <PropsTableRow value="handleTagClick">
+  <PropsTableRow value="handleTagClick" type="Function">
       You can pass in an optional callback that will be triggered, when a tag
       is clicked.
     </PropsTableRow>
-  <PropsTableRow value="handleReturnClick">
+  <PropsTableRow value="handleReturnClick" type="Function">
         You can pass in an optional callback that will be triggered, when the return button
             is clicked.
   </PropsTableRow>
-
+  <PropsTableRow value="socialText" type="String">
+    The text that will be displayed above the social media icons in the footer.
+  </PropsTableRow>
+  <PropsTableRow value="returnText" type="String">
+    The text that will be displayed on the return button in the footer.
+  </PropsTableRow>
 </PropsTable>
 
 ## Example

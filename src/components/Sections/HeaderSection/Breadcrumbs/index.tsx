@@ -17,6 +17,7 @@ class Breadcrumbs extends BaseComponent<BreadcrumbsProps> {
           {this.items.map((item, index) => (
             <li class="Breadcrumbs--Item">
               <a
+                data-testid={`item-${item.referenceId}`}
                 href={item.path}
                 class="Breadcrumbs--Link"
                 aria-current={index === this.items.length - 1 ? "page" : ""}

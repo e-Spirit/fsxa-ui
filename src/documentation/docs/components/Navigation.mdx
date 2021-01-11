@@ -6,14 +6,14 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
 
 <Meta
   title="Navigation"
-  subtitle="Navigation allows users to navigate through your site"
+  subtitle="Navigation allows users to navigate through your site. The navigation also works mobile, try it on any mobile device to investigate its functions"
 />
 
 ## Properties
 
 <PropsTable>
-  <PropsTableRow value="items" required>
-    Specify an array which should be rendered.
+  <PropsTableRow value="items" type="Array" required>
+    Specify an array which should be rendered. An item has the following properties.
     <ul>
         <li>
             <span class="code">label</span> is the displayed name
@@ -29,14 +29,14 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
         </li>
     </ul>
   </PropsTableRow>
-  <PropsTableRow value="handleNavClick">
-    Callback that will be triggered, when an link is clicked.
+  <PropsTableRow value="handleNavClick" type="Function">
+    Callback that will be triggered, when a link is clicked.
   </PropsTableRow>
-  <PropsTableRow value="isActiveItem">
+  <PropsTableRow value="isActiveItem" type="Boolean" default="false">
     Call that determinates which path is activated.
   </PropsTableRow>
-  <PropsTableRow value="depth">
-    Determinates the depth of the navigation. Default is <span class="code">3</span>
+  <PropsTableRow value="depth" type="Number" default="3">
+    Determinates the depth of the navigation tree.
   </PropsTableRow>
 </PropsTable>
 

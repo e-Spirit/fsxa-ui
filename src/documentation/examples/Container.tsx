@@ -10,6 +10,12 @@ export default class App extends Vue {
       <div>
         <Container>Container</Container>
         <Container fluid>Container fluid</Container>
+        <Container verticalPadding={false}>
+          Container without vertical padding
+        </Container>
+        <Container horizontalPadding={false}>
+          Container without horizontal padding
+        </Container>
       </div>
     );
   }

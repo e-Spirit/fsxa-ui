@@ -29,6 +29,7 @@ class Footer extends BaseComponent<FooterProps> {
               width="full"
               md={{ width: "1/3" }}
               class="flex justify-center items-center"
+              data-testid={"footer-copyright"}
             >
               © {this.copyright}
             </LayoutItem>
@@ -41,6 +42,7 @@ class Footer extends BaseComponent<FooterProps> {
                 {this.links.map(link => (
                   <li class="FSXAFooter--LinkWrapper">
                     <a
+                      data-testid={`footer-${link.referenceId}`}
                       href="#"
                       class={`FSXAFooter--Link ${
                         link.isActive ? "active" : ""

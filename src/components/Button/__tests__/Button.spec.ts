@@ -3,11 +3,11 @@ import Button from "./../";
 
 describe("components/Button", () => {
   it("renders passed content as button content", () => {
-    const content = "Das ist mein Test";
+    const content = "This is my test";
     const { getByText } = render(Button, {
       slots: { default: content },
     });
-    getByText(content);
+    expect(getByText(content)).toBeTruthy();
   });
 
   it("calls handleClick callback on click", async () => {

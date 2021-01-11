@@ -10,41 +10,14 @@ const routes = [
     children: [],
   },
   {
-    label: "Writing Components",
-    path: "/writing-components",
-    children: [],
-  },
-  {
-    label: "PWA",
-    path: "/pwa",
-    children: [
-      {
-        label: "Getting Started",
-        path: "/pwa/getting-started",
-        children: [],
-      },
-    ],
-  },
-  {
-    label: "Pattern-Library",
-    path: "/pattern-library",
-    children: [
-      {
-        label: "Getting Started",
-        path: "/pattern-library/getting-started",
-        children: [],
-      },
-      {
-        label: "DevMode",
-        path: "/pattern-library/dev-mode",
-        children: [],
-      },
-    ],
-  },
-  {
     label: "Components",
     path: "/components",
     children: [
+      {
+        label: "Accordion",
+        path: "/components/accordion",
+        children: [],
+      },
       {
         label: "Button",
         path: "/components/button",
@@ -58,6 +31,11 @@ const routes = [
       {
         label: "Counter",
         path: "/components/counter",
+        children: [],
+      },
+      {
+        label: "Dropdown",
+        path: "/components/dropdown",
         children: [],
       },
       {
@@ -96,8 +74,53 @@ const routes = [
         children: [],
       },
       {
+        label: "ProductListItem",
+        path: "/components/product-list-item",
+      },
+      {
         label: "LineSeparator",
         path: "/components/line-separator",
+        children: [],
+      },
+    ],
+  },
+  {
+    label: "Sections",
+    path: "/sections",
+    children: [
+      {
+        label: "AccordionSection",
+        path: "/sections/accordion-section",
+        children: [],
+      },
+      {
+        label: "GoogleMapsSection",
+        path: "/sections/google-maps-section",
+        children: [],
+      },
+      {
+        label: "Header-Section",
+        path: "/sections/header-section",
+        children: [],
+      },
+      {
+        label: "InterestingFacts-Section",
+        path: "/sections/interesting-facts-section",
+        children: [],
+      },
+      {
+        label: "ListSection",
+        path: "/sections/list-section",
+        children: [],
+      },
+      {
+        label: "ProductDetailSection",
+        path: "/sections/product-detail-section",
+        children: [],
+      },
+      {
+        label: "Teaser-Section",
+        path: "/sections/teaser-section",
         children: [],
       },
     ],
@@ -111,7 +134,6 @@ class Documentation extends BaseComponent {
   showSidebar = false;
 
   render() {
-    console.log(this.$route);
     return (
       <div class="w-full min-h-full flex">
         <div class="md:w-1/3 lg:w-1/4 md:max-w-xs border-r border-gray-300 hidden md:block p-5">

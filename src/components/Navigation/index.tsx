@@ -20,12 +20,15 @@ class Navigation extends BaseComponent<NavigationProps> {
   isActiveItem: NavigationProps["isActiveItem"];
   @Prop({ type: Number, default: 3 }) depth!: number;
 
+  isCollapsed = false;
+
   renderItem(item: NavigationItem, currentDepth: number) {
     const isActive = this.isActiveItem ? this.isActiveItem(item) : false;
     return (
       <li class="Navigation--Item">
         <a
-          class={`Navigation--Link ${isActive ? "active" : ""}`}
+          data-testid={`item-${item.id}`}
+          class={`Navigation--Link Nav--Mobile ${isActive ? "active" : ""}`}
           href={item.path}
           onClick={(event: any) => {
             event?.preventDefault();
@@ -33,6 +36,11 @@ class Navigation extends BaseComponent<NavigationProps> {
           }}
         >
           {item.label}
+          {item.children.length > 0 ? (
+            <span class="Navigation--smallicon">
+              <i class="fas fa-chevron-right ml-2"></i>
+            </span>
+          ) : null}
         </a>
         {item.children.length > 0 && currentDepth < this.depth && (
           <ul class="Navigation--Navigation">
@@ -49,8 +57,23 @@ class Navigation extends BaseComponent<NavigationProps> {
         <ul class="Navigation--Navigation hidden lg:block">
           {this.items.map(item => this.renderItem(item, 0))}
         </ul>
-        <div class="Navigation--Mobile w-full flex items-center justify-end lg:hidden hover:text-gray-600 text-xl cursor-pointer">
-          <i class="fas fa-bars" />
+        <div class="Navigation--Mobile w-full flex justify-end lg:hidden hover:text-gray-600 text-xl cursor-pointer">
+          <i
+            class="fas fa-bars dropdown"
+            onClick={(event: any) => {
+              event?.preventDefault();
+              this.isCollapsed = !this.isCollapsed;
+            }}
+          />
+          <div
+            class={` Navigation--Content absolute text-left w-full mt-12 ${
+              this.isCollapsed ? "Navigation--collapsed" : ""
+            }`}
+          >
+            <ul class="z-10 flex-initial left-0">
+              {this.items.map(item => this.renderItem(item, 0))}
+            </ul>
+          </div>
         </div>
       </div>
     );
