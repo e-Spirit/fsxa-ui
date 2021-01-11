@@ -4,12 +4,20 @@ import { Component, Prop } from "vue-property-decorator";
 import Container from "@/components/Container";
 import "./style.css";
 import Breadcrumbs from "./Breadcrumbs";
-import { HeaderSectionProps } from "@/types/sections";
+import { Breadcrumb, HeaderSectionProps } from "@/types/sections";
+import { ImageProps } from "@/types/components";
 
 @Component({
   name: "HeaderSection",
 })
-class HeaderSection extends BaseComponent<HeaderSectionProps> {
+class HeaderSection extends BaseComponent<
+  HeaderSectionProps,
+  {},
+  {
+    backgroundImage?: ImageProps;
+    breadcrumbs?: Breadcrumb[];
+  }
+> {
   @Prop({ required: true }) title!: HeaderSectionProps["title"];
   @Prop({ required: true }) breadcrumbs!: HeaderSectionProps["breadcrumbs"];
   @Prop() backgroundImage: HeaderSectionProps["backgroundImage"];
@@ -31,10 +39,15 @@ class HeaderSection extends BaseComponent<HeaderSectionProps> {
           <div class="HeaderSection--HeadlineWrapper">
             <h2>{this.title}</h2>
           </div>
-          <Breadcrumbs
-            items={this.breadcrumbs}
-            handleItemClick={this.handleItemClick}
-          />
+          {this.$scopedSlots.breadcrumbs ? (
+            this.$scopedSlots.breadcrumbs(this.breadcrumbs)
+          ) : (
+            <Breadcrumbs
+              items={this.breadcrumbs}
+              handleItemClick={this.handleItemClick}
+              data-testid={"HeaderSection-Breadcrumbs"}
+            />
+          )}
         </Container>
       </div>
     );
