@@ -2,7 +2,10 @@ import Code from "@/components/internal/Documentation/Code";
 import ExampleLoader from "@/documentation/utils/ExampleLoader";
 import Meta from "@/components/internal/Documentation/Meta";
 import PropsTable from "@/components/internal/Documentation/PropsTable";
+import SlotsTable from "@/components/internal/Documentation/SlotsTable";
 import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
+import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/components/SlotsTableRow";
+
 
 <Meta
   title="Header Section"
@@ -12,23 +15,20 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
 ## Properties
 
 <PropsTable>
-  <PropsTableRow value="backgroundImage" type="Image">
+  <PropsTableRow value="backgroundImage" type="ImageRef" required>
     Requires <span class="code">ImageRef</span> which needs:
     <ul>
       <li>
        <span class="code">src:String</span>
        </li>
        <li> 
-         <span class="code">dimension:
-        
-           {`{width: number, height: number}`} </span>
-          
+         <span class="code">dimension:        
+           {`{width: number, height: number}`} </span>     
            </li>
            <li>
           <span class="code">previewId:Number</span> which will be needed by the FirstSpirit ContentCreator
           </li>
-      </ul>
-      
+      </ul>  
       </PropsTableRow>
       <PropsTableRow value="title" type="string" required>
         The title to display with this HeaderSection.
@@ -47,6 +47,25 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
             </PropsTableRow>
 </PropsTable>
 
+## Slots
+
+<SlotsTable>
+  <SlotsTableRow value="backgroundImage" prop="ImageRef">
+  The element that will be displayed where we normally show the backgroundImage.
+  </SlotsTableRow>
+  <SlotsTableRow value="breadcrumbs" prop="Breadcrumb[]">
+  The element that will be displayed where we normally show navigation breadcrumbs.
+  </SlotsTableRow>
+</SlotsTable>
+
+
 ## Example
 
 <ExampleLoader example="HeaderSection.tsx" />
+
+<br />
+
+## Example with Slots
+
+<ExampleLoader example="HeaderSection.slots.tsx" />
+
