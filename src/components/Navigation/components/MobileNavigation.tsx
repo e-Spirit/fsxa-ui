@@ -38,6 +38,7 @@ class MobileNavigation extends BaseNavigation {
                     }
                   }}
                 >
+                  {/** hamburger icon from heroicons.com */}
                   <svg
                     class={`w-6 h-6 transform duration-200 transition-transform ${
                       this.collapsedItems.includes(item.key) ? "rotate-180" : ""

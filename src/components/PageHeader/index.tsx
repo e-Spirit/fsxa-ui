@@ -47,7 +47,6 @@ class PageHeader extends BaseComponent<
             onClick={event => {
               event.preventDefault();
               event.stopImmediatePropagation();
-              console.log("CLICK");
               this.$emit("overlayClick");
             }}
           >

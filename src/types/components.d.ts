@@ -258,7 +258,7 @@ export interface NavigationItem {
 }
 
 export interface FirstLevelNavigationItem extends NavigationItem {
-  childPlacement?: "left" | "right" | "center";
+  childPlacement?: "left" | "right";
   children: NavigationItem[];
 }
 export interface NavigationProps {

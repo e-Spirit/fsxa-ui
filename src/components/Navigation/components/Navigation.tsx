@@ -22,8 +22,8 @@ class Navigation extends BaseNavigation {
             {item.children.length > 0 ? (
               <div
                 class={`absolute top-100 ${
-                  item.childPlacement === "right" ? "right" : "left"
-                }-0`}
+                  item.childPlacement === "right" ? "right-0" : "left-0"
+                }`}
               >
                 <ul class="translate-y-8 group-hover:translate-y-0 bg-white border border-gray-300 w-56 text-sm shadow transform transition-transform duration-300 leading-5">
                   {item.children.map(child => (
