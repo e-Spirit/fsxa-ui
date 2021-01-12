@@ -8,7 +8,7 @@ export default class App extends Vue {
   render() {
     return (
       <div class="space-x-5">
-        <Button variant="default">Default</Button>
+        <Button>Default</Button>
         <Button variant="animated">Animated</Button>
         <Button variant="inverted">Inverted</Button>
         <Button variant="tag">Tag</Button>
