@@ -3,12 +3,15 @@ import { Component, Prop } from "vue-property-decorator";
 
 export interface SlotsTableRowProps {
   value: string;
+  prop: string;
 }
 @Component({
   name: "SlotsTableRow",
 })
 class SlotsTableRow extends BaseComponent<SlotsTableRowProps> {
   @Prop({ required: true }) value!: SlotsTableRowProps["value"];
+  @Prop({ required: false }) prop!: SlotsTableRowProps["prop"];
+
   render() {
     return (
       <tr>
@@ -17,6 +20,7 @@ class SlotsTableRow extends BaseComponent<SlotsTableRowProps> {
             {this.value}
           </span>
         </td>
+        <td>{this.prop}</td>
         <td>{this.$slots.default}</td>
       </tr>
     );
