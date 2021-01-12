@@ -4,19 +4,19 @@ import { Component, Prop } from "vue-property-decorator";
 import Container from "@/components/Container";
 import "./style.css";
 import Breadcrumbs from "./Breadcrumbs";
-import { Breadcrumb, HeaderSectionProps } from "@/types/sections";
-import { ImageProps } from "@/types/components";
+import {
+  HeaderSectionEvents,
+  HeaderSectionProps,
+  HeaderSectionSlots,
+} from "@/types/sections";
 
 @Component({
   name: "HeaderSection",
 })
 class HeaderSection extends BaseComponent<
   HeaderSectionProps,
-  {},
-  {
-    backgroundImage?: ImageProps;
-    breadcrumbs?: Breadcrumb[];
-  }
+  HeaderSectionEvents,
+  HeaderSectionSlots
 > {
   @Prop({ required: true }) title!: HeaderSectionProps["title"];
   @Prop({ required: true }) breadcrumbs!: HeaderSectionProps["breadcrumbs"];
