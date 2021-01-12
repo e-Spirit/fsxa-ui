@@ -1,8 +1,14 @@
+import { ImageRef } from "@/types/fsxa-ui";
+
 interface ResolutionMeta {
   key: string;
   widthDelta: number;
   heightDelta: number;
 }
+
+export const isImageRef = (media: any): media is ImageRef => {
+  return media && (media as any).type === "image";
+};
 
 export const determineCorrectResolution = (
   width: number,

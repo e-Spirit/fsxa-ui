@@ -63,7 +63,10 @@ export default class App extends Vue {
           price={price}
           handleButtonClick={handleClick}
           buttonText={button}
-          images={[{ src: src1 }, { src: src2 }]}
+          images={[
+            { src: src1, type: "image" },
+            { src: src2, type: "image" },
+          ]}
           propertyList={propertyList}
           foldableContentList={foldableContentList}
         />

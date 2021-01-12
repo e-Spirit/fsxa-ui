@@ -1,0 +1,44 @@
+import Code from "@/components/internal/Documentation/Code";
+import ExampleLoader from "@/documentation/utils/ExampleLoader";
+import Meta from "@/components/internal/Documentation/Meta";
+import PropsTable from "@/components/internal/Documentation/PropsTable";
+import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
+
+<Meta
+  title="ImageSlider"
+  subtitle="Displays pictures as a slide-show"
+/>
+
+## Properties
+
+<PropsTable>
+  <PropsTableRow value="src" type="String" required>
+    A url that specifies the image source.
+  </PropsTableRow>
+  <PropsTableRow value="opacity" type="String" default="0">
+    Specifies the opacity of a black overlay. Possible values are 
+    <span class="code">0</span>
+    <span class="code">25</span>
+    <span class="code">40</span>
+    <span class="code">50</span>
+    <span class="code">75</span>
+    <span class="code">80</span>.
+    A higher value corresponds to a darker image. 
+  </PropsTableRow>
+  <PropsTableRow value="zoom" type="Boolean" default="false">
+    Specifies whether there should be a zoom effect when hovering. Possible values are <span class="code">true</span><span class="code">false</span>
+  </PropsTableRow>
+  <PropsTableRow value="border" type="Boolean" default="false">
+    Specifies whether the image should have a border.
+  </PropsTableRow>
+  <PropsTableRow value="lazy" type="Boolean" default="false">
+    Specifies whether the image should be lazy loaded or not.
+  </PropsTableRow>
+  <PropsTableRow value="dimensions" type="Object">
+    Specifies the width and height of the image. Takes An object with a <span class="code">width</span> and a <span class="code">height</span> number property.
+  </PropsTableRow>
+</PropsTable>
+
+## Example
+
+<ExampleLoader example="Image.tsx" />

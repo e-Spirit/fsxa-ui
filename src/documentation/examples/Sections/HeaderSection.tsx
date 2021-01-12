@@ -35,6 +35,7 @@ export default class App extends Vue {
       <div class="space-x-5">
         <HeaderSection
           backgroundImage={{
+            type: "image",
             src: imageSrc,
             previewId: "1000",
           }}

@@ -94,6 +94,11 @@ const routes = [
         children: [],
       },
       {
+        label: "FullWidthSliderSection",
+        path: "/sections/full-width-slider-section",
+        children: [],
+      },
+      {
         label: "GoogleMapsSection",
         path: "/sections/google-maps-section",
         children: [],

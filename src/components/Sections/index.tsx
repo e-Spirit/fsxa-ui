@@ -1,4 +1,4 @@
-import FullWidthImageSliderSection from "./FullWidthImageSliderSection";
+import FullWidthSliderSection from "./FullWidthSliderSection";
 import InterestingFactsSection from "./InterestingFactsSection";
 import NewsTeaserSection from "./NewsTeaserSection";
 import HeaderSection from "./HeaderSection";
@@ -9,7 +9,7 @@ import AccordionSection from "./AccordionSection";
 import GoogleMapsSection from "./GoogleMapsSection";
 
 export default {
-  FullWidthImageSliderSection,
+  FullWidthSliderSection,
   InterestingFactsSection,
   NewsTeaserSection,
   HeaderSection,

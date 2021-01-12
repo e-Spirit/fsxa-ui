@@ -122,6 +122,7 @@ export interface Dimensions {
   height: number;
 }
 export interface ImageRef {
+  type: "image";
   /**
    * The src of the image that should be displayed.
    *
@@ -144,7 +145,7 @@ export interface ImageRef {
   >;
   sizes?: string;
 }
-export interface ImageProps extends ImageRef {
+export interface ImageProps extends Omit<ImageRef, "type"> {
   /**
    * Specify if the image should be loaded only if it is visible in the viewport
    *

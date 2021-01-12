@@ -1,5 +1,10 @@
 import { Component } from "vue-tsx-support";
-import { ImageRef, NewsTeaserItemProps } from "./components";
+import {
+  ImageRef,
+  NewsTeaserItemProps,
+  RenderedType,
+  SliderControlParams,
+} from "./components";
 
 export interface NewsTeaserSectionProps {
   headline: string;
@@ -201,49 +206,74 @@ export interface HeaderSectionProps {
 }
 export class HeaderSection extends Component<HeaderSectionProps> {}
 
-export interface FullWidthImageSliderSectionSlide {
+export interface FullWidthSliderSectionSlide<MediaType> {
   /**
    * A resolution map which provides the width / height and url for each resolution
    *
    * The Section will automatically make sure, that the correct image is referenced
    */
-  image: Record<
-    string,
-    {
-      url: string;
-      width: number;
-      height: number;
-    }
-  >;
+  media: MediaType;
   /**
    * The title of the slide that will be animated in.
    *
    * Note: This can contain RichText
    */
-  title: string;
+  title: RenderedType;
   /**
    * The description that will be animated. Make sure that you do not use too much text.
    *
    * Note: This can contain RichText
    */
-  description: string;
+  teaser: RenderedType;
   /**
    * The label of the button that should be displayed.
    */
-  buttonText: string;
+  buttonContent: RenderedType;
 }
-export interface FullWidthImageSliderSectionProps {
+export interface FullWidthSliderSectionEventsWithOn<MediaType> {
+  /**
+   * This Event will be invoked, when the CTA-Button of a slide is clicked. The displayed slide will be passed as parameter.
+   */
+  onClick: FullWidthSliderSectionSlide<MediaType>;
+}
+export interface FullWidthSliderSectionSlots<MediaType> {
+  title: RenderedType;
+  teaser: RenderedType;
+  button?: { content: RenderedType; onClick: () => void };
+  media?: MediaType;
+  controls?: SliderControlParams;
+  arrowButton?: {
+    position: "left" | "right";
+    slideNumber: number | null;
+    media: MediaType | null;
+  };
+  arrowButtonContent?: {
+    position: "left" | "right";
+    slideNumber: number | null;
+    media: MediaType | null;
+  };
+  stepper?: SliderControlParams & {
+    slides: FullWidthSliderSectionSlide<MediaType>[];
+  };
+  stepperStep?: SliderControlParams & {
+    index: number;
+    slide: FullWidthSliderSectionSlide<MediaType>;
+  };
+}
+export interface FullWidthSliderSectionProps<MediaType> {
+  /**
+   * Specify if the default padding should be removed from the wrapped content
+   */
+  removeDefaultPadding?: boolean;
   /**
    * The slides that should be displayed. You can add additional properties to the slide-objects as well.
    */
-  slides: FullWidthImageSliderSectionSlide[];
-  /**
-   * This callback will be invoked with the slide the button was clicked in
-   */
-  handleButtonClick: (slide: FullWidthImageSliderSectionSlide) => void;
+  slides: FullWidthSliderSectionSlide<MediaType>[];
 }
-export class FullWidthImageSliderSection extends Component<
-  FullWidthImageSliderSection
+export class FullWidthSliderSection<MediaType> extends Component<
+  FullWidthSliderSectionProps<MediaType>,
+  FullWidthSliderSectionEventsWithOn<MediaType>,
+  FullWidthSliderSectionSlots<MediaType>
 > {}
 
 export interface AccordionSectionProps {
