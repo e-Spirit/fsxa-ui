@@ -93,7 +93,7 @@ export default class App extends Vue {
       <div class="py-12">
         <MobileNavigation
           items={navItems}
-          activeItemKeys={[]}
+          activeItemKeys={["language"]}
           onItemClicked={item => console.log(item)}
         />
       </div>

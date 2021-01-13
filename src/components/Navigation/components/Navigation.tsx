@@ -1,5 +1,7 @@
 import Component from "vue-class-component";
 import BaseNavigation from "./BaseNavigation";
+import "./style.css";
+
 @Component({
   name: "Navigation",
 })
@@ -15,7 +17,9 @@ class Navigation extends BaseNavigation {
                 event.preventDefault();
                 this.triggerItemClick(item);
               }}
-              class="h-full flex items-center justify-center px-5 py-4 uppercase tracking-widest text-xs"
+              class={`h-full flex items-center justify-center px-5 py-4 uppercase tracking-widest text-xs ${
+                this.activeItemKeys?.includes(item.key) ? "nav-active" : ""
+              }`}
             >
               {item.label}
             </a>

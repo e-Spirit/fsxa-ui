@@ -77,4 +77,28 @@ describe("components/Navigation", () => {
     expect(childItemOnTheRight.classList).toContain("right-0");
     expect(childItemOnTheLeft.classList).toContain("left-0");
   });
+  it("renders an active item with an active item css class", () => {
+    const { getByText } = render(Navigation, {
+      slots: { default: "Content" },
+      props: {
+        activeItemKeys: ["1"],
+        items: [
+          {
+            key: "1",
+            path: "/",
+            label: "Link 1",
+            children: [
+              {
+                key: "3",
+                path: "/",
+                label: "Link 1.1",
+              },
+            ],
+          },
+        ],
+      },
+    });
+    const navigation = getByText("Link 1");
+    expect(navigation.classList).toContain("nav-active");
+  });
 });

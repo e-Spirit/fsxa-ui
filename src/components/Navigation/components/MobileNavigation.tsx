@@ -1,6 +1,7 @@
 import { NavigationItem } from "@/types/fsxa-ui";
 import Component from "vue-class-component";
 import BaseNavigation from "./BaseNavigation";
+import "./style.css";
 
 @Component({
   name: "MobileNavigation",
@@ -19,9 +20,17 @@ class MobileNavigation extends BaseNavigation {
                 event.preventDefault();
                 this.triggerItemClick(item);
               }}
-              class="block px-5 py-3 tracking-xl hover:bg-gray-200 transition-colors duration-200 relative uppercase font-semibold text-gray-600 text-xs"
+              class={`block px-5 py-3 tracking-xl hover:bg-gray-200 transition-colors duration-200 relative uppercase font-semibold text-xs`}
             >
-              <span class="flex-grow leading-3">{item.label}</span>
+              <span
+                class={`flex-grow leading-3 ${
+                  this.activeItemKeys?.includes(item.key)
+                    ? "mobile-nav-active"
+                    : "text-gray-600"
+                }`}
+              >
+                {item.label}
+              </span>
               {item.children.length ? (
                 <span
                   class="absolute top-1/2 right-0 -mt-4 mr-3 p-1 hover:bg-white hover:shadow rounded-full"
@@ -46,6 +55,7 @@ class MobileNavigation extends BaseNavigation {
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
+                    data-testid="hamburger-icon"
                   >
                     <path
                       fill-rule="evenodd"

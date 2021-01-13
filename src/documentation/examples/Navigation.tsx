@@ -107,7 +107,7 @@ export default class App extends Vue {
         <div class="space-x-5 lg:pr-20 mt-10 mb-20 h-16 bg-gray-100">
           <Navigation
             items={navItems}
-            activeItemKeys={[]}
+            activeItemKeys={["products"]}
             onItemClicked={item => console.log(item)}
           />
         </div>
