@@ -21,6 +21,7 @@ export interface CodeProps {
   code: string;
   language?: string;
   exampleContent?: JSX.Element;
+  filename?: string;
 }
 export class Code extends Component<CodeProps> {}
 

@@ -16,12 +16,9 @@ module.exports = {
       transparent: "transparent",
       current: "currentColor",
       espirit: "#810444",
-
       black: "#000",
       white: "#fff",
-
       highlight: "var(--fsxa-text-highlight-color, #D5DD02)",
-
       gray: {
         100: "#f7fafc",
         200: "#edf2f7",
@@ -351,6 +348,7 @@ module.exports = {
       "6xl": "72rem",
       full: "100%",
       ...breakpoints(theme("screens")),
+      "screen-xs": "400px",
     }),
     minHeight: {
       "0": "0",

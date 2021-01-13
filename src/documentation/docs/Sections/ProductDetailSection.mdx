@@ -13,28 +13,28 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
 
 <PropsTable>
   
-  <PropsTableRow value="headline" required>
+  <PropsTableRow value="headline" type="string" required>
     A headline for the ProductDetailSection.
   </PropsTableRow>
-  <PropsTableRow value="buttonText" required>
-    Text to display on a clickable button.
+  <PropsTableRow value="buttonText" type="string" optional>
+    Text to display on a clickable button. The button is only rendered, when `buttonText` is provided.
   </PropsTableRow>
-  <PropsTableRow value="propertyList">
-    List of product property lists that will be rendered into bullet lists under the price. Each propertyList entry results in a new bullet list with a custom title.
+  <PropsTableRow value="propertyList" type="ProductProperty[]" required>
+    List of product property lists that will be rendered into bullet lists under the price. Each propertyList entry consists of <span class="code">title: string, properties[]</span>, where a property again consists of <span class="code">id: string, name: string</span> - and results in a new bullet list with a custom title.
   </PropsTableRow>
-  <PropsTableRow value="description" required>
+  <PropsTableRow value="description" type="string" required>
   Description of the product that will be displayed under the headline.
   </PropsTableRow>
-  <PropsTableRow value="price" required>
+  <PropsTableRow value="price" type="string" required>
   Price of the product that will be displayed under the description.
   </PropsTableRow>
-  <PropsTableRow value="images">
+  <PropsTableRow value="images" type="Image[]">
   List of image references that will be displayed on the left side of the section.
   </PropsTableRow>
-  <PropsTableRow value="foldableContentList">
+  <PropsTableRow value="foldableContentList" type="Record<string, string>">
   List of key -value pairs, e.g. <span class="code">key1: "value1", key2: "value2"</span> that renders to foldable (Accordion) elements. Utilizes the key as title and the value as foldable text content. The value can contain RichText formatting.
   </PropsTableRow>
-  <PropsTableRow value="handleButtonClick">
+  <PropsTableRow value="handleButtonClick" type="function">
   Callback that is triggered when the button is clicked.
   </PropsTableRow>
 </PropsTable>
