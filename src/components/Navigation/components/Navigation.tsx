@@ -7,7 +7,7 @@ class Navigation extends BaseNavigation {
   render() {
     return (
       <div class="flex flex-row h-full">
-        {this.items.map(item => (
+        {this.items.map((item, index) => (
           <div class="relative group overflow-hidden hover:overflow-visible">
             <a
               href={item.path}
@@ -24,6 +24,7 @@ class Navigation extends BaseNavigation {
                 class={`absolute top-100 ${
                   item.childPlacement === "right" ? "right-0" : "left-0"
                 }`}
+                data-testId={`childrenContainer-${index}`}
               >
                 <ul class="translate-y-8 group-hover:translate-y-0 bg-white border border-gray-300 w-56 text-sm shadow transform transition-transform duration-300 leading-5">
                   {item.children.map(child => (
