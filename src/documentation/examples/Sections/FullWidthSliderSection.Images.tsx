@@ -6,7 +6,7 @@ import { Sections } from "fsxa-ui";
 class App extends Vue {
   render() {
     return (
-      <div class="pt-24 h-full">
+      <div class="pt-24" style="height: 800px">
         <Sections.FullWidthSliderSection
           onClick={console.log}
           slides={[

@@ -6,7 +6,10 @@ module.exports = {
   purge: [],
   theme: {
     extend: {
-      screens: defaultTheme.screens,
+      screens: {
+        ...defaultTheme.screens,
+        xs: "20rem",
+      },
       colors: {
         espirit: "#810444",
         highlight: "var(--fsxa-text-highlight-color, #D5DD02)",
