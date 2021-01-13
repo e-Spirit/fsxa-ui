@@ -109,12 +109,12 @@ const routes = [
         children: [],
       },
       {
-        label: "Header-Section",
+        label: "HeaderSection",
         path: "/sections/header-section",
         children: [],
       },
       {
-        label: "InterestingFacts-Section",
+        label: "InterestingFactsSection",
         path: "/sections/interesting-facts-section",
         children: [],
       },
@@ -129,7 +129,7 @@ const routes = [
         children: [],
       },
       {
-        label: "Teaser-Section",
+        label: "TeaserSection",
         path: "/sections/teaser-section",
         children: [],
       },
@@ -141,10 +141,10 @@ const routes = [
   name: "Documentation",
 })
 class Documentation extends BaseComponent {
-  showSidebar = false;
-
   render() {
-    return (
+    return this.$route.meta.singleView ? (
+      <router-view />
+    ) : (
       <div class="w-full min-h-full flex">
         <div class="md:w-1/3 lg:w-1/4 md:max-w-xs border-r border-gray-300 hidden md:block p-5">
           <div class="p-5 flex items-center">

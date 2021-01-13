@@ -30,6 +30,7 @@ export interface CodeProps {
   code: string;
   language?: string;
   exampleContent?: JSX.Element;
+  filename?: string;
 }
 export class Code extends Component<CodeProps> {}
 
@@ -261,40 +262,44 @@ export interface LayoutProps {
   wrap?: boolean;
 }
 export class Layout extends Component<LayoutProps> {}
+export interface NavItem {
+  key: string | number;
+  label: any;
+}
+export interface NavProps {
+  items: (NavItem & {
+    childPlacement?: "left" | "right" | "center";
+    children: NavItem[];
+  })[];
+}
 
 export interface NavigationItem {
-  id: string;
-  label: string;
+  key: string | number;
+  label: any;
   path: string;
+}
+
+export interface FirstLevelNavigationItem extends NavigationItem {
+  childPlacement?: "left" | "right";
   children: NavigationItem[];
 }
 export interface NavigationProps {
   /**
-   * Pass in a callback to determine if the passed item is active
-   *
-   * With this you can return true for multiple items.
-   * For example to show an active parent-child path
+   * Pass in the keys of all items that should be marked as active
    */
-  isActiveItem?: (item: NavigationItem) => boolean;
-  /**
-   * If an item is clicked this callback will be invoked
-   *
-   * The Component will not make any decision about your routing strategy
-   * so you have to route yourself
-   */
-  handleNavClick: (item: NavigationItem) => void;
+  activeItemKeys?: (string | number)[];
   /**
    * The items that should be displayed
    */
-  items: NavigationItem[];
-  /**
-   * Optional depth property
-   *
-   * The default depth after the children are cut is 3
-   */
-  depth?: number;
+  items: FirstLevelNavigationItem[];
 }
-export class Navigation extends Component<NavigationProps> {}
+export interface NavigationEventsWithOn {
+  onItemClicked: NavigationItem | FirstLevelNavigationItem;
+}
+export class Navigation extends Component<
+  NavigationProps,
+  NavigationEventsWithOn
+> {}
 
 export interface PageProps {
   logo?: ImageRef;

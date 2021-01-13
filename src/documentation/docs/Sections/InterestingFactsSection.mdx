@@ -12,38 +12,21 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
 ## Properties
 
 <PropsTable>
-  <PropsTableRow value="backgroundImage">
-    Requires <span class="code">ImageRef</span> which needs:
-    <ul>
-      <li>
-       <span class="code">src:String</span>
-       </li>
-       <li> 
-         <span class="code">dimension:
-        
-           {`{width: number, height: number}`} </span>
-          
-           </li>
-           <li>
-          <span class="code">previewId:Number</span> which will be needed by the FirstSpirit ContentCreator
-          </li>
-      </ul>
-      </PropsTableRow>
-      <PropsTableRow value="headline">
-        Requires <span class="code">String</span>
+      <PropsTableRow value="headline" type="String" required>
+          The title to display with this InterestingFactsSection.
         </PropsTableRow>
-            <PropsTableRow value="text">
-        Requires <span class="code">String</span>
+        <PropsTableRow value="text" type="String" required>
+          The text to display in this InterestingFactsSection.
         </PropsTableRow>
-            <PropsTableRow value="tagline">
-        Requires <span class="code">String</span> it describes a little text above the headline
+        <PropsTableRow value="tagline" type="String" required>
+          This should be a little text to display above the headline.
         </PropsTableRow>
-        <PropsTableRow value="counters">
-         Requires an array <span class="code">counters[]</span> containing objects with the following structure: <span class="code">{`{ 
-           value: Number,
-           label: String,
-            }`}</span> 
-          </PropsTableRow>
+        <PropsTableRow value="counters" type="<Number,String>[]" required>
+         "Counters" to display in this section.
+        </PropsTableRow>
+        <PropsTableRow value="backgroundImage" type="ImageRef" optional>
+          A background image to display "behind" this section.
+        </PropsTableRow>
 </PropsTable>
 
 ## Example

@@ -12,22 +12,25 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
 ## Properties
 
 <PropsTable>
-  <PropsTableRow value="items" required>
-  Items that should be shown in the list (title: string, description: string, price: number, image: Image, url: string).
+  <PropsTableRow value="items" type="Item[]" required>
+  Items that should be shown in the list (title: string, description: string, price: number, image: Image, url: string), e.g. ProductListItem.
   </PropsTableRow>
-  <PropsTableRow value="headline">
+  <PropsTableRow value="renderItem(item: Item)" type="JSX.Element" required>
+  This describes how the items in the ListSection should be rendered.
+  </PropsTableRow>
+  <PropsTableRow value="headline" type="string" required>
   Specify a headline for the item list. The separator will not be displayed, if no headline is specified.
   </PropsTableRow>
-  <PropsTableRow value="filters">
+  <PropsTableRow value="filters" type="<string,string>[]" optional>
   A list of filters (key: string, value: string).
   </PropsTableRow>
-  <PropsTableRow value="selectedFilters">
-  An array of keys of the selected filters. 
+  <PropsTableRow value="selectedFilters" type="string[]" optional>
+  Determine which filters should be selected from the beginning.
   </PropsTableRow>
-  <PropsTableRow value="handleFilterChange">
+  <PropsTableRow value="handleFilterChange" type="function" optional>
   A callback that will be invoked when the selected filters change. The new selected filters will be passed as an argument.
   </PropsTableRow>
-  <PropsTableRow value="handleItemClick">
+  <PropsTableRow value="handleItemClick" type="function" optional>
   A callback that will be invoked when a list item is clicked. The clicked item will be passed as an argument.
   </PropsTableRow>
 </PropsTable>

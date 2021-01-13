@@ -11,7 +11,7 @@ export { default as Image } from "./Image";
 export { default as Layout } from "./Layout";
 export { default as LayoutItem } from "./Layout/LayoutItem";
 export { default as Loader } from "./Loader";
-export { default as Navigation } from "./Navigation";
+export { Navigation, MobileNavigation } from "./Navigation";
 export { default as NewsDetail } from "./NewsDetail";
 export { default as ProductListItem } from "./ProductListItem";
 export { default as Paragraph } from "./Paragraph";

@@ -57,7 +57,14 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
                 lg={{ width: "1/2" }}
                 class="mb-16 lg:mb-0"
               >
-                {this.images.map(image => this.renderImage(image))}
+                {/* ToDo: show all images in Slider.
+                 * For now randomly choose one of the provided images:
+                 */}
+                {this.renderImage(
+                  this.images[
+                    Math.floor(Math.random() * Math.floor(this.images.length))
+                  ],
+                )}
               </LayoutItem>
             )}
             <LayoutItem
