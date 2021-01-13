@@ -5,7 +5,7 @@ const extractRoute = (route: string) => {
   const matched = route.match(/\.\/(.*?)\.mdx/);
   const path = matched ? matched[1] : null;
   if (!path) return null;
-  const parts = path.split("/");
+  const parts = path.replace(/\/index$/g, "").split("/");
   return {
     path: `/${parts.map(part => kebabCase(part)).join("/")}`,
     label: parts[parts.length - 1],
