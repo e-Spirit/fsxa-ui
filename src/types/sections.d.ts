@@ -1,6 +1,6 @@
 import { Component } from "vue-tsx-support";
 import { ImageRef } from "./utils";
-import { NewsTeaserItemProps } from "./components";
+import { ImageProps, NewsTeaserItemProps } from "./components";
 
 export interface NewsTeaserSectionProps {
   headline: string;
@@ -180,6 +180,14 @@ export interface Breadcrumb {
 export interface BreadcrumbsProps {
   items: Breadcrumb[];
   handleItemClick?: (item: Breadcrumb) => void;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface HeaderSectionEvents {}
+
+export interface HeaderSectionSlots {
+  backgroundImage?: ImageProps;
+  breadcrumbs?: Breadcrumb[];
 }
 
 export interface HeaderSectionProps {

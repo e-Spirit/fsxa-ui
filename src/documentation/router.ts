@@ -14,6 +14,23 @@ const extractRoute = (route: string) => {
 
 // load page structure
 const data = require.context("./docs", true, /[a-zA-Z0-9]+\.mdx$/);
+const examples = require.context("./examples", true, /[a-zA-Z0-9]+\.tsx$/);
+
+const exampleRoutes = examples.keys().map(path => {
+  const parsedPath = path
+    .replace(".tsx", "")
+    .replace("./", "")
+    .replace(".", "-");
+  return {
+    path: "/raw-component/" + parsedPath,
+    label: "RawComponent",
+    component: examples(path).default,
+    meta: {
+      singleView: true,
+    },
+  };
+});
+
 export const routes: any = data
   .keys()
   .map(path => {
@@ -24,7 +41,8 @@ export const routes: any = data
       ...route,
     };
   })
-  .filter(route => route);
+  .filter(route => route)
+  .concat(exampleRoutes);
 
 const router = new VueRouter({
   routes,
