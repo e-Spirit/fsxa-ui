@@ -9,7 +9,11 @@ describe("components/Quote", () => {
       },
     });
     const side = container.querySelector(".direction");
-    expect(side!.classList.contains("direction--left")).toBeTruthy();
+    if (side == null) {
+      fail(".direction container not found");
+    } else {
+      expect(side.classList.contains("direction--left")).toBe(true);
+    }
   });
   it("checks right side", () => {
     const { container } = render(Quote, {
@@ -18,6 +22,10 @@ describe("components/Quote", () => {
       },
     });
     const side = container.querySelector(".direction");
-    expect(side!.classList.contains("direction--right")).toBeTruthy();
+    if (side == null) {
+      fail(".direction container not found");
+    } else {
+      expect(side.classList.contains("direction--right")).toBe(true);
+    }
   });
 });

@@ -1,4 +1,4 @@
-import { render, fireEvent } from "@testing-library/vue";
+import { render } from "@testing-library/vue";
 import HeaderSection from "./../";
 import { Breadcrumb } from "@/types/sections";
 const breadItems: Breadcrumb[] = [
