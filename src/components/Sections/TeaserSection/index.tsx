@@ -6,14 +6,17 @@ import Headline from "@/components/Headline";
 import RichText from "@/components/RichText";
 import Button from "@/components/Button";
 import Image from "@/components/Image";
-import { TeaserSectionProps } from "@/types/sections";
+import {
+  TeaserSectionEventsWithOn,
+  TeaserSectionProps,
+} from "@/types/sections";
 
 @Component({
   name: "TeaserSection",
 })
 class TeaserSection extends BaseComponent<
   TeaserSectionProps,
-  {},
+  TeaserSectionEventsWithOn,
   {
     headline?: TeaserSectionProps["headline"];
     kicker?: TeaserSectionProps["kicker"];
@@ -25,7 +28,6 @@ class TeaserSection extends BaseComponent<
   @Prop({ required: true }) kicker!: TeaserSectionProps["kicker"];
   @Prop({ required: true }) text!: TeaserSectionProps["text"];
   @Prop({ required: false }) buttonText: TeaserSectionProps["buttonText"];
-  @Prop({ required: false }) onClick: TeaserSectionProps["onClick"];
   @Prop({ required: false }) image: TeaserSectionProps["image"];
 
   render() {

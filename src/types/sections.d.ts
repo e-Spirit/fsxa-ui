@@ -175,14 +175,17 @@ export interface TeaserSectionProps {
    * Optional image that is displayed on the right side of the section
    */
   image?: ImageRef;
+}
+export interface TeaserSectionEventsWithOn {
   /**
-   * Optional callback that is triggered, when button is clicked
-   *
-   * Be aware that the button is only rendered, when `buttonText` is provided
+   * This Event will be invoked, when the button is clicked
    */
   onClick?: () => void;
 }
-export class TeaserSection extends Component<TeaserSectionProps> {}
+export class TeaserSection extends Component<
+  TeaserSectionProps,
+  TeaserSectionEventsWithOn
+> {}
 
 export interface Breadcrumb {
   referenceId: string;
