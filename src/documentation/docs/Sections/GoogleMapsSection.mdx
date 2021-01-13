@@ -12,7 +12,7 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
   <PropsTableRow value="title" type="string" optional>
     The title of the section.
   </PropsTableRow>
-  <PropsTableRow value="apikey" type="string">
+  <PropsTableRow value="apikey" type="string" required>
     Your google maps apikey.
   </PropsTableRow>
   <PropsTableRow value="startLocation" type="MapsPosition" optional>
@@ -28,7 +28,7 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
     15: Streets
     20: Buildings
   </PropsTableRow>
-  <PropsTableRow value="language" type="string" optional>
+  <PropsTableRow value="language" type="string" required>
     The language for the map and its UI elements.
   </PropsTableRow>
   <PropsTableRow value="locations" type="MapsLocation[]" optional>

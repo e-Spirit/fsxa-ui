@@ -22,30 +22,27 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
        <span class="code">src:String</span>
        </li>
        <li> 
-         <span class="code">dimension:
-        
-           {`{width: number, height: number}`} </span>
-          
+         <span class="code">dimension:        
+           {`{width: number, height: number}`} </span>     
            </li>
            <li>
           <span class="code">previewId:Number</span> which will be needed by the FirstSpirit ContentCreator
           </li>
-      </ul>
-      
+      </ul>  
       </PropsTableRow>
-      <PropsTableRow value="title" type="String" required>
-        The header section's title.
+      <PropsTableRow value="title" type="string" required>
+        The title to display with this HeaderSection.
         </PropsTableRow>
-        <PropsTableRow value="breadcrumbs" type="Breadcrumb[]">
-         The Breadcrumbs array needs the following information: <span class="code">{`{ 
+        <PropsTableRow value="breadcrumbs" type="Breadcrumb[]" required>
+         Requires an Array <span class="code">Breadcrumb[]</span> which, unless empty, will need the following information: <span class="code">{`{ 
            referenceId: number,
            referenceType: String,
            path: "/",
            label: String
             }`}</span> 
           </PropsTableRow>
-          <PropsTableRow value="handleItemClick()" type="callback">
-             You can pass in an optional callback that will be triggered, when an item
+          <PropsTableRow value="handleItemClick()" type="function">
+             You can pass in an optional callback that will be triggered when an item
       is clicked.
             </PropsTableRow>
 </PropsTable>

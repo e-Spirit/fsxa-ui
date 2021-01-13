@@ -14,22 +14,22 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
 ## Properties
 
 <PropsTable>
-      <PropsTableRow value="headline">
-        Requires <span class="code">String</span>
+      <PropsTableRow value="headline" type="string" required>
+        The section's headline.
       </PropsTableRow>
-      <PropsTableRow value="kicker">
-        Requires <span class="code">String</span>
+      <PropsTableRow value="kicker" type="string" required>
+        Specify a short "kicker" that is displayed on top of the headline.
       </PropsTableRow>
-      <PropsTableRow value="text">
-        Requires <span class="code">String</span>
+      <PropsTableRow value="text" type="string" required>
+        Your text content. It can contain RichText formatting.
       </PropsTableRow>
-      <PropsTableRow value="buttonText">
-        Requires <span class="code">String</span>
+      <PropsTableRow value="buttonText" type="string" optional>
+        Specify a text for the button. The button is only rendered when buttonText is provided.
       </PropsTableRow>
-      <PropsTableRow value="handleButtonClick()">
-        Callback that will be triggered when a button is clicked.
+      <PropsTableRow value="handleButtonClick()" type="function" optional>
+        Callback that will be triggered when the button is clicked.
       </PropsTableRow>
-      <PropsTableRow value="image">
+      <PropsTableRow value="image" type="Image" optional>
         An <a href="/#/components/image">Image</a> to be displayed.
       </PropsTableRow>
 </PropsTable>

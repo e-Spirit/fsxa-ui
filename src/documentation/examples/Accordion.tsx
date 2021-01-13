@@ -8,7 +8,7 @@ export default class App extends Vue {
     return (
       <div>
         <div class="m-2 w-1/3">
-          <Accordion dark={true} open={false} title="test">
+          <Accordion dark={true} title="test title">
             test test test test
           </Accordion>
         </div>
