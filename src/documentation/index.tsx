@@ -54,6 +54,11 @@ const routes = [
         children: [],
       },
       {
+        label: "ImageSlider",
+        path: "/components/image-slider",
+        children: [],
+      },
+      {
         label: "Navigation",
         path: "/components/navigation",
         children: [],
