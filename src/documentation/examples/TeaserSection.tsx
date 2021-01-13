@@ -14,7 +14,7 @@ export default class App extends Vue {
           kicker="kicker"
           text="test1"
           buttonText="click me"
-          handleButtonClick={() => {
+          onClick={() => {
             return;
           }}
           tagline="text"

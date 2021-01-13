@@ -180,7 +180,7 @@ export interface TeaserSectionProps {
    *
    * Be aware that the button is only rendered, when `buttonText` is provided
    */
-  handleButtonClick?: () => void;
+  onClick?: () => void;
 }
 export class TeaserSection extends Component<TeaserSectionProps> {}
 

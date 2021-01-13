@@ -15,19 +15,18 @@ class TeaserSection extends BaseComponent<
   TeaserSectionProps,
   {},
   {
-    headline?: string;
-    kicker?: string;
-    text?: string;
+    headline?: TeaserSectionProps["headline"];
+    kicker?: TeaserSectionProps["kicker"];
+    text?: TeaserSectionProps["text"];
+    button?: TeaserSectionProps["buttonText"];
   }
 > {
   @Prop({ required: true }) headline!: TeaserSectionProps["headline"];
   @Prop({ required: true }) kicker!: TeaserSectionProps["kicker"];
   @Prop({ required: true }) text!: TeaserSectionProps["text"];
   @Prop({ required: false }) buttonText: TeaserSectionProps["buttonText"];
-  @Prop({ required: false })
-  handleButtonClick: TeaserSectionProps["handleButtonClick"];
-  @Prop({ required: false })
-  image: TeaserSectionProps["image"];
+  @Prop({ required: false }) onClick: TeaserSectionProps["onClick"];
+  @Prop({ required: false }) image: TeaserSectionProps["image"];
 
   render() {
     return (
@@ -63,17 +62,17 @@ class TeaserSection extends BaseComponent<
                   content={this.text}
                 />
               )}
-              {this.buttonText && (
-                <Button
-                  data-testid={"teasersection-button"}
-                  variant="animated"
-                  handleClick={() =>
-                    this.handleButtonClick && this.handleButtonClick()
-                  }
-                >
-                  {this.buttonText}
-                </Button>
-              )}
+              {this.$scopedSlots.button
+                ? this.$scopedSlots.button(this.buttonText)
+                : this.buttonText && (
+                    <Button
+                      data-testid={"teasersection-button"}
+                      variant="animated"
+                      handleClick={() => this.$emit("click")}
+                    >
+                      {this.buttonText}
+                    </Button>
+                  )}
             </LayoutItem>
             <LayoutItem width="full" lg={{ width: "7/12" }}>
               {this.image && (
