@@ -2,7 +2,9 @@ import Code from "@/components/internal/Documentation/Code";
 import ExampleLoader from "@/documentation/utils/ExampleLoader";
 import Meta from "@/components/internal/Documentation/Meta";
 import PropsTable from "@/components/internal/Documentation/PropsTable";
+import SlotsTable from "@/components/internal/Documentation/SlotsTable";
 import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
+import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/components/SlotsTableRow";
 
 <Meta
   title="Interesting Facts Section"
@@ -46,6 +48,29 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
           </PropsTableRow>
 </PropsTable>
 
+## Slots
+
+<SlotsTable>
+  <SlotsTableRow value="tagline" prop="string">
+  What to display where we'd normally see a smaller headline.
+  </SlotsTableRow>
+  <SlotsTableRow value="headline" prop="string">
+  What to display where we'd normally see a bigger headline.
+  </SlotsTableRow>
+  <SlotsTableRow value="text" prop="string">
+  What to display where we'd normally see a Paragraph of text.
+  </SlotsTableRow>
+  <SlotsTableRow value="counters" prop="counters[]">The element to be displayed where we'd normally show the counters.
+  </SlotsTableRow>
+</SlotsTable>
+
 ## Example
 
 <ExampleLoader example="InterestingFactsSection.tsx" />
+
+<br />
+
+## Example with Slots
+
+<ExampleLoader example="InterestingFactsSection.slots.tsx" />
+
