@@ -36,6 +36,29 @@ export default class App extends Vue {
             tagline: txt => (
               <i class="Headline xl light uppercase include-margin">{txt}</i>
             ),
+            headline: txt => (
+              <h1 class="Headline xxl bold lowercase include-margin leading-none">
+                {txt}
+              </h1>
+            ),
+            text: txt => (
+              <div>
+                <b>What follows is a text about trees: </b>
+                <small class="lowercase">{txt}</small>
+              </div>
+            ),
+            counters: ctrs => (
+              <div class="pl-10">
+                Some figures:
+                <ul class="mt-4">
+                  {ctrs.map(counter => (
+                    <li>
+                      {counter.label}: {counter.value}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ),
           }}
         />
       </div>

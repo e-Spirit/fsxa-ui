@@ -1,4 +1,4 @@
-import { render, getByTestId } from "@testing-library/vue";
+import { render } from "@testing-library/vue";
 import InterestingFactsSection from "..";
 
 describe("components/InterestingFactsSection", () => {
@@ -52,7 +52,7 @@ describe("components/InterestingFactsSection", () => {
       imagePreviewId,
     );
   });
-  it("should replace the default rendering of headline, text, tagline and counters props when the scopedSlots are being used", async () => {
+  it("should replace the default rendering of headline, text, tagline, and counters props when the scopedSlots are being used", async () => {
     const { getByTestId } = render(InterestingFactsSection, {
       props: {
         headline: content,

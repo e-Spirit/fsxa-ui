@@ -14,8 +14,8 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
 ## Properties
 
 <PropsTable>
-  <PropsTableRow value="backgroundImage">
-    Requires <span class="code">ImageRef</span> which needs:
+  <PropsTableRow value="backgroundImage" type="ImageRef">
+    A background image. <span class="code">ImageRef</span> structure:
     <ul>
       <li>
        <span class="code">src:String</span>
@@ -31,21 +31,21 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
           </li>
       </ul>
       </PropsTableRow>
-      <PropsTableRow value="headline">
-        Requires <span class="code">String</span>
+      <PropsTableRow value="headline" type="String" required>
+          The title to display with this InterestingFactsSection.
         </PropsTableRow>
-            <PropsTableRow value="text">
-        Requires <span class="code">String</span>
+        <PropsTableRow value="text" type="String" required>
+          The text to display in this InterestingFactsSection.
         </PropsTableRow>
-            <PropsTableRow value="tagline">
-        Requires <span class="code">String</span> it describes a little text above the headline
+        <PropsTableRow value="tagline" type="String" required>
+          This should be a little text to display above the headline.
         </PropsTableRow>
-        <PropsTableRow value="counters">
-         Requires an array <span class="code">counters[]</span> containing objects with the following structure: <span class="code">{`{ 
-           value: Number,
-           label: String,
-            }`}</span> 
-          </PropsTableRow>
+        <PropsTableRow value="counters" type="<Number,String>[]" required>
+         "Counters" to display in this section.
+        </PropsTableRow>
+        <PropsTableRow value="backgroundImage" type="ImageRef" optional>
+          A background image to display "behind" this section.
+        </PropsTableRow>
 </PropsTable>
 
 ## Slots

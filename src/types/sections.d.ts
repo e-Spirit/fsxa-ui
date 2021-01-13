@@ -106,6 +106,19 @@ export class ProductDetailSection extends Component<
   ProductDetailSectionProps
 > {}
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface InterestingFactsSectionEvents {}
+
+export interface InterestingFactsSectionSlots {
+  headline?: string;
+  text?: string;
+  tagline?: string;
+  counters?: {
+    value: number;
+    label: string;
+  }[];
+}
+
 export interface InterestingFactsSectionProps {
   /**
    * Optional reference to the background-image that should be displayed

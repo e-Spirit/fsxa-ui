@@ -8,23 +8,19 @@ import Container from "@/components/Container";
 import Headline from "@/components/Headline";
 import Layout, { LayoutItem } from "@/components/Layout";
 import Paragraph from "@/components/Paragraph";
-import { InterestingFactsSectionProps } from "@/types/sections";
+import {
+  InterestingFactsSectionProps,
+  InterestingFactsSectionEvents,
+  InterestingFactsSectionSlots,
+} from "@/types/sections";
 
 @Component({
   name: "InterestingFactsSection",
 })
 class InterestingFactsSection extends BaseComponent<
   InterestingFactsSectionProps,
-  {},
-  {
-    headline?: string;
-    text?: string;
-    tagline?: string;
-    counters?: {
-      value: number;
-      label: string;
-    }[];
-  }
+  InterestingFactsSectionEvents,
+  InterestingFactsSectionSlots
 > {
   @Prop({ required: true })
   headline!: InterestingFactsSectionProps["headline"];
