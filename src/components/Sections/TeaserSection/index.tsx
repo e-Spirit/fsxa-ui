@@ -3,7 +3,6 @@ import BaseComponent from "@/components/BaseComponent";
 import Container from "@/components/Container";
 import Layout, { LayoutItem } from "@/components/Layout";
 import Headline from "@/components/Headline";
-import RichText from "@/components/RichText";
 import Button from "@/components/Button";
 import Image from "@/components/Image";
 import {
@@ -48,17 +47,15 @@ class TeaserSection extends BaseComponent<
                 this.$scopedSlots.headline(this.headline)
               ) : (
                 <Headline size="xl" data-testid={"teasersection-headline"}>
-                  <RichText content={this.headline} inline />
+                  <div class="inline">{this.headline}</div>
                 </Headline>
               )}
               {this.$scopedSlots.text ? (
                 this.$scopedSlots.text(this.text)
               ) : (
-                <RichText
-                  class="text-sm"
-                  data-testid={"teasersection-text"}
-                  content={this.text}
-                />
+                <div class="text-sm" data-testid="teasersection-text">
+                  {this.text}
+                </div>
               )}
               {this.$scopedSlots.button
                 ? this.$scopedSlots.button(this.buttonText)
