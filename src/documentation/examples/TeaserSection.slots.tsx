@@ -44,6 +44,9 @@ export default class App extends Vue {
               </div>
             ),
             button: txt => <div class="mt-6">Don't... {txt}!</div>,
+            media: imageRef => (
+              <img src={imageRef.src} alt="Alternative text" />
+            ),
           }}
         />
       </div>
