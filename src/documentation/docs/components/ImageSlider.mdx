@@ -17,7 +17,6 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
   <PropsTableRow value="images" type="Image[]" required>
     An array of images to be shown by the slider (with each image containing at least a 'src' attribute).
   </PropsTableRow>
-
 </PropsTable>
 
 ## Slots
@@ -30,6 +29,9 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
     <li><span class="code">prevSlideIndex: number;</span></li>
     <li><span class="code">showSlide(index): function;</span></li>
   </ul>
+  </SlotsTableRow>
+  <SlotsTableRow value="image" prop="any">
+    This controls how the images in the slider are being rendered.
   </SlotsTableRow>
 </SlotsTable>
 
