@@ -26,4 +26,23 @@ describe("components/ImageSlider", () => {
     expect(buttonPrevSlide).toBeTruthy();
     expect(buttonNextSlide).toBeTruthy();
   });
+
+  it("should switch the displayed image", async () => {
+    const { getByTestId } = render(ImageSlider, {
+      props: {
+        images: IMAGES.map(url => ({ src: url })),
+      },
+    });
+    const image = getByTestId("image-0");
+    const imageContainer = image.parentElement;
+    const imageContainerParent = imageContainer?.parentElement;
+    expect(imageContainerParent).toBeTruthy();
+    expect(imageContainerParent?.style.transform).toEqual("translateX(-0%)");
+    const buttonNextSlide = getByTestId("button-next-slide");
+    const buttonPrevSlide = getByTestId("button-prev-slide");
+    await fireEvent(buttonNextSlide, new Event("click"));
+    expect(imageContainerParent?.style.transform).toEqual("translateX(-100%)");
+    await fireEvent(buttonPrevSlide, new Event("click"));
+    expect(imageContainerParent?.style.transform).toEqual("translateX(-0%)");
+  });
 });
