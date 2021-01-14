@@ -6,12 +6,12 @@ const text =
   "Trees get lonely too, so we'll give him a little friend. And I know you're saying, 'Oh Bob, you've done it this time.' And you may be right. No worries. No cares. Just float and wait for the wind to blow you around. La- da- da- da- dah. Just be happy.";
 const counters = [
   {
-    value: 12,
-    label: "test",
+    value: 123456,
+    label: "lonely trees",
   },
   {
-    value: 222,
-    label: "test2",
+    value: 789,
+    label: "trees with a friend",
   },
 ];
 const imageSrc =
@@ -23,9 +23,9 @@ export default class App extends Vue {
     return (
       <div class="space-x-5">
         <InterestingFactsSection
-          headline="test"
+          headline="Trees get lonely too"
           text={text}
-          tagline="123"
+          tagline="Did you know?"
           counters={counters}
           backgroundImage={{
             src: imageSrc,
@@ -47,16 +47,9 @@ export default class App extends Vue {
                 <small class="lowercase">{txt}</small>
               </div>
             ),
-            counters: ctrs => (
+            counter: counter => (
               <div class="pl-10">
-                Some figures:
-                <ul class="mt-4">
-                  {ctrs.map(counter => (
-                    <li>
-                      {counter.label}: {counter.value}
-                    </li>
-                  ))}
-                </ul>
+                {counter.value}: {counter.label}
               </div>
             ),
           }}

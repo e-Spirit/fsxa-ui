@@ -113,10 +113,10 @@ export interface InterestingFactsSectionSlots {
   headline?: string;
   text?: string;
   tagline?: string;
-  counters?: {
+  counter?: {
     value: number;
     label: string;
-  }[];
+  };
 }
 
 export interface InterestingFactsSectionProps {
