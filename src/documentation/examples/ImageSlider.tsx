@@ -13,7 +13,7 @@ const imageTwo =
 export default class App extends Vue {
   render() {
     return (
-      <div>
+      <div class="px-24 w-full" style="height: 500px">
         <ImageSlider images={[{ src: imageOne }, { src: imageTwo }]} />
       </div>
     );
