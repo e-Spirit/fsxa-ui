@@ -35,20 +35,25 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
  <SlotsTableRow value="button" prop="Object">
     The button receives two attributes: <ul><li><span class="code">content: RenderedType;</span></li><li><span class="code">onClick: () => void;</span></li></ul>
   </SlotsTableRow>
-   <SlotsTableRow value="arrowButton" prop="Object">
-    xx button receives two attributes...
+  <SlotsTableRow value="arrowButton" prop="Object">
+    Button elements to display for the larger resolutions. Attributes: <ul><li><span class="code">media</span> MediaType e.g. Image</li><li><span class="code">slideNumber</span> 0... n</li><li><span class="code">position</span> ('left' or 'right')</li></ul>
   </SlotsTableRow>
   <SlotsTableRow value="arrowButtonContent" prop="Object">
-    xx button receives two attributes...
+    This is an inner element to arrowButton, already in position. The object prop is the same.
   </SlotsTableRow>
   <SlotsTableRow value="controls" prop="SliderControlParams">
-    xx button receives two attributes...
+     The complete controls for the slider: arrows and stepper. SliderControlParams contains the following props: 
+     <ul><li><span class="code">currentSlideIndex: number;</span></li>
+    <li><span class="code">nextSlideIndex: number;</span></li>
+    <li><span class="code">prevSlideIndex: number;</span></li>
+    <li><span class="code">showSlide(index): function;</span></li>
+  </ul>
   </SlotsTableRow>
   <SlotsTableRow value="stepper" prop="Object">
-    xx button receives two attributes...
+    The stepper is a section with the typical dots that becomes visible when the horizontal space for the slider is somewhat limited, and the arrows are no longer shown.
   </SlotsTableRow>
   <SlotsTableRow value="stepperStep" prop="Object">
-    xx button receives two attributes... 
+    These are the stepper's individual dots. Obviously they're not rendered, when you replace the whole stepper (or even the complete controls).
   </SlotsTableRow>
 </SlotsTable>
 

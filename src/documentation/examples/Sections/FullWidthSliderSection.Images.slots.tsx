@@ -17,12 +17,12 @@ class App extends Vue {
               </div>
             ),
             teaser: txt => <div class="border-2 rounded p-2">{txt}</div>,
-            button: props => (
+            button: args => (
               <button
                 class="Button Button--variant--inverted rounded"
-                onClick={props.onClick}
+                onClick={args.onClick}
               >
-                {props.content}
+                {args.content}
               </button>
             ),
             media: slideMedia => (
@@ -31,6 +31,25 @@ class App extends Vue {
                 class="HeaderSection--BackgroundImage"
                 opacity="0"
               />
+            ),
+            arrowButtonContent: args => (
+              <div>
+                {args.position}:<br />
+                &rarr; {args.slideNumber}
+              </div>
+            ),
+            stepperStep: args => (
+              <li class="inline-block px-1 pointer-events-auto">
+                <a
+                  class={`block md:hidden w-10 h-10 rounded-lg border-white border hover:bg-purple-600 active:bg-purple-600 transition-colors transform duration-300 ${args.currentSlideIndex ===
+                    args.index && "bg-purple-600"}`}
+                  href="#"
+                  onClick={event => {
+                    event.preventDefault();
+                    args.showSlide(args.index);
+                  }}
+                ></a>
+              </li>
             ),
           }}
           slides={[
