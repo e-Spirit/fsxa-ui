@@ -23,6 +23,7 @@
   "dependencies": {
     "copy-to-clipboard": "3.3.1",
     "core-js": "2.6.10",
+    "git-cz": "^4.7.6",
     "lodash.throttle": "4.1.1",
     "portal-vue": "2.1.7",
     "tailwindcss": "1.4.6",

@@ -1,46 +1,104 @@
-import { render, fireEvent } from "@testing-library/vue";
-import Navigation from "./../";
+import { render, fireEvent, getByTestId } from "@testing-library/vue";
+import Navigation from "../components/Navigation";
 
 describe("components/Navigation", () => {
   it("calls handleClick callback on click", async () => {
-    const spy = jest.fn();
-    const { container } = render(Navigation, {
+    const { getByText, emitted } = render(Navigation, {
       slots: { default: "Content" },
       props: {
-        handleNavClick: spy,
+        activeItemKeys: [],
         items: [
           {
-            id: "1",
+            key: "1",
             path: "/",
             label: "Link 1",
             children: [
               {
-                id: "3",
+                key: "3",
                 path: "/",
                 label: "Link 1.1",
-                children: [
-                  {
-                    id: "4",
-                    path: "/",
-                    label: "Link 1.1.1",
-                    children: [],
-                  },
-                ],
               },
             ],
           },
         ],
       },
     });
-    const navigation = container.querySelector(
-      ".Navigation--Navigation [data-testid='item-1']",
-    );
-    const navigationMobile = container.querySelector(
-      ".Navigation--Mobile [data-testid='item-1']",
-    );
+    const navigation = getByText("Link 1");
     await fireEvent(navigation!, new Event("click"));
-    await fireEvent(navigationMobile!, new Event("click"));
-    expect(spy).toHaveBeenCalled();
-    expect(spy.mock.calls[0][0].id).toEqual("1");
+    expect(emitted().itemClicked[0][0].key).toEqual("1");
+  });
+  it("renders a child item with the according child placement", () => {
+    const { getByTestId } = render(Navigation, {
+      slots: { default: "content" },
+      props: {
+        activeItemKeys: [],
+        items: [
+          {
+            key: "1",
+            path: "/1",
+            label: "Item 1",
+            childPlacement: "right",
+            children: [
+              {
+                key: "1.1",
+                path: "/1/1",
+                label: "Item 1.1",
+              },
+              {
+                key: "1.2",
+                path: "/1/2",
+                label: "Item 1.2",
+              },
+            ],
+          },
+          {
+            key: "2",
+            path: "/2",
+            label: "Item 2",
+            childPlacement: "left",
+            children: [
+              {
+                key: "2.1",
+                path: "/2/1",
+                label: "Item 2.1",
+              },
+              {
+                key: "2.2",
+                path: "/2/2",
+                label: "Item 2.2",
+              },
+            ],
+          },
+        ],
+      },
+    });
+    const childItemOnTheRight = getByTestId("childrenContainer-0");
+    const childItemOnTheLeft = getByTestId("childrenContainer-1");
+    expect(childItemOnTheRight.classList).toContain("right-0");
+    expect(childItemOnTheLeft.classList).toContain("left-0");
+  });
+  it("renders an active item with an active item css class", () => {
+    const { getByText } = render(Navigation, {
+      slots: { default: "Content" },
+      props: {
+        activeItemKeys: ["1"],
+        items: [
+          {
+            key: "1",
+            path: "/",
+            label: "Link 1",
+            children: [
+              {
+                key: "3",
+                path: "/",
+                label: "Link 1.1",
+              },
+            ],
+          },
+        ],
+      },
+    });
+    const navigation = getByText("Link 1");
+    expect(navigation.classList).toContain("nav-active");
   });
 });
