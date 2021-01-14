@@ -17,7 +17,7 @@ class Slider extends BaseComponent<SliderProps, {}, SliderSlots> {
   initialSlideIndex!: SliderProps["initialSlideIndex"];
   @Prop({ required: true }) slides!: SliderProps["slides"];
 
-  currentSlideIndex = this.initialSlideIndex;
+  currentSlideIndex = this.initialSlideIndex!;
   nextSlideIndexToShow: number | null = null;
 
   animationTimeout: number | null = null;

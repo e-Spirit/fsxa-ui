@@ -54,14 +54,14 @@ export default class App extends Vue {
             {
               render: () => (
                 <div class="bg-teal-500 w-full h-full flex justify-center items-center">
-                  Hi2
+                  Some Content
                 </div>
               ),
             },
             {
               render: () => (
                 <div class="bg-blue-500 w-full h-full flex justify-center items-center">
-                  Hi3
+                  Another content
                 </div>
               ),
             },
