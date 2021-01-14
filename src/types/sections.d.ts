@@ -245,8 +245,8 @@ export interface FullWidthSliderSectionEventsWithOn<MediaType> {
   onClick: FullWidthSliderSectionSlide<MediaType>;
 }
 export interface FullWidthSliderSectionSlots<MediaType> {
-  title: RenderedType;
-  teaser: RenderedType;
+  title?: RenderedType;
+  teaser?: RenderedType;
   button?: { content: RenderedType; onClick: () => void };
   media?: MediaType;
   controls?: SliderControlParams;

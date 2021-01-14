@@ -2,26 +2,63 @@ import Meta from "@/components/internal/Documentation/Meta";
 import ExampleLoader from "@/documentation/utils/ExampleLoader";
 import AccordionSection from "@/components/Sections/AccordionSection";
 import PropsTable from "@/components/internal/Documentation/PropsTable";
+import SlotsTable from "@/components/internal/Documentation/SlotsTable";
 import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
+import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/components/SlotsTableRow";
 
 <Meta
   title="FullWidthImageSliderSection"
   subtitle="This section will help you build a beautiful full width image slider"
 />
 <PropsTable>
-  <PropsTableRow value="dark" type="Boolean" default="false" optional>
-    Specifies whether the accordion should be dark or light.
+  <PropsTableRow value="slides" type="FullWidthSliderSectionSlide<MediaType>[]" required>   
+  The slides that should be displayed. You can add additional properties to the slide-objects as well.
   </PropsTableRow>
-  <PropsTableRow value="title" type="String" optional>
-    The optional title of the section. When set, the separator is automatically added.
-  </PropsTableRow>
-  <PropsTableRow value="items" type="Array of items" required>
-    An array of items which describe the individual subsections. Each item consists of
-    <ul>
-    <li><span class="code">title: string</span></li>
-    <li><span class="code">text: string</span></li>
-    </ul>
+  <PropsTableRow value="removeDefaultPadding" type="boolean" default="false" optional>
+    Specify if the default padding should be removed from the wrapped content.
   </PropsTableRow>
 </PropsTable>
 
+
+## Slots
+
+<SlotsTable>
+  <SlotsTableRow value="title" prop="RenderedType">
+  The title element to be displayed (and animated) on every slide.
+  </SlotsTableRow>
+  <SlotsTableRow value="teaser" prop="RenderedType">
+    The teaser element to be displayed (and animated) on every slide.
+  </SlotsTableRow>
+  <SlotsTableRow value="media" prop="MediaType">
+    The media element (the main content) for each slide. MediaType can e.g. be Image (with src, class, and opacity).
+  </SlotsTableRow>
+ <SlotsTableRow value="button" prop="Object">
+    The button receives two attributes: <ul><li><span class="code">content: RenderedType;</span></li><li><span class="code">onClick: () => void;</span></li></ul>
+  </SlotsTableRow>
+   <SlotsTableRow value="arrowButton" prop="Object">
+    xx button receives two attributes...
+  </SlotsTableRow>
+  <SlotsTableRow value="arrowButtonContent" prop="Object">
+    xx button receives two attributes...
+  </SlotsTableRow>
+  <SlotsTableRow value="controls" prop="SliderControlParams">
+    xx button receives two attributes...
+  </SlotsTableRow>
+  <SlotsTableRow value="stepper" prop="Object">
+    xx button receives two attributes...
+  </SlotsTableRow>
+  <SlotsTableRow value="stepperStep" prop="Object">
+    xx button receives two attributes... 
+  </SlotsTableRow>
+</SlotsTable>
+
+
+## Example
+
 <ExampleLoader example="Sections/FullWidthSliderSection.Images.tsx" />
+
+<br />
+
+## Example with Slots
+
+<ExampleLoader example="Sections/FullWidthSliderSection.Images.slots.tsx" />
