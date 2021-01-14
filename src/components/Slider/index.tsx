@@ -36,6 +36,7 @@ class Slider extends BaseComponent<SliderProps, {}, SliderSlots> {
         class={`${currentWidthClass ||
           "w-full"} h-full flex items-center justify-center flex-shrink-0`}
         ref={`slide_${index}`}
+        data-testid="slide-wrapper"
       >
         {slide.render()}
       </div>
@@ -113,6 +114,7 @@ class Slider extends BaseComponent<SliderProps, {}, SliderSlots> {
                 : ""
             }`}
             style={{ transform: `translateX(-${percentage}%)` }}
+            data-testid="transform-wrapper"
           >
             {this.slides.map(this.renderSlideWrapper)}
           </div>
