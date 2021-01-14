@@ -3,6 +3,8 @@ import ExampleLoader from "@/documentation/utils/ExampleLoader";
 import Meta from "@/components/internal/Documentation/Meta";
 import PropsTable from "@/components/internal/Documentation/PropsTable";
 import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
+import SlotsTable from "@/components/internal/Documentation/SlotsTable";
+import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/components/SlotsTableRow";
 
 <Meta
   title="ImageSlider"
@@ -13,10 +15,28 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
 
 <PropsTable>
   <PropsTableRow value="images" type="Image[]" required>
-    An array of images that should be shown (with each image containing at least a 'src' attribute).
+    An array of images to be shown by the slider (with each image containing at least a 'src' attribute).
   </PropsTableRow>
+
 </PropsTable>
+
+## Slots
+
+<SlotsTable>
+  <SlotsTableRow value="controls" prop="SliderControlParams">
+     The complete controls for the slider: arrows and stepper. SliderControlParams contains the following props: 
+     <ul><li><span class="code">currentSlideIndex: number;</span></li>
+    <li><span class="code">nextSlideIndex: number;</span></li>
+    <li><span class="code">prevSlideIndex: number;</span></li>
+    <li><span class="code">showSlide(index): function;</span></li>
+  </ul>
+  </SlotsTableRow>
+</SlotsTable>
 
 ## Example
 
 <ExampleLoader example="ImageSlider.tsx" />
+
+## Example with slots
+
+<ExampleLoader example="ImageSlider.slots.tsx" />

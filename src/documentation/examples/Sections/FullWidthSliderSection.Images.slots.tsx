@@ -11,18 +11,18 @@ class App extends Vue {
         <Sections.FullWidthSliderSection
           onClick={console.log}
           scopedSlots={{
-            title: txt => (
+            title: text => (
               <div class="font-extrabold text-2xl lg:text-3xl xl:text-5xl italic">
-                {txt}
+                {text}
               </div>
             ),
-            teaser: txt => <div class="border-2 rounded p-2">{txt}</div>,
-            button: args => (
+            teaser: text => <div class="border-2 rounded p-2">{text}</div>,
+            button: props => (
               <button
                 class="Button Button--variant--inverted rounded"
-                onClick={args.onClick}
+                onClick={props.onClick}
               >
-                {args.content}
+                {props.content}
               </button>
             ),
             media: slideMedia => (
@@ -32,21 +32,21 @@ class App extends Vue {
                 opacity="0"
               />
             ),
-            arrowButtonContent: args => (
+            arrowButtonContent: props => (
               <div>
-                {args.position}:<br />
-                &rarr; {args.slideNumber}
+                {props.position}:<br />
+                &rarr; {props.slideNumber}
               </div>
             ),
-            stepperStep: args => (
+            stepperStep: props => (
               <li class="inline-block px-1 pointer-events-auto">
                 <a
-                  class={`block md:hidden w-10 h-10 rounded-lg border-white border hover:bg-purple-600 active:bg-purple-600 transition-colors transform duration-300 ${args.currentSlideIndex ===
-                    args.index && "bg-purple-600"}`}
+                  class={`block md:hidden w-10 h-10 rounded-lg border-white border hover:bg-purple-600 active:bg-purple-600 transition-colors transform duration-300 ${props.currentSlideIndex ===
+                    props.index && "bg-purple-600"}`}
                   href="#"
                   onClick={event => {
                     event.preventDefault();
-                    args.showSlide(args.index);
+                    props.showSlide(props.index);
                   }}
                 ></a>
               </li>
