@@ -110,9 +110,25 @@ export class ProductDetailSection extends Component<
 export interface InterestingFactsSectionEvents {}
 
 export interface InterestingFactsSectionSlots {
+  /**
+   * You can override the headline rendering of this component by specifying the slot headline
+   * It will receive the headline as its first parameter
+   */
   headline?: string;
+  /**
+   * You can override the text rendering of this component by specifying the slot text
+   * It will receive the text as its first parameter
+   */
   text?: string;
+  /**
+   * You can override the tagline rendering of this component by specifying the slot tagline
+   * It will receive the tagline as its first parameter
+   */
   tagline?: string;
+  /**
+   * You can override the counter rendering of this component by specifying the slot counter
+   * It will receive an Object of type {value: number; label: string} as its first parameter
+   */
   counter?: {
     value: number;
     label: string;
