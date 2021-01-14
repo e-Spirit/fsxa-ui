@@ -142,13 +142,14 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
             ></path>
             ) : ()
           </svg>
-          <Image
-            class="opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none w-32 lg:w-40 xl:w-48 h-20 lg:h-24 xl:h-32 absolute left-0 -ml-8 lg:-ml-10 xl:-ml-12 -mt-2 xl:-mt-4 object-cover max-w-none duration-300"
-            src={media.src}
-            resolutions={media.resolutions}
-            previewId={media.previewId}
-            sizes={media.sizes}
-          />
+          <div class="opacity-0 group-hover:opacity-100 transition-opacity w-32 lg:w-40 xl:w-48 h-20 lg:h-24 xl:h-32 absolute left-0 -ml-8 lg:-ml-10 xl:-ml-12 -mt-2 xl:-mt-4 max-w-none duration-300 pointer-events-none">
+            <Image
+              src={media.src}
+              resolutions={media.resolutions}
+              previewId={media.previewId}
+              sizes={media.sizes}
+            />
+          </div>
         </div>
       );
     }
