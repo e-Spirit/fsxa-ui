@@ -77,6 +77,7 @@ class TeaserSection extends BaseComponent<
                 ? this.$scopedSlots.media(this.image)
                 : this.image && (
                     <Image
+                      data-testid={"teasersection-image"}
                       src={this.image.src}
                       dimensions={this.image.dimensions}
                       data-preview-id={this.image.previewId}
