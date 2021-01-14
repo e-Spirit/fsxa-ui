@@ -87,6 +87,11 @@ const routes = [
         path: "/components/line-separator",
         children: [],
       },
+      {
+        label: "Slider",
+        path: "/components/slider",
+        children: [],
+      },
     ],
   },
   {

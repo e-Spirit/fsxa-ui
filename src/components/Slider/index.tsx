@@ -13,11 +13,11 @@ class Slider extends BaseComponent<SliderProps, {}, SliderSlots> {
   @Prop({ default: false }) infinite!: SliderProps["infinite"];
   @Prop({ default: false }) animate!: SliderProps["animate"];
   @Prop({ default: 10000 }) animationDelay!: SliderProps["animationDelay"];
-  @Prop({ required: true })
+  @Prop({ default: 0 })
   initialSlideIndex!: SliderProps["initialSlideIndex"];
   @Prop({ required: true }) slides!: SliderProps["slides"];
 
-  currentSlideIndex = this.initialSlideIndex;
+  currentSlideIndex = this.initialSlideIndex!;
   nextSlideIndexToShow: number | null = null;
 
   animationTimeout: number | null = null;
