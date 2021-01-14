@@ -45,4 +45,22 @@ describe("components/ImageSlider", () => {
     await fireEvent(buttonPrevSlide, new Event("click"));
     expect(imageContainerParent?.style.transform).toEqual("translateX(-0%)");
   });
+
+  it("should replace the default rendering of the image when the scopedSlot is being used", () => {
+    const { getByTestId, container } = render(ImageSlider, {
+      props: {
+        images: IMAGES.map(url => ({ src: url })),
+      },
+      scopedSlots: {
+        image: `<img class="scoped-slot-image" src="imageSrc" />`,
+      },
+    });
+    expect(container).toBeTruthy();
+    const scopedImages = container.querySelectorAll(`.scoped-slot-image`);
+    expect(scopedImages.length).toBe(3);
+    scopedImages.forEach((scopedImage, index) => {
+      expect(scopedImage.nodeName).toBe("IMG");
+      expect(() => getByTestId(`image-${index}`)).toThrow();
+    });
+  });
 });
