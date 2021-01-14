@@ -9,6 +9,7 @@ import Image from "@/components/Image";
 import {
   TeaserSectionEventsWithOn,
   TeaserSectionProps,
+  TeaserSectionSlots,
 } from "@/types/sections";
 
 @Component({
@@ -17,12 +18,7 @@ import {
 class TeaserSection extends BaseComponent<
   TeaserSectionProps,
   TeaserSectionEventsWithOn,
-  {
-    headline?: TeaserSectionProps["headline"];
-    kicker?: TeaserSectionProps["kicker"];
-    text?: TeaserSectionProps["text"];
-    button?: TeaserSectionProps["buttonText"];
-  }
+  TeaserSectionSlots
 > {
   @Prop({ required: true }) headline!: TeaserSectionProps["headline"];
   @Prop({ required: true }) kicker!: TeaserSectionProps["kicker"];
@@ -77,16 +73,18 @@ class TeaserSection extends BaseComponent<
                   )}
             </LayoutItem>
             <LayoutItem width="full" lg={{ width: "7/12" }}>
-              {this.image && (
-                <Image
-                  src={this.image.src}
-                  dimensions={this.image.dimensions}
-                  data-preview-id={this.image.previewId}
-                  lazy
-                  border
-                  zoom
-                />
-              )}
+              {this.$scopedSlots.media
+                ? this.$scopedSlots.media(this.image)
+                : this.image && (
+                    <Image
+                      src={this.image.src}
+                      dimensions={this.image.dimensions}
+                      data-preview-id={this.image.previewId}
+                      lazy
+                      border
+                      zoom
+                    />
+                  )}
             </LayoutItem>
           </Layout>
         </Container>

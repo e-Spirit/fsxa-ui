@@ -182,6 +182,14 @@ export interface TeaserSectionEventsWithOn {
    */
   onClick?: () => void;
 }
+
+export interface TeaserSectionSlots {
+  headline?: string;
+  kicker?: string;
+  text?: string;
+  button?: string;
+  media?: ImageRef;
+}
 export class TeaserSection extends Component<
   TeaserSectionProps,
   TeaserSectionEventsWithOn
