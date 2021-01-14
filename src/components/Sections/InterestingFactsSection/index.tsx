@@ -88,15 +88,15 @@ class InterestingFactsSection extends BaseComponent<
             <LayoutItem width="full" lg={{ width: "6/12" }}>
               <Layout>
                 {this.counters.map((counter, index) => (
-                  <LayoutItem
-                    width="full"
-                    class="mt-20 lg:mt-32"
-                    data-testid={`interestingfactssection-counter-${index}`}
-                  >
+                  <LayoutItem width="full" class="mt-20 lg:mt-32">
                     {this.$scopedSlots.counter ? (
                       this.$scopedSlots.counter(counter)
                     ) : (
-                      <Counter value={counter.value} label={counter.label} />
+                      <Counter
+                        value={counter.value}
+                        label={counter.label}
+                        data-testid={`interestingfactssection-counter-${index}`}
+                      />
                     )}
                   </LayoutItem>
                 ))}
