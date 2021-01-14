@@ -41,13 +41,14 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
   <SlotsTableRow value="arrowButtonContent" prop="Object">
     This is an inner element to arrowButton, already in position. The object prop is the same.
   </SlotsTableRow>
-  <SlotsTableRow value="controls" prop="SliderControlParams">
-     The complete controls for the slider: arrows and stepper. SliderControlParams contains the following props: 
-     <ul><li><span class="code">currentSlideIndex: number;</span></li>
-    <li><span class="code">nextSlideIndex: number;</span></li>
-    <li><span class="code">prevSlideIndex: number;</span></li>
-    <li><span class="code">showSlide(index): function;</span></li>
-  </ul>
+  <SlotsTableRow value="controls" prop="RenderedType">
+    The complete controls for the slider. The following props will be passed in:
+    <ul>
+      <li><span class="code">currentSlideIndex: number</span></li>
+      <li><span class="code">nextSlideIndex: number</span></li>
+      <li><span class="code">prevSlideIndex: number</span></li>
+      <li><span class="code">showSlide: (index: number) => void</span></li>
+    </ul>
   </SlotsTableRow>
   <SlotsTableRow value="stepper" prop="Object">
     The stepper is a section with the typical dots that becomes visible when the horizontal space for the slider is somewhat limited, and the arrows are no longer shown.
