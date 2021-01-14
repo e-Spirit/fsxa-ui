@@ -180,7 +180,7 @@ export interface TeaserSectionEventsWithOn {
   /**
    * This Event will be invoked, when the button is clicked
    */
-  onClick?: () => void;
+  onButtonClick?: () => void;
 }
 
 export interface TeaserSectionSlots {

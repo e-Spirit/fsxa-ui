@@ -15,6 +15,9 @@ export default class App extends Vue {
           text="test1"
           buttonText="click me"
           tagline="text"
+          onButtonClick={() => {
+            return;
+          }}
           image={{
             src: imageSrc,
             dimensions: { width: 400, height: 400 },

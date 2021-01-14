@@ -40,7 +40,7 @@ describe("components/TeaserSections", () => {
     await fireEvent(button, new Event("click"));
     // Since we don't emit any value, emitted().click[0][0] is empty and has ne content
     // Therefore, we have to check the two-dimensional "click"-array for existence
-    expect(emitted().click).toEqual([[]]);
+    expect(emitted().buttonClick).toEqual([[]]);
   });
 
   it("should use scopedSlots to replace the default rendering of headline, kicker, text and button", async () => {

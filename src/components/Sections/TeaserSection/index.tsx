@@ -66,7 +66,7 @@ class TeaserSection extends BaseComponent<
                     <Button
                       data-testid={"teasersection-button"}
                       variant="animated"
-                      handleClick={() => this.$emit("click")}
+                      handleClick={() => this.$emit("buttonClick")}
                     >
                       {this.buttonText}
                     </Button>
