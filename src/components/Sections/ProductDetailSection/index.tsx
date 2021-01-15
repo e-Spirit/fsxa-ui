@@ -2,7 +2,6 @@ import BaseComponent from "@/components/BaseComponent";
 import { Component, Prop } from "vue-property-decorator";
 import { ProductDetailSectionProps } from "@/types/sections";
 import { LayoutItem } from "@/components/Layout";
-import Image from "@/components/Image";
 import Headline from "@/components/Headline";
 import Paragraph from "@/components/Paragraph";
 import Button from "@/components/Button";
@@ -10,7 +9,6 @@ import Container from "@/components/Container";
 import Layout from "@/components/Layout";
 import "./style.css";
 import Accordion from "@/components/Accordion";
-import { ImageRef } from "@/types/components";
 import ImageSlider from "@/components/ImageSlider";
 @Component({
   name: "ProductDetailSection",

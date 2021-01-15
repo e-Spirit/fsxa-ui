@@ -3,7 +3,6 @@ import Component from "vue-class-component";
 
 import { Image } from "@/components";
 import ImageSlider from "@/components/ImageSlider";
-import { ImageRef } from "@/types/fsxa-ui";
 
 const imageOne =
   "https://images.unsplash.com/photo-1504618223053-559bdef9dd5a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80";
