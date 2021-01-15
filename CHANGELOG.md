@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/e-Spirit/fsxa-ui/compare/v2.0.0...v2.0.1) (2021-01-15)
+
+
+### Bug Fixes
+
+* 🐛 fix responsive layout of ProductDetailSection ([#41](https://github.com/e-Spirit/fsxa-ui/issues/41)) ([0f2e7e1](https://github.com/e-Spirit/fsxa-ui/commit/0f2e7e10f47f2b6a2ccec24fbf93b9a6dd966709))
+
 # [2.0.0](https://github.com/e-Spirit/fsxa-ui/compare/v1.0.0...v2.0.0) (2021-01-15)
 
 
