@@ -33,31 +33,14 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
   @Prop()
   handleButtonClick: ProductDetailSectionProps["handleButtonClick"];
 
-  renderImage(image: ImageRef) {
-    return (
-      <div class="w-full mb-2 md:mb-6 lg:mb-16 xl:mb-56 pr-20">
-        <Image
-          border={true}
-          zoom={true}
-          class="ProductDetail--Image"
-          src={image.src}
-        ></Image>
-      </div>
-    );
-  }
-
   render() {
     return (
-      <div class="py-12 md:py-16 lg:py-20">
+      <div class="w-full bg-gray-100">
         <Container>
           <Layout wrap>
             {this.images != null && this.images.length > 0 && (
-              <LayoutItem
-                width="full"
-                lg={{ width: "1/2" }}
-                class="mb-16 lg:mb-0"
-              >
-                <div class="w-full mb-2 md:mb-6 lg:mb-16 xl:mb-56 pr-20">
+              <LayoutItem width="full" lg={{ width: "1/2" }}>
+                <div class="ProductDetail--ImageBorder">
                   <ImageSlider
                     class="ProductDetail--Image"
                     images={this.images}
@@ -68,21 +51,14 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
             <LayoutItem
               width="full"
               lg={{ width: "1/2" }}
-              class="ProductDetail--ProductDetail border-black "
+              class="ProductDetail--ProductDetail border-black"
             >
-              <div class="pr-4 pl-4">
-                <Headline
-                  class="ProductDetail--Headline"
-                  as="h1"
-                  size="xl"
-                  weight="bold"
-                >
+              <div class="ProductDetail--Content px-5 py-6 bg-white lg:bg-transparent shadow lg:shadow-none">
+                <Headline class="leading-10" as="h1" size="xl" weight="bold">
                   {this.headline}
                 </Headline>
-                <Paragraph class="ProductDetail--Description">
-                  {this.description}
-                </Paragraph>
-                <div class="w-full pt-4 ">
+                <Paragraph size="sm">{this.description}</Paragraph>
+                <div class="w-full pt-4">
                   <Paragraph
                     size="lg"
                     weight="bold"
@@ -100,12 +76,12 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
                             <Headline
                               class="ProductDetail--Property--Headline"
                               as="h4"
-                              size="sm"
-                              weight="light"
+                              size="xs"
+                              weight="bold"
                             >
                               {title}
                             </Headline>
-                            <ul class="list-disc ProductDetail--Property--List">
+                            <ul class="list-disc ProductDetail--Property--List text-sm">
                               {properties.map(({ id, name: propName }) => (
                                 <li class="ml-6" key={id} data-testid={id}>
                                   {propName}
@@ -131,7 +107,7 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
                       </LayoutItem>
                     )}
                     {this.buttonText && (
-                      <div class="w-full flex-initial flex justify-end md:pr-10 sm:pr-6">
+                      <div class="w-full flex-initial flex justify-center">
                         <Button
                           variant="default"
                           class="ProductDetail--Button self-center p-2 px-2 sm:p-4 sm:pl-6 md:px-8 md:py-5"

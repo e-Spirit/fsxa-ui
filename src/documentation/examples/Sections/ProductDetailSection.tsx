@@ -56,21 +56,19 @@ function handleClick() {
 export default class App extends Vue {
   render() {
     return (
-      <div class="space-x-5 mb-10 ml-16">
-        <Sections.ProductDetailSection
-          description={description}
-          headline={headline}
-          price={price}
-          handleButtonClick={handleClick}
-          buttonText={button}
-          images={[
-            { src: src1, type: "image" },
-            { src: src2, type: "image" },
-          ]}
-          propertyList={propertyList}
-          foldableContentList={foldableContentList}
-        />
-      </div>
+      <Sections.ProductDetailSection
+        description={description}
+        headline={headline}
+        price={price}
+        handleButtonClick={handleClick}
+        buttonText={button}
+        images={[
+          { src: src1, type: "image" },
+          { src: src2, type: "image" },
+        ]}
+        propertyList={propertyList}
+        foldableContentList={foldableContentList}
+      />
     );
   }
 }
