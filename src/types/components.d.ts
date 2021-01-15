@@ -573,6 +573,8 @@ export class Slider extends Component<SliderProps, {}, SliderSlots> {}
 export interface ImageSliderProps<ImageType> {
   /**
    * You can enable automatic transitions between the images
+   *
+   * *Default*: true
    */
   animate?: boolean;
   /**
