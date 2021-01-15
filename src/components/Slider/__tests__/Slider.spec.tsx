@@ -66,15 +66,11 @@ describe("components/slider", () => {
     const { getByTestId } = render(Slider, {
       props: {
         initialSlideIndex: 1,
-        slides: [
-          {
-            render: () => render(TestSlide),
-          },
-          {
-            render: () => render(TestSlide),
-          },
-        ],
+        slideCount: 2,
         visibleElements: 2,
+      },
+      scopedSlots: {
+        slide: () => render(TestSlide),
       },
     });
     const transformWrapper = getByTestId("transform-wrapper");
