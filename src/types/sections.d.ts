@@ -8,10 +8,28 @@ export interface NewsTeaserSectionProps {
   handleItemClick: (item: NewsTeaserItemProps) => void;
 }
 export class NewsTeaserSection extends Component<NewsTeaserSectionProps> {}
-
+export interface ListSectionSlots<Item> {
+  /**
+   * This slot acts as a template for how the items should be displayed
+   */
+  item: Item;
+  /**
+   * You can choose to render your own headline
+   */
+  headline?: string;
+  /**
+   * This slot acts as a template for how the filters should be displayed
+   */
+  filter?: {
+    key: string;
+    value: any;
+    selected: boolean;
+    handleClick: (key: string) => void;
+  };
+}
 export interface ListSectionProps<Item> {
   /**
-   * You can pass an optional headline that will be displayed in top of your items.
+   * You can pass an optional headline that will be displayed on top of your items.
    * An additional separator will be rendered as well.
    */
   headline?: string;
@@ -19,10 +37,6 @@ export interface ListSectionProps<Item> {
    * The items that should be iterated over
    */
   items: Item[];
-  /**
-   * Render-Prop with which you must define, how your items should get rendered
-   */
-  renderItem: (item: Item) => JSX.Element | JSX.Element[] | null;
   /**
    * Optional filters that will be displayed between headline and items
    */

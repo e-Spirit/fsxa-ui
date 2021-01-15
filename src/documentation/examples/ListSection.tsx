@@ -99,16 +99,18 @@ export default class App extends Vue {
         handleFilterChange={selectedFilters =>
           (this.selectedFilters = selectedFilters)
         }
-        renderItem={item => (
-          <ProductListItem
-            title={item.title}
-            description={item.description}
-            price={item.price}
-            image={item.image}
-            url={item.url}
-            handleClick={handleClick.bind(null, item)}
-          />
-        )}
+        scopedSlots={{
+          item: item => (
+            <ProductListItem
+              title={item.title}
+              description={item.description}
+              price={item.price}
+              image={item.image}
+              url={item.url}
+              handleClick={handleClick.bind(null, item)}
+            />
+          ),
+        }}
       />
     );
   }

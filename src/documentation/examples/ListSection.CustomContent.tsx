@@ -32,13 +32,15 @@ export default class App extends Vue {
       <div>
         <ListSection
           headline={headline}
-          items={[]}
-          renderItem={() => null}
+          items={[{ headline: "test" }]}
           filters={filters}
           handleFilterChange={selectedFilters =>
             (this.selectedFilters = selectedFilters)
           }
           selectedFilters={this.selectedFilters}
+          scopedSlots={{
+            item: props => <div>{props.headline}</div>,
+          }}
         >
           <div class="w-full h-64 relative flex justify-center items-center">
             <Loader />
