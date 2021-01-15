@@ -300,6 +300,10 @@ export class Navigation extends Component<
   NavigationProps,
   NavigationEventsWithOn
 > {}
+export class MobileNavigation extends Component<
+  NavigationProps,
+  NavigationEventsWithOn
+> {}
 
 export interface PageProps {
   logo?: ImageRef;
