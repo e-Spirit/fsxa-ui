@@ -6,6 +6,33 @@ import { Button, Headline, Paragraph } from "@/components";
 
 @Component
 export default class App extends Vue {
+  renderSlide(index: number) {
+    const slides: Record<string, JSX.Element> = {
+      0: (
+        <div class="bg-red-500 w-full h-full flex flex-col justify-center items-center">
+          <Headline as="h1" size="lg">
+            Headline
+          </Headline>
+          <Paragraph>With some text</Paragraph>
+        </div>
+      ),
+      1: (
+        <div class="bg-teal-500 w-full h-full flex justify-center items-center">
+          Some Content
+        </div>
+      ),
+      2: (
+        <div class="bg-red-500 w-full h-full flex flex-col justify-center items-center">
+          <Headline as="h1" size="lg">
+            Headline
+          </Headline>
+          <Paragraph>With some text</Paragraph>
+        </div>
+      ),
+    };
+    return slides[index] || null;
+  }
+
   render() {
     return (
       <div class="w-full h-64">
@@ -35,37 +62,13 @@ export default class App extends Vue {
                 </div>
               );
             },
+            slide: ({ index }) => this.renderSlide(index),
           }}
           initialSlideIndex={0}
+          slideCount={3}
           visibleElements={2}
           infinite
           animateSlideTransition
-          slides={[
-            {
-              render: () => (
-                <div class="bg-red-500 w-full h-full flex flex-col justify-center items-center">
-                  <Headline as="h1" size="lg">
-                    Headline
-                  </Headline>
-                  <Paragraph>With some text</Paragraph>
-                </div>
-              ),
-            },
-            {
-              render: () => (
-                <div class="bg-teal-500 w-full h-full flex justify-center items-center">
-                  Some Content
-                </div>
-              ),
-            },
-            {
-              render: () => (
-                <div class="bg-blue-500 w-full h-full flex justify-center items-center">
-                  Another content
-                </div>
-              ),
-            },
-          ]}
         />
       </div>
     );

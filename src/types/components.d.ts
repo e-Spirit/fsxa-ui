@@ -533,12 +533,6 @@ export interface LineSeparatorProps {
 
 export class LineSeparator extends Component<LineSeparatorProps> {}
 
-export interface SlideProps {
-  animateIn?: (element: Element) => Promise<void>;
-  animateOut?: (element: Element) => Promise<void>;
-  render: () => JSX.Element | null | undefined | VNode[] | VNode;
-}
-
 export interface SliderControlParams {
   currentSlideIndex: number;
   nextSlideIndex: number | null;
@@ -575,9 +569,13 @@ export interface SliderProps {
    */
   initialSlideIndex?: number;
   /**
-   * Provide information on how to render and animate each slide
+   * The number of slides that should be rendered
    */
-  slides: SlideProps[];
+  slideCount: number;
+  onSlideAnimation?: (
+    type: "animateIn" | "animateOut",
+    params: { element: Element; slideIndex: number },
+  ) => Promise<void>;
 }
 export interface SliderSlots {
   /**
@@ -585,6 +583,10 @@ export interface SliderSlots {
    * It will receive an Object of type SliderControlParams as its parameter
    */
   controls?: SliderControlParams;
+  slide: {
+    index: number;
+    params: SliderControlParams;
+  };
 }
 export class Slider extends Component<SliderProps, {}, SliderSlots> {}
 

@@ -27,7 +27,9 @@ class ImageSlider<Type = any> extends BaseComponent<
         animate
         initialSlideIndex={0}
         animateSlideTransition
+        slideCount={this.images.length}
         scopedSlots={{
+          slide: ({ index }) => this.renderImage(this.images[index], index),
           controls: params => {
             return this.$scopedSlots.controls ? (
               this.$scopedSlots.controls(params)
@@ -95,9 +97,6 @@ class ImageSlider<Type = any> extends BaseComponent<
             );
           },
         }}
-        slides={this.images.map((slide: any, index) => ({
-          render: () => this.renderImage(slide, index),
-        }))}
       />
     );
   }

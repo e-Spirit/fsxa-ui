@@ -1,10 +1,4 @@
-import {
-  render,
-  waitFor,
-  getByTestId,
-  getAllByTestId,
-  fireEvent,
-} from "@testing-library/vue";
+import { render, waitFor, fireEvent } from "@testing-library/vue";
 import Slider from "..";
 import BaseComponent from "@/components/BaseComponent";
 import { Component } from "vue-property-decorator";
@@ -16,31 +10,19 @@ describe("components/slider", () => {
       return <h1>Render me</h1>;
     }
   }
-  it("should call the given render function", () => {
-    let rendered = false;
-    render(Slider, {
-      props: {
-        slides: [
-          {
-            render: () => (rendered = true),
-          },
-        ],
-      },
-    });
-    expect(rendered).toBe(true);
-  });
-  it("should call the given animateIn and animateOut functions", () => {
+  it("should call the given onSlideAnimation callback with animateIn and animateOut", () => {
     let animateInCalled = false;
     let animateOutCalled = false;
     render(Slider, {
       props: {
-        slides: [
-          {
-            animateIn: () => (animateInCalled = true),
-            animateOut: () => (animateOutCalled = true),
-            render: () => render(TestSlide),
-          },
-        ],
+        onSlideAnimation: (type: string) => {
+          if (type === "animateIn") animateInCalled = true;
+          if (type === "animateOut") animateOutCalled = true;
+        },
+        slideCount: 3,
+      },
+      scopedSlots: {
+        slide: () => render(TestSlide),
       },
     });
     waitFor(() => {
@@ -50,14 +32,13 @@ describe("components/slider", () => {
       expect(animateOutCalled).toBe(true);
     });
   });
-  it("should render the html in the render function", () => {
+  it("should render the html in the slide scopedSlot", () => {
     const { getByText } = render(Slider, {
       props: {
-        slides: [
-          {
-            render: () => render(TestSlide),
-          },
-        ],
+        slideCount: 1,
+      },
+      scopedSlots: {
+        slide: () => render(TestSlide),
       },
     });
     expect(() => getByText("Render me")).not.toThrow();
@@ -67,24 +48,11 @@ describe("components/slider", () => {
       const { getAllByTestId, unmount } = render(Slider, {
         props: {
           initialSlideIndex: 1,
-          slides: [
-            {
-              render: () => render(TestSlide),
-            },
-            {
-              render: () => render(TestSlide),
-            },
-            {
-              render: () => render(TestSlide),
-            },
-            {
-              render: () => render(TestSlide),
-            },
-            {
-              render: () => render(TestSlide),
-            },
-          ],
+          slideCount: 5,
           visibleElements: numOfVisibleElements,
+        },
+        scopedSlots: {
+          slide: () => render(TestSlide),
         },
       });
       const slideWrappers = getAllByTestId("slide-wrapper");
@@ -116,16 +84,12 @@ describe("components/slider", () => {
     const { getByTestId } = render(Slider, {
       props: {
         initialSlideIndex: 0,
-        slides: [
-          {
-            render: () => render(TestSlide),
-          },
-          {
-            render: () => render(TestSlide),
-          },
-        ],
+        slideCount: 2,
         animate: true,
         animationDelay: 100,
+      },
+      scopedSlots: {
+        slide: () => render(TestSlide),
       },
     });
     const transformWrapper = getByTestId("transform-wrapper");
@@ -135,17 +99,6 @@ describe("components/slider", () => {
     });
   });
   describe("controls scoped slot", () => {
-    const slides = [
-      {
-        render: () => render(TestSlide),
-      },
-      {
-        render: () => render(TestSlide),
-      },
-      {
-        render: () => render(TestSlide),
-      },
-    ];
     interface ControlProps {
       currentSlideIndex: number;
       prevSlideIndex: number;
@@ -163,13 +116,15 @@ describe("components/slider", () => {
       };
       render(Slider, {
         props: {
-          slides,
+          slideCount: 3,
         },
         scopedSlots: {
+          slide: () => render(TestSlide),
           controls: (props: any) => controlFunction(props, expectCb),
         },
       });
     });
+
     it("should pass a prevSlideIndex if infinite is set to true", () => {
       const expectCb = (props: ControlProps) => {
         expect(props.currentSlideIndex).toBe(0);
@@ -178,20 +133,23 @@ describe("components/slider", () => {
       };
       render(Slider, {
         props: {
-          slides,
+          slideCount: 3,
           infinite: true,
         },
         scopedSlots: {
+          slide: () => render(TestSlide),
           controls: (props: any) => controlFunction(props, expectCb),
         },
       });
     });
+
     it("should change the slide when the showSlide function is called", async () => {
       const { getByTestId } = render(Slider, {
         props: {
-          slides,
+          slideCount: 3,
         },
         scopedSlots: {
+          slide: () => render(TestSlide),
           controls: `
           <div>
             <span data-testid="current-slide-index">{{props.currentSlideIndex}}</span>

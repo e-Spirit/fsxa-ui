@@ -218,33 +218,28 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
           animate={false}
           initialSlideIndex={0}
           infinite
-          slides={this.slides.map(slide => ({
-            animateIn: element => {
+          slideCount={this.slides.length}
+          onSlideAnimation={async (type, { element }) => {
+            if (type === "animateIn") {
               element.classList.remove(
                 "FullWidthSliderSection--Slide--animate-out",
               );
               element.classList.add(
                 "FullWidthSliderSection--Slide--animate-in",
               );
-              // we will resolve after 750 ms so the slider component will wait until the animation is finished
-              return new Promise(resolve => {
-                window.setTimeout(resolve, 750);
-              });
-            },
-            animateOut: element => {
+            } else {
               element.classList.remove(
                 "FullWidthSliderSection--Slide--animate-in",
               );
               element.classList.add(
                 "FullWidthSliderSection--Slide--animate-out",
               );
-              // we will resolve after 750 ms so the slider component will wait until the animation is finished
-              return new Promise(resolve => {
-                window.setTimeout(resolve, 750);
-              });
-            },
-            render: () => this.renderSlide(slide),
-          }))}
+            }
+            // we will resolve after 750 ms so the slider component will wait until the animation is finished
+            return new Promise(resolve => {
+              window.setTimeout(resolve, 750);
+            });
+          }}
           scopedSlots={{
             controls: params => {
               return this.$scopedSlots.controls ? (
@@ -267,6 +262,8 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
                 </div>
               );
             },
+            slide: ({ index, params }) =>
+              this.renderSlide(this.slides[index], params),
           }}
         />
       </div>
