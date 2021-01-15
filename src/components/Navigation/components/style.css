@@ -1,7 +1,0 @@
-.nav-active {
-  @apply text-gray-500;
-}
-
-.mobile-nav-active {
-  @apply text-gray-900;
-}

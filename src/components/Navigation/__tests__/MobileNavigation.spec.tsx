@@ -116,7 +116,7 @@ describe("components/MobileNavigation", () => {
     expect(() => getByText("Link 3")).toThrow();
     expect(() => getByText("Link 4")).toThrow();
   });
-  it("should render an active item with an active item css class", () => {
+  it("should render an active item with data-active true", () => {
     const { getByText } = render(MobileNavigation, {
       slots: { default: "Content" },
       props: {
@@ -138,6 +138,6 @@ describe("components/MobileNavigation", () => {
       },
     });
     const activeItem = getByText("Link 1");
-    expect(activeItem.classList).toContain("mobile-nav-active");
+    expect(activeItem.dataset.active).toEqual("true");
   });
 });

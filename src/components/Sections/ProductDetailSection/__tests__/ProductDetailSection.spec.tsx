@@ -43,9 +43,9 @@ const propertyList: ProductProperty[] = [
 ];
 
 const foldableContentList: Record<string, string> = {
-  Delivery: `<ul class="list-disc px-10 py-4"><li>mechanical lock</li><li>camera with integrated face recognition</li><li>wireless numpad</li><li>operation manual</li></ul>`,
-  "Installation instructions": "<p>Fix it at the door. Ready.</p>",
-  Compatibility: `<ul class="list-disc px-10 py-4"><li>Google Home</li><li>Amazon Alexa</li><li>Bosch Smart Home</li></ul>`,
+  Delivery: `delivery`,
+  "Installation instructions": "instructions",
+  Compatibility: `compatibility`,
 };
 
 const componentProperties = {
@@ -137,16 +137,14 @@ describe("components/sections/ProductDetailSection", () => {
     );
 
     const accordionNodes = container.querySelectorAll(
-      `.ProductDetail--Accordion`,
+      `.ProductDetail--Accordion .Accordion--Text-Box`,
     );
-    expect(accordionNodes[0].textContent).toEqual(
-      "Deliverymechanical lockcamera with integrated face recognitionwireless numpadoperation manual",
-    );
+    expect(accordionNodes[0].textContent).toEqual(foldableContentList.Delivery);
     expect(accordionNodes[1].textContent).toEqual(
-      "Installation instructionsFix it at the door. Ready.",
+      foldableContentList["Installation instructions"],
     );
     expect(accordionNodes[2].textContent).toEqual(
-      "CompatibilityGoogle HomeAmazon AlexaBosch Smart Home",
+      foldableContentList.Compatibility,
     );
   });
 

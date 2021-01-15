@@ -21,3 +21,7 @@
     }
   }
 }
+
+.overlay-gradient {
+  background: linear-gradient(transparent, #111111);
+}

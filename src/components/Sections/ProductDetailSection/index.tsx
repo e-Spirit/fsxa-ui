@@ -8,10 +8,10 @@ import Paragraph from "@/components/Paragraph";
 import Button from "@/components/Button";
 import Container from "@/components/Container";
 import Layout from "@/components/Layout";
-import RichText from "@/components/RichText";
 import "./style.css";
 import Accordion from "@/components/Accordion";
-import { ImageRef } from "@/types/utils";
+import { ImageRef } from "@/types/components";
+import ImageSlider from "@/components/ImageSlider";
 @Component({
   name: "ProductDetailSection",
 })
@@ -57,14 +57,12 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
                 lg={{ width: "1/2" }}
                 class="mb-16 lg:mb-0"
               >
-                {/* ToDo: show all images in Slider.
-                 * For now randomly choose one of the provided images:
-                 */}
-                {this.renderImage(
-                  this.images[
-                    Math.floor(Math.random() * Math.floor(this.images.length))
-                  ],
-                )}
+                <div class="w-full mb-2 md:mb-6 lg:mb-16 xl:mb-56 pr-20">
+                  <ImageSlider
+                    class="ProductDetail--Image"
+                    images={this.images}
+                  />
+                </div>
               </LayoutItem>
             )}
             <LayoutItem
@@ -125,13 +123,9 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
                             key={key}
                             class="ProductDetail--Accordion"
                           >
-                            <RichText
-                              content={
-                                this.foldableContentList
-                                  ? this.foldableContentList[key]
-                                  : ""
-                              }
-                            />
+                            {this.foldableContentList
+                              ? this.foldableContentList[key]
+                              : ""}
                           </Accordion>
                         ))}
                       </LayoutItem>

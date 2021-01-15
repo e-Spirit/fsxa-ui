@@ -64,12 +64,12 @@ export default class App extends Vue {
           handleButtonClick={handleClick}
           buttonText={button}
           images={[
-            { src: src1, dimensions: { width: 5, height: 2 } },
-            { src: src2, dimensions: { width: 5, height: 2 } },
+            { src: src1, type: "image" },
+            { src: src2, type: "image" },
           ]}
           propertyList={propertyList}
           foldableContentList={foldableContentList}
-        ></Sections.ProductDetailSection>
+        />
       </div>
     );
   }

@@ -31,7 +31,7 @@ class HeaderSection extends BaseComponent<
           : this.backgroundImage && (
               <Image
                 src={this.backgroundImage.src}
-                dimensions={this.backgroundImage?.dimensions}
+                resolutions={this.backgroundImage?.resolutions}
                 data-preview-id={this.backgroundImage?.previewId}
                 data-testid="HeaderSection--BackgroundImage"
                 class="HeaderSection--BackgroundImage"

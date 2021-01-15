@@ -1,6 +1,10 @@
 import { Component } from "vue-tsx-support";
-import { ImageRef } from "./utils";
-import { ImageProps, NewsTeaserItemProps } from "./components";
+import {
+  ImageRef,
+  NewsTeaserItemProps,
+  RenderedType,
+  SliderControlParams,
+} from "./components";
 
 export interface NewsTeaserSectionProps {
   headline: string;
@@ -119,7 +123,7 @@ export interface InterestingFactsSectionSlots {
    * You can override the text rendering of this component by specifying the slot text
    * It will receive the text as its first parameter
    */
-  text?: string;
+  text?: RenderedType;
   /**
    * You can override the tagline rendering of this component by specifying the slot tagline
    * It will receive the tagline as its first parameter
@@ -151,7 +155,7 @@ export interface InterestingFactsSectionProps {
   /**
    * text content that will be displayed in the info box
    */
-  text: string;
+  text: RenderedType;
   /**
    * counters that should be displayed
    */
@@ -164,7 +168,7 @@ export class InterestingFactsSection extends Component<
   InterestingFactsSectionProps
 > {}
 
-export interface TeaserSectionProps {
+export interface TeaserSectionProps<MediaType = ImageRef> {
   /**
    * The headline of the Section
    */
@@ -188,9 +192,9 @@ export interface TeaserSectionProps {
    */
   tagline?: string;
   /**
-   * Optional image that is displayed on the right side of the section
+   * Optional media that is displayed on the right side of the section
    */
-  image?: ImageRef;
+  media?: MediaType;
 }
 export interface TeaserSectionEventsWithOn {
   /**
@@ -199,7 +203,7 @@ export interface TeaserSectionEventsWithOn {
   onButtonClick?: () => void;
 }
 
-export interface TeaserSectionSlots {
+export interface TeaserSectionSlots<MediaType> {
   /**
    * You can override the headline rendering of this component by specifying the slot headline
    * It will receive the headline as its first parameter
@@ -224,11 +228,12 @@ export interface TeaserSectionSlots {
    * You can override the media rendering of this component by specifying the slot media
    * It will receive an Object of type ImageRef as its first parameter
    */
-  media?: ImageRef;
+  media?: MediaType;
 }
-export class TeaserSection extends Component<
+export class TeaserSection<MediaType> extends Component<
   TeaserSectionProps,
-  TeaserSectionEventsWithOn
+  TeaserSectionEventsWithOn,
+  TeaserSectionSlots<MediaType>
 > {}
 
 export interface Breadcrumb {
@@ -246,7 +251,7 @@ export interface BreadcrumbsProps {
 export interface HeaderSectionEvents {}
 
 export interface HeaderSectionSlots {
-  backgroundImage?: ImageProps;
+  backgroundImage?: ImageRef;
   breadcrumbs?: Breadcrumb[];
 }
 
@@ -269,6 +274,76 @@ export interface HeaderSectionProps {
   handleItemClick?: (item: Breadcrumb) => void;
 }
 export class HeaderSection extends Component<HeaderSectionProps> {}
+
+export interface FullWidthSliderSectionSlide<MediaType> {
+  /**
+   * A resolution map which provides the width / height and url for each resolution
+   *
+   * The Section will automatically make sure, that the correct image is referenced
+   */
+  media: MediaType;
+  /**
+   * The title of the slide that will be animated in.
+   *
+   * Note: This can contain RichText
+   */
+  title: RenderedType;
+  /**
+   * The description that will be animated. Make sure that you do not use too much text.
+   *
+   * Note: This can contain RichText
+   */
+  teaser: RenderedType;
+  /**
+   * The label of the button that should be displayed.
+   */
+  buttonContent: RenderedType;
+}
+export interface FullWidthSliderSectionEventsWithOn<MediaType> {
+  /**
+   * This Event will be invoked, when the CTA-Button of a slide is clicked. The displayed slide will be passed as parameter.
+   */
+  onClick: FullWidthSliderSectionSlide<MediaType>;
+}
+export interface FullWidthSliderSectionSlots<MediaType> {
+  title?: RenderedType;
+  teaser?: RenderedType;
+  button?: { content: RenderedType; onClick: () => void };
+  media?: MediaType;
+  controls?: SliderControlParams;
+  arrowButton?: {
+    position: "left" | "right";
+    slideNumber: number | null;
+    media: MediaType | null;
+  };
+  arrowButtonContent?: {
+    position: "left" | "right";
+    slideNumber: number | null;
+    media: MediaType | null;
+  };
+  stepper?: SliderControlParams & {
+    slides: FullWidthSliderSectionSlide<MediaType>[];
+  };
+  stepperStep?: SliderControlParams & {
+    index: number;
+    slide: FullWidthSliderSectionSlide<MediaType>;
+  };
+}
+export interface FullWidthSliderSectionProps<MediaType> {
+  /**
+   * Specify if the default padding should be removed from the wrapped content
+   */
+  removeDefaultPadding?: boolean;
+  /**
+   * The slides that should be displayed. You can add additional properties to the slide-objects as well.
+   */
+  slides: FullWidthSliderSectionSlide<MediaType>[];
+}
+export class FullWidthSliderSection<MediaType> extends Component<
+  FullWidthSliderSectionProps<MediaType>,
+  FullWidthSliderSectionEventsWithOn<MediaType>,
+  FullWidthSliderSectionSlots<MediaType>
+> {}
 
 export interface AccordionSectionProps {
   /**
