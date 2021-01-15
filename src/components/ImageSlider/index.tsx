@@ -35,7 +35,7 @@ class ImageSlider<Type = any> extends BaseComponent<
             return this.$scopedSlots.controls ? (
               this.$scopedSlots.controls(params)
             ) : (
-              <div class="absolute bottom-0 right-0 -mr-4 mb-4 flex flex-col">
+              <div class="absolute bottom-0 right-0 mr-4 mb-4 lg:-mr-4 lg:mb-4 flex flex-col">
                 <a
                   href="#"
                   data-testid={`button-prev-slide`}

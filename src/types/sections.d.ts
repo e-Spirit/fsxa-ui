@@ -97,7 +97,7 @@ export interface ProductDetailSectionProps {
    *
    * The value can contain RichText-Formatting
    */
-  foldableContentList?: Record<string, string>;
+  foldableContentList?: Record<string, RenderedType>;
   /**
    * Optional callback that is triggered, when the button is clicked
    *

@@ -42,12 +42,6 @@ const propertyList: ProductProperty[] = [
   },
 ];
 
-const foldableContentList: Record<string, string> = {
-  Delivery: `<ul class="list-disc px-10 py-4"><li>mechanical lock</li><li>camera with integrated face recognition</li><li>wireless numpad</li><li>operation manual</li></ul>`,
-  "Installation instructions": "<p>Fix it at the door. Ready.</p>",
-  Compatibility: `<ul class="list-disc px-10 py-4"><li>Google Home</li><li>Amazon Alexa</li><li>Bosch Smart Home</li></ul>`,
-};
-
 function handleClick() {
   console.log("Button clicked!");
 }
@@ -56,21 +50,36 @@ function handleClick() {
 export default class App extends Vue {
   render() {
     return (
-      <div class="space-x-5 mb-10 ml-16">
-        <Sections.ProductDetailSection
-          description={description}
-          headline={headline}
-          price={price}
-          handleButtonClick={handleClick}
-          buttonText={button}
-          images={[
-            { src: src1, type: "image" },
-            { src: src2, type: "image" },
-          ]}
-          propertyList={propertyList}
-          foldableContentList={foldableContentList}
-        />
-      </div>
+      <Sections.ProductDetailSection
+        description={description}
+        headline={headline}
+        price={price}
+        handleButtonClick={handleClick}
+        buttonText={button}
+        images={[
+          { src: src1, type: "image" },
+          { src: src2, type: "image" },
+        ]}
+        propertyList={propertyList}
+        foldableContentList={{
+          Delivery: (
+            <ul class="list-disc px-10 py-4">
+              <li>mechanical lock</li>
+              <li>camera with integrated face recognition</li>
+              <li>wireless numpad</li>
+              <li>operation manual</li>
+            </ul>
+          ),
+          "Installation instructions": <p>Fix it at the door. Ready.</p>,
+          Compatibility: (
+            <ul class="list-disc px-10 py-4">
+              <li>Google Home</li>
+              <li>Amazon Alexa</li>
+              <li>Bosch Smart Home</li>
+            </ul>
+          ),
+        }}
+      />
     );
   }
 }

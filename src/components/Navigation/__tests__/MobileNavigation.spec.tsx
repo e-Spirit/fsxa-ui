@@ -1,4 +1,4 @@
-import { render, getByTestId, fireEvent, waitFor } from "@testing-library/vue";
+import { render, fireEvent, waitFor } from "@testing-library/vue";
 import MobileNavigation from "../components/MobileNavigation";
 describe("components/MobileNavigation", () => {
   it("should render the hamburger icon in its default state", () => {

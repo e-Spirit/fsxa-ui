@@ -87,11 +87,11 @@ export interface HeadlineProps {
   /**
    * Specify the size of the headline
    *
-   * Possible values are: **xxl**, **xl**, **lg**, **md**, **sm**
+   * Possible values are: **xxl**, **xl**, **lg**, **md**, **sm**, **xs**
    *
    * Default value is: **lg**
    */
-  size: "xxl" | "xl" | "lg" | "md" | "sm";
+  size: "xxl" | "xl" | "lg" | "md" | "sm" | "xs";
   /**
    * Should the headline be displayed in all uppercase letters?
    *
@@ -101,11 +101,11 @@ export interface HeadlineProps {
   /**
    * Which font-weight should be used?
    *
-   * Possible values are: **bold**, **light**
+   * Possible values are: **bold**, **semibold**, **light**
    *
    * Default value is: **bold**
    */
-  weight?: "bold" | "light";
+  weight?: "semibold" | "bold" | "light";
   /**
    * Specify if the headline should add top and bottom margins taking size in account
    * Default value is: **true**

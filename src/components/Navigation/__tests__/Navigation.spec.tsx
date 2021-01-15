@@ -1,4 +1,4 @@
-import { render, fireEvent, getByTestId } from "@testing-library/vue";
+import { render, fireEvent } from "@testing-library/vue";
 import Navigation from "../components/Navigation";
 
 describe("components/Navigation", () => {
