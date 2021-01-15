@@ -52,10 +52,18 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
               class="ProductDetail--ProductDetail border-black"
             >
               <div class="ProductDetail--Content px-5 py-6 bg-white lg:bg-transparent shadow lg:shadow-none">
-                <Headline class="leading-10" as="h1" size="xl" weight="bold">
+                <Headline
+                  data-testid="ProductDetail--Headline"
+                  class="leading-10"
+                  as="h1"
+                  size="xl"
+                  weight="bold"
+                >
                   {this.headline}
                 </Headline>
-                <Paragraph size="sm">{this.description}</Paragraph>
+                <Paragraph data-testid="ProductDetail--Description" size="sm">
+                  {this.description}
+                </Paragraph>
                 <div class="w-full pt-4">
                   <Paragraph
                     size="lg"

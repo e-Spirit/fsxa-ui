@@ -90,31 +90,29 @@ const expectToExistNTimes = (
 
 describe("components/sections/ProductDetailSection", () => {
   it("should render all elements", () => {
-    const { container } = render(ProductDetailSection, {
+    const { container, getByTestId } = render(ProductDetailSection, {
       props: { ...componentProperties },
     });
     expect(container).toBeTruthy();
     expectToExist(container, [
-      "ProductDetail--Headline",
-      "ProductDetail--Description",
+      "ProductDetail--Property--Headline",
       "ProductDetail--Price",
       "ProductDetail--Button",
+      "ProductDetail--Image",
     ]);
 
     expectToExistNTimes(container, [
-      // Since the ProductDetailSection displays only one image at a time, the expected instance count decreased from 2 to 1
-      { key: "ProductDetail--Image", expectedInstanceCount: 1 },
       { key: "ProductDetail--Property--Headline", expectedInstanceCount: 2 },
       { key: "ProductDetail--Property--List", expectedInstanceCount: 2 },
       { key: "ProductDetail--Accordion", expectedInstanceCount: 3 },
     ]);
 
-    expect(
-      container.querySelector(`.ProductDetail--Headline`)?.textContent,
-    ).toEqual(headline);
-    expect(
-      container.querySelector(`.ProductDetail--Description`)?.textContent,
-    ).toEqual(description);
+    expect(getByTestId(`ProductDetail--Headline`)?.textContent).toEqual(
+      headline,
+    );
+    expect(getByTestId(`ProductDetail--Description`)?.textContent).toEqual(
+      description,
+    );
     expect(
       container.querySelector(`.ProductDetail--Price`)?.textContent,
     ).toEqual(price);
@@ -150,16 +148,14 @@ describe("components/sections/ProductDetailSection", () => {
 
   it("should render only elements passed to it", () => {
     const { headline, buttonText, description, price } = componentProperties;
-    const { container } = render(ProductDetailSection, {
+    const { container, getByTestId } = render(ProductDetailSection, {
       props: { headline, buttonText, description, price },
     });
     expect(container).toBeTruthy();
-    expectToExist(container, [
-      "ProductDetail--Headline",
-      "ProductDetail--Description",
-      "ProductDetail--Price",
-      "ProductDetail--Button",
-    ]);
+    expectToExist(container, ["ProductDetail--Price", "ProductDetail--Button"]);
+    expect(getByTestId(`ProductDetail--Headline`)?.textContent).toEqual(
+      headline,
+    );
 
     expectToBeNull(container, [
       "ProductDetail--Image",
