@@ -94,7 +94,9 @@ class Image extends BaseComponent<ImageProps> {
   render() {
     return (
       <div
-        class={`Image w-full h-full ${this.border ? "border" : ""}`}
+        class={`Image w-full h-full ${
+          this.border ? "border" : ""
+        } overflow-hidden`}
         data-previewid={this.previewId}
         data-testid="imageDiv"
       >
