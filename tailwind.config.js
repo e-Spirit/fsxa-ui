@@ -16,12 +16,9 @@ module.exports = {
       transparent: "transparent",
       current: "currentColor",
       espirit: "#810444",
-
       black: "#000",
       white: "#fff",
-
       highlight: "var(--fsxa-text-highlight-color, #D5DD02)",
-
       gray: {
         100: "#f7fafc",
         200: "#edf2f7",
@@ -296,6 +293,7 @@ module.exports = {
       "0": "0",
       auto: "auto",
       "1/2": "50%",
+      "100": "100%",
     },
     letterSpacing: {
       tighter: "-0.05em",
@@ -304,6 +302,7 @@ module.exports = {
       wide: "0.025em",
       wider: "0.05em",
       widest: "0.1em",
+      xl: "0.14em",
     },
     lineHeight: {
       none: "1",
@@ -349,6 +348,7 @@ module.exports = {
       "6xl": "72rem",
       full: "100%",
       ...breakpoints(theme("screens")),
+      "screen-xs": "400px",
     }),
     minHeight: {
       "0": "0",
@@ -659,11 +659,11 @@ module.exports = {
     borderColor: ["responsive", "hover", "focus"],
     borderRadius: ["responsive"],
     borderStyle: ["responsive"],
-    borderWidth: ["responsive"],
+    borderWidth: ["responsive", "last"],
     boxShadow: ["responsive", "hover", "focus"],
     boxSizing: ["responsive"],
     cursor: ["responsive"],
-    display: ["responsive"],
+    display: ["responsive", "group-hover"],
     divideColor: ["responsive"],
     divideWidth: ["responsive"],
     fill: ["responsive"],
@@ -693,10 +693,10 @@ module.exports = {
     minWidth: ["responsive"],
     objectFit: ["responsive"],
     objectPosition: ["responsive"],
-    opacity: ["responsive", "hover", "focus"],
+    opacity: ["responsive", "hover", "focus", "group-hover"],
     order: ["responsive"],
     outline: ["responsive", "focus"],
-    overflow: ["responsive"],
+    overflow: ["responsive", "hover"],
     padding: ["responsive"],
     placeholderColor: ["responsive", "focus"],
     pointerEvents: ["responsive"],
@@ -731,7 +731,7 @@ module.exports = {
     transformOrigin: ["responsive"],
     scale: ["responsive", "hover", "focus"],
     rotate: ["responsive", "hover", "focus"],
-    translate: ["responsive", "hover", "focus"],
+    translate: ["responsive", "hover", "group-hover", "focus"],
     skew: ["responsive", "hover", "focus"],
     transitionProperty: ["responsive"],
     transitionTimingFunction: ["responsive"],
