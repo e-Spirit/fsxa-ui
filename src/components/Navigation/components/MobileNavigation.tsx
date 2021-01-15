@@ -1,7 +1,6 @@
 import { NavigationItem } from "@/types/fsxa-ui";
 import Component from "vue-class-component";
 import BaseNavigation from "./BaseNavigation";
-import "./style.css";
 
 @Component({
   name: "MobileNavigation",
@@ -25,7 +24,7 @@ class MobileNavigation extends BaseNavigation {
               <span
                 class={`flex-grow leading-3 ${
                   this.activeItemKeys?.includes(item.key)
-                    ? "mobile-nav-active"
+                    ? "text-gray-900"
                     : "text-gray-600"
                 }`}
               >
