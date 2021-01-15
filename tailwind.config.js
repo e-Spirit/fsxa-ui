@@ -2,8 +2,16 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-  future: {},
-  purge: [],
+  future: {
+    purgeLayersByDefault: true,
+  },
+  purge: [
+    "./src/**/*.html",
+    "./public/index.html",
+    "./src/**/*.vue",
+    "./src/**/*.tsx",
+    "./src/**/*.ts",
+  ],
   theme: {
     extend: {
       screens: {
@@ -44,6 +52,8 @@ module.exports = {
   },
   variants: {
     opacity: ["group-hover"],
+    overflow: ["hover"],
+    translate: ["hover", "group-hover"],
   },
   plugins: [],
 };
