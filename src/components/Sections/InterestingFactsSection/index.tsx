@@ -8,15 +8,21 @@ import Container from "@/components/Container";
 import Headline from "@/components/Headline";
 import Layout, { LayoutItem } from "@/components/Layout";
 import Paragraph from "@/components/Paragraph";
-import { InterestingFactsSectionProps } from "@/types/sections";
+import {
+  InterestingFactsSectionProps,
+  InterestingFactsSectionEvents,
+  InterestingFactsSectionSlots,
+} from "@/types/sections";
 
 @Component({
   name: "InterestingFactsSection",
 })
 class InterestingFactsSection extends BaseComponent<
-  InterestingFactsSectionProps
+  InterestingFactsSectionProps,
+  InterestingFactsSectionEvents,
+  InterestingFactsSectionSlots
 > {
-  @Prop({ required: true as true })
+  @Prop({ required: true })
   headline!: InterestingFactsSectionProps["headline"];
   @Prop({ required: true }) text!: InterestingFactsSectionProps["text"];
   @Prop({ required: true })
@@ -42,36 +48,57 @@ class InterestingFactsSection extends BaseComponent<
           <Layout wrap>
             <LayoutItem width="full" lg={{ width: "6/12" }}>
               <div class="InterestingFactsSection--Content">
-                <Headline
-                  as="span"
-                  size="xl"
-                  weight="light"
-                  data-testid={"interestingfactssection-tagline"}
-                >
-                  {this.tagline}
-                </Headline>
-                <Headline
-                  as="h2"
-                  class="text-highlight leading-none"
-                  size="xxl"
-                  data-testid={"interestingfactssection-headline"}
-                >
-                  {this.headline}
-                </Headline>
-                <Paragraph
-                  size="lg"
-                  weight="light"
-                  data-testid={"interestingfactssection-text"}
-                >
-                  <RichText content={this.text} />
-                </Paragraph>
+                {this.$scopedSlots.tagline ? (
+                  this.$scopedSlots.tagline(this.tagline)
+                ) : (
+                  <Headline
+                    as="span"
+                    size="xl"
+                    weight="light"
+                    data-testid={"interestingfactssection-tagline"}
+                  >
+                    {this.tagline}
+                  </Headline>
+                )}
+                {this.$scopedSlots.headline ? (
+                  this.$scopedSlots.headline(this.headline)
+                ) : (
+                  <Headline
+                    as="h2"
+                    class="text-highlight leading-none"
+                    size="xxl"
+                    data-testid={"interestingfactssection-headline"}
+                  >
+                    {this.headline}
+                  </Headline>
+                )}
+
+                {this.$scopedSlots.text ? (
+                  this.$scopedSlots.text(this.text)
+                ) : (
+                  <Paragraph
+                    size="lg"
+                    weight="light"
+                    data-testid={"interestingfactssection-text"}
+                  >
+                    <RichText content={this.text} />
+                  </Paragraph>
+                )}
               </div>
             </LayoutItem>
             <LayoutItem width="full" lg={{ width: "6/12" }}>
               <Layout>
-                {this.counters.map(counter => (
+                {this.counters.map((counter, index) => (
                   <LayoutItem width="full" class="mt-20 lg:mt-32">
-                    <Counter value={counter.value} label={counter.label} />
+                    {this.$scopedSlots.counter ? (
+                      this.$scopedSlots.counter(counter)
+                    ) : (
+                      <Counter
+                        value={counter.value}
+                        label={counter.label}
+                        data-testid={`interestingfactssection-counter-${index}`}
+                      />
+                    )}
                   </LayoutItem>
                 ))}
               </Layout>

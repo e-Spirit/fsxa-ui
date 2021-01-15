@@ -28,9 +28,30 @@ export default class App extends Vue {
           tagline="Did you know?"
           counters={counters}
           backgroundImage={{
-            type: "image",
             src: imageSrc,
+            dimensions: { width: 400, height: 400 },
             previewId: "1000",
+          }}
+          scopedSlots={{
+            tagline: txt => (
+              <i class="Headline xl light uppercase include-margin">{txt}</i>
+            ),
+            headline: txt => (
+              <h1 class="Headline xxl bold lowercase include-margin leading-none">
+                {txt}
+              </h1>
+            ),
+            text: txt => (
+              <div>
+                <b>What follows is a text about trees: </b>
+                <small class="lowercase">{txt}</small>
+              </div>
+            ),
+            counter: counter => (
+              <div class="pl-10">
+                {counter.value}: {counter.label}
+              </div>
+            ),
           }}
         />
       </div>

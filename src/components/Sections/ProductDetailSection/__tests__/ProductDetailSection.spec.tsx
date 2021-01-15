@@ -102,7 +102,8 @@ describe("components/sections/ProductDetailSection", () => {
     ]);
 
     expectToExistNTimes(container, [
-      { key: "ProductDetail--Image", expectedInstanceCount: 2 },
+      // Since the ProductDetailSection displays only one image at a time, the expected instance count decreased from 2 to 1
+      { key: "ProductDetail--Image", expectedInstanceCount: 1 },
       { key: "ProductDetail--Property--Headline", expectedInstanceCount: 2 },
       { key: "ProductDetail--Property--List", expectedInstanceCount: 2 },
       { key: "ProductDetail--Accordion", expectedInstanceCount: 3 },
