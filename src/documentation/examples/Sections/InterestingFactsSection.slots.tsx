@@ -28,8 +28,8 @@ export default class App extends Vue {
           tagline="Did you know?"
           counters={counters}
           backgroundImage={{
+            type: "image",
             src: imageSrc,
-            dimensions: { width: 400, height: 400 },
             previewId: "1000",
           }}
           scopedSlots={{
