@@ -80,7 +80,7 @@ class Accordion extends BaseComponent<AccordionProps> {
           data-testid="darkmode"
         >
           <span
-            class={`flex-grow w-2/3 text-xs tracking-wider font-bold whitespace-no-wrap overflow-hidden uppercase`}
+            class={`flex-grow text-xs tracking-wider font-bold whitespace-no-wrap overflow-hidden uppercase`}
           >
             {this.title}
           </span>
