@@ -262,7 +262,7 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
                 </div>
               );
             },
-            slide: ({ index, params }) => this.renderSlide(this.slides[index]),
+            slide: ({ index }) => this.renderSlide(this.slides[index]),
           }}
         />
       </div>
