@@ -123,7 +123,7 @@ export interface InterestingFactsSectionSlots {
    * You can override the text rendering of this component by specifying the slot text
    * It will receive the text as its first parameter
    */
-  text?: string;
+  text?: RenderedType;
   /**
    * You can override the tagline rendering of this component by specifying the slot tagline
    * It will receive the tagline as its first parameter
@@ -155,7 +155,7 @@ export interface InterestingFactsSectionProps {
   /**
    * text content that will be displayed in the info box
    */
-  text: string;
+  text: RenderedType;
   /**
    * counters that should be displayed
    */

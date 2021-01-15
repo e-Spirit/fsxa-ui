@@ -2,7 +2,6 @@ import BaseComponent from "@/components/BaseComponent";
 import { Component, Prop } from "vue-property-decorator";
 import Image from "@/components/Image";
 import Headline from "@/components/Headline";
-import RichText from "@/components/RichText";
 
 import "./style.css";
 import { NewsTeaserItemProps } from "@/types/components";
@@ -45,11 +44,12 @@ class NewsTeaserItem extends BaseComponent<NewsTeaserItemProps> {
           >
             {this.title}
           </Headline>
-          <RichText
+          <div
             class="NewsTeaserItem--Description"
             data-testid="newsteaseritem-description"
-            content={this.description}
-          />
+          >
+            {this.description}
+          </div>
           <a
             data-testid="newsteaseritem-click"
             href="#"

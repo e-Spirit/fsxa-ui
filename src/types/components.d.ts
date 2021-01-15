@@ -318,30 +318,10 @@ export interface ParagraphProps {
 }
 export class Paragraph extends Component<ParagraphProps> {}
 
-export interface RichTextProps {
-  /**
-   * TODO: Should we even mention firstspirit in here?
-   *
-   * RichText content that can contain formatting information
-   *
-   * CSS will be automatically applied
-   */
-  content: string;
-  /**
-   * Should the html-elements be inlined?
-   *
-   * Useful for headlines and other inline elements
-   *
-   * Default value is: **false**
-   */
-  inline?: boolean;
-}
-export class RichText extends Component<RichTextProps> {}
-
 export interface NewsTeaserItemProps {
   title: string;
   date: string;
-  description: string;
+  description: RenderedType;
   handleClick?: () => void;
   image?: ImageRef;
   latest?: boolean;
@@ -356,7 +336,7 @@ export interface ProductListItemProps {
   /**
    * The description that will be displayed. Can contain RichText
    */
-  description: string;
+  description: RenderedType;
   /**
    * The price that will be displayed.
    */

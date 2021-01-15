@@ -37,7 +37,7 @@ class TeaserSection<MediaType = ImageRef> extends BaseComponent<
     const typedImage = (this.media as any) as ImageRef;
     return (
       <Image
-        data-testid={"teasersection-image"}
+        data-testid={"teasersection-media"}
         src={typedImage.src}
         resolutions={typedImage.resolutions}
         sizes={`(min-width: ${this.breakpoints.lg}) calc(100vw / 12 * 7), 100vw`}
@@ -94,7 +94,7 @@ class TeaserSection<MediaType = ImageRef> extends BaseComponent<
                   )}
             </LayoutItem>
             <LayoutItem width="full" lg={{ width: "7/12" }}>
-              {this.renderMedia()}
+              {this.media && this.renderMedia()}
             </LayoutItem>
           </Layout>
         </Container>

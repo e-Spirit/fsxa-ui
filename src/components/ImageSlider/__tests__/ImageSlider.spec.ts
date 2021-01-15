@@ -30,7 +30,11 @@ describe("components/ImageSlider", () => {
   it("should switch the displayed image", async () => {
     const { getByTestId } = render(ImageSlider, {
       props: {
-        images: IMAGES_URLS.map(url => ({ src: url })),
+        animate: false,
+        images: IMAGES_URLS.map(url => ({
+          type: "image",
+          src: url,
+        })),
       },
     });
     const image = getByTestId("image-0");
@@ -40,9 +44,12 @@ describe("components/ImageSlider", () => {
     expect(imageContainerParent?.style.transform).toEqual("translateX(-0%)");
     const buttonNextSlide = getByTestId("button-next-slide");
     await fireEvent(buttonNextSlide, new Event("click"));
+    // the transitions are animated, so we have to wait a little before the translateX value is updated
+    await new Promise(r => setTimeout(r, 300));
     expect(imageContainerParent?.style.transform).toEqual("translateX(-100%)");
     const buttonPrevSlide = getByTestId("button-prev-slide");
     await fireEvent(buttonPrevSlide, new Event("click"));
+    await new Promise(r => setTimeout(r, 300));
     expect(imageContainerParent?.style.transform).toEqual("translateX(-0%)");
   });
 

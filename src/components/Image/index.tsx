@@ -96,6 +96,7 @@ class Image extends BaseComponent<ImageProps> {
       <div
         class={`Image w-full h-full ${this.border ? "border" : ""}`}
         data-previewid={this.previewId}
+        data-testid="imageDiv"
       >
         <div class="w-full h-full overflow-hidden relative">
           <img

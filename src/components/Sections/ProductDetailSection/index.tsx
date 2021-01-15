@@ -8,7 +8,6 @@ import Paragraph from "@/components/Paragraph";
 import Button from "@/components/Button";
 import Container from "@/components/Container";
 import Layout from "@/components/Layout";
-import RichText from "@/components/RichText";
 import "./style.css";
 import Accordion from "@/components/Accordion";
 import { ImageRef } from "@/types/components";
@@ -125,13 +124,9 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
                             key={key}
                             class="ProductDetail--Accordion"
                           >
-                            <RichText
-                              content={
-                                this.foldableContentList
-                                  ? this.foldableContentList[key]
-                                  : ""
-                              }
-                            />
+                            {this.foldableContentList
+                              ? this.foldableContentList[key]
+                              : ""}
                           </Accordion>
                         ))}
                       </LayoutItem>

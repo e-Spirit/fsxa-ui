@@ -1,7 +1,7 @@
 import { fireEvent, render } from "@testing-library/vue";
 import TeaserSection from "..";
 
-describe("components/TeaserSections", () => {
+describe("components/TeaserSection", () => {
   const headline = "test123";
   const kicker = "this is my test";
   const text = "tagline";
@@ -16,14 +16,14 @@ describe("components/TeaserSections", () => {
         kicker,
         text,
         buttonText,
-        image: { src: image },
+        media: { src: image },
       },
     });
     expect(getByTestId("teasersection-button")).toBeTruthy();
     expect(getByTestId("teasersection-headline")).toBeTruthy();
     expect(getByTestId("teasersection-kicker")).toBeTruthy();
     expect(getByTestId("teasersection-text")).toBeTruthy();
-    expect(getByTestId("teasersection-image")).toBeTruthy();
+    expect(getByTestId("teasersection-media")).toBeTruthy();
   });
 
   it("emits an event on button click", async () => {
@@ -50,7 +50,7 @@ describe("components/TeaserSections", () => {
         text: text,
         kicker: kicker,
         buttonText: buttonText,
-        image: { src: image },
+        media: { type: "image", src: image },
       },
       scopedSlots: {
         headline: `<h1 data-testid="scoped-slot-headline">{{props.headline}}</h1>`,

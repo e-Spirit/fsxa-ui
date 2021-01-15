@@ -10,6 +10,7 @@ class ImageSlider<Type = any> extends BaseComponent<
   {},
   ImageSliderSlots<Type>
 > {
+  @Prop({ default: true }) animate: ImageSliderProps<Type>["animate"];
   @Prop({ required: true }) images!: ImageSliderProps<Type>["images"];
 
   renderImage(image: Type, index: number) {
@@ -24,7 +25,7 @@ class ImageSlider<Type = any> extends BaseComponent<
     return (
       <Slider
         infinite
-        animate
+        animate={this.animate}
         initialSlideIndex={0}
         animateSlideTransition
         slideCount={this.images.length}
