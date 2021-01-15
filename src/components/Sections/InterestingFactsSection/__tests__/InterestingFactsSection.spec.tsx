@@ -52,4 +52,41 @@ describe("components/InterestingFactsSection", () => {
       imagePreviewId,
     );
   });
+  it("should replace the default rendering of headline, text, tagline, and counters props when the scopedSlots are being used", async () => {
+    const { getByTestId, container } = render(InterestingFactsSection, {
+      props: {
+        headline: content,
+        text: textContent,
+        tagline: testTagline,
+        counters: testCounters,
+      },
+      scopedSlots: {
+        headline: `<h1 data-testid="scoped-slot-headline">{{props.headline}}</h1>`,
+        text: `<p data-testid="scoped-slot-text">{{props.text}}</p>`,
+        tagline: `<span data-testid="scoped-slot-tagline">{{props.tagline}}</span>`,
+        counter: `<div class="scoped-slot-counter-item">{{props.counter}}</div>`,
+      },
+    });
+    const scopedSlotHeadline = getByTestId("scoped-slot-headline");
+    const scopedSlotTagline = getByTestId("scoped-slot-tagline");
+    const scopedSlotText = getByTestId("scoped-slot-text");
+    const scopedCounterItems = container.querySelectorAll(
+      ".scoped-slot-counter-item",
+    );
+
+    expect(scopedCounterItems.length).toBe(2);
+
+    expect(() => getByTestId("interestingfactssection-headline")).toThrow();
+    expect(() => getByTestId("interestingfactssection-tagline")).toThrow();
+    expect(() => getByTestId("interestingfactssection-text")).toThrow();
+    testCounters.forEach((c, index) => {
+      expect(() =>
+        getByTestId(`interestingfactssection-counter-${index}`),
+      ).toThrow();
+    });
+
+    expect(scopedSlotHeadline.nodeName).toBe("H1");
+    expect(scopedSlotTagline.nodeName).toBe("SPAN");
+    expect(scopedSlotText.nodeName).toBe("P");
+  });
 });

@@ -106,6 +106,35 @@ export class ProductDetailSection extends Component<
   ProductDetailSectionProps
 > {}
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface InterestingFactsSectionEvents {}
+
+export interface InterestingFactsSectionSlots {
+  /**
+   * You can override the headline rendering of this component by specifying the slot headline
+   * It will receive the headline as its first parameter
+   */
+  headline?: string;
+  /**
+   * You can override the text rendering of this component by specifying the slot text
+   * It will receive the text as its first parameter
+   */
+  text?: string;
+  /**
+   * You can override the tagline rendering of this component by specifying the slot tagline
+   * It will receive the tagline as its first parameter
+   */
+  tagline?: string;
+  /**
+   * You can override the counter rendering of this component by specifying the slot counter
+   * It will receive an Object of type {value: number; label: string} as its first parameter
+   */
+  counter?: {
+    value: number;
+    label: string;
+  };
+}
+
 export interface InterestingFactsSectionProps {
   /**
    * Optional reference to the background-image that should be displayed
@@ -162,14 +191,45 @@ export interface TeaserSectionProps {
    * Optional image that is displayed on the right side of the section
    */
   image?: ImageRef;
-  /**
-   * Optional callback that is triggered, when button is clicked
-   *
-   * Be aware that the button is only rendered, when `buttonText` is provided
-   */
-  handleButtonClick?: () => void;
 }
-export class TeaserSection extends Component<TeaserSectionProps> {}
+export interface TeaserSectionEventsWithOn {
+  /**
+   * This Event will be invoked, when the button is clicked
+   */
+  onButtonClick?: () => void;
+}
+
+export interface TeaserSectionSlots {
+  /**
+   * You can override the headline rendering of this component by specifying the slot headline
+   * It will receive the headline as its first parameter
+   */
+  headline?: string;
+  /**
+   * You can override the kicker headline rendering of this component by specifying the slot kicker
+   * It will receive the kicker as its first parameter
+   */
+  kicker?: string;
+  /**
+   * You can override the text rendering of this component by specifying the slot text
+   * It will receive the text as its first parameter
+   */
+  text?: string;
+  /**
+   * You can override the button rendering of this component by specifying the slot button
+   * It will receive the buttonText as its first parameter
+   */
+  button?: string;
+  /**
+   * You can override the media rendering of this component by specifying the slot media
+   * It will receive an Object of type ImageRef as its first parameter
+   */
+  media?: ImageRef;
+}
+export class TeaserSection extends Component<
+  TeaserSectionProps,
+  TeaserSectionEventsWithOn
+> {}
 
 export interface Breadcrumb {
   referenceId: string;
