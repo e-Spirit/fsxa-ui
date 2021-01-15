@@ -12,12 +12,12 @@ class ImageSlider<Type = any> extends BaseComponent<
 > {
   @Prop({ required: true }) images!: ImageSliderProps<Type>["images"];
 
-  renderImage(image: Type) {
+  renderImage(image: Type, index: number) {
     if (this.$scopedSlots.image) {
       return this.$scopedSlots.image({ image });
     }
     const typedImage = (image as any) as ImageRef;
-    return <Image props={{ ...typedImage }} />;
+    return <Image data-testid={`image-${index}`} props={{ ...typedImage }} />;
   }
 
   render() {
@@ -35,6 +35,7 @@ class ImageSlider<Type = any> extends BaseComponent<
               <div class="absolute bottom-0 right-0 -mr-4 mb-4 flex flex-col">
                 <a
                   href="#"
+                  data-testid={`button-prev-slide`}
                   class={`${
                     params.prevSlideIndex !== null
                       ? `bg-black text-white`
@@ -63,6 +64,7 @@ class ImageSlider<Type = any> extends BaseComponent<
                 </a>
                 <a
                   href="#"
+                  data-testid={`button-next-slide`}
                   class={`${
                     params.nextSlideIndex !== null
                       ? `bg-black text-white`
@@ -93,8 +95,8 @@ class ImageSlider<Type = any> extends BaseComponent<
             );
           },
         }}
-        slides={this.images.map((slide: any) => ({
-          render: () => this.renderImage(slide),
+        slides={this.images.map((slide: any, index) => ({
+          render: () => this.renderImage(slide, index),
         }))}
       />
     );

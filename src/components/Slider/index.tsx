@@ -13,11 +13,11 @@ class Slider extends BaseComponent<SliderProps, {}, SliderSlots> {
   @Prop({ default: false }) infinite!: SliderProps["infinite"];
   @Prop({ default: false }) animate!: SliderProps["animate"];
   @Prop({ default: 10000 }) animationDelay!: SliderProps["animationDelay"];
-  @Prop({ required: true })
+  @Prop({ default: 0 })
   initialSlideIndex!: SliderProps["initialSlideIndex"];
   @Prop({ required: true }) slides!: SliderProps["slides"];
 
-  currentSlideIndex = this.initialSlideIndex;
+  currentSlideIndex = this.initialSlideIndex!;
   nextSlideIndexToShow: number | null = null;
 
   animationTimeout: number | null = null;
@@ -36,6 +36,7 @@ class Slider extends BaseComponent<SliderProps, {}, SliderSlots> {
         class={`${currentWidthClass ||
           "w-full"} h-full flex items-center justify-center flex-shrink-0`}
         ref={`slide_${index}`}
+        data-testid="slide-wrapper"
       >
         {slide.render()}
       </div>
@@ -113,6 +114,7 @@ class Slider extends BaseComponent<SliderProps, {}, SliderSlots> {
                 : ""
             }`}
             style={{ transform: `translateX(-${percentage}%)` }}
+            data-testid="transform-wrapper"
           >
             {this.slides.map(this.renderSlideWrapper)}
           </div>

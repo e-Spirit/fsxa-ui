@@ -573,7 +573,7 @@ export interface SliderProps {
    *
    * Counting starts at 0
    */
-  initialSlideIndex: number;
+  initialSlideIndex?: number;
   /**
    * Provide information on how to render and animate each slide
    */
