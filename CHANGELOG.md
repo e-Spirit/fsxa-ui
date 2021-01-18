@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/e-Spirit/fsxa-ui/compare/v2.0.1...v2.0.2) (2021-01-18)
+
+
+### Bug Fixes
+
+* 🐛 Add all width classes to tailwind whitelist ([d932430](https://github.com/e-Spirit/fsxa-ui/commit/d932430b13ecc01f7847a1ca1fb6593ba444b3b1))
+
 ## [2.0.1](https://github.com/e-Spirit/fsxa-ui/compare/v2.0.0...v2.0.1) (2021-01-15)
 
 
