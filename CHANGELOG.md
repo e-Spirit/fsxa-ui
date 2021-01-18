@@ -1,3 +1,10 @@
+## [2.0.4](https://github.com/e-Spirit/fsxa-ui/compare/v2.0.3...v2.0.4) (2021-01-18)
+
+
+### Bug Fixes
+
+* 🐛 rename onSlideAnimation to handleSlideAnimation ([b48a322](https://github.com/e-Spirit/fsxa-ui/commit/b48a322cde5ae450a094b19418ae7a17e40347f8))
+
 ## [2.0.3](https://github.com/e-Spirit/fsxa-ui/compare/v2.0.2...v2.0.3) (2021-01-18)
 
 
