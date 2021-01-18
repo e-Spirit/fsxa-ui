@@ -361,6 +361,20 @@ export interface AccordionSectionProps {
 }
 export class AccordionSection extends Component<AccordionSectionProps> {}
 
+export interface GoogleMapsSectionSlots {
+  /**
+   * Allows for a custom title to be rendered. Replaces headline and line separator of default rendering.
+   */
+  title?: string;
+  /**
+   * Allows for a custom rendering of the location items.
+   */
+  locationItem?: {
+    location: MapsLocation;
+    selected: boolean;
+    handleItemClick: () => void;
+  };
+}
 export interface GoogleMapsSectionProps {
   /**
    * Your GoogleMaps apikey
