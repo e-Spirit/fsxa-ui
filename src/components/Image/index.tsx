@@ -32,7 +32,6 @@ class Image extends BaseComponent<ImageProps> {
   @Prop() resolutions: ImageProps["resolutions"];
   @Prop() sizes: ImageProps["sizes"];
   @Prop({ required: false }) lazy!: ImageProps["lazy"];
-  @Prop({ required: false }) border!: ImageProps["border"];
   @Prop({ required: false }) zoom!: ImageProps["zoom"];
   @Prop({ required: false }) opacity!: ImageProps["opacity"];
   @Prop({ required: false }) previewId!: ImageProps["previewId"];
@@ -94,7 +93,7 @@ class Image extends BaseComponent<ImageProps> {
   render() {
     return (
       <div
-        class={`Image w-full h-full ${this.border ? "border" : ""}`}
+        class={`Image w-full h-full`}
         data-previewid={this.previewId}
         data-testid="imageDiv"
       >

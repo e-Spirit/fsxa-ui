@@ -1,0 +1,9 @@
+@screen md {
+  .teasersection-media {
+    &:before {
+      @apply absolute top-0 left-0 -ml-12 mt-12 w-full h-full z-auto;
+      content: "";
+      border: 30px solid rgba(0, 0, 0.5, 0.1);
+    }
+  }
+}
