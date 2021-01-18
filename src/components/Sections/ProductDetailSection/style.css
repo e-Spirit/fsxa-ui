@@ -1,11 +1,30 @@
-.ProductDetail--ProductDetail{
-    @apply pb-64;
-    border-top-width: 4em;
-    border-right-width: 2em;
-    border-left-width: 2em;
-    border-bottom-width: 4em;
+@screen lg {
+  .ProductDetail--Content {
+    @apply border border-black;
+    border-top-width: 2em;
+    border-right-width: 1em;
+    border-left-width: 1em;
+    border-bottom-width: 2em;
+  }
+
+  .ProductDetail--ImageBorder {
+    @apply relative ml-8;
+    width: (100% - 2rem);
+
+    &:before {
+      content: "";
+      border-width: 10px;
+      @apply absolute bottom-0 left-0 w-full h-full -mb-8 -ml-8 border-black;
+    }
+  }
 }
 
-.ProductDetail--Button {
-    letter-spacing: 0.15em;
+@screen xl {
+  .ProductDetail--Content {
+    @apply border border-black;
+    border-top-width: 3em;
+    border-right-width: 2em;
+    border-left-width: 2em;
+    border-bottom-width: 3em;
+  }
 }

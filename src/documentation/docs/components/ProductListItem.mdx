@@ -12,22 +12,22 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
 ## Properties
 
 <PropsTable>
-  <PropsTableRow value="title" required>
+  <PropsTableRow value="title" type="string" required>
     The title that will be displayed
   </PropsTableRow>
-  <PropsTableRow value="description" required>
-    The description that will be displayed. Can contain RichText
+  <PropsTableRow value="description" type="string" required>
+    The description that will be displayed.
   </PropsTableRow>
-  <PropsTableRow value="price" required>
+  <PropsTableRow value="price" type="string" required>
     The price that will be displayed.
   </PropsTableRow>
-  <PropsTableRow value="image" required>
+  <PropsTableRow value="image" type="Image" required>
     The image of the product that will be displayed in the background
   </PropsTableRow>
-  <PropsTableRow value="handleClick" required>
+  <PropsTableRow value="handleClick" type="function" required>
     Callback that will be invoked, when the item is clicked
   </PropsTableRow>
-  <PropsTableRow value="url" required>
+  <PropsTableRow value="url" type="string" required>
    The url that should be opened, when the item is clicked.<br />
    Note: this will only be used, when SSR is active and JS is deactivated in the client
   </PropsTableRow>

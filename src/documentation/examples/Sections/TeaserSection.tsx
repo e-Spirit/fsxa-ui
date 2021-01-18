@@ -14,13 +14,13 @@ export default class App extends Vue {
           kicker="kicker"
           text="test1"
           buttonText="click me"
-          handleButtonClick={() => {
+          onButtonClick={() => {
             return;
           }}
           tagline="text"
-          image={{
+          media={{
+            type: "image",
             src: imageSrc,
-            dimensions: { width: 400, height: 400 },
             previewId: "1000",
           }}
         />

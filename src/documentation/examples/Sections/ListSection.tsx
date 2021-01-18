@@ -4,6 +4,8 @@ import Component from "vue-class-component";
 import ListSection from "@/components/Sections/ListSection";
 import ProductListItem from "@/components/ProductListItem";
 
+const headline = "List Example Headline";
+
 const items = [
   {
     title: "Product 1",
@@ -48,6 +50,37 @@ const items = [
   },
 ];
 
+const filters = [
+  [
+    {
+      key: "news",
+      value: "News",
+    },
+    {
+      key: "events",
+      value: "Events",
+    },
+    {
+      key: "business",
+      value: "Business",
+    },
+  ],
+  [
+    {
+      key: "usa",
+      value: "USA",
+    },
+    {
+      key: "europe",
+      value: "Europe",
+    },
+    {
+      key: "asia",
+      value: "Asia",
+    },
+  ],
+];
+
 const handleClick = (item: any) => {
   console.log("Item click... ", item);
 };
@@ -59,13 +92,22 @@ export default class App extends Vue {
   render() {
     return (
       <ListSection
+        headline={headline}
         items={items}
+        filters={filters}
+        selectedFilters={this.selectedFilters}
+        handleFilterChange={selectedFilters =>
+          (this.selectedFilters = selectedFilters)
+        }
         renderItem={item => (
           <ProductListItem
             title={item.title}
             description={item.description}
             price={item.price}
-            image={item.image}
+            image={{
+              ...item.image,
+              type: "image",
+            }}
             url={item.url}
             handleClick={handleClick.bind(null, item)}
           />

@@ -1,7 +1,6 @@
 import BaseComponent from "@/components/BaseComponent";
 import { Component, Prop } from "vue-property-decorator";
 import Headline from "@/components/Headline";
-import RichText from "@/components/RichText";
 import Image from "@/components/Image";
 
 import "./style.css";
@@ -33,7 +32,7 @@ class ProductListItem extends BaseComponent<ProductListItemProps> {
             <Headline as="h3" class="mt-12 ml-8 mr-4" size="sm">
               {this.title}
             </Headline>
-            <RichText class="ml-8 mr-4 text-sm" content={this.description} />
+            <div class="ml-8 mr-4 text-sm">{this.description}</div>
             <div class="ml-8 mr-4">{this.price}</div>
           </div>
         </a>

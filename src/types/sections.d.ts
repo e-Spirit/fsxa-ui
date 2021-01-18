@@ -1,6 +1,10 @@
 import { Component } from "vue-tsx-support";
-import { ImageRef } from "./utils";
-import { NewsTeaserItemProps } from "./components";
+import {
+  ImageRef,
+  NewsTeaserItemProps,
+  RenderedType,
+  SliderControlParams,
+} from "./components";
 
 export interface NewsTeaserSectionProps {
   headline: string;
@@ -75,7 +79,7 @@ export interface ProductDetailSectionProps {
   /**
    * Specify a text for the button
    *
-   * The button is only rendered, when `buttonText` is provided.
+   * The button is only rendered when `buttonText` is provided.
    */
   buttonText?: string;
   /**
@@ -93,7 +97,7 @@ export interface ProductDetailSectionProps {
    *
    * The value can contain RichText-Formatting
    */
-  foldableContentList?: Record<string, string>;
+  foldableContentList?: Record<string, RenderedType>;
   /**
    * Optional callback that is triggered, when the button is clicked
    *
@@ -105,6 +109,35 @@ export interface ProductDetailSectionProps {
 export class ProductDetailSection extends Component<
   ProductDetailSectionProps
 > {}
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface InterestingFactsSectionEvents {}
+
+export interface InterestingFactsSectionSlots {
+  /**
+   * You can override the headline rendering of this component by specifying the slot headline
+   * It will receive the headline as its first parameter
+   */
+  headline?: string;
+  /**
+   * You can override the text rendering of this component by specifying the slot text
+   * It will receive the text as its first parameter
+   */
+  text?: RenderedType;
+  /**
+   * You can override the tagline rendering of this component by specifying the slot tagline
+   * It will receive the tagline as its first parameter
+   */
+  tagline?: string;
+  /**
+   * You can override the counter rendering of this component by specifying the slot counter
+   * It will receive an Object of type {value: number; label: string} as its first parameter
+   */
+  counter?: {
+    value: number;
+    label: string;
+  };
+}
 
 export interface InterestingFactsSectionProps {
   /**
@@ -122,7 +155,7 @@ export interface InterestingFactsSectionProps {
   /**
    * text content that will be displayed in the info box
    */
-  text: string;
+  text: RenderedType;
   /**
    * counters that should be displayed
    */
@@ -135,7 +168,7 @@ export class InterestingFactsSection extends Component<
   InterestingFactsSectionProps
 > {}
 
-export interface TeaserSectionProps {
+export interface TeaserSectionProps<MediaType = ImageRef> {
   /**
    * The headline of the Section
    */
@@ -159,17 +192,49 @@ export interface TeaserSectionProps {
    */
   tagline?: string;
   /**
-   * Optional image that is displayed on the right side of the section
+   * Optional media that is displayed on the right side of the section
    */
-  image?: ImageRef;
-  /**
-   * Optional callback that is triggered, when button is clicked
-   *
-   * Be aware that the button is only rendered, when `buttonText` is provided
-   */
-  handleButtonClick?: () => void;
+  media?: MediaType;
 }
-export class TeaserSection extends Component<TeaserSectionProps> {}
+export interface TeaserSectionEventsWithOn {
+  /**
+   * This Event will be invoked, when the button is clicked
+   */
+  onButtonClick?: () => void;
+}
+
+export interface TeaserSectionSlots<MediaType> {
+  /**
+   * You can override the headline rendering of this component by specifying the slot headline
+   * It will receive the headline as its first parameter
+   */
+  headline?: string;
+  /**
+   * You can override the kicker headline rendering of this component by specifying the slot kicker
+   * It will receive the kicker as its first parameter
+   */
+  kicker?: string;
+  /**
+   * You can override the text rendering of this component by specifying the slot text
+   * It will receive the text as its first parameter
+   */
+  text?: string;
+  /**
+   * You can override the button rendering of this component by specifying the slot button
+   * It will receive the buttonText as its first parameter
+   */
+  button?: string;
+  /**
+   * You can override the media rendering of this component by specifying the slot media
+   * It will receive an Object of type ImageRef as its first parameter
+   */
+  media?: MediaType;
+}
+export class TeaserSection<MediaType> extends Component<
+  TeaserSectionProps,
+  TeaserSectionEventsWithOn,
+  TeaserSectionSlots<MediaType>
+> {}
 
 export interface Breadcrumb {
   referenceId: string;
@@ -180,6 +245,14 @@ export interface Breadcrumb {
 export interface BreadcrumbsProps {
   items: Breadcrumb[];
   handleItemClick?: (item: Breadcrumb) => void;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface HeaderSectionEvents {}
+
+export interface HeaderSectionSlots {
+  backgroundImage?: ImageRef;
+  breadcrumbs?: Breadcrumb[];
 }
 
 export interface HeaderSectionProps {
@@ -201,6 +274,76 @@ export interface HeaderSectionProps {
   handleItemClick?: (item: Breadcrumb) => void;
 }
 export class HeaderSection extends Component<HeaderSectionProps> {}
+
+export interface FullWidthSliderSectionSlide<MediaType> {
+  /**
+   * A resolution map which provides the width / height and url for each resolution
+   *
+   * The Section will automatically make sure, that the correct image is referenced
+   */
+  media: MediaType;
+  /**
+   * The title of the slide that will be animated in.
+   *
+   * Note: This can contain RichText
+   */
+  title: RenderedType;
+  /**
+   * The description that will be animated. Make sure that you do not use too much text.
+   *
+   * Note: This can contain RichText
+   */
+  teaser: RenderedType;
+  /**
+   * The label of the button that should be displayed.
+   */
+  buttonContent: RenderedType;
+}
+export interface FullWidthSliderSectionEventsWithOn<MediaType> {
+  /**
+   * This Event will be invoked, when the CTA-Button of a slide is clicked. The displayed slide will be passed as parameter.
+   */
+  onClick: FullWidthSliderSectionSlide<MediaType>;
+}
+export interface FullWidthSliderSectionSlots<MediaType> {
+  title?: RenderedType;
+  teaser?: RenderedType;
+  button?: { content: RenderedType; onClick: () => void };
+  media?: MediaType;
+  controls?: SliderControlParams;
+  arrowButton?: {
+    position: "left" | "right";
+    slideNumber: number | null;
+    media: MediaType | null;
+  };
+  arrowButtonContent?: {
+    position: "left" | "right";
+    slideNumber: number | null;
+    media: MediaType | null;
+  };
+  stepper?: SliderControlParams & {
+    slides: FullWidthSliderSectionSlide<MediaType>[];
+  };
+  stepperStep?: SliderControlParams & {
+    index: number;
+    slide: FullWidthSliderSectionSlide<MediaType>;
+  };
+}
+export interface FullWidthSliderSectionProps<MediaType> {
+  /**
+   * Specify if the default padding should be removed from the wrapped content
+   */
+  removeDefaultPadding?: boolean;
+  /**
+   * The slides that should be displayed. You can add additional properties to the slide-objects as well.
+   */
+  slides: FullWidthSliderSectionSlide<MediaType>[];
+}
+export class FullWidthSliderSection<MediaType> extends Component<
+  FullWidthSliderSectionProps<MediaType>,
+  FullWidthSliderSectionEventsWithOn<MediaType>,
+  FullWidthSliderSectionSlots<MediaType>
+> {}
 
 export interface AccordionSectionProps {
   /**

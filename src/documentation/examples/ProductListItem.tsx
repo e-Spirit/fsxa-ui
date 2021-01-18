@@ -28,7 +28,10 @@ export default class App extends Vue {
             title={product.title}
             description={product.description}
             price={product.price}
-            image={product.image}
+            image={{
+              type: "image",
+              ...product.image,
+            }}
             url={product.url}
             handleClick={handleClick.bind(null, product)}
           />

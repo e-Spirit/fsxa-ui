@@ -1,0 +1,57 @@
+import Code from "@/components/internal/Documentation/Code";
+import ExampleLoader from "@/documentation/utils/ExampleLoader";
+import Meta from "@/components/internal/Documentation/Meta";
+import PropsTable from "@/components/internal/Documentation/PropsTable";
+import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
+import SlotsTable from "@/components/internal/Documentation/SlotsTable";
+import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/components/SlotsTableRow";
+
+<Meta
+  title="Slider"
+  subtitle="Displays elements as a slide-show"
+/>
+
+## Properties
+
+<PropsTable>
+  <PropsTableRow value="slideCount" type="number" required>
+    Specify how many slides should be rendered
+  </PropsTableRow>
+ <PropsTableRow value="initialSlideIndex" type="number" default="0">
+    Index of slide which should initially be displayed.
+  </PropsTableRow>
+  <PropsTableRow value="onSlideAnimation" type={`(type: "animateIn" | "animateOut", params: SliderControlParams) => Promise<void>`}>
+    You can pass this callback to animate incoming and outgoing slides. Make sure to return a Promise, so the slider will wait for your animation to finish.
+  </PropsTableRow>
+ <PropsTableRow value="animateSlideTransition" type="boolean" default="false" >
+   Specifies if the horizontal slide transition should be animated
+  </PropsTableRow>
+ <PropsTableRow value="visibleElements" type="number" default="1">
+    Number of visible slides on one screen. 
+  </PropsTableRow>
+ <PropsTableRow value="infinite" type="boolean" default="false" >
+   Specifies if the slider should start with the first slide again after reaching the last one.
+  </PropsTableRow>
+ <PropsTableRow value="animate" type="boolean" default="false" >
+   Specifies if the slider should start automatically with the transition between slides so that no user-interaction is needed.
+  </PropsTableRow>
+  <PropsTableRow value="animationDelay" type="number" default="10000" >
+    Specifies the delay between the automatic slide transition in ms.
+    This only has an impact, if <strong>animate</strong> is set to true.
+  </PropsTableRow>
+</PropsTable>
+
+## Slots
+
+<SlotsTable>
+  <SlotsTableRow value="slide" prop="{ index: number; params: SliderControlParams}">
+    Specify how a slide should be rendered.
+    <strong class="block">This slot is required</strong>
+  </SlotsTableRow>
+  <SlotsTableRow value="controls" prop="SliderControlParams">
+    The complete controls for the slider.
+  </SlotsTableRow>
+</SlotsTable>
+## Example
+
+<ExampleLoader example="Slider.tsx" />
