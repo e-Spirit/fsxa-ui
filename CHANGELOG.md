@@ -1,3 +1,10 @@
+## [2.0.3](https://github.com/e-Spirit/fsxa-ui/compare/v2.0.2...v2.0.3) (2021-01-18)
+
+
+### Bug Fixes
+
+* 🐛 Remove bottom padding from FullWidthSliderSection ([fe39b51](https://github.com/e-Spirit/fsxa-ui/commit/fe39b514add8677d06161b6cab73bfb41b134671))
+
 ## [2.0.2](https://github.com/e-Spirit/fsxa-ui/compare/v2.0.1...v2.0.2) (2021-01-18)
 
 
