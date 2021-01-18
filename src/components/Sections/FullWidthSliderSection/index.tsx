@@ -209,9 +209,7 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
     return (
       <div
         class={`w-full h-full ${
-          this.removeDefaultPadding
-            ? ""
-            : "md:px-16 md:pb-16 lg:px-20 lg:pb-20 xl:px-24 xl:pb-24"
+          this.removeDefaultPadding ? "" : "md:px-16 lg:px-20 xl:px-24 "
         }`}
       >
         <Slider
