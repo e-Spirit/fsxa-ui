@@ -13,7 +13,8 @@ class Slider extends BaseComponent<SliderProps, {}, SliderSlots> {
   @Prop({ default: false })
   animateSlideTransition!: SliderProps["animateSlideTransition"];
   @Prop({ required: true }) slideCount!: SliderProps["slideCount"];
-  @Prop({ required: false }) onSlideAnimation: SliderProps["onSlideAnimation"];
+  @Prop({ required: false })
+  handleSlideAnimation: SliderProps["handleSlideAnimation"];
   @Prop({ default: 1 }) visibleElements!: SliderProps["visibleElements"];
   @Prop({ default: false }) infinite!: SliderProps["infinite"];
   @Prop({ default: false }) animate!: SliderProps["animate"];
@@ -71,7 +72,7 @@ class Slider extends BaseComponent<SliderProps, {}, SliderSlots> {
     if (this.animationTimeout) {
       window.clearTimeout(this.animationTimeout);
     }
-    const animateOut = this.onSlideAnimation || defaultAnimation;
+    const animateOut = this.handleSlideAnimation || defaultAnimation;
     const slide = (this.$refs[`slide_${this.currentSlideIndex}`] as HTMLElement)
       ?.children[0];
 
@@ -86,7 +87,7 @@ class Slider extends BaseComponent<SliderProps, {}, SliderSlots> {
 
   @Watch("currentSlideIndex")
   async animateIn() {
-    const animateIn = this.onSlideAnimation || defaultAnimation;
+    const animateIn = this.handleSlideAnimation || defaultAnimation;
     const slide = (this.$refs[`slide_${this.currentSlideIndex}`] as HTMLElement)
       ?.children[0];
     if (animateIn && slide) {

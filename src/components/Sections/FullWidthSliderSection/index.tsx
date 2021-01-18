@@ -217,7 +217,7 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
           initialSlideIndex={0}
           infinite
           slideCount={this.slides.length}
-          onSlideAnimation={async (type, { element }) => {
+          handleSlideAnimation={async (type, { element }) => {
             if (type === "animateIn") {
               element.classList.remove(
                 "FullWidthSliderSection--Slide--animate-out",
