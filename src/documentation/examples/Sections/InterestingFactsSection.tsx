@@ -13,6 +13,14 @@ const counters = [
     value: 789,
     label: "trees with a friend",
   },
+  {
+    value: 1001,
+    label: "x-mas trees",
+  },
+  {
+    value: 1,
+    label: "super tree",
+  },
 ];
 const imageSrc =
   "https://images.pexels.com/photos/5592596/pexels-photo-5592596.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
