@@ -27,17 +27,6 @@ describe("components/Image", () => {
     expect(veilDiv.classList.contains("opacity-75")).toBe(true);
   });
 
-  it("should have the border class when the border property is set", () => {
-    const { getByTestId } = render(Image, {
-      props: {
-        src: testImage,
-        border: true,
-      },
-    });
-    const image = getByTestId("imageDiv");
-    expect(image.classList.contains("border")).toBe(true);
-  });
-
   it("should have an img tag with class 'zoom' when the zoom property is set", () => {
     const { getByTestId } = render(Image, {
       props: {

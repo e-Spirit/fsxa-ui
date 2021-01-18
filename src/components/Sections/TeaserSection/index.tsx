@@ -11,6 +11,7 @@ import {
   TeaserSectionSlots,
 } from "@/types/sections";
 import { ImageRef } from "@/types/fsxa-ui";
+import "./style.css";
 
 @Component({
   name: "TeaserSection",
@@ -36,16 +37,18 @@ class TeaserSection<MediaType = ImageRef> extends BaseComponent<
     }
     const typedImage = (this.media as any) as ImageRef;
     return (
-      <Image
-        data-testid={"teasersection-media"}
-        src={typedImage.src}
-        resolutions={typedImage.resolutions}
-        sizes={`(min-width: ${this.breakpoints.lg}) calc(100vw / 12 * 7), 100vw`}
-        data-preview-id={typedImage.previewId}
-        lazy
-        border
-        zoom
-      />
+      <div class="teasersection-media relative md:mx-8 lg:mt-8 lg:pl-0">
+        <Image
+          data-testid={"teasersection-media"}
+          src={typedImage.src}
+          resolutions={typedImage.resolutions}
+          sizes={`(min-width: ${this.breakpoints.lg}) calc(100vw / 12 * 7), 100vw`}
+          data-preview-id={typedImage.previewId}
+          lazy
+          border
+          zoom
+        />
+      </div>
     );
   }
 
@@ -54,7 +57,11 @@ class TeaserSection<MediaType = ImageRef> extends BaseComponent<
       <div class="w-full bg-gray-100 text-black">
         <Container>
           <Layout wrap>
-            <LayoutItem width="full" lg={{ width: "5/12" }}>
+            <LayoutItem
+              width="full"
+              lg={{ width: "1/2" }}
+              xl={{ width: "5/12" }}
+            >
               {this.$scopedSlots.kicker ? (
                 this.$scopedSlots.kicker(this.kicker)
               ) : (
@@ -77,7 +84,10 @@ class TeaserSection<MediaType = ImageRef> extends BaseComponent<
               {this.$scopedSlots.text ? (
                 this.$scopedSlots.text(this.text)
               ) : (
-                <div class="text-sm" data-testid="teasersection-text">
+                <div
+                  class="text-sm uppercase md:pr-6 lg:pr-8"
+                  data-testid="teasersection-text"
+                >
                   {this.text}
                 </div>
               )}
@@ -85,6 +95,7 @@ class TeaserSection<MediaType = ImageRef> extends BaseComponent<
                 ? this.$scopedSlots.button(this.buttonText)
                 : this.buttonText && (
                     <Button
+                      class="mx-2 my-2 lg:my-3 lg:mx-3"
                       data-testid={"teasersection-button"}
                       variant="animated"
                       handleClick={() => this.$emit("buttonClick")}
@@ -93,7 +104,11 @@ class TeaserSection<MediaType = ImageRef> extends BaseComponent<
                     </Button>
                   )}
             </LayoutItem>
-            <LayoutItem width="full" lg={{ width: "7/12" }}>
+            <LayoutItem
+              width="full"
+              lg={{ width: "1/2" }}
+              xl={{ width: "7/12" }}
+            >
               {this.media && this.renderMedia()}
             </LayoutItem>
           </Layout>

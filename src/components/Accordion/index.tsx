@@ -97,7 +97,9 @@ class Accordion extends BaseComponent<AccordionProps> {
             ></path>
           </svg>
         </a>
-        <div class="Accordion--Text-Box text-sm">{this.$slots.default}</div>
+        <div class="Accordion--Text-Box text-sm px-3">
+          {this.$slots.default}
+        </div>
       </div>
     );
   }

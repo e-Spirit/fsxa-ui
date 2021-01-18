@@ -7,21 +7,28 @@
 }
 
 .InterestingFactsSection--Content {
-  @apply uppercase text-white px-8 py-12 mr-4 relative;
-  border: 15px solid white;
-  border-right: 0px;
+  @apply uppercase text-white px-8 relative;
 }
-.InterestingFactsSection--Content:before,
-.InterestingFactsSection--Content:after {
-  @apply absolute bg-white;
-  content: "";
-  right: -15px;
-  width: 15px;
-  height: 140px;
-}
-.InterestingFactsSection--Content:before {
-  top: -15px;
-}
-.InterestingFactsSection--Content:after {
-  bottom: -15px;
+
+@screen sm {
+  .InterestingFactsSection--Content {
+    @apply py-12 mr-4;
+    border: 15px solid white;
+    border-right: 0px;
+  }
+
+  .InterestingFactsSection--Content:before,
+  .InterestingFactsSection--Content:after {
+    @apply absolute bg-white;
+    content: "";
+    right: -15px;
+    width: 15px;
+    height: 140px;
+  }
+  .InterestingFactsSection--Content:before {
+    top: -15px;
+  }
+  .InterestingFactsSection--Content:after {
+    bottom: -15px;
+  }
 }
