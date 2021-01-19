@@ -43,7 +43,7 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
   ) {
     return (
       <div class="w-full h-full bg-black overflow-hidden relative">
-        <div class="FullWidthImageSliderSection--Media transition-opacity duration-250 transform">
+        <div class="FullWidthImageSliderSection--Media w-full h-full transition-opacity duration-250 transform">
           {this.$scopedSlots.media ? (
             this.$scopedSlots.media(slide.media)
           ) : (
