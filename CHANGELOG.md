@@ -1,3 +1,10 @@
+## [2.3.3](https://github.com/e-Spirit/fsxa-ui/compare/v2.3.2...v2.3.3) (2021-01-19)
+
+
+### Bug Fixes
+
+* 🐛 Fix layout errors in ProductListItem and ProductDetail ([c74242a](https://github.com/e-Spirit/fsxa-ui/commit/c74242afd40ea0f72c5dd5c2509e8b60be632649))
+
 ## [2.3.2](https://github.com/e-Spirit/fsxa-ui/compare/v2.3.1...v2.3.2) (2021-01-19)
 
 
