@@ -34,7 +34,7 @@ class ImageSlider<Type = any> extends BaseComponent<
           controls: params => {
             return this.$scopedSlots.controls ? (
               this.$scopedSlots.controls(params)
-            ) : (
+            ) : this.images.length > 1 ? (
               <div class="absolute bottom-0 right-0 mr-4 mb-4 lg:-mr-4 lg:mb-4 flex flex-col">
                 <a
                   href="#"
@@ -95,7 +95,7 @@ class ImageSlider<Type = any> extends BaseComponent<
                   </svg>
                 </a>
               </div>
-            );
+            ) : null;
           },
         }}
       />
