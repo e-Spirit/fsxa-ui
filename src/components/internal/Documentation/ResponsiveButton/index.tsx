@@ -1,6 +1,6 @@
 import "vue-tsx-support/enable-check";
 import { Component, Prop } from "vue-property-decorator";
-import { BaseComponent } from "fsxa-ui";
+import BaseComponent from "@/components/BaseComponent";
 
 interface ResponsiveButtonProps {
   handleOnClick: () => void;
