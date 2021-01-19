@@ -303,7 +303,10 @@ export interface FullWidthSliderSectionEventsWithOn<MediaType> {
   /**
    * This Event will be invoked, when the CTA-Button of a slide is clicked. The displayed slide will be passed as parameter.
    */
-  onClick: FullWidthSliderSectionSlide<MediaType>;
+  onClick: {
+    slide: FullWidthSliderSectionSlide<MediaType>;
+    slideIndex: number;
+  };
 }
 export interface FullWidthSliderSectionSlots<MediaType> {
   title?: RenderedType;
@@ -361,6 +364,20 @@ export interface AccordionSectionProps {
 }
 export class AccordionSection extends Component<AccordionSectionProps> {}
 
+export interface GoogleMapsSectionSlots {
+  /**
+   * Allows for a custom title to be rendered. Replaces headline and line separator of default rendering.
+   */
+  title?: string;
+  /**
+   * Allows for a custom rendering of the location items.
+   */
+  locationItem?: {
+    location: MapsLocation;
+    selected: boolean;
+    handleItemClick: () => void;
+  };
+}
 export interface GoogleMapsSectionProps {
   /**
    * Your GoogleMaps apikey

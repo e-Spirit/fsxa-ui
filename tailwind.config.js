@@ -5,13 +5,26 @@ module.exports = {
   future: {
     purgeLayersByDefault: true,
   },
-  purge: [
-    "./src/**/*.html",
-    "./public/index.html",
-    "./src/**/*.vue",
-    "./src/**/*.tsx",
-    "./src/**/*.ts",
-  ],
+  purge: {
+    content: [
+      "./src/**/*.html",
+      "./public/index.html",
+      "./src/**/*.vue",
+      "./src/**/*.tsx",
+      "./src/**/*.ts",
+    ],
+    options: {
+      whitelistPatterns: [
+        /^w-/,
+        /^xs:w/,
+        /^sm:w-/,
+        /^md:w-/,
+        /^lg:w-/,
+        /^xl:w-/,
+        /^xxl:w-/,
+      ],
+    },
+  },
   theme: {
     extend: {
       screens: {

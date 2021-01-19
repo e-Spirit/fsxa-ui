@@ -552,7 +552,7 @@ export interface SliderProps {
    * The number of slides that should be rendered
    */
   slideCount: number;
-  onSlideAnimation?: (
+  handleSlideAnimation?: (
     type: "animateIn" | "animateOut",
     params: { element: Element; slideIndex: number },
   ) => Promise<void>;

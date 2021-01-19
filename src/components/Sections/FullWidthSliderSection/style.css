@@ -1,12 +1,12 @@
 .FullWidthSliderSection--Slide--animate-in {
   .FullWidthSliderSection--Media {
-    @apply opacity-100;
+    @apply ease-out opacity-100;
   }
 
   .FullWidthSliderSection--Content,
   .FullWidthSliderSection--Description,
   .FullWidthSliderSection--CTA-Button {
-    @apply ease-in-out translate-y-0;
+    @apply ease-out translate-y-0;
   }
 
   .FullWidthSliderSection--Content {
@@ -26,20 +26,20 @@
 }
 
 .FullWidthSliderSection--Slide--animate-out {
-  .FullWidthImageSliderSection--Image {
-    @apply opacity-0 delay-400;
+  .FullWidthImageSliderSection--Media {
+    @apply ease-in opacity-0 delay-250;
   }
 
   .FullWidthSliderSection--Content {
-    @apply delay-300 translate-y-full;
+    @apply ease-in delay-200 translate-y-full;
   }
 
   .FullWidthSliderSection--Teaser,
   .FullWidthSliderSection--CTA-Button {
-    @apply translate-y-32;
+    @apply ease-in translate-y-32;
   }
 
   .FullWidthSliderSection--Description {
-    @apply delay-200;
+    @apply ease-in delay-150;
   }
 }

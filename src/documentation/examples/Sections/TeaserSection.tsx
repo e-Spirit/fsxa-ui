@@ -10,9 +10,9 @@ export default class App extends Vue {
     return (
       <div class="space-x-5">
         <TeaserSection
-          headline="test"
-          kicker="kicker"
-          text="test1"
+          headline="Peace of Mind"
+          kicker="Home Security"
+          text="A security solution from Smart Living provides you peace of mind with industry leading whole-home protection. Our affordable solutions that provide a simple start and grow with you.Life is easier because your home security system will interface with your existing smart home adding secure and intelligent interactions to fully enhance your comfort while you're home & safe and keep you at ease when you are away. Prepare for the unexpected with industry leading brands and the choice of the experts."
           buttonText="click me"
           onButtonClick={() => {
             return;
