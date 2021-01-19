@@ -33,7 +33,7 @@ export interface ListSectionSlots<Item> {
 }
 export interface ListSectionProps<Item> {
   /**
-   * You can pass an optional headline that will be displayed on top of your items.
+   * You can pass an optional headline that will be displayed above your items.
    * An additional separator will be rendered as well.
    */
   headline?: string;
