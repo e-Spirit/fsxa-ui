@@ -38,7 +38,7 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
           <Layout wrap>
             {this.images != null && this.images.length > 0 && (
               <LayoutItem width="full" lg={{ width: "1/2" }}>
-                <div class="ProductDetail--ImageBorder">
+                <div class="ProductDetail--ImageBorder h-auto">
                   <ImageSlider
                     class="ProductDetail--Image"
                     images={this.images}

@@ -9,7 +9,7 @@
 
   .ProductDetail--ImageBorder {
     @apply relative ml-8;
-    width: (100% - 2rem);
+    width: calc(100% - 2rem);
 
     &:before {
       content: "";

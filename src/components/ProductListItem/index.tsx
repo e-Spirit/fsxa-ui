@@ -19,7 +19,9 @@ class ProductListItem extends BaseComponent<ProductListItemProps> {
 
   render() {
     return (
-      <div class={`ProductListItem w-full border-gray-200 border-0 relative`}>
+      <div
+        class={`ProductListItem w-full h-full border-gray-200 border-0 relative`}
+      >
         <Image
           class="w-full h-full m-0 border-0"
           src={this.image.src}
