@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/e-Spirit/fsxa-ui/compare/v2.3.0...v2.3.1) (2021-01-19)
+
+
+### Bug Fixes
+
+* **productlistitem:** add margin above price ([3dbe7d4](https://github.com/e-Spirit/fsxa-ui/commit/3dbe7d46c80ac8f153f75cc4dce764383d864174))
+
 # [2.3.0](https://github.com/e-Spirit/fsxa-ui/compare/v2.2.1...v2.3.0) (2021-01-19)
 
 
