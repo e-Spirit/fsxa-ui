@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/e-Spirit/fsxa-ui/compare/v2.0.4...v2.1.0) (2021-01-19)
+
+
+### Features
+
+* 🎸 Pass slide and slideIndex to click event of FWSSection ([b520429](https://github.com/e-Spirit/fsxa-ui/commit/b5204292fe3e423be9014317df080c05ed3fd5bc))
+
 ## [2.0.4](https://github.com/e-Spirit/fsxa-ui/compare/v2.0.3...v2.0.4) (2021-01-18)
 
 
