@@ -1,3 +1,16 @@
+# [2.2.0](https://github.com/e-Spirit/fsxa-ui/compare/v2.1.1...v2.2.0) (2021-01-19)
+
+
+### Bug Fixes
+
+* 🐛 Add hover as variant to opacity ([4a91561](https://github.com/e-Spirit/fsxa-ui/commit/4a91561694006bde962f3745134821b552cf8265))
+* 🐛 fix responsive layout of headersection ([#42](https://github.com/e-Spirit/fsxa-ui/issues/42)) ([2391092](https://github.com/e-Spirit/fsxa-ui/commit/23910923e99c26897a082e1bc3fac208e5fc2cc1))
+
+
+### Features
+
+* Slotify Googlemaps section ([1998a39](https://github.com/e-Spirit/fsxa-ui/commit/1998a394e1504045a0b30edea99ab466b6845272))
+
 ## [2.1.1](https://github.com/e-Spirit/fsxa-ui/compare/v2.1.0...v2.1.1) (2021-01-19)
 
 
