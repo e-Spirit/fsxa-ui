@@ -20,7 +20,13 @@ class ProductListItem extends BaseComponent<ProductListItemProps> {
   render() {
     return (
       <div class={`ProductListItem w-full border-gray-200 border-0 relative`}>
-        <Image class="w-full h-full m-0 border-0" src={this.image.src} />
+        <Image
+          class="w-full h-full m-0 border-0"
+          src={this.image.src}
+          resolutions={this.image.resolutions}
+          lazy={true}
+          sizes={this.image.sizes}
+        />
         <a
           href={`${this.url}`}
           onClick={event => {
