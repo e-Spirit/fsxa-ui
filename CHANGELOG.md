@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/e-Spirit/fsxa-ui/compare/v2.2.0...v2.2.1) (2021-01-19)
+
+
+### Bug Fixes
+
+* 🐛 Make media in Slide full width and height ([982eeb7](https://github.com/e-Spirit/fsxa-ui/commit/982eeb7660d41d0d4c7a32f7e981f0e315ad6b7e))
+
 # [2.2.0](https://github.com/e-Spirit/fsxa-ui/compare/v2.1.1...v2.2.0) (2021-01-19)
 
 
