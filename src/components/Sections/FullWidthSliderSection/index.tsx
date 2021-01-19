@@ -43,16 +43,17 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
   ) {
     return (
       <div class="w-full h-full bg-black overflow-hidden relative">
-        {this.$scopedSlots.media ? (
-          this.$scopedSlots.media(slide.media)
-        ) : (
-          <Image
-            class="transition-opacity duration-250 transform"
-            src={((slide.media as unknown) as ImageRef).src}
-            resolutions={((slide.media as unknown) as ImageRef).resolutions}
-            sizes={"100vw"}
-          />
-        )}
+        <div class="FullWidthImageSliderSection--Media transition-opacity duration-250 transform">
+          {this.$scopedSlots.media ? (
+            this.$scopedSlots.media(slide.media)
+          ) : (
+            <Image
+              src={((slide.media as unknown) as ImageRef).src}
+              resolutions={((slide.media as unknown) as ImageRef).resolutions}
+              sizes={"100vw"}
+            />
+          )}
+        </div>
         <div class="absolute w-full h-full top-0 left-0 pointer-events-none bg-gradient-to-b to-gray-900 from-transparent z-10"></div>
         <div class="absolute bottom-0 left-0 FullWidthSliderSection--Content w-full transform transition-transform translate-y-full px-6 pb-16 md:px-12 md:pb-12 lg:px-16 origin-top duration-250 text-white z-20">
           <div class="FullWidthSliderSection--Title block transform transition-transform duration-250 w-full mb-2 md:mb-4 lg:mb-6">
