@@ -2,7 +2,6 @@ import BaseComponent from "@/components/BaseComponent";
 import { Prop, Component } from "vue-property-decorator";
 import "./style.css";
 import Image from "@/components/Image";
-import RichText from "@/components/RichText";
 import Counter from "@/components/Counter";
 import Container from "@/components/Container";
 import Headline from "@/components/Headline";
@@ -39,8 +38,9 @@ class InterestingFactsSection extends BaseComponent<
             class="InterestingFactsSection--BackgroundImage"
             opacity="80"
             data-preview-id={this.backgroundImage.previewId}
-            dimensions={this.backgroundImage.dimensions}
             src={this.backgroundImage.src}
+            resolutions={this.backgroundImage.resolutions}
+            sizes="100vw"
           />
         )}
         <Container>
@@ -80,15 +80,15 @@ class InterestingFactsSection extends BaseComponent<
                     weight="light"
                     data-testid={"interestingfactssection-text"}
                   >
-                    <RichText content={this.text} />
+                    {this.text}
                   </Paragraph>
                 )}
               </div>
             </LayoutItem>
             <LayoutItem width="full" lg={{ width: "6/12" }}>
-              <Layout>
+              <Layout wrap>
                 {this.counters.map((counter, index) => (
-                  <LayoutItem width="full" class="mt-20 lg:mt-32">
+                  <LayoutItem class="mt-20 lg:mt-32">
                     {this.$scopedSlots.counter ? (
                       this.$scopedSlots.counter(counter)
                     ) : (

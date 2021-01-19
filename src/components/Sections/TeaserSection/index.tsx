@@ -10,27 +10,58 @@ import {
   TeaserSectionProps,
   TeaserSectionSlots,
 } from "@/types/sections";
+import { ImageRef } from "@/types/fsxa-ui";
+import "./style.css";
 
 @Component({
   name: "TeaserSection",
 })
-class TeaserSection extends BaseComponent<
-  TeaserSectionProps,
+class TeaserSection<MediaType = ImageRef> extends BaseComponent<
+  TeaserSectionProps<MediaType>,
   TeaserSectionEventsWithOn,
-  TeaserSectionSlots
+  TeaserSectionSlots<MediaType>
 > {
-  @Prop({ required: true }) headline!: TeaserSectionProps["headline"];
-  @Prop({ required: true }) kicker!: TeaserSectionProps["kicker"];
-  @Prop({ required: true }) text!: TeaserSectionProps["text"];
-  @Prop({ required: false }) buttonText: TeaserSectionProps["buttonText"];
-  @Prop({ required: false }) image: TeaserSectionProps["image"];
+  @Prop({ required: true }) headline!: TeaserSectionProps<
+    MediaType
+  >["headline"];
+  @Prop({ required: true }) kicker!: TeaserSectionProps<MediaType>["kicker"];
+  @Prop({ required: true }) text!: TeaserSectionProps<MediaType>["text"];
+  @Prop({ required: false }) buttonText: TeaserSectionProps<
+    MediaType
+  >["buttonText"];
+  @Prop({ required: false }) media: TeaserSectionProps<MediaType>["media"];
+
+  renderMedia() {
+    if (this.$scopedSlots.media) {
+      return this.$scopedSlots.media(this.media);
+    }
+    const typedImage = (this.media as any) as ImageRef;
+    return (
+      <div class="teasersection-media relative md:mx-8 lg:mt-8 lg:pl-0">
+        <Image
+          data-testid={"teasersection-media"}
+          src={typedImage.src}
+          resolutions={typedImage.resolutions}
+          sizes={`(min-width: ${this.breakpoints.lg}) calc(100vw / 12 * 7), 100vw`}
+          data-preview-id={typedImage.previewId}
+          lazy
+          border
+          zoom
+        />
+      </div>
+    );
+  }
 
   render() {
     return (
       <div class="w-full bg-gray-100 text-black">
         <Container>
           <Layout wrap>
-            <LayoutItem width="full" lg={{ width: "5/12" }}>
+            <LayoutItem
+              width="full"
+              lg={{ width: "1/2" }}
+              xl={{ width: "5/12" }}
+            >
               {this.$scopedSlots.kicker ? (
                 this.$scopedSlots.kicker(this.kicker)
               ) : (
@@ -53,7 +84,10 @@ class TeaserSection extends BaseComponent<
               {this.$scopedSlots.text ? (
                 this.$scopedSlots.text(this.text)
               ) : (
-                <div class="text-sm" data-testid="teasersection-text">
+                <div
+                  class="text-sm uppercase md:pr-6 lg:pr-8"
+                  data-testid="teasersection-text"
+                >
                   {this.text}
                 </div>
               )}
@@ -61,6 +95,7 @@ class TeaserSection extends BaseComponent<
                 ? this.$scopedSlots.button(this.buttonText)
                 : this.buttonText && (
                     <Button
+                      class="mx-2 my-2 lg:my-3 lg:mx-3"
                       data-testid={"teasersection-button"}
                       variant="animated"
                       handleClick={() => this.$emit("buttonClick")}
@@ -69,20 +104,12 @@ class TeaserSection extends BaseComponent<
                     </Button>
                   )}
             </LayoutItem>
-            <LayoutItem width="full" lg={{ width: "7/12" }}>
-              {this.$scopedSlots.media
-                ? this.$scopedSlots.media(this.image)
-                : this.image && (
-                    <Image
-                      data-testid={"teasersection-image"}
-                      src={this.image.src}
-                      dimensions={this.image.dimensions}
-                      data-preview-id={this.image.previewId}
-                      lazy
-                      border
-                      zoom
-                    />
-                  )}
+            <LayoutItem
+              width="full"
+              lg={{ width: "1/2" }}
+              xl={{ width: "7/12" }}
+            >
+              {this.media && this.renderMedia()}
             </LayoutItem>
           </Layout>
         </Container>

@@ -1,0 +1,42 @@
+import Code from "@/components/internal/Documentation/Code";
+import ExampleLoader from "@/documentation/utils/ExampleLoader";
+import Meta from "@/components/internal/Documentation/Meta";
+import PropsTable from "@/components/internal/Documentation/PropsTable";
+import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
+
+<Meta
+  title="Navigation"
+  subtitle="Navigation allows users to navigate through your site. The navigation also works mobile, try it on any mobile device to investigate its functions"
+/>
+
+## Properties
+
+<PropsTable>
+  <PropsTableRow value="items" type="Array" required>
+    Specify an array which should be rendered. An item has the following properties.
+    <ul>
+        <li>
+            <span class="code">label</span> is the displayed name
+        </li>
+        <li>
+            <span class="code">path</span> the path that a click on this item should lead to
+        </li>
+        <li>
+            <span class="code">id</span> an id for the item
+        </li>
+        <li>
+            <span class="code">children</span> an array of identical item elements (submenu items)
+        </li>
+    </ul>
+  </PropsTableRow>
+  <PropsTableRow value="handleNavClick" type="Function">
+    Callback that will be triggered, when a link is clicked.
+  </PropsTableRow>
+  <PropsTableRow value="isActiveItem" type="Boolean" default="false">
+    Call that determinates which path is activated.
+  </PropsTableRow>
+</PropsTable>
+
+## Example
+
+<ExampleLoader example="Navigation.tsx" />

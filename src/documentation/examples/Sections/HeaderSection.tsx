@@ -32,20 +32,18 @@ const breadItems: Breadcrumb[] = [
 export default class App extends Vue {
   render() {
     return (
-      <div class="space-x-5">
-        <HeaderSection
-          backgroundImage={{
-            src: imageSrc,
-            dimensions: { width: 400, height: 400 },
-            previewId: "1000",
-          }}
-          title="test123"
-          breadcrumbs={breadItems}
-          handleItemClick={() => {
-            return;
-          }}
-        ></HeaderSection>
-      </div>
+      <HeaderSection
+        backgroundImage={{
+          type: "image",
+          src: imageSrc,
+          previewId: "1000",
+        }}
+        title="Lorem Ipsum dolor sit amet aloha blalkdsjshafklasklfd ölsgdkjcsnfl adkfikasjd ksajd jsahdksaj dösaäld lsakdf "
+        breadcrumbs={breadItems}
+        handleItemClick={() => {
+          return;
+        }}
+      ></HeaderSection>
     );
   }
 }

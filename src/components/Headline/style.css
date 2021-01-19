@@ -20,6 +20,10 @@
     &.sm {
       @apply mb-3;
     }
+
+    &.xs {
+      @apply mb-2;
+    }
   }
 
   &.xxl {
@@ -40,8 +44,16 @@
     @apply text-xl;
   }
 
+  &.xs {
+    @apply text-base;
+  }
+
   &.light {
     @apply font-light;
+  }
+
+  &.bold {
+    @apply font-semibold;
   }
 
   &.bold {

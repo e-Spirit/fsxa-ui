@@ -54,6 +54,11 @@ const routes = [
         children: [],
       },
       {
+        label: "ImageSlider",
+        path: "/components/image-slider",
+        children: [],
+      },
+      {
         label: "Navigation",
         path: "/components/navigation",
         children: [],
@@ -82,6 +87,11 @@ const routes = [
         path: "/components/line-separator",
         children: [],
       },
+      {
+        label: "Slider",
+        path: "/components/slider",
+        children: [],
+      },
     ],
   },
   {
@@ -91,6 +101,11 @@ const routes = [
       {
         label: "AccordionSection",
         path: "/sections/accordion-section",
+        children: [],
+      },
+      {
+        label: "FullWidthSliderSection",
+        path: "/sections/full-width-slider-section",
         children: [],
       },
       {

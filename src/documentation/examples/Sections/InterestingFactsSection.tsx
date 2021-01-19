@@ -13,6 +13,14 @@ const counters = [
     value: 789,
     label: "trees with a friend",
   },
+  {
+    value: 1001,
+    label: "x-mas trees",
+  },
+  {
+    value: 1,
+    label: "super tree",
+  },
 ];
 const imageSrc =
   "https://images.pexels.com/photos/5592596/pexels-photo-5592596.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
@@ -28,30 +36,9 @@ export default class App extends Vue {
           tagline="Did you know?"
           counters={counters}
           backgroundImage={{
+            type: "image",
             src: imageSrc,
-            dimensions: { width: 400, height: 400 },
             previewId: "1000",
-          }}
-          scopedSlots={{
-            tagline: txt => (
-              <i class="Headline xl light uppercase include-margin">{txt}</i>
-            ),
-            headline: txt => (
-              <h1 class="Headline xxl bold lowercase include-margin leading-none">
-                {txt}
-              </h1>
-            ),
-            text: txt => (
-              <div>
-                <b>What follows is a text about trees: </b>
-                <small class="lowercase">{txt}</small>
-              </div>
-            ),
-            counter: counter => (
-              <div class="pl-10">
-                {counter.value}: {counter.label}
-              </div>
-            ),
           }}
         />
       </div>
