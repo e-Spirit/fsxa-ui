@@ -30,23 +30,30 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
     MediaType
   >["removeDefaultPadding"];
 
-  handleClick(slide: FullWidthSliderSectionSlide<MediaType>) {
-    this.$emit("click", slide);
+  handleClick(
+    slide: FullWidthSliderSectionSlide<MediaType>,
+    slideIndex: number,
+  ) {
+    this.$emit("click", { slide, slideIndex });
   }
 
-  renderSlide(slide: FullWidthSliderSectionSlide<MediaType>) {
+  renderSlide(
+    slide: FullWidthSliderSectionSlide<MediaType>,
+    slideIndex: number,
+  ) {
     return (
       <div class="w-full h-full bg-black overflow-hidden relative">
-        {this.$scopedSlots.media ? (
-          this.$scopedSlots.media(slide.media)
-        ) : (
-          <Image
-            class="transition-opacity duration-250 transform"
-            src={((slide.media as unknown) as ImageRef).src}
-            resolutions={((slide.media as unknown) as ImageRef).resolutions}
-            sizes={"100vw"}
-          />
-        )}
+        <div class="FullWidthImageSliderSection--Media w-full h-full transition-opacity duration-250 transform">
+          {this.$scopedSlots.media ? (
+            this.$scopedSlots.media(slide.media)
+          ) : (
+            <Image
+              src={((slide.media as unknown) as ImageRef).src}
+              resolutions={((slide.media as unknown) as ImageRef).resolutions}
+              sizes={"100vw"}
+            />
+          )}
+        </div>
         <div class="absolute w-full h-full top-0 left-0 pointer-events-none bg-gradient-to-b to-gray-900 from-transparent z-10"></div>
         <div class="absolute bottom-0 left-0 FullWidthSliderSection--Content w-full transform transition-transform translate-y-full px-6 pb-16 md:px-12 md:pb-12 lg:px-16 origin-top duration-250 text-white z-20">
           <div class="FullWidthSliderSection--Title block transform transition-transform duration-250 w-full mb-2 md:mb-4 lg:mb-6">
@@ -72,12 +79,12 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
               {this.$scopedSlots.button ? (
                 this.$scopedSlots.button({
                   content: slide.buttonContent,
-                  onClick: () => this.handleClick(slide),
+                  onClick: () => this.handleClick(slide, slideIndex),
                 })
               ) : (
                 <Button
                   variant="inverted"
-                  handleClick={() => this.handleClick(slide)}
+                  handleClick={() => this.handleClick(slide, slideIndex)}
                 >
                   {slide.buttonContent}
                 </Button>
@@ -209,9 +216,7 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
     return (
       <div
         class={`w-full h-full ${
-          this.removeDefaultPadding
-            ? ""
-            : "md:px-16 md:pb-16 lg:px-20 lg:pb-20 xl:px-24 xl:pb-24"
+          this.removeDefaultPadding ? "" : "md:px-16 lg:px-20 xl:px-24 "
         }`}
       >
         <Slider
@@ -219,7 +224,7 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
           initialSlideIndex={0}
           infinite
           slideCount={this.slides.length}
-          onSlideAnimation={async (type, { element }) => {
+          handleSlideAnimation={async (type, { element }) => {
             if (type === "animateIn") {
               element.classList.remove(
                 "FullWidthSliderSection--Slide--animate-out",
@@ -262,7 +267,7 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
                 </div>
               );
             },
-            slide: ({ index }) => this.renderSlide(this.slides[index]),
+            slide: ({ index }) => this.renderSlide(this.slides[index], index),
           }}
         />
       </div>

@@ -20,7 +20,7 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
  <PropsTableRow value="initialSlideIndex" type="number" default="0">
     Index of slide which should initially be displayed.
   </PropsTableRow>
-  <PropsTableRow value="onSlideAnimation" type={`(type: "animateIn" | "animateOut", params: SliderControlParams) => Promise<void>`}>
+  <PropsTableRow value="handleSlideAnimation" type={`(type: "animateIn" | "animateOut", params: SliderControlParams) => Promise<void>`}>
     You can pass this callback to animate incoming and outgoing slides. Make sure to return a Promise, so the slider will wait for your animation to finish.
   </PropsTableRow>
  <PropsTableRow value="animateSlideTransition" type="boolean" default="false" >

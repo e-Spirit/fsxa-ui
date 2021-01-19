@@ -93,7 +93,7 @@ class Image extends BaseComponent<ImageProps> {
   render() {
     return (
       <div
-        class={`Image w-full h-full`}
+        class={`Image w-full h-full overflow-hidden`}
         data-previewid={this.previewId}
         data-testid="imageDiv"
       >

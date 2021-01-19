@@ -36,7 +36,7 @@ describe("components/HeaderSection", () => {
   it("correctly consumes the specified background image", () => {
     const content = "My test headline";
     const imageSource = "image source url";
-    const { container } = render(HeaderSection, {
+    const { container, getByTestId } = render(HeaderSection, {
       props: {
         title: content,
         backgroundImage: { src: imageSource },
@@ -44,8 +44,7 @@ describe("components/HeaderSection", () => {
       },
     });
     expect(
-      container
-        .querySelector(".HeaderSection--BackgroundImage")
+      getByTestId("HeaderSection--BackgroundImage")
         ?.querySelector("img")
         ?.getAttribute("src"),
     ).toEqual(imageSource);
