@@ -25,7 +25,7 @@ class HeaderSection extends BaseComponent<
 
   render() {
     return (
-      <div class="HeaderSection">
+      <div class="w-full relative text-white">
         {this.$scopedSlots.backgroundImage
           ? this.$scopedSlots.backgroundImage(this.backgroundImage)
           : this.backgroundImage && (
@@ -34,19 +34,25 @@ class HeaderSection extends BaseComponent<
                 resolutions={this.backgroundImage?.resolutions}
                 data-preview-id={this.backgroundImage?.previewId}
                 data-testid="HeaderSection--BackgroundImage"
-                class="HeaderSection--BackgroundImage"
+                class="absolute top-0 left-0 w-full h-full"
                 opacity="80"
               />
             )}
 
         <Container class="py-20">
-          <div class="HeaderSection--HeadlineWrapper">
-            <h2>{this.title}</h2>
+          <div class="flex flex-grow items-center justify-center md:justify-start mb-4">
+            <div class="relative pl-8 w-64 sm:w-auto">
+              <div class="HeaderSection--Box absolute top-0 left-0 w-64 sm:w-48 h-full border-8 border-r-0 border-white" />
+              <h1 class="antialiased my-20 text-lg uppercase tracking-wide relative w-full break-words overflow-hidden">
+                {this.title}
+              </h1>
+            </div>
           </div>
           {this.$scopedSlots.breadcrumbs ? (
             this.$scopedSlots.breadcrumbs(this.breadcrumbs)
           ) : (
             <Breadcrumbs
+              class="hidden sm:block"
               items={this.breadcrumbs}
               handleItemClick={this.handleItemClick}
               data-testid={"HeaderSection-Breadcrumbs"}
