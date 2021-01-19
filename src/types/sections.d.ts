@@ -303,7 +303,10 @@ export interface FullWidthSliderSectionEventsWithOn<MediaType> {
   /**
    * This Event will be invoked, when the CTA-Button of a slide is clicked. The displayed slide will be passed as parameter.
    */
-  onClick: FullWidthSliderSectionSlide<MediaType>;
+  onClick: {
+    slide: FullWidthSliderSectionSlide<MediaType>;
+    slideIndex: number;
+  };
 }
 export interface FullWidthSliderSectionSlots<MediaType> {
   title?: RenderedType;

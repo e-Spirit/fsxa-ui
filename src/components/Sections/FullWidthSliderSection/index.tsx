@@ -30,11 +30,17 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
     MediaType
   >["removeDefaultPadding"];
 
-  handleClick(slide: FullWidthSliderSectionSlide<MediaType>) {
-    this.$emit("click", slide);
+  handleClick(
+    slide: FullWidthSliderSectionSlide<MediaType>,
+    slideIndex: number,
+  ) {
+    this.$emit("click", { slide, slideIndex });
   }
 
-  renderSlide(slide: FullWidthSliderSectionSlide<MediaType>) {
+  renderSlide(
+    slide: FullWidthSliderSectionSlide<MediaType>,
+    slideIndex: number,
+  ) {
     return (
       <div class="w-full h-full bg-black overflow-hidden relative">
         {this.$scopedSlots.media ? (
@@ -72,12 +78,12 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
               {this.$scopedSlots.button ? (
                 this.$scopedSlots.button({
                   content: slide.buttonContent,
-                  onClick: () => this.handleClick(slide),
+                  onClick: () => this.handleClick(slide, slideIndex),
                 })
               ) : (
                 <Button
                   variant="inverted"
-                  handleClick={() => this.handleClick(slide)}
+                  handleClick={() => this.handleClick(slide, slideIndex)}
                 >
                   {slide.buttonContent}
                 </Button>
@@ -260,7 +266,7 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
                 </div>
               );
             },
-            slide: ({ index }) => this.renderSlide(this.slides[index]),
+            slide: ({ index }) => this.renderSlide(this.slides[index], index),
           }}
         />
       </div>
