@@ -66,7 +66,7 @@ module.exports = {
   },
   variants: {
     textColor: ["group-hover"],
-    opacity: ["group-hover"],
+    opacity: ["hover", "group-hover"],
     overflow: ["hover"],
     translate: ["hover", "group-hover"],
   },
