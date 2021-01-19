@@ -1,3 +1,11 @@
+# [2.3.0](https://github.com/e-Spirit/fsxa-ui/compare/v2.2.1...v2.3.0) (2021-01-19)
+
+
+### Features
+
+* Hide controls if only one image is available ([1941dc0](https://github.com/e-Spirit/fsxa-ui/commit/1941dc0ae3a7bdcbcd66d2b45803dd0146dee03c))
+* Slotify List section ([130364d](https://github.com/e-Spirit/fsxa-ui/commit/130364dc8b693300bdf507bc25850a1ec16d42a7))
+
 ## [2.2.1](https://github.com/e-Spirit/fsxa-ui/compare/v2.2.0...v2.2.1) (2021-01-19)
 
 
