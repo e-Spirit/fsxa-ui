@@ -33,7 +33,7 @@ class ProductListItem extends BaseComponent<ProductListItemProps> {
               {this.title}
             </Headline>
             <div class="ml-8 mr-4 text-sm">{this.description}</div>
-            <div class="ml-8 mr-4">{this.price}</div>
+            <div class="ml-8 mr-4 mt-2">{this.price}</div>
           </div>
         </a>
       </div>
