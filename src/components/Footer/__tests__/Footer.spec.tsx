@@ -26,7 +26,7 @@ describe("components/Footer", () => {
       },
     });
     const footer = getByTestId("footer-1");
-    await fireEvent(footer!, new Event("click"));
+    await fireEvent(footer, new Event("click"));
     expect(spy).toHaveBeenCalled();
     expect(spy.mock.calls[0][0].referenceId).toEqual(1);
   });

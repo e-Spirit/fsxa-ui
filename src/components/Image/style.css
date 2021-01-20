@@ -1,17 +1,4 @@
 .Image {
-  &.border {
-    @apply ml-12 relative z-0;
-
-    &:before {
-      @apply absolute top-0 left-0 -ml-12 mt-12 w-full h-full z-auto;
-      content: "";
-      border: 30px solid rgba(0, 0, 0, 0.1);
-    }
-
-    img {
-      @apply relative;
-    }
-  }
 
   & img.zoom {
     @apply transform transition-transform duration-10000;
@@ -20,4 +7,8 @@
       @apply scale-150;
     }
   }
+}
+
+.overlay-gradient {
+  background: linear-gradient(transparent, #111111);
 }

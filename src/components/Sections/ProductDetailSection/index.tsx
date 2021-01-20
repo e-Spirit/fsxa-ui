@@ -2,16 +2,14 @@ import BaseComponent from "@/components/BaseComponent";
 import { Component, Prop } from "vue-property-decorator";
 import { ProductDetailSectionProps } from "@/types/sections";
 import { LayoutItem } from "@/components/Layout";
-import Image from "@/components/Image";
 import Headline from "@/components/Headline";
 import Paragraph from "@/components/Paragraph";
 import Button from "@/components/Button";
 import Container from "@/components/Container";
 import Layout from "@/components/Layout";
-import RichText from "@/components/RichText";
 import "./style.css";
 import Accordion from "@/components/Accordion";
-import { ImageRef } from "@/types/utils";
+import ImageSlider from "@/components/ImageSlider";
 @Component({
   name: "ProductDetailSection",
 })
@@ -33,51 +31,40 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
   @Prop()
   handleButtonClick: ProductDetailSectionProps["handleButtonClick"];
 
-  renderImage(image: ImageRef) {
-    return (
-      <div class="w-full mb-2 md:mb-6 lg:mb-16 xl:mb-56 pr-20">
-        <Image
-          border={true}
-          zoom={true}
-          class="ProductDetail--Image"
-          src={image.src}
-        ></Image>
-      </div>
-    );
-  }
-
   render() {
     return (
-      <div class="py-12 md:py-16 lg:py-20">
+      <div class="w-full bg-gray-100">
         <Container>
           <Layout wrap>
             {this.images != null && this.images.length > 0 && (
-              <LayoutItem
-                width="full"
-                lg={{ width: "1/2" }}
-                class="mb-16 lg:mb-0"
-              >
-                {this.images.map(image => this.renderImage(image))}
+              <LayoutItem width="full" lg={{ width: "1/2" }}>
+                <div class="ProductDetail--ImageBorder h-auto">
+                  <ImageSlider
+                    class="ProductDetail--Image"
+                    images={this.images}
+                  />
+                </div>
               </LayoutItem>
             )}
             <LayoutItem
               width="full"
               lg={{ width: "1/2" }}
-              class="ProductDetail--ProductDetail border-black "
+              class="ProductDetail--ProductDetail border-black"
             >
-              <div class="pr-4 pl-4">
+              <div class="ProductDetail--Content px-5 py-6 bg-white lg:bg-transparent shadow lg:shadow-none">
                 <Headline
-                  class="ProductDetail--Headline"
+                  data-testid="ProductDetail--Headline"
+                  class="leading-10"
                   as="h1"
                   size="xl"
                   weight="bold"
                 >
                   {this.headline}
                 </Headline>
-                <Paragraph class="ProductDetail--Description">
+                <Paragraph data-testid="ProductDetail--Description" size="sm">
                   {this.description}
                 </Paragraph>
-                <div class="w-full pt-4 ">
+                <div class="w-full pt-4">
                   <Paragraph
                     size="lg"
                     weight="bold"
@@ -95,12 +82,12 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
                             <Headline
                               class="ProductDetail--Property--Headline"
                               as="h4"
-                              size="sm"
-                              weight="light"
+                              size="xs"
+                              weight="bold"
                             >
                               {title}
                             </Headline>
-                            <ul class="list-disc ProductDetail--Property--List">
+                            <ul class="list-disc ProductDetail--Property--List text-sm">
                               {properties.map(({ id, name: propName }) => (
                                 <li class="ml-6" key={id} data-testid={id}>
                                   {propName}
@@ -118,15 +105,15 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
                             key={key}
                             class="ProductDetail--Accordion"
                           >
-                            <RichText
-                              content={this.foldableContentList![key]}
-                            />
+                            {this.foldableContentList
+                              ? this.foldableContentList[key]
+                              : ""}
                           </Accordion>
                         ))}
                       </LayoutItem>
                     )}
                     {this.buttonText && (
-                      <div class="w-full flex-initial flex justify-end md:pr-10 sm:pr-6">
+                      <div class="w-full flex-initial flex justify-center">
                         <Button
                           variant="default"
                           class="ProductDetail--Button self-center p-2 px-2 sm:p-4 sm:pl-6 md:px-8 md:py-5"

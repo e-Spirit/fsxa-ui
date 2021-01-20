@@ -14,12 +14,12 @@ const opacityClasses = {
   80: "opacity-80",
 };
 
-const isInViewport = (element: Element, preloadMulitplier = 1.1) => {
+const isInViewport = (element: Element, preloadMultiplier = 1.1) => {
   const bounding = element.getBoundingClientRect();
   return (
-    bounding.top < window.innerHeight * preloadMulitplier &&
+    bounding.top < window.innerHeight * preloadMultiplier &&
     bounding.bottom > 0 &&
-    bounding.left < window.innerWidth * preloadMulitplier &&
+    bounding.left < window.innerWidth * preloadMultiplier &&
     bounding.right > 0
   );
 };
@@ -29,11 +29,12 @@ const isInViewport = (element: Element, preloadMulitplier = 1.1) => {
 })
 class Image extends BaseComponent<ImageProps> {
   @Prop({ required: true }) src!: ImageProps["src"];
-  @Prop({ required: false }) dimensions: ImageProps["dimensions"];
+  @Prop() resolutions: ImageProps["resolutions"];
+  @Prop() sizes: ImageProps["sizes"];
   @Prop({ required: false }) lazy!: ImageProps["lazy"];
-  @Prop({ required: false }) border!: ImageProps["border"];
   @Prop({ required: false }) zoom!: ImageProps["zoom"];
   @Prop({ required: false }) opacity!: ImageProps["opacity"];
+  @Prop({ required: false }) previewId!: ImageProps["previewId"];
 
   throttledLazyLoadHandler: any;
   loaded = false;
@@ -75,19 +76,32 @@ class Image extends BaseComponent<ImageProps> {
     }
   }
 
+  get isClient() {
+    return typeof window !== "undefined";
+  }
+
+  get srcset() {
+    if (!this.resolutions) return undefined;
+    return Object.values(this.resolutions)
+      .map(
+        resolution =>
+          `${resolution.url} ${resolution.width}w ${resolution.height}h`,
+      )
+      .join(", ");
+  }
+
   render() {
-    //TODO: use this ratio somehow
-    const ratio = this.dimensions
-      ? this.dimensions.width / this.dimensions.height
-      : null;
     return (
       <div
-        class={`Image w-full ${this.border ? "border" : ""}`}
+        class={`Image w-full h-full overflow-hidden`}
+        data-previewid={this.previewId}
         data-testid="imageDiv"
       >
         <div class="w-full h-full overflow-hidden relative">
           <img
             src={!this.lazy || this.loaded ? this.src : ""}
+            srcset={this.srcset}
+            sizes={this.sizes}
             class={`${
               this.zoom ? "zoom" : ""
             } w-full h-full object-cover object-center`}

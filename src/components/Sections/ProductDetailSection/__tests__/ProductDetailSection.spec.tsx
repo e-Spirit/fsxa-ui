@@ -43,9 +43,9 @@ const propertyList: ProductProperty[] = [
 ];
 
 const foldableContentList: Record<string, string> = {
-  Delivery: `<ul class="list-disc px-10 py-4"><li>mechanical lock</li><li>camera with integrated face recognition</li><li>wireless numpad</li><li>operation manual</li></ul>`,
-  "Installation instructions": "<p>Fix it at the door. Ready.</p>",
-  Compatibility: `<ul class="list-disc px-10 py-4"><li>Google Home</li><li>Amazon Alexa</li><li>Bosch Smart Home</li></ul>`,
+  Delivery: `delivery`,
+  "Installation instructions": "instructions",
+  Compatibility: `compatibility`,
 };
 
 const componentProperties = {
@@ -90,30 +90,29 @@ const expectToExistNTimes = (
 
 describe("components/sections/ProductDetailSection", () => {
   it("should render all elements", () => {
-    const { container } = render(ProductDetailSection, {
+    const { container, getByTestId } = render(ProductDetailSection, {
       props: { ...componentProperties },
     });
     expect(container).toBeTruthy();
     expectToExist(container, [
-      "ProductDetail--Headline",
-      "ProductDetail--Description",
+      "ProductDetail--Property--Headline",
       "ProductDetail--Price",
       "ProductDetail--Button",
+      "ProductDetail--Image",
     ]);
 
     expectToExistNTimes(container, [
-      { key: "ProductDetail--Image", expectedInstanceCount: 2 },
       { key: "ProductDetail--Property--Headline", expectedInstanceCount: 2 },
       { key: "ProductDetail--Property--List", expectedInstanceCount: 2 },
       { key: "ProductDetail--Accordion", expectedInstanceCount: 3 },
     ]);
 
-    expect(
-      container.querySelector(`.ProductDetail--Headline`)?.textContent,
-    ).toEqual(headline);
-    expect(
-      container.querySelector(`.ProductDetail--Description`)?.textContent,
-    ).toEqual(description);
+    expect(getByTestId(`ProductDetail--Headline`)?.textContent).toEqual(
+      headline,
+    );
+    expect(getByTestId(`ProductDetail--Description`)?.textContent).toEqual(
+      description,
+    );
     expect(
       container.querySelector(`.ProductDetail--Price`)?.textContent,
     ).toEqual(price);
@@ -136,31 +135,27 @@ describe("components/sections/ProductDetailSection", () => {
     );
 
     const accordionNodes = container.querySelectorAll(
-      `.ProductDetail--Accordion`,
+      `.ProductDetail--Accordion .Accordion--Text-Box`,
     );
-    expect(accordionNodes[0].textContent).toEqual(
-      "Deliverymechanical lockcamera with integrated face recognitionwireless numpadoperation manual",
-    );
+    expect(accordionNodes[0].textContent).toEqual(foldableContentList.Delivery);
     expect(accordionNodes[1].textContent).toEqual(
-      "Installation instructionsFix it at the door. Ready.",
+      foldableContentList["Installation instructions"],
     );
     expect(accordionNodes[2].textContent).toEqual(
-      "CompatibilityGoogle HomeAmazon AlexaBosch Smart Home",
+      foldableContentList.Compatibility,
     );
   });
 
   it("should render only elements passed to it", () => {
     const { headline, buttonText, description, price } = componentProperties;
-    const { container } = render(ProductDetailSection, {
+    const { container, getByTestId } = render(ProductDetailSection, {
       props: { headline, buttonText, description, price },
     });
     expect(container).toBeTruthy();
-    expectToExist(container, [
-      "ProductDetail--Headline",
-      "ProductDetail--Description",
-      "ProductDetail--Price",
-      "ProductDetail--Button",
-    ]);
+    expectToExist(container, ["ProductDetail--Price", "ProductDetail--Button"]);
+    expect(getByTestId(`ProductDetail--Headline`)?.textContent).toEqual(
+      headline,
+    );
 
     expectToBeNull(container, [
       "ProductDetail--Image",

@@ -3,6 +3,8 @@ import ExampleLoader from "@/documentation/utils/ExampleLoader";
 import AccordionSection from "@/components/Sections/AccordionSection";
 import PropsTable from "@/components/internal/Documentation/PropsTable";
 import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
+import SlotsTable from "@/components/internal/Documentation/SlotsTable";
+import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/components/SlotsTableRow";
 
 <Meta
   title="GoogleMapsSection"
@@ -12,7 +14,7 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
   <PropsTableRow value="title" type="string" optional>
     The title of the section.
   </PropsTableRow>
-  <PropsTableRow value="apikey" type="string">
+  <PropsTableRow value="apikey" type="string" required>
     Your google maps apikey.
   </PropsTableRow>
   <PropsTableRow value="startLocation" type="MapsPosition" optional>
@@ -28,7 +30,7 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
     15: Streets
     20: Buildings
   </PropsTableRow>
-  <PropsTableRow value="language" type="string" optional>
+  <PropsTableRow value="language" type="string" required>
     The language for the map and its UI elements.
   </PropsTableRow>
   <PropsTableRow value="locations" type="MapsLocation[]" optional>
@@ -53,4 +55,21 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
     The image you use should be 50x50 in size.
   </PropsTableRow>
 </PropsTable>
+
+## Slots
+
+<SlotsTable>
+  <SlotsTableRow value="title" prop="string">
+    Allows for a custom title to be rendered.
+  </SlotsTableRow>
+  <SlotsTableRow value="locationItem" prop="Location">
+    Allows for a custom rendering of the location items in the list.
+    The object passed in has all the properties of a Location. 
+    Additionally a <span class="code">selected</span> boolean property will be passed in.
+    It indicates whether the current item is selected or not.
+    And a <span class="code">handleItemClick</span> callback.
+  </SlotsTableRow>
+</SlotsTable>
+
 <ExampleLoader example="Sections/GoogleMapsSection.tsx" />
+<ExampleLoader example="Sections/GoogleMapsSection.ScopedSlots.tsx" />

@@ -2,7 +2,6 @@ import Vue from "vue";
 import Component from "vue-class-component";
 
 import ListSection from "@/components/Sections/ListSection";
-import ProductListItem from "@/components/ProductListItem";
 
 const items = [
   {
@@ -15,6 +14,7 @@ const items = [
         "https://images.pexels.com/photos/4013157/pexels-photo-4013157.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
     },
     url: "#",
+    category: "robots",
   },
   {
     title: "Product 2",
@@ -25,6 +25,7 @@ const items = [
         "https://images.pexels.com/photos/1068349/pexels-photo-1068349.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
     },
     url: "#",
+    category: "numbers",
   },
   {
     title: "Product 3",
@@ -35,6 +36,7 @@ const items = [
     },
     url: "#",
     price: "free",
+    category: "numbers",
   },
   {
     title: "Product 4 - This has a longer name",
@@ -45,12 +47,26 @@ const items = [
         "https://images.pexels.com/photos/1269930/pexels-photo-1269930.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
     },
     url: "#",
+    category: "great",
   },
 ];
 
-const handleClick = (item: any) => {
-  console.log("Item click... ", item);
-};
+const filters = [
+  [
+    {
+      key: "robots",
+      value: "Robots",
+    },
+    {
+      key: "great",
+      value: "Great Products",
+    },
+    {
+      key: "numbers",
+      value: "Product Numbers",
+    },
+  ],
+];
 
 @Component
 export default class App extends Vue {
@@ -59,17 +75,30 @@ export default class App extends Vue {
   render() {
     return (
       <ListSection
+        headline="Custom Item - Example 2"
         items={items}
-        renderItem={item => (
-          <ProductListItem
-            title={item.title}
-            description={item.description}
-            price={item.price}
-            image={item.image}
-            url={item.url}
-            handleClick={handleClick.bind(null, item)}
-          />
-        )}
+        filters={filters}
+        selectedFilters={this.selectedFilters}
+        handleFilterChange={selectedFilters =>
+          (this.selectedFilters = selectedFilters)
+        }
+        scopedSlots={{
+          item: item => (
+            <div class="w-full h-64 bg-gray-200 flex items-center justify-center rounded-md">
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+          ),
+          headline: headline => <h1 class="text-espirit">{headline}</h1>,
+          filter: filter => (
+            <button
+              onClick={() => filter.handleClick(filter.key)}
+              class={filter.selected ? "bg-blue-300" : ""}
+            >
+              {filter.value}
+            </button>
+          ),
+        }}
       />
     );
   }

@@ -4,7 +4,7 @@ import Breadcrumbs from "..";
 describe("components/Breadcrumbs", () => {
   it("checks if handleclick has been called", async () => {
     const spy = jest.fn();
-    const { container } = render(Breadcrumbs, {
+    const { getByTestId } = render(Breadcrumbs, {
       slots: { default: "Content" },
       props: {
         handleItemClick: spy,
@@ -31,10 +31,9 @@ describe("components/Breadcrumbs", () => {
       },
     });
 
-    const breadcrumb = container.querySelector(
-      ".Breadcrumbs--Item [data-testid='item-1']",
-    );
-    await fireEvent(breadcrumb!, new Event("click"));
+    const breadcrumb = getByTestId("item-1");
+
+    await fireEvent(breadcrumb, new Event("click"));
     expect(spy).toHaveBeenCalled();
     expect(spy.mock.calls[0][0]).toEqual({
       referenceId: "1",
