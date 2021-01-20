@@ -225,41 +225,20 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
           infinite
           slideCount={this.slides.length}
           handleSlideAnimation={async (type, { element }) => {
-            if (type === "animateIn") {
-              if (
-                !element.classList.contains(
-                  "FullWidthSliderSection--Slide--animate-out",
-                )
-              ) {
-                element.classList.add(
-                  "FullWidthSliderSection--Slide--animate-out",
-                );
-                await new Promise(resolve => window.setTimeout(resolve, 0));
-              }
-              element.classList.remove(
-                "FullWidthSliderSection--Slide--animate-out",
-              );
-              element.classList.add(
-                "FullWidthSliderSection--Slide--animate-in",
-              );
-            } else {
-              if (
-                !element.classList.contains(
-                  "FullWidthSliderSection--Slide--animate-in",
-                )
-              ) {
-                element.classList.add(
-                  "FullWidthSliderSection--Slide--animate-in",
-                );
-                await new Promise(resolve => window.setTimeout(resolve, 0));
-              }
-              element.classList.remove(
-                "FullWidthSliderSection--Slide--animate-in",
-              );
-              element.classList.add(
-                "FullWidthSliderSection--Slide--animate-out",
-              );
+            const classToRemove =
+              type === "animateIn"
+                ? "FullWidthSliderSection--Slide--animate-out"
+                : "FullWidthSliderSection--Slide--animate-in";
+            const classToAdd =
+              type === "animateIn"
+                ? "FullWidthSliderSection--Slide--animate-in"
+                : "FullWidthSliderSection--Slide--animate-out";
+            if (!element.classList.contains(classToRemove)) {
+              element.classList.add(classToRemove);
+              await new Promise(resolve => window.setTimeout(resolve, 0));
             }
+            element.classList.remove(classToRemove);
+            element.classList.add(classToAdd);
             // we will resolve after 750 ms so the slider component will wait until the animation is finished
             return new Promise(resolve => {
               window.setTimeout(resolve, 750);
