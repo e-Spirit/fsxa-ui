@@ -1,3 +1,10 @@
+## [2.3.4](https://github.com/e-Spirit/fsxa-ui/compare/v2.3.3...v2.3.4) (2021-01-20)
+
+
+### Bug Fixes
+
+* 🐛 Fix FullWidthSliderSection animation ([77a5183](https://github.com/e-Spirit/fsxa-ui/commit/77a51837aaf537c55e8217bc7e722b89e29a1425))
+
 ## [2.3.3](https://github.com/e-Spirit/fsxa-ui/compare/v2.3.2...v2.3.3) (2021-01-19)
 
 
