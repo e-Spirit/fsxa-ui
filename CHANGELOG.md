@@ -1,3 +1,10 @@
+## [2.3.5](https://github.com/e-Spirit/fsxa-ui/compare/v2.3.4...v2.3.5) (2021-01-20)
+
+
+### Bug Fixes
+
+* 🐛 Reenable animate-out animation in FullWidthSliderSection ([3c02a77](https://github.com/e-Spirit/fsxa-ui/commit/3c02a77e5d9e8a84c5c98edf9577428088b3da09))
+
 ## [2.3.4](https://github.com/e-Spirit/fsxa-ui/compare/v2.3.3...v2.3.4) (2021-01-20)
 
 
