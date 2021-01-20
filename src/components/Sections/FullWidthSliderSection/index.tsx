@@ -226,12 +226,38 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
           slideCount={this.slides.length}
           handleSlideAnimation={async (type, { element }) => {
             if (type === "animateIn") {
+              if (
+                !element.classList.contains(
+                  "FullWidthSliderSection--Slide--animate-out",
+                )
+              ) {
+                element.classList.add(
+                  "FullWidthSliderSection--Slide--animate-out",
+                );
+                await new Promise(resolve => window.setTimeout(resolve, 0));
+              }
+              element.classList.remove(
+                "FullWidthSliderSection--Slide--animate-out",
+              );
               element.classList.add(
                 "FullWidthSliderSection--Slide--animate-in",
               );
             } else {
+              if (
+                !element.classList.contains(
+                  "FullWidthSliderSection--Slide--animate-in",
+                )
+              ) {
+                element.classList.add(
+                  "FullWidthSliderSection--Slide--animate-in",
+                );
+                await new Promise(resolve => window.setTimeout(resolve, 0));
+              }
               element.classList.remove(
                 "FullWidthSliderSection--Slide--animate-in",
+              );
+              element.classList.add(
+                "FullWidthSliderSection--Slide--animate-out",
               );
             }
             // we will resolve after 750 ms so the slider component will wait until the animation is finished

@@ -24,3 +24,22 @@
     @apply delay-400;
   }
 }
+
+.FullWidthSliderSection--Slide--animate-out {
+  .FullWidthImageSliderSection--Media {
+    @apply ease-in opacity-0 delay-250;
+  }
+
+  .FullWidthSliderSection--Content {
+    @apply ease-in delay-200 translate-y-full;
+  }
+
+  .FullWidthSliderSection--Teaser,
+  .FullWidthSliderSection--CTA-Button {
+    @apply ease-in translate-y-32;
+  }
+
+  .FullWidthSliderSection--Description {
+    @apply ease-in delay-150;
+  }
+}
