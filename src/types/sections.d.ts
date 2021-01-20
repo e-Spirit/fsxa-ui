@@ -374,7 +374,7 @@ export interface AccordionSectionProps {
   /**
    * The individual subsections consist of a non-optional title and a non-optional text.
    */
-  items: Array<{ title: string; text: string }>;
+  items: Array<{ title: RenderedType; text: RenderedType }>;
 }
 export class AccordionSection extends Component<AccordionSectionProps> {}
 

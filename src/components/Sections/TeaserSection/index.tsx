@@ -95,7 +95,7 @@ class TeaserSection<MediaType = ImageRef> extends BaseComponent<
                 ? this.$scopedSlots.button(this.buttonText)
                 : this.buttonText && (
                     <Button
-                      class="mx-2 my-2 lg:my-3 lg:mx-3"
+                      class="my-2 lg:my-3"
                       data-testid={"teasersection-button"}
                       variant="animated"
                       handleClick={() => this.$emit("buttonClick")}
