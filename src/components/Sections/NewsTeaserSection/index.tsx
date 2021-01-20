@@ -12,7 +12,13 @@ const ImageSrc = require("./../../../assets/dots.png");
 @Component({
   name: "NewsTeaserSection",
 })
-class NewsTeaserSection extends BaseComponent<NewsTeaserSectionProps> {
+class NewsTeaserSection extends BaseComponent<
+  NewsTeaserSectionProps,
+  {},
+  {
+    headline?: string;
+  }
+> {
   @Prop({ required: true }) headline!: NewsTeaserSectionProps["headline"];
   @Prop({ required: true }) items!: NewsTeaserSectionProps["items"];
   @Prop({ required: true })
@@ -27,9 +33,13 @@ class NewsTeaserSection extends BaseComponent<NewsTeaserSectionProps> {
         style={{ background: `url(${ImageSrc})` }}
       >
         <Container>
-          <Headline as="h2" size="lg">
-            {this.headline}
-          </Headline>
+          {this.$scopedSlots.headline ? (
+            this.$scopedSlots.headline(this.headline)
+          ) : (
+            <Headline as="h2" size="lg">
+              {this.headline}
+            </Headline>
+          )}
           <div class="NewsTeaserSection--Separator" />
           <Layout wrap>
             <LayoutItem width="full" lg={{ width: "1/2" }}>

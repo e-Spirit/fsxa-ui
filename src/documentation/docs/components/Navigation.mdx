@@ -6,7 +6,7 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
 
 <Meta
   title="Navigation"
-  subtitle="Navigation allows users to navigate through your site. The navigation also works mobile, try it on any mobile device to investigate its functions"
+  subtitle="The navigation components help you display your navigation structure in a beautiful and simple way."
 />
 
 ## Properties
@@ -19,27 +19,34 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
             <span class="code">label</span> is the displayed name
         </li>
         <li>
-            <span class="code">path</span> TODO
+            <span class="code">path</span> the path that a click on this item should lead to
         </li>
         <li>
-            <span class="code">id</span> TODO
+            <span class="code">id</span> an id for the item
         </li>
         <li>
-            <span class="code">children</span> TODO
+            <span class="code">childPlacement</span> a string that can be either "left" or "right" or undefined. 
+            Determines the direction the flyout menu for the item is rendered in.
+        </li>
+        <li>
+            <span class="code">children</span> an array of item elements containing a label, path and an id.
         </li>
     </ul>
   </PropsTableRow>
-  <PropsTableRow value="handleNavClick" type="Function">
-    Callback that will be triggered, when a link is clicked.
+  <PropsTableRow value="onItemClicked" type="Function">
+    Callback that will be triggered, when a link is clicked. When this callback is called, the clicked item will be passed into it.
   </PropsTableRow>
-  <PropsTableRow value="isActiveItem" type="Boolean" default="false">
-    Call that determinates which path is activated.
-  </PropsTableRow>
-  <PropsTableRow value="depth" type="Number" default="3">
-    Determinates the depth of the navigation tree.
+  <PropsTableRow value="activeItemKeys" type="Array" default="false">
+    An array of items that should be marked as active.
   </PropsTableRow>
 </PropsTable>
 
 ## Example
 
 <ExampleLoader example="Navigation.tsx" />
+<br />
+
+## Mobile View
+
+We are providing a mobile Navigation view as well. This can be embedded in any kind of wrapper that fits your needs.
+<ExampleLoader example="NavigationMobile.tsx" />

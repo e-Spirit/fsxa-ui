@@ -1,84 +1,155 @@
-import { Component, Prop } from "vue-property-decorator";
-import BaseComponent from "@/components/BaseComponent";
+import { SliderSlots, SliderProps } from "@/types/fsxa-ui";
+import Component from "vue-class-component";
+import { Prop, Watch } from "vue-property-decorator";
+import BaseComponent from "../BaseComponent";
 
-export interface Slide<Data = any> {
-  previewId: string;
-  identifier: string;
-  data: Data;
-}
-export interface SliderProps<SlideData = any> {
-  slides: Slide<SlideData>[];
-}
+const defaultAnimation = () => {
+  return Promise.resolve();
+};
 @Component({
   name: "Slider",
 })
-class Slider extends BaseComponent<SliderProps> {
-  @Prop({ required: true }) slides!: SliderProps["slides"];
+class Slider extends BaseComponent<SliderProps, {}, SliderSlots> {
+  @Prop({ default: false })
+  animateSlideTransition!: SliderProps["animateSlideTransition"];
+  @Prop({ required: true }) slideCount!: SliderProps["slideCount"];
+  @Prop({ required: false })
+  handleSlideAnimation: SliderProps["handleSlideAnimation"];
+  @Prop({ default: 1 }) visibleElements!: SliderProps["visibleElements"];
+  @Prop({ default: false }) infinite!: SliderProps["infinite"];
+  @Prop({ default: false }) animate!: SliderProps["animate"];
+  @Prop({ default: 10000 }) animationDelay!: SliderProps["animationDelay"];
+  @Prop({ default: 0 })
+  initialSlideIndex!: SliderProps["initialSlideIndex"];
 
-  wrapperWidth = 0;
-  currentSlide = 0;
+  currentSlideIndex = this.initialSlideIndex!;
+  nextSlideIndexToShow: number | null = null;
+
   animationTimeout: number | null = null;
 
-  mounted() {
-    this.handleResize();
-    window.addEventListener("resize", this.handleResize);
-    this.startAnimation();
-  }
-
-  startAnimation() {
-    this.clearAnimation();
-    this.animationTimeout = window.setTimeout(() => {
-      this.currentSlide =
-        this.currentSlide + 1 > this.slides.length - 1
-          ? 0
-          : this.currentSlide + 1;
-      this.startAnimation();
-    }, 10000);
-  }
-
-  clearAnimation() {
-    if (this.animationTimeout) window.clearTimeout(this.animationTimeout);
-  }
-
-  beforeDestroy() {
-    this.clearAnimation();
-    window.removeEventListener("resize", this.handleResize);
-  }
-
-  handleResize() {
-    this.wrapperWidth = (this.$refs.wrapper as HTMLDivElement).clientWidth;
-  }
-
-  get trackWidth() {
-    return this.wrapperWidth * this.slides.length;
-  }
-
-  renderSlide(slide: Slide) {
+  renderSlideWrapper(index: number) {
+    const widthClasses: Record<number, string> = {
+      1: "w-full",
+      2: "w-1/2",
+      3: "w-1/3",
+      4: "w-1/4",
+      5: "w-1/5",
+    };
+    const currentWidthClass = widthClasses[this.visibleElements!];
     return (
-      <div class="inline-block" style={{ width: `${this.wrapperWidth}px` }}>
-        {slide.previewId}
+      <div
+        class={`${currentWidthClass ||
+          "w-full"} h-full flex items-center justify-center flex-shrink-0`}
+        ref={`slide_${index}`}
+        data-testid="slide-wrapper"
+      >
+        {this.$scopedSlots.slide({
+          index,
+          params: {
+            currentSlideIndex: this.currentSlideIndex,
+            prevSlideIndex: this.prevSlideIndex,
+            nextSlideIndex: this.nextSlideIndex,
+            showSlide: index => (this.nextSlideIndexToShow = index),
+          },
+        })}
       </div>
     );
   }
 
+  mounted() {
+    this.animateIn();
+  }
+
+  beforeDestroy() {
+    if (this.animationTimeout) window.clearTimeout(this.animationTimeout);
+  }
+
+  @Watch("nextSlideIndexToShow")
+  async animateOut(nextSlide: number) {
+    // we will check if the currently displayed slide provides an animateOut() method
+    // if that is the case --> we will invoke it and will wait for the promise to resolve
+
+    if (this.animationTimeout) {
+      window.clearTimeout(this.animationTimeout);
+    }
+    const animateOut = this.handleSlideAnimation || defaultAnimation;
+    const slide = (this.$refs[`slide_${this.currentSlideIndex}`] as HTMLElement)
+      ?.children[0];
+
+    if (slide && animateOut) {
+      await animateOut("animateOut", {
+        element: slide,
+        slideIndex: this.currentSlideIndex,
+      });
+    }
+    this.currentSlideIndex = nextSlide;
+  }
+
+  @Watch("currentSlideIndex")
+  async animateIn() {
+    const animateIn = this.handleSlideAnimation || defaultAnimation;
+    const slide = (this.$refs[`slide_${this.currentSlideIndex}`] as HTMLElement)
+      ?.children[0];
+    if (animateIn && slide) {
+      await animateIn("animateIn", {
+        element: slide,
+        slideIndex: this.currentSlideIndex,
+      });
+    }
+    if (this.animationTimeout) {
+      window.clearTimeout(this.animationTimeout);
+    }
+    if (this.infinite && this.animate) {
+      this.animationTimeout = window.setTimeout(
+        () => this.animateOut(this.nextSlideIndex!),
+        this.animationDelay,
+      );
+    }
+  }
+
+  get prevSlideIndex(): number | null {
+    if (this.currentSlideIndex === 0) {
+      return this.infinite ? this.slideCount - 1 : null;
+    }
+    return this.currentSlideIndex - 1;
+  }
+
+  get nextSlideIndex(): number | null {
+    if (this.currentSlideIndex === this.slideCount - 1) {
+      return this.infinite ? 0 : null;
+    }
+    return this.currentSlideIndex + 1;
+  }
+
   render() {
+    const percentage = this.currentSlideIndex * (100 / this.visibleElements!);
+    const slides = [];
+    for (let i = 0; i < this.slideCount; i++) {
+      slides.push(this.renderSlideWrapper(i));
+    }
     return (
-      <div class="w-full h-full relative" ref="wrapper">
-        <div class="w-full overflow-hidden h-full relative">
-          {this.wrapperWidth !== 0 ? (
-            <div
-              class="absolute top-0 transition-all duration-1000"
-              style={{
-                left: `${this.currentSlide * this.wrapperWidth * -1}px`,
-                width: `${this.trackWidth}px`,
-              }}
-            >
-              {this.slides.map(this.renderSlide)}
-            </div>
-          ) : null}
+      <div class="flex relative flex-col h-full w-full">
+        <div class="w-full flex overflow-hidden h-full">
+          <div
+            class={`w-full flex transform ${
+              this.animateSlideTransition
+                ? "duration-250 transition-transform"
+                : ""
+            }`}
+            style={{ transform: `translateX(-${percentage}%)` }}
+            data-testid="transform-wrapper"
+          >
+            {slides}
+          </div>
         </div>
-        <div class="absolute left-0 top-1/2 -mt-10 -ml-10 h-20 bg-gray-300 w-20"></div>
-        <div class="absolute right-0 top-1/2 -mt-10 -mr-10 h-20 bg-gray-300 w-20"></div>
+        {this.$scopedSlots.controls
+          ? this.$scopedSlots.controls({
+              currentSlideIndex: this.currentSlideIndex,
+              prevSlideIndex: this.prevSlideIndex,
+              nextSlideIndex: this.nextSlideIndex,
+              showSlide: index => (this.nextSlideIndexToShow = index),
+            })
+          : null}
       </div>
     );
   }

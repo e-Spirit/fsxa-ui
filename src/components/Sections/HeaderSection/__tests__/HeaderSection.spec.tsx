@@ -1,4 +1,4 @@
-import { render, fireEvent } from "@testing-library/vue";
+import { render } from "@testing-library/vue";
 import HeaderSection from "./../";
 import { Breadcrumb } from "@/types/sections";
 const breadItems: Breadcrumb[] = [
@@ -36,7 +36,7 @@ describe("components/HeaderSection", () => {
   it("correctly consumes the specified background image", () => {
     const content = "My test headline";
     const imageSource = "image source url";
-    const { container } = render(HeaderSection, {
+    const { container, getByTestId } = render(HeaderSection, {
       props: {
         title: content,
         backgroundImage: { src: imageSource },
@@ -44,10 +44,32 @@ describe("components/HeaderSection", () => {
       },
     });
     expect(
-      container
-        .querySelector(".HeaderSection--BackgroundImage")
+      getByTestId("HeaderSection--BackgroundImage")
         ?.querySelector("img")
         ?.getAttribute("src"),
     ).toEqual(imageSource);
+  });
+
+  it("should replace the default rendering of breadcrumbs, and background image when the scopedSlots are being used", async () => {
+    const content = "test header section content";
+    const { getByTestId } = render(HeaderSection, {
+      props: {
+        title: content,
+        breadcrumbs: breadItems,
+        backgroundImage: "new image",
+      },
+      scopedSlots: {
+        breadcrumbs: `<div data-testid="scoped-slot-breadcrumbs">{{props.breadcrumbs}}</div>`,
+        backgroundImage: `<div data-testid="scoped-slot-backgroundImage">{{props.backgroundImage}}</div>`,
+      },
+    });
+    const scopedBreadcrumbs = getByTestId("scoped-slot-breadcrumbs");
+    const scopedBackgroundImage = getByTestId("scoped-slot-backgroundImage");
+
+    expect(() => getByTestId("HeaderSection-Breadcrumbs")).toThrow();
+    expect(() => getByTestId("HeaderSection-BackgroundImage")).toThrow();
+
+    expect(scopedBreadcrumbs.nodeName).toBe("DIV");
+    expect(scopedBackgroundImage.nodeName).toBe("DIV");
   });
 });

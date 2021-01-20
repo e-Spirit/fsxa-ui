@@ -1,4 +1,4 @@
-import { getByText, render } from "@testing-library/vue";
+import { render } from "@testing-library/vue";
 import Paragraph from "./../";
 
 describe("components/Paragraph", () => {

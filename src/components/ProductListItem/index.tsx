@@ -1,7 +1,6 @@
 import BaseComponent from "@/components/BaseComponent";
 import { Component, Prop } from "vue-property-decorator";
 import Headline from "@/components/Headline";
-import RichText from "@/components/RichText";
 import Image from "@/components/Image";
 
 import "./style.css";
@@ -20,8 +19,16 @@ class ProductListItem extends BaseComponent<ProductListItemProps> {
 
   render() {
     return (
-      <div class={`ProductListItem w-full border-gray-200 border-0 relative`}>
-        <Image class="w-full h-full m-0 border-0" src={this.image.src} />
+      <div
+        class={`ProductListItem w-full h-full border-gray-200 border-0 relative`}
+      >
+        <Image
+          class="w-full h-full m-0 border-0"
+          src={this.image.src}
+          resolutions={this.image.resolutions}
+          lazy={true}
+          sizes={this.image.sizes}
+        />
         <a
           href={`${this.url}`}
           onClick={event => {
@@ -33,8 +40,8 @@ class ProductListItem extends BaseComponent<ProductListItemProps> {
             <Headline as="h3" class="mt-12 ml-8 mr-4" size="sm">
               {this.title}
             </Headline>
-            <RichText class="ml-8 mr-4 text-sm" content={this.description} />
-            <div class="ml-8 mr-4">{this.price}</div>
+            <div class="ml-8 mr-4 text-sm">{this.description}</div>
+            <div class="ml-8 mr-4 mt-2">{this.price}</div>
           </div>
         </a>
       </div>

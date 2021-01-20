@@ -2,6 +2,9 @@ import Vue from "vue";
 import Component from "vue-class-component";
 
 import ListSection from "@/components/Sections/ListSection";
+import ProductListItem from "@/components/ProductListItem";
+
+const headline = "List Example Headline";
 
 const items = [
   {
@@ -78,6 +81,10 @@ const filters = [
   ],
 ];
 
+const handleClick = (item: any) => {
+  console.log("Item click... ", item);
+};
+
 @Component
 export default class App extends Vue {
   selectedFilters: string[] = [];
@@ -85,18 +92,28 @@ export default class App extends Vue {
   render() {
     return (
       <ListSection
-        headline="Custom Item - Example 2"
+        headline={headline}
         items={items}
         filters={filters}
         selectedFilters={this.selectedFilters}
         handleFilterChange={selectedFilters =>
           (this.selectedFilters = selectedFilters)
         }
-        renderItem={item => (
-          <div class="w-full h-64 bg-gray-200 flex items-center justify-center rounded-md">
-            {item.title}
-          </div>
-        )}
+        scopedSlots={{
+          item: item => (
+            <ProductListItem
+              title={item.title}
+              description={item.description}
+              price={item.price}
+              image={{
+                ...item.image,
+                type: "image",
+              }}
+              url={item.url}
+              handleClick={handleClick.bind(null, item)}
+            />
+          ),
+        }}
       />
     );
   }

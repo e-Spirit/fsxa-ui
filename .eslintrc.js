@@ -19,6 +19,7 @@ module.exports = {
     "comma-dangle": ["error", "always-multiline"],
     "@typescript-eslint/camelcase": "off",
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
   },
   overrides: [
     {
