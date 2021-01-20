@@ -22,7 +22,7 @@ export default class App extends Vue {
                 text: "Another one closes.",
               },
               {
-                title: "You can add as many Accordions as you want",
+                title: "You can add as many Accordions as you want.",
                 text:
                   "And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. ",
               },
