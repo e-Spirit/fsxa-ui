@@ -36,7 +36,7 @@ class ListSection<Item = any> extends BaseComponent<
 
   render() {
     return (
-      <div class="py-12 md:py-16 lg:py-20 ListSection w-full">
+      <div class="ui-py-12 md:ui-py-16 lg:ui-py-20 ListSection ui-w-full">
         {this.$scopedSlots.headline && this.headline ? (
           this.$scopedSlots.headline(this.headline)
         ) : this.headline ? (
@@ -47,7 +47,7 @@ class ListSection<Item = any> extends BaseComponent<
         ) : null}
         {this.filters
           ? this.filters.map(filterList => (
-              <div class="space-x-1 mb-3">
+              <div class="ui-space-x-1 ui-mb-3">
                 {filterList.map(filter =>
                   this.$scopedSlots.filter ? (
                     this.$scopedSlots.filter({
@@ -76,7 +76,7 @@ class ListSection<Item = any> extends BaseComponent<
         {this.$slots.default ? (
           this.$slots.default
         ) : (
-          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gap-8">
+          <div class="ui-grid ui-grid-cols-1 ui-gap-4 sm:ui-grid-cols-2 md:ui-grid-cols-3 lg:ui-grid-cols-4 xl:ui-gap-8">
             {this.items.map(item => this.$scopedSlots.item(item))}
           </div>
         )}

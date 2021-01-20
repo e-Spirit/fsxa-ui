@@ -5,8 +5,8 @@ describe("components/LineSeparator", () => {
   it("renders the correct default", () => {
     const { getByTestId } = render(LineSeparator);
     const separator = getByTestId("separator-test");
-    expect(separator.classList.contains("w-16")).toBeTruthy();
-    expect(separator.classList.contains("h-2")).toBeTruthy();
+    expect(separator.classList.contains("ui-w-16")).toBeTruthy();
+    expect(separator.classList.contains("ui-h-2")).toBeTruthy();
   });
   it("renders with different properties", () => {
     const height = "1";
@@ -21,9 +21,9 @@ describe("components/LineSeparator", () => {
     });
     const separator = getByTestId("separator-test");
     const flex = getByTestId("flex-test");
-    expect(separator.classList.contains("h-1")).toBeTruthy();
-    expect(flex.classList.contains("flex-row-reverse")).toBeTruthy();
-    expect(separator.classList.contains("w-8")).toBeTruthy();
+    expect(separator.classList.contains("ui-h-1")).toBeTruthy();
+    expect(flex.classList.contains("ui-flex-row-reverse")).toBeTruthy();
+    expect(separator.classList.contains("ui-w-8")).toBeTruthy();
   });
   it("checks if the component is rendered for different devices correctly", () => {
     const width = "8";
@@ -42,10 +42,10 @@ describe("components/LineSeparator", () => {
       },
     });
     const separator = getByTestId("separator-test");
-    expect(separator.classList.contains("w-8")).toBeTruthy();
-    expect(separator.classList.contains("sm:w-full")).toBeTruthy();
-    expect(separator.classList.contains("md:w-64")).toBeTruthy();
-    expect(separator.classList.contains("lg:w-32")).toBeTruthy();
-    expect(separator.classList.contains("xl:w-16")).toBeTruthy();
+    expect(separator.classList.contains("ui-w-8")).toBeTruthy();
+    expect(separator.classList.contains("sm:ui-w-full")).toBeTruthy();
+    expect(separator.classList.contains("md:ui-w-64")).toBeTruthy();
+    expect(separator.classList.contains("lg:ui-w-32")).toBeTruthy();
+    expect(separator.classList.contains("xl:ui-w-16")).toBeTruthy();
   });
 });

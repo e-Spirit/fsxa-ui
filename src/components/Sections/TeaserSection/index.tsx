@@ -37,7 +37,7 @@ class TeaserSection<MediaType = ImageRef> extends BaseComponent<
     }
     const typedImage = (this.media as any) as ImageRef;
     return (
-      <div class="teasersection-media relative md:mx-8 lg:mt-8 lg:pl-0">
+      <div class="teasersection-media ui-relative md:ui-mx-8 lg:ui-mt-8 lg:ui-pl-0">
         <Image
           data-testid={"teasersection-media"}
           src={typedImage.src}
@@ -54,7 +54,7 @@ class TeaserSection<MediaType = ImageRef> extends BaseComponent<
 
   render() {
     return (
-      <div class="w-full bg-gray-100 text-black">
+      <div class="ui-w-full ui-bg-gray-100 ui-text-black">
         <Container>
           <Layout wrap>
             <LayoutItem
@@ -78,14 +78,14 @@ class TeaserSection<MediaType = ImageRef> extends BaseComponent<
                 this.$scopedSlots.headline(this.headline)
               ) : (
                 <Headline size="xl" data-testid={"teasersection-headline"}>
-                  <div class="inline">{this.headline}</div>
+                  <div class="ui-inline">{this.headline}</div>
                 </Headline>
               )}
               {this.$scopedSlots.text ? (
                 this.$scopedSlots.text(this.text)
               ) : (
                 <div
-                  class="text-sm uppercase md:pr-6 lg:pr-8"
+                  class="ui-text-sm ui-uppercase md:ui-pr-6 lg:ui-pr-8"
                   data-testid="teasersection-text"
                 >
                   {this.text}
@@ -95,7 +95,7 @@ class TeaserSection<MediaType = ImageRef> extends BaseComponent<
                 ? this.$scopedSlots.button(this.buttonText)
                 : this.buttonText && (
                     <Button
-                      class="my-2 lg:my-3"
+                      class="ui-my-2 lg:ui-my-3"
                       data-testid={"teasersection-button"}
                       variant="animated"
                       handleClick={() => this.$emit("buttonClick")}

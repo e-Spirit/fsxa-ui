@@ -7,7 +7,7 @@ import { Quote } from "fsxa-ui";
 export default class App extends Vue {
   render() {
     return (
-      <div class="space-y-2">
+      <div class="ui-space-y-2">
         <Quote>This is a quote!</Quote>
         <Quote side="right">This is a quote!</Quote>
       </div>

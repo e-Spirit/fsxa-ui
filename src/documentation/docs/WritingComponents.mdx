@@ -69,8 +69,8 @@ class Example extends BaseComponent<ExampleProps> {
 
 render() {
     let colorClass = "";
-    if(color === 'black' || color === 'white') colorClass = `text-${color}`;
-    else colorClass = `text-${color}-500`;
+    if(color === 'black' || color === 'white') colorClass = `ui-text-${color}`;
+    else colorClass = `ui-text-${color}-500`;
     return (
       <div class={colorClass}>
         { this.$slots.default }
@@ -80,7 +80,7 @@ render() {
 }
 ```
 
-In this project the CSS-Framework <a target="_blank" href="https://tailwindcss.com/" class="text-blue-500">TailwindCSS</a> is used.
+In this project the CSS-Framework <a target="_blank" href="https://tailwindcss.com/" class="ui-text-blue-500">TailwindCSS</a> is used.
 
 <br />
 

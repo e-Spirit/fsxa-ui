@@ -51,7 +51,7 @@ const mdxComponents: any = {
   inlineCode: () => ({
     render() {
       return (
-        <span class="code bg-gray-300 px-2 rounded-lg text-sm">
+        <span class="code ui-bg-gray-300 ui-px-2 ui-rounded-lg ui-text-sm">
           {(this as any).$slots.default[0].text}
         </span>
       );

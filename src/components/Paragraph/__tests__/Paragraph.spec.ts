@@ -21,7 +21,9 @@ describe("components/Paragraph", () => {
         weight,
       },
     });
-    const propsTest = container.querySelector(`.text-${size}.font-${weight}`);
+    const propsTest = container.querySelector(
+      `.ui-text-${size}.ui-font-${weight}`,
+    );
     expect(propsTest).toBeTruthy();
   });
 });

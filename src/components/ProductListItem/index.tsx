@@ -20,10 +20,10 @@ class ProductListItem extends BaseComponent<ProductListItemProps> {
   render() {
     return (
       <div
-        class={`ProductListItem w-full h-full border-gray-200 border-0 relative`}
+        class={`ProductListItem ui-w-full ui-h-full ui-border-gray-200 ui-border-0 ui-relative`}
       >
         <Image
-          class="w-full h-full m-0 border-0"
+          class="ui-w-full ui-h-full ui-m-0 ui-border-0"
           src={this.image.src}
           resolutions={this.image.resolutions}
           lazy={true}
@@ -36,12 +36,12 @@ class ProductListItem extends BaseComponent<ProductListItemProps> {
             this.handleClick();
           }}
         >
-          <div class="ProductListItem--InfoBox bg-black text-gray-100 absolute inset-0 opacity-0 line-animation hover:opacity-80">
-            <Headline as="h3" class="mt-12 ml-8 mr-4" size="sm">
+          <div class="ProductListItem--InfoBox ui-bg-black ui-text-gray-100 ui-absolute ui-inset-0 ui-opacity-0 hover:ui-opacity-80">
+            <Headline as="h3" class="ui-mt-12 ui-ml-8 ui-mr-4" size="sm">
               {this.title}
             </Headline>
-            <div class="ml-8 mr-4 text-sm">{this.description}</div>
-            <div class="ml-8 mr-4 mt-2">{this.price}</div>
+            <div class="ui-ml-8 ui-mr-4 ui-text-sm">{this.description}</div>
+            <div class="ui-ml-8 ui-mr-4 ui-mt-2">{this.price}</div>
           </div>
         </a>
       </div>

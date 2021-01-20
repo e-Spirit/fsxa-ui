@@ -1,10 +1,10 @@
 .Image {
 
   & img.zoom {
-    @apply transform transition-transform duration-10000;
+    @apply ui-transform ui-transition-transform ui-duration-10000;
 
     &:hover {
-      @apply scale-150;
+      @apply ui-scale-150;
     }
   }
 }

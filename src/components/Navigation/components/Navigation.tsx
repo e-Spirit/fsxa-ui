@@ -7,11 +7,11 @@ import BaseNavigation from "./BaseNavigation";
 class Navigation extends BaseNavigation {
   render() {
     return (
-      <div class="flex flex-row h-full">
+      <div class="ui-flex ui-flex-row ui-h-full">
         {this.items.map((item, index) => {
           const isActive = this.activeItemKeys?.includes(item.key);
           return (
-            <div class="relative group overflow-hidden hover:overflow-visible">
+            <div class="ui-relative ui-group ui-overflow-hidden hover:ui-overflow-visible">
               <a
                 href={item.path}
                 onClick={event => {
@@ -19,29 +19,29 @@ class Navigation extends BaseNavigation {
                   this.triggerItemClick(item);
                 }}
                 data-active={isActive}
-                class={`h-full flex items-center justify-center px-5 py-4 uppercase tracking-widest text-xs ${
-                  isActive ? "text-gray-500" : ""
+                class={`h-full ui-flex ui-items-center ui-justify-center ui-px-5 ui-py-4 ui-uppercase ui-tracking-widest ui-text-xs ${
+                  isActive ? "ui-text-gray-500" : ""
                 }`}
               >
                 {item.label}
               </a>
               {item.children.length > 0 ? (
                 <div
-                  class={`absolute top-100 ${
+                  class={`ui-absolute ui-top-100 ${
                     item.childPlacement === "right" ? "right-0" : "left-0"
                   }`}
                   data-testId={`childrenContainer-${index}`}
                 >
-                  <ul class="translate-y-8 group-hover:translate-y-0 bg-white border border-gray-300 w-56 text-sm shadow transform transition-transform duration-300 leading-5">
+                  <ul class="ui-translate-y-8 group-hover:ui-translate-y-0 ui-bg-white ui-border ui-border-gray-300 ui-w-56 ui-text-sm ui-shadow ui-transform ui-transition-transform ui-duration-300 ui-leading-5">
                     {item.children.map(child => (
-                      <li class="last:border-b-0 border-b border-gray-300">
+                      <li class="last:ui-border-b-0 ui-border-b ui-border-gray-300">
                         <a
                           href={child.path}
                           onClick={event => {
                             event.preventDefault();
                             this.triggerItemClick(child);
                           }}
-                          class="block px-5 py-2 bg-white hover:bg-gray-200 text-xs"
+                          class="ui-block ui-px-5 ui-py-2 ui-bg-white hover:ui-bg-gray-200 ui-text-xs"
                         >
                           {child.label}
                         </a>

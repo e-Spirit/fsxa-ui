@@ -32,7 +32,7 @@ class InterestingFactsSection extends BaseComponent<
 
   render() {
     return (
-      <div class="InterestingFactsSection py-12 md:py-16 lg:py-20 text-white">
+      <div class="InterestingFactsSection ui-py-12 md:ui-py-16 lg:ui-py-20 ui-text-white">
         {this.backgroundImage && (
           <Image
             class="InterestingFactsSection--BackgroundImage"
@@ -64,7 +64,7 @@ class InterestingFactsSection extends BaseComponent<
                 ) : (
                   <Headline
                     as="h2"
-                    class="text-highlight leading-none"
+                    class="ui-text-highlight ui-leading-none"
                     size="xxl"
                     data-testid={"interestingfactssection-headline"}
                   >
@@ -88,7 +88,7 @@ class InterestingFactsSection extends BaseComponent<
             <LayoutItem width="full" lg={{ width: "6/12" }}>
               <Layout wrap>
                 {this.counters.map((counter, index) => (
-                  <LayoutItem class="mt-20 lg:mt-32">
+                  <LayoutItem class="ui-mt-20 lg:ui-mt-32">
                     {this.$scopedSlots.counter ? (
                       this.$scopedSlots.counter(counter)
                     ) : (

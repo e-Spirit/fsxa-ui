@@ -19,10 +19,10 @@ class SelectInput extends BaseComponent<SelectInputProps> {
 
   render() {
     return (
-      <div class="w-full flex items-center text-sm flex-wrap mb-2">
-        <p class="w-full lg:w-32 text-xs">{this.label}</p>
+      <div class="ui-w-full ui-flex ui-items-center ui-text-sm ui-flex-wrap ui-mb-2">
+        <p class="ui-w-full lg:ui-w-32 ui-text-xs">{this.label}</p>
         <select
-          class="text-gray-900 block appearance-none flex-1 bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+          class="ui-text-gray-900 ui-block ui-appearance-none ui-flex-1 ui-bg-white ui-border ui-border-gray-400 hover:ui-border-gray-500 ui-px-4 ui-py-2 ui-pr-8 ui-rounded ui-shadow ui-leading-tight focus:ui-outline-none focus:ui-shadow-outline"
           onChange={(event: any) =>
             this.handleChange(event.target.value || undefined)
           }

@@ -42,7 +42,7 @@ export default class App extends Vue {
             item: props => <div>{props.headline}</div>,
           }}
         >
-          <div class="w-full h-64 relative flex justify-center items-center">
+          <div class="ui-w-full ui-h-64 ui-relative ui-flex ui-justify-center ui-items-center">
             <Loader />
           </div>
         </ListSection>

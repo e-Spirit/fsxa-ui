@@ -313,7 +313,7 @@ export interface PageProps {
 export class Page extends Component<PageProps> {}
 
 export interface ParagraphProps {
-  size?: "base" | "xs" | "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "base" | "md" | "lg" | "xl";
   weight?: "bold" | "light" | "normal";
 }
 export class Paragraph extends Component<ParagraphProps> {}

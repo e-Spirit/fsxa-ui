@@ -14,11 +14,16 @@ const imageTwo =
 export default class App extends Vue {
   render() {
     return (
-      <div class="px-24 w-full" style="height: 400px">
+      <div class="ui-px-24 ui-w-full" style="height: 400px">
         <ImageSlider
           images={[{ src: imageOne }, { src: imageTwo }]}
           scopedSlots={{
-            image: props => <Image border props={props.image} />,
+            image: props => (
+              <Image
+                props={props.image}
+                style="border:#CCC 0.5rem inset;transform: rotate(11deg);"
+              />
+            ),
           }}
         />
       </div>

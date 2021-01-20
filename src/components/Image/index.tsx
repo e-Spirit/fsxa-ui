@@ -6,12 +6,12 @@ import "./style.css";
 import { ImageProps } from "@/types/fsxa-ui";
 
 const opacityClasses = {
-  0: "opacity-0",
-  25: "opacity-25",
-  40: "opacity-40",
-  50: "opacity-50",
-  75: "opacity-75",
-  80: "opacity-80",
+  0: "ui-opacity-0",
+  25: "ui-opacity-25",
+  40: "ui-opacity-40",
+  50: "ui-opacity-50",
+  75: "ui-opacity-75",
+  80: "ui-opacity-80",
 };
 
 const isInViewport = (element: Element, preloadMultiplier = 1.1) => {
@@ -93,22 +93,22 @@ class Image extends BaseComponent<ImageProps> {
   render() {
     return (
       <div
-        class={`Image w-full h-full overflow-hidden`}
+        class={`Image ui-w-full ui-h-full ui-overflow-hidden`}
         data-previewid={this.previewId}
         data-testid="imageDiv"
       >
-        <div class="w-full h-full overflow-hidden relative">
+        <div class="ui-w-full ui-h-full ui-overflow-hidden ui-relative">
           <img
             src={!this.lazy || this.loaded ? this.src : ""}
             srcset={this.srcset}
             sizes={this.sizes}
             class={`${
               this.zoom ? "zoom" : ""
-            } w-full h-full object-cover object-center`}
+            } ui-w-full ui-h-full ui-object-cover ui-object-center`}
           />
           {this.opacity && (
             <div
-              class={`absolute top-0 left-0 w-full h-full pointer-events-none bg-black ${
+              class={`ui-absolute ui-top-0 ui-left-0 ui-w-full ui-h-full ui-pointer-events-none ui-bg-black ${
                 opacityClasses[this.opacity]
               }`}
               data-testid="veil"

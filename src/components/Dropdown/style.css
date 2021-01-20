@@ -1,23 +1,23 @@
 .Dropdown {
-  @apply relative inline-block cursor-pointer;
+  @apply ui-relative ui-inline-block ui-cursor-pointer;
 
   &:hover {
     ul {
-      @apply block absolute shadow-sm opacity-100 visible;
+      @apply ui-block ui-absolute ui-shadow-sm ui-opacity-100 ui-visible;
       top: 100%;
     }
   }
   ul {
-    @apply absolute block invisible opacity-0 border-t border-l border-r right-0 border-gray-200;
+    @apply ui-absolute ui-block ui-invisible ui-opacity-0 ui-border-t ui-border-l ui-border-r ui-right-0 ui-border-gray-200;
     top: 115%;
     transition: top 200ms, left 200ms;
   }
 
   a {
-    @apply block text-sm h-full relative py-2 px-4 no-underline text-black font-sans border-b border-gray-200;
+    @apply ui-block ui-text-sm ui-h-full ui-relative ui-py-2 ui-px-4 ui-no-underline ui-text-black ui-font-sans ui-border-b ui-border-gray-200;
 
     &:hover {
-      @apply bg-gray-100;
+      @apply ui-bg-gray-100;
     }
   }
 }

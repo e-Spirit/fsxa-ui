@@ -13,28 +13,28 @@ class Installation extends BaseComponent {
   render() {
     return (
       <div>
-        <h3 class="text-lg font-bold mb-5">NPM / YARN</h3>
+        <h3 class="ui-text-lg ui-font-bold ui-mb-5">NPM / YARN</h3>
         FSXA-UI is available as an{" "}
         <a
           href="https://www.npmjs.com/package/fsxa-ui"
           target="_blank"
-          class="text-espirit"
+          class="ui-text-espirit"
         >
           npm Package
         </a>
         .
         <Code
-          class="mt-2 mb-5"
+          class="ui-mt-2 ui-mb-5"
           code={`// with npm
 npm install fsxa-ui --save
 
 // with yarn
 yarn add fsxa-ui`}
         />
-        <p class="inline-flex items-center mt-5 leading-8">
+        <p class="ui-inline-flex ui-items-center ui-mt-5 ui-leading-8">
           It is necessary to embed the css provided by this library by yourself.{" "}
           You can find it here:
-          <span class="bg-gray-900 text-white px-1 rounded-lg leading-6">
+          <span class="ui-bg-gray-900 ui-text-white ui-px-1 ui-rounded-lg ui-leading-6">
             fsxa-ui/dist/fsxa-ui.css
           </span>
         </p>

@@ -48,7 +48,7 @@ export default class App extends Vue {
       lng: 16.346388,
     } as MapsPosition;
     return (
-      <div class="container mx-auto" style="height: 640px;">
+      <div class="ui-container ui-mx-auto" style="height: 640px;">
         <Sections.GoogleMapsSection
           apikey={apikey}
           title="Google Maps Section"
@@ -63,19 +63,19 @@ export default class App extends Vue {
           }}
           scopedSlots={{
             title: title => (
-              <h2 class="text-3xl font-bold text-espirit">{title}</h2>
+              <h2 class="ui-text-3xl ui-font-bold ui-text-espirit">{title}</h2>
             ),
             locationItem: props => (
               <div
                 class={`${
-                  props.selected ? "text-gray-500" : ""
-                } bg-white border-b-2 cursor-pointer hover:text-gray-500 p-1`}
+                  props.selected ? "ui-text-gray-500" : ""
+                } ui-bg-white ui-border-b-2 ui-cursor-pointer hover:ui-text-gray-500 ui-p-1`}
                 onClick={() => props.handleItemClick()}
               >
-                <h3 class="text-lg font-semibold text-espirit">
+                <h3 class="ui-text-lg ui-font-semibold ui-text-espirit">
                   {props.location.city}
                 </h3>
-                <h4 class="font-semibold">{props.location.name}</h4>
+                <h4 class="ui-font-semibold">{props.location.name}</h4>
               </div>
             ),
           }}

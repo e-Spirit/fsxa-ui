@@ -57,7 +57,9 @@ describe("components/slider", () => {
       });
       const slideWrappers = getAllByTestId("slide-wrapper");
       slideWrappers.forEach(slideWrapper => {
-        expect(slideWrapper.classList).toContain(`w-1/${numOfVisibleElements}`);
+        expect(slideWrapper.classList).toContain(
+          `ui-w-1/${numOfVisibleElements}`,
+        );
       });
       unmount();
     });

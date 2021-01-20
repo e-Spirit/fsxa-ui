@@ -6,7 +6,7 @@ import { Sections } from "fsxa-ui";
 class App extends Vue {
   render() {
     return (
-      <div class="pt-24" style="height: 800px">
+      <div class="ui-pt-24" style="height: 800px">
         <Sections.FullWidthSliderSection
           onClick={console.log}
           slides={[
@@ -16,7 +16,7 @@ class App extends Vue {
                 "With a length of 28 to 34 cm and a wing-span of 50 to 60 cm, it is approximately as big as a house-dove.",
               title: (
                 <span>
-                  Puffin <span class="text-highlight">all day</span> long
+                  Puffin <span class="ui-text-highlight">all day</span> long
                 </span>
               ),
               media: {
@@ -51,7 +51,7 @@ class App extends Vue {
                 "As zebras, the three types Grevyzebra, mountain-zebra and steppe-zebra from the type of the horses are called. They are especially characterized by their black and white stripe pattern. All representatives of the zebras occur exclusively in Africa where they live in open landscapes mostly.",
               title: (
                 <span>
-                  Zebra<span class="text-highlight">away</span>
+                  Zebra<span class="ui-text-highlight">away</span>
                 </span>
               ),
               media: {
@@ -86,7 +86,8 @@ class App extends Vue {
                 "Twilight is the smooth transition of light conditions at the beginning and end of the day, alternating with the night due to the position of the sun and light scattering in the atmosphere. The perceived light is called twilight or twilight shine.",
               title: (
                 <span>
-                  <span class="text-highlight">smooth</span> transition of light
+                  <span class="ui-text-highlight">smooth</span> transition of
+                  light
                 </span>
               ),
               media: {

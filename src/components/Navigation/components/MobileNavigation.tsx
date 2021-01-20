@@ -10,30 +10,30 @@ class MobileNavigation extends BaseNavigation {
 
   render() {
     return (
-      <div class="w-full max-h-full border-t border-b border-gray-300 flex items-stretch justify-start font-sans flex-col overflow-y-auto">
+      <div class="ui-w-full ui-max-h-full ui-border-t ui-border-b ui-border-gray-300 ui-flex ui-items-stretch ui-justify-start ui-font-sans ui-flex-col ui-overflow-y-auto">
         {this.items.map(item => {
           const isActive = this.activeItemKeys?.includes(item.key);
           return (
-            <div class="last:border-b-0 relative border-b border-gray-300 bg-white">
+            <div class="last:ui-border-b-0 ui-relative ui-border-b ui-border-gray-300 ui-bg-white">
               <a
                 href="#"
                 onClick={event => {
                   event.preventDefault();
                   this.triggerItemClick(item);
                 }}
-                class={`block px-5 py-3 tracking-xl hover:bg-gray-200 transition-colors duration-200 relative uppercase font-semibold text-xs`}
+                class={`ui-block ui-px-5 ui-py-3 ui-tracking-xl hover:ui-bg-gray-200 ui-transition-colors ui-duration-200 ui-relative ui-uppercase ui-font-semibold ui-text-xs`}
               >
                 <span
                   data-active={isActive}
-                  class={`flex-grow leading-3 ${
-                    isActive ? "text-gray-900" : "text-gray-600"
+                  class={`ui-flex-grow ui-leading-3 ${
+                    isActive ? "ui-text-gray-900" : "ui-text-gray-600"
                   }`}
                 >
                   {item.label}
                 </span>
                 {item.children.length ? (
                   <span
-                    class="absolute top-1/2 right-0 -mt-4 mr-3 p-1 hover:bg-white hover:shadow rounded-full"
+                    class="ui-absolute ui-top-1/2 ui-right-0 ui--mt-4 ui-mr-3 ui-p-1 hover:ui-bg-white hover:ui-shadow ui-rounded-full"
                     onClick={event => {
                       event.preventDefault();
                       event.stopImmediatePropagation();
@@ -51,7 +51,7 @@ class MobileNavigation extends BaseNavigation {
                   >
                     {/** hamburger icon from heroicons.com */}
                     <svg
-                      class={`w-6 h-6 transform duration-200 transition-transform ${
+                      class={`ui-w-6 ui-h-6 ui-transform ui-duration-200 ui-transition-transform ${
                         this.collapsedItems.includes(item.key)
                           ? "rotate-180"
                           : ""
@@ -72,7 +72,7 @@ class MobileNavigation extends BaseNavigation {
               </a>
               {item.children.length > 0 &&
               this.collapsedItems.includes(item.key) ? (
-                <div class="block border-t border-gray-300">
+                <div class="ui-block ui-border-t ui-border-gray-300">
                   {item.children.map(child => (
                     <a
                       href={child.path}
@@ -81,9 +81,11 @@ class MobileNavigation extends BaseNavigation {
                         event.stopImmediatePropagation();
                         this.triggerItemClick(child);
                       }}
-                      class="last:border-b-0 scroll border-b border-gray-300 block pl-5 py-3 bg-gray-100 hover:bg-gray-200 transition-colors duration-200 text-gray-900 text-xs"
+                      class="last:ui-border-b-0 ui-scroll ui-border-b ui-border-gray-300 ui-block ui-pl-5 ui-py-3 ui-bg-gray-100 hover:ui-bg-gray-200 ui-transition-colors ui-duration-200 ui-text-gray-900 ui-text-xs"
                     >
-                      <span class="flex-grow leading-3">{child.label}</span>
+                      <span class="ui-flex-grow ui-leading-3">
+                        {child.label}
+                      </span>
                     </a>
                   ))}
                 </div>

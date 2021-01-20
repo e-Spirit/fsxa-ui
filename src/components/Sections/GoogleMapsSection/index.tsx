@@ -134,20 +134,20 @@ class GoogleMapsSection extends BaseComponent<
   }
 
   private renderDescriptionBox(location: MapsLocation): Node {
-    const template = `<h2 class="font-bold text-highlight text-lg">${
+    const template = `<h2 class="ui-font-bold ui-text-highlight ui-text-lg">${
       location.name
     }</h2>
-      <div class="mt-2">
+      <div class="ui-mt-2">
         ${location.description ? "<p>" + location.description + "</p>" : ""}
-        <p class="mt-2">${location.street}</p>
+        <p class="ui-mt-2">${location.street}</p>
         <p>${location.city}</p>
       </div>`;
     const div = document.createElement("div");
-    div.classList.add("w-64", "text-sm");
+    div.classList.add("ui-w-64", "ui-text-sm");
     div.innerHTML = template;
 
     if (this.buttonLabel) {
-      const button = `<button class='bg-black text-white hover:bg-gray-300 hover:text-black focus:outline-none p-2 my-4 w-auto overflow-hidden cursor-pointer font-light text-sm'>
+      const button = `<button class='ui-bg-black ui-text-white hover:ui-bg-gray-300 hover:ui-text-black focus:ui-outline-none ui-p-2 ui-my-4 ui-w-auto ui-overflow-hidden ui-cursor-pointer ui-font-light ui-text-sm'>
       ${this.buttonLabel}
       </button>`;
       div.querySelector("button")?.addEventListener("click", event => {
@@ -305,25 +305,25 @@ class GoogleMapsSection extends BaseComponent<
   renderDefaultTitle() {
     return (
       <div>
-        <h2 class="font-bold text-xl">{this.title}</h2>
+        <h2 class="ui-font-bold ui-text-xl">{this.title}</h2>
         <LineSeparator height="1"></LineSeparator>
       </div>
     );
   }
   render() {
     return (
-      <div class="w-full h-full p-8">
+      <div class="ui-w-full ui-h-full ui-p-8">
         {this.$scopedSlots.title && this.title
           ? this.$scopedSlots.title(this.title)
           : this.title
           ? this.renderDefaultTitle()
           : null}
-        <div class="grid grid-cols-1 grid-rows-2 lg:grid-cols-4 lg:grid-rows-1 h-full">
+        <div class="ui-grid ui-grid-cols-1 ui-grid-rows-2 lg:ui-grid-cols-4 lg:ui-grid-rows-1 ui-h-full">
           <div
-            class="col-span-1 lg:col-span-3 border-2 border-gray-400"
+            class="ui-col-span-1 lg:ui-col-span-3 ui-border-2 ui-border-gray-400"
             id="map"
           ></div>
-          <div class="col-span-1 lg:col-span-1 bg-gray-100 overflow-scroll border-2 border-gray-400">
+          <div class="ui-col-span-1 lg:ui-col-span-1 ui-bg-gray-100 ui-overflow-scroll ui-border-2 ui-border-gray-400">
             {this.locations &&
               this.locations?.map((location, index) =>
                 this.$scopedSlots.locationItem ? (
@@ -334,19 +334,19 @@ class GoogleMapsSection extends BaseComponent<
                   })
                 ) : (
                   <div
-                    class={`w-full py-1 px-2 border-b-2 border-gray-400 cursor-pointer overflow-hidden ${
+                    class={`ui-w-full ui-py-1 ui-px-2 ui-border-b-2 ui-border-gray-400 ui-cursor-pointer ui-overflow-hidden ${
                       index === this.selectedIndex ? "bg-white" : ""
                     }`}
                     on-click={this.selectLocation.bind(this, index)}
                     data-testId="rendered-location"
                   >
-                    <h3 class="text-lg font-bold text-highlight break-words">
+                    <h3 class="ui-text-lg ui-font-bold ui-text-highlight ui-break-words">
                       {location.name}
                     </h3>
 
-                    <div class="mt-2 text-sm">
+                    <div class="ui-mt-2 ui-text-sm">
                       {location.description && <p>{location.description}</p>}
-                      <p class="mt-2">{location.street}</p>
+                      <p class="ui-mt-2">{location.street}</p>
                       <p>{location.city}</p>
                     </div>
                   </div>

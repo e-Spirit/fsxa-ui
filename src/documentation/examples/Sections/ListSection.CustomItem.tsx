@@ -84,16 +84,16 @@ export default class App extends Vue {
         }
         scopedSlots={{
           item: item => (
-            <div class="w-full h-64 bg-gray-200 flex items-center justify-center rounded-md">
+            <div class="ui-w-full ui-h-64 ui-bg-gray-200 ui-flex ui-items-center ui-justify-center ui-rounded-md">
               <h3>{item.title}</h3>
               <p>{item.description}</p>
             </div>
           ),
-          headline: headline => <h1 class="text-espirit">{headline}</h1>,
+          headline: headline => <h1 class="ui-text-espirit">{headline}</h1>,
           filter: filter => (
             <button
               onClick={() => filter.handleClick(filter.key)}
-              class={filter.selected ? "bg-blue-300" : ""}
+              class={filter.selected ? "ui-bg-blue-300" : ""}
             >
               {filter.value}
             </button>

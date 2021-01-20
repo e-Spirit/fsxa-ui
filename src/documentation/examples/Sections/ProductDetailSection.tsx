@@ -63,7 +63,7 @@ export default class App extends Vue {
         propertyList={propertyList}
         foldableContentList={{
           Delivery: (
-            <ul class="list-disc px-10 py-4">
+            <ul class="ui-list-disc ui-px-10 ui-py-4">
               <li>mechanical lock</li>
               <li>camera with integrated face recognition</li>
               <li>wireless numpad</li>
@@ -72,7 +72,7 @@ export default class App extends Vue {
           ),
           "Installation instructions": <p>Fix it at the door. Ready.</p>,
           Compatibility: (
-            <ul class="list-disc px-10 py-4">
+            <ul class="ui-list-disc ui-px-10 ui-py-4">
               <li>Google Home</li>
               <li>Amazon Alexa</li>
               <li>Bosch Smart Home</li>

@@ -25,7 +25,7 @@ class HeaderSection extends BaseComponent<
 
   render() {
     return (
-      <div class="w-full relative text-white">
+      <div class="ui-w-full ui-relative ui-text-white">
         {this.$scopedSlots.backgroundImage
           ? this.$scopedSlots.backgroundImage(this.backgroundImage)
           : this.backgroundImage && (
@@ -34,16 +34,16 @@ class HeaderSection extends BaseComponent<
                 resolutions={this.backgroundImage?.resolutions}
                 data-preview-id={this.backgroundImage?.previewId}
                 data-testid="HeaderSection--BackgroundImage"
-                class="absolute top-0 left-0 w-full h-full"
+                class="ui-absolute ui-top-0 ui-left-0 ui-w-full ui-h-full"
                 opacity="80"
               />
             )}
 
-        <Container class="py-20">
-          <div class="flex flex-grow items-center justify-center md:justify-start mb-4">
-            <div class="relative pl-8 w-64 sm:w-auto">
-              <div class="HeaderSection--Box absolute top-0 left-0 w-64 sm:w-48 h-full border-8 border-r-0 border-white" />
-              <h1 class="antialiased my-20 text-lg uppercase tracking-wide relative w-full break-words overflow-hidden">
+        <Container class="ui-py-20">
+          <div class="ui-flex ui-flex-grow ui-items-center ui-justify-center md:ui-justify-start ui-mb-4">
+            <div class="ui-relative ui-pl-8 ui-w-64 sm:ui-w-auto">
+              <div class="HeaderSection--Box ui-absolute ui-top-0 ui-left-0 ui-w-64 sm:ui-w-48 ui-h-full ui-border-8 ui-border-r-0 ui-border-white" />
+              <h1 class="ui-antialiased ui-my-20 ui-text-lg ui-uppercase ui-tracking-wide ui-relative ui-w-full ui-break-words ui-overflow-hidden">
                 {this.title}
               </h1>
             </div>
@@ -52,7 +52,7 @@ class HeaderSection extends BaseComponent<
             this.$scopedSlots.breadcrumbs(this.breadcrumbs)
           ) : (
             <Breadcrumbs
-              class="hidden sm:block"
+              class="ui-hidden sm:ui-block"
               items={this.breadcrumbs}
               handleItemClick={this.handleItemClick}
               data-testid={"HeaderSection-Breadcrumbs"}

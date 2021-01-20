@@ -9,11 +9,11 @@ interface ComponentIFrameProps {
 }
 
 type possibleWidths =
-  | "max-w-screen-xs"
-  | "max-w-screen-sm"
-  | "max-w-screen-md"
-  | "max-w-screen-lg"
-  | "max-w-screen-xl"
+  | "ui-max-w-screen-xs"
+  | "ui-max-w-screen-sm"
+  | "ui-max-w-screen-md"
+  | "ui-max-w-screen-lg"
+  | "ui-max-w-screen-xl"
   | "";
 
 @Component({
@@ -40,20 +40,23 @@ class ComponentIFrame extends BaseComponent<ComponentIFrameProps> {
   iframeWidth: possibleWidths = "";
 
   buttonSettings: { width: possibleWidths; iconClass: string }[] = [
-    { width: "max-w-screen-xs", iconClass: "fas fa-mobile-alt" },
-    { width: "max-w-screen-sm", iconClass: "fas fa-tablet-alt" },
-    { width: "max-w-screen-md", iconClass: "fas fa-tablet-alt fa-rotate-90" },
-    { width: "max-w-screen-lg", iconClass: "fas fa-laptop" },
+    { width: "ui-max-w-screen-xs", iconClass: "fas fa-mobile-alt" },
+    { width: "ui-max-w-screen-sm", iconClass: "fas fa-tablet-alt" },
+    {
+      width: "ui-max-w-screen-md",
+      iconClass: "fas fa-tablet-alt fa-rotate-90",
+    },
+    { width: "ui-max-w-screen-lg", iconClass: "fas fa-laptop" },
     { width: "", iconClass: "fas fa-tv" },
   ];
 
   render() {
     return (
-      <div class="bg-gray-400">
+      <div class="ui-bg-gray-400">
         <div
-          class={`flex space-x-4 justify-center ${
-            this.dark ? "bg-black" : "bg-white"
-          } text-xl`}
+          class={`ui-flex ui-space-x-4 ui-justify-center ${
+            this.dark ? "ui-bg-black" : "ui-bg-white"
+          } ui-text-xl`}
         >
           {this.buttonSettings.map((button, index) => {
             return (
@@ -74,7 +77,7 @@ class ComponentIFrame extends BaseComponent<ComponentIFrameProps> {
           src={`/#/raw-component/${this.parsedFilename}`}
           scrolling="yes"
           width="100%"
-          class={`mx-auto ${this.dark ? "bg-black" : "bg-white"} ${
+          class={`ui-mx-auto ${this.dark ? "ui-bg-black" : "ui-bg-white"} ${
             this.iframeWidth
           }`}
           ref="iframe"

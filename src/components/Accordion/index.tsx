@@ -68,7 +68,7 @@ class Accordion extends BaseComponent<AccordionProps> {
       <div class={`Accordion ${this.isOpen ? "Accordion--Open" : ""}`}>
         <a
           href="#"
-          class={`flex flex-row items-center justify-start ${
+          class={`ui-flex ui-flex-row ui-items-center ui-justify-start ${
             this.dark ? "Accordion--Dark" : "Accordion--Light"
           } Accordion--Header`}
           onClick={event => {
@@ -80,12 +80,12 @@ class Accordion extends BaseComponent<AccordionProps> {
           data-testid="darkmode"
         >
           <span
-            class={`flex-grow text-xs tracking-wider font-bold whitespace-no-wrap overflow-hidden uppercase`}
+            class={`ui-flex-grow ui-text-xs ui-tracking-wider ui-font-bold ui-whitespace-no-wrap ui-overflow-hidden ui-uppercase`}
           >
             {this.title}
           </span>
           <svg
-            class="w-6 h-6 Accordion--Indicator flex-shrink-0 origin-center"
+            class="ui-w-6 ui-h-6 Accordion--Indicator ui-flex-shrink-0 ui-origin-center"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +97,7 @@ class Accordion extends BaseComponent<AccordionProps> {
             ></path>
           </svg>
         </a>
-        <div class="Accordion--Text-Box text-sm px-3">
+        <div class="Accordion--Text-Box ui-text-sm ui-px-3">
           {this.$slots.default}
         </div>
       </div>

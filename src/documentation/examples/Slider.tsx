@@ -9,20 +9,20 @@ export default class App extends Vue {
   renderSlide(index: number) {
     const slides: Record<string, JSX.Element> = {
       0: (
-        <div class="bg-red-500 w-full h-full flex flex-col justify-center items-center">
+        <div class="ui-bg-red-500 ui-w-full ui-h-full ui-flex ui-flex-col ui-justify-center ui-items-center">
           <Headline as="h1" size="lg">
             Headline
           </Headline>
-          <Paragraph>With some text</Paragraph>
+          <Paragraph size="lg">With some text</Paragraph>
         </div>
       ),
       1: (
-        <div class="bg-teal-500 w-full h-full flex justify-center items-center">
+        <div class="ui-bg-teal-500 ui-w-full ui-h-full ui-flex ui-justify-center ui-items-center">
           Some Content
         </div>
       ),
       2: (
-        <div class="bg-red-500 w-full h-full flex flex-col justify-center items-center">
+        <div class="ui-bg-red-500 ui-w-full ui-h-full ui-flex ui-flex-col ui-justify-center ui-items-center">
           <Headline as="h1" size="lg">
             Headline
           </Headline>
@@ -35,14 +35,14 @@ export default class App extends Vue {
 
   render() {
     return (
-      <div class="w-full h-64">
+      <div class="ui-w-full ui-h-64">
         <Slider
           scopedSlots={{
             controls: params => {
               return this.$scopedSlots.controls ? (
                 this.$scopedSlots.controls(params)
               ) : (
-                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 -mr-4 mb-4 space-x-4 flex flex-row">
+                <div class="ui-absolute ui-bottom-0 ui-left-1/2 ui-transform ui--translate-x-1/2 ui--mr-4 ui-mb-4 ui-space-x-4 ui-flex ui-flex-row">
                   <Button
                     handleClick={() => {
                       params.prevSlideIndex !== null &&

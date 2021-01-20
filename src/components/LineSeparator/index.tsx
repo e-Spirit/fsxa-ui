@@ -7,7 +7,7 @@ import {
 } from "@/types/components";
 
 const getClassName = (width?: LineSeparatorWidths, prefix?: ScreenPrefixes) => {
-  const className = `w-${width || 16}`;
+  const className = `ui-w-${width || 16}`;
   return prefix ? `${prefix}:${className}` : className;
 };
 
@@ -27,7 +27,7 @@ class LineSeparator extends BaseComponent<LineSeparatorProps> {
   side: LineSeparatorProps["side"];
 
   render() {
-    const baseClasses = `my-1 bg-black h-${this.height}`;
+    const baseClasses = `ui-my-1 ui-bg-black ui-h-${this.height}`;
     const classNames = [baseClasses];
     classNames.push(getClassName(this.width));
     if (this.sm_width) classNames.push(getClassName(this.sm_width, "sm"));
@@ -37,8 +37,8 @@ class LineSeparator extends BaseComponent<LineSeparatorProps> {
 
     return (
       <div
-        class={`${this.side === "right" ? "flex flex-row-reverse" : ""}`}
-        data-testid="flex-test"
+        class={`${this.side === "right" ? "ui-flex ui-flex-row-reverse" : ""}`}
+	data-testid="flex-test"
       >
         <div class={classNames.join(" ")} data-testid="separator-test" />
       </div>

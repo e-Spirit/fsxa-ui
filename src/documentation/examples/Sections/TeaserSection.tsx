@@ -8,7 +8,7 @@ const imageSrc =
 export default class App extends Vue {
   render() {
     return (
-      <div class="space-x-5">
+      <div class="ui-space-x-5">
         <TeaserSection
           headline="Peace of Mind"
           kicker="Home Security"

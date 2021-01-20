@@ -1,28 +1,28 @@
 .Quote {
-  @apply bg-gray-200;
+  @apply ui-bg-gray-200;
   .direction {
-    @apply p-4 flex my-4;
+    @apply ui-p-4 ui-flex ui-my-4;
   }
   .direction--left {
-    @apply flex-row;
-    .quote {
+    @apply ui-flex-row;
+    .Quote--quote {
       &:before {
-        @apply font-awesome;
+        @apply ui-font-awesome;
         content: "\f10d";
       }
     }
   }
   .direction--right {
-    @apply flex-row-reverse;
+    @apply ui-flex-row-reverse;
     :first-child {
-      @apply ml-4;
+      @apply ui-ml-4;
     }
     > * {
-      @apply text-left;
+      @apply ui-text-left;
     }
-    .quote {
+    .Quote--quote {
       &:before {
-        @apply font-awesome;
+        @apply ui-font-awesome;
         content: "\f10e";
       }
     }
