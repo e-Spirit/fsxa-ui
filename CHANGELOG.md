@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/e-Spirit/fsxa-ui/compare/v1.0.0...v1.1.0) (2021-01-20)
+
+
+### Features
+
+* Refactor UI to be compatibile with Vue SFC and TSX/JSX  ([#51](https://github.com/e-Spirit/fsxa-ui/issues/51)) ([8a2cd3e](https://github.com/e-Spirit/fsxa-ui/commit/8a2cd3e5bdd2a46a39907efb0d6d62ae3fd47c29))
+
 ## [2.3.6](https://github.com/e-Spirit/fsxa-ui/compare/v2.3.5...v2.3.6) (2021-01-20)
 
 
