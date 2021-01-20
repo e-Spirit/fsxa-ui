@@ -1,3 +1,10 @@
+## [2.3.6](https://github.com/e-Spirit/fsxa-ui/compare/v2.3.5...v2.3.6) (2021-01-20)
+
+
+### Bug Fixes
+
+* **accordionsection:** change text and title type from string to RenteredType ([697a247](https://github.com/e-Spirit/fsxa-ui/commit/697a24723ed56cc5f1b0e9da827f22f9f29cb5fb))
+
 ## [2.3.5](https://github.com/e-Spirit/fsxa-ui/compare/v2.3.4...v2.3.5) (2021-01-20)
 
 
