@@ -445,7 +445,7 @@ export interface AccordionProps {
   /**
    * The title of the section is whats displayed in the clickable part and whats always visible
    */
-  title: string;
+  title: RenderedType;
   /**
    * Styling choice. Default is **false**
    */
