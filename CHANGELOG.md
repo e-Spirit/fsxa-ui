@@ -1,3 +1,10 @@
+## [2.3.7](https://github.com/e-Spirit/fsxa-ui/compare/v2.3.6...v2.3.7) (2021-01-20)
+
+
+### Bug Fixes
+
+* 🐛 Remove unused dependency and bump version ([ac615aa](https://github.com/e-Spirit/fsxa-ui/commit/ac615aaaeb1d1b75c67f447021bf216fd7a43a16))
+
 ## [2.3.6](https://github.com/e-Spirit/fsxa-ui/compare/v2.3.5...v2.3.6) (2021-01-20)
 
 ### Bug Fixes
