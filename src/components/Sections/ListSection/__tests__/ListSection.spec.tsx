@@ -1,10 +1,4 @@
-import {
-  fireEvent,
-  render,
-  getAllByTestId,
-  RenderOptions,
-} from "@testing-library/vue";
-import { ListSectionProps, ListSectionSlots } from "@/types/sections.d.ts";
+import { fireEvent, render, RenderOptions } from "@testing-library/vue";
 import ListSection from "..";
 
 describe("components/ListSection", () => {

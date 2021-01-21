@@ -39,11 +39,6 @@ const routes = [
         children: [],
       },
       {
-        label: "Footer",
-        path: "/components/footer",
-        children: [],
-      },
-      {
         label: "Headline",
         path: "/components/headline",
         children: [],

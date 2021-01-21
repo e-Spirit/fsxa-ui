@@ -36,7 +36,7 @@ describe("components/HeaderSection", () => {
   it("correctly consumes the specified background image", () => {
     const content = "My test headline";
     const imageSource = "image source url";
-    const { container, getByTestId } = render(HeaderSection, {
+    const { getByTestId } = render(HeaderSection, {
       props: {
         title: content,
         backgroundImage: { src: imageSource },
