@@ -1,3 +1,10 @@
+## [2.3.8](https://github.com/e-Spirit/fsxa-ui/compare/v2.3.7...v2.3.8) (2021-01-21)
+
+
+### Bug Fixes
+
+* 🐛 Remove unused files, extract doc components from bundle ([49e9f4c](https://github.com/e-Spirit/fsxa-ui/commit/49e9f4c3e7afe9f630a82a3be6ac176f38e0225c))
+
 ## [2.3.7](https://github.com/e-Spirit/fsxa-ui/compare/v2.3.6...v2.3.7) (2021-01-20)
 
 
