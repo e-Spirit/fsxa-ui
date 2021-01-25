@@ -1,6 +1,6 @@
 {
   "name": "fsxa-ui",
-  "version": "2.3.8",
+  "version": "2.3.9",
   "license": "Apache-2.0",
   "types": "src/types/fsxa-ui.d.ts",
   "main": "./dist/fsxa-ui.common.js",

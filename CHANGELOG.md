@@ -1,3 +1,10 @@
+## [2.3.9](https://github.com/e-Spirit/fsxa-ui/compare/v2.3.8...v2.3.9) (2021-01-25)
+
+
+### Bug Fixes
+
+* **package-lock:** fixed registry for git-cz ([7a9b966](https://github.com/e-Spirit/fsxa-ui/commit/7a9b9660cd93d1820ea81185af25824c67804655))
+
 ## [2.3.8](https://github.com/e-Spirit/fsxa-ui/compare/v2.3.7...v2.3.8) (2021-01-21)
 
 
