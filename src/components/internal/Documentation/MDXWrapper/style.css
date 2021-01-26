@@ -1,5 +1,5 @@
 .MDXWrapper {
-  @apply ui-w-full ui-h-full ui-p-10;
+  @apply ui-w-full ui-h-full ui-p-5;
 
   blockquote.quote {
     @apply ui-mt-4 ui-px-3 ui-py-2 ui-bg-pink-200 ui-rounded-lg ui-text-sm ui-relative ui-pl-8 ui-text-gray-700;

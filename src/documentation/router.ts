@@ -34,8 +34,17 @@ const exampleRoutes = examples.keys().map(path => {
 export const routes: any = data
   .keys()
   .map(path => {
-    const route = extractRoute(path);
+    let route = extractRoute(path);
+    if (path === "./Index.mdx") {
+      route = {
+        path: "/",
+        label: "Home",
+      };
+    }
     if (!route) return null;
+    console.log("path", path);
+    console.log("route", route);
+
     return {
       component: data(path).default,
       ...route,

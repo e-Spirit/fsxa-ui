@@ -54,7 +54,7 @@ class ComponentIFrame extends BaseComponent<ComponentIFrameProps> {
     return (
       <div class="ui-bg-gray-400">
         <div
-          class={`ui-flex ui-space-x-4 ui-justify-center ${
+          class={`ui-flex ui-space-x-2 ui-justify-start ui-pb-2 ${
             this.dark ? "ui-bg-black" : "ui-bg-white"
           } ui-text-xl`}
         >

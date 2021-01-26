@@ -20,7 +20,7 @@ class ResponsiveButton extends BaseComponent<ResponsiveButtonProps> {
   render() {
     return (
       <div
-        class={`ui-px-4 ui-py-2 ui-shadow-2xl ui-rounded ui-cursor-pointer ui-border  ${
+        class={`ui-px-2 ui-py-1 ui-text-sm ui-shadow-2xl ui-rounded ui-cursor-pointer ui-border  ${
           this.pressed ? "ui-text-espirit" : this.dark ? "ui-text-white" : ""
         }`}
         onClick={this.handleOnClick}
