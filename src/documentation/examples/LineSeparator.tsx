@@ -7,7 +7,7 @@ import { LineSeparator } from "fsxa-ui";
 export default class App extends Vue {
   render() {
     return (
-      <div class="space-y-4">
+      <div class="ui-space-y-4">
         <LineSeparator />
         <LineSeparator height="1" />
         <LineSeparator height="2" />

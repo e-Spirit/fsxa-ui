@@ -1,6 +1,6 @@
 @screen lg {
   .ProductDetail--Content {
-    @apply border border-black;
+    @apply ui-border ui-border-black;
     border-top-width: 2em;
     border-right-width: 1em;
     border-left-width: 1em;
@@ -8,20 +8,20 @@
   }
 
   .ProductDetail--ImageBorder {
-    @apply relative ml-8;
+    @apply ui-relative ui-ml-8;
     width: calc(100% - 2rem);
 
     &:before {
       content: "";
       border-width: 10px;
-      @apply absolute bottom-0 left-0 w-full h-full -mb-8 -ml-8 border-black;
+      @apply ui-absolute ui-bottom-0 ui-left-0 ui-w-full ui-h-full ui--mb-8 ui--ml-8 ui-border-black;
     }
   }
 }
 
 @screen xl {
   .ProductDetail--Content {
-    @apply border border-black;
+    @apply ui-border ui-border-black;
     border-top-width: 3em;
     border-right-width: 2em;
     border-left-width: 2em;

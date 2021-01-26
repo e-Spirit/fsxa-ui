@@ -7,7 +7,7 @@ import { Button } from "fsxa-ui";
 export default class App extends Vue {
   render() {
     return (
-      <div class="space-x-5">
+      <div class="ui-space-x-5">
         <Button>Default</Button>
         <Button variant="animated">Animated</Button>
         <Button variant="inverted">Inverted</Button>

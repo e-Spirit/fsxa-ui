@@ -49,18 +49,18 @@ const getClassesForBreakpoint = (
 ): string => {
   const classNames = [];
   // if no width is specified for default, set it to take as much space as possible
-  if (!settings?.width && key === null) classNames.push("flex flex-1");
+  if (!settings?.width && key === null) classNames.push("ui-flex ui-flex-1");
   // create classname that applies width to the LayoutItem
   if (settings?.width)
     classNames.push(
-      `${key ? `${key}:` : ""}${LAYOUT_WIDTHS[settings.width]} ${
+      `${key ? `${key}:ui-` : "ui-"}${LAYOUT_WIDTHS[settings.width]} ${
         key ? `${key}:` : ""
-      } flex-initial`,
+      }flex-initial`,
     );
   // apply flexDirection setting, if set
-  if (!settings?.flexDirection && key === null) classNames.push("flex-col");
+  if (!settings?.flexDirection && key === null) classNames.push("ui-flex-col");
   else if (settings?.flexDirection)
-    classNames.push(`${key}:flex-${settings.flexDirection}`);
+    classNames.push(`${key}:ui-flex-${settings.flexDirection}`);
   // join classes and return as string
   return classNames.join(" ");
 };
@@ -84,7 +84,7 @@ class LayoutItem extends BaseComponent<LayoutItemProps> {
   }
 
   get classNames() {
-    const classNames = this.useGutter ? ["p-2 md:p-4 lg:p-6"] : [];
+    const classNames = this.useGutter ? ["ui-p-2 md:ui-p-4 lg:ui-p-6"] : [];
     classNames.push(getClassesForBreakpoint(null, { width: this.width }));
     classNames.push(getClassesForBreakpoint("sm", this.sm));
     classNames.push(getClassesForBreakpoint("md", this.md));

@@ -20,7 +20,7 @@ class Toggle extends BaseComponent<ToggleProps> {
 
   render() {
     return (
-      <div class="bg-gray-200 text-xs text-gray-500 leading-none border-2 border-gray-200 rounded-full inline-flex overflow-hidden">
+      <div class="ui-bg-gray-200 ui-text-xs ui-text-gray-500 ui-leading-none ui-border-2 ui-border-gray-200 ui-rounded-full ui-inline-flex ui-overflow-hidden">
         <button
           class={`Toggle ${this.active && "active"}`}
           id="on"

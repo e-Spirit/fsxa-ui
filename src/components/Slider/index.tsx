@@ -29,17 +29,17 @@ class Slider extends BaseComponent<SliderProps, {}, SliderSlots> {
 
   renderSlideWrapper(index: number) {
     const widthClasses: Record<number, string> = {
-      1: "w-full",
-      2: "w-1/2",
-      3: "w-1/3",
-      4: "w-1/4",
-      5: "w-1/5",
+      1: "ui-w-full",
+      2: "ui-w-1/2",
+      3: "ui-w-1/3",
+      4: "ui-w-1/4",
+      5: "ui-w-1/5",
     };
     const currentWidthClass = widthClasses[this.visibleElements!];
     return (
       <div
         class={`${currentWidthClass ||
-          "w-full"} h-full flex items-center justify-center flex-shrink-0`}
+          "ui-w-full"} ui-h-full ui-flex ui-items-center ui-justify-center ui-flex-shrink-0`}
         ref={`slide_${index}`}
         data-testid="slide-wrapper"
       >
@@ -128,12 +128,12 @@ class Slider extends BaseComponent<SliderProps, {}, SliderSlots> {
       slides.push(this.renderSlideWrapper(i));
     }
     return (
-      <div class="flex relative flex-col h-full w-full">
-        <div class="w-full flex overflow-hidden h-full">
+      <div class="ui-flex ui-relative ui-flex-col ui-h-full ui-w-full">
+        <div class="ui-w-full ui-flex ui-overflow-hidden ui-h-full">
           <div
-            class={`w-full flex transform ${
+            class={`ui-w-full ui-flex ui-transform ${
               this.animateSlideTransition
-                ? "duration-250 transition-transform"
+                ? "ui-duration-250 ui-transition-transform"
                 : ""
             }`}
             style={{ transform: `translateX(-${percentage}%)` }}

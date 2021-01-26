@@ -38,15 +38,11 @@ describe("components/Headline", () => {
     }
   });
 
-  it("is rendered as h1 with margin in uppercase and bold by default", async () => {
+  it("is rendered as h1 by default", async () => {
     const { getByText } = render(Headline, {
       slots: { default: "Content" },
     });
     const headline = getByText("Content");
     expect(headline.tagName).toEqual("H1");
-
-    expect(headline.classList).toContain("include-margin");
-    expect(headline.classList).toContain("uppercase");
-    expect(headline.classList).toContain("bold");
   });
 });

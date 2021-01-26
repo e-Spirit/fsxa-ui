@@ -33,12 +33,12 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
 
   render() {
     return (
-      <div class="w-full bg-gray-100">
+      <div class="ui-w-full ui-bg-gray-100">
         <Container>
           <Layout wrap>
             {this.images != null && this.images.length > 0 && (
               <LayoutItem width="full" lg={{ width: "1/2" }}>
-                <div class="ProductDetail--ImageBorder h-auto">
+                <div class="ProductDetail--ImageBorder ui-h-auto">
                   <ImageSlider
                     class="ProductDetail--Image"
                     images={this.images}
@@ -49,12 +49,12 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
             <LayoutItem
               width="full"
               lg={{ width: "1/2" }}
-              class="ProductDetail--ProductDetail border-black"
+              class="ProductDetail--ProductDetail ui-border-black"
             >
-              <div class="ProductDetail--Content px-5 py-6 bg-white lg:bg-transparent shadow lg:shadow-none">
+              <div class="ProductDetail--Content ui-px-5 ui-py-6 ui-bg-white lg:ui-bg-transparent ui-shadow lg:ui-shadow-none">
                 <Headline
                   data-testid="ProductDetail--Headline"
-                  class="leading-10"
+                  class="ui-leading-10"
                   as="h1"
                   size="xl"
                   weight="bold"
@@ -64,11 +64,11 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
                 <Paragraph data-testid="ProductDetail--Description" size="sm">
                   {this.description}
                 </Paragraph>
-                <div class="w-full pt-4">
+                <div class="ui-w-full ui-pt-4">
                   <Paragraph
                     size="lg"
                     weight="bold"
-                    class="ProductDetail--Price text-3xl"
+                    class="ProductDetail--Price ui-text-3xl"
                   >
                     {this.price}
                   </Paragraph>
@@ -87,9 +87,9 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
                             >
                               {title}
                             </Headline>
-                            <ul class="list-disc ProductDetail--Property--List text-sm">
+                            <ul class="list-disc ProductDetail--Property--List ui-text-sm">
                               {properties.map(({ id, name: propName }) => (
-                                <li class="ml-6" key={id} data-testid={id}>
+                                <li class="ui-ml-6" key={id} data-testid={id}>
                                   {propName}
                                 </li>
                               ))}
@@ -113,10 +113,10 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
                       </LayoutItem>
                     )}
                     {this.buttonText && (
-                      <div class="w-full flex-initial flex justify-center">
+                      <div class="ui-w-full ui-flex-initial ui-flex ui-justify-center">
                         <Button
                           variant="default"
-                          class="ProductDetail--Button self-center p-2 px-2 sm:p-4 sm:pl-6 md:px-8 md:py-5"
+                          class="ProductDetail--Button ui-self-center ui-p-2 ui-px-2 sm:ui-p-4 sm:ui-pl-6 md:ui-px-8 md:ui-py-5"
                           handleClick={() =>
                             this.handleButtonClick && this.handleButtonClick()
                           }

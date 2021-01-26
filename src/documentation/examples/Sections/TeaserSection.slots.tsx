@@ -8,7 +8,7 @@ const imageSrc =
 export default class App extends Vue {
   render() {
     return (
-      <div class="space-x-5">
+      <div class="ui-space-x-5">
         <TeaserSection
           headline="test"
           kicker="kicker"
@@ -25,17 +25,12 @@ export default class App extends Vue {
           }}
           scopedSlots={{
             kicker: txt => (
-              <h3
-                class="Headline lg italic include-margin"
-                data-testid="teasersection-kicker"
-              >
+              <h3 class="Headline ui-italic" data-testid="teasersection-kicker">
                 {txt}
               </h3>
             ),
             headline: txt => (
-              <h1 class="Headline xxl bold italic include-margin leading-none">
-                {txt}
-              </h1>
+              <h1 class="Headline ui-italic ui-leading-none">{txt}</h1>
             ),
             text: txt => (
               <div>
@@ -43,7 +38,7 @@ export default class App extends Vue {
                 {txt}
               </div>
             ),
-            button: txt => <div class="mt-6">Don't... {txt}!</div>,
+            button: txt => <div class="ui-mt-6">Don't... {txt}!</div>,
             media: imageRef => (
               <img src={imageRef.src} alt="Alternative text" />
             ),

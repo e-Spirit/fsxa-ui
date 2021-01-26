@@ -1,15 +1,15 @@
 .HeaderSection--Box {
   &:before,
   &:after {
-    @apply absolute right-0 w-0 h-12 bg-white border-r-8;
+    @apply ui-absolute ui-right-0 ui-w-0 ui-h-12 ui-bg-white ui-border-r-8;
     content: "";
   }
 
   &:before {
-    @apply top-0;
+    @apply ui-top-0;
   }
 
   &:after {
-    @apply bottom-0;
+    @apply ui-bottom-0;
   }
 }

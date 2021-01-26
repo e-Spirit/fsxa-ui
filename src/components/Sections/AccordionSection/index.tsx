@@ -19,7 +19,7 @@ class AccordionSection extends BaseComponent<AccordionSectionProps> {
   }
   render() {
     return (
-      <div class="Accordion-Section md">
+      <div class="Accordion-Section">
         {this.title && <h3 class="Accordion-Section--Title">{this.title}</h3>}
         {this.title && <div class="Accordion-Section--Separator"></div>}
         {this.items.map((item, index) => (

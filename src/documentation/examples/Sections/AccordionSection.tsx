@@ -8,7 +8,7 @@ export default class App extends Vue {
   render() {
     return (
       <div>
-        <div class="m-2 max-w-lg">
+        <div class="ui-m-2 ui-max-w-lg">
           <Sections.AccordionSection
             dark={false}
             title={"This title is optional"}
@@ -29,7 +29,7 @@ export default class App extends Vue {
             ]}
           />
         </div>
-        <div class="m-2 max-w-xl">
+        <div class="ui-m-2 ui-max-w-xl">
           <Sections.AccordionSection
             dark={true}
             items={[

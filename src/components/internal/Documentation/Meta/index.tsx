@@ -13,10 +13,12 @@ class Meta extends BaseComponent<MetaProps> {
   @Prop() subtitle: MetaProps["subtitle"];
   render() {
     return (
-      <div class="p-10 -mt-10 -mx-10 bg-espirit text-white mb-10">
-        <h1 class="text-2xl font-bold mb-0 page-headline">{this.title}</h1>
+      <div class="ui-p-10 ui--mt-10 ui--mx-10 ui-bg-espirit ui-text-white ui-mb-10">
+        <h1 class="ui-text-2xl ui-font-bold ui-mb-0 ui-page-headline">
+          {this.title}
+        </h1>
         {this.subtitle ? (
-          <span class="block mt-2 text-sm">{this.subtitle}</span>
+          <span class="ui-block ui-mt-2 ui-text-sm">{this.subtitle}</span>
         ) : null}
       </div>
     );

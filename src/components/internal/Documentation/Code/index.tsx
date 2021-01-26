@@ -48,7 +48,7 @@ class Code extends BaseComponent<CodeProps> {
               <ComponentIFrame
                 filename={this.filename}
                 dark={this.darkMode}
-                class="mx-auto"
+                class="ui-mx-auto"
               />
             )}
 
@@ -56,8 +56,8 @@ class Code extends BaseComponent<CodeProps> {
               <Toggle
                 active={this.darkMode}
                 labels={{
-                  on: <i class="far fa-moon text-gray-900" />,
-                  off: <i class="far fa-sun text-gray-900" />,
+                  on: <i class="far fa-moon ui-text-gray-900" />,
+                  off: <i class="far fa-sun ui-text-gray-900" />,
                 }}
                 handleToggle={() => (this.darkMode = !this.darkMode)}
               />

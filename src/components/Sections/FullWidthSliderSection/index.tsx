@@ -42,8 +42,8 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
     slideIndex: number,
   ) {
     return (
-      <div class="w-full h-full bg-black overflow-hidden relative">
-        <div class="FullWidthImageSliderSection--Media w-full h-full transition-opacity duration-250 transform">
+      <div class="ui-w-full ui-h-full ui-bg-black ui-overflow-hidden ui-relative">
+        <div class="FullWidthImageSliderSection--Media ui-w-full ui-h-full ui-transition-opacity ui-duration-250 ui-transform">
           {this.$scopedSlots.media ? (
             this.$scopedSlots.media(slide.media)
           ) : (
@@ -54,28 +54,28 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
             />
           )}
         </div>
-        <div class="absolute w-full h-full top-0 left-0 pointer-events-none bg-gradient-to-b to-gray-900 from-transparent z-10"></div>
-        <div class="absolute bottom-0 left-0 FullWidthSliderSection--Content w-full transform transition-transform translate-y-full px-6 pb-16 md:px-12 md:pb-12 lg:px-16 origin-top duration-250 text-white z-20">
-          <div class="FullWidthSliderSection--Title block transform transition-transform duration-250 w-full mb-2 md:mb-4 lg:mb-6">
+        <div class="ui-absolute ui-w-full ui-h-full ui-top-0 ui-left-0 ui-pointer-events-none ui-bg-gradient-to-b ui-to-gray-900 ui-from-transparent ui-z-10"></div>
+        <div class="ui-absolute ui-bottom-0 ui-left-0 FullWidthSliderSection--Content ui-ui-w-full ui-transform ui-transition-transform ui-translate-y-full ui-px-6 ui-pb-16 md:ui-px-12 md:ui-pb-12 lg:ui-px-16 ui-origin-top ui-duration-250 ui-text-white ui-z-20">
+          <div class="FullWidthSliderSection--Title ui-block ui-transform ui-transition-transform ui-duration-250 ui-w-full ui-mb-2 md:ui-mb-4 lg:ui-mb-6">
             {this.$scopedSlots.title ? (
               this.$scopedSlots.title(slide.title)
             ) : (
-              <div class="font-extrabold text-3xl lg:text-4xl xl:text-6xl uppercase">
+              <div class="ui-font-extrabold ui-text-3xl lg:ui-text-4xl xl:ui-text-6xl ui-uppercase">
                 {slide.title}
               </div>
             )}
           </div>
-          <div class="w-full flex items-start justify-start flex-col lg:flex-row">
-            <div class="FullWidthSliderSection--Teaser duration-250 transform transition-transform translate-y-32 origin-top lg:mr-5 max-w-xl">
+          <div class="ui-w-full ui-flex ui-items-start ui-justify-start ui-flex-col lg:ui-flex-row">
+            <div class="FullWidthSliderSection--Teaser ui-duration-250 ui-transform ui-transition-transform ui-translate-y-32 ui-origin-top lg:ui-mr-5 ui-max-w-xl">
               {this.$scopedSlots.teaser ? (
                 this.$scopedSlots.teaser(slide.teaser)
               ) : (
-                <div class="text-sm md:text-base xl:text-lg">
+                <div class="ui-text-sm md:ui-text-base xl:ui-text-lg">
                   {slide.teaser}
                 </div>
               )}
             </div>
-            <div class="FullWidthSliderSection--CTA-Button duration-250 transform transition-transform translate-y-32 origin-top flex-shrink-0 mt-3 md:mt-0">
+            <div class="FullWidthSliderSection--CTA-Button ui-duration-250 ui-transform ui-transition-transform ui-translate-y-32 ui-origin-top ui-flex-shrink-0 ui-mt-3 md:ui-mt-0">
               {this.$scopedSlots.button ? (
                 this.$scopedSlots.button({
                   content: slide.buttonContent,
@@ -112,11 +112,11 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
     const positioning =
       position === "left"
         ? this.removeDefaultPadding
-          ? "md:ml-8 lg:ml-10 xl:ml-12 left-0"
-          : "md:-ml-8 lg:-ml-10 xl:-ml-12 left-0"
+          ? "md:ui-ml-8 lg:ui-ml-10 xl:ui-ml-12 ui-left-0"
+          : "md:ui--ml-8 lg:ui--ml-10 xl:ui--ml-12 ui-left-0"
         : this.removeDefaultPadding
-        ? "md:mr-8 lg:mr-10 xl:mr-12 right-0"
-        : "md:-mr-8 lg:-mr-10 xl:-mr-12 right-0";
+        ? "md:ui-mr-8 lg:ui-mr-10 xl:ui-mr-12 ui-right-0"
+        : "md:ui--mr-8 lg:ui--mr-10 xl:ui--mr-12 ui-right-0";
     let arrowButtonContent = null;
     if (this.$scopedSlots.arrowButtonContent) {
       arrowButtonContent = this.$scopedSlots.arrowButtonContent({
@@ -133,7 +133,7 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
       arrowButtonContent = (
         <div>
           <svg
-            class="w-10 h-10 absolute top-1/2 left-1/2 -mt-5 -ml-5 z-10 pointer-events-none"
+            class="ui-w-10 ui-h-10 ui-absolute ui-top-1/2 ui-left-1/2 ui--mt-5 ui--ml-5 ui-z-10 ui-pointer-events-none"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -149,7 +149,7 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
             ></path>
             ) : ()
           </svg>
-          <div class="opacity-0 group-hover:opacity-100 transition-opacity w-32 lg:w-40 xl:w-48 h-20 lg:h-24 xl:h-32 absolute left-0 -ml-8 lg:-ml-10 xl:-ml-12 -mt-2 xl:-mt-4 max-w-none duration-300 pointer-events-none">
+          <div class="ui-opacity-0 group-hover:ui-opacity-100 ui-transition-opacity ui-w-32 lg:ui-w-40 xl:ui-w-48 ui-h-20 lg:ui-h-24 xl:ui-h-32 ui-absolute ui-left-0 ui--ml-8 lg:ui--ml-10 xl:ui--ml-12 ui--mt-2 xl:ui--mt-4 ui-max-w-none ui-duration-300 ui-pointer-events-none">
             <Image
               src={media.src}
               resolutions={media.resolutions}
@@ -164,7 +164,7 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
       <a
         key={position}
         href="#"
-        class={`hidden md:block md:w-16 md:h-16 md:-mt-8 lg:w-20 lg:h-20 lg:-mt-10 xl:w-24 xl:h-24 xl:-mt-12 absolute top-1/2 ${positioning} bg-white hover:bg-black hover:text-white duration-300 transform transition-colors group pointer-events-auto`}
+        class={`ui-hidden md:ui-block md:ui-w-16 md:ui-h-16 md:ui--mt-8 lg:ui-w-20 lg:ui-h-20 lg:ui--mt-10 xl:ui-w-24 xl:ui-h-24 xl:ui--mt-12 ui-absolute ui-top-1/2 ui-${positioning} ui-bg-white hover:ui-bg-black hover:ui-text-white ui-duration-300 ui-transform ui-transition-colors ui-group ui-pointer-events-auto`}
         onClick={event => {
           event.preventDefault();
           handleClick();
@@ -186,10 +186,10 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
             slide: this.slides[i],
           })
         ) : (
-          <li class="inline-block px-1 pointer-events-auto">
+          <li class="ui-inline-block ui-px-1 ui-pointer-events-auto">
             <a
-              class={`block md:hidden w-5 h-5 rounded-full border-white border hover:bg-white active:bg-white transition-colors transform duration-300 ${params.currentSlideIndex ===
-                i && "bg-white"}`}
+              class={`ui-block md:ui-hidden ui-w-5 ui-h-5 ui-rounded-full ui-border-white ui-border hover:ui-bg-white active:ui-bg-white ui-transition-colors ui-transform ui-duration-300 ${params.currentSlideIndex ===
+                i && "ui-bg-white"}`}
               href="#"
               onClick={event => {
                 event.preventDefault();
@@ -206,7 +206,7 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
         slides: this.slides,
       })
     ) : (
-      <div class="w-full absolute left-0 bottom-0 mb-2 z-10 flex justify-center">
+      <div class="ui-w-full ui-absolute ui-left-0 ui-bottom-0 ui-mb-2 ui-z-10 ui-flex ui-justify-center">
         <ul>{slides}</ul>
       </div>
     );
@@ -215,8 +215,10 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
   render() {
     return (
       <div
-        class={`w-full h-full ${
-          this.removeDefaultPadding ? "" : "md:px-16 lg:px-20 xl:px-24 "
+        class={`ui-w-full ui-h-full ${
+          this.removeDefaultPadding
+            ? ""
+            : "md:ui-px-16 lg:ui-px-20 xl:ui-px-24 "
         }`}
       >
         <Slider
@@ -249,7 +251,7 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
               return this.$scopedSlots.controls ? (
                 this.$scopedSlots.controls(params)
               ) : (
-                <div class="pointer-events-none w-full h-full absolute top-0 left-0">
+                <div class="ui-pointer-events-none ui-w-full ui-h-full ui-absolute ui-top-0 ui-left-0">
                   {this.renderArrowButton(
                     "left",
                     params.prevSlideIndex,

@@ -21,7 +21,7 @@ const imageSrc =
 export default class App extends Vue {
   render() {
     return (
-      <div class="space-x-5">
+      <div class="ui-space-x-5">
         <InterestingFactsSection
           headline="Trees get lonely too"
           text={text}
@@ -33,22 +33,18 @@ export default class App extends Vue {
             previewId: "1000",
           }}
           scopedSlots={{
-            tagline: txt => (
-              <i class="Headline xl light uppercase include-margin">{txt}</i>
-            ),
+            tagline: txt => <i class="ui-uppercase">{txt}</i>,
             headline: txt => (
-              <h1 class="Headline xxl bold lowercase include-margin leading-none">
-                {txt}
-              </h1>
+              <h1 class="ui-lowercase ui-leading-none">{txt}</h1>
             ),
             text: txt => (
               <div>
                 <b>What follows is a text about trees: </b>
-                <small class="lowercase">{txt}</small>
+                <small class="ui-lowercase">{txt}</small>
               </div>
             ),
             counter: counter => (
-              <div class="pl-10">
+              <div class="ui-pl-10">
                 {counter.value}: {counter.label}
               </div>
             ),

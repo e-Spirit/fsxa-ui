@@ -1,19 +1,19 @@
 .SlotsTable {
-    @apply w-full border-separate table-auto align-top border-gray-300 mt-5 mb-6;
+    @apply ui-w-full ui-border-separate ui-table-auto ui-align-top ui-border-gray-300 ui-mt-5 ui-mb-6;
     border-spacing: 0;
   
     & span.code {
-      @apply bg-gray-200 py-1 px-2 rounded-md mx-1 text-xs;
+      @apply ui-bg-gray-200 ui-py-1 ui-px-2 ui-rounded-md ui-mx-1 ui-text-xs;
     }
   
     ul {
-      @apply mt-4;
+      @apply ui-mt-4;
   
       li {
-        @apply pl-4 relative;
+        @apply ui-pl-4 ui-relative;
   
         &:before {
-          @apply absolute top-1/2 left-0 font-awesome;
+          @apply ui-absolute ui-top-1/2 ui-left-0 font-awesome;
           content: "\f111";
           margin-top: -13px;
           font-size: 8px;
@@ -23,47 +23,47 @@
   }
   
   .SlotsTable--Header th {
-    @apply py-1 px-4 font-light text-xs text-left uppercase;
+    @apply ui-py-1 ui-px-4 ui-font-light ui-text-xs ui-text-left ui-uppercase;
   }
   
   .SlotsTable--Body {
     & td {
-      @apply p-4 border-gray-300 border-t align-top leading-6 text-gray-700 text-sm;
+      @apply ui-p-4 ui-border-gray-300 ui-border-t ui-align-top ui-leading-6 ui-text-gray-700 ui-text-sm;
     }
   
     & > tr:first-child td {
-      @apply border-t;
+      @apply ui-border-t;
     }
   
     & > tr:last-child td {
-      @apply border-t border-b;
+      @apply ui-border-t ui-border-b;
     }
   
     & tr > td:first-child {
-      @apply border-l;
+      @apply ui-border-l;
     }
   
     & tr > td:last-child {
-      @apply border-r;
+      @apply ui-border-r;
     }
   
     & > tr:first-child {
       & td:first-child {
-        @apply rounded-tl-lg;
+        @apply ui-rounded-tl-lg;
       }
   
       & td:last-child {
-        @apply rounded-tr-lg;
+        @apply ui-rounded-tr-lg;
       }
     }
   
     & > tr:last-child {
       & td:first-child {
-        @apply rounded-bl-lg;
+        @apply ui-rounded-bl-lg;
       }
   
       & td:last-child {
-        @apply rounded-br-lg;
+        @apply ui-rounded-br-lg;
       }
     }
   }

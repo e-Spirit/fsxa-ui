@@ -35,15 +35,15 @@ class ImageSlider<Type = any> extends BaseComponent<
             return this.$scopedSlots.controls ? (
               this.$scopedSlots.controls(params)
             ) : this.images.length > 1 ? (
-              <div class="absolute bottom-0 right-0 mr-4 mb-4 lg:-mr-4 lg:mb-4 flex flex-col">
+              <div class="ui-absolute ui-bottom-0 ui-right-0 ui-mr-4 ui-mb-4 lg:ui--mr-4 lg:ui-mb-4 ui-flex ui-flex-col">
                 <a
                   href="#"
                   data-testid={`button-prev-slide`}
                   class={`${
                     params.prevSlideIndex !== null
-                      ? `bg-black text-white`
-                      : `bg-gray-300 text-gray-900`
-                  } hover:bg-opacity-90 p-3`}
+                      ? `ui-bg-black ui-text-white`
+                      : `ui-bg-gray-300 ui-text-gray-900`
+                  } hover:ui-bg-opacity-90 ui-p-3`}
                   onClick={event => {
                     event.preventDefault();
                     params.prevSlideIndex !== null &&
@@ -51,7 +51,7 @@ class ImageSlider<Type = any> extends BaseComponent<
                   }}
                 >
                   <svg
-                    class="w-3 h-3"
+                    class="ui-w-3 ui-h-3"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -70,9 +70,9 @@ class ImageSlider<Type = any> extends BaseComponent<
                   data-testid={`button-next-slide`}
                   class={`${
                     params.nextSlideIndex !== null
-                      ? `bg-black text-white`
-                      : `bg-gray-300 text-gray-900`
-                  } hover:bg-opacity-90 p-3`}
+                      ? `ui-bg-black ui-text-white`
+                      : `ui-bg-gray-300 ui-text-gray-900`
+                  } hover:ui-bg-opacity-90 ui-p-3`}
                   onClick={event => {
                     event.preventDefault();
                     params.nextSlideIndex !== null &&
@@ -80,7 +80,7 @@ class ImageSlider<Type = any> extends BaseComponent<
                   }}
                 >
                   <svg
-                    class="w-3 h-3"
+                    class="ui-w-3 ui-h-3"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"

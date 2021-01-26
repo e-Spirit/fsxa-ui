@@ -29,7 +29,7 @@ const imageSrc =
 export default class App extends Vue {
   render() {
     return (
-      <div class="space-x-5">
+      <div class="ui-space-x-5">
         <InterestingFactsSection
           headline="Trees get lonely too"
           text={text}

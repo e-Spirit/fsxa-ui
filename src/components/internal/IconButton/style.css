@@ -1,13 +1,13 @@
 .IconButton--wrapper
 {
-    @apply bg-gray-200 text-xs text-gray-500 leading-none border-2 border-gray-200 rounded-full inline-flex overflow-hidden;   
+    @apply ui-bg-gray-200 ui-text-xs ui-text-gray-500 ui-leading-none ui-border-2 ui-border-gray-200 ui-rounded-full ui-inline-flex ui-overflow-hidden;   
 }
 .IconButton--btn {
-    @apply w-full h-full px-4 py-2 outline-none;
+    @apply ui-w-full ui-h-full ui-px-4 ui-py-2 ui-outline-none;
 }
 .IconButton--btn:focus, .IconButton--btn:active {
-    @apply outline-none;
+    @apply ui-outline-none;
 }
 .IconButton--btn.active {
-    @apply bg-pink-700 text-white rounded-full;
+    @apply ui-bg-pink-700 ui-text-white ui-rounded-full;
 }

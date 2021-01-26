@@ -13,7 +13,7 @@ export class DevInfoTarget extends BaseComponent {
     return (
       <portal-target
         name={PORTAL_ID}
-        class="absolute top-0 left-0 w-full h-full pointer-events-none"
+        class="ui-absolute ui-top-0 ui-left-0 ui-w-full ui-h-full ui-pointer-events-none"
       />
     );
   }
@@ -30,22 +30,22 @@ class DevInfo extends BaseComponent<DevInfoProps> {
 
   renderContent(onClose?: () => void) {
     return (
-      <div class="w-full h-full border-gray-700 rounded-lg relative border overflow-hidden flex flex-col z-0 DevInfo--Content">
-        <div class="text-xl bg-white p-5 shadow-md relative z-10 flex-grow-0 flex items-center justify-between">
+      <div class="ui-w-full ui-h-full ui-border-gray-700 ui-rounded-lg ui-relative ui-border ui-overflow-hidden ui-flex ui-flex-col ui-z-0 DevInfo--Content">
+        <div class="ui-text-xl ui-bg-white ui-p-5 ui-shadow-md ui-relative ui-z-10 ui-flex-grow-0 ui-flex ui-items-center ui-justify-between">
           {this.headline}
           {onClose && (
             <a
-              class="cursor-pointer text-gray-500 rounded-full hover:bg-gray-300 w-8 h-8 hover:text-gray-900 flex justify-center items-center flex-shrink-0"
+              class="ui-cursor-pointer ui-text-gray-500 ui-rounded-full hover:ui-bg-gray-300 ui-w-8 ui-h-8 hover:ui-text-gray-900 ui-flex ui-justify-center ui-items-center ui-flex-shrink-0"
               onClick={onClose}
             >
               <i class="fas fa-times" />
             </a>
           )}
         </div>
-        <div class="overflow-x-hidden overflow-y-auto p-5 bg-gray-100 relative flex-1">
-          <div class="text-sm mb-2">{this.$slots.default}</div>
-          <div class="text-xs px-3 py-1 bg-gray-300 rounded-lg w-auto inline-block mt-2">
-            <i class="fas fa-info inline-block mr-2" />
+        <div class="ui-overflow-x-hidden ui-overflow-y-auto ui-p-5 ui-bg-gray-100 ui-relative ui-flex-1">
+          <div class="ui-text-sm ui-mb-2">{this.$slots.default}</div>
+          <div class="ui-text-xs ui-px-3 ui-py-1 ui-bg-gray-300 ui-rounded-lg ui-w-auto ui-inline-block ui-mt-2">
+            <i class="fas fa-info ui-inline-block ui-mr-2" />
             {this.devModeHint}
           </div>
         </div>
@@ -68,7 +68,7 @@ class DevInfo extends BaseComponent<DevInfoProps> {
   renderOverlay() {
     return this.isOpen ? (
       <portal to={PORTAL_ID}>
-        <div class="DevInfo--Backdrop z-20">
+        <div class="DevInfo--Backdrop ui-z-20">
           <Container class="DevInfo--OverlayContent" verticalPadding={false}>
             {this.renderContent(() => (this.isOpen = false))}
           </Container>
@@ -76,7 +76,7 @@ class DevInfo extends BaseComponent<DevInfoProps> {
       </portal>
     ) : (
       <div
-        class="rounded-full bg-gray-800 absolute top-0 right-0 mt-2 mr-2 flex w-8 h-8 items-center justify-center text-white cursor-pointer hover:bg-gray-300 hover:text-gray-900"
+        class="ui-rounded-full ui-bg-gray-800 ui-absolute ui-top-0 ui-right-0 ui-mt-2 ui-mr-2 ui-flex ui-w-8 ui-h-8 ui-items-center ui-justify-center ui-text-white ui-cursor-pointer hover:ui-bg-gray-300 hover:ui-text-gray-900"
         onClick={() => (this.isOpen = true)}
       >
         <i class="fas fa-question" />
@@ -89,7 +89,7 @@ class DevInfo extends BaseComponent<DevInfoProps> {
     return this.isOverlay ? (
       this.renderOverlay()
     ) : (
-      <div class="w-full bg-gray-200 py-10">
+      <div class="ui-w-full ui-bg-gray-200 ui-py-10">
         <Container verticalPadding={false}>{this.renderContent()}</Container>
       </div>
     );

@@ -1,7 +1,6 @@
 import BaseComponent from "../BaseComponent";
 import { Prop, Component } from "vue-property-decorator";
 import { LoaderProps } from "@/types/components";
-import "./style.css";
 
 @Component({
   name: "Loader",
@@ -10,7 +9,7 @@ class Loader extends BaseComponent<LoaderProps> {
   @Prop() renderLoader: LoaderProps["renderLoader"];
   render() {
     return (
-      <div class="w-full h-full flex items-center justify-center">
+      <div class="ui-w-full ui-h-full ui-flex ui-items-center ui-justify-center">
         {this.renderLoader ? (
           this.renderLoader()
         ) : (

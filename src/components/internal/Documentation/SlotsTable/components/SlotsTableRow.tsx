@@ -19,9 +19,9 @@ class SlotsTableRow extends BaseComponent<SlotsTableRowProps> {
       <tr>
         <td>
           <span
-            class={`py-1 px-2 ${
-              this.required ? "bg-gray-900 text-white" : "bg-gray-200"
-            } w-auto rounded-lg text-sm`}
+            class={`ui-py-1 ui-px-2 ${
+              this.required ? "ui-bg-gray-900 ui-text-white" : "ui-bg-gray-200"
+            } ui-w-auto ui-rounded-lg ui-text-sm`}
           >
             {this.value}
           </span>

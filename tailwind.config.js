@@ -2,6 +2,7 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
+  prefix: "ui-",
   future: {
     purgeLayersByDefault: true,
   },
@@ -15,13 +16,13 @@ module.exports = {
     ],
     options: {
       whitelistPatterns: [
-        /^w-/,
-        /^xs:w/,
-        /^sm:w-/,
-        /^md:w-/,
-        /^lg:w-/,
-        /^xl:w-/,
-        /^xxl:w-/,
+        /^ui-w-/,
+        /^xs:ui-w/,
+        /^sm:ui-w-/,
+        /^md:ui-w-/,
+        /^lg:ui-w-/,
+        /^xl:ui-w-/,
+        /^xxl:ui-w-/,
       ],
     },
   },

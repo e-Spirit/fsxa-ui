@@ -1,12 +1,12 @@
 .Toggle {
-  @apply inline-flex items-center transition-all duration-300 ease-in rounded-l-full px-2 py-1 text-xs;
+  @apply ui-inline-flex ui-items-center ui-transition-all ui-duration-300 ui-ease-in ui-rounded-l-full ui-px-2 ui-py-1 ui-text-xs;
 }
 .Toggle:focus {
-  @apply outline-none text-gray-900;
+  @apply ui-outline-none ui-text-gray-900;
 }
 .Toggle:hover {
-  @apply text-gray-900;
+  @apply ui-text-gray-900;
 }
 .Toggle.active {
-  @apply bg-white text-gray-900 rounded-full;
+  @apply ui-bg-white ui-text-gray-900 ui-rounded-full;
 }

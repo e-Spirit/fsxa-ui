@@ -48,7 +48,7 @@ export default class App extends Vue {
       lng: 16.346388,
     } as MapsPosition;
     return (
-      <div class="container mx-auto" style="height: 640px;">
+      <div class="ui-container ui-mx-auto" style="height: 640px;">
         <Sections.GoogleMapsSection
           apikey={apikey}
           title="Google Maps Section"

@@ -75,7 +75,7 @@ export default class App extends Vue {
         path: "#",
         label: (
           <svg
-            class="w-6 h-6"
+            class="ui-w-6 ui-h-6"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +104,7 @@ export default class App extends Vue {
     ];
     return (
       <div style="height: 220px">
-        <div class="space-x-5 lg:pr-20 mt-10 mb-20 h-16 bg-gray-100">
+        <div class="ui-space-x-5 lg:ui-pr-20 ui-mt-10 ui-mb-20 ui-h-16 ui-bg-gray-100">
           <Navigation
             items={navItems}
             activeItemKeys={["products"]}

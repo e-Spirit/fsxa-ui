@@ -26,13 +26,13 @@ class NewsTeaserItem extends BaseComponent<NewsTeaserItemProps> {
       >
         {this.image && (
           <Image
-            class="absolute left-0 top-0 w-full"
+            class="ui-absolute ui-left-0 ui-top-0 ui-w-full"
             src={this.image.src}
             previewId={this.image.previewId}
             opacity="40"
           />
         )}
-        <div class="NewsTeaserItem--InfoBox md:ml-0 md:mt-10 md:-mr-10">
+        <div class="NewsTeaserItem--InfoBox md:ui-ml-0 md:ui-mt-10 md:ui--mr-10">
           <div class="NewsTeaserItem--Date" data-testid="newsteaseritem-date">
             <span>{this.date}</span>
           </div>

@@ -11,7 +11,7 @@ const imageSrc =
 export default class App extends Vue {
   render() {
     return (
-      <div class="space-x-5">
+      <div class="ui-space-x-5">
         <HeaderSection
           backgroundImage={{
             type: "image",
@@ -26,7 +26,7 @@ export default class App extends Vue {
             backgroundImage: ({ src }) => (
               <Image
                 src={src}
-                class="HeaderSection--BackgroundImage"
+                class="ui-absolute ui-top-0 ui-left-0 ui-w-full ui-h-full"
                 opacity="40"
               />
             ),
