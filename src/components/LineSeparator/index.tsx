@@ -36,8 +36,11 @@ class LineSeparator extends BaseComponent<LineSeparatorProps> {
     if (this.xl_width) classNames.push(getClassName(this.xl_width, "xl"));
 
     return (
-      <div class={`${this.side === "right" ? "flex flex-row-reverse" : ""}`}>
-        <div class={classNames.join(" ")} />
+      <div
+        class={`${this.side === "right" ? "flex flex-row-reverse" : ""}`}
+        data-testid="flex-test"
+      >
+        <div class={classNames.join(" ")} data-testid="separator-test" />
       </div>
     );
   }
