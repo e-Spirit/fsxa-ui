@@ -1,5 +1,5 @@
-import VueRouter from "vue-router";
 import kebabCase from "lodash.kebabcase";
+import VueRouter from "vue-router";
 
 const extractRoute = (route: string) => {
   const matched = route.match(/\.\/(.*?)\.mdx/);
@@ -42,8 +42,6 @@ export const routes: any = data
       };
     }
     if (!route) return null;
-    console.log("path", path);
-    console.log("route", route);
 
     return {
       component: data(path).default,

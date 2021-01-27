@@ -17,21 +17,9 @@ npm install fsxa-ui --save
 yarn add fsxa-ui
 ```
 
-## Import
-
-Import components from FSXA-UI.
-
-```typescript
-import { Button } from "fsxa-ui";
-
-<Button variant="animated" handleClick={handleClick}>
-  This is my Button
-</Button>
-```
-
 <br />
 
-Don't forget to include the **main CSS file** from the FSXA-UI package!
+Please make sure that the **main CSS file**  is imported from the FSXA UI package.
 
 ```typescript
 // directly importing the css into your main component
@@ -51,3 +39,24 @@ import "fsxa-ui/dist/fsxa-ui.css";
   as="style"
 />
 ```
+
+## Usage
+
+Finally, you can use the components in your project.
+In the navigation you will find all available components with a detailed description of all properties and examples of use.
+
+Here you can see how easy the `Button` component can be used.
+
+```typescript
+import { Button } from "fsxa-ui";
+
+<Button variant="animated" handleClick={handleClick}>
+  This is my Button
+</Button>
+```
+
+<br />
+
+
+
+
