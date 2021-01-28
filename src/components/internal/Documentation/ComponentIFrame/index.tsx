@@ -84,7 +84,7 @@ class ComponentIFrame extends BaseComponent<ComponentIFrameProps> {
         <div class="ui-bg-gray-400 ui-h-full">
           <div class="ui-w-full ui-flex ui-flex-row">
             <iframe
-              src={`/#/raw-component/${this.parsedFilename}`}
+              src={`/raw-component/${this.parsedFilename}`}
               scrolling="yes"
               width="100%"
               class={`ui-mx-auto ${this.dark ? "ui-bg-black" : "ui-bg-white"} ${

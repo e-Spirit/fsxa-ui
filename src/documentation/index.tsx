@@ -25,12 +25,12 @@ class Documentation extends BaseComponent {
               </svg>
             </div>
             <router-link to="/">
-              <div class="ui-font-hairline ui-flex ui-flex-col ui-h-full">
+              <div class="ui-font-hairline ui-flex ui-flex-col ui-h-full ui-select-none">
                 <div class="ui-text-2xl ui-cursor-pointer">FSXA-UI</div>
                 <div class="ui-text-right ui-text-xs ui--mt-2">{version}</div>
               </div>
             </router-link>
-            <div class="sm:ui-text-3xl ui-font-hairline">
+            <div class="sm:ui-text-3xl ui-font-hairline ui-select-none">
               ⸺ Component Library
             </div>
           </div>
