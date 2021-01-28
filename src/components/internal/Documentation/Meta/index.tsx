@@ -1,5 +1,5 @@
 import BaseComponent from "@/components/BaseComponent";
-import { routes } from "@/documentation";
+import routes from "@/documentation/routes";
 import { Component, Prop } from "vue-property-decorator";
 export interface MetaProps {
   title?: string;

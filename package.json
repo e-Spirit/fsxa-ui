@@ -11,6 +11,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name fsxa-ui src/index.ts",
+    "build:app": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "commit": "git-cz",
@@ -22,7 +23,6 @@
   },
   "dependencies": {
     "copy-to-clipboard": "3.3.1",
-    "core-js": "2.6.10",
     "git-cz": "^4.7.6",
     "iframe-resizer": "^4.3.1",
     "lodash.throttle": "4.1.1",
@@ -30,7 +30,6 @@
     "tailwindcss": "^1.9.6",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
-    "vue-fragment": "1.5.1",
     "vue-router": "3.1.6"
   },
   "devDependencies": {
@@ -57,7 +56,7 @@
     "@vue/cli-plugin-eslint": "^4.3.0",
     "@vue/cli-plugin-router": "^4.3.0",
     "@vue/cli-plugin-typescript": "^4.3.0",
-    "@vue/cli-plugin-unit-jest": "^4.3.0",
+    "@vue/cli-plugin-unit-jest": "^4.5.11",
     "@vue/cli-service": "^4.3.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^5.0.2",

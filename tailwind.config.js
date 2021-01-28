@@ -64,6 +64,9 @@ module.exports = {
       transitionProperty: {
         size: "width, height",
       },
+      minWidth: {
+        "64": "16rem",
+      },
     },
   },
   variants: {

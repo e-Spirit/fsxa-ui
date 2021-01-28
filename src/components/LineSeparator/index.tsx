@@ -1,10 +1,10 @@
 import { BaseComponent } from "@/components";
-import { Component, Prop } from "vue-property-decorator";
 import {
   LineSeparatorProps,
   LineSeparatorWidths,
   ScreenPrefixes,
 } from "@/types/components";
+import { Component, Prop } from "vue-property-decorator";
 
 const lsWidthClasses = {
   4: "ui-w-4",
