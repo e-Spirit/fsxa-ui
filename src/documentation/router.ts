@@ -52,6 +52,7 @@ export const routes: any = data
   .concat(exampleRoutes);
 
 const router = new VueRouter({
+  mode: "history",
   routes,
 });
 
