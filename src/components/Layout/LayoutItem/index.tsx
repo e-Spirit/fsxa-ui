@@ -94,7 +94,11 @@ class LayoutItem extends BaseComponent<LayoutItemProps> {
   }
 
   render() {
-    return <div class={this.classNames}>{this.$slots.default}</div>;
+    return (
+      <div class={this.classNames} data-testid="layoutItem-test">
+        {this.$slots.default}
+      </div>
+    );
   }
 }
 export default LayoutItem;

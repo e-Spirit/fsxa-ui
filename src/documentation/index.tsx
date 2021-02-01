@@ -82,6 +82,11 @@ const routes = [
         path: "/components/slider",
         children: [],
       },
+      {
+        label: "Layout",
+        path: "/components/layout",
+        children: [],
+      },
     ],
   },
   {

@@ -20,6 +20,7 @@ class Layout extends BaseComponent<LayoutProps> {
         class={`ui-flex ui-flex-row ${
           this.gutter ? "ui--mx-2 md:ui--mx-4 lg:ui--mx-6" : ""
         } ${this.wrap ? "ui-flex-wrap" : ""}`}
+        data-testid="layout-test"
       >
         {this.$slots.default}
       </div>
