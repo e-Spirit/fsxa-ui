@@ -9,7 +9,9 @@ export default class App extends Vue {
       <div>
         <div class="ui-m-2 ui-w-1/3">
           <Accordion dark={true} title="Click on me to open">
-            This is some example text.
+            This is not a musical instrument
+            <br />
+            but a <i>gui</i> element
           </Accordion>
           <Accordion open title="I am open by default">
             This is another example text.

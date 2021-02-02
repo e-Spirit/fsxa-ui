@@ -5,8 +5,10 @@ import { Dropdown } from "fsxa-ui";
 import { Option } from "@/types/components";
 
 const testOptions: Option[] = [
-  { key: "opt1", label: "Option_1", path: "path1" },
-  { key: "opt2", label: "Option_2", path: "path2" },
+  { key: "opt1", label: "Option 1", path: "path1" },
+  { key: "opt2", label: "Option 2", path: "path2" },
+  { key: "opt3", label: "Another option", path: "path3" },
+  { key: "opt4", label: "2 + 2", path: "path4" },
 ];
 
 const handleClick = (item: Option) => {

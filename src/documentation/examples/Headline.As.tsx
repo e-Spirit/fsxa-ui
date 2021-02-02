@@ -3,6 +3,10 @@ import Component from "vue-class-component";
 
 import { Headline } from "fsxa-ui";
 
+/* These headlines of different levels all look the
+   same - but for accessability reasons indicating
+   the heading's level may be useful */
+
 @Component
 export default class App extends Vue {
   render() {

@@ -7,8 +7,7 @@ import SlotsTable from "@/components/internal/Documentation/SlotsTable";
 import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/components/SlotsTableRow";
 
 <Meta
-  title="Slider"
-  subtitle="Displays elements as a slide-show"
+  component={["Components", "Slider"]}
 />
 
 ## Properties
@@ -24,7 +23,7 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
     You can pass this callback to animate incoming and outgoing slides. Make sure to return a Promise, so the slider will wait for your animation to finish.
   </PropsTableRow>
  <PropsTableRow value="animateSlideTransition" type="boolean" default="false" >
-   Specifies if the horizontal slide transition should be animated
+   Specifies if the horizontal slide transition should be animated.
   </PropsTableRow>
  <PropsTableRow value="visibleElements" type="number" default="1">
     Number of visible slides on one screen. 
@@ -33,11 +32,11 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
    Specifies if the slider should start with the first slide again after reaching the last one.
   </PropsTableRow>
  <PropsTableRow value="animate" type="boolean" default="false" >
-   Specifies if the slider should start automatically with the transition between slides so that no user-interaction is needed.
+   Specifies if the slider should start with the transition between slides automatically so that no user-interaction is required.
   </PropsTableRow>
   <PropsTableRow value="animationDelay" type="number" default="10000" >
-    Specifies the delay between the automatic slide transition in ms.
-    This only has an impact, if <strong>animate</strong> is set to true.
+    Specifies the delay between automatic slide transitions in ms.
+    This setting is only effective if <strong>animate</strong> is set to true.
   </PropsTableRow>
 </PropsTable>
 

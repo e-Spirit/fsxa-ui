@@ -7,8 +7,7 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
 import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/components/SlotsTableRow";
 
 <Meta
-  title="NewsDetail"
-  subtitle="NewsDetail is a detailed view of a news and offers the user a variety of information."
+  component={["Components", "NewsDetail"]}
 />
 
 ## Properties
@@ -18,27 +17,21 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
     Headline at the top of the page.
   </PropsTableRow>
   <PropsTableRow value="image" type="Object" required>
-    Image under the headline.
+    The Image below headline and teaser.
     Possible attributes are:
     <ul>
     <li><span class="code">src</span>Required - string -  The source of the image.
-    
-    Note: If you are passing additional resolutions, this image source will be used as fallback
+    Note: If you are passing additional resolutions, this image source will be used as fallback.
     </li>
     <li><span class="code">resolutions</span>Record&lt;String,{'{ url: string; width: number; height: number; }'} &gt;  
    All available resolutions of your image that will be combined into a sourceset statement</li>
-    <li><span class="code">sizes</span>string - Specify which size should be used with which viewport</li>
-    <li><span class="code">lazy</span>boolean - Specify if the image should be loaded only if it is visible in the viewport</li>
-    <li><span class="code">border</span>boolean - Specify if the shift / border should be applied</li>
-    <li><span class="code">zoom</span>boolean - Specify if the zoom-effect should be applied</li>
-    <li><span class="code">darken</span>string - Specify if a black overlay with specified opacity should be applied on top. Possible values are "0" | "25" | "40" | "50" | "75" | "80"</li>
     </ul>
   </PropsTableRow>
   <PropsTableRow value="teaser" type="String">
     Text between headline and picture.
   </PropsTableRow>
   <PropsTableRow value="date" type="String">
-      Date when the article was written
+      Date when the article was written.
   </PropsTableRow>
   <PropsTableRow value="tags" type="Array">
       Tags under the article. Possible attributes are:
@@ -48,10 +41,10 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
       </ul>
   </PropsTableRow>
   <PropsTableRow value="author" type="String">
-    Author of the article
+    Author of the article.
   </PropsTableRow>
   <PropsTableRow value="handleTagClick" type="Function">
-      You can pass in an optional callback that will be triggered, when a tag
+      You can pass in an optional callback that will be triggered when a tag
       is clicked.
     </PropsTableRow>
   <PropsTableRow value="returnText" type="String">
@@ -81,7 +74,7 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
 
 <SlotsTable>
   <SlotsTableRow value="social" prop="SocialArea">
-    Specify your custom HTML for the social area. These attributes you get as value:
+    Specify your custom HTML for the social area. You get the following attributes as value:
     <ul>
           <li><span class="code">title</span>string - Title of the social area</li>
           <li><span class="code">items</span>Object - social media items. Possible attributes are

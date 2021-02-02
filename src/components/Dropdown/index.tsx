@@ -7,19 +7,21 @@ import { DropdownProps } from "@/types/components";
   name: "Dropdown",
 })
 class Dropdown extends BaseComponent<DropdownProps> {
-  @Prop({ required: true }) value!: DropdownProps["value"];
+  @Prop({ required: false }) value: DropdownProps["value"];
   @Prop({ required: true }) options!: DropdownProps["options"];
   @Prop({ required: true }) handleChange!: DropdownProps["handleChange"];
 
   render() {
-    const currentOptionIndex = this.options.findIndex(
-      option => option.key === this.value,
-    );
+    const currentOptionIndex = this.value
+      ? this.options.findIndex(option => option.key === this.value)
+      : 0;
     const currentOption =
-      currentOptionIndex !== -1 ? this.options[currentOptionIndex] : null;
+      currentOptionIndex !== -1
+        ? this.options[currentOptionIndex]
+        : this.options[0];
     return (
       <div class="Dropdown">
-        {this.$slots.default || currentOption?.label}
+        <div class="ui-mx-8">{this.$slots.default || currentOption?.label}</div>
         <ul>
           {this.options.map(option => (
             <li>

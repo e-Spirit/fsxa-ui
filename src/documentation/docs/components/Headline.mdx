@@ -5,21 +5,20 @@ import PropsTable from "@/components/internal/Documentation/PropsTable";
 import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
 
 <Meta
-  title="Headline"
-  subtitle="The Headline tells users what the page is about"
+  component={["Components", "Headline"]}
 />
 
 ## Properties
 
 <PropsTable>
-  <PropsTableRow value="as" type="String" default="h1" required>
-    Specify which tag should be used. Possible values are <span class="code">h1</span><span class="code">h2</span><span class="code">h3</span><span class="code">h4</span><span class="code">h5</span><span class="code">span</span>
+  <PropsTableRow value="as" type="String" default="h1">
+    Specify which tag should be used. Possible values are: <span class="code">h1</span><span class="code">h2</span><span class="code">h3</span><span class="code">h4</span><span class="code">h5</span><span class="code">span</span>
   </PropsTableRow>
-  <PropsTableRow value="size" type="String" default="lg" required>
-    Specify what size the headline should have. Possible values are <span class="code">sm</span><span class="code">md</span><span class="code">lg</span><span class="code">xl</span><span class="code">xxl</span>
+  <PropsTableRow value="size" type="String" default="lg">
+    Specify what size the headline should have. Possible values are: <span class="code">sm</span><span class="code">md</span><span class="code">lg</span><span class="code">xl</span><span class="code">xxl</span>
   </PropsTableRow>
   <PropsTableRow value="weight" type="String" default="bold">
-    Specify the weight of the headline. Possible values are <span class="code">bold</span><span class="code">light</span>
+    Specify the weight of the headline. Possible values are: <span class="code">bold</span><span class="code">light</span>
   </PropsTableRow>
   <PropsTableRow value="handleClick" type="Function">
     You can pass in an optional callback that will be triggered, when the headline

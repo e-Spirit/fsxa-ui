@@ -11,8 +11,8 @@ import { ProductListItemProps } from "@/types/components";
 })
 class ProductListItem extends BaseComponent<ProductListItemProps> {
   @Prop({ required: true }) title!: ProductListItemProps["title"];
-  @Prop({ required: true }) description!: ProductListItemProps["description"];
-  @Prop({ required: true }) price!: ProductListItemProps["price"];
+  @Prop({ required: false }) description: ProductListItemProps["description"];
+  @Prop({ required: false }) price: ProductListItemProps["price"];
   @Prop({ required: true }) image!: ProductListItemProps["image"];
   @Prop({ required: true }) url!: ProductListItemProps["url"];
   @Prop({ required: true }) handleClick!: ProductListItemProps["handleClick"];
@@ -40,8 +40,16 @@ class ProductListItem extends BaseComponent<ProductListItemProps> {
             <Headline as="h3" class="ui-mt-12 ui-ml-8 ui-mr-4" size="sm">
               {this.title}
             </Headline>
-            <div class="ui-ml-8 ui-mr-4 ui-text-sm">{this.description}</div>
-            <div class="ui-ml-8 ui-mr-4 ui-mt-2">{this.price}</div>
+            {this.description ? (
+              <div class="ui-ml-8 ui-mr-4 ui-text-sm">{this.description}</div>
+            ) : (
+              ""
+            )}
+            {this.price ? (
+              <div class="ui-ml-8 ui-mr-4 ui-mt-2">{this.price}</div>
+            ) : (
+              ""
+            )}
           </div>
         </a>
       </div>

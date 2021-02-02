@@ -91,7 +91,7 @@ export interface HeadlineProps {
    *
    * Default value is: **lg**
    */
-  size: "xxl" | "xl" | "lg" | "md" | "sm" | "xs";
+  size?: "xxl" | "xl" | "lg" | "md" | "sm" | "xs";
   /**
    * Should the headline be displayed in all uppercase letters?
    *
@@ -345,11 +345,11 @@ export interface ProductListItemProps {
   /**
    * The description that will be displayed. Can contain RichText
    */
-  description: RenderedType;
+  description?: RenderedType;
   /**
    * The price that will be displayed.
    */
-  price: string;
+  price?: string;
   /**
    * The image of the product that will be displayed in the background
    */
@@ -378,7 +378,7 @@ export interface Option {
   path?: string;
 }
 export interface DropdownProps {
-  value: string;
+  value?: string;
   options: Option[];
   handleChange: (option: Option) => void;
 }

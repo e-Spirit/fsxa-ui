@@ -1,5 +1,5 @@
-import VueRouter from "vue-router";
 import kebabCase from "lodash.kebabcase";
+import VueRouter from "vue-router";
 
 const extractRoute = (route: string) => {
   const matched = route.match(/\.\/(.*?)\.mdx/);
@@ -34,8 +34,15 @@ const exampleRoutes = examples.keys().map(path => {
 export const routes: any = data
   .keys()
   .map(path => {
-    const route = extractRoute(path);
+    let route = extractRoute(path);
+    if (path === "./Index.mdx") {
+      route = {
+        path: "/",
+        label: "Home",
+      };
+    }
     if (!route) return null;
+
     return {
       component: data(path).default,
       ...route,
@@ -45,7 +52,11 @@ export const routes: any = data
   .concat(exampleRoutes);
 
 const router = new VueRouter({
+  mode: "history",
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 0 };
+  },
 });
 
 export default router;

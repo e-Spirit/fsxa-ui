@@ -3,15 +3,21 @@ import ExampleLoader from "@/documentation/utils/ExampleLoader";
 import Meta from "@/components/internal/Documentation/Meta";
 import PropsTable from "@/components/internal/Documentation/PropsTable";
 import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
+import ComponentWrapper from "@/components/internal/Documentation/ComponentWrapper"
+import { Headline } from "@/components";
+
 
 <Meta
-  title="LineSeparator"
-  subtitle="The LineSeparator can be used to separate content sections"
+    component={["Components", "LineSeparator"]}
 />
 
-## Properties
-
-<PropsTable>
+<ComponentWrapper  scopedSlots={{
+  codeSlot: () => <div>
+    <Headline as="h3" size="md" weight="light">
+          Example
+        </Headline><ExampleLoader example="LineSeparator.tsx" /></div>,
+  infoSlot: () => 
+  <PropsTable>
   <PropsTableRow value="width" type="String">
     Specify which width the separator should have. <br />
     Possible values are <span class="code">4</span><span class="code">8</span><span class="code">16</span><span class="code">32</span><span class="code">64</span><span class="code">full</span> <br />
@@ -46,7 +52,6 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
     Possible values are <span class="code">left</span><span class="code">right</span> <br />
   </PropsTableRow>
 </PropsTable>
+}}></ComponentWrapper>
 
-## Examples
 
-<ExampleLoader example="LineSeparator.tsx" />

@@ -1,13 +1,12 @@
 import BaseComponent from "@/components/BaseComponent";
-import { Prop, Component } from "vue-property-decorator";
-import Prism from "vue-prismjs";
-import copy from "copy-to-clipboard";
-
-import "prismjs/themes/prism-okaidia.css";
-import "./style.css";
+import ComponentIFrame from "@/components/internal/Documentation/ComponentIFrame";
 import Toggle from "@/components/internal/Toggle";
 import { CodeProps } from "@/types/components";
-import ComponentIFrame from "@/components/internal/Documentation/ComponentIFrame";
+import copy from "copy-to-clipboard";
+import "prismjs/themes/prism-okaidia.css";
+import Prism from "vue-prismjs";
+import { Component, Prop } from "vue-property-decorator";
+import "./style.css";
 
 @Component
 class Code extends BaseComponent<CodeProps> {

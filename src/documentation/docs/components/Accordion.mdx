@@ -5,18 +5,17 @@ import PropsTable from "@/components/internal/Documentation/PropsTable";
 import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
 
 <Meta
-  title="Accordion"
-  subtitle="The Accordion opens and closes when clicked on."
+  component={["Components", "Accordion"]}
 />
 <PropsTable>
   <PropsTableRow value="dark" type="boolean" default="false" optional>
     Specifies whether the accordion should be dark or light.
   </PropsTableRow>
   <PropsTableRow value="title" type="string" required>
-    The title of the accordion.
+    The accordion's title.
   </PropsTableRow>
   <PropsTableRow value="open" type="boolean" default="false" optional>
-    a boolean which decides if an Accordion is closed or not
+    A boolean determining if an accordion is open or not.
   </PropsTableRow>
 </PropsTable>
 <ExampleLoader example="Accordion.tsx" />
