@@ -4,6 +4,8 @@ export { default as Container } from "./Container";
 export { default as Counter } from "./Counter";
 export { default as Dropdown } from "./Dropdown";
 export { default as Headline } from "./Headline";
+export { default as ImageSlider } from "./ImageSlider";
+export { default as Slider } from "./Slider";
 export { default as Image } from "./Image";
 export { default as Layout } from "./Layout";
 export { default as LayoutItem } from "./Layout/LayoutItem";
