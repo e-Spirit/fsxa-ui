@@ -2,7 +2,7 @@ import { render } from "@testing-library/vue";
 import Layout from "../..";
 import LayoutItem from "./../";
 
-describe("components/LineSeperator", () => {
+describe("components/LayoutItem", () => {
   it("renders the correct div with its responsive classes", () => {
     const { getByTestId } = render(Layout, {
       slots: {
