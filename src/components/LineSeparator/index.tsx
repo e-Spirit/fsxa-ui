@@ -38,7 +38,7 @@ class LineSeparator extends BaseComponent<LineSeparatorProps> {
     return (
       <div
         class={`${this.side === "right" ? "ui-flex ui-flex-row-reverse" : ""}`}
-	data-testid="flex-test"
+        data-testid="flex-test"
       >
         <div class={classNames.join(" ")} data-testid="separator-test" />
       </div>
