@@ -17,12 +17,17 @@ export default class App extends Vue {
             type: "image",
             src: imageSrc,
           }}
-          title="test two"
+          title="test two - a headline for the example with slots"
           breadcrumbs={[]}
           handleItemClick={() => {
             return;
           }}
           scopedSlots={{
+            title: title => (
+              <h2 class="ui-my-20 ui-italic ui-text-lg ui-tracking-wide ui-relative">
+                {title}
+              </h2>
+            ),
             backgroundImage: ({ src }) => (
               <Image
                 src={src}
