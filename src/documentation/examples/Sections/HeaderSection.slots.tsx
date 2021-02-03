@@ -24,7 +24,7 @@ export default class App extends Vue {
           }}
           scopedSlots={{
             title: title => (
-              <h2 class="ui-my-20 ui-italic ui-text-lg ui-tracking-wide ui-relative">
+              <h2 class="ui-my-20 ui-italic ui-text-2xl ui-tracking-wide ui-relative">
                 {title}
               </h2>
             ),

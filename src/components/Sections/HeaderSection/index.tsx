@@ -42,13 +42,15 @@ class HeaderSection extends BaseComponent<
         <Container class="ui-py-20">
           <div class="ui-flex ui-flex-grow ui-items-center ui-justify-center md:ui-justify-start ui-mb-4">
             <div class="ui-relative ui-pl-8 ui-w-64 sm:ui-w-auto">
-              <div class="HeaderSection--Box ui-absolute ui-top-0 ui-left-0 ui-w-64 sm:ui-w-48 ui-h-full ui-border-8 ui-border-r-0 ui-border-white" />
               {this.$scopedSlots.title ? (
                 this.$scopedSlots.title(this.title)
               ) : (
-                <h1 class="ui-antialiased ui-my-20 ui-text-lg ui-uppercase ui-tracking-wide ui-relative ui-w-full ui-break-words ui-overflow-hidden">
-                  {this.title}
-                </h1>
+                <div>
+                  <div class="HeaderSection--Box ui-absolute ui-top-0 ui-left-0 ui-w-64 sm:ui-w-48 ui-h-full ui-border-8 ui-border-r-0 ui-border-white" />
+                  <h1 class="ui-antialiased ui-my-20 ui-text-lg ui-uppercase ui-tracking-wide ui-relative ui-w-full ui-break-words ui-overflow-hidden">
+                    {this.title}
+                  </h1>
+                </div>
               )}
             </div>
           </div>
