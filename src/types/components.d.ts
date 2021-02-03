@@ -1,5 +1,5 @@
-import { Component } from "vue-tsx-support";
 import { VNode } from "vue";
+import { Component } from "vue-tsx-support";
 
 export type RenderedType =
   | JSX.Element
@@ -144,6 +144,10 @@ export interface ImageRef {
       height: number;
     }
   >;
+
+  /**
+   * Specfiy which size should be used with which viewport
+   */
   sizes?: string;
 }
 export interface ImageProps extends Omit<ImageRef, "type"> {
@@ -380,6 +384,40 @@ export interface Tag {
    * Label of the tag
    */
   label: string;
+  /**
+   * Id of the tag so that i can be identified
+   */
+  id?: number | string;
+}
+
+export interface SocialArea {
+  /**
+   * Title of the social area
+   */
+  title?: string;
+  /**
+   * social elements which should be displayed in the social area
+   */
+  items?: SocialElement[];
+  /**
+   * Callback for when a social element is clicked.
+   */
+  handleSocialClick?: (socialElement: SocialElement) => void;
+}
+
+export interface SocialElement {
+  /**
+   * Title of the social element which is displayed when no custom slot is used
+   */
+  title?: string;
+  /**
+   * Id of the social element so that i can be identified
+   */
+  id?: number | string;
+  /**
+   * Additional informations for one social element
+   */
+  options?: any;
 }
 
 export interface NewsDetailProps {
@@ -394,9 +432,7 @@ export interface NewsDetailProps {
   /**
    * Object with a src attribute for the image.
    */
-  image: {
-    src: string;
-  };
+  image: ImageProps;
   /**
    * Date when the article is written. String should be ISO 8601 conform.
    */
@@ -425,12 +461,24 @@ export interface NewsDetailProps {
    */
   returnText?: string;
   /**
-   * Text above the social links.
+   * Area for social elements displayed under the article
    */
-  socialText?: string;
+  social?: SocialArea;
 }
 
-export class NewsDetail extends Component<NewsDetailProps> {}
+export interface NewsDetailSlots {
+  /**
+   * You can override the social area rendering of this component by specifying the slot social
+   * It will receive the social-area-data as parameter
+   */
+  social: SocialArea;
+}
+
+export class NewsDetail extends Component<
+  NewsDetailProps,
+  {},
+  NewsDetailSlots
+> {}
 
 export interface QuoteProps {
   /**

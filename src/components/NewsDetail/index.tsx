@@ -1,21 +1,21 @@
-import { NewsDetailProps } from "@/types/fsxa-ui";
-import { Component, Prop } from "vue-property-decorator";
-import "./style.css";
 import {
   BaseComponent,
-  Headline,
-  Paragraph,
-  Image,
   Button,
   Container,
+  Headline,
+  Image,
   Layout,
   LayoutItem,
+  Paragraph,
 } from "@/components";
+import { NewsDetailProps, NewsDetailSlots } from "@/types/fsxa-ui";
+import { Component, Prop } from "vue-property-decorator";
+import "./style.css";
 
 @Component({
   name: "NewsDetail",
 })
-class NewsDetail extends BaseComponent<NewsDetailProps> {
+class NewsDetail extends BaseComponent<NewsDetailProps, {}, NewsDetailSlots> {
   @Prop({ required: true }) headline!: NewsDetailProps["headline"];
   @Prop({ required: false }) teaser!: NewsDetailProps["teaser"];
   @Prop({ required: true }) image!: NewsDetailProps["image"];
@@ -28,7 +28,7 @@ class NewsDetail extends BaseComponent<NewsDetailProps> {
   handleTagClick!: NewsDetailProps["handleTagClick"];
   @Prop({ required: false })
   returnText!: NewsDetailProps["returnText"];
-  @Prop({ required: false }) socialText!: NewsDetailProps["socialText"];
+  @Prop({ required: false }) social!: NewsDetailProps["social"];
 
   render() {
     return (
@@ -37,10 +37,10 @@ class NewsDetail extends BaseComponent<NewsDetailProps> {
           {this.headline}
         </Headline>
         {this.teaser && <Paragraph size="md">{this.teaser}</Paragraph>}
-        <Image class="ui-my-2" src={this.image.src} />
+        <Image class="ui-my-2" props={this.image} />
         {(this.date || this.author) && (
           <div class="ui-text-sm">
-            {this.date && new Date(this.date).toLocaleDateString()}
+            {this.date && <span>{this.date}</span>}
             {this.author && (
               <span class="ui-text-gray-600"> | {this.author}</span>
             )}
@@ -58,7 +58,7 @@ class NewsDetail extends BaseComponent<NewsDetailProps> {
                 <Headline
                   as="h5"
                   size="md"
-                  class="ui-mx-auto lg:ui-mx-0 ui-text-center lg:ui-text-left"
+                  class="lg:ui-mx-0 lg:ui-ml-4 ui-text-left"
                 >
                   TAGS
                 </Headline>
@@ -82,45 +82,56 @@ class NewsDetail extends BaseComponent<NewsDetailProps> {
             {this.returnText && (
               <Button
                 variant="tag"
-                class="return-newsroom-btn"
+                class="ui-font-light ui-mt-2 ui-text-base ui-tracking-widest"
                 handleClick={this.handleReturnClick}
               >
                 {this.returnText}
               </Button>
             )}
           </LayoutItem>
-          <LayoutItem
-            width="full"
-            lg={{ width: "1/2" }}
-            class="ui-mx-auto lg:ui-mx-0"
-          >
-            {this.socialText && (
-              <Headline
-                as="h5"
-                size="md"
-                class="ui-mx-auto lg:ui-mx-px ui-text-center lg:ui-text-left"
-              >
-                {this.socialText}
-              </Headline>
-            )}
-            <div class="ui-mx-auto lg:ui-mx-px">
-              <Button variant="tag" class="ui-mr-2 ui-border ui-border-black">
-                <i class="fab fa-facebook-f" />
-              </Button>
-              <Button variant="tag" class="ui-mx-2 ui-border ui-border-black">
-                <i class="fab fa-twitter" />
-              </Button>
-              <Button variant="tag" class="ui-mx-2 ui-border ui-border-black">
-                <span class="fa fa-rss" />
-              </Button>
-              <Button variant="tag" class="ui-mx-2 ui-border ui-border-black">
-                <span class="fab fa-youtube" />
-              </Button>
-              <Button variant="tag" class="ui-ml-2 ui-border ui-border-black">
-                <i class="fab fa-instagram" />
-              </Button>
-            </div>
-          </LayoutItem>
+          {this.$scopedSlots.social && this.social ? (
+            <LayoutItem
+              width="full"
+              lg={{ width: "1/2" }}
+              class="ui-mx-auto lg:ui-mx-0"
+            >
+              {this.$scopedSlots.social(this.social)}
+            </LayoutItem>
+          ) : (
+            <LayoutItem
+              width="full"
+              lg={{ width: "1/2" }}
+              class="ui-mx-auto lg:ui-mx-0 ui-flex"
+            >
+              {this.social?.title && (
+                <Headline
+                  as="h5"
+                  size="md"
+                  class="ui-mx-auto lg:ui-mx-px ui-text-center md:ui-text-right"
+                >
+                  {this.social.title}
+                </Headline>
+              )}
+              <div class="ui-mx-auto lg:ui-mx-px ui-flex ui-space-y-2 md:ui-space-y-0 ui-flex-col md:ui-flex-row ui-justify-end">
+                {this.social?.items && this.social?.items?.length > 0
+                  ? this.social.items.map(item => (
+                      <div class="ui-mx-auto md:ui-mx-0">
+                        <Button
+                          variant="tag"
+                          class="ui-mr-2 ui-border ui-border-black"
+                          handleClick={() => {
+                            if (this.social?.handleSocialClick)
+                              this.social.handleSocialClick(item);
+                          }}
+                        >
+                          {item.title ? item.title : null}
+                        </Button>
+                      </div>
+                    ))
+                  : null}
+              </div>
+            </LayoutItem>
+          )}
         </Layout>
       </Container>
     );
