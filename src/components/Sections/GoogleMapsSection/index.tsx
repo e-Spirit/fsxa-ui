@@ -270,9 +270,6 @@ class GoogleMapsSection extends BaseComponent<
     return map;
   }
   mounted() {
-    if (this.language?.length !== 2) {
-      throw new Error("Language string must contain exactly 2 characters.");
-    }
     if (this.buttonLabel) {
       if (!this.handleButtonClick) {
         throw new Error(

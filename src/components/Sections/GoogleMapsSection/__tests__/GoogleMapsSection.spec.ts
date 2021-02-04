@@ -53,25 +53,6 @@ describe("components/sections/google-maps-section", () => {
       });
     });
   });
-  describe("given a language prop", () => {
-    it("should throw an error if the length of language string is not exactly 2", () => {
-      const longProps = requiredProps;
-      longProps.language = "eng";
-      const shortProps = requiredProps;
-      shortProps.language = "e";
-      // Suppress console.error output, since we do not want to pollute the console with the expected error
-      const errorSpy = jest
-        .spyOn(console, "error")
-        .mockImplementation(async () => []);
-      expect(() =>
-        render(GoogleMapsSection, { props: longProps }),
-      ).toThrowError();
-      expect(() =>
-        render(GoogleMapsSection, { props: shortProps }),
-      ).toThrowError();
-      errorSpy.mockReset();
-    });
-  });
   describe("given a buttonLabel prop", () => {
     it("should throw an error if there is no handleButtonClick prop", () => {
       const illegalProps = requiredProps;
