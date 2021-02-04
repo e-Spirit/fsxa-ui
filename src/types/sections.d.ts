@@ -251,8 +251,8 @@ export class TeaserSection<MediaType> extends Component<
 > {}
 
 export interface Breadcrumb {
-  referenceId: string;
-  referenceType: string;
+  referenceId?: string;
+  referenceType?: string;
   label: string;
   path: string;
 }
@@ -265,6 +265,7 @@ export interface BreadcrumbsProps {
 export interface HeaderSectionEvents {}
 
 export interface HeaderSectionSlots {
+  title?: string;
   backgroundImage?: ImageRef;
   breadcrumbs?: Breadcrumb[];
 }
@@ -281,7 +282,7 @@ export interface HeaderSectionProps {
   /**
    * The items from which the breadcrumbs will be constructed
    */
-  breadcrumbs: Breadcrumb[];
+  breadcrumbs?: Breadcrumb[];
   /**
    * Optional callback that will be triggered, when an item is clicked
    */

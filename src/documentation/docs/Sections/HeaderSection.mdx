@@ -33,7 +33,7 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
       <PropsTableRow value="title" type="string" required>
         The title to display with this HeaderSection.
         </PropsTableRow>
-        <PropsTableRow value="breadcrumbs" type="Breadcrumb[]" required>
+        <PropsTableRow value="breadcrumbs" type="Breadcrumb[]">
          Requires an Array <span class="code">Breadcrumb[]</span> which, unless empty, will need the following information: <span class="code">{`{ 
            referenceId: number,
            referenceType: String,
@@ -50,6 +50,9 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
 ## Slots
 
 <SlotsTable>
+  <SlotsTableRow value="headline" prop="string">
+  The element that will be displayed where we normally show the headline (with the box).
+  </SlotsTableRow>
   <SlotsTableRow value="backgroundImage" prop="ImageRef">
   The element that will be displayed where we normally show the backgroundImage.
   </SlotsTableRow>
