@@ -133,15 +133,24 @@ class GoogleMapsSection extends BaseComponent<
     }
   }
 
-  private renderDescriptionBox(location: MapsLocation): Node {
-    const template = `<h2 class="ui-font-bold ui-text-highlight ui-text-lg">${
-      location.name
-    }</h2>
-      <div class="ui-mt-2">
-        ${location.description ? "<p>" + location.description + "</p>" : ""}
-        <p class="ui-mt-2">${location.street}</p>
-        <p>${location.city}</p>
-      </div>`;
+  renderDescriptionBox(location: MapsLocation): Node {
+    const headline = location.name
+      ? `<h2 class="ui-font-bold ui-text-highlight ui-text-lg">${location.name}</h2>`
+      : "";
+    const description = location.description
+      ? `<p>${location.description}</p>`
+      : "";
+    const street = location.street
+      ? `<p class="ui-mt-2">${location.street}</p>`
+      : "";
+    const city = location.city ? `<p>${location.city}</p>` : "";
+    const template = `${headline}
+          <div class="ui-mt-2">
+            ${description}
+            ${street}
+            ${city}
+          </div>`;
+
     const div = document.createElement("div");
     div.classList.add("ui-w-64", "ui-text-sm");
     div.innerHTML = template;

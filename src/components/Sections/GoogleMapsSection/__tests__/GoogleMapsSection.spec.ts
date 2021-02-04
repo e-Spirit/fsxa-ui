@@ -5,6 +5,7 @@ import {
   GoogleMapsSectionProps,
   MapsLocation,
 } from "../../../../types/sections";
+import { shallowMount } from "@vue/test-utils";
 
 const apikey = process.env.VUE_APP_MAPS_APIKEY;
 
@@ -25,6 +26,7 @@ describe("components/sections/google-maps-section", () => {
       language: "en",
     };
   });
+
   describe("given a title prop", () => {
     it("should render a title", () => {
       const propsWithTitle = requiredProps;
@@ -81,6 +83,30 @@ describe("components/sections/google-maps-section", () => {
     });
   });
 
+  describe("render description box", () => {
+    const completeLocation = {
+      name: "Link's house",
+      city: "Hateno Village",
+      street: "Behind the bridge",
+      description: "Link lives here",
+      position: {
+        lat: 15.8,
+        lng: 27.3,
+      },
+    };
+    it("should return a node containing all the properties of the passed location", () => {
+      const wrapper = shallowMount(GoogleMapsSection, {
+        props: requiredProps,
+      } as any);
+      const descriptionBox = wrapper.vm.renderDescriptionBox(
+        completeLocation,
+      ) as HTMLDivElement;
+      expect(descriptionBox.innerHTML).toContain(completeLocation.name);
+      expect(descriptionBox.innerHTML).toContain(completeLocation.city);
+      expect(descriptionBox.innerHTML).toContain(completeLocation.street);
+      expect(descriptionBox.innerHTML).toContain(completeLocation.description);
+    });
+  });
   describe("given a locations prop", () => {
     const name = "Test Location";
     const locations: MapsLocation[] = [
@@ -103,7 +129,7 @@ describe("components/sections/google-maps-section", () => {
         },
       },
     ];
-    it("should render the locations", () => {
+    it("should render the locations in the sidebar", () => {
       const locationProps = requiredProps;
       locationProps.locations = locations;
       const { getAllByTestId } = render(GoogleMapsSection, {

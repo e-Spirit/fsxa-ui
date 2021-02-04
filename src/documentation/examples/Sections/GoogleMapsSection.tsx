@@ -14,8 +14,8 @@ export default class App extends Vue {
           lat: 48.213967,
           lng: 16.346388,
         },
-        name: "Skoda",
-        city: "1080 Vienna",
+        //name: "Skoda",
+        //city: "1080 Vienna",
         street: "Skodagasse 13",
         description:
           "If you click this marker the corresponding item in the sidebar will be selected.",
