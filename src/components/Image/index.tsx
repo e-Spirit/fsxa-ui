@@ -29,6 +29,7 @@ const isInViewport = (element: Element, preloadMultiplier = 1.1) => {
 })
 class Image extends BaseComponent<ImageProps> {
   @Prop({ required: true }) src!: ImageProps["src"];
+  @Prop() alt!: ImageProps["alt"];
   @Prop() resolutions: ImageProps["resolutions"];
   @Prop() sizes: ImageProps["sizes"];
   @Prop({ required: false }) lazy!: ImageProps["lazy"];
@@ -99,6 +100,7 @@ class Image extends BaseComponent<ImageProps> {
       >
         <div class="ui-w-full ui-h-full ui-overflow-hidden ui-relative">
           <img
+            alt={this.alt ? this.alt : ""}
             src={!this.lazy || this.loaded ? this.src : ""}
             srcset={this.srcset}
             sizes={this.sizes}

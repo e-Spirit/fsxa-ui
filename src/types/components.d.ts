@@ -131,6 +131,11 @@ export interface ImageRef {
    */
   src: string;
 
+  /**
+   * Alternative text which describes the image.
+   */
+  alt?: string;
+
   previewId?: string;
 
   /**

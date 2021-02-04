@@ -28,6 +28,9 @@ module.exports = {
   },
   theme: {
     extend: {
+      borderWidth: {
+        30: "30px",
+      },
       screens: {
         ...defaultTheme.screens,
         xs: "20rem",
