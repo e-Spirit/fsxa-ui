@@ -5,7 +5,16 @@
 
 html,
 body {
-  @apply h-full;
+  @apply ui-h-full;
+}
+
+.scrollbar-fix-left {
+  width: 100vw;
+}
+
+.scrollbar-fix-center {
+  margin-left: calc(100vw - 100%);
+  margin-right: 0;
 }
 
 @tailwind components;

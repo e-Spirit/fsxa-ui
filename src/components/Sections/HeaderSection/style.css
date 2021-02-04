@@ -1,33 +1,15 @@
-.HeaderSection {
-    @apply w-full relative text-white;
+.HeaderSection--Box {
+  &:before,
+  &:after {
+    @apply ui-absolute ui-right-0 ui-w-0 ui-h-12 ui-bg-white ui-border-r-8;
+    content: "";
+  }
 
-    & .HeaderSection--BackgroundImage {
-        @apply absolute top-0 left-0 h-full w-full;
-    }
+  &:before {
+    @apply ui-top-0;
+  }
 
-    & .HeaderSection--HeadlineWrapper {
-        @apply border-white py-20 pl-8 w-48 relative mb-6 uppercase;
-        border: 10px solid;
-        border-right: 0;
-
-        &:before, &:after {
-            @apply absolute bg-white h-12;
-            content: "";
-            right: -10px;
-            width: 10px;
-        }
-
-        &:before {
-            top: -10px;
-        }
-
-        &:after {
-            bottom: -10px;
-        }
-
-        & h2 {
-            @apply block w-full text-lg;
-            width: 640px;
-        }
-    }
+  &:after {
+    @apply ui-bottom-0;
+  }
 }

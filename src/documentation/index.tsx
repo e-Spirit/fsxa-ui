@@ -39,11 +39,6 @@ const routes = [
         children: [],
       },
       {
-        label: "Footer",
-        path: "/components/footer",
-        children: [],
-      },
-      {
         label: "Headline",
         path: "/components/headline",
         children: [],
@@ -51,6 +46,11 @@ const routes = [
       {
         label: "Image",
         path: "/components/image",
+        children: [],
+      },
+      {
+        label: "ImageSlider",
+        path: "/components/image-slider",
         children: [],
       },
       {
@@ -69,17 +69,17 @@ const routes = [
         children: [],
       },
       {
-        label: "RichText",
-        path: "/components/rich-text",
-        children: [],
-      },
-      {
         label: "ProductListItem",
         path: "/components/product-list-item",
       },
       {
         label: "LineSeparator",
         path: "/components/line-separator",
+        children: [],
+      },
+      {
+        label: "Slider",
+        path: "/components/slider",
         children: [],
       },
     ],
@@ -94,17 +94,22 @@ const routes = [
         children: [],
       },
       {
+        label: "FullWidthSliderSection",
+        path: "/sections/full-width-slider-section",
+        children: [],
+      },
+      {
         label: "GoogleMapsSection",
         path: "/sections/google-maps-section",
         children: [],
       },
       {
-        label: "Header-Section",
+        label: "HeaderSection",
         path: "/sections/header-section",
         children: [],
       },
       {
-        label: "InterestingFacts-Section",
+        label: "InterestingFactsSection",
         path: "/sections/interesting-facts-section",
         children: [],
       },
@@ -119,7 +124,7 @@ const routes = [
         children: [],
       },
       {
-        label: "Teaser-Section",
+        label: "TeaserSection",
         path: "/sections/teaser-section",
         children: [],
       },
@@ -131,41 +136,41 @@ const routes = [
   name: "Documentation",
 })
 class Documentation extends BaseComponent {
-  showSidebar = false;
-
   render() {
-    return (
-      <div class="w-full min-h-full flex">
-        <div class="md:w-1/3 lg:w-1/4 md:max-w-xs border-r border-gray-300 hidden md:block p-5">
-          <div class="p-5 flex items-center">
-            <span class="text-espirit text-2xl inline-block font-bold">
+    return this.$route.meta.singleView ? (
+      <router-view />
+    ) : (
+      <div class="ui-w-full ui-min-h-full ui-flex">
+        <div class="md:ui-w-1/3 lg:ui-w-1/4 md:ui-max-w-xs ui-border-r ui-border-gray-300 ui-hidden md:ui-block ui-p-5">
+          <div class="ui-p-5 ui-flex ui-items-center">
+            <span class="ui-text-espirit ui-text-2xl ui-inline-block ui-font-bold">
               FSXA-UI
             </span>
-            <span class="bg-gray-900 px-2 rounded-lg inline-block ml-4 text-xs text-white leading-6 tracking-widest">
+            <span class="ui-bg-gray-900 ui-px-2 ui-rounded-lg ui-inline-block ui-ml-4 ui-text-xs ui-text-white ui-leading-6 ui-tracking-widest">
               {version}
             </span>
           </div>
-          <ul class="mt-5 font-normal text-sm">
+          <ul class="ui-mt-5 ui-font-normal ui-text-sm">
             {routes.map((route: any) => (
               <li class="">
                 <router-link
                   to={route.path}
-                  class="px-5 py-2 block mb-2"
-                  activeClass="text-espirit"
+                  class="ui-px-5 ui-py-2 ui-block ui-mb-2"
+                  activeClass="ui-text-espirit"
                 >
                   {route.label}
                 </router-link>
                 {route.children &&
                   this.$route.fullPath.indexOf(route.path) === 0 && (
-                    <ul class="border-gray-200">
+                    <ul class="ui-border-gray-200">
                       {route.children
                         .filter((child: any) => child.path !== "")
                         .map((child: any) => (
                           <li class="">
                             <router-link
                               to={child.route || child.path}
-                              class="ml-5 px-5 py-2 block border-l-2"
-                              activeClass="border-espirit text-espirit"
+                              class="ui-ml-5 ui-px-5 ui-py-2 ui-block ui-border-l-2"
+                              activeClass="ui-border-espirit ui-text-espirit"
                             >
                               {child.label}
                             </router-link>
@@ -177,7 +182,7 @@ class Documentation extends BaseComponent {
             ))}
           </ul>
         </div>
-        <div class="flex flex-1 min-h-full overflow-y-auto">
+        <div class="ui-flex ui-flex-1 ui-min-h-full ui-overflow-y-auto">
           <MDXWrapper>
             <router-view />
           </MDXWrapper>

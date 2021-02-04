@@ -1,24 +1,24 @@
-.line-animation {
-  @apply absolute w-full h-full;
+.ProductListItem--InfoBox {
+  @apply ui-absolute ui-w-full ui-h-full;
   transition: all .2s ease-in-out;
 }
 
-.line-animation:before {
+.ProductListItem--InfoBox:before {
   width: 1px;
   height: 0px;
 }
 
-.line-animation:after {
+.ProductListItem--InfoBox:after {
   width: 0px;
   height: 1px;
 }
 
-.line-animation:hover:before{height: calc(100% - 10px); opacity:1; top:0px;}
+.ProductListItem--InfoBox:hover:before{height: calc(100% - 10px); opacity:1; top:0px;}
 
-.line-animation:hover:after{width: calc(100% - 10px);	opacity:1;	left:0px;}
+.ProductListItem--InfoBox:hover:after{width: calc(100% - 10px);	opacity:1;	left:0px;}
 
-.line-animation:after, .line-animation:before {
-  @apply absolute bg-white opacity-0;
+.ProductListItem--InfoBox:after, .ProductListItem--InfoBox:before {
+  @apply ui-absolute ui-bg-white ui-opacity-0;
   content: "";
   left: 20px;
   top: 20px;

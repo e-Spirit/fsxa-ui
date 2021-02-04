@@ -6,20 +6,20 @@ import "./style.css";
 import { ImageProps } from "@/types/fsxa-ui";
 
 const opacityClasses = {
-  0: "opacity-0",
-  25: "opacity-25",
-  40: "opacity-40",
-  50: "opacity-50",
-  75: "opacity-75",
-  80: "opacity-80",
+  0: "ui-opacity-0",
+  25: "ui-opacity-25",
+  40: "ui-opacity-40",
+  50: "ui-opacity-50",
+  75: "ui-opacity-75",
+  80: "ui-opacity-80",
 };
 
-const isInViewport = (element: Element, preloadMulitplier = 1.1) => {
+const isInViewport = (element: Element, preloadMultiplier = 1.1) => {
   const bounding = element.getBoundingClientRect();
   return (
-    bounding.top < window.innerHeight * preloadMulitplier &&
+    bounding.top < window.innerHeight * preloadMultiplier &&
     bounding.bottom > 0 &&
-    bounding.left < window.innerWidth * preloadMulitplier &&
+    bounding.left < window.innerWidth * preloadMultiplier &&
     bounding.right > 0
   );
 };
@@ -29,11 +29,12 @@ const isInViewport = (element: Element, preloadMulitplier = 1.1) => {
 })
 class Image extends BaseComponent<ImageProps> {
   @Prop({ required: true }) src!: ImageProps["src"];
-  @Prop({ required: false }) dimensions: ImageProps["dimensions"];
+  @Prop() resolutions: ImageProps["resolutions"];
+  @Prop() sizes: ImageProps["sizes"];
   @Prop({ required: false }) lazy!: ImageProps["lazy"];
-  @Prop({ required: false }) border!: ImageProps["border"];
   @Prop({ required: false }) zoom!: ImageProps["zoom"];
   @Prop({ required: false }) opacity!: ImageProps["opacity"];
+  @Prop({ required: false }) previewId!: ImageProps["previewId"];
 
   throttledLazyLoadHandler: any;
   loaded = false;
@@ -75,26 +76,39 @@ class Image extends BaseComponent<ImageProps> {
     }
   }
 
+  get isClient() {
+    return typeof window !== "undefined";
+  }
+
+  get srcset() {
+    if (!this.resolutions) return undefined;
+    return Object.values(this.resolutions)
+      .map(
+        resolution =>
+          `${resolution.url} ${resolution.width}w ${resolution.height}h`,
+      )
+      .join(", ");
+  }
+
   render() {
-    //TODO: use this ratio somehow
-    // const ratio = this.dimensions
-    //   ? this.dimensions.width / this.dimensions.height
-    //   : null;
     return (
       <div
-        class={`Image w-full ${this.border ? "border" : ""}`}
+        class={`Image ui-w-full ui-h-full ui-overflow-hidden`}
+        data-previewid={this.previewId}
         data-testid="imageDiv"
       >
-        <div class="w-full h-full overflow-hidden relative">
+        <div class="ui-w-full ui-h-full ui-overflow-hidden ui-relative">
           <img
             src={!this.lazy || this.loaded ? this.src : ""}
+            srcset={this.srcset}
+            sizes={this.sizes}
             class={`${
               this.zoom ? "zoom" : ""
-            } w-full h-full object-cover object-center`}
+            } ui-w-full ui-h-full ui-object-cover ui-object-center`}
           />
           {this.opacity && (
             <div
-              class={`absolute top-0 left-0 w-full h-full pointer-events-none bg-black ${
+              class={`ui-absolute ui-top-0 ui-left-0 ui-w-full ui-h-full ui-pointer-events-none ui-bg-black ${
                 opacityClasses[this.opacity]
               }`}
               data-testid="veil"

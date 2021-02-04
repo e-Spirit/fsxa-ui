@@ -7,8 +7,8 @@ export default class App extends Vue {
   render() {
     return (
       <div>
-        <div class="m-2 w-1/3">
-          <Accordion dark={true} open={false} title="test">
+        <div class="ui-m-2 ui-w-1/3">
+          <Accordion dark={true} title="test title">
             test test test test
           </Accordion>
         </div>

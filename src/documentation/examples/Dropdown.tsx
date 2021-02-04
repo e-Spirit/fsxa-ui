@@ -17,7 +17,7 @@ const handleClick = (item: Option) => {
 export default class App extends Vue {
   render() {
     return (
-      <div class="space-x-5 ml-32 mb-48">
+      <div class="ui-space-x-5 ui-ml-32 ui-mb-48">
         <Dropdown
           value="opt2"
           options={testOptions}

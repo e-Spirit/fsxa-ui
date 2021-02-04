@@ -2,7 +2,6 @@ import BaseComponent from "@/components/BaseComponent";
 import { Component, Prop } from "vue-property-decorator";
 import Image from "@/components/Image";
 import Headline from "@/components/Headline";
-import RichText from "@/components/RichText";
 
 import "./style.css";
 import { NewsTeaserItemProps } from "@/types/components";
@@ -27,13 +26,13 @@ class NewsTeaserItem extends BaseComponent<NewsTeaserItemProps> {
       >
         {this.image && (
           <Image
-            class="absolute left-0 top-0 w-full"
-            src={this.image?.src}
-            data-preview-id={this.image?.previewId}
+            class="ui-absolute ui-left-0 ui-top-0 ui-w-full"
+            src={this.image.src}
+            previewId={this.image.previewId}
             opacity="40"
           />
         )}
-        <div class="NewsTeaserItem--InfoBox md:ml-0 md:mt-10 md:-mr-10">
+        <div class="NewsTeaserItem--InfoBox md:ui-ml-0 md:ui-mt-10 md:ui--mr-10">
           <div class="NewsTeaserItem--Date" data-testid="newsteaseritem-date">
             <span>{this.date}</span>
           </div>
@@ -45,11 +44,12 @@ class NewsTeaserItem extends BaseComponent<NewsTeaserItemProps> {
           >
             {this.title}
           </Headline>
-          <RichText
+          <div
             class="NewsTeaserItem--Description"
             data-testid="newsteaseritem-description"
-            content={this.description}
-          />
+          >
+            {this.description}
+          </div>
           <a
             data-testid="newsteaseritem-click"
             href="#"

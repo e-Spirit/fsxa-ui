@@ -8,7 +8,7 @@ export default class App extends Vue {
   render() {
     return (
       <div>
-        <div class="m-2 w-1/3">
+        <div class="ui-m-2 ui-max-w-lg">
           <Sections.AccordionSection
             dark={false}
             title={"This title is optional"}
@@ -22,14 +22,14 @@ export default class App extends Vue {
                 text: "Another one closes.",
               },
               {
-                title: "You can add as many Accordions as you want",
+                title: "You can add as many Accordions as you want.",
                 text:
                   "And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. ",
               },
             ]}
           />
         </div>
-        <div class="m-2 w-1/2">
+        <div class="ui-m-2 ui-max-w-xl">
           <Sections.AccordionSection
             dark={true}
             items={[

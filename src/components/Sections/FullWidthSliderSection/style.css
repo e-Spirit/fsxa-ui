@@ -1,0 +1,45 @@
+.FullWidthSliderSection--Slide--animate-in {
+  .FullWidthSliderSection--Media {
+    @apply ui-ease-out ui-opacity-100;
+  }
+
+  .FullWidthSliderSection--Content,
+  .FullWidthSliderSection--Description,
+  .FullWidthSliderSection--CTA-Button {
+    @apply ui-ease-out ui-translate-y-0;
+  }
+
+  .FullWidthSliderSection--Content {
+    transform: translateZ(0);
+    @apply ui-delay-200;
+  }
+
+  .FullWidthSliderSection--Teaser {
+    transform: translateZ(0);
+    @apply ui-delay-300;
+  }
+
+  .FullWidthSliderSection--CTA-Button {
+    transform: translateZ(0);
+    @apply ui-delay-400;
+  }
+}
+
+.FullWidthSliderSection--Slide--animate-out {
+  .FullWidthImageSliderSection--Media {
+    @apply ui-ease-in ui-opacity-0 ui-delay-250;
+  }
+
+  .FullWidthSliderSection--Content {
+    @apply ui-ease-in ui-delay-200 ui-translate-y-full;
+  }
+
+  .FullWidthSliderSection--Teaser,
+  .FullWidthSliderSection--CTA-Button {
+    @apply ui-ease-in ui-translate-y-32;
+  }
+
+  .FullWidthSliderSection--Description {
+    @apply ui-ease-in ui-delay-150;
+  }
+}

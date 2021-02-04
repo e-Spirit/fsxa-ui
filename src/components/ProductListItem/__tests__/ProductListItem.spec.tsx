@@ -2,12 +2,21 @@ import ProductListItem from "@/components/ProductListItem";
 import { fireEvent, render } from "@testing-library/vue";
 
 describe("components/ProductListItem", () => {
+  const image_url = "original_url";
   const testItem = {
     title: "Product 1",
     description:
       "The D1R7-TR4P cleaning robot helps you keeping your house free of dirt. It's low height and flexible design means no space will be left out.",
     price: "$99",
     image: {
+      type: "image",
+      resolutions: {
+        ORIGINAL: {
+          url: image_url,
+          height: 1300,
+          width: 1950,
+        },
+      },
       src:
         "https://images.pexels.com/photos/4013157/pexels-photo-4013157.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
     },
@@ -29,8 +38,8 @@ describe("components/ProductListItem", () => {
 
   it("contains the image", async () => {
     const { container } = render(ProductListItem, testSetup);
-    expect(container.getElementsByTagName("img").item(0)?.src).toEqual(
-      testItem.image.src,
+    expect(container.getElementsByTagName("img").item(0)?.srcset).toContain(
+      image_url,
     );
   });
 

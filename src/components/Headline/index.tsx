@@ -1,5 +1,4 @@
 import { Component, Prop } from "vue-property-decorator";
-import "./style.css";
 import BaseComponent from "../BaseComponent";
 import { HeadlineProps } from "@/types/fsxa-ui";
 
@@ -15,12 +14,39 @@ class Headline extends BaseComponent<HeadlineProps> {
   @Prop() handleClick!: HeadlineProps["handleClick"];
 
   render() {
+    const sizeClasses = {
+      xs: "ui-text-base",
+      sm: "ui-text-xl",
+      md: "ui-text-2xl",
+      lg: "ui-text-3xl",
+      xl: "ui-text-4xl",
+      xxl: "ui-text-5xl",
+    };
+
+    const marginClasses = {
+      xs: "ui-mb-2",
+      sm: "ui-mb-3",
+      md: "ui-mb-4",
+      lg: "ui-mb-5",
+      xl: "ui-mb-6",
+      xxl: "ui-mb-8",
+    };
+
+    const weightClasses = {
+      light: "ui-font-light",
+      semibold: "ui-font-semibold",
+      bold: "ui-font-bold",
+    };
+
     const Component: any = this.as;
     return (
       <Component
-        class={`Headline ${this.size} ${this.weight} ${
-          this.uppercase ? "uppercase" : ""
-        } ${this.includeMargin ? "include-margin" : ""}`}
+        class={`Headline ui-block ${sizeClasses[this.size]} ${
+          this.weight ? weightClasses[this.weight] : ""
+        }
+        ${this.uppercase ? "ui-uppercase" : ""} ${
+          this.includeMargin ? marginClasses[this.size] : ""
+        }`}
         onClick={() => this.handleClick && this.handleClick()}
       >
         {this.$slots.default}

@@ -17,9 +17,9 @@ class Layout extends BaseComponent<LayoutProps> {
   render() {
     return (
       <div
-        class={`flex flex-row ${this.gutter ? "-mx-2 md:-mx-4 lg:-mx-6" : ""} ${
-          this.wrap ? "flex-wrap" : ""
-        }`}
+        class={`ui-flex ui-flex-row ${
+          this.gutter ? "ui--mx-2 md:ui--mx-4 lg:ui--mx-6" : ""
+        } ${this.wrap ? "ui-flex-wrap" : ""}`}
       >
         {this.$slots.default}
       </div>

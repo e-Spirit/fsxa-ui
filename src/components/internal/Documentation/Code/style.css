@@ -1,54 +1,54 @@
 .Code {
-  @apply w-full rounded-lg overflow-hidden mt-5;
+  @apply ui-w-full ui-rounded-lg ui-overflow-hidden ui-mt-5;
 
   &.inline {
-    @apply inline-block w-auto mx-1 bg-gray-900 px-1 text-white;
+    @apply ui-inline-block ui-w-auto ui-mx-1 ui-bg-gray-900 ui-px-1 ui-text-white;
 
     .Code--Wrapper.language-typescript {
-      @apply px-1 py-0;
+      @apply ui-px-1 ui-py-0;
     }
   }
 
   .Code--BackgroundToggle {
-    @apply absolute top-0 right-0 mr-2 mt-2;
+    @apply ui-absolute ui-top-0 ui-right-0 ui-mr-2 ui-mt-2;
   }
 
   .Code--CopyToClipboard {
-    @apply absolute top-0 right-0 mt-1 mr-1 hidden rounded-lg px-1 text-white font-bold;
+    @apply ui-absolute ui-top-0 ui-right-0 ui-mt-1 ui-mr-1 ui-hidden ui-rounded-lg ui-px-1 ui-text-white ui-font-bold;
 
     &:hover {
-      @apply bg-white text-black;
+      @apply ui-bg-white ui-text-black;
     }
 
     &:active {
-      @apply bg-gray-300 text-black;
+      @apply ui-bg-gray-300 ui-text-black;
     }
   }
 
   .Code--Example {
-    @apply p-4 border-t border-l border-r border-gray-300 rounded-t-lg relative;
+    @apply ui-p-4 ui-border-t ui-border-l ui-border-r ui-border-gray-300 ui-rounded-t-lg ui-relative;
   }
 
   .Code--Container {
-    @apply relative border-t border-gray-900;
+    @apply ui-relative ui-border-t ui-border-gray-900;
     &:hover {
       .Code--CopyToClipboard {
-        @apply block;
+        @apply ui-block;
       }
     }
   }
 
   &.dark {
     & .Code--Example {
-      @apply bg-gray-900 border-gray-900;
+      @apply ui-bg-gray-900 ui-border-gray-900;
     }
 
     & .Code--Container {
-      @apply border-white border-t;
+      @apply ui-border-white ui-border-t;
     }
   }
 }
 
 pre.Code--Wrapper[class*="language-"] {
-  @apply text-sm m-0 rounded-none bg-gray-900 p-4;
+  @apply ui-text-sm ui-m-0 ui-rounded-none ui-bg-gray-900 ui-p-4;
 }

@@ -1,5 +1,14 @@
 import { Component } from "vue-tsx-support";
-import { ImageRef } from "./utils";
+import { VNode } from "vue";
+
+export type RenderedType =
+  | JSX.Element
+  | JSX.Element[]
+  | string
+  | null
+  | undefined
+  | VNode
+  | VNode[];
 
 export interface ButtonProps {
   /**
@@ -21,6 +30,7 @@ export interface CodeProps {
   code: string;
   language?: string;
   exampleContent?: JSX.Element;
+  filename?: string;
 }
 export class Code extends Component<CodeProps> {}
 
@@ -77,11 +87,11 @@ export interface HeadlineProps {
   /**
    * Specify the size of the headline
    *
-   * Possible values are: **xxl**, **xl**, **lg**, **md**, **sm**
+   * Possible values are: **xxl**, **xl**, **lg**, **md**, **sm**, **xs**
    *
    * Default value is: **lg**
    */
-  size: "xxl" | "xl" | "lg" | "md" | "sm";
+  size: "xxl" | "xl" | "lg" | "md" | "sm" | "xs";
   /**
    * Should the headline be displayed in all uppercase letters?
    *
@@ -91,11 +101,11 @@ export interface HeadlineProps {
   /**
    * Which font-weight should be used?
    *
-   * Possible values are: **bold**, **light**
+   * Possible values are: **bold**, **semibold**, **light**
    *
    * Default value is: **bold**
    */
-  weight?: "bold" | "light";
+  weight?: "semibold" | "bold" | "light";
   /**
    * Specify if the headline should add top and bottom margins taking size in account
    * Default value is: **true**
@@ -112,25 +122,37 @@ export interface Dimensions {
   width: number;
   height: number;
 }
-export interface ImageProps {
+export interface ImageRef {
+  type: "image";
+  /**
+   * The src of the image that should be displayed.
+   *
+   * Note: If you are passing additional resolutions, this image src will be used as fallback
+   */
+  src: string;
+
+  previewId?: string;
+
+  /**
+   * All available resolutions of your image that will be combined into a srcset statement
+   */
+  resolutions?: Record<
+    string,
+    {
+      url: string;
+      width: number;
+      height: number;
+    }
+  >;
+  sizes?: string;
+}
+export interface ImageProps extends Omit<ImageRef, "type"> {
   /**
    * Specify if the image should be loaded only if it is visible in the viewport
    *
    * Default value is: **false**
    */
   lazy?: boolean;
-  /**
-   * The src of the image that should be displayed
-   *
-   * You either need to specify `renderImage` or `src`
-   */
-  src: string;
-  /**
-   * TODO: Implement ImageKit.io support for users. This helps the user-perception and adds value to the site
-   *
-   * Pass in dimensions of the image. This is used to display a decent placeholder and avoid flickering
-   */
-  dimensions?: Dimensions;
   /**
    * Should the shift / border effect be applied?
    *
@@ -240,40 +262,48 @@ export interface LayoutProps {
   wrap?: boolean;
 }
 export class Layout extends Component<LayoutProps> {}
+export interface NavItem {
+  key: string | number;
+  label: any;
+}
+export interface NavProps {
+  items: (NavItem & {
+    childPlacement?: "left" | "right" | "center";
+    children: NavItem[];
+  })[];
+}
 
 export interface NavigationItem {
-  id: string;
-  label: string;
+  key: string | number;
+  label: any;
   path: string;
+}
+
+export interface FirstLevelNavigationItem extends NavigationItem {
+  childPlacement?: "left" | "right";
   children: NavigationItem[];
 }
 export interface NavigationProps {
   /**
-   * Pass in a callback to determine if the passed item is active
-   *
-   * With this you can return true for multiple items.
-   * For example to show an active parent-child path
+   * Pass in the keys of all items that should be marked as active
    */
-  isActiveItem?: (item: NavigationItem) => boolean;
-  /**
-   * If an item is clicked this callback will be invoked
-   *
-   * The Component will not make any decision about your routing strategy
-   * so you have to route yourself
-   */
-  handleNavClick: (item: NavigationItem) => void;
+  activeItemKeys?: (string | number)[];
   /**
    * The items that should be displayed
    */
-  items: NavigationItem[];
-  /**
-   * Optional depth property
-   *
-   * The default depth after the children are cut is 3
-   */
-  depth?: number;
+  items: FirstLevelNavigationItem[];
 }
-export class Navigation extends Component<NavigationProps> {}
+export interface NavigationEventsWithOn {
+  onItemClicked: NavigationItem | FirstLevelNavigationItem;
+}
+export class Navigation extends Component<
+  NavigationProps,
+  NavigationEventsWithOn
+> {}
+export class MobileNavigation extends Component<
+  NavigationProps,
+  NavigationEventsWithOn
+> {}
 
 export interface PageProps {
   logo?: ImageRef;
@@ -283,35 +313,15 @@ export interface PageProps {
 export class Page extends Component<PageProps> {}
 
 export interface ParagraphProps {
-  size?: "base" | "xs" | "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "base" | "md" | "lg" | "xl";
   weight?: "bold" | "light" | "normal";
 }
 export class Paragraph extends Component<ParagraphProps> {}
 
-export interface RichTextProps {
-  /**
-   * TODO: Should we even mention firstspirit in here?
-   *
-   * RichText content that can contain formatting information
-   *
-   * CSS will be automatically applied
-   */
-  content: string;
-  /**
-   * Should the html-elements be inlined?
-   *
-   * Useful for headlines and other inline elements
-   *
-   * Default value is: **false**
-   */
-  inline?: boolean;
-}
-export class RichText extends Component<RichTextProps> {}
-
 export interface NewsTeaserItemProps {
   title: string;
   date: string;
-  description: string;
+  description: RenderedType;
   handleClick?: () => void;
   image?: ImageRef;
   latest?: boolean;
@@ -326,7 +336,7 @@ export interface ProductListItemProps {
   /**
    * The description that will be displayed. Can contain RichText
    */
-  description: string;
+  description: RenderedType;
   /**
    * The price that will be displayed.
    */
@@ -435,7 +445,7 @@ export interface AccordionProps {
   /**
    * The title of the section is whats displayed in the clickable part and whats always visible
    */
-  title: string;
+  title: RenderedType;
   /**
    * Styling choice. Default is **false**
    */
@@ -502,3 +512,92 @@ export interface LineSeparatorProps {
 }
 
 export class LineSeparator extends Component<LineSeparatorProps> {}
+
+export interface SliderControlParams {
+  currentSlideIndex: number;
+  nextSlideIndex: number | null;
+  prevSlideIndex: number | null;
+  showSlide: (index: number) => void;
+}
+export interface SliderProps {
+  /**
+   * Should the slide transition (horizontal transform) be animated?
+   */
+  animateSlideTransition?: boolean;
+  /**
+   * The number of visible slides
+   */
+  visibleElements?: number;
+  /**
+   * Should the slider start with the first slide again after reaching the last one?
+   */
+  infinite?: boolean;
+  /**
+   * Should the slider automatically start the transition between slides so that no user-interaction is needed?
+   */
+  animate?: boolean;
+  /**
+   * The delay in ms between the automatic slide transitions
+   *
+   * *Note*: This only has an impact, if animate is set to true
+   */
+  animationDelay?: number;
+  /**
+   * Specify which slide should initially be displayed
+   *
+   * Counting starts at 0
+   */
+  initialSlideIndex?: number;
+  /**
+   * The number of slides that should be rendered
+   */
+  slideCount: number;
+  handleSlideAnimation?: (
+    type: "animateIn" | "animateOut",
+    params: { element: Element; slideIndex: number },
+  ) => Promise<void>;
+}
+export interface SliderSlots {
+  /**
+   * You can render controls inside of the slider by specifying a scoped slot "controls"
+   * It will receive an Object of type SliderControlParams as its parameter
+   */
+  controls?: SliderControlParams;
+  slide: {
+    index: number;
+    params: SliderControlParams;
+  };
+}
+export class Slider extends Component<SliderProps, {}, SliderSlots> {}
+
+export interface ImageSliderProps<ImageType> {
+  /**
+   * You can enable automatic transitions between the images
+   *
+   * *Default*: true
+   */
+  animate?: boolean;
+  /**
+   * Pass the images that should be rendered
+   */
+  images: ImageType[];
+}
+export interface ImageSliderSlots<ImageType> {
+  /**
+   * You can override the image rendering of this component by specifying the slot image
+   * It will receive the image-data as its first parameter
+   */
+  image?: {
+    image: ImageType;
+  };
+  /**
+   * You can override the controls of the slider by specifying a slot "controls"
+   * It will receive an Object of type SliderControlParams as its first parameter
+   */
+  controls?: SliderControlParams;
+}
+export class ImageSlider<ImageType = ImageRef> extends Component<
+  ImageSliderProps<ImageType>,
+  {},
+  ImageSliderSlots<ImageType>
+> {}

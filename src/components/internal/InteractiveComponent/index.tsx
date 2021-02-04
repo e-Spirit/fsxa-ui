@@ -77,7 +77,7 @@ class InteractiveComponent extends BaseComponent<InteractiveComponentProps> {
   render() {
     return (
       <div class="InteractiveComponent">
-        <div class="flex w-full flex-1">
+        <div class="ui-flex ui-w-full ui-flex-1">
           <div
             class={`InteractiveComponent--Content with-sidebar ${
               this.viewMode === "dark" ? "dark" : ""
@@ -85,7 +85,7 @@ class InteractiveComponent extends BaseComponent<InteractiveComponentProps> {
           >
             {this.renderComponent(this.P)}
             <div class="InteractiveComponent--Overlay">
-              <div class="flex-grow-0 flex-shrink-0">
+              <div class="ui-flex-grow-0 ui-flex-shrink-0">
                 <Toggle
                   labels={{ on: "Light", off: "Dark" }}
                   active={this.viewMode === "light"}
@@ -94,11 +94,13 @@ class InteractiveComponent extends BaseComponent<InteractiveComponentProps> {
                   }
                 />
               </div>
-              <div class="ml-5 -mr-5"></div>
+              <div class="ui-ml-5 ui--mr-5"></div>
             </div>
           </div>
           <div class={`InteractiveComponent--Sidebar show`}>
-            <span class="uppercase text-sm mb-2 block">Properties</span>
+            <span class="ui-uppercase ui-text-sm ui-mb-2 ui-block">
+              Properties
+            </span>
             {this.changeableProps.map(this.renderInputElement)}
           </div>
         </div>

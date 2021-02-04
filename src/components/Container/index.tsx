@@ -14,9 +14,11 @@ class Container extends BaseComponent<ContainerProps> {
   render() {
     return (
       <div
-        class={`mx-auto relative ${this.fluid ? "w-full" : "container"} ${
-          this.horizontalPadding ? "px-6 md:px-10 lg:px-12" : ""
-        } ${this.verticalPadding ? "py-6 md:py-12 lg:py-24" : ""}`}
+        class={`ui-mx-auto ui-relative ${
+          this.fluid ? "ui-w-full" : "sm:ui-container"
+        } ${this.horizontalPadding ? "ui-px-6 md:ui-px-10 lg:ui-px-12" : ""} ${
+          this.verticalPadding ? "ui-py-6 md:ui-py-12 lg:ui-py-24" : ""
+        }`}
         data-testId="container"
       >
         {this.$slots.default}

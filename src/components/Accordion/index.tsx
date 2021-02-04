@@ -11,7 +11,7 @@ class Accordion extends BaseComponent<AccordionProps> {
   @Prop({ required: true }) title!: AccordionProps["title"];
   @Prop({ default: false }) open!: AccordionProps["open"];
 
-  private isOpen = this.open;
+  isOpen = this.open;
 
   @Watch("open")
   onOpen(isOpen: boolean): void {
@@ -20,7 +20,6 @@ class Accordion extends BaseComponent<AccordionProps> {
 
   @Watch("isOpen")
   toggleOpen(isOpen: boolean): void {
-    // eslint-disable-next-line
     const accordion = this.$el.querySelector(
       ".Accordion--Text-Box",
     )! as HTMLElement;
@@ -67,27 +66,40 @@ class Accordion extends BaseComponent<AccordionProps> {
   render() {
     return (
       <div class={`Accordion ${this.isOpen ? "Accordion--Open" : ""}`}>
-        <div
-          class={`${
+        <a
+          href="#"
+          class={`ui-flex ui-flex-row ui-items-center ui-justify-start ${
             this.dark ? "Accordion--Dark" : "Accordion--Light"
-          } Accordion--Header clearfix`}
-          onClick={() => {
+          } Accordion--Header`}
+          onClick={event => {
+            event.preventDefault();
             typeof this.$listeners?.toggleCollapse === "function"
               ? this.$emit("toggleCollapse")
               : (this.isOpen = !this.isOpen);
           }}
           data-testid="darkmode"
         >
-          <h6
-            class={`float-left w-2/3 whitespace-no-wrap overflow-hidden uppercase`}
+          <span
+            class={`ui-flex-grow ui-text-xs ui-tracking-wider ui-font-bold ui-whitespace-no-wrap ui-overflow-hidden ui-uppercase`}
           >
             {this.title}
-          </h6>
-          <span class="Accordion--Indicator float-right">
-            <i class="fa fa-plus"></i>
           </span>
+          <svg
+            class="ui-w-6 ui-h-6 Accordion--Indicator ui-flex-shrink-0 ui-origin-center"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </a>
+        <div class="Accordion--Text-Box ui-text-sm ui-px-3">
+          {this.$slots.default}
         </div>
-        <div class="Accordion--Text-Box">{this.$slots.default}</div>
       </div>
     );
   }

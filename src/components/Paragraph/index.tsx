@@ -11,8 +11,27 @@ class Paragraph extends BaseComponent<ParagraphProps> {
   @Prop({ default: "normal" }) weight!: ParagraphProps["weight"];
 
   render() {
+    const sizeClasses = {
+      xs: "ui-text-xs",
+      sm: "ui-text-sm",
+      base: "ui-text-base",
+      md: "ui-text-base",
+      lg: "ui-text-lg",
+      xl: "ui-text-xl",
+    };
+
+    const weightClasses = {
+      light: "ui-font-light",
+      normal: "ui-font-normal",
+      bold: "ui-font-bold",
+    };
+
     return (
-      <div class={`text-${this.size} font-${this.weight}`}>
+      <div
+        class={`${this.size ? sizeClasses[this.size] : ""} ${
+          this.weight ? weightClasses[this.weight] : ""
+        }`}
+      >
         {this.$slots.default}
       </div>
     );

@@ -1,27 +1,34 @@
 .InterestingFactsSection {
-  @apply w-full relative bg-fixed bg-center bg-cover;
+  @apply ui-w-full ui-relative ui-bg-fixed ui-bg-center ui-bg-cover;
 }
 
 .InterestingFactsSection--BackgroundImage {
-  @apply absolute top-0 left-0 overflow-hidden z-0 h-full w-full;
+  @apply ui-absolute ui-top-0 ui-left-0 ui-overflow-hidden ui-z-0 ui-h-full ui-w-full;
 }
 
 .InterestingFactsSection--Content {
-  @apply uppercase text-white px-8 py-12 mr-4 relative;
-  border: 15px solid white;
-  border-right: 0px;
+  @apply ui-uppercase ui-text-white ui-px-8 ui-relative;
 }
-.InterestingFactsSection--Content:before,
-.InterestingFactsSection--Content:after {
-  @apply absolute bg-white;
-  content: "";
-  right: -15px;
-  width: 15px;
-  height: 140px;
-}
-.InterestingFactsSection--Content:before {
-  top: -15px;
-}
-.InterestingFactsSection--Content:after {
-  bottom: -15px;
+
+@screen sm {
+  .InterestingFactsSection--Content {
+    @apply ui-py-12 ui-mr-4;
+    border: 15px solid white;
+    border-right: 0px;
+  }
+
+  .InterestingFactsSection--Content:before,
+  .InterestingFactsSection--Content:after {
+    @apply ui-absolute ui-bg-white;
+    content: "";
+    right: -15px;
+    width: 15px;
+    height: 140px;
+  }
+  .InterestingFactsSection--Content:before {
+    top: -15px;
+  }
+  .InterestingFactsSection--Content:after {
+    bottom: -15px;
+  }
 }

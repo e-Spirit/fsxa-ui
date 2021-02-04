@@ -37,11 +37,13 @@ class NewsDetail extends BaseComponent<NewsDetailProps> {
           {this.headline}
         </Headline>
         {this.teaser && <Paragraph size="md">{this.teaser}</Paragraph>}
-        <Image class="my-2" src={this.image.src} />
+        <Image class="ui-my-2" src={this.image.src} />
         {(this.date || this.author) && (
-          <div class="text-sm">
+          <div class="ui-text-sm">
             {this.date && new Date(this.date).toLocaleDateString()}
-            {this.author && <span class="text-gray-600"> | {this.author}</span>}
+            {this.author && (
+              <span class="ui-text-gray-600"> | {this.author}</span>
+            )}
           </div>
         )}
         <Paragraph size="md">{this.$slots.default}</Paragraph>
@@ -49,14 +51,14 @@ class NewsDetail extends BaseComponent<NewsDetailProps> {
           <LayoutItem
             width="full"
             lg={{ width: "1/2" }}
-            class="mx-auto lg:mx-0"
+            class="ui-mx-auto lg:ui-mx-0"
           >
             {this.tags && this.tags.length > 0 && (
               <div>
                 <Headline
                   as="h5"
                   size="md"
-                  class="mx-auto lg:mx-0 text-center lg:text-left"
+                  class="ui-mx-auto lg:ui-mx-0 ui-text-center lg:ui-text-left"
                 >
                   TAGS
                 </Headline>
@@ -65,7 +67,7 @@ class NewsDetail extends BaseComponent<NewsDetailProps> {
                     return (
                       <Button
                         variant="tag"
-                        class="mr-4 mt-2"
+                        class="ui-mr-4 ui-mt-2"
                         handleClick={() => {
                           this.handleTagClick && this.handleTagClick(value);
                         }}
@@ -90,31 +92,31 @@ class NewsDetail extends BaseComponent<NewsDetailProps> {
           <LayoutItem
             width="full"
             lg={{ width: "1/2" }}
-            class="mx-auto lg:mx-0"
+            class="ui-mx-auto lg:ui-mx-0"
           >
             {this.socialText && (
               <Headline
                 as="h5"
                 size="md"
-                class="mx-auto lg:mx-px text-center lg:text-left"
+                class="ui-mx-auto lg:ui-mx-px ui-text-center lg:ui-text-left"
               >
                 {this.socialText}
               </Headline>
             )}
-            <div class="mx-auto lg:mx-px">
-              <Button variant="tag" class="mr-2 border border-black">
+            <div class="ui-mx-auto lg:ui-mx-px">
+              <Button variant="tag" class="ui-mr-2 ui-border ui-border-black">
                 <i class="fab fa-facebook-f" />
               </Button>
-              <Button variant="tag" class="mx-2 border border-black">
+              <Button variant="tag" class="ui-mx-2 ui-border ui-border-black">
                 <i class="fab fa-twitter" />
               </Button>
-              <Button variant="tag" class="mx-2 border border-black">
+              <Button variant="tag" class="ui-mx-2 ui-border ui-border-black">
                 <span class="fa fa-rss" />
               </Button>
-              <Button variant="tag" class="mx-2 border border-black">
+              <Button variant="tag" class="ui-mx-2 ui-border ui-border-black">
                 <span class="fab fa-youtube" />
               </Button>
-              <Button variant="tag" class="ml-2 border border-black">
+              <Button variant="tag" class="ui-ml-2 ui-border ui-border-black">
                 <i class="fab fa-instagram" />
               </Button>
             </div>

@@ -1,0 +1,70 @@
+.SlotsTable {
+    @apply ui-w-full ui-border-separate ui-table-auto ui-align-top ui-border-gray-300 ui-mt-5 ui-mb-6;
+    border-spacing: 0;
+  
+    & span.code {
+      @apply ui-bg-gray-200 ui-py-1 ui-px-2 ui-rounded-md ui-mx-1 ui-text-xs;
+    }
+  
+    ul {
+      @apply ui-mt-4;
+  
+      li {
+        @apply ui-pl-4 ui-relative;
+  
+        &:before {
+          @apply ui-absolute ui-top-1/2 ui-left-0 font-awesome;
+          content: "\f111";
+          margin-top: -13px;
+          font-size: 8px;
+        }
+      }
+    }
+  }
+  
+  .SlotsTable--Header th {
+    @apply ui-py-1 ui-px-4 ui-font-light ui-text-xs ui-text-left ui-uppercase;
+  }
+  
+  .SlotsTable--Body {
+    & td {
+      @apply ui-p-4 ui-border-gray-300 ui-border-t ui-align-top ui-leading-6 ui-text-gray-700 ui-text-sm;
+    }
+  
+    & > tr:first-child td {
+      @apply ui-border-t;
+    }
+  
+    & > tr:last-child td {
+      @apply ui-border-t ui-border-b;
+    }
+  
+    & tr > td:first-child {
+      @apply ui-border-l;
+    }
+  
+    & tr > td:last-child {
+      @apply ui-border-r;
+    }
+  
+    & > tr:first-child {
+      & td:first-child {
+        @apply ui-rounded-tl-lg;
+      }
+  
+      & td:last-child {
+        @apply ui-rounded-tr-lg;
+      }
+    }
+  
+    & > tr:last-child {
+      & td:first-child {
+        @apply ui-rounded-bl-lg;
+      }
+  
+      & td:last-child {
+        @apply ui-rounded-br-lg;
+      }
+    }
+  }
+  

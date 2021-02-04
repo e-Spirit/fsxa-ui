@@ -12,7 +12,13 @@ const ImageSrc = require("./../../../assets/dots.png");
 @Component({
   name: "NewsTeaserSection",
 })
-class NewsTeaserSection extends BaseComponent<NewsTeaserSectionProps> {
+class NewsTeaserSection extends BaseComponent<
+  NewsTeaserSectionProps,
+  {},
+  {
+    headline?: string;
+  }
+> {
   @Prop({ required: true }) headline!: NewsTeaserSectionProps["headline"];
   @Prop({ required: true }) items!: NewsTeaserSectionProps["items"];
   @Prop({ required: true })
@@ -23,17 +29,21 @@ class NewsTeaserSection extends BaseComponent<NewsTeaserSectionProps> {
     if (this.items.length < 3) return null;
     return (
       <div
-        class="py-12 md:py-16 lg:py-20"
+        class="ui-py-12 md:ui-py-16 lg:ui-py-20"
         style={{ background: `url(${ImageSrc})` }}
       >
         <Container>
-          <Headline as="h2" size="lg">
-            {this.headline}
-          </Headline>
+          {this.$scopedSlots.headline ? (
+            this.$scopedSlots.headline(this.headline)
+          ) : (
+            <Headline as="h2" size="lg">
+              {this.headline}
+            </Headline>
+          )}
           <div class="NewsTeaserSection--Separator" />
           <Layout wrap>
             <LayoutItem width="full" lg={{ width: "1/2" }}>
-              <div class="w-full h-64 mb-4 md:mb-12">
+              <div class="ui-w-full ui-h-64 ui-mb-4 md:ui-mb-12">
                 <NewsTeaserItem
                   title={this.items[0].title}
                   date={this.items[0].date}
@@ -42,7 +52,7 @@ class NewsTeaserSection extends BaseComponent<NewsTeaserSectionProps> {
                   image={this.items[0].image}
                 />
               </div>
-              <div class="w-full h-64">
+              <div class="ui-w-full ui-h-64">
                 <NewsTeaserItem
                   title={this.items[1].title}
                   date={this.items[1].date}

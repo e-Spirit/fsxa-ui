@@ -3,17 +3,17 @@
 }
 
 .DevInfo.standalone {
-  @apply overflow-x-auto;
+  @apply ui-overflow-x-auto;
   max-height: calc(100vh - 300px);
 }
 
 .DevInfo--Backdrop {
-  @apply w-full h-screen flex items-center justify-center fixed pointer-events-auto;
+  @apply ui-w-full h-screen ui-flex items-center justify-center fixed pointer-events-auto;
   background: rgba(0, 0, 0, 0.6);
 }
 
 .DevInfo--OverlayContent {
-  @apply w-full overflow-hidden;
+  @apply ui-w-full overflow-hidden;
 
   height: 95%;
 
