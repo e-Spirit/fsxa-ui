@@ -10,8 +10,6 @@ import {
 } from "@/components";
 import { NewsDetailProps, NewsDetailSlots } from "@/types/fsxa-ui";
 import { Component, Prop } from "vue-property-decorator";
-import "./style.css";
-
 @Component({
   name: "NewsDetail",
 })
