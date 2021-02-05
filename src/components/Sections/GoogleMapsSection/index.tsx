@@ -103,14 +103,17 @@ class GoogleMapsSection extends BaseComponent<
 
   @Prop({ required: true }) apikey!: GoogleMapsSectionProps["apikey"];
   @Prop({ required: true }) language!: GoogleMapsSectionProps["language"];
+  @Prop({ required: true })
+  startLocation!: GoogleMapsSectionProps["startLocation"];
 
   @Prop()
   buttonLabel: GoogleMapsSectionProps["buttonLabel"];
   @Prop()
   handleButtonClick: GoogleMapsSectionProps["handleButtonClick"];
 
+  @Prop()
+  alwaysUseStartLocation: GoogleMapsSectionProps["alwaysUseStartLocation"];
   @Prop() title: GoogleMapsSectionProps["title"];
-  @Prop() startLocation: GoogleMapsSectionProps["startLocation"];
   @Prop({ default: 15 }) zoom: GoogleMapsSectionProps["zoom"];
   @Prop() locations: GoogleMapsSectionProps["locations"];
   @Prop() mapStyles: GoogleMapsSectionProps["mapStyles"];
@@ -251,8 +254,9 @@ class GoogleMapsSection extends BaseComponent<
   }
 
   async initMap(styles: google.maps.MapTypeStyle[]): Promise<google.maps.Map> {
-    let center = {} as MapsPosition;
-    if (!this.startLocation) {
+    const center = this.startLocation;
+
+    if (!this.alwaysUseStartLocation) {
       let userPosition: Position;
       try {
         userPosition = await this.getPromisedGeolocation();
@@ -261,8 +265,6 @@ class GoogleMapsSection extends BaseComponent<
       } catch (error) {
         console.warn("Unable to get the users geolocation.");
       }
-    } else {
-      center = this.startLocation;
     }
 
     this.removeApi();

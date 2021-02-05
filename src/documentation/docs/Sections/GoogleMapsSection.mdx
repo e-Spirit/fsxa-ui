@@ -17,10 +17,13 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
   <PropsTableRow value="apikey" type="string" required>
     Your google maps apikey.
   </PropsTableRow>
-  <PropsTableRow value="startLocation" type="MapsPosition" optional>
+  <PropsTableRow value="startLocation" type="MapsPosition" required>
     An object of type MapsPosition which contains contains a latitude and a longitude as numbers.
     It indicates the location where the map should initially be centered to.
-    When not set, the browser will prompt the user to allow the use of their location.
+    This is the fallback location in case the user declines to reveal their location.
+  </PropsTableRow>
+  <PropsTableRow value="alwaysUseStartLocation" type="boolean" optional>
+    Setting this omits the prompting for the users location and always uses the provided start location to center the map.
   </PropsTableRow>
   <PropsTableRow value="zoom" type="number" default="15" optional>
     A number between 1 and 20 representing roughly the following zoom levels

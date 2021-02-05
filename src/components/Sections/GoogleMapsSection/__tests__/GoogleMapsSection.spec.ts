@@ -24,6 +24,10 @@ describe("components/sections/google-maps-section", () => {
     requiredProps = {
       apikey,
       language: "en",
+      startLocation: {
+        lat: 10,
+        lng: 10,
+      },
     };
   });
 
