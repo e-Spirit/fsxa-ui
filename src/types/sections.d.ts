@@ -124,9 +124,6 @@ export class ProductDetailSection extends Component<
   ProductDetailSectionProps
 > {}
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface InterestingFactsSectionEvents {}
-
 export interface InterestingFactsSectionSlots {
   /**
    * You can override the headline rendering of this component by specifying the slot headline
@@ -155,31 +152,37 @@ export interface InterestingFactsSectionSlots {
 
 export interface InterestingFactsSectionProps {
   /**
-   * Optional reference to the background-image that should be displayed
+   * text content that will be displayed in the info box
    */
-  backgroundImage?: ImageRef;
+  text: RenderedType;
+
   /**
    * Headline of the section
    */
   headline: string;
+
+  /**
+   * Optional reference to the background-image that should be displayed
+   */
+  backgroundImage?: ImageRef;
+
   /**
    * tagline that will be displayed on top of the headline
    */
-  tagline: string;
-  /**
-   * text content that will be displayed in the info box
-   */
-  text: RenderedType;
+  tagline?: string;
+
   /**
    * counters that should be displayed
    */
-  counters: Array<{
+  counters?: Array<{
     value: number;
     label: string;
   }>;
 }
 export class InterestingFactsSection extends Component<
-  InterestingFactsSectionProps
+  InterestingFactsSectionProps,
+  {},
+  InterestingFactsSectionSlots
 > {}
 
 export interface TeaserSectionProps<MediaType = ImageRef> {
