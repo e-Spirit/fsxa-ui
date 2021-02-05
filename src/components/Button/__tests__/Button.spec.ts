@@ -22,4 +22,19 @@ describe("components/Button", () => {
     await fireEvent(button, new Event("click"));
     expect(spy).toHaveBeenCalled();
   });
+
+  it("throws error when variant is not available", async () => {
+    const spy = jest.spyOn(console, "error");
+    spy.mockImplementation(() => null);
+
+    expect(() =>
+      render(Button, {
+        props: {
+          variant: "TEST",
+        },
+      }),
+    ).toThrowError();
+
+    spy.mockRestore();
+  });
 });

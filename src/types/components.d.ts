@@ -77,13 +77,13 @@ export interface HeadlineProps {
   /**
    * Specify which html-tag should be used
    *
-   * Possible values are: **h1**, **h2**, **h3**, **h4**, **h5**, **span**
+   * Possible values are: **h1**, **h2**, **h3**, **h4**, **h5**, **h6**, **span**
    *
    * Default value is: **h1**
    *
    * Make sure to expose useful side structure information to crawlers by using the correct tag
    */
-  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "span";
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span";
   /**
    * Specify the size of the headline
    *
