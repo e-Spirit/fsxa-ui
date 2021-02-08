@@ -5,7 +5,6 @@ import {
   RenderedType,
   SliderControlParams,
 } from "./components";
-
 export interface NewsTeaserSectionProps {
   headline: string;
   items: Omit<NewsTeaserItemProps, "handleClick" | "latest">[];
@@ -106,13 +105,6 @@ export interface ProductDetailSectionProps {
    */
   images?: ImageRef[];
   /**
-   * Optional list of key-value-pairs, e.g. `{ key1: "value1", key2: "value2" }` that renders to foldable (Accordion) elements
-   * in the view. Utilizes the key as title and the value as foldable text content.
-   *
-   * The value can contain RichText-Formatting
-   */
-  foldableContentList?: Record<string, RenderedType>;
-  /**
    * Optional callback that is triggered, when the button is clicked
    *
    * Be aware that the button is only rendered, when `buttonText` is provided
@@ -120,8 +112,17 @@ export interface ProductDetailSectionProps {
   handleButtonClick?: () => void;
 }
 
+export interface ProductDetailSectionSlots {
+  /**
+   * Additional content which describes the product.
+   */
+  additionalContent: void;
+}
+
 export class ProductDetailSection extends Component<
-  ProductDetailSectionProps
+  ProductDetailSectionProps,
+  {},
+  ProductDetailSectionSlots
 > {}
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
