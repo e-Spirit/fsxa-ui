@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import { Sections } from "fsxa-ui";
+import { Accordion } from "@/components";
 import { ProductProperty } from "@/types/sections";
 
 const description =
@@ -61,22 +62,25 @@ export default class App extends Vue {
           { src: src2, type: "image" },
         ]}
         propertyList={propertyList}
-        foldableContentList={{
-          Delivery: (
-            <ul class="ui-list-disc ui-px-10 ui-py-4">
-              <li>mechanical lock</li>
-              <li>camera with integrated face recognition</li>
-              <li>wireless numpad</li>
-              <li>operation manual</li>
-            </ul>
-          ),
-          "Installation instructions": <p>Fix it at the door. Ready.</p>,
-          Compatibility: (
-            <ul class="ui-list-disc ui-px-10 ui-py-4">
-              <li>Google Home</li>
-              <li>Amazon Alexa</li>
-              <li>Bosch Smart Home</li>
-            </ul>
+        scopedSlots={{
+          additionalContent: () => (
+            <div class="ui-mx-auto ui-w-full ui-px-6 ui-mb-4">
+              <Accordion dark title="Delivery">
+                <ul class="ui-list-disc ui-px-10 ui-py-4">
+                  <li>mechanical lock</li>
+                  <li>camera with integrated face recognition</li>
+                  <li>wireless numpad</li>
+                  <li>operation manual</li>
+                </ul>
+              </Accordion>
+              <Accordion dark title="Compatibility">
+                <ul class="ui-list-disc ui-px-10 ui-py-4">
+                  <li>Google Home</li>
+                  <li>Amazon Alexa</li>
+                  <li>Bosch Smart Home</li>
+                </ul>
+              </Accordion>
+            </div>
           ),
         }}
       />
