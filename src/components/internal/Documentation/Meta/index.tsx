@@ -32,7 +32,7 @@ class Meta extends BaseComponent<MetaProps> {
 
   render() {
     return (
-      <div class="ui-p-10 ui--mt-10 ui--mx-10">
+      <div class="ui-p-10 ui-pb-4 ui--mt-10 ui--mx-10">
         {this.title || this.metaItem ? (
           <h1 class="ui-text-espirit ui-font-bold ui-mb-0 ui-page-headline ui-text-3xl">
             {this.title
