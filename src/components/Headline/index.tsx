@@ -1,7 +1,7 @@
 import { Component, Prop } from "vue-property-decorator";
 import BaseComponent from "../BaseComponent";
 import { HeadlineProps } from "@/types/fsxa-ui";
-
+import { checkPassedValue } from "@/components/utils/PropertyChecker/PropertyChecker";
 @Component({
   name: "Headline",
 })
@@ -12,6 +12,26 @@ class Headline extends BaseComponent<HeadlineProps> {
   @Prop({ default: true }) uppercase!: HeadlineProps["uppercase"];
   @Prop({ default: true }) includeMargin!: HeadlineProps["includeMargin"];
   @Prop() handleClick!: HeadlineProps["handleClick"];
+
+  mounted() {
+    checkPassedValue(
+      this.$el,
+      ["h1", "h2", "h3", "h4", "h5", "h6", "span"],
+      this.as,
+    );
+    checkPassedValue(
+      this.$el,
+      ["xxl", "xl", "lg", "md", "sm", "xs"],
+      this.size,
+      "size",
+    );
+    checkPassedValue(
+      this.$el,
+      ["semibold", "bold", "light"],
+      this.weight,
+      "weight",
+    );
+  }
 
   render() {
     const sizeClasses = {
