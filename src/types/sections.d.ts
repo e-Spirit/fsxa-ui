@@ -234,6 +234,11 @@ export interface TeaserSectionSlots<MediaType> {
    */
   text?: string;
   /**
+   * You can override the tagline rendering of this component by specifying the slot tagline
+   * It will receive the tagline as its first parameter
+   */
+  tagline?: string;
+  /**
    * You can override the button rendering of this component by specifying the slot button
    * It will receive the buttonText as its first parameter
    */

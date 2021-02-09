@@ -1,9 +1,8 @@
 @screen md {
   .teasersection-media {
     &:before {
-      @apply ui-absolute ui-top-0 ui-left-0 ui--ml-12 ui-mt-12 ui-w-full ui-h-full ui-z-auto;
+      @apply ui-absolute ui-top-0 ui-left-0 ui--ml-12 ui-mt-12 ui-w-full ui-h-full ui-z-auto ui-border-gray-300 ui-border-30;
       content: "";
-      border: 30px solid rgba(0, 0, 0.5, 0.1);
     }
   }
 }
