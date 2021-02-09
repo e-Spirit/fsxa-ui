@@ -22,7 +22,7 @@ class ComponentWrapper extends BaseComponent<{}, {}, ComponentWrapperSlots> {
           <div class="ui-flex ui-flex-row ui-space-x-2">
             <ResponsiveButton
               class={`${
-                this.state === 1 ? "ui-bg-gray-900 ui-text-gray-100" : ""
+                this.state === 1 ? "ui-bg-gray-800 ui-text-gray-200" : ""
               } ui-rounded`}
               handleOnClick={() => (this.state = 1)}
             >
@@ -30,7 +30,7 @@ class ComponentWrapper extends BaseComponent<{}, {}, ComponentWrapperSlots> {
             </ResponsiveButton>
             <ResponsiveButton
               class={`${
-                this.state === 2 ? "ui-bg-gray-900 ui-text-gray-100" : ""
+                this.state === 2 ? "ui-bg-gray-800 ui-text-gray-200" : ""
               } ui-rounded`}
               handleOnClick={() => (this.state = 2)}
             >
