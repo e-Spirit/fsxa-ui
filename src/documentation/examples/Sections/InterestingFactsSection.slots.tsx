@@ -3,19 +3,20 @@ import Component from "vue-class-component";
 import InterestingFactsSection from "@/components/Sections/InterestingFactsSection";
 
 const text =
-  "Trees get lonely too, so we'll give him a little friend. And I know you're saying, 'Oh Bob, you've done it this time.' And you may be right. No worries. No cares. Just float and wait for the wind to blow you around. La- da- da- da- dah. Just be happy.";
+  "A SECURITY SOLUTION FROM SMART LIVING PROIVIDES YOU PEACE OF MIND WITH INDUSTRY LEADING WHOLE-HOME PROTECTION. OUR AFFORDABLE SOLUTIONS THAT PROVIDE A SIMPLE START AND GROW WITH YOU. \n LIFE IS EASIER BECAUSE YOUR HOME SECURITY SYSTEM WILL INTERFACE WITH YOUR EXISTING SMART HOME ADDING SECURE AND INTELLIGENT INTERACTIONS TO FULLY ENHANCE YOUR COMFORT WHILE YOU'RE HOME AND KEEP YOU AT EASE WHEN YOU ARE AWAY. \n PREPARE FOR THE UNEXPECTED WITH INDUSTRY LEADING BRANDS AND THE CHOICE OF THE EXPERTS.";
+
 const counters = [
   {
-    value: 123456,
-    label: "lonely trees",
+    value: 105,
+    label: "intelligent devices",
   },
   {
-    value: 789,
-    label: "trees with a friend",
+    value: 100,
+    label: "percent secure",
   },
 ];
 const imageSrc =
-  "https://images.pexels.com/photos/5592596/pexels-photo-5592596.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
+  "https://images.unsplash.com/photo-1558002038-1055907df827?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80";
 
 @Component
 export default class App extends Vue {
@@ -23,9 +24,9 @@ export default class App extends Vue {
     return (
       <div class="ui-space-x-5">
         <InterestingFactsSection
-          headline="Trees get lonely too"
+          headline="Peace of Mind"
           text={text}
-          tagline="Did you know?"
+          tagline="Home Security"
           counters={counters}
           backgroundImage={{
             type: "image",
@@ -33,19 +34,27 @@ export default class App extends Vue {
             previewId: "1000",
           }}
           scopedSlots={{
-            tagline: txt => <i class="ui-uppercase">{txt}</i>,
-            headline: txt => (
-              <h1 class="ui-lowercase ui-leading-none">{txt}</h1>
+            tagline: tagline => (
+              <span class="ui-text-2xl ui-font-thin">{tagline}</span>
             ),
-            text: txt => (
-              <div>
-                <b>What follows is a text about trees: </b>
-                <small class="ui-lowercase">{txt}</small>
-              </div>
+            headline: headline => (
+              <h3 class="ui-bg-gray-200 ui-bg-opacity-25 ui-pl-4 ui-rounded ui-text-gray-100 ui-text-4xl">
+                {headline}
+              </h3>
             ),
+            text: text => {
+              if (typeof text === "string") {
+                const splitText = text.split("\n");
+                return splitText.map(item => <p class="ui-my-4">{item}</p>);
+              }
+              return <div>{text}</div>;
+            },
             counter: counter => (
-              <div class="ui-pl-10">
-                {counter.value}: {counter.label}
+              <div class="ui-bg-gray-200 ui-bg-opacity-25 ui-p-4 ui-rounded ui-text-center ui-flex ui-flex-row ui-justify-center ui-items-center">
+                <div class="ui-text-3xl ui-text-gray-100">{counter.value}</div>
+                <div class="ui-uppercase ui-text-gray-300 ui-ml-2">
+                  {counter.label}
+                </div>
               </div>
             ),
           }}

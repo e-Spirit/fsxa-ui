@@ -3,27 +3,23 @@ import Component from "vue-class-component";
 import InterestingFactsSection from "@/components/Sections/InterestingFactsSection";
 
 const text =
-  "Trees get lonely too, so we'll give him a little friend. And I know you're saying, 'Oh Bob, you've done it this time.' And you may be right. No worries. No cares. Just float and wait for the wind to blow you around. La- da- da- da- dah. Just be happy.";
+  "SMART LIVING IS A GLOBAL LEADER IN SMART HOME SOLUTIONS FOR BOTH HOME AND ENTERPRISE CUSTOMERS. SINCE 2014, WE HAVE CARRIED OUT MANY SMART PROJECTS WITH WELL-KNOWN PARTNERS NATIONWIDE AND GLOBALLY.";
 const counters = [
   {
-    value: 123456,
-    label: "lonely trees",
+    value: 21500,
+    label: "individual products",
   },
   {
-    value: 789,
-    label: "trees with a friend",
+    value: 180,
+    label: "employees",
   },
   {
-    value: 1001,
-    label: "x-mas trees",
-  },
-  {
-    value: 1,
-    label: "super tree",
+    value: 3200,
+    label: "specialized dealers",
   },
 ];
 const imageSrc =
-  "https://images.pexels.com/photos/5592596/pexels-photo-5592596.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
+  "https://images.unsplash.com/photo-1534337621606-e3df5ee0e97f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1778&q=80";
 
 @Component
 export default class App extends Vue {
@@ -31,9 +27,9 @@ export default class App extends Vue {
     return (
       <div class="ui-space-x-5">
         <InterestingFactsSection
-          headline="Trees get lonely too"
+          tagline="Who we are?"
+          headline="Smart Living"
           text={text}
-          tagline="Did you know?"
           counters={counters}
           backgroundImage={{
             type: "image",
