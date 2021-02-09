@@ -44,15 +44,15 @@ export default class App extends Vue {
             ),
             text: text => {
               if (typeof text === "string") {
-                const splittedText = text.split("\n");
-                return splittedText.map(item => <p class="ui-my-4">{item}</p>);
+                const splitText = text.split("\n");
+                return splitText.map(item => <p class="ui-my-4">{item}</p>);
               }
               return <div>{text}</div>;
             },
             counter: counter => (
               <div class="ui-bg-gray-200 ui-bg-opacity-25 ui-p-4 ui-rounded ui-text-center ui-flex ui-flex-row ui-justify-center ui-items-center">
                 <div class="ui-text-3xl ui-text-gray-100">{counter.value}</div>
-                <div class="ui-uppercase ui-text-gray-300 md:ui-ml-2">
+                <div class="ui-uppercase ui-text-gray-300 ui-ml-2">
                   {counter.label}
                 </div>
               </div>
