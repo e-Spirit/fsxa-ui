@@ -36,11 +36,11 @@ export default class App extends Vue {
           lat: 48.203967,
           lng: 16.236388,
         },
-        name: "Another item",
+        name: "Look a custom info window",
         city: "1140 Vienna",
         street: "Some other alley 23",
         description:
-          "This item is here to test how switching between 3 items behaves.",
+          "See how this description is missing in the box and in the info window.",
       },
     ];
     const startLocation = {
@@ -51,11 +51,16 @@ export default class App extends Vue {
       <div class="ui-container ui-mx-auto" style="height: 640px;">
         <Sections.GoogleMapsSection
           apikey={apikey}
-          title="Google Maps Section"
+          title="Google Maps Section with scoped slots and custom info window"
           startLocation={startLocation}
           language="en"
           buttonLabel="Contact us"
           locations={locations}
+          renderInfoWindow={(location: MapsLocation): Node => {
+            const div = document.createElement("div");
+            div.innerHTML = `<h1 class="ui-text-espirit ui-font-bold ui-text-xl">${location.name}</h1>`;
+            return div;
+          }}
           handleButtonClick={(e: MouseEvent, location: MapsLocation) => {
             console.log("Button pressed");
             console.log("mouse event", e);
