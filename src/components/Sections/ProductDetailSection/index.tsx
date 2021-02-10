@@ -1,6 +1,9 @@
 import BaseComponent from "@/components/BaseComponent";
 import { Component, Prop } from "vue-property-decorator";
-import { ProductDetailSectionProps } from "@/types/sections";
+import {
+  ProductDetailSectionProps,
+  ProductDetailSectionSlots,
+} from "@/types/sections";
 import { LayoutItem } from "@/components/Layout";
 import Headline from "@/components/Headline";
 import Paragraph from "@/components/Paragraph";
@@ -8,12 +11,15 @@ import Button from "@/components/Button";
 import Container from "@/components/Container";
 import Layout from "@/components/Layout";
 import "./style.css";
-import Accordion from "@/components/Accordion";
 import ImageSlider from "@/components/ImageSlider";
 @Component({
   name: "ProductDetailSection",
 })
-class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
+class ProductDetailSection extends BaseComponent<
+  ProductDetailSectionProps,
+  {},
+  ProductDetailSectionSlots
+> {
   @Prop({ required: true })
   headline!: ProductDetailSectionProps["headline"];
   @Prop()
@@ -26,8 +32,6 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
   price!: ProductDetailSectionProps["price"];
   @Prop()
   images!: ProductDetailSectionProps["images"];
-  @Prop()
-  foldableContentList!: ProductDetailSectionProps["foldableContentList"];
   @Prop()
   handleButtonClick: ProductDetailSectionProps["handleButtonClick"];
 
@@ -96,22 +100,9 @@ class ProductDetailSection extends BaseComponent<ProductDetailSectionProps> {
                             </ul>
                           </LayoutItem>
                         ))}
-                    {this.foldableContentList != null && (
-                      <LayoutItem width="full">
-                        {Object.keys(this.foldableContentList).map(key => (
-                          <Accordion
-                            dark={true}
-                            title={key}
-                            key={key}
-                            class="ProductDetail--Accordion"
-                          >
-                            {this.foldableContentList
-                              ? this.foldableContentList[key]
-                              : ""}
-                          </Accordion>
-                        ))}
-                      </LayoutItem>
-                    )}
+                    {this.$scopedSlots.additionalContent
+                      ? this.$scopedSlots.additionalContent()
+                      : null}
                     {this.buttonText && (
                       <div class="ui-w-full ui-flex-initial ui-flex ui-justify-center">
                         <Button

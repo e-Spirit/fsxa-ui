@@ -102,6 +102,7 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
     media: MediaType | null,
     handleClick: () => void,
   ) {
+    if (this.slides.length <= 1) return null;
     if (this.$scopedSlots.arrowButton) {
       return this.$scopedSlots.arrowButton({
         media,
@@ -176,6 +177,7 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
   }
 
   renderStepper(params: SliderControlParams) {
+    if (this.slides.length <= 1) return null;
     const slides = [];
     for (let i = 0; i < this.slides.length; i++) {
       slides.push(
