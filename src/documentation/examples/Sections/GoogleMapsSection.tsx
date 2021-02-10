@@ -55,7 +55,7 @@ export default class App extends Vue {
           startLocation={startLocation}
           language="en"
           buttonLabel="Contact us"
-          locations={locations}
+          locations={[]}
           handleButtonClick={(e: MouseEvent, location: MapsLocation) => {
             console.log("Button pressed");
             console.log("mouse event", e);

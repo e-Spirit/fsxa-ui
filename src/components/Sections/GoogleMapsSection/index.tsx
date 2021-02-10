@@ -318,7 +318,54 @@ class GoogleMapsSection extends BaseComponent<
       </div>
     );
   }
+  renderSideBar() {
+    if (this.locations && this.locations.length > 0) {
+      return (
+        <div
+          class="ui-col-span-1 lg:ui-col-span-1 ui-bg-gray-100 ui-overflow-scroll ui-border-2 ui-border-gray-400"
+          data-testId="sidebar"
+        >
+          {this.locations?.map((location, index) =>
+            this.$scopedSlots.locationItem ? (
+              this.$scopedSlots.locationItem({
+                location,
+                selected: index === this.selectedIndex,
+                handleItemClick: this.selectLocation.bind(this, index),
+              })
+            ) : (
+              <div
+                class={`ui-w-full ui-py-1 ui-px-2 ui-border-b-2 ui-border-gray-400 ui-cursor-pointer ui-overflow-hidden ${
+                  index === this.selectedIndex ? "bg-white" : ""
+                }`}
+                on-click={this.selectLocation.bind(this, index)}
+                data-testId="rendered-location"
+              >
+                <h3 class="ui-text-lg ui-font-bold ui-text-highlight ui-break-words">
+                  {location.name}
+                </h3>
+
+                <div class="ui-mt-2 ui-text-sm">
+                  {location.description && <p>{location.description}</p>}
+                  <p class="ui-mt-2">{location.street}</p>
+                  <p>{location.city}</p>
+                </div>
+              </div>
+            ),
+          )}
+        </div>
+      );
+    }
+    return null;
+  }
   render() {
+    const mapColSpan =
+      this.locations && this.locations.length > 0
+        ? "lg:ui-col-span-3"
+        : "lg:ui-col-span-4";
+    const containerRows =
+      this.locations && this.locations.length > 0
+        ? "ui-grid-rows-2"
+        : "ui-grid-rows-1";
     return (
       <div class="ui-w-full ui-h-full ui-p-8">
         {this.$scopedSlots.title && this.title
@@ -326,41 +373,14 @@ class GoogleMapsSection extends BaseComponent<
           : this.title
           ? this.renderDefaultTitle()
           : null}
-        <div class="ui-grid ui-grid-cols-1 ui-grid-rows-2 lg:ui-grid-cols-4 lg:ui-grid-rows-1 ui-h-full">
+        <div
+          class={`ui-grid ui-grid-cols-1 ${containerRows} lg:ui-grid-cols-4 lg:ui-grid-rows-1 ui-h-full`}
+        >
           <div
-            class="ui-col-span-1 lg:ui-col-span-3 ui-border-2 ui-border-gray-400"
+            class={`ui-col-span-1 ${mapColSpan} ui-border-2 ui-border-gray-400`}
             id="map"
           ></div>
-          <div class="ui-col-span-1 lg:ui-col-span-1 ui-bg-gray-100 ui-overflow-scroll ui-border-2 ui-border-gray-400">
-            {this.locations &&
-              this.locations?.map((location, index) =>
-                this.$scopedSlots.locationItem ? (
-                  this.$scopedSlots.locationItem({
-                    location,
-                    selected: index === this.selectedIndex,
-                    handleItemClick: this.selectLocation.bind(this, index),
-                  })
-                ) : (
-                  <div
-                    class={`ui-w-full ui-py-1 ui-px-2 ui-border-b-2 ui-border-gray-400 ui-cursor-pointer ui-overflow-hidden ${
-                      index === this.selectedIndex ? "bg-white" : ""
-                    }`}
-                    on-click={this.selectLocation.bind(this, index)}
-                    data-testId="rendered-location"
-                  >
-                    <h3 class="ui-text-lg ui-font-bold ui-text-highlight ui-break-words">
-                      {location.name}
-                    </h3>
-
-                    <div class="ui-mt-2 ui-text-sm">
-                      {location.description && <p>{location.description}</p>}
-                      <p class="ui-mt-2">{location.street}</p>
-                      <p>{location.city}</p>
-                    </div>
-                  </div>
-                ),
-              )}
-          </div>
+          {this.renderSideBar()}
         </div>
       </div>
     );

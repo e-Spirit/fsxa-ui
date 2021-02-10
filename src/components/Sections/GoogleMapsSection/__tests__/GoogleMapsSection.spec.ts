@@ -168,5 +168,22 @@ describe("components/sections/google-maps-section", () => {
         });
       });
     });
+    it("should render a siderbar", () => {
+      const locationProps = requiredProps;
+      locationProps.locations = locations;
+      const { getByTestId } = render(GoogleMapsSection, {
+        props: locationProps,
+      });
+      const sidebar = getByTestId("sidebar") as HTMLElement;
+      expect(sidebar.tagName).toBe("DIV");
+    });
+    it("should not render a sidebar if the locations prop is an empty array", () => {
+      const locationProps = requiredProps;
+      locationProps.locations = [];
+      const { getByTestId } = render(GoogleMapsSection, {
+        props: locationProps,
+      });
+      expect(() => getByTestId("sidebar")).toThrow();
+    });
   });
 });
