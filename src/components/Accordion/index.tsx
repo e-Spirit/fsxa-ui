@@ -13,6 +13,12 @@ class Accordion extends BaseComponent<AccordionProps> {
 
   isOpen = this.open;
 
+  mounted() {
+    if (this.open) {
+      this.openAccordion(this.$refs.accordionTextBox! as HTMLElement);
+    }
+  }
+
   @Watch("open")
   onOpen(isOpen: boolean): void {
     this.isOpen = isOpen;
@@ -20,9 +26,7 @@ class Accordion extends BaseComponent<AccordionProps> {
 
   @Watch("isOpen")
   toggleOpen(isOpen: boolean): void {
-    const accordion = this.$el.querySelector(
-      ".Accordion--Text-Box",
-    )! as HTMLElement;
+    const accordion = this.$refs.accordionTextBox! as HTMLElement;
     if (isOpen) {
       this.openAccordion(accordion);
     } else {
@@ -53,7 +57,6 @@ class Accordion extends BaseComponent<AccordionProps> {
         accordion.style.height = "auto";
       }
     };
-
     accordion.addEventListener(
       "transitionend",
       () => {
@@ -66,9 +69,8 @@ class Accordion extends BaseComponent<AccordionProps> {
   render() {
     return (
       <div class={`Accordion ${this.isOpen ? "Accordion--Open" : ""}`}>
-        <a
-          href="#"
-          class={`ui-flex ui-flex-row ui-items-center ui-justify-start ${
+        <div
+          class={`ui-flex ui-flex-row ui-items-center ui-justify-start ui-cursor-pointer ${
             this.dark ? "Accordion--Dark" : "Accordion--Light"
           } Accordion--Header`}
           onClick={event => {
@@ -96,8 +98,11 @@ class Accordion extends BaseComponent<AccordionProps> {
               clip-rule="evenodd"
             ></path>
           </svg>
-        </a>
-        <div class="Accordion--Text-Box ui-text-sm ui-px-3">
+        </div>
+        <div
+          ref="accordionTextBox"
+          class="Accordion--Text-Box ui-text-sm ui-px-3"
+        >
           {this.$slots.default}
         </div>
       </div>
