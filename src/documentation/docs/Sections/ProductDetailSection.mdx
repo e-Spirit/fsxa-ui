@@ -27,7 +27,7 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
   <PropsTableRow value="buttonText" type="string">
     Text to display on a clickable button. The button is only rendered, when `buttonText` is provided.
   </PropsTableRow>
-  <PropsTableRow value="propertyList" type="ProductProperty[]" required>
+  <PropsTableRow value="propertyList" type="ProductProperty[]">
     List of product property lists that will be rendered into bullet lists under the price. Each propertyList entry consists of <span class="code">title: string, properties[]</span>, where a property again consists of <span class="code">id: string, name: string</span> - and results in a new bullet list with a custom title.
   </PropsTableRow>
   <PropsTableRow value="images" type="Image[]">
@@ -42,7 +42,7 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
 
 <SlotsTable>
   <SlotsTableRow value="additionalContent" prop="none">
-    Additional content which describes the product. Is displayed under the price.
+    Additional content which describes the product. Is displayed above the button.
   </SlotsTableRow>
 </SlotsTable>
 

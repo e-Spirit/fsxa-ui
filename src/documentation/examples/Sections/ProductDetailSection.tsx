@@ -73,11 +73,11 @@ export default class App extends Vue {
                   <li>operation manual</li>
                 </ul>
               </Accordion>
-              <Accordion dark title="Compatibility">
+              <Accordion dark title="Surface options">
                 <ul class="ui-list-disc ui-px-10 ui-py-4">
-                  <li>Google Home</li>
-                  <li>Amazon Alexa</li>
-                  <li>Bosch Smart Home</li>
+                  <li>Steel</li>
+                  <li>Silver</li>
+                  <li>Gilded</li>
                 </ul>
               </Accordion>
             </div>
