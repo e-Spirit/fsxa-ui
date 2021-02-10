@@ -17,20 +17,17 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
   <PropsTableRow value="items" type="Item[]" required>
   Items that should be shown in the list (title: string, description: string, price: number, image: Image, url: string), e.g. ProductListItem.
   </PropsTableRow>
-  <PropsTableRow value="headline" type="string" required>
+  <PropsTableRow value="headline" type="string">
   Specify a headline for the item list. The separator will not be displayed, if no headline is specified.
   </PropsTableRow>
-  <PropsTableRow value="filters" type="<string,string>[]" optional>
-  A list of filters (key: string, value: string).
+  <PropsTableRow value="filters" type="matrix of filters" optional>
+  A two-dimensional array of key-value pairs: <span class="code">&lt;string, string&gt;[][]</span>. The second dimension allows you to group filters in rows.
   </PropsTableRow>
   <PropsTableRow value="selectedFilters" type="string[]" optional>
   Determine which filters should be selected from the beginning.
   </PropsTableRow>
   <PropsTableRow value="handleFilterChange" type="function" optional>
   A callback that will be invoked when the selected filters change. The new selected filters will be passed as an argument.
-  </PropsTableRow>
-  <PropsTableRow value="handleItemClick" type="function" optional>
-  A callback that will be invoked when a list item is clicked. The clicked item will be passed as an argument.
   </PropsTableRow>
 </PropsTable>
 
