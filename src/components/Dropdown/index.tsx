@@ -19,7 +19,7 @@ class Dropdown extends BaseComponent<DropdownProps> {
       currentOptionIndex !== -1 ? this.options[currentOptionIndex] : null;
     return (
       <div class="Dropdown">
-        {this.$slots.default || currentOption?.label}
+        <div class="ui-mx-8">{this.$slots.default || currentOption?.label}</div>
         <ul>
           {this.options.map(option => (
             <li>
