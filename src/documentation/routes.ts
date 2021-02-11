@@ -4,7 +4,7 @@ const components = [
     path: "/components/accordion",
     meta: {
       description:
-        "provides an accordion item with a title and when clicked, additionally text is displayed.",
+        "provides an item with a title which, when clicked, expands to show the element text.",
     },
     children: [],
   },
@@ -13,7 +13,7 @@ const components = [
     path: "/components/button",
     meta: {
       description:
-        "allows users to take actions and make choices, with a single tap.",
+        "shows a button allowing users to take actions and make choices with a single tap (or click).",
     },
     children: [],
   },
@@ -29,7 +29,8 @@ const components = [
     label: "Counter",
     path: "/components/counter",
     meta: {
-      description: "displays a number with a corresponding text.",
+      description:
+        "displays a layout block showing a number with a corresponding text (usually somthing countable).",
     },
     children: [],
   },
@@ -37,8 +38,7 @@ const components = [
     label: "Dropdown",
     path: "/components/dropdown",
     meta: {
-      description:
-        "displays a dropdown list with a number of different options.",
+      description: "displays a dropdown list with a number of options.",
     },
     children: [],
   },
@@ -46,7 +46,8 @@ const components = [
     label: "Headline",
     path: "/components/headline",
     meta: {
-      description: "tells users what the page is about.",
+      description:
+        "is a structuring element representing a page's, section's, subsection's, ... title.",
     },
     children: [],
   },
@@ -54,7 +55,7 @@ const components = [
     label: "Image",
     path: "/components/image",
     meta: {
-      description: "displays a picture with optional opacity and zoom effect.",
+      description: "displays a picture with optional dimming and zoom effect.",
     },
     children: [],
   },
@@ -62,8 +63,7 @@ const components = [
     label: "ImageSlider",
     path: "/components/image-slider",
     meta: {
-      description:
-        "provides a fully functional slider where you can display your images.",
+      description: "provides a slider to showcase your images.",
     },
     children: [],
   },
@@ -71,8 +71,7 @@ const components = [
     label: "Navigation",
     path: "/components/navigation",
     meta: {
-      description:
-        "allows users to navigate through your site. It also works on mobile devices.",
+      description: "allows users to navigate through your site's structure.",
     },
     children: [],
   },
@@ -81,7 +80,7 @@ const components = [
     path: "/components/news-detail",
     meta: {
       description:
-        "is a detailed view of a news and offers the user a variety of information.",
+        "a news section consisting of title, teaser, text, an image, and some other elements.",
     },
     children: [],
   },
@@ -90,7 +89,7 @@ const components = [
     path: "/components/quote",
     meta: {
       description:
-        "displays some text within a colored box next to a quotation mark.",
+        "displays some text in a colored box next to a quotation mark.",
     },
     children: [],
   },
@@ -99,7 +98,7 @@ const components = [
     path: "/components/product-list-item",
     meta: {
       description:
-        "is used to display information about a product in the context of a ListSection. It will be as wide as the surrounding element.",
+        "is used to display product information in the context of a ListSection. It will be as wide as the surrounding element.",
     },
     children: [],
   },
@@ -107,7 +106,8 @@ const components = [
     label: "LineSeparator",
     path: "/components/line-separator",
     meta: {
-      description: "can be used to separate content sections.",
+      description:
+        "can be used to separate content sections with a horizontal bar.",
     },
     children: [],
   },
@@ -116,7 +116,7 @@ const components = [
     path: "/components/slider",
     meta: {
       description:
-        "provides a fully functional slider where you can display your elements.",
+        "provides a fully functional slider to display your contents.",
     },
     children: [],
   },
@@ -128,7 +128,7 @@ const sections = [
     path: "/sections/accordion-section",
     meta: {
       description:
-        "consists of multiple accordions which open and close when clicked on.",
+        "consists of multiple connected text accordions which open and close when clicked on.",
     },
     children: [],
   },
@@ -136,7 +136,8 @@ const sections = [
     label: "FullWidthSliderSection",
     path: "/sections/full-width-slider-section",
     meta: {
-      description: "helps you to build a beautiful full width image slider.",
+      description:
+        "provides a customizable section with a big slider component, for images or other content you want to showcase.",
     },
     children: [],
   },
@@ -145,7 +146,7 @@ const sections = [
     path: "/sections/google-maps-section",
     meta: {
       description:
-        "allows to displays a google maps map optionally containing a set of locations to display as markers.",
+        "for showing Google Maps, typically showing a set of locations highlighted with markers.",
     },
     children: [],
   },
@@ -154,7 +155,7 @@ const sections = [
     path: "/sections/header-section",
     meta: {
       description:
-        "allows to display a title of the page together with a background image and breadcrumbs.",
+        "displays a title together with a background image and (optionally) breadcrumbs.",
     },
     children: [],
   },
@@ -163,7 +164,7 @@ const sections = [
     path: "/sections/interesting-facts-section",
     meta: {
       description:
-        "allows to display a text together with a background image and numerous counters.",
+        "displays a text together with a background image and counter elements.",
     },
     children: [],
   },
@@ -172,7 +173,7 @@ const sections = [
     path: "/sections/list-section",
     meta: {
       description:
-        "allows to display numerous items together with the possibility to specify filters for them.",
+        "displays numerous items, with the possibility to also specify and display filters for them.",
     },
     children: [],
   },
@@ -181,7 +182,7 @@ const sections = [
     path: "/sections/product-detail-section",
     meta: {
       description:
-        "allows to display a detailed description of a product including a collection of pictures and additional informations.",
+        "displays a detailed product description including a collection of pictures and additional information.",
     },
     children: [],
   },
@@ -189,7 +190,7 @@ const sections = [
     label: "TeaserSection",
     path: "/sections/teaser-section",
     meta: {
-      description: "allows to display informations next to a picture.",
+      description: "displays information next to a picture.",
     },
     children: [],
   },

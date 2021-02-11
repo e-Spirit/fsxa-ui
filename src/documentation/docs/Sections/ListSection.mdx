@@ -44,11 +44,13 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
   </SlotsTableRow>
   <SlotsTableRow value="filter" prop="Object" optional>
     You can also define how the filter buttons get rendered. 
-    When the component uses your slot it passes in the following props.
-    <span class="code">key</span> the key as defined in your filters.
-    <span class="code">value</span> the value as defined in your filters.
-    <span class="code">handleClick</span> a callback that you should call when your button gets clicked. It expects the key.
-    <span class="code">selected</span> a boolean that describes whether this key is selected or not.
+    When the component uses your slot it passes in the following props:
+    <ul>
+    <li><span class="code">key</span> the key as defined in your filters.</li>
+    <li><span class="code">value</span> the value as defined in your filters.</li>
+    <li><span class="code">handleClick</span> a callback that you should call when your button gets clicked. It expects the key.</li>
+    <li><span class="code">selected</span> a boolean that describes whether this key is selected or not.</li>
+    </ul>
   </SlotsTableRow>
 </SlotsTable>
 

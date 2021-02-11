@@ -8,7 +8,7 @@ export default class App extends Vue {
   render() {
     return (
       <div class="ui-space-x-5 ui-bg-gray-900">
-        <Counter label="bits" value={123} />
+        <Counter label="bits" value={128} />
       </div>
     );
   }

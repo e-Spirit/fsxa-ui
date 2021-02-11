@@ -11,22 +11,22 @@ component={["Sections", "GoogleMapsSection"]}
 />
 <PropsTable>
   <PropsTableRow value="title" type="string" optional>
-    The title of the section.
+    The section's title.
   </PropsTableRow>
   <PropsTableRow value="apikey" type="string" required>
-    Your google maps apikey.
+    Your Google Maps apikey.
   </PropsTableRow>
   <PropsTableRow value="startLocation" type="MapsPosition" optional>
-    An object of type MapsPosition which contains contains a latitude and a longitude as numbers.
-    It indicates the location where the map should initially be centered to.
-    When not set, the browser will prompt the user to allow the use of their location.
+    An object of type MapsPosition which contains a latitude and a longitude as numbers.
+    It indicates the location the map should initially be centered onto.
+    If not set the browser will ask the user to allow the use of their location.
   </PropsTableRow>
   <PropsTableRow value="zoom" type="number" default="15" optional>
     A number between 1 and 20 representing roughly the following zoom levels
-    1: World
-    5: Landmass/Continent
-    10: City
-    15: Streets
+    1: World;
+    5: Landmass/Continent;
+    10: City;
+    15: Streets;
     20: Buildings
   </PropsTableRow>
   <PropsTableRow value="language" type="string" required>
@@ -34,7 +34,7 @@ component={["Sections", "GoogleMapsSection"]}
   </PropsTableRow>
   <PropsTableRow value="locations" type="MapsLocation[]" optional>
     An array of locations. When set, markers will be placed at the corresponding positions on the map. 
-    A location can handle the following metadata, city, street, name, description. These will be displayed when a marker is clicked.
+    A location can handle the following metadata: <span class="code">city</span> <span class="code">street</span> <span class="code">name</span> <span class="code">description</span>. The metadata will be displayed when a marker is selected.
   </PropsTableRow>
   <PropsTableRow value="buttonLabel" type="string" optional>
     The label of the button in each marker widget. Required if handleButtonClick is also set.
@@ -44,7 +44,7 @@ component={["Sections", "GoogleMapsSection"]}
     This prop is required if the buttonLabel prop is set.
   </PropsTableRow>
   <PropsTableRow value="mapStyles" type="google.maps.MapTypeStyle[] | string" optional>
-    You can design your own map style <a class="ui-text-red-900 ui-underline" href="https://mapstyle.withgoogle.com/">here</a>. You can export your styles as json and pass them into this prop to apply them to the map.
+    You can <a class="ui-text-red-900 ui-underline" href="https://mapstyle.withgoogle.com/" target="_blank">design your own map style</a>. You can export your styles as json and pass them into this prop to apply them to the map.
   </PropsTableRow>
   <PropsTableRow value="renderInfoWindow" type="Function" optional>
     The GoogleMapsSection will pass a location of type MapsPosition into your function and expect it to return an HTML node to render.
@@ -64,9 +64,8 @@ component={["Sections", "GoogleMapsSection"]}
   <SlotsTableRow value="locationItem" prop="Location">
     Allows for a custom rendering of the location items in the list.
     The object passed in has all the properties of a Location. 
-    Additionally a <span class="code">selected</span> boolean property will be passed in.
-    It indicates whether the current item is selected or not.
-    And a <span class="code">handleItemClick</span> callback.
+    Additionally a <span class="code">selected</span> boolean property will be passed in (indicating whether the current item is selected or not),
+    and a <span class="code">handleItemClick</span> callback.
   </SlotsTableRow>
 </SlotsTable>
 

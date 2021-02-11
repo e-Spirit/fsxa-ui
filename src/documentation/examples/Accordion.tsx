@@ -8,10 +8,10 @@ export default class App extends Vue {
     return (
       <div>
         <div class="ui-m-2 ui-w-1/3">
-          <Accordion dark={true} title="test title">
-            test test test test
+          <Accordion dark={true} title="test accordion">
+            This is not a musical instrument
             <br />
-            test line two
+            but a <i>gui</i> element
           </Accordion>
         </div>
       </div>
