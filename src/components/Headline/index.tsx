@@ -6,8 +6,8 @@ import { HeadlineProps } from "@/types/fsxa-ui";
   name: "Headline",
 })
 class Headline extends BaseComponent<HeadlineProps> {
-  @Prop({ default: "h1" }) as!: HeadlineProps["as"];
-  @Prop({ default: "lg" }) size!: HeadlineProps["size"];
+  @Prop({ default: "h1" }) as: HeadlineProps["as"];
+  @Prop({ default: "lg" }) size: HeadlineProps["size"];
   @Prop({ default: "bold" }) weight!: HeadlineProps["weight"];
   @Prop({ default: true }) uppercase!: HeadlineProps["uppercase"];
   @Prop({ default: true }) includeMargin!: HeadlineProps["includeMargin"];
@@ -41,11 +41,15 @@ class Headline extends BaseComponent<HeadlineProps> {
     const Component: any = this.as;
     return (
       <Component
-        class={`Headline ui-block ${sizeClasses[this.size]} ${
-          this.weight ? weightClasses[this.weight] : ""
-        }
+        class={`Headline ui-block ${
+          this.size ? sizeClasses[this.size] : sizeClasses["lg"]
+        } ${this.weight ? weightClasses[this.weight] : ""}
         ${this.uppercase ? "ui-uppercase" : ""} ${
-          this.includeMargin ? marginClasses[this.size] : ""
+          this.includeMargin
+            ? this.size
+              ? marginClasses[this.size]
+              : marginClasses["lg"]
+            : ""
         }`}
         onClick={() => this.handleClick && this.handleClick()}
       >
