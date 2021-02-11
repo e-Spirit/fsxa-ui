@@ -7,8 +7,8 @@ import { Counter } from "fsxa-ui";
 export default class App extends Vue {
   render() {
     return (
-      <div class="ui-space-x-5">
-        <Counter label="Counter" value={123} />
+      <div class="ui-space-x-5 ui-bg-gray-900">
+        <Counter label="bits" value={123} />
       </div>
     );
   }
