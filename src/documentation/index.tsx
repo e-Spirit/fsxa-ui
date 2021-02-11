@@ -35,9 +35,9 @@ class Documentation extends BaseComponent {
             </div>
           </div>
         </div>
-        <div class="ui-w-full ui-min-h-full ui-flex ui-flex-grow">
+        <div class="ui-w-full ui-min-h-full ui-flex ui-flex-grow lg:ui-relative">
           <div class="ui-border-r ui-border-gray-300 ui-p-5 ui-min-w-64">
-            <ul class="ui-mt-5 ui-font-normal ui-text-sm">
+            <ul class="ui-mt-5 ui-font-normal ui-text-sm lg:ui-sticky lg:ui-top-0">
               {routes.map((route: any) => (
                 <li>
                   <router-link
