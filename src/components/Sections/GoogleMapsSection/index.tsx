@@ -188,8 +188,12 @@ class GoogleMapsSection extends BaseComponent<
         content: getContent(location),
       });
 
-      marker.addListener("click", () => {
+      google.maps.event.addListener(marker, "click", () => {
         this.selectedIndex = index;
+      });
+      google.maps.event.addListener(infoWindow, "closeclick", () => {
+        console.log("infowindow closed");
+        this.selectedIndex = null;
       });
       return {
         marker,
@@ -335,7 +339,7 @@ class GoogleMapsSection extends BaseComponent<
             ) : (
               <div
                 class={`ui-w-full ui-py-1 ui-px-2 ui-border-b-2 ui-border-gray-400 ui-cursor-pointer ui-overflow-hidden ${
-                  index === this.selectedIndex ? "bg-white" : ""
+                  index === this.selectedIndex ? "ui-bg-white" : ""
                 }`}
                 on-click={this.selectLocation.bind(this, index)}
                 data-testId="rendered-location"
