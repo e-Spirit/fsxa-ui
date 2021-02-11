@@ -11,9 +11,9 @@ export default class App extends Vue {
   render() {
     return (
       <div>
-        <Image src={imageSrc} opacity="0" zoom={true} />
-        <Image src={imageSrc} opacity="40" zoom={false} />
-        <Image src={imageSrc} opacity="80" zoom={true} />
+        <Image src={imageSrc} darken="0" zoom={true} />
+        <Image src={imageSrc} darken="40" zoom={false} />
+        <Image src={imageSrc} darken="80" zoom={true} />
       </div>
     );
   }

@@ -151,7 +151,7 @@ export interface ImageRef {
   >;
 
   /**
-   * Specfiy which size should be used with which viewport
+   * Specifiy which size should be used with which viewport
    */
   sizes?: string;
 }
@@ -180,7 +180,7 @@ export interface ImageProps extends Omit<ImageRef, "type"> {
    *
    * Possible values are: **25**, **50**, **75**, **80**
    */
-  opacity?: "0" | "25" | "40" | "50" | "75" | "80";
+  darken?: "0" | "25" | "40" | "50" | "75" | "80";
 }
 export class Image extends Component<ImageProps> {}
 
