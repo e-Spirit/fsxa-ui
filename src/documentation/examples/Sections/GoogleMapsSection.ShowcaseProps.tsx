@@ -1,7 +1,7 @@
 import { Component } from "vue-property-decorator";
 import Vue from "vue";
 import { Sections } from "fsxa-ui";
-import { MapsLocation, MapsPosition } from "../../../types/sections";
+import { MapsPosition } from "../../../types/sections";
 
 const apikey = process.env.VUE_APP_MAPS_APIKEY;
 
@@ -202,10 +202,9 @@ export default class App extends Vue {
       <div class="ui-container ui-mx-auto" style="height: 640px;">
         <Sections.GoogleMapsSection
           apikey={apikey}
-          title="Dark theme and German without locations"
+          title="Dark theme without locations"
           startLocation={startLocation}
           alwaysUseStartLocation
-          language="de"
           mapStyles={style}
         />
       </div>

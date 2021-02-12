@@ -425,7 +425,7 @@ export interface GoogleMapsSectionProps {
    * See also the list of supported languages.
    * https://developers.google.com/maps/faq#languagesupport
    */
-  language: string;
+  language?: string;
   /**
    * An array of locations. This component will place markers at these locations which can be clicked to display additional information.
    */

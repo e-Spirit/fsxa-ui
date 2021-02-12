@@ -2,7 +2,6 @@ import { Component, Prop, Watch } from "vue-property-decorator";
 import BaseComponent from "@/components/BaseComponent";
 import {
   GoogleMapsSectionProps,
-  MapsPosition,
   MapsLocation,
   GoogleMapsSectionSlots,
 } from "@/types/sections";
@@ -102,10 +101,11 @@ class GoogleMapsSection extends BaseComponent<
   markers: MarkerWithInfoWindow[] | null = null;
 
   @Prop({ required: true }) apikey!: GoogleMapsSectionProps["apikey"];
-  @Prop({ required: true }) language!: GoogleMapsSectionProps["language"];
   @Prop({ required: true })
   startLocation!: GoogleMapsSectionProps["startLocation"];
 
+  @Prop({ default: navigator.language })
+  language: GoogleMapsSectionProps["language"];
   @Prop()
   buttonLabel: GoogleMapsSectionProps["buttonLabel"];
   @Prop()
@@ -272,7 +272,9 @@ class GoogleMapsSection extends BaseComponent<
     }
 
     this.removeApi();
-    await this.loadApi(this.apikey, this.language);
+    //Since we have a default language we can easily assume there's a language set
+    //eslint-disable-next-line
+    await this.loadApi(this.apikey, this.language!);
 
     const map = new google.maps.Map(
       document.getElementById("map") as HTMLElement,
