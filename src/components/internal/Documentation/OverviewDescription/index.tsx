@@ -20,16 +20,13 @@ class OverviewDescription extends BaseComponent<OverviewDescriptionProps> {
           ? this.childrenRoutes.map(item => {
               return (
                 <router-link
-                  class="ui-shadow-lg ui-p-4 ui-cursor-pointer"
+                  class="ui-shadow-lg ui-p-4 ui-block"
                   to={item.path}
-                  tag="div"
                 >
-                  <div class="ui-flex ui-flex-col">
-                    <div class="ui-text-2xl">{item.label}</div>
-                    {item.meta?.description ? (
-                      <p>{item.meta?.description}</p>
-                    ) : null}
-                  </div>
+                  <h2 class="ui-text-2xl">{item.label}</h2>
+                  {item.meta?.description ? (
+                    <span>{item.meta?.description}</span>
+                  ) : null}
                 </router-link>
               );
             })
