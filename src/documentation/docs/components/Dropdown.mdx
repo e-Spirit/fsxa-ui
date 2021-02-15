@@ -15,7 +15,7 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
   <PropsTableRow value="value" type="String">
     The initially selected value (key).
   </PropsTableRow>
-  <PropsTableRow value="options" type="Array">
+  <PropsTableRow value="options" type="Array" required>
     An array of Option elements:
     <ul>
         <li>
@@ -29,7 +29,7 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
         </li>
     </ul>
   </PropsTableRow>
-  <PropsTableRow value="handleChange" type="Function">
+  <PropsTableRow value="handleChange" type="Function" required>
     A function to call on dropdown changes.
   </PropsTableRow>
 </PropsTable>

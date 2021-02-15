@@ -373,7 +373,7 @@ export interface Option {
   path?: string;
 }
 export interface DropdownProps {
-  value: string;
+  value?: string;
   options: Option[];
   handleChange: (option: Option) => void;
 }
