@@ -11,6 +11,9 @@ export interface MetaProps {
 class Meta extends BaseComponent<MetaProps> {
   @Prop({ required: true }) title!: MetaProps["title"];
   @Prop() subtitle: MetaProps["subtitle"];
+  mounted() {
+    document.title = this.title + " - fsxa-ui";
+  }
   render() {
     return (
       <div class="ui-p-10 ui--mt-10 ui--mx-10 ui-bg-espirit ui-text-white ui-mb-10">

@@ -408,10 +408,14 @@ export interface GoogleMapsSectionProps {
    */
   apikey: string;
   /**
-   * The optional starting location where the map will be centered to.
-   * If not set, the user will be prompted to allow the page access to their location and the map will be centered on the users location.
+   * The user will be prompted to allow the page access to their location and the map will be centered on the user's location.
+   * The startingLocation is where the map will be centered to if the user does not allow the page to access their location.
    */
-  startLocation?: MapsPosition;
+  startLocation: MapsPosition;
+  /**
+   * Skips asking the user for their location and always uses the start location instead.
+   */
+  alwaysUseStartLocation?: boolean;
   /**
    * The title text to be displayed above the map container
    */
@@ -431,7 +435,7 @@ export interface GoogleMapsSectionProps {
    * See also the list of supported languages.
    * https://developers.google.com/maps/faq#languagesupport
    */
-  language: string;
+  language?: string;
   /**
    * An array of locations. This component will place markers at these locations which can be clicked to display additional information.
    */
