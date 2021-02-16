@@ -398,8 +398,8 @@ export interface GoogleMapsSectionProps {
    */
   apikey: string;
   /**
-   * The user will be prompted to allow the page access to their location and the map will be centered on the users location.
-   * The starting location is where the map will be centered to if the user does not allow the page to access their location.
+   * The user will be prompted to allow the page access to their location and the map will be centered on the user's location.
+   * The startingLocation is where the map will be centered to if the user does not allow the page to access their location.
    */
   startLocation: MapsPosition;
   /**

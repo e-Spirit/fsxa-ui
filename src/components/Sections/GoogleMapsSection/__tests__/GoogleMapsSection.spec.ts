@@ -168,7 +168,7 @@ describe("components/sections/google-maps-section", () => {
         });
       });
     });
-    it("should render a siderbar", () => {
+    it("should render a sidebar", () => {
       const locationProps = requiredProps;
       locationProps.locations = locations;
       const { getByTestId } = render(GoogleMapsSection, {

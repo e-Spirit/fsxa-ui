@@ -105,7 +105,7 @@ class GoogleMapsSection extends BaseComponent<
   startLocation!: GoogleMapsSectionProps["startLocation"];
 
   @Prop({ default: navigator.language })
-  language: GoogleMapsSectionProps["language"];
+  language: GoogleMapsSectionProps["language"] | undefined;
   @Prop()
   buttonLabel: GoogleMapsSectionProps["buttonLabel"];
   @Prop()
@@ -202,7 +202,9 @@ class GoogleMapsSection extends BaseComponent<
     });
   }
 
-  getPromisedGeolocation(options?: PositionOptions): Promise<Position> {
+  getPromisedGeolocation(
+    options?: PositionOptions,
+  ): Promise<GeolocationPosition> {
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(resolve, reject, options);
     });
@@ -246,7 +248,7 @@ class GoogleMapsSection extends BaseComponent<
       window.dispatchEvent(event);
     };
 
-    const api = new Promise(resolve => {
+    const api = new Promise<void>(resolve => {
       window.addEventListener("googleMapsAPILoaded", () => {
         resolve();
       });
@@ -261,7 +263,7 @@ class GoogleMapsSection extends BaseComponent<
     const center = this.startLocation;
 
     if (!this.alwaysUseStartLocation) {
-      let userPosition: Position;
+      let userPosition: GeolocationPosition;
       try {
         userPosition = await this.getPromisedGeolocation();
         center.lat = userPosition.coords.latitude;
@@ -272,8 +274,8 @@ class GoogleMapsSection extends BaseComponent<
     }
 
     this.removeApi();
-    //Since we have a default language we can easily assume there's a language set
-    //eslint-disable-next-line
+    // Since we have a default language we can easily assume there's a language set
+    // eslint-disable-next-line
     await this.loadApi(this.apikey, this.language!);
 
     const map = new google.maps.Map(

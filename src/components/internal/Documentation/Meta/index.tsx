@@ -12,7 +12,7 @@ class Meta extends BaseComponent<MetaProps> {
   @Prop({ required: true }) title!: MetaProps["title"];
   @Prop() subtitle: MetaProps["subtitle"];
   mounted() {
-    document.title = this.title;
+    document.title = this.title + " - fsxa-ui";
   }
   render() {
     return (
