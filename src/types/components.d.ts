@@ -151,7 +151,7 @@ export interface ImageRef {
   >;
 
   /**
-   * Specfiy which size should be used with which viewport
+   * Specify which size should be used with which viewport
    */
   sizes?: string;
 }
@@ -178,9 +178,9 @@ export interface ImageProps extends Omit<ImageRef, "type"> {
   /**
    * Should a black overlay with specified opacity be displayed on top?
    *
-   * Possible values are: **25**, **50**, **75**, **80**
+   * Possible values are: **0**, **25**, **40**, **50**, **75**, and **80**
    */
-  opacity?: "0" | "25" | "40" | "50" | "75" | "80";
+  darken?: 0 | 25 | 40 | 50 | 75 | 80;
 }
 export class Image extends Component<ImageProps> {}
 

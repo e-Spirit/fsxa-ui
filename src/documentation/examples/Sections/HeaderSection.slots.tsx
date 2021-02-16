@@ -32,7 +32,7 @@ export default class App extends Vue {
               <Image
                 src={src}
                 class="ui-absolute ui-top-0 ui-left-0 ui-w-full ui-h-full"
-                opacity="40"
+                darken={40}
               />
             ),
             breadcrumbs: () => <div>my own breadcrumbs alternative</div>,

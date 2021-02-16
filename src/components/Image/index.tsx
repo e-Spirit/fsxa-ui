@@ -1,6 +1,7 @@
 import BaseComponent from "../BaseComponent";
 import { Component, Prop } from "vue-property-decorator";
 import throttle from "lodash.throttle";
+import { checkPassedValue } from "../utils/PropertyChecker/PropertyChecker";
 
 import "./style.css";
 import { ImageProps } from "@/types/fsxa-ui";
@@ -13,6 +14,8 @@ const opacityClasses = {
   75: "ui-opacity-75",
   80: "ui-opacity-80",
 };
+
+const validDarkenValues = [0, 25, 40, 50, 75, 80];
 
 const isInViewport = (element: Element, preloadMultiplier = 1.1) => {
   const bounding = element.getBoundingClientRect();
@@ -34,7 +37,7 @@ class Image extends BaseComponent<ImageProps> {
   @Prop() sizes: ImageProps["sizes"];
   @Prop({ required: false }) lazy!: ImageProps["lazy"];
   @Prop({ required: false }) zoom!: ImageProps["zoom"];
-  @Prop({ required: false }) opacity!: ImageProps["opacity"];
+  @Prop({ required: false }) darken!: ImageProps["darken"];
   @Prop({ required: false }) previewId!: ImageProps["previewId"];
 
   throttledLazyLoadHandler: any;
@@ -46,6 +49,7 @@ class Image extends BaseComponent<ImageProps> {
   }
 
   mounted() {
+    checkPassedValue(this.$el, validDarkenValues, this.darken, "darken");
     if (this.lazy) {
       // initially call handler to ensure that already visible images will be loaded too
       this.lazyLoadImage();
@@ -108,10 +112,10 @@ class Image extends BaseComponent<ImageProps> {
               this.zoom ? "zoom" : ""
             } ui-w-full ui-h-full ui-object-cover ui-object-center`}
           />
-          {this.opacity && (
+          {this.darken && (
             <div
               class={`ui-absolute ui-top-0 ui-left-0 ui-w-full ui-h-full ui-pointer-events-none ui-bg-black ${
-                opacityClasses[this.opacity]
+                opacityClasses[this.darken]
               }`}
               data-testid="veil"
             />

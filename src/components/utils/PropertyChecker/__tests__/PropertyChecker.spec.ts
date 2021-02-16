@@ -31,7 +31,7 @@ describe("utils/PropertyChecker/checkPassedValue", () => {
   });
 
   it("should throw error with correct message without valueName", () => {
-    const expectedString = `The element '${testingValue}' is not available.`;
+    const expectedString = `The element value '${testingValue}' is not available in '${testingArray}'.`;
     expect(() =>
       checkPassedValue(mockedVueElement, testingArray, testingValue),
     ).toThrowError(expectedString);
@@ -40,7 +40,7 @@ describe("utils/PropertyChecker/checkPassedValue", () => {
 
   it("should throw error with correct message with valueName", () => {
     const testingName = "TestName";
-    const expectedString = `The ${testingName} '${testingValue}' is not available.`;
+    const expectedString = `The ${testingName} value '${testingValue}' is not available in '${testingArray}'.`;
 
     expect(() =>
       checkPassedValue(

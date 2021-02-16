@@ -35,7 +35,7 @@ class HeaderSection extends BaseComponent<
                 data-preview-id={this.backgroundImage?.previewId}
                 data-testid="HeaderSection--BackgroundImage"
                 class="ui-absolute ui-top-0 ui-left-0 ui-w-full ui-h-full"
-                opacity="80"
+                darken={80}
               />
             )}
 

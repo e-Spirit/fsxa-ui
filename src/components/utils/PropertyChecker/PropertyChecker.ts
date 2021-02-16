@@ -3,12 +3,12 @@
  * @param vueElement Vue Element: In this context it will be: this.$el
  * @param possibleOptions: An array of possible options.
  * @param actualValue: A value to check for inclusion in the possibleOptions array.
- * @param valueName: Name for better error message. Describes which value was set incorrectly
+ * @param valueName: Name for better error message. Describes which value was set incorrectly.
  */
 const checkPassedValue = (
   vueElement: Element,
-  possibleOptions: string[],
-  actualValue: string | undefined,
+  possibleOptions: any[],
+  actualValue: any | undefined,
   valueName?: string,
 ) => {
   if (!actualValue) return;
@@ -17,7 +17,7 @@ const checkPassedValue = (
     throw new Error(
       `The ${
         valueName ? valueName : "element"
-      } '${actualValue}' is not available.`,
+      } value '${actualValue}' is not available in '${possibleOptions}'.`,
     );
   }
 };
