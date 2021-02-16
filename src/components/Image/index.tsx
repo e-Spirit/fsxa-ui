@@ -1,6 +1,7 @@
 import BaseComponent from "../BaseComponent";
 import { Component, Prop } from "vue-property-decorator";
 import throttle from "lodash.throttle";
+import { checkPassedValue } from "../utils/PropertyChecker/PropertyChecker";
 
 import "./style.css";
 import { ImageProps } from "@/types/fsxa-ui";
@@ -47,18 +48,8 @@ class Image extends BaseComponent<ImageProps> {
     this.throttledLazyLoadHandler = throttle(this.lazyLoadImage, 150);
   }
 
-  validateOpacity(opacity: string | number | undefined) {
-    return validDarkenValues.includes(Number(opacity));
-  }
-
   mounted() {
-    if (this.darken && !this.validateOpacity(this.darken)) {
-      throw new Error(
-        `Darken value is ${
-          this.darken
-        }. It should be one of ${validDarkenValues.join(", ")}`,
-      );
-    }
+    checkPassedValue(this.$el, validDarkenValues, this.darken, "darken");
     if (this.lazy) {
       // initially call handler to ensure that already visible images will be loaded too
       this.lazyLoadImage();
