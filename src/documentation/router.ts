@@ -8,7 +8,7 @@ const extractRoute = (route: string) => {
   const parts = path.replace(/\/index$/g, "").split("/");
   return {
     path: `/${parts.map(part => kebabCase(part)).join("/")}`,
-    label: parts[parts.length - 1],
+    name: parts[parts.length - 1],
   };
 };
 
@@ -23,7 +23,7 @@ const exampleRoutes = examples.keys().map(path => {
     .replace(".", "-");
   return {
     path: "/raw-component/" + parsedPath,
-    label: "RawComponent",
+    name: "RawComponent" + parsedPath,
     component: examples(path).default,
     meta: {
       singleView: true,
@@ -38,7 +38,7 @@ export const routes: any = data
     if (path === "./Index.mdx") {
       route = {
         path: "/",
-        label: "Home",
+        name: "Home",
       };
     }
     if (!route) return null;

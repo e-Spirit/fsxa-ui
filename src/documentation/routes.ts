@@ -1,6 +1,6 @@
 const components = [
   {
-    label: "Accordion",
+    name: "Accordion",
     path: "/components/accordion",
     meta: {
       description:
@@ -9,7 +9,7 @@ const components = [
     children: [],
   },
   {
-    label: "Button",
+    name: "Button",
     path: "/components/button",
     meta: {
       description:
@@ -18,7 +18,7 @@ const components = [
     children: [],
   },
   {
-    label: "Container",
+    name: "Container",
     path: "/components/container",
     meta: {
       description: "provides a basic layout element to structure your site.",
@@ -26,7 +26,7 @@ const components = [
     children: [],
   },
   {
-    label: "Counter",
+    name: "Counter",
     path: "/components/counter",
     meta: {
       description:
@@ -35,7 +35,7 @@ const components = [
     children: [],
   },
   {
-    label: "Dropdown",
+    name: "Dropdown",
     path: "/components/dropdown",
     meta: {
       description: "displays a dropdown list with a number of options.",
@@ -43,7 +43,7 @@ const components = [
     children: [],
   },
   {
-    label: "Headline",
+    name: "Headline",
     path: "/components/headline",
     meta: {
       description:
@@ -52,7 +52,7 @@ const components = [
     children: [],
   },
   {
-    label: "Image",
+    name: "Image",
     path: "/components/image",
     meta: {
       description: "displays a picture with optional dimming and zoom effect.",
@@ -60,7 +60,7 @@ const components = [
     children: [],
   },
   {
-    label: "ImageSlider",
+    name: "ImageSlider",
     path: "/components/image-slider",
     meta: {
       description: "provides a slider to showcase your images.",
@@ -68,7 +68,7 @@ const components = [
     children: [],
   },
   {
-    label: "Navigation",
+    name: "Navigation",
     path: "/components/navigation",
     meta: {
       description: "allows users to navigate through your site's structure.",
@@ -76,7 +76,7 @@ const components = [
     children: [],
   },
   {
-    label: "NewsDetail",
+    name: "NewsDetail",
     path: "/components/news-detail",
     meta: {
       description:
@@ -85,7 +85,7 @@ const components = [
     children: [],
   },
   {
-    label: "Quote",
+    name: "Quote",
     path: "/components/quote",
     meta: {
       description:
@@ -94,7 +94,7 @@ const components = [
     children: [],
   },
   {
-    label: "ProductListItem",
+    name: "ProductListItem",
     path: "/components/product-list-item",
     meta: {
       description:
@@ -103,7 +103,7 @@ const components = [
     children: [],
   },
   {
-    label: "LineSeparator",
+    name: "LineSeparator",
     path: "/components/line-separator",
     meta: {
       description:
@@ -112,7 +112,7 @@ const components = [
     children: [],
   },
   {
-    label: "Slider",
+    name: "Slider",
     path: "/components/slider",
     meta: {
       description:
@@ -124,7 +124,7 @@ const components = [
 
 const sections = [
   {
-    label: "AccordionSection",
+    name: "AccordionSection",
     path: "/sections/accordion-section",
     meta: {
       description:
@@ -133,7 +133,7 @@ const sections = [
     children: [],
   },
   {
-    label: "FullWidthSliderSection",
+    name: "FullWidthSliderSection",
     path: "/sections/full-width-slider-section",
     meta: {
       description:
@@ -142,7 +142,7 @@ const sections = [
     children: [],
   },
   {
-    label: "GoogleMapsSection",
+    name: "GoogleMapsSection",
     path: "/sections/google-maps-section",
     meta: {
       description:
@@ -151,7 +151,7 @@ const sections = [
     children: [],
   },
   {
-    label: "HeaderSection",
+    name: "HeaderSection",
     path: "/sections/header-section",
     meta: {
       description:
@@ -160,7 +160,7 @@ const sections = [
     children: [],
   },
   {
-    label: "InterestingFactsSection",
+    name: "InterestingFactsSection",
     path: "/sections/interesting-facts-section",
     meta: {
       description:
@@ -169,7 +169,7 @@ const sections = [
     children: [],
   },
   {
-    label: "ListSection",
+    name: "ListSection",
     path: "/sections/list-section",
     meta: {
       description:
@@ -178,7 +178,7 @@ const sections = [
     children: [],
   },
   {
-    label: "ProductDetailSection",
+    name: "ProductDetailSection",
     path: "/sections/product-detail-section",
     meta: {
       description:
@@ -187,7 +187,7 @@ const sections = [
     children: [],
   },
   {
-    label: "TeaserSection",
+    name: "TeaserSection",
     path: "/sections/teaser-section",
     meta: {
       description: "displays information next to a picture.",
@@ -198,19 +198,24 @@ const sections = [
 
 const routes = [
   {
-    label: "Getting Started",
+    name: "Introduction",
+    path: "/",
+    children: [],
+  },
+  {
+    name: "Getting Started",
     path: "/getting-started",
     children: [],
   },
   {
-    label: "Components",
+    name: "Components",
     path: "/components",
-    children: components.sort((a, b) => a.label.localeCompare(b.label)),
+    children: components.sort((a, b) => a.name.localeCompare(b.name)),
   },
   {
-    label: "Sections",
+    name: "Sections",
     path: "/sections",
-    children: sections.sort((a, b) => a.label.localeCompare(b.label)),
+    children: sections.sort((a, b) => a.name.localeCompare(b.name)),
   },
 ];
 

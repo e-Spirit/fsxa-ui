@@ -45,7 +45,7 @@ class Documentation extends BaseComponent {
                     class="ui-px-5 ui-py-2 ui-block ui-mb-2 hover:ui-text-espirit"
                     activeClass="ui-text-espirit"
                   >
-                    {route.label}
+                    {route.name}
                   </router-link>
                   {route.children &&
                     this.$route.fullPath.indexOf(route.path) === 0 && (
@@ -59,7 +59,7 @@ class Documentation extends BaseComponent {
                                 class="ui-ml-5 ui-px-5 ui-py-2 ui-block ui-border-l-2 hover:ui-text-espirit"
                                 activeClass="ui-border-espirit ui-text-espirit"
                               >
-                                {child.label}
+                                {child.name}
                               </router-link>
                             </li>
                           ))}

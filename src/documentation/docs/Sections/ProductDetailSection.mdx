@@ -28,7 +28,7 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
   Price of the product that will be displayed under the description.
   </PropsTableRow>
   <PropsTableRow value="images" type="Image[]">
-  List of image references that will be displayed on the left side of the section.
+  List of <router-link to="../components/image">Image</router-link> references that will be displayed on the left side of the section.
   </PropsTableRow>
   <PropsTableRow value="foldableContentList" type="Record<string, RenderedType>">
   List of key -value pairs, e.g. <span class="code">key1: "value1", key2: "value2"</span> that renders to foldable (Accordion) elements. Utilizes the key as title and the value as foldable text content. The value can contain RichText formatting.

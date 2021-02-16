@@ -11,7 +11,7 @@ class OverviewDescription extends BaseComponent<OverviewDescriptionProps> {
   @Prop({ required: true }) path!: OverviewDescriptionProps["path"];
   childrenRoutes = routes
     .find(item => item.path === this.path)
-    ?.children.sort((a, b) => a.label.localeCompare(b.label));
+    ?.children.sort((a, b) => a.name.localeCompare(b.name));
 
   render() {
     return (
@@ -23,7 +23,7 @@ class OverviewDescription extends BaseComponent<OverviewDescriptionProps> {
                   class="ui-shadow-lg ui-p-4 ui-block"
                   to={item.path}
                 >
-                  <h2 class="ui-text-2xl">{item.label}</h2>
+                  <h2 class="ui-text-2xl">{item.name}</h2>
                   {item.meta?.description ? (
                     <span>{item.meta?.description}</span>
                   ) : null}
