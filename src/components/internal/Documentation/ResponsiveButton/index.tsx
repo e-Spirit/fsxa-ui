@@ -6,6 +6,7 @@ interface ResponsiveButtonProps {
   handleOnClick: () => void;
   pressed?: boolean;
   dark?: boolean;
+  title?: string;
 }
 
 @Component({
@@ -16,6 +17,7 @@ class ResponsiveButton extends BaseComponent<ResponsiveButtonProps> {
   handleOnClick!: ResponsiveButtonProps["handleOnClick"];
   @Prop({ default: false }) pressed!: ResponsiveButtonProps["pressed"];
   @Prop({ default: false }) dark!: ResponsiveButtonProps["dark"];
+  @Prop() title: ResponsiveButtonProps["title"];
 
   render() {
     return (
@@ -24,6 +26,7 @@ class ResponsiveButton extends BaseComponent<ResponsiveButtonProps> {
           this.pressed ? "ui-text-espirit" : this.dark ? "ui-text-white" : ""
         }`}
         onClick={this.handleOnClick}
+        title={this.title ? this.title : ""}
       >
         {this.$slots.default}
       </div>

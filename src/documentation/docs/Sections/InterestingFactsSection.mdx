@@ -5,13 +5,14 @@ import PropsTable from "@/components/internal/Documentation/PropsTable";
 import SlotsTable from "@/components/internal/Documentation/SlotsTable";
 import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
 import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/components/SlotsTableRow";
+import ComponentWrapper from "@/components/internal/Documentation/ComponentWrapper"
 
 <Meta
   component={["Sections", "InterestingFactsSection"]}
 />
 
-## Properties
-
+<ComponentWrapper  scopedSlots={{
+infoSlot: () => <div>
 <PropsTable>
       <PropsTableRow value="headline" type="String" required>
           The title of this section.
@@ -34,8 +35,6 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
         </PropsTableRow>
 </PropsTable>
 
-## Slots
-
 <SlotsTable>
   <SlotsTableRow value="headline" prop="string">
   Specify your custom HTML for the headline. You get the headline as a property.
@@ -50,9 +49,10 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
     Specify your custom HTML for the counter objects. You get the counter object as a property.
   </SlotsTableRow>
 </SlotsTable>
-
-## Example
-
+</div>,
+codeSlot: () => <div><Headline as="h3" size="md" weight="light">
+          Example
+        </Headline>
 <ExampleLoader example="Sections/InterestingFactsSection.tsx" />
 
 <br />
@@ -60,4 +60,4 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
 ## Example with Slots
 
 <ExampleLoader example="Sections/InterestingFactsSection.slots.tsx" />
-
+</div>}}></ComponentWrapper>

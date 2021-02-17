@@ -25,6 +25,7 @@ class ComponentWrapper extends BaseComponent<{}, {}, ComponentWrapperSlots> {
                 this.state === 1 ? "ui-bg-gray-800 ui-text-gray-200" : ""
               } ui-rounded`}
               handleOnClick={() => (this.state = 1)}
+              title="example"
             >
               <i class="fas fa-code" />
             </ResponsiveButton>
@@ -33,6 +34,7 @@ class ComponentWrapper extends BaseComponent<{}, {}, ComponentWrapperSlots> {
                 this.state === 2 ? "ui-bg-gray-800 ui-text-gray-200" : ""
               } ui-rounded`}
               handleOnClick={() => (this.state = 2)}
+              title="props and slots"
             >
               <i class="fas fa-book"></i>
             </ResponsiveButton>
