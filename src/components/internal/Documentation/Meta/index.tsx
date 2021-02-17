@@ -16,10 +16,6 @@ class Meta extends BaseComponent<MetaProps> {
 
   metaItem: any = null;
 
-  mounted() {
-    document.title = this.title + " - fsxa-ui";
-  }
-
   created() {
     if (this.component) {
       const getElementInTree: any = (label: string[], tree: any[]) => {
@@ -32,6 +28,8 @@ class Meta extends BaseComponent<MetaProps> {
       };
       this.metaItem = getElementInTree(this.component, routes);
     }
+    const myTitle = this.title ? this.title : this.metaItem.label;
+    document.title = myTitle + " - fsxa-ui";
   }
 
   render() {
