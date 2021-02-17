@@ -47,7 +47,7 @@ const components = [
     path: "/components/headline",
     meta: {
       description:
-        "is a structuring element representing a page's, section's, subsection's, ... title.",
+        "is a structuring element representing a page's or section's title.",
     },
     children: [],
   },
