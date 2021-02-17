@@ -1,4 +1,5 @@
 import Code from "@/components/internal/Documentation/Code";
+import ComponentWrapper from "@/components/internal/Documentation/ComponentWrapper"
 import ExampleLoader from "@/documentation/utils/ExampleLoader";
 import Meta from "@/components/internal/Documentation/Meta";
 import PropsTable from "@/components/internal/Documentation/PropsTable";
@@ -10,41 +11,37 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
   component={["Sections", "ProductDetailSection"]}
 />
 
-## Properties
-
+<ComponentWrapper scopedSlots={{
+  infoSlot: () => <div>
 <PropsTable>
-  
+  <PropsTableRow value="description" type="string" required>
+    Description of the product that will be displayed under the headline.
+  </PropsTableRow>
   <PropsTableRow value="headline" type="string" required>
     A headline for the ProductDetailSection.
   </PropsTableRow>
-  <PropsTableRow value="description" type="string" required>
-  Description of the product that will be displayed under the headline.
-  </PropsTableRow>
   <PropsTableRow value="price" type="string" required>
-  Price of the product that will be displayed under the description.
+    Price of the product that will be displayed under the description.
   </PropsTableRow>
   <PropsTableRow value="buttonText" type="string">
     Text to display on a clickable button. The button is only rendered, when `buttonText` is provided.
   </PropsTableRow>
+  <PropsTableRow value="handleButtonClick" type="function">
+    Callback that is triggered when the button is clicked.
+  </PropsTableRow>
+  <PropsTableRow value="images" type="Image[]">
+    List of <router-link to="/components/image" class="ui-text-espirit">Image</router-link> references that will be displayed on the left side of the section.
+  </PropsTableRow>
   <PropsTableRow value="propertyList" type="ProductProperty[]">
     List of product property lists that will be rendered into bullet lists under the price. Each propertyList entry consists of <span class="code">title: string, properties[]</span>, where a property again consists of <span class="code">id: string, name: string</span> - and results in a new bullet list with a custom title.
   </PropsTableRow>
-  <PropsTableRow value="images" type="Image[]">
-  List of image references that will be displayed on the left side of the section.
-  </PropsTableRow>
-  <PropsTableRow value="handleButtonClick" type="function">
-  Callback that is triggered when the button is clicked.
-  </PropsTableRow>
 </PropsTable>
-
-## Slots
-
 <SlotsTable>
   <SlotsTableRow value="additionalContent" prop="none">
     Additional content which describes the product. Is displayed above the button.
   </SlotsTableRow>
 </SlotsTable>
-
-## Example
-
+</div>,
+  codeSlot: () =>
 <ExampleLoader example="Sections/ProductDetailSection.tsx" />
+}} />

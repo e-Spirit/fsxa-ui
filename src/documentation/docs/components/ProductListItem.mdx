@@ -1,4 +1,5 @@
 import Code from "@/components/internal/Documentation/Code";
+import ComponentWrapper from "@/components/internal/Documentation/ComponentWrapper"
 import ExampleLoader from "@/documentation/utils/ExampleLoader";
 import Meta from "@/components/internal/Documentation/Meta";
 import PropsTable from "@/components/internal/Documentation/PropsTable";
@@ -8,11 +9,21 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
   component={["Components", "ProductListItem"]}
 />
 
-## Properties
-
+<ComponentWrapper scopedSlots={{
+  infoSlot: () =>
 <PropsTable>
+  <PropsTableRow value="handleClick" type="function" required>
+    Callback that will be invoked when the item is clicked.
+  </PropsTableRow>
+  <PropsTableRow value="image" type="Image" required>
+    The image of the product that will be displayed in the background.
+  </PropsTableRow>
   <PropsTableRow value="title" type="string" required>
     The title that will be displayed.
+  </PropsTableRow>
+  <PropsTableRow value="url" type="string" required>
+   The url that should be opened, when the item is clicked.<br />
+   Note: this will only be used, when SSR is active and JS is deactivated in the client.
   </PropsTableRow>
   <PropsTableRow value="description" type="string">
     The description that will be displayed.
@@ -20,17 +31,7 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
   <PropsTableRow value="price" type="string">
     The price that will be displayed.
   </PropsTableRow>
-  <PropsTableRow value="image" type="Image" required>
-    The image of the product that will be displayed in the background.
-  </PropsTableRow>
-  <PropsTableRow value="handleClick" type="function" required>
-    Callback that will be invoked when the item is clicked.
-  </PropsTableRow>
-  <PropsTableRow value="url" type="string" required>
-   The url that should be opened, when the item is clicked.<br />
-   Note: this will only be used, when SSR is active and JS is deactivated in the client.
-  </PropsTableRow>
-</PropsTable>
-
-## Examples
+</PropsTable>,
+  codeSlot: () =>
 <ExampleLoader example="ProductListItem.tsx" />
+}} />

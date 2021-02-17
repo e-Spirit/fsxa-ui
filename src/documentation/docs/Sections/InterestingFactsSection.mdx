@@ -14,28 +14,31 @@ import ComponentWrapper from "@/components/internal/Documentation/ComponentWrapp
 <ComponentWrapper  scopedSlots={{
 infoSlot: () => <div>
 <PropsTable>
-      <PropsTableRow value="headline" type="String" required>
-          The title of this section.
-        </PropsTableRow>
-        <PropsTableRow value="text" type="String" required>
-          The main body of this section.
-        </PropsTableRow>
-        <PropsTableRow value="tagline" type="String">
-          A catchphrase or slogan which is displayed above the headline.
-        </PropsTableRow>
-        <PropsTableRow value="counters" type="Counter[]">
-         An array of objects, with a number and a string to caption a number. Required values for the "Counter" object are:
-         <ul>
-           <li><span class="code">value</span>number - Number for the counter</li>
-           <li><span class="code">label</span>string - Label for the counter</li>
-         </ul>
-        </PropsTableRow>
-        <PropsTableRow value="backgroundImage" type="ImageRef" optional>
-          An image which is displayed behind the content.
-        </PropsTableRow>
+  <PropsTableRow value="headline" type="String" required>
+    The title of this section.
+  </PropsTableRow>
+  <PropsTableRow value="text" type="String" required>
+    The main body of this section.
+  </PropsTableRow>
+  <PropsTableRow value="backgroundImage" type="ImageRef" optional>
+    An image which is displayed behind the content.
+  </PropsTableRow>
+  <PropsTableRow value="counters" type="Counter[]">
+    An array of objects, with a number and a string to caption a number. Required values for the "Counter" object are:
+    <ul>
+      <li><span class="code">value</span>number - Number for the counter</li>
+      <li><span class="code">label</span>string - Label for the counter</li>
+    </ul>
+  </PropsTableRow>
+  <PropsTableRow value="tagline" type="String">
+    A catchphrase or slogan which is displayed above the headline.
+  </PropsTableRow>
 </PropsTable>
 
 <SlotsTable>
+  <SlotsTableRow value="counter" prop="counter">
+    Specify your custom HTML for the counter objects. You get the counter object as a property.
+  </SlotsTableRow>
   <SlotsTableRow value="headline" prop="string">
   Specify your custom HTML for the headline. You get the headline as a property.
   </SlotsTableRow>
@@ -44,9 +47,6 @@ infoSlot: () => <div>
   </SlotsTableRow>
   <SlotsTableRow value="text" prop="string">
     Specify your custom HTML for text. You get the text as a property.
-  </SlotsTableRow>
-  <SlotsTableRow value="counter" prop="counter">
-    Specify your custom HTML for the counter objects. You get the counter object as a property.
   </SlotsTableRow>
 </SlotsTable>
 </div>,

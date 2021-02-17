@@ -1,8 +1,6 @@
 import BaseComponent from "@/components/BaseComponent";
-import { Component, Prop } from "vue-property-decorator";
+import { Component } from "vue-property-decorator";
 import "vue-tsx-support/enable-check";
-import Button from "@/components/Button";
-import Meta from "@/components/internal/Documentation/Meta";
 import ResponsiveButton from "../ResponsiveButton";
 
 interface ComponentWrapperSlots {

@@ -18,13 +18,12 @@ import { Headline } from "@/components";
         </Headline><ExampleLoader example="LineSeparator.tsx" /></div>,
   infoSlot: () => 
   <PropsTable>
-  <PropsTableRow value="width" type="String">
-    Specify which width the separator should have. <br />
-    Possible values are <span class="code">4</span><span class="code">8</span><span class="code">16</span><span class="code">32</span><span class="code">64</span><span class="code">full</span> <br />
-    Default value is <span class="code">16</span>
+  <PropsTableRow value="height" type="String">
+    Specify which height the separator should have <br />
+    Possible values are <span class="code">1</span><span class="code">2</span><span class="code">4</span>
   </PropsTableRow>
-  <PropsTableRow value="sm_width" type="String">
-    Specify which width the separator should have when the screen is small <br />
+  <PropsTableRow value="lg_width" type="String">
+    Specify which width the separator should have when the screen is large <br />
     Possible values are <span class="code">4</span><span class="code">8</span><span class="code">16</span><span class="code">32</span><span class="code">64</span><span class="code">full</span> <br />
     If no size is specified, the next smaller one is used
   </PropsTableRow>
@@ -33,23 +32,24 @@ import { Headline } from "@/components";
     Possible values are <span class="code">4</span><span class="code">8</span><span class="code">16</span><span class="code">32</span><span class="code">64</span><span class="code">full</span> <br />
     If no size is specified, the next smaller one is used
   </PropsTableRow>
-  <PropsTableRow value="lg_width" type="String">
-    Specify which width the separator should have when the screen is large <br />
+  <PropsTableRow value="side" type="String" default="left">
+    Specify on which side the separator should be <br />
+    Possible values are <span class="code">left</span><span class="code">right</span> <br />
+  </PropsTableRow>
+  <PropsTableRow value="sm_width" type="String">
+    Specify which width the separator should have when the screen is small <br />
     Possible values are <span class="code">4</span><span class="code">8</span><span class="code">16</span><span class="code">32</span><span class="code">64</span><span class="code">full</span> <br />
     If no size is specified, the next smaller one is used
+  </PropsTableRow>
+  <PropsTableRow value="width" type="String">
+    Specify which width the separator should have. <br />
+    Possible values are <span class="code">4</span><span class="code">8</span><span class="code">16</span><span class="code">32</span><span class="code">64</span><span class="code">full</span> <br />
+    Default value is <span class="code">16</span>
   </PropsTableRow>
   <PropsTableRow value="xl_width" type="String">
     Specify which width the separator should have when the screen is extra large <br />
     Possible values are <span class="code">4</span><span class="code">8</span><span class="code">16</span><span class="code">32</span><span class="code">64</span><span class="code">full</span> <br />
     If no size is specified, the next smaller one is used
-  </PropsTableRow>
-  <PropsTableRow value="height" type="String">
-    Specify which height the separator should have <br />
-    Possible values are <span class="code">1</span><span class="code">2</span><span class="code">4</span>
-  </PropsTableRow>
-  <PropsTableRow value="side" type="String" default="left">
-    Specify on which side the separator should be <br />
-    Possible values are <span class="code">left</span><span class="code">right</span> <br />
   </PropsTableRow>
 </PropsTable>
 }}></ComponentWrapper>

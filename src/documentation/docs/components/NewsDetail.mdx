@@ -1,4 +1,5 @@
 import Code from "@/components/internal/Documentation/Code";
+import ComponentWrapper from "@/components/internal/Documentation/ComponentWrapper"
 import ExampleLoader from "@/documentation/utils/ExampleLoader";
 import Meta from "@/components/internal/Documentation/Meta";
 import PropsTable from "@/components/internal/Documentation/PropsTable";
@@ -10,8 +11,8 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
   component={["Components", "NewsDetail"]}
 />
 
-## Properties
-
+<ComponentWrapper scopedSlots={{
+  infoSlot: () => <div>
 <PropsTable>
   <PropsTableRow value="headline" type="String" required>
     Headline at the top of the page.
@@ -27,32 +28,22 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
    All available resolutions of your image that will be combined into a sourceset statement</li>
     </ul>
   </PropsTableRow>
-  <PropsTableRow value="teaser" type="String">
-    Text between headline and picture.
+  <PropsTableRow value="author" type="String">
+    The author of the article.
   </PropsTableRow>
   <PropsTableRow value="date" type="String">
       Date when the article was written.
   </PropsTableRow>
-  <PropsTableRow value="tags" type="Array">
-      Tags under the article. Possible attributes are:
-      <ul>
-        <li><span class="code">label</span>string - Required - Label of the tag</li>
-        <li><span class="code">id</span>number | string -  Id of the tag</li>
-      </ul>
-  </PropsTableRow>
-  <PropsTableRow value="author" type="String">
-    Author of the article.
+  <PropsTableRow value="handleReturnClick" type="Function">
+        You can pass in an optional callback that will be triggered, when the return button
+            is clicked.
   </PropsTableRow>
   <PropsTableRow value="handleTagClick" type="Function">
       You can pass in an optional callback that will be triggered when a tag
       is clicked.
-    </PropsTableRow>
+  </PropsTableRow>
   <PropsTableRow value="returnText" type="String">
     The text that will be displayed on the return button under the article.
-  </PropsTableRow>
-  <PropsTableRow value="handleReturnClick" type="Function">
-        You can pass in an optional callback that will be triggered, when the return button
-            is clicked.
   </PropsTableRow>
   <PropsTableRow value="social" type="Object">
     Information about sociallinks. Possible attributes are:
@@ -68,10 +59,17 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
           <li><span class="code">handleItemClick</span>Function - Title of the social area</li>
     </ul>
   </PropsTableRow>
+  <PropsTableRow value="tags" type="Array">
+      Tags under the article. Possible attributes are:
+      <ul>
+        <li><span class="code">label</span>string - Required - Label of the tag</li>
+        <li><span class="code">id</span>number | string -  Id of the tag</li>
+      </ul>
+  </PropsTableRow>
+  <PropsTableRow value="teaser" type="String">
+    Text between headline and picture.
+  </PropsTableRow>
 </PropsTable>
-
-## Slots
-
 <SlotsTable>
   <SlotsTableRow value="social" prop="SocialArea">
     Specify your custom HTML for the social area. You get the following attributes as value:
@@ -88,12 +86,12 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
     </ul>
   </SlotsTableRow>
 </SlotsTable>
-
-
-## Example
-
+</div>,
+  codeSlot: () => <div>
 <ExampleLoader example="NewsDetail.tsx" />
 
 ## Example with slots
 
 <ExampleLoader example="NewsDetail.slots.tsx" />
+</div>
+}} />

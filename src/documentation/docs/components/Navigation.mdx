@@ -1,4 +1,5 @@
 import Code from "@/components/internal/Documentation/Code";
+import ComponentWrapper from "@/components/internal/Documentation/ComponentWrapper"
 import ExampleLoader from "@/documentation/utils/ExampleLoader";
 import Meta from "@/components/internal/Documentation/Meta";
 import PropsTable from "@/components/internal/Documentation/PropsTable";
@@ -10,8 +11,8 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
 
  If you want distinct mobile and desktop navigation, define both and control by media query when to display which.
 
-## Properties
-
+<ComponentWrapper scopedSlots={{
+  infoSlot: () => 
 <PropsTable>
   <PropsTableRow value="items" type="Array" required>
     Specify an array which should be rendered. An item has the following properties.
@@ -34,16 +35,14 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
         </li>
     </ul>
   </PropsTableRow>
-  <PropsTableRow value="onItemClicked" type="Function">
-    Callback that will be triggered, when a link is clicked. When this callback is called, the clicked item will be passed into it.
-  </PropsTableRow>
   <PropsTableRow value="activeItemKeys" type="Array" default="false">
     An array of items that should be marked as active.
   </PropsTableRow>
-</PropsTable>
-
-## Example
-
+  <PropsTableRow value="onItemClicked" type="Function">
+    Callback that will be triggered, when a link is clicked. When this callback is called, the clicked item will be passed into it.
+  </PropsTableRow>
+</PropsTable>,
+  codeSlot: () => <div>
 <ExampleLoader example="Navigation.tsx" />
 <br />
 
@@ -51,3 +50,5 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
 
 We are providing a mobile Navigation view as well. This can be embedded in any kind of wrapper that fits your needs.
 <ExampleLoader example="NavigationMobile.tsx" />
+</div>
+}} />

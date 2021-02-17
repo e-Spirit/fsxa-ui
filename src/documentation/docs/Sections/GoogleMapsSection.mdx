@@ -1,4 +1,5 @@
 import Meta from "@/components/internal/Documentation/Meta";
+import ComponentWrapper from "@/components/internal/Documentation/ComponentWrapper"
 import ExampleLoader from "@/documentation/utils/ExampleLoader";
 import AccordionSection from "@/components/Sections/AccordionSection";
 import PropsTable from "@/components/internal/Documentation/PropsTable";
@@ -10,28 +11,22 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
 component={["Sections", "GoogleMapsSection"]}
 subtitle = "This section displays a Google Maps map optionally containing a set of locations to display as markers. The surrounding HTML element needs a height or the map won't be rendered."
 />
+
+<ComponentWrapper scopedSlots={{
+  infoSlot: () => <div>
 <PropsTable>
-  <PropsTableRow value="title" type="string" optional>
-    The section's title.
-  </PropsTableRow>
   <PropsTableRow value="apikey" type="string" required>
     Your Google Maps apikey.
-  </PropsTableRow>
-  <PropsTableRow value="startLocation" type="MapsPosition" optional>
-    An object of type MapsPosition which contains a latitude and a longitude as numbers.
-    It indicates the location the map should initially be centered onto.
-    This is the fallback location in case the user declines to reveal their location.
   </PropsTableRow>
   <PropsTableRow value="alwaysUseStartLocation" type="boolean" optional>
     Setting this omits the prompting for the users location and always uses the provided start location to center the map.
   </PropsTableRow>
-  <PropsTableRow value="zoom" type="number" default="15" optional>
-    A number between 1 and 20 representing roughly the following zoom levels
-    1: World;
-    5: Landmass/Continent;
-    10: City;
-    15: Streets;
-    20: Buildings
+  <PropsTableRow value="buttonLabel" type="string" optional>
+    The label of the button in each marker widget. Required if handleButtonClick is also set.
+  </PropsTableRow>
+  <PropsTableRow value="handleButtonClick" type="Function" optional>
+    The function to be called when a button in a marker widget is clicked. When the function is called, the location data is passed into it.
+    This prop is required if the buttonLabel prop is set.
   </PropsTableRow>
   <PropsTableRow value="language" type="string">
     The language for the map and its UI elements. Can be any one of <a href="https://developers.google.com/maps/faq#languagesupport">these</a> two character strings.
@@ -41,27 +36,33 @@ subtitle = "This section displays a Google Maps map optionally containing a set 
     An array of locations. When set, markers will be placed at the corresponding positions on the map. 
     A location can handle the following metadata: <span class="code">city</span> <span class="code">street</span> <span class="code">name</span> <span class="code">description</span>. The metadata will be displayed when a marker is selected.
   </PropsTableRow>
-  <PropsTableRow value="buttonLabel" type="string" optional>
-    The label of the button in each marker widget. Required if handleButtonClick is also set.
-  </PropsTableRow>
-  <PropsTableRow value="handleButtonClick" type="Function" optional>
-    The function to be called when a button in a marker widget is clicked. When the function is called, the location data is passed into it.
-    This prop is required if the buttonLabel prop is set.
-  </PropsTableRow>
   <PropsTableRow value="mapStyles" type="google.maps.MapTypeStyle[] | string" optional>
     You can <a class="ui-text-red-900 ui-underline" href="https://mapstyle.withgoogle.com/" target="_blank">design your own map style</a>. You can export your styles as json and pass them into this prop to apply them to the map.
-  </PropsTableRow>
-  <PropsTableRow value="renderInfoWindow" type="Function" optional>
-    The GoogleMapsSection will pass a location of type MapsLocation into your function and expect it to return an HTML node to render.
   </PropsTableRow>
   <PropsTableRow value="markerIcon" type="string" optional>
     A custom marker icon that will be displayed at a location. The string can be a url pointing to an image or base64 encoded image data or an svg.
     The image you use should be 50x50 in size.
   </PropsTableRow>
+  <PropsTableRow value="renderInfoWindow" type="Function" optional>
+    The GoogleMapsSection will pass a location of type MapsLocation into your function and expect it to return an HTML node to render.
+  </PropsTableRow>
+  <PropsTableRow value="startLocation" type="MapsPosition" optional>
+    An object of type MapsPosition which contains a latitude and a longitude as numbers.
+    It indicates the location the map should initially be centered onto.
+    This is the fallback location in case the user declines to reveal their location.
+  </PropsTableRow>
+  <PropsTableRow value="title" type="string" optional>
+    The section's title.
+  </PropsTableRow>
+  <PropsTableRow value="zoom" type="number" default="15" optional>
+    A number between 1 and 20 representing roughly the following zoom levels
+    1: World;
+    5: Landmass/Continent;
+    10: City;
+    15: Streets;
+    20: Buildings
+  </PropsTableRow>
 </PropsTable>
-
-## Slots
-
 <SlotsTable>
   <SlotsTableRow value="title" prop="string">
     Allows for a custom title to be rendered.
@@ -73,7 +74,9 @@ subtitle = "This section displays a Google Maps map optionally containing a set 
     and a <span class="code">handleItemClick</span> callback.
   </SlotsTableRow>
 </SlotsTable>
-
+</div>,
+  codeSlot: () => <div>
 <ExampleLoader example="Sections/GoogleMapsSection.tsx" />
 <ExampleLoader example="Sections/GoogleMapsSection.ScopedSlots.tsx" />
 <ExampleLoader example="Sections/GoogleMapsSection.ShowcaseProps.tsx" />
+</div>}} />
