@@ -1,5 +1,6 @@
 import BaseComponent from "@/components/BaseComponent";
 import { Component, Prop } from "vue-property-decorator";
+import "./style.css";
 
 export interface SlotsTableRowProps {
   value: string;
@@ -18,13 +19,13 @@ class SlotsTableRow extends BaseComponent<SlotsTableRowProps> {
     return (
       <tr>
         <td>
-          <span
-            class={`ui-py-1 ui-px-2 ${
-              this.required ? "ui-bg-gray-900 ui-text-white" : "ui-bg-gray-200"
-            } ui-w-auto ui-rounded-lg ui-text-sm`}
-          >
-            {this.value}
-          </span>
+          {this.required ? (
+            <span title="required" class="prop-value-req">
+              {this.value}
+            </span>
+          ) : (
+            <span class="prop-value">{this.value}</span>
+          )}
         </td>
         <td>{this.prop}</td>
         <td>{this.$slots.default}</td>
