@@ -198,6 +198,10 @@ const sections = [
 
 const routes = [
   {
+    label: "Introduction",
+    path: "/",
+  },
+  {
     label: "Getting Started",
     path: "/getting-started",
     children: [],
