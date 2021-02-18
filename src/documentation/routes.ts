@@ -200,6 +200,7 @@ const routes = [
   {
     label: "Introduction",
     path: "/",
+    children: [],
   },
   {
     label: "Getting Started",
