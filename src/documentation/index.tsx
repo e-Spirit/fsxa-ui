@@ -40,24 +40,14 @@ class Documentation extends BaseComponent {
             <ul class="ui-mt-5 ui-font-normal ui-text-sm lg:ui-sticky lg:ui-top-0">
               {routes.map((route: any) => (
                 <li>
-                  {route.path != "/" ? (
-                    <router-link
-                      to={route.path}
-                      class="ui-px-5 ui-py-2 ui-block ui-mb-2 hover:ui-text-espirit"
-                      activeClass="ui-text-espirit"
-                    >
-                      {route.label}
-                    </router-link>
-                  ) : (
-                    <router-link
-                      to={route.path}
-                      class="ui-px-5 ui-py-2 ui-block ui-mb-2 hover:ui-text-espirit"
-                      activeClass="ui-text-espirit"
-                      exact
-                    >
-                      {route.label}
-                    </router-link>
-                  )}
+                  <router-link
+                    to={route.path}
+                    class="ui-px-5 ui-py-2 ui-block ui-mb-2 hover:ui-text-espirit"
+                    activeClass="ui-text-espirit"
+                    exact={route.path === "/"}
+                  >
+                    {route.label}
+                  </router-link>
                   {route.children &&
                     this.$route.fullPath.indexOf(route.path) === 0 && (
                       <ul class="ui-border-gray-200">
