@@ -82,7 +82,7 @@
     "sass-loader": "^8.0.2",
     "semantic-release": "^17.3.0",
     "typedoc-loader": "^5.0.1",
-    "typescript": "~3.8.3",
+    "typescript": "~4.1.0",
     "vue-prismjs": "^1.2.0",
     "vue-property-decorator": "^8.4.1",
     "vue-template-compiler": "^2.6.11",
