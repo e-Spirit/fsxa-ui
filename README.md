@@ -10,9 +10,58 @@ a demo [online](https://www.e-spirit.com/us/specialpages/forms/on-demand-demo/).
 
 ## Project setup
 
+FSXA-UI is really easy to get started with. Make sure to follow the guide below to get a better understanding about some of the decisions behind FSXA-UI and how to use it to kick-off your next project.
+
+You can install FSXA-UI via Yarn or NPM.
+
+```bash
+# with npm
+npm install fsxa-ui --save
+
+# with yarn
+yarn add fsxa-ui
 ```
-npm install
+
+<br />
+
+Please make sure that the **main CSS file**  is imported from the FSXA UI package.
+
+```typescript
+// directly importing the css into your main component
+import "fsxa-ui/dist/fsxa-ui.css";
 ```
+
+```css
+/* using node-style package resolution in a CSS file */
+@import "fsxa-ui/dist/fsxa-ui.css";
+```
+
+```html
+<!-- using plain html -->
+<link
+  href="path/to/node_modules/fsxa-ui/dist/fsxa-ui.css"
+  rel="preload"
+  as="style"
+/>
+```
+
+
+## Usage
+
+Now you can use the components in your project.
+In the navigation you will find all available components with a detailed description of all properties and usage examples.
+
+Here you can see how easy the `Button` component can be used.
+
+```typescript
+import { Button } from "fsxa-ui";
+
+<Button variant="animated" handleClick={handleClick}>
+  This is my Button
+</Button>
+```
+
+<br />
 
 ### Compiles and hot-reloads for development
 
