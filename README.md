@@ -61,6 +61,7 @@ import { Button } from "fsxa-ui";
 </Button>
 ```
 
+Please make sure that your component is registered correctly.
 <br />
 
 ### Compiles and hot-reloads for development
