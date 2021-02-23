@@ -1,0 +1,45 @@
+import Meta from "@/components/internal/Documentation/Meta";
+import ComponentWrapper from "@/components/internal/Documentation/ComponentWrapper"
+import ExampleLoader from "@/documentation/utils/ExampleLoader";
+import VideoSection from "@/components/Sections/VideoSection";
+import PropsTable from "@/components/internal/Documentation/PropsTable";
+import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
+
+<Meta
+  component={["Sections", "VideoSection"]}
+/>
+
+<ComponentWrapper scopedSlots={{
+  infoSlot: () =>
+<PropsTable>
+  <PropsTableRow value="youtubeId" type="string" required>
+    The YouTube ID of the video you want to embed.
+  </PropsTableRow>
+  <PropsTableRow value="description" type="string" optional>
+    A description text to display under the video.
+  </PropsTableRow>
+  <PropsTableRow value="height" type="number" optional default="width / 16 * 9">
+    The height of the video (in pixels).
+  </PropsTableRow>
+  <PropsTableRow value="parameters" type="array of items">
+    An array of items controlling the <a href="https://developers.google.com/youtube/player_parameters" title="Full list of supported parameters" class="ui-text-espirit" target="_blank">
+    YouTube player parameters</a>. Each item consists of:
+    <ul>
+    <li><span class="code">parameter: string</span></li>
+    <li><span class="code">value: string</span></li>
+    </ul>
+  </PropsTableRow>
+  <PropsTableRow value="title" type="string" optional>
+    The optional title of the section. When set, the separator is automatically added.
+  </PropsTableRow>
+  <PropsTableRow value="width" type="number" optional default="560">
+    The width of the video (in pixels).
+  </PropsTableRow>
+  <PropsTableRow value="youtubeUrl" type="string" optional default="https://www.youtube-nocookie.com/embed/">
+    The YouTube URL. An alternative to our default would be
+    <span class="code">https://www.youtube.com/embed/</span>.
+  </PropsTableRow>
+</PropsTable>,
+  codeSlot: () =>
+  <ExampleLoader example="Sections/VideoSection.tsx" />
+}} />
