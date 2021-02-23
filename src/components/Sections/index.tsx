@@ -7,6 +7,7 @@ import ListSection from "./ListSection";
 import ProductDetailSection from "./ProductDetailSection";
 import AccordionSection from "./AccordionSection";
 import GoogleMapsSection from "./GoogleMapsSection";
+import VideoSection from "./VideoSection";
 
 export default {
   FullWidthSliderSection,
@@ -18,4 +19,5 @@ export default {
   ProductDetailSection,
   AccordionSection,
   GoogleMapsSection,
+  VideoSection,
 };

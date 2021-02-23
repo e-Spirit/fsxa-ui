@@ -194,6 +194,14 @@ const sections = [
     },
     children: [],
   },
+  {
+    label: "VideoSection",
+    path: "/sections/video-section",
+    meta: {
+      description: "displays a video (from YouTube).",
+    },
+    children: [],
+  },
 ];
 
 const routes = [

@@ -388,6 +388,43 @@ export interface AccordionSectionProps {
 }
 export class AccordionSection extends Component<AccordionSectionProps> {}
 
+export interface VideoSectionProps {
+  /**
+   * The id of the YouTube video you want to display.
+   */
+  youtubeId: string;
+  /**
+   * The YouTube URL. An alternative to our default (https://www.youtube-nocookie.com/embed/) would be https://www.youtube.com/embed/
+   */
+  youtubeUrl?: string;
+  /**
+   * Optional title string. When not set, there simply won't be a title for the section.
+   */
+  title?: string;
+  /**
+   * Optional desciption string. When not set, there simply won't be a description for the video.
+   */
+  description?: string;
+  /**
+   * Specifies whether the initial video will automatically start to play when the player loads. Default is **false**
+   */
+  autoplay?: boolean;
+  /**
+   * Specifies the video's width. Default is **560**
+   */
+  width?: number;
+  /**
+   * Specifies the video's height. Default is **315**
+   */
+  height?: number;
+  /**
+   * Specify additional player parameters.
+   */
+  parameters?: Array<{ param: string; value: string }>;
+}
+
+export class VideoSection extends Component<VideoSectionProps> {}
+
 export interface GoogleMapsSectionSlots {
   /**
    * Allows for a custom title to be rendered. Replaces headline and line separator of default rendering.
