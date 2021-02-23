@@ -1,5 +1,5 @@
 .Code {
-  @apply ui-w-full ui-rounded-lg ui-overflow-hidden;
+  @apply ui-w-full ui-rounded-lg ui-overflow-hidden ui-my-4;
 
   &.inline {
     @apply ui-inline-block ui-w-auto ui-mx-1 ui-bg-gray-900 ui-px-1 ui-text-white;

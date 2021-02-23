@@ -1,6 +1,5 @@
 import BaseComponent from "@/components/BaseComponent";
 import ComponentIFrame from "@/components/internal/Documentation/ComponentIFrame";
-import Toggle from "@/components/internal/Toggle";
 import { CodeProps } from "@/types/components";
 import copy from "copy-to-clipboard";
 import "prismjs/themes/prism-okaidia.css";
@@ -40,7 +39,7 @@ class Code extends BaseComponent<CodeProps> {
 
   render() {
     return (
-      <div class={`Code ${this.darkMode ? "dark" : ""}`}>
+      <div class="Code">
         {this.$slots.default ? (
           <div class="Code--Example">
             {this.filename && (
@@ -50,17 +49,6 @@ class Code extends BaseComponent<CodeProps> {
                 class="ui-mx-auto"
               />
             )}
-
-            <div class="Code--BackgroundToggle">
-              <Toggle
-                active={this.darkMode}
-                labels={{
-                  on: <i class="far fa-moon ui-text-gray-900" />,
-                  off: <i class="far fa-sun ui-text-gray-900" />,
-                }}
-                handleToggle={() => (this.darkMode = !this.darkMode)}
-              />
-            </div>
           </div>
         ) : null}
         <div class="Code--Container">

@@ -12,7 +12,7 @@ interface ComponentWrapperSlots {
   name: "ComponentWrapper",
 })
 class ComponentWrapper extends BaseComponent<{}, {}, ComponentWrapperSlots> {
-  state = 1;
+  state = 2;
   render() {
     return (
       <div class="ui-h-full ui-w-full">
@@ -20,21 +20,21 @@ class ComponentWrapper extends BaseComponent<{}, {}, ComponentWrapperSlots> {
           <div class="ui-flex ui-flex-row ui-space-x-2">
             <ResponsiveButton
               class={`${
+                this.state !== 1 ? "ui-bg-gray-800 ui-text-gray-200" : ""
+              } ui-rounded`}
+              handleOnClick={() => (this.state = 2)}
+              title="props and slots"
+            >
+              <i class="fas fa-code" /> Props
+            </ResponsiveButton>
+            <ResponsiveButton
+              class={`${
                 this.state === 1 ? "ui-bg-gray-800 ui-text-gray-200" : ""
               } ui-rounded`}
               handleOnClick={() => (this.state = 1)}
               title="example"
             >
-              <i class="fas fa-code" />
-            </ResponsiveButton>
-            <ResponsiveButton
-              class={`${
-                this.state === 2 ? "ui-bg-gray-800 ui-text-gray-200" : ""
-              } ui-rounded`}
-              handleOnClick={() => (this.state = 2)}
-              title="props and slots"
-            >
-              <i class="fas fa-book"></i>
+              <i class="fas fa-book" /> Example
             </ResponsiveButton>
           </div>
         </div>
