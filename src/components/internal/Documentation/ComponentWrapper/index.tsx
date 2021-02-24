@@ -25,7 +25,7 @@ class ComponentWrapper extends BaseComponent<{}, {}, ComponentWrapperSlots> {
               handleOnClick={() => (this.state = 2)}
               title="props and slots"
             >
-              <i class="fas fa-code" /> Props
+              <i class="fas fa-book" /> Props
             </ResponsiveButton>
             <ResponsiveButton
               class={`${
@@ -34,7 +34,7 @@ class ComponentWrapper extends BaseComponent<{}, {}, ComponentWrapperSlots> {
               handleOnClick={() => (this.state = 1)}
               title="example"
             >
-              <i class="fas fa-book" /> Example
+              <i class="fas fa-code" /> Example
             </ResponsiveButton>
           </div>
         </div>

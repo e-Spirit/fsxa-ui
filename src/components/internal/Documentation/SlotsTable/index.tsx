@@ -15,6 +15,7 @@ class SlotsTable extends BaseComponent {
           <thead>
             <tr class="SlotsTable--Header">
               <th>Slot</th>
+              <th>Required</th>
               <th>Props</th>
               <th>Description</th>
             </tr>
