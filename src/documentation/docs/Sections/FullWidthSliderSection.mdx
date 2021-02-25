@@ -1,4 +1,5 @@
 import Meta from "@/components/internal/Documentation/Meta";
+import ComponentWrapper from "@/components/internal/Documentation/ComponentWrapper"
 import ExampleLoader from "@/documentation/utils/ExampleLoader";
 import AccordionSection from "@/components/Sections/AccordionSection";
 import PropsTable from "@/components/internal/Documentation/PropsTable";
@@ -7,9 +8,11 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
 import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/components/SlotsTableRow";
 
 <Meta
-  title="FullWidthImageSliderSection"
-  subtitle="This section will help you build a beautiful full width image slider"
+  component={["Sections", "FullWidthSliderSection"]}
 />
+
+<ComponentWrapper scopedSlots={{
+  infoSlot: () => <div>
 <PropsTable>
   <PropsTableRow value="slides" type="FullWidthSliderSectionSlide<MediaType>[]" required>   
   The slides that should be displayed. You can add additional properties to the slide-objects as well.
@@ -18,28 +21,15 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
     Specify if the default padding should be removed from the wrapped content.
   </PropsTableRow>
 </PropsTable>
-
-
-## Slots
-
 <SlotsTable>
-  <SlotsTableRow value="title" prop="RenderedType">
-  The title element to be displayed (and animated) on every slide.
-  </SlotsTableRow>
-  <SlotsTableRow value="teaser" prop="RenderedType">
-    The teaser element to be displayed (and animated) on every slide.
-  </SlotsTableRow>
-  <SlotsTableRow value="media" prop="MediaType">
-    The media element (the main content) for each slide. MediaType can e.g. be Image (with src, class, and opacity).
-  </SlotsTableRow>
- <SlotsTableRow value="button" prop="Object">
-    The button receives two attributes: <ul><li><span class="code">content: RenderedType;</span></li><li><span class="code">onClick: () => void;</span></li></ul>
-  </SlotsTableRow>
   <SlotsTableRow value="arrowButton" prop="Object">
     Button elements to display for the larger resolutions. Attributes: <ul><li><span class="code">media</span> MediaType e.g. Image</li><li><span class="code">slideNumber</span> 0... n</li><li><span class="code">position</span> ('left' or 'right')</li></ul>
   </SlotsTableRow>
   <SlotsTableRow value="arrowButtonContent" prop="Object">
     This is an inner element to arrowButton, already in position. The object prop is the same.
+  </SlotsTableRow>
+  <SlotsTableRow value="button" prop="Object">
+    The button receives two attributes: <ul><li><span class="code">content: RenderedType;</span></li><li><span class="code">onClick: () => void;</span></li></ul>
   </SlotsTableRow>
   <SlotsTableRow value="controls" prop="RenderedType">
     The complete controls for the slider. The following props will be passed in:
@@ -50,17 +40,24 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
       <li><span class="code">showSlide: (index: number) => void</span></li>
     </ul>
   </SlotsTableRow>
+  <SlotsTableRow value="media" prop="MediaType">
+    The media element (the main content) for each slide. MediaType can e.g. be Image (with src, class, and opacity).
+  </SlotsTableRow>
   <SlotsTableRow value="stepper" prop="Object">
     The stepper is a section with the typical dots that becomes visible when the horizontal space for the slider is somewhat limited, and the arrows are no longer shown.
   </SlotsTableRow>
   <SlotsTableRow value="stepperStep" prop="Object">
     These are the stepper's individual dots. Obviously they're not rendered, when you replace the whole stepper (or even the complete controls).
   </SlotsTableRow>
+  <SlotsTableRow value="teaser" prop="RenderedType">
+    The teaser element to be displayed (and animated) on every slide.
+  </SlotsTableRow>
+  <SlotsTableRow value="title" prop="RenderedType">
+  The title element to be displayed (and animated) on every slide.
+  </SlotsTableRow>
 </SlotsTable>
-
-
-## Example
-
+</div>,
+  codeSlot: () => <div>
 <ExampleLoader example="Sections/FullWidthSliderSection.Images.tsx" />
 
 <br />
@@ -68,3 +65,4 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
 ## Example with Slots
 
 <ExampleLoader example="Sections/FullWidthSliderSection.Images.slots.tsx" />
+</div>}} />

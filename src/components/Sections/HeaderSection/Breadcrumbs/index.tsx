@@ -16,7 +16,9 @@ class Breadcrumbs extends BaseComponent<BreadcrumbsProps> {
           {this.items.map((item, index) => (
             <li class="ui-inline-block ui-mr-2 last:ui-mr-0">
               <a
-                data-testid={`item-${item.referenceId}`}
+                data-testid={`item-${
+                  item.referenceId ? item.referenceId : item.label
+                }`}
                 href={item.path}
                 class="ui-inline-flex ui-group ui-justify-center ui-items-center"
                 aria-current={index === this.items.length - 1 ? "page" : ""}

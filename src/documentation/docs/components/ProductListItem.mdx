@@ -1,37 +1,37 @@
 import Code from "@/components/internal/Documentation/Code";
+import ComponentWrapper from "@/components/internal/Documentation/ComponentWrapper"
 import ExampleLoader from "@/documentation/utils/ExampleLoader";
 import Meta from "@/components/internal/Documentation/Meta";
 import PropsTable from "@/components/internal/Documentation/PropsTable";
 import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
 
 <Meta
-  title="ProductListItem"
-  subtitle="This item is used to display information about a product in the context of a ListSection. It will be as wide as the surrounding element."
+  component={["Components", "ProductListItem"]}
 />
 
-## Properties
-
+<ComponentWrapper scopedSlots={{
+  infoSlot: () =>
 <PropsTable>
-  <PropsTableRow value="title" type="string" required>
-    The title that will be displayed
-  </PropsTableRow>
-  <PropsTableRow value="description" type="string" required>
-    The description that will be displayed.
-  </PropsTableRow>
-  <PropsTableRow value="price" type="string" required>
-    The price that will be displayed.
+  <PropsTableRow value="handleClick" type="function" required>
+    Callback that will be invoked when the item is clicked.
   </PropsTableRow>
   <PropsTableRow value="image" type="Image" required>
-    The image of the product that will be displayed in the background
+    The image of the product that will be displayed in the background.
   </PropsTableRow>
-  <PropsTableRow value="handleClick" type="function" required>
-    Callback that will be invoked, when the item is clicked
+  <PropsTableRow value="title" type="string" required>
+    The title that will be displayed.
   </PropsTableRow>
   <PropsTableRow value="url" type="string" required>
    The url that should be opened, when the item is clicked.<br />
-   Note: this will only be used, when SSR is active and JS is deactivated in the client
+   Note: this will only be used, when SSR is active and JS is deactivated in the client.
   </PropsTableRow>
-</PropsTable>
-
-## Examples
+  <PropsTableRow value="description" type="string">
+    The description that will be displayed.
+  </PropsTableRow>
+  <PropsTableRow value="price" type="string">
+    The price that will be displayed.
+  </PropsTableRow>
+</PropsTable>,
+  codeSlot: () =>
 <ExampleLoader example="ProductListItem.tsx" />
+}} />

@@ -1,21 +1,21 @@
 import Code from "@/components/internal/Documentation/Code";
+import ComponentWrapper from "@/components/internal/Documentation/ComponentWrapper"
 import ExampleLoader from "@/documentation/utils/ExampleLoader";
 import Meta from "@/components/internal/Documentation/Meta";
 import PropsTable from "@/components/internal/Documentation/PropsTable";
 import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
 
 <Meta
-  title="Dropdown"
-  subtitle="Dropdown displays a dropdown list with a number of different options."
+    component={["Components", "Dropdown"]}
 />
 
-## Properties
-
+<ComponentWrapper scopedSlots={{
+  infoSlot: () => 
 <PropsTable>
-  <PropsTableRow value="value" type="String">
-    The initially selected value (key).
+  <PropsTableRow value="handleChange" type="Function" required>
+    A function to call on dropdown changes.
   </PropsTableRow>
-  <PropsTableRow value="options" type="Array">
+  <PropsTableRow value="options" type="Array" required>
     An array of Option elements:
     <ul>
         <li>
@@ -29,11 +29,10 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
         </li>
     </ul>
   </PropsTableRow>
-  <PropsTableRow value="handleChange" type="Function">
-    A function to call on dropdown changes
+    <PropsTableRow value="value" type="String">
+    The initially selected value (key).
   </PropsTableRow>
-</PropsTable>
-
-## Example
-
+</PropsTable>,
+  codeSlot: () =>
 <ExampleLoader example="Dropdown.tsx" />
+}} />

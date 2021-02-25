@@ -1,4 +1,5 @@
 import Code from "@/components/internal/Documentation/Code";
+import ComponentWrapper from "@/components/internal/Documentation/ComponentWrapper"
 import ExampleLoader from "@/documentation/utils/ExampleLoader";
 import Meta from "@/components/internal/Documentation/Meta";
 import PropsTable from "@/components/internal/Documentation/PropsTable";
@@ -7,12 +8,11 @@ import SlotsTable from "@/components/internal/Documentation/SlotsTable";
 import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/components/SlotsTableRow";
 
 <Meta
-  title="ImageSlider"
-  subtitle="Displays pictures as a slide-show"
+    component={["Components", "ImageSlider"]}
 />
 
-## Properties
-
+<ComponentWrapper scopedSlots={{
+  infoSlot: () => <div>
 <PropsTable>
   <PropsTableRow value="images" type="Image[]" required>
     An array of images to be shown by the slider (with each image containing at least a 'src' attribute).
@@ -21,9 +21,6 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
     Should automatic transitions between the images be enabled?
   </PropsTableRow>
 </PropsTable>
-
-## Slots
-
 <SlotsTable>
   <SlotsTableRow value="controls" prop="SliderControlParams">
      The complete controls for the slider: arrows and stepper. SliderControlParams contains the following props: 
@@ -37,11 +34,12 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
     This controls how the images in the slider are being rendered.
   </SlotsTableRow>
 </SlotsTable>
-
-## Example
-
+</div>,
+  codeSlot: () => <div>
 <ExampleLoader example="ImageSlider.tsx" />
 
 ## Example with slots
 
 <ExampleLoader example="ImageSlider.slots.tsx" />
+</div>
+}} />

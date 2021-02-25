@@ -27,3 +27,36 @@ describe("components/Paragraph", () => {
     expect(propsTest).toBeTruthy();
   });
 });
+
+describe("components/Paragraph ErrorHandling", () => {
+  let spy: jest.SpyInstance;
+
+  beforeEach(() => {
+    spy = jest.spyOn(console, "error");
+    spy.mockImplementation(() => null);
+  });
+
+  afterEach(() => {
+    spy.mockRestore();
+  });
+
+  it("should throw error when 'size' is not available", async () => {
+    expect(() =>
+      render(Paragraph, {
+        props: {
+          size: "2xl",
+        },
+      }),
+    ).toThrowError();
+  });
+
+  it("should throw error when 'weigth' is not available", async () => {
+    expect(() =>
+      render(Paragraph, {
+        props: {
+          weight: "thin",
+        },
+      }),
+    ).toThrowError();
+  });
+});

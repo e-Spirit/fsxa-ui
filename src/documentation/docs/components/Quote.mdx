@@ -1,22 +1,21 @@
 import Code from "@/components/internal/Documentation/Code";
+import ComponentWrapper from "@/components/internal/Documentation/ComponentWrapper"
 import ExampleLoader from "@/documentation/utils/ExampleLoader";
 import Meta from "@/components/internal/Documentation/Meta";
 import PropsTable from "@/components/internal/Documentation/PropsTable";
 import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
 
 <Meta
-  title="Quote"
-  subtitle="A quote displays some text within a colored box next to a quotation mark"
+  component={["Components", "Quote"]}
 />
 
-## Properties
-
+<ComponentWrapper scopedSlots={{
+  infoSlot: () =>
 <PropsTable>
   <PropsTableRow value="side" type="string" default="left">
-    Specify on which side the quotation mark should be. Possible Values are <span class="code">left</span> <span class="code">right</span>.
+    Specify on which side the quotation mark should be. Possible values are: <span class="code">left</span> <span class="code">right</span>
   </PropsTableRow>
-</PropsTable>
-
-## Examples
-
+</PropsTable>,
+  codeSlot: () =>
 <ExampleLoader example="Quote.tsx" />
+}} />

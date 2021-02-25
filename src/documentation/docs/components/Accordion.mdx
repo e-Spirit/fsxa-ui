@@ -1,22 +1,27 @@
 import Meta from "@/components/internal/Documentation/Meta";
+import ComponentWrapper from "@/components/internal/Documentation/ComponentWrapper"
 import ExampleLoader from "@/documentation/utils/ExampleLoader";
 import AccordionSection from "@/components/Sections/AccordionSection";
 import PropsTable from "@/components/internal/Documentation/PropsTable";
 import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
 
 <Meta
-  title="Accordion"
-  subtitle="The Accordion opens and closes when clicked on."
+  component={["Components", "Accordion"]}
 />
+
+<ComponentWrapper scopedSlots={{
+  infoSlot: () => 
 <PropsTable>
+  <PropsTableRow value="title" type="string" required>
+    The accordion's title.
+  </PropsTableRow>
   <PropsTableRow value="dark" type="boolean" default="false" optional>
     Specifies whether the accordion should be dark or light.
   </PropsTableRow>
-  <PropsTableRow value="title" type="string" required>
-    The title of the accordion.
-  </PropsTableRow>
   <PropsTableRow value="open" type="boolean" default="false" optional>
-    a boolean which decides if an Accordion is closed or not
+    A boolean determining if an accordion is open or not.
   </PropsTableRow>
-</PropsTable>
+</PropsTable>,
+  codeSlot: () =>
 <ExampleLoader example="Accordion.tsx" />
+}}></ComponentWrapper>

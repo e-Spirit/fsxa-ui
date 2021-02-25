@@ -29,3 +29,26 @@ describe("components/Quote", () => {
     }
   });
 });
+
+describe("components/Quote ErrorHandling", () => {
+  let spy: jest.SpyInstance;
+
+  beforeEach(() => {
+    spy = jest.spyOn(console, "error");
+    spy.mockImplementation(() => null);
+  });
+
+  afterEach(() => {
+    spy.mockRestore();
+  });
+
+  it("should throw error when 'side' is not available", async () => {
+    expect(() =>
+      render(Quote, {
+        props: {
+          side: "center",
+        },
+      }),
+    ).toThrowError();
+  });
+});
