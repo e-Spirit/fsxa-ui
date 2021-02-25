@@ -1,5 +1,5 @@
-import { Component } from "vue-tsx-support";
 import { VNode } from "vue";
+import { Component } from "vue-tsx-support";
 
 export type RenderedType =
   | JSX.Element
@@ -77,13 +77,13 @@ export interface HeadlineProps {
   /**
    * Specify which html-tag should be used
    *
-   * Possible values are: **h1**, **h2**, **h3**, **h4**, **h5**, **span**
+   * Possible values are: **h1**, **h2**, **h3**, **h4**, **h5**, **h6**, **span**
    *
    * Default value is: **h1**
    *
    * Make sure to expose useful side structure information to crawlers by using the correct tag
    */
-  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "span";
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span";
   /**
    * Specify the size of the headline
    *
@@ -91,7 +91,7 @@ export interface HeadlineProps {
    *
    * Default value is: **lg**
    */
-  size: "xxl" | "xl" | "lg" | "md" | "sm" | "xs";
+  size?: "xxl" | "xl" | "lg" | "md" | "sm" | "xs";
   /**
    * Should the headline be displayed in all uppercase letters?
    *
@@ -131,6 +131,11 @@ export interface ImageRef {
    */
   src: string;
 
+  /**
+   * Alternative text which describes the image.
+   */
+  alt?: string;
+
   previewId?: string;
 
   /**
@@ -144,6 +149,10 @@ export interface ImageRef {
       height: number;
     }
   >;
+
+  /**
+   * Specify which size should be used with which viewport
+   */
   sizes?: string;
 }
 export interface ImageProps extends Omit<ImageRef, "type"> {
@@ -169,9 +178,9 @@ export interface ImageProps extends Omit<ImageRef, "type"> {
   /**
    * Should a black overlay with specified opacity be displayed on top?
    *
-   * Possible values are: **25**, **50**, **75**, **80**
+   * Possible values are: **0**, **25**, **40**, **50**, **75**, and **80**
    */
-  opacity?: "0" | "25" | "40" | "50" | "75" | "80";
+  darken?: "0" | "25" | "40" | "50" | "75" | "80";
 }
 export class Image extends Component<ImageProps> {}
 
@@ -336,11 +345,11 @@ export interface ProductListItemProps {
   /**
    * The description that will be displayed. Can contain RichText
    */
-  description: RenderedType;
+  description?: RenderedType;
   /**
    * The price that will be displayed.
    */
-  price: string;
+  price?: string;
   /**
    * The image of the product that will be displayed in the background
    */
@@ -369,7 +378,7 @@ export interface Option {
   path?: string;
 }
 export interface DropdownProps {
-  value: string;
+  value?: string;
   options: Option[];
   handleChange: (option: Option) => void;
 }
@@ -380,6 +389,40 @@ export interface Tag {
    * Label of the tag
    */
   label: string;
+  /**
+   * Id of the tag so that i can be identified
+   */
+  id?: number | string;
+}
+
+export interface SocialArea {
+  /**
+   * Title of the social area
+   */
+  title?: string;
+  /**
+   * social elements which should be displayed in the social area
+   */
+  items?: SocialElement[];
+  /**
+   * Callback for when a social element is clicked.
+   */
+  handleSocialClick?: (socialElement: SocialElement) => void;
+}
+
+export interface SocialElement {
+  /**
+   * Title of the social element which is displayed when no custom slot is used
+   */
+  title?: string;
+  /**
+   * Id of the social element so that i can be identified
+   */
+  id?: number | string;
+  /**
+   * Additional informations for one social element
+   */
+  options?: any;
 }
 
 export interface NewsDetailProps {
@@ -394,9 +437,7 @@ export interface NewsDetailProps {
   /**
    * Object with a src attribute for the image.
    */
-  image: {
-    src: string;
-  };
+  image: ImageProps;
   /**
    * Date when the article is written. String should be ISO 8601 conform.
    */
@@ -425,12 +466,24 @@ export interface NewsDetailProps {
    */
   returnText?: string;
   /**
-   * Text above the social links.
+   * Area for social elements displayed under the article
    */
-  socialText?: string;
+  social?: SocialArea;
 }
 
-export class NewsDetail extends Component<NewsDetailProps> {}
+export interface NewsDetailSlots {
+  /**
+   * You can override the social area rendering of this component by specifying the slot social
+   * It will receive the social-area-data as parameter
+   */
+  social: SocialArea;
+}
+
+export class NewsDetail extends Component<
+  NewsDetailProps,
+  {},
+  NewsDetailSlots
+> {}
 
 export interface QuoteProps {
   /**

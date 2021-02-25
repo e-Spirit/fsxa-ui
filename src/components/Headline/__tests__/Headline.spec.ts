@@ -25,7 +25,7 @@ describe("components/Headline", () => {
   });
 
   it("should use the correct html element", async () => {
-    const possibleElements = ["H1", "H2", "H3", "H4", "H5", "SPAN"];
+    const possibleElements = ["h1", "h2", "h3", "h4", "h5", "h6", "span"];
     for (const element of possibleElements) {
       const { getByText } = render(Headline, {
         slots: { default: "Content " + element },
@@ -34,7 +34,7 @@ describe("components/Headline", () => {
         },
       });
       const headline = getByText("Content " + element);
-      expect(headline.tagName).toEqual(element);
+      expect(headline.tagName.toLowerCase()).toEqual(element);
     }
   });
 
@@ -44,5 +44,48 @@ describe("components/Headline", () => {
     });
     const headline = getByText("Content");
     expect(headline.tagName).toEqual("H1");
+  });
+});
+
+describe("components/Headline ErrorHandling", () => {
+  let spy: jest.SpyInstance;
+
+  beforeEach(() => {
+    spy = jest.spyOn(console, "error");
+    spy.mockImplementation(() => null);
+  });
+
+  afterEach(() => {
+    spy.mockRestore();
+  });
+
+  it("should throw error when 'as' is not available", async () => {
+    expect(() =>
+      render(Headline, {
+        props: {
+          as: "p",
+        },
+      }),
+    ).toThrowError();
+  });
+
+  it("should throw error when 'size' is not available", async () => {
+    expect(() =>
+      render(Headline, {
+        props: {
+          size: "2xl",
+        },
+      }),
+    ).toThrowError();
+  });
+
+  it("should throw error when 'weigth' is not available", async () => {
+    expect(() =>
+      render(Headline, {
+        props: {
+          weight: "thin",
+        },
+      }),
+    ).toThrowError();
   });
 });

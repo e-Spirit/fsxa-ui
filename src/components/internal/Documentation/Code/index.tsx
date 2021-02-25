@@ -1,13 +1,11 @@
 import BaseComponent from "@/components/BaseComponent";
-import { Prop, Component } from "vue-property-decorator";
-import Prism from "vue-prismjs";
-import copy from "copy-to-clipboard";
-
-import "prismjs/themes/prism-okaidia.css";
-import "./style.css";
-import Toggle from "@/components/internal/Toggle";
-import { CodeProps } from "@/types/components";
 import ComponentIFrame from "@/components/internal/Documentation/ComponentIFrame";
+import { CodeProps } from "@/types/components";
+import copy from "copy-to-clipboard";
+import "prismjs/themes/prism-okaidia.css";
+import Prism from "vue-prismjs";
+import { Component, Prop } from "vue-property-decorator";
+import "./style.css";
 
 @Component
 class Code extends BaseComponent<CodeProps> {
@@ -41,7 +39,7 @@ class Code extends BaseComponent<CodeProps> {
 
   render() {
     return (
-      <div class={`Code ${this.darkMode ? "dark" : ""}`}>
+      <div class="Code">
         {this.$slots.default ? (
           <div class="Code--Example">
             {this.filename && (
@@ -51,17 +49,6 @@ class Code extends BaseComponent<CodeProps> {
                 class="ui-mx-auto"
               />
             )}
-
-            <div class="Code--BackgroundToggle">
-              <Toggle
-                active={this.darkMode}
-                labels={{
-                  on: <i class="far fa-moon ui-text-gray-900" />,
-                  off: <i class="far fa-sun ui-text-gray-900" />,
-                }}
-                handleToggle={() => (this.darkMode = !this.darkMode)}
-              />
-            </div>
           </div>
         ) : null}
         <div class="Code--Container">

@@ -13,7 +13,7 @@ class ListSection<Item = any> extends BaseComponent<
   {},
   ListSectionSlots<Item>
 > {
-  @Prop() headline!: ListSectionProps<Item>["headline"];
+  @Prop() headline: ListSectionProps<Item>["headline"];
   @Prop({ required: true }) items!: ListSectionProps<Item>["items"];
   @Prop()
   selectedFilters: ListSectionProps<Item>["selectedFilters"];

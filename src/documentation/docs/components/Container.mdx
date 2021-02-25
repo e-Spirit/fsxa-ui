@@ -1,16 +1,16 @@
 import Code from "@/components/internal/Documentation/Code";
+import ComponentWrapper from "@/components/internal/Documentation/ComponentWrapper"
 import ExampleLoader from "@/documentation/utils/ExampleLoader";
 import Meta from "@/components/internal/Documentation/Meta";
 import PropsTable from "@/components/internal/Documentation/PropsTable";
 import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
 
 <Meta
-  title="Container"
-  subtitle="Basic layout element"
+    component={["Components", "Container"]}
 />
 
-## Properties
-
+<ComponentWrapper scopedSlots={{
+  infoSlot: () => 
 <PropsTable>
   <PropsTableRow value="fluid" type="Boolean" default="false">
     Indicates whether this container fills the surrounding container or not.
@@ -21,8 +21,7 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
   <PropsTableRow value="verticalPadding" type="Boolean" default="true">
     Indicates whether vertical padding should be activated or not.
   </PropsTableRow>
-</PropsTable>
-
-## Example
-
+</PropsTable>,
+  codeSlot: () =>
 <ExampleLoader example="Container.tsx" />
+}} />

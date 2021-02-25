@@ -14,7 +14,7 @@ export default class App extends Vue {
           lat: 48.213967,
           lng: 16.346388,
         },
-        name: "Skoda",
+        name: "This headline has a different colour",
         city: "1080 Vienna",
         street: "Skodagasse 13",
         description:
@@ -25,7 +25,7 @@ export default class App extends Vue {
           lat: 48.210967,
           lng: 16.246388,
         },
-        name: "A headline for testing the rendering of the headline",
+        name: "And the description and address are missing",
         city: "1140 Vienna",
         street: "Some alley 12",
         description:
@@ -36,11 +36,11 @@ export default class App extends Vue {
           lat: 48.203967,
           lng: 16.236388,
         },
-        name: "Another item",
+        name: "Look! It's also a custom info window",
         city: "1140 Vienna",
         street: "Some other alley 23",
         description:
-          "This item is here to test how switching between 3 items behaves.",
+          "See how this description is missing in the box and in the info window.",
       },
     ];
     const startLocation = {
@@ -51,16 +51,22 @@ export default class App extends Vue {
       <div class="ui-container ui-mx-auto" style="height: 640px;">
         <Sections.GoogleMapsSection
           apikey={apikey}
-          title="Google Maps Section"
+          title="Google Maps Section with scoped slots and custom info window"
           startLocation={startLocation}
           language="en"
           buttonLabel="Contact us"
           locations={locations}
+          renderInfoWindow={(location: MapsLocation): Node => {
+            const div = document.createElement("div");
+            div.innerHTML = `<h1 class="ui-text-espirit ui-font-bold ui-text-xl">${location.name}</h1>`;
+            return div;
+          }}
           handleButtonClick={(e: MouseEvent, location: MapsLocation) => {
             console.log("Button pressed");
             console.log("mouse event", e);
             console.log("Data is", location);
           }}
+          markerIcon="https://dummyimage.com/50x50/8f008f/fff"
           scopedSlots={{
             title: title => (
               <h2 class="ui-text-3xl ui-font-bold ui-text-espirit">{title}</h2>

@@ -9,7 +9,6 @@ import Layout, { LayoutItem } from "@/components/Layout";
 import Paragraph from "@/components/Paragraph";
 import {
   InterestingFactsSectionProps,
-  InterestingFactsSectionEvents,
   InterestingFactsSectionSlots,
 } from "@/types/sections";
 
@@ -18,15 +17,15 @@ import {
 })
 class InterestingFactsSection extends BaseComponent<
   InterestingFactsSectionProps,
-  InterestingFactsSectionEvents,
+  {},
   InterestingFactsSectionSlots
 > {
   @Prop({ required: true })
   headline!: InterestingFactsSectionProps["headline"];
   @Prop({ required: true }) text!: InterestingFactsSectionProps["text"];
-  @Prop({ required: true })
+  @Prop()
   tagline!: InterestingFactsSectionProps["tagline"];
-  @Prop({ required: true })
+  @Prop()
   counters!: InterestingFactsSectionProps["counters"];
   @Prop() backgroundImage: InterestingFactsSectionProps["backgroundImage"];
 
@@ -36,7 +35,7 @@ class InterestingFactsSection extends BaseComponent<
         {this.backgroundImage && (
           <Image
             class="InterestingFactsSection--BackgroundImage"
-            opacity="80"
+            darken={75}
             data-preview-id={this.backgroundImage.previewId}
             src={this.backgroundImage.src}
             resolutions={this.backgroundImage.resolutions}
@@ -85,23 +84,25 @@ class InterestingFactsSection extends BaseComponent<
                 )}
               </div>
             </LayoutItem>
-            <LayoutItem width="full" lg={{ width: "6/12" }}>
-              <Layout wrap>
-                {this.counters.map((counter, index) => (
-                  <LayoutItem class="ui-mt-20 lg:ui-mt-32">
-                    {this.$scopedSlots.counter ? (
-                      this.$scopedSlots.counter(counter)
-                    ) : (
-                      <Counter
-                        value={counter.value}
-                        label={counter.label}
-                        data-testid={`interestingfactssection-counter-${index}`}
-                      />
-                    )}
-                  </LayoutItem>
-                ))}
-              </Layout>
-            </LayoutItem>
+            {this.counters && this.counters.length > 0 ? (
+              <LayoutItem width="full" lg={{ width: "6/12" }}>
+                <Layout wrap>
+                  {this.counters.map((counter, index) => (
+                    <LayoutItem class="ui-mt-20 lg:ui-mt-32">
+                      {this.$scopedSlots.counter ? (
+                        this.$scopedSlots.counter(counter)
+                      ) : (
+                        <Counter
+                          value={counter.value}
+                          label={counter.label}
+                          data-testid={`interestingfactssection-counter-${index}`}
+                        />
+                      )}
+                    </LayoutItem>
+                  ))}
+                </Layout>
+              </LayoutItem>
+            ) : null}
           </Layout>
         </Container>
       </div>

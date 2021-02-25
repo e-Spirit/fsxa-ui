@@ -1,10 +1,11 @@
 import { BaseComponent } from "@/components";
-import { Component, Prop } from "vue-property-decorator";
 import {
   LineSeparatorProps,
   LineSeparatorWidths,
   ScreenPrefixes,
 } from "@/types/components";
+import { checkPassedValue } from "../utils/PropertyChecker/PropertyChecker";
+import { Component, Prop } from "vue-property-decorator";
 
 const lsWidthClasses = {
   4: "ui-w-4",
@@ -39,6 +40,17 @@ class LineSeparator extends BaseComponent<LineSeparatorProps> {
       const className = lsWidthClasses[width];
       classNames.push(prefix ? `${prefix}:${className}` : className);
     }
+  }
+
+  mounted() {
+    const possibleWidths = ["4", "8", "16", "32", "64", "full"];
+    checkPassedValue(this.$el, possibleWidths, this.width, "width");
+    checkPassedValue(this.$el, possibleWidths, this.sm_width, "sm_width");
+    checkPassedValue(this.$el, possibleWidths, this.md_width, "md_width");
+    checkPassedValue(this.$el, possibleWidths, this.lg_width, "lg_width");
+    checkPassedValue(this.$el, possibleWidths, this.xl_width, "xl_width");
+    checkPassedValue(this.$el, ["1", "2", "4"], this.height, "height");
+    checkPassedValue(this.$el, ["left", "right"], this.side, "side");
   }
 
   render() {
