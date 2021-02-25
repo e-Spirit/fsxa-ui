@@ -21,13 +21,15 @@ class PropsTableRow extends BaseComponent<PropsTableRowProps> {
       <tr>
         <td>
           <span
-            class={`ui-py-1 ui-px-2 ${
-              this.required ? "ui-bg-gray-900 ui-text-white" : "ui-bg-gray-200"
-            } ui-w-auto ui-rounded-lg ui-text-sm`}
+            title={this.required ? "required" : ""}
+            class={`${
+              this.required ? " ui-bg-gray-900 ui-text-white" : "ui-bg-gray-200"
+            } ui-py-1 ui-px-2 ui-w-auto ui-rounded-lg ui-text-sm`}
           >
             {this.value}
           </span>
         </td>
+
         <td>
           <span class="ui-py-1 ui-px-2 ui-w-auto ui-rounded-lg ui-text-sm ui-bg-gray-200">
             {this.type}

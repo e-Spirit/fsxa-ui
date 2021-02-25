@@ -5,18 +5,24 @@ import PropsTable from "@/components/internal/Documentation/PropsTable";
 import SlotsTable from "@/components/internal/Documentation/SlotsTable";
 import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
 import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/components/SlotsTableRow";
+import ComponentWrapper from "@/components/internal/Documentation/ComponentWrapper"
+import { Headline } from "@/components";
 
 
 <Meta
-  title="Header Section"
-  subtitle="a complete header section"
+component={["Sections", "HeaderSection"]}
 />
 
-## Properties
-
-<PropsTable>
-  <PropsTableRow value="backgroundImage" type="ImageRef" required>
-    Requires <span class="code">ImageRef</span> which needs:
+<ComponentWrapper  scopedSlots={{
+  codeSlot: () => <div><Headline as="h3" size="md" weight="light">
+          Example
+        </Headline><ExampleLoader example="Sections/HeaderSection.tsx" /><Headline as="h3" size="md" weight="light">
+          Example with slots
+        </Headline><ExampleLoader example="Sections/HeaderSection.slots.tsx" /></div>,
+  infoSlot: () => <div>
+    <PropsTable>
+      <PropsTableRow value="backgroundImage" type="ImageRef" required>
+        Requires <span class="code">ImageRef</span> which needs:
     <ul>
       <li>
        <span class="code">src:String</span>
@@ -50,23 +56,13 @@ import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/compon
 ## Slots
 
 <SlotsTable>
-  <SlotsTableRow value="headline" prop="string">
-  The element that will be displayed where we normally show the headline (with the box).
-  </SlotsTableRow>
   <SlotsTableRow value="backgroundImage" prop="ImageRef">
   The element that will be displayed where we normally show the backgroundImage.
   </SlotsTableRow>
   <SlotsTableRow value="breadcrumbs" prop="Breadcrumb[]">
   The element that will be displayed where we normally show navigation breadcrumbs.
   </SlotsTableRow>
-</SlotsTable>
-
-
-## Example
-
-<ExampleLoader example="Sections/HeaderSection.tsx" />
-
-
-## Example with slots
-
-<ExampleLoader example="Sections/HeaderSection.slots.tsx" />
+  <SlotsTableRow value="headline" prop="string">
+  The element that will be displayed where we normally show the headline (with the box).
+  </SlotsTableRow>
+</SlotsTable></div>}}></ComponentWrapper>

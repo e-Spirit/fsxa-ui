@@ -1,16 +1,16 @@
 import Code from "@/components/internal/Documentation/Code";
+import ComponentWrapper from "@/components/internal/Documentation/ComponentWrapper"
 import ExampleLoader from "@/documentation/utils/ExampleLoader";
 import Meta from "@/components/internal/Documentation/Meta";
 import PropsTable from "@/components/internal/Documentation/PropsTable";
 import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
 
 <Meta
-  title="Image"
-  subtitle="Displays a picture with optional opacity and zoom effect"
+    component={["Components", "Image"]}
 />
 
-## Properties
-
+<ComponentWrapper scopedSlots={{
+  infoSlot: () => 
 <PropsTable>
   <PropsTableRow value="src" type="String" required>
     A url that specifies the image source.
@@ -18,7 +18,7 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
   <PropsTableRow value="alt" type="String">
     An alternative title that describes the image.
   </PropsTableRow>
-  <PropsTableRow value="darken" type="String" default="0">
+  <PropsTableRow value="darken" type="Number" default="0">
     Specifies the opacity of a black overlay to darken the image. Possible values are 
     <span class="code">0</span>
     <span class="code">25</span>
@@ -28,11 +28,11 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
     <span class="code">80</span>.
     A higher value corresponds to a darker image. 
   </PropsTableRow>
-  <PropsTableRow value="zoom" type="Boolean" default="false">
-    Specifies whether there should be a zoom effect when hovering. Possible values are <span class="code">true</span><span class="code">false</span>
-  </PropsTableRow>
   <PropsTableRow value="lazy" type="Boolean" default="false">
     Specifies whether the image should be lazy loaded or not.
+  </PropsTableRow>
+  <PropsTableRow value="previewId" type="string">
+    The FirstSpirit previewId.
   </PropsTableRow>
   <PropsTableRow value="resolutions" type="Array">
     An array of properties required to build a source set of images. Each item requires the following properties.
@@ -46,11 +46,10 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
     <p>Example: <span class="code">"(min-width: 720px) 100px</span></p>
     See also -> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-sizes">MDN docs</a>
   </PropsTableRow>
-  <PropsTableRow value="previewId" type="string">
-    The FirstSpirit previewId.
+  <PropsTableRow value="zoom" type="Boolean" default="false">
+    Specifies whether there should be a zoom effect when hovering. Possible values are: <span class="code">true</span><span class="code">false</span>
   </PropsTableRow>
-</PropsTable>
-
-## Example
-
+</PropsTable>,
+  codeSlot: () =>
 <ExampleLoader example="Image.tsx" />
+}} />

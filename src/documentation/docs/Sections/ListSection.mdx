@@ -1,4 +1,5 @@
 import Code from "@/components/internal/Documentation/Code";
+import ComponentWrapper from "@/components/internal/Documentation/ComponentWrapper"
 import ExampleLoader from "@/documentation/utils/ExampleLoader";
 import Meta from "@/components/internal/Documentation/Meta";
 import PropsTable from "@/components/internal/Documentation/PropsTable";
@@ -7,51 +8,48 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
 import SlotsTableRow from "@/components/internal/Documentation/SlotsTable/components/SlotsTableRow";
 
 <Meta
-  title="ListSection"
-  subtitle="ListSection displays a section with a list of elements."
+  component={["Sections", "ListSection"]}
 />
 
-## Properties
-
+<ComponentWrapper scopedSlots={{
+  infoSlot: () => <div>
 <PropsTable>
   <PropsTableRow value="items" type="Item[]" required>
   Items that should be shown in the list (title: string, description: string, price: number, image: Image, url: string), e.g. ProductListItem.
   </PropsTableRow>
-  <PropsTableRow value="headline" type="string">
-  Specify a headline for the item list. The separator will not be displayed, if no headline is specified.
-  </PropsTableRow>
   <PropsTableRow value="filters" type="matrix of filters" optional>
-  A two-dimensional array of key-value pairs: <span class="code">&lt;string, string&gt;[][]</span>. The second dimension allows you to group filters in rows.
-  </PropsTableRow>
-  <PropsTableRow value="selectedFilters" type="string[]" optional>
-  Determine which filters should be selected from the beginning.
+    A two-dimensional array of key-value pairs: <span class="code">&lt;string, string&gt;[][]</span>. The second dimension allows you to group filters in rows.
   </PropsTableRow>
   <PropsTableRow value="handleFilterChange" type="function" optional>
-  A callback that will be invoked when the selected filters change. The new selected filters will be passed as an argument.
+    A callback that will be invoked when the selected filters change. The new selected filters will be passed as an argument.
+  </PropsTableRow>
+  <PropsTableRow value="headline" type="string">
+    Specify a headline for the item list. The separator will not be displayed, if no headline is specified.
+  </PropsTableRow>
+  <PropsTableRow value="selectedFilters" type="string[]" optional>
+    Determine which filters should be selected from the beginning.
   </PropsTableRow>
 </PropsTable>
-
-## Slots
-
 <SlotsTable>
   <SlotsTableRow value="item" prop="Item" required>
     This slot describes how your items will be rendered.
   </SlotsTableRow>
+  <SlotsTableRow value="filter" prop="Object" optional>
+    You can also define how the filter buttons get rendered. 
+    When the component uses your slot it passes in the following props:
+    <ul>
+    <li><span class="code">key</span> the key as defined in your filters.</li>
+    <li><span class="code">value</span> the value as defined in your filters.</li>
+    <li><span class="code">handleClick</span> a callback that you should call when your button gets clicked. It expects the key.</li>
+    <li><span class="code">selected</span> a boolean that describes whether this key is selected or not.</li>
+    </ul>
+  </SlotsTableRow>
   <SlotsTableRow value="headline" prop="String">
     This slot optionally replaces the default rendering of the headline.
   </SlotsTableRow>
-  <SlotsTableRow value="filter" prop="Object" optional>
-    You can also define how the filter buttons get rendered. 
-    When the component uses your slot it passes in the following props.
-    <span class="code">key</span> the key as defined in your filters.
-    <span class="code">value</span> the value as defined in your filters.
-    <span class="code">handleClick</span> a callback that you should call when your button gets clicked. It expects the key.
-    <span class="code">selected</span> a boolean that describes whether this key is selected or not.
-  </SlotsTableRow>
 </SlotsTable>
-
-## Examples
-
+</div>,
+  codeSlot: () => <div>
 You need to define how your items should be rendered via the <span class="code">item</span> slot:
 <ExampleLoader example="Sections/ListSection.tsx" />
 
@@ -67,3 +65,4 @@ By including fallback content using the default slot, you can override the rende
 When no headline is passed or the filters and the corresponding properties are omitted, no ui components will be rendered: 
 </div>
 <ExampleLoader example="Sections/ListSection.NoHeadlineAndFilters.tsx" />
+</div>}} />

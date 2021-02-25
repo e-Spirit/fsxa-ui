@@ -112,7 +112,7 @@ class Image extends BaseComponent<ImageProps> {
               this.zoom ? "zoom" : ""
             } ui-w-full ui-h-full ui-object-cover ui-object-center`}
           />
-          {this.darken && (
+          {this.darken !== undefined && (
             <div
               class={`ui-absolute ui-top-0 ui-left-0 ui-w-full ui-h-full ui-pointer-events-none ui-bg-black ${
                 opacityClasses[this.darken]
