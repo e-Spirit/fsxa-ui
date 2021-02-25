@@ -1,3 +1,10 @@
+## [2.3.10](https://github.com/e-Spirit/fsxa-ui/compare/v2.3.9...v2.3.10) (2021-02-25)
+
+
+### Bug Fixes
+
+* 🐛 Linting and enable prefix for tailwind classes ([ec572aa](https://github.com/e-Spirit/fsxa-ui/commit/ec572aacce3184b22636100b872fed92e683fc98))
+
 ## [2.3.9](https://github.com/e-Spirit/fsxa-ui/compare/v2.3.8...v2.3.9) (2021-01-25)
 
 
