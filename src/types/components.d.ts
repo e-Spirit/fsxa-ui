@@ -180,7 +180,7 @@ export interface ImageProps extends Omit<ImageRef, "type"> {
    *
    * Possible values are: **0**, **25**, **40**, **50**, **75**, and **80**
    */
-  darken?: 0 | 25 | 40 | 50 | 75 | 80;
+  darken?: "0" | "25" | "40" | "50" | "75" | "80";
 }
 export class Image extends Component<ImageProps> {}
 

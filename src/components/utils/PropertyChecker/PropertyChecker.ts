@@ -7,12 +7,13 @@
  */
 const checkPassedValue = (
   vueElement: Element,
-  possibleOptions: any[],
-  actualValue: any | undefined,
+  possibleOptions: (string | number)[],
+  actualValue: string | number | undefined,
   valueName?: string,
 ) => {
   if (!actualValue) return;
-  if (!possibleOptions.includes(actualValue)) {
+  const stringifiedOptions = possibleOptions.map(option => option.toString());
+  if (!stringifiedOptions.includes(actualValue.toString())) {
     vueElement.remove();
     throw new Error(
       `The ${

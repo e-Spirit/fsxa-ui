@@ -47,6 +47,16 @@ describe("components/Image", () => {
       const veilDiv = getByTestId("veil");
       expect(veilDiv.classList.contains("ui-opacity-75")).toBe(true);
     });
+    it("should allow strings as long as they're an allowed opacity class", () => {
+      const { getByTestId } = render(Image, {
+        props: {
+          src: testImage,
+          darken: "75",
+        },
+      });
+      const veilDiv = getByTestId("veil");
+      expect(veilDiv.classList.contains("ui-opacity-75")).toBe(true);
+    });
     it("should throw an error if the darken prop does not have one of the preset values", () => {
       //it should suffice to use shallowMount here, as the validation happens in the mount hook but for some reason shallow mount
       //didn't accept the options object
