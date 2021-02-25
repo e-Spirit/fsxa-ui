@@ -29,9 +29,7 @@ class PropsTableRow extends BaseComponent<PropsTableRowProps> {
             {this.value}
           </span>
         </td>
-        <td class="ui-text-center">
-          {this.required ? <i class="fas fa-check" /> : ""}
-        </td>
+
         <td>
           <span class="ui-py-1 ui-px-2 ui-w-auto ui-rounded-lg ui-text-sm ui-bg-gray-200">
             {this.type}
