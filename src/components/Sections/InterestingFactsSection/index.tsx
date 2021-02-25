@@ -35,7 +35,7 @@ class InterestingFactsSection extends BaseComponent<
         {this.backgroundImage && (
           <Image
             class="InterestingFactsSection--BackgroundImage"
-            darken={75}
+            darken="75"
             data-preview-id={this.backgroundImage.previewId}
             src={this.backgroundImage.src}
             resolutions={this.backgroundImage.resolutions}
