@@ -17,8 +17,7 @@ class PropsTable extends BaseComponent {
         <table class="PropsTable">
           <thead>
             <tr class="PropsTable--Header">
-              <th>Parameter</th>
-              <th>Required</th>
+              <th>Prop</th>
               <th>Type</th>
               <th>Description</th>
               <th>Default</th>

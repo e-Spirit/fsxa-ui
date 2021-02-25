@@ -2,6 +2,7 @@ import BaseComponent from "@/components/BaseComponent";
 import { Component } from "vue-property-decorator";
 import "vue-tsx-support/enable-check";
 import ResponsiveButton from "../ResponsiveButton";
+import TableLegend from "@/components/internal/Documentation/TableLegend";
 
 interface ComponentWrapperSlots {
   infoSlot: void;
@@ -38,9 +39,14 @@ class ComponentWrapper extends BaseComponent<{}, {}, ComponentWrapperSlots> {
             </ResponsiveButton>
           </div>
         </div>
-        {this.state === 1
-          ? this.$scopedSlots.codeSlot()
-          : this.$scopedSlots.infoSlot()}
+        {this.state === 1 ? (
+          this.$scopedSlots.codeSlot()
+        ) : (
+          <div>
+            {this.$scopedSlots.infoSlot()}
+            <TableLegend></TableLegend>
+          </div>
+        )}
       </div>
     );
   }

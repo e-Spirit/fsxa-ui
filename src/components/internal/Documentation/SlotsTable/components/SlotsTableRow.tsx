@@ -27,9 +27,6 @@ class SlotsTableRow extends BaseComponent<SlotsTableRowProps> {
             {this.value}
           </span>
         </td>
-        <td class="ui-text-center">
-          {this.required ? <i class="fas fa-check" /> : ""}
-        </td>
         <td>{this.prop}</td>
         <td>{this.$slots.default}</td>
       </tr>
