@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/e-Spirit/fsxa-ui/compare/v3.0.0...v3.0.1) (2021-02-26)
+
+
+### Bug Fixes
+
+* **googlemapssection.mdx:** changed property to required in GoogleMapsSection documentation ([b669a7f](https://github.com/e-Spirit/fsxa-ui/commit/b669a7f2caea3122261b9c08c2345093fa19c41f))
+
 # [3.0.0](https://github.com/e-Spirit/fsxa-ui/compare/v2.3.9...v3.0.0) (2021-02-25)
 
 
