@@ -8,7 +8,7 @@ import { Component, Prop } from "vue-property-decorator";
   name: "VideoSection",
 })
 class VideoSection extends BaseComponent<VideoSectionProps> {
-  @Prop() youtubeId!: VideoSectionProps["youtubeId"];
+  @Prop({ required: true }) youtubeId!: VideoSectionProps["youtubeId"];
   @Prop() width: VideoSectionProps["width"];
   @Prop() height: VideoSectionProps["height"];
   @Prop() title: VideoSectionProps["title"];
@@ -18,16 +18,20 @@ class VideoSection extends BaseComponent<VideoSectionProps> {
 
   properties() {
     return this.parameters
-      ? this.parameters
-          .map((p, index) => (index > 0 ? "&" : "?") + p.param + "=" + p.value)
-          .join("")
+      ? this.parameters.reduce(
+          (resultStr, item, index) =>
+            `${resultStr}${index > 0 ? "&" : ""}${item.param}=${item.value}`,
+          "?",
+        )
       : "";
   }
 
   render() {
     const videoWidth = this.width ? this.width : 560;
     const url = this.youtubeUrl
-      ? this.youtubeUrl
+      ? this.youtubeUrl.endsWith("/")
+        ? this.youtubeUrl
+        : this.youtubeUrl + "/"
       : "https://www.youtube-nocookie.com/embed/";
     return (
       <div
