@@ -59,4 +59,18 @@ describe("components/sections/video-section", () => {
     const videoSection = getByTestId("fsxa-video-section");
     expect(videoSection.innerHTML).toContain(testTitle);
   });
+
+  it("accepts a YouTube URL not ending with a slash", () => {
+    const playerUrlWithoutSlash = "http://no-player";
+    const { getByTestId } = render(VideoSection, {
+      props: {
+        youtubeId: dummyId,
+        youtubeUrl: playerUrlWithoutSlash,
+      },
+    });
+    const videoSection = getByTestId("fsxa-video-section");
+    expect(videoSection?.querySelector("iframe")?.getAttribute("src")).toEqual(
+      `${playerUrlWithoutSlash}/${dummyId}`,
+    );
+  });
 });
