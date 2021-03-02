@@ -19,7 +19,7 @@ class Navigation extends BaseNavigation {
                   this.triggerItemClick(item);
                 }}
                 data-active={isActive}
-                class={`h-full ui-flex ui-items-center ui-justify-center ui-px-5 ui-py-4 ui-uppercase ui-tracking-widest ui-text-xs ${
+                class={`ui-h-full ui-flex ui-items-center ui-justify-center ui-px-5 ui-py-4 ui-uppercase ui-tracking-widest ui-text-xs ${
                   isActive ? "ui-text-gray-500" : ""
                 }`}
               >
