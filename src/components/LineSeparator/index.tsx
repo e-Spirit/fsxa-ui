@@ -1,14 +1,19 @@
 import { BaseComponent } from "@/components";
-import { Component, Prop } from "vue-property-decorator";
 import {
   LineSeparatorProps,
   LineSeparatorWidths,
   ScreenPrefixes,
 } from "@/types/components";
+import { checkPassedValue } from "../utils/PropertyChecker/PropertyChecker";
+import { Component, Prop } from "vue-property-decorator";
 
-const getClassName = (width?: LineSeparatorWidths, prefix?: ScreenPrefixes) => {
-  const className = `ui-w-${width || 16}`;
-  return prefix ? `${prefix}:${className}` : className;
+const lsWidthClasses = {
+  4: "ui-w-4",
+  8: "ui-w-8",
+  16: "ui-w-16",
+  32: "ui-w-32",
+  64: "ui-w-64",
+  full: "ui-w-full",
 };
 
 @Component({
@@ -26,14 +31,44 @@ class LineSeparator extends BaseComponent<LineSeparatorProps> {
   @Prop({ required: false, default: "left" })
   side: LineSeparatorProps["side"];
 
+  pushWidth(
+    classNames: string[],
+    width?: LineSeparatorWidths,
+    prefix?: ScreenPrefixes,
+  ) {
+    if (width) {
+      const className = lsWidthClasses[width];
+      classNames.push(prefix ? `${prefix}:${className}` : className);
+    }
+  }
+
+  mounted() {
+    const possibleWidths = ["4", "8", "16", "32", "64", "full"];
+    checkPassedValue(this.$el, possibleWidths, this.width, "width");
+    checkPassedValue(this.$el, possibleWidths, this.sm_width, "sm_width");
+    checkPassedValue(this.$el, possibleWidths, this.md_width, "md_width");
+    checkPassedValue(this.$el, possibleWidths, this.lg_width, "lg_width");
+    checkPassedValue(this.$el, possibleWidths, this.xl_width, "xl_width");
+    checkPassedValue(this.$el, ["1", "2", "4"], this.height, "height");
+    checkPassedValue(this.$el, ["left", "right"], this.side, "side");
+  }
+
   render() {
-    const baseClasses = `ui-my-1 ui-bg-black ui-h-${this.height}`;
+    const heightClasses = {
+      1: "ui-h-1",
+      2: "ui-h-2",
+      4: "ui-h-4",
+    };
+
+    const baseClasses = `ui-my-1 ui-bg-black${
+      this.height ? " " + heightClasses[this.height] : ""
+    }`;
     const classNames = [baseClasses];
-    classNames.push(getClassName(this.width));
-    if (this.sm_width) classNames.push(getClassName(this.sm_width, "sm"));
-    if (this.md_width) classNames.push(getClassName(this.md_width, "md"));
-    if (this.lg_width) classNames.push(getClassName(this.lg_width, "lg"));
-    if (this.xl_width) classNames.push(getClassName(this.xl_width, "xl"));
+    this.pushWidth(classNames, this.width);
+    this.pushWidth(classNames, this.sm_width, "sm");
+    this.pushWidth(classNames, this.md_width, "md");
+    this.pushWidth(classNames, this.lg_width, "lg");
+    this.pushWidth(classNames, this.xl_width, "xl");
 
     return (
       <div

@@ -65,7 +65,7 @@ const mdxComponents: any = {
 class MDXWrapper extends BaseComponent {
   render() {
     return (
-      <div class="MDXWrapper">
+      <div class="MDXWrapper ui-p-10 ui-w-full ui-h-full">
         <MDXProvider components={mdxComponents}>
           {this.$slots.default}
         </MDXProvider>

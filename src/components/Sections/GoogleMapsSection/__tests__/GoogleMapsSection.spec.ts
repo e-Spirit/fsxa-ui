@@ -5,6 +5,7 @@ import {
   GoogleMapsSectionProps,
   MapsLocation,
 } from "../../../../types/sections";
+import { shallowMount } from "@vue/test-utils";
 
 const apikey = process.env.VUE_APP_MAPS_APIKEY;
 
@@ -23,8 +24,13 @@ describe("components/sections/google-maps-section", () => {
     requiredProps = {
       apikey,
       language: "en",
+      startLocation: {
+        lat: 10,
+        lng: 10,
+      },
     };
   });
+
   describe("given a title prop", () => {
     it("should render a title", () => {
       const propsWithTitle = requiredProps;
@@ -51,25 +57,6 @@ describe("components/sections/google-maps-section", () => {
         expect(scopedSlotTitle.tagName).toBe("H1");
         expect(scopedSlotTitle.innerHTML).toBe(defaultTitle);
       });
-    });
-  });
-  describe("given a language prop", () => {
-    it("should throw an error if the length of language string is not exactly 2", () => {
-      const longProps = requiredProps;
-      longProps.language = "eng";
-      const shortProps = requiredProps;
-      shortProps.language = "e";
-      // Suppress console.error output, since we do not want to pollute the console with the expected error
-      const errorSpy = jest
-        .spyOn(console, "error")
-        .mockImplementation(async () => []);
-      expect(() =>
-        render(GoogleMapsSection, { props: longProps }),
-      ).toThrowError();
-      expect(() =>
-        render(GoogleMapsSection, { props: shortProps }),
-      ).toThrowError();
-      errorSpy.mockReset();
     });
   });
   describe("given a buttonLabel prop", () => {
@@ -100,6 +87,30 @@ describe("components/sections/google-maps-section", () => {
     });
   });
 
+  describe("render description box", () => {
+    const completeLocation = {
+      name: "Link's house",
+      city: "Hateno Village",
+      street: "Behind the bridge",
+      description: "Link lives here",
+      position: {
+        lat: 15.8,
+        lng: 27.3,
+      },
+    };
+    it("should return a node containing all the properties of the passed location", () => {
+      const wrapper = shallowMount(GoogleMapsSection, {
+        props: requiredProps,
+      } as any);
+      const descriptionBox = wrapper.vm.renderDescriptionBox(
+        completeLocation,
+      ) as HTMLDivElement;
+      expect(descriptionBox.innerHTML).toContain(completeLocation.name);
+      expect(descriptionBox.innerHTML).toContain(completeLocation.city);
+      expect(descriptionBox.innerHTML).toContain(completeLocation.street);
+      expect(descriptionBox.innerHTML).toContain(completeLocation.description);
+    });
+  });
   describe("given a locations prop", () => {
     const name = "Test Location";
     const locations: MapsLocation[] = [
@@ -122,7 +133,7 @@ describe("components/sections/google-maps-section", () => {
         },
       },
     ];
-    it("should render the locations", () => {
+    it("should render the locations in the sidebar", () => {
       const locationProps = requiredProps;
       locationProps.locations = locations;
       const { getAllByTestId } = render(GoogleMapsSection, {
@@ -156,6 +167,23 @@ describe("components/sections/google-maps-section", () => {
           expect(renderedLocation.innerHTML).toContain(name);
         });
       });
+    });
+    it("should render a sidebar", () => {
+      const locationProps = requiredProps;
+      locationProps.locations = locations;
+      const { getByTestId } = render(GoogleMapsSection, {
+        props: locationProps,
+      });
+      const sidebar = getByTestId("sidebar") as HTMLElement;
+      expect(sidebar.tagName).toBe("DIV");
+    });
+    it("should not render a sidebar if the locations prop is an empty array", () => {
+      const locationProps = requiredProps;
+      locationProps.locations = [];
+      const { getByTestId } = render(GoogleMapsSection, {
+        props: locationProps,
+      });
+      expect(() => getByTestId("sidebar")).toThrow();
     });
   });
 });

@@ -1,6 +1,6 @@
 {
   "name": "fsxa-ui",
-  "version": "2.3.10",
+  "version": "3.0.1",
   "license": "Apache-2.0",
   "types": "src/types/fsxa-ui.d.ts",
   "main": "./dist/fsxa-ui.common.js",
@@ -11,6 +11,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name fsxa-ui src/index.ts",
+    "build:app": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "commit": "git-cz",
@@ -22,14 +23,13 @@
   },
   "dependencies": {
     "copy-to-clipboard": "3.3.1",
-    "core-js": "2.6.10",
     "git-cz": "^4.7.6",
+    "iframe-resizer": "^4.3.1",
     "lodash.throttle": "4.1.1",
     "portal-vue": "2.1.7",
     "tailwindcss": "^1.9.6",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
-    "vue-fragment": "1.5.1",
     "vue-router": "3.1.6"
   },
   "devDependencies": {
@@ -46,6 +46,7 @@
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/vue": "^5.0.4",
     "@types/googlemaps": "^3.40.3",
+    "@types/iframe-resizer": "^3.5.8",
     "@types/jest": "^24.0.19",
     "@types/lodash.kebabcase": "^4.1.6",
     "@types/lodash.throttle": "^4.1.6",
@@ -55,7 +56,7 @@
     "@vue/cli-plugin-eslint": "^4.3.0",
     "@vue/cli-plugin-router": "^4.3.0",
     "@vue/cli-plugin-typescript": "^4.3.0",
-    "@vue/cli-plugin-unit-jest": "^4.3.0",
+    "@vue/cli-plugin-unit-jest": "^4.5.11",
     "@vue/cli-service": "^4.3.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^5.0.2",
@@ -81,7 +82,7 @@
     "sass-loader": "^8.0.2",
     "semantic-release": "^17.3.0",
     "typedoc-loader": "^5.0.1",
-    "typescript": "~3.8.3",
+    "typescript": "~4.1.0",
     "vue-prismjs": "^1.2.0",
     "vue-property-decorator": "^8.4.1",
     "vue-template-compiler": "^2.6.11",

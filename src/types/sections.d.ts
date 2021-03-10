@@ -5,7 +5,6 @@ import {
   RenderedType,
   SliderControlParams,
 } from "./components";
-
 export interface NewsTeaserSectionProps {
   headline: string;
   items: Omit<NewsTeaserItemProps, "handleClick" | "latest">[];
@@ -106,13 +105,6 @@ export interface ProductDetailSectionProps {
    */
   images?: ImageRef[];
   /**
-   * Optional list of key-value-pairs, e.g. `{ key1: "value1", key2: "value2" }` that renders to foldable (Accordion) elements
-   * in the view. Utilizes the key as title and the value as foldable text content.
-   *
-   * The value can contain RichText-Formatting
-   */
-  foldableContentList?: Record<string, RenderedType>;
-  /**
    * Optional callback that is triggered, when the button is clicked
    *
    * Be aware that the button is only rendered, when `buttonText` is provided
@@ -120,12 +112,18 @@ export interface ProductDetailSectionProps {
   handleButtonClick?: () => void;
 }
 
-export class ProductDetailSection extends Component<
-  ProductDetailSectionProps
-> {}
+export interface ProductDetailSectionSlots {
+  /**
+   * Additional content which describes the product.
+   */
+  additionalContent: void;
+}
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface InterestingFactsSectionEvents {}
+export class ProductDetailSection extends Component<
+  ProductDetailSectionProps,
+  {},
+  ProductDetailSectionSlots
+> {}
 
 export interface InterestingFactsSectionSlots {
   /**
@@ -155,31 +153,37 @@ export interface InterestingFactsSectionSlots {
 
 export interface InterestingFactsSectionProps {
   /**
-   * Optional reference to the background-image that should be displayed
+   * text content that will be displayed in the info box
    */
-  backgroundImage?: ImageRef;
+  text: RenderedType;
+
   /**
    * Headline of the section
    */
   headline: string;
+
+  /**
+   * Optional reference to the background-image that should be displayed
+   */
+  backgroundImage?: ImageRef;
+
   /**
    * tagline that will be displayed on top of the headline
    */
-  tagline: string;
-  /**
-   * text content that will be displayed in the info box
-   */
-  text: RenderedType;
+  tagline?: string;
+
   /**
    * counters that should be displayed
    */
-  counters: Array<{
+  counters?: Array<{
     value: number;
     label: string;
   }>;
 }
 export class InterestingFactsSection extends Component<
-  InterestingFactsSectionProps
+  InterestingFactsSectionProps,
+  {},
+  InterestingFactsSectionSlots
 > {}
 
 export interface TeaserSectionProps<MediaType = ImageRef> {
@@ -234,6 +238,11 @@ export interface TeaserSectionSlots<MediaType> {
    */
   text?: string;
   /**
+   * You can override the tagline rendering of this component by specifying the slot tagline
+   * It will receive the tagline as its first parameter
+   */
+  tagline?: string;
+  /**
    * You can override the button rendering of this component by specifying the slot button
    * It will receive the buttonText as its first parameter
    */
@@ -251,8 +260,8 @@ export class TeaserSection<MediaType> extends Component<
 > {}
 
 export interface Breadcrumb {
-  referenceId: string;
-  referenceType: string;
+  referenceId?: string;
+  referenceType?: string;
   label: string;
   path: string;
 }
@@ -265,6 +274,7 @@ export interface BreadcrumbsProps {
 export interface HeaderSectionEvents {}
 
 export interface HeaderSectionSlots {
+  title?: string;
   backgroundImage?: ImageRef;
   breadcrumbs?: Breadcrumb[];
 }
@@ -281,7 +291,7 @@ export interface HeaderSectionProps {
   /**
    * The items from which the breadcrumbs will be constructed
    */
-  breadcrumbs: Breadcrumb[];
+  breadcrumbs?: Breadcrumb[];
   /**
    * Optional callback that will be triggered, when an item is clicked
    */
@@ -398,10 +408,14 @@ export interface GoogleMapsSectionProps {
    */
   apikey: string;
   /**
-   * The optional starting location where the map will be centered to.
-   * If not set, the user will be prompted to allow the page access to their location and the map will be centered on the users location.
+   * The user will be prompted to allow the page access to their location and the map will be centered on the user's location.
+   * The startingLocation is where the map will be centered to if the user does not allow the page to access their location.
    */
-  startLocation?: MapsPosition;
+  startLocation: MapsPosition;
+  /**
+   * Skips asking the user for their location and always uses the start location instead.
+   */
+  alwaysUseStartLocation?: boolean;
   /**
    * The title text to be displayed above the map container
    */
@@ -421,7 +435,7 @@ export interface GoogleMapsSectionProps {
    * See also the list of supported languages.
    * https://developers.google.com/maps/faq#languagesupport
    */
-  language: string;
+  language?: string;
   /**
    * An array of locations. This component will place markers at these locations which can be clicked to display additional information.
    */

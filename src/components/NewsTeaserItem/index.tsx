@@ -29,7 +29,7 @@ class NewsTeaserItem extends BaseComponent<NewsTeaserItemProps> {
             class="ui-absolute ui-left-0 ui-top-0 ui-w-full"
             src={this.image.src}
             previewId={this.image.previewId}
-            opacity="40"
+            darken="40"
           />
         )}
         <div class="NewsTeaserItem--InfoBox md:ui-ml-0 md:ui-mt-10 md:ui--mr-10">

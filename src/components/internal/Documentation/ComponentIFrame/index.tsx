@@ -1,8 +1,8 @@
-import "vue-tsx-support/enable-check";
-import { Component, Prop } from "vue-property-decorator";
 import BaseComponent from "@/components/BaseComponent";
 import ResponsiveButton from "@/components/internal/Documentation/ResponsiveButton";
-
+import { iframeResizer } from "iframe-resizer";
+import { Component, Prop } from "vue-property-decorator";
+import "vue-tsx-support/enable-check";
 interface ComponentIFrameProps {
   filename: string;
   dark?: boolean;
@@ -27,12 +27,20 @@ class ComponentIFrame extends BaseComponent<ComponentIFrameProps> {
 
   resizeFrame() {
     const iframe = this.$refs.iframe as HTMLIFrameElement;
+    const resizer = this.$refs.iframe as HTMLElement;
     if (iframe.contentWindow) {
       iframe.style.height =
         iframe.contentWindow.document.documentElement.scrollHeight + "px";
+      resizer.style.height = iframe.style.height;
     } else {
       iframe.style.height = "100px";
     }
+    iframeResizer(
+      {
+        heightCalculationMethod: "lowestElement",
+      },
+      iframe,
+    );
   }
 
   pressedButtonIndex = 4;
@@ -54,7 +62,7 @@ class ComponentIFrame extends BaseComponent<ComponentIFrameProps> {
     return (
       <div class="ui-bg-gray-400">
         <div
-          class={`ui-flex ui-space-x-4 ui-justify-center ${
+          class={`ui-flex ui-space-x-2 ui-justify-start ui-pb-2 ${
             this.dark ? "ui-bg-black" : "ui-bg-white"
           } ui-text-xl`}
         >
@@ -73,16 +81,20 @@ class ComponentIFrame extends BaseComponent<ComponentIFrameProps> {
             );
           })}
         </div>
-        <iframe
-          src={`/#/raw-component/${this.parsedFilename}`}
-          scrolling="yes"
-          width="100%"
-          class={`ui-mx-auto ${this.dark ? "ui-bg-black" : "ui-bg-white"} ${
-            this.iframeWidth
-          }`}
-          ref="iframe"
-          onLoad={this.resizeFrame}
-        />
+        <div class="ui-bg-gray-400 ui-h-full">
+          <div class="ui-w-full ui-flex ui-flex-row">
+            <iframe
+              src={`/raw-component/${this.parsedFilename}`}
+              scrolling="yes"
+              width="100%"
+              class={`ui-mx-auto ${this.dark ? "ui-bg-black" : "ui-bg-white"} ${
+                this.iframeWidth
+              }`}
+              ref="iframe"
+              onLoad={this.resizeFrame}
+            />
+          </div>
+        </div>
       </div>
     );
   }

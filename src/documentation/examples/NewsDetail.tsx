@@ -1,7 +1,7 @@
+import { SocialElement } from "@/types/fsxa-ui";
+import { NewsDetail, Quote } from "fsxa-ui";
 import Vue from "vue";
 import Component from "vue-class-component";
-
-import { NewsDetail, Quote } from "fsxa-ui";
 
 const tags = [{ label: "Mobility" }, { label: "Technology" }];
 const image = {
@@ -17,13 +17,31 @@ export default class App extends Vue {
           headline="Futuring Human Mobility: Preparing the future for human mobility"
           teaser="Berlin has „a special intensity“ says architect David Chipperfield at the opening of the exhibition „Futuring Human Mobility“ at the Bötzow site."
           image={image}
-          date={"2020-5-2"}
+          date={new Date(2020, 0, 18).toLocaleDateString()}
           author="Max Mustermann"
           tags={tags}
           handleTagClick={tag => console.log("clicked: " + tag.label)}
           handleReturnClick={() => console.log("return")}
-          socialText="Social Contact"
           returnText="Return"
+          social={{
+            handleSocialClick: (socialItem: SocialElement) =>
+              alert(socialItem.title),
+            title: "Social Media",
+            items: [
+              {
+                title: "Facebook",
+                id: 1,
+              },
+              {
+                title: "Twitter",
+                id: 2,
+              },
+              {
+                title: "Instagram",
+                id: 3,
+              },
+            ],
+          }}
         >
           <div>
             <p>

@@ -1,16 +1,16 @@
 import Code from "@/components/internal/Documentation/Code";
+import ComponentWrapper from "@/components/internal/Documentation/ComponentWrapper"
 import ExampleLoader from "@/documentation/utils/ExampleLoader";
 import Meta from "@/components/internal/Documentation/Meta";
 import PropsTable from "@/components/internal/Documentation/PropsTable";
 import PropsTableRow from "@/components/internal/Documentation/PropsTable/components/PropsTableRow";
 
 <Meta
-  title="Counter"
-  subtitle="Displays a number with a corresponding text"
+    component={["Components", "Counter"]}
 />
 
-## Properties
-
+<ComponentWrapper scopedSlots={{
+  infoSlot: () => 
 <PropsTable>
   <PropsTableRow value="label" type="String" required>
     Specify which text is displayed
@@ -18,8 +18,7 @@ import PropsTableRow from "@/components/internal/Documentation/PropsTable/compon
   <PropsTableRow value="value" type="Number" required>
     Specify which number is displayed
   </PropsTableRow>
-</PropsTable>
-
-## Example
-
+</PropsTable>,
+  codeSlot: () =>
 <ExampleLoader example="Counter.tsx" />
+}} />

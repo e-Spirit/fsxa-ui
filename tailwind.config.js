@@ -28,12 +28,16 @@ module.exports = {
   },
   theme: {
     extend: {
+      borderWidth: {
+        30: "30px",
+      },
       screens: {
         ...defaultTheme.screens,
         xs: "20rem",
       },
       colors: {
         espirit: "#810444",
+        "espirit-blue": "#272838",
         highlight: "var(--fsxa-text-highlight-color, #D5DD02)",
       },
       fontFamily: {
@@ -63,10 +67,13 @@ module.exports = {
       transitionProperty: {
         size: "width, height",
       },
+      minWidth: {
+        "64": "16rem",
+      },
     },
   },
   variants: {
-    textColor: ["group-hover"],
+    textColor: ["group-hover", "hover"],
     opacity: ["hover", "group-hover"],
     overflow: ["hover"],
     translate: ["hover", "group-hover"],

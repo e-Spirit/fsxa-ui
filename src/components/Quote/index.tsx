@@ -1,6 +1,7 @@
 import { BaseComponent, Container, Layout } from "@/components";
 import { QuoteProps } from "@/types/fsxa-ui";
 import { Component, Prop } from "vue-property-decorator";
+import { checkPassedValue } from "@/components/utils/PropertyChecker/PropertyChecker";
 import "./style.css";
 
 @Component({
@@ -8,6 +9,10 @@ import "./style.css";
 })
 class FSXAQuote extends BaseComponent<QuoteProps> {
   @Prop({ required: false, default: "left" }) side!: QuoteProps["side"];
+
+  mounted() {
+    checkPassedValue(this.$el, ["left", "right"], this.side, "side");
+  }
 
   render() {
     return (

@@ -2,6 +2,7 @@ import BaseComponent from "@/components/BaseComponent";
 import Component from "vue-class-component";
 import { Prop } from "vue-property-decorator";
 import { ParagraphProps } from "@/types/fsxa-ui";
+import { checkPassedValue } from "@/components/utils/PropertyChecker/PropertyChecker";
 
 @Component({
   name: "Paragraph",
@@ -9,6 +10,21 @@ import { ParagraphProps } from "@/types/fsxa-ui";
 class Paragraph extends BaseComponent<ParagraphProps> {
   @Prop({ default: "base" }) size!: ParagraphProps["size"];
   @Prop({ default: "normal" }) weight!: ParagraphProps["weight"];
+
+  mounted() {
+    checkPassedValue(
+      this.$el,
+      ["xs", "sm", "base", "md", "lg", "xl"],
+      this.size,
+      "size",
+    );
+    checkPassedValue(
+      this.$el,
+      ["bold", "light", "normal"],
+      this.weight,
+      "weight",
+    );
+  }
 
   render() {
     const sizeClasses = {
