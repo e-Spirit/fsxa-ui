@@ -107,8 +107,6 @@ class GoogleMapsSection extends BaseComponent<
   @Prop()
   language: GoogleMapsSectionProps["language"] | undefined;
   @Prop()
-  language: GoogleMapsSectionProps["language"] | undefined;
-  @Prop()
   buttonLabel: GoogleMapsSectionProps["buttonLabel"];
   @Prop()
   handleButtonClick: GoogleMapsSectionProps["handleButtonClick"];
@@ -166,7 +164,6 @@ class GoogleMapsSection extends BaseComponent<
       </button>`;
       div.querySelector("button")?.addEventListener("click", event => {
         // since we validated this prop in the mounted hook we can safely assume that handleButtonClick is available here
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         this.handleButtonClick!(event, location);
       });
       div.innerHTML += button;
@@ -277,7 +274,6 @@ class GoogleMapsSection extends BaseComponent<
 
     this.removeApi();
     // Since we have a default language we can easily assume there's a language set
-    // eslint-disable-next-line
     await this.loadApi(this.apikey, this.language!);
 
     const map = new google.maps.Map(
