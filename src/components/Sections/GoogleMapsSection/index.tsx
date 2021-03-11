@@ -104,7 +104,7 @@ class GoogleMapsSection extends BaseComponent<
   @Prop({ required: true })
   startLocation!: GoogleMapsSectionProps["startLocation"];
 
-  @Prop({ default: navigator.language })
+  @Prop()
   language: GoogleMapsSectionProps["language"] | undefined;
   @Prop()
   language: GoogleMapsSectionProps["language"] | undefined;
