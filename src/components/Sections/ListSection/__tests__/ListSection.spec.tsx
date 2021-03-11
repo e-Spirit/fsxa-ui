@@ -156,7 +156,6 @@ describe("components/ListSection", () => {
       ...testSetup,
       scopedSlots: scopedSlotsWithHeadline,
     });
-    console.log(getByText("Test headline"));
     expect(getByText("Test headline").tagName).not.toBe("H1");
     expect(getByTestId("rendered-headline")).toBeTruthy();
   });

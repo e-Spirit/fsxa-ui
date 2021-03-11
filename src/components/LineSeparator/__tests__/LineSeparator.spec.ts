@@ -49,3 +49,84 @@ describe("components/LineSeparator", () => {
     expect(separator.classList.contains("xl:ui-w-16")).toBeTruthy();
   });
 });
+
+describe("components/LineSeparator ErrorHandling", () => {
+  let spy: jest.SpyInstance;
+
+  beforeEach(() => {
+    spy = jest.spyOn(console, "error");
+    spy.mockImplementation(() => null);
+  });
+
+  afterEach(() => {
+    spy.mockRestore();
+  });
+
+  it("should throw error when 'width' is not available", async () => {
+    expect(() =>
+      render(LineSeparator, {
+        props: {
+          width: "2",
+        },
+      }),
+    ).toThrowError();
+  });
+
+  it("should throw error when 'sm_width' is not available", async () => {
+    expect(() =>
+      render(LineSeparator, {
+        props: {
+          sm_width: "2",
+        },
+      }),
+    ).toThrowError();
+  });
+
+  it("should throw error when 'md_width' is not available", async () => {
+    expect(() =>
+      render(LineSeparator, {
+        props: {
+          md_width: "2",
+        },
+      }),
+    ).toThrowError();
+  });
+
+  it("should throw error when 'lg_width' is not available", async () => {
+    expect(() =>
+      render(LineSeparator, {
+        props: {
+          lg_width: "2",
+        },
+      }),
+    ).toThrowError();
+  });
+
+  it("should throw error when 'xl_width' is not available", async () => {
+    expect(() =>
+      render(LineSeparator, {
+        props: {
+          xl_width: "2",
+        },
+      }),
+    ).toThrowError();
+  });
+  it("should throw error when 'height' is not available", async () => {
+    expect(() =>
+      render(LineSeparator, {
+        props: {
+          height: "5",
+        },
+      }),
+    ).toThrowError();
+  });
+  it("should throw error when 'side' is not available", async () => {
+    expect(() =>
+      render(LineSeparator, {
+        props: {
+          side: "center",
+        },
+      }),
+    ).toThrowError();
+  });
+});

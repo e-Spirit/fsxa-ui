@@ -8,12 +8,14 @@ export default class App extends Vue {
   render() {
     return (
       <div>
-        <Container>Container</Container>
-        <Container fluid>Container fluid</Container>
-        <Container verticalPadding={false}>
+        <Container class="ui-bg-pink-300">Container</Container>
+        <Container fluid class="ui-bg-gray-300">
+          Container fluid
+        </Container>
+        <Container class="ui-bg-gray-600" verticalPadding={false}>
           Container without vertical padding
         </Container>
-        <Container horizontalPadding={false}>
+        <Container horizontalPadding={false} class="ui-bg-pink-600">
           Container without horizontal padding
         </Container>
       </div>

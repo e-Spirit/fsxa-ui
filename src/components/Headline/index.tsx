@@ -1,17 +1,37 @@
 import { Component, Prop } from "vue-property-decorator";
 import BaseComponent from "../BaseComponent";
 import { HeadlineProps } from "@/types/fsxa-ui";
-
+import { checkPassedValue } from "@/components/utils/PropertyChecker/PropertyChecker";
 @Component({
   name: "Headline",
 })
 class Headline extends BaseComponent<HeadlineProps> {
-  @Prop({ default: "h1" }) as!: HeadlineProps["as"];
-  @Prop({ default: "lg" }) size!: HeadlineProps["size"];
+  @Prop({ default: "h1" }) as: HeadlineProps["as"];
+  @Prop({ default: "lg" }) size: HeadlineProps["size"];
   @Prop({ default: "bold" }) weight!: HeadlineProps["weight"];
   @Prop({ default: true }) uppercase!: HeadlineProps["uppercase"];
   @Prop({ default: true }) includeMargin!: HeadlineProps["includeMargin"];
   @Prop() handleClick!: HeadlineProps["handleClick"];
+
+  mounted() {
+    checkPassedValue(
+      this.$el,
+      ["h1", "h2", "h3", "h4", "h5", "h6", "span"],
+      this.as,
+    );
+    checkPassedValue(
+      this.$el,
+      ["xxl", "xl", "lg", "md", "sm", "xs"],
+      this.size,
+      "size",
+    );
+    checkPassedValue(
+      this.$el,
+      ["semibold", "bold", "light"],
+      this.weight,
+      "weight",
+    );
+  }
 
   render() {
     const sizeClasses = {
@@ -41,11 +61,15 @@ class Headline extends BaseComponent<HeadlineProps> {
     const Component: any = this.as;
     return (
       <Component
-        class={`Headline ui-block ${sizeClasses[this.size]} ${
-          this.weight ? weightClasses[this.weight] : ""
-        }
+        class={`Headline ui-block ${
+          this.size ? sizeClasses[this.size] : sizeClasses["lg"]
+        } ${this.weight ? weightClasses[this.weight] : ""}
         ${this.uppercase ? "ui-uppercase" : ""} ${
-          this.includeMargin ? marginClasses[this.size] : ""
+          this.includeMargin
+            ? this.size
+              ? marginClasses[this.size]
+              : marginClasses["lg"]
+            : ""
         }`}
         onClick={() => this.handleClick && this.handleClick()}
       >

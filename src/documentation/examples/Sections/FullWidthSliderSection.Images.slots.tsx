@@ -31,7 +31,7 @@ class App extends Vue {
               <Image
                 src={slideMedia.src}
                 class="HeaderSection--BackgroundImage"
-                opacity="0"
+                darken="0"
               />
             ),
             arrowButtonContent: props => (

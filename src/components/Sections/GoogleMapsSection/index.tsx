@@ -2,7 +2,6 @@ import { Component, Prop, Watch } from "vue-property-decorator";
 import BaseComponent from "@/components/BaseComponent";
 import {
   GoogleMapsSectionProps,
-  MapsPosition,
   MapsLocation,
   GoogleMapsSectionSlots,
 } from "@/types/sections";
@@ -102,15 +101,19 @@ class GoogleMapsSection extends BaseComponent<
   markers: MarkerWithInfoWindow[] | null = null;
 
   @Prop({ required: true }) apikey!: GoogleMapsSectionProps["apikey"];
-  @Prop({ required: true }) language!: GoogleMapsSectionProps["language"];
+  @Prop({ required: true })
+  startLocation!: GoogleMapsSectionProps["startLocation"];
 
+  @Prop()
+  language: GoogleMapsSectionProps["language"] | undefined;
   @Prop()
   buttonLabel: GoogleMapsSectionProps["buttonLabel"];
   @Prop()
   handleButtonClick: GoogleMapsSectionProps["handleButtonClick"];
 
+  @Prop()
+  alwaysUseStartLocation: GoogleMapsSectionProps["alwaysUseStartLocation"];
   @Prop() title: GoogleMapsSectionProps["title"];
-  @Prop() startLocation: GoogleMapsSectionProps["startLocation"];
   @Prop({ default: 15 }) zoom: GoogleMapsSectionProps["zoom"];
   @Prop() locations: GoogleMapsSectionProps["locations"];
   @Prop() mapStyles: GoogleMapsSectionProps["mapStyles"];
@@ -133,15 +136,24 @@ class GoogleMapsSection extends BaseComponent<
     }
   }
 
-  private renderDescriptionBox(location: MapsLocation): Node {
-    const template = `<h2 class="ui-font-bold ui-text-highlight ui-text-lg">${
-      location.name
-    }</h2>
-      <div class="ui-mt-2">
-        ${location.description ? "<p>" + location.description + "</p>" : ""}
-        <p class="ui-mt-2">${location.street}</p>
-        <p>${location.city}</p>
-      </div>`;
+  renderDescriptionBox(location: MapsLocation): Node {
+    const headline = location.name
+      ? `<h2 class="ui-font-bold ui-text-highlight ui-text-lg">${location.name}</h2>`
+      : "";
+    const description = location.description
+      ? `<p>${location.description}</p>`
+      : "";
+    const street = location.street
+      ? `<p class="ui-mt-2">${location.street}</p>`
+      : "";
+    const city = location.city ? `<p>${location.city}</p>` : "";
+    const template = `${headline}
+          <div class="ui-mt-2">
+            ${description}
+            ${street}
+            ${city}
+          </div>`;
+
     const div = document.createElement("div");
     div.classList.add("ui-w-64", "ui-text-sm");
     div.innerHTML = template;
@@ -152,7 +164,6 @@ class GoogleMapsSection extends BaseComponent<
       </button>`;
       div.querySelector("button")?.addEventListener("click", event => {
         // since we validated this prop in the mounted hook we can safely assume that handleButtonClick is available here
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         this.handleButtonClick!(event, location);
       });
       div.innerHTML += button;
@@ -176,8 +187,12 @@ class GoogleMapsSection extends BaseComponent<
         content: getContent(location),
       });
 
-      marker.addListener("click", () => {
+      google.maps.event.addListener(marker, "click", () => {
         this.selectedIndex = index;
+      });
+      google.maps.event.addListener(infoWindow, "closeclick", () => {
+        console.log("infowindow closed");
+        this.selectedIndex = null;
       });
       return {
         marker,
@@ -186,7 +201,9 @@ class GoogleMapsSection extends BaseComponent<
     });
   }
 
-  getPromisedGeolocation(options?: PositionOptions): Promise<Position> {
+  getPromisedGeolocation(
+    options?: PositionOptions,
+  ): Promise<GeolocationPosition> {
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(resolve, reject, options);
     });
@@ -230,7 +247,7 @@ class GoogleMapsSection extends BaseComponent<
       window.dispatchEvent(event);
     };
 
-    const api = new Promise(resolve => {
+    const api = new Promise<void>(resolve => {
       window.addEventListener("googleMapsAPILoaded", () => {
         resolve();
       });
@@ -242,9 +259,10 @@ class GoogleMapsSection extends BaseComponent<
   }
 
   async initMap(styles: google.maps.MapTypeStyle[]): Promise<google.maps.Map> {
-    let center = {} as MapsPosition;
-    if (!this.startLocation) {
-      let userPosition: Position;
+    const center = this.startLocation;
+
+    if (!this.alwaysUseStartLocation) {
+      let userPosition: GeolocationPosition;
       try {
         userPosition = await this.getPromisedGeolocation();
         center.lat = userPosition.coords.latitude;
@@ -252,12 +270,11 @@ class GoogleMapsSection extends BaseComponent<
       } catch (error) {
         console.warn("Unable to get the users geolocation.");
       }
-    } else {
-      center = this.startLocation;
     }
 
     this.removeApi();
-    await this.loadApi(this.apikey, this.language);
+    // Since we have a default language we can easily assume there's a language set
+    await this.loadApi(this.apikey, this.language!);
 
     const map = new google.maps.Map(
       document.getElementById("map") as HTMLElement,
@@ -270,9 +287,6 @@ class GoogleMapsSection extends BaseComponent<
     return map;
   }
   mounted() {
-    if (this.language?.length !== 2) {
-      throw new Error("Language string must contain exactly 2 characters.");
-    }
     if (this.buttonLabel) {
       if (!this.handleButtonClick) {
         throw new Error(
@@ -310,7 +324,54 @@ class GoogleMapsSection extends BaseComponent<
       </div>
     );
   }
+  renderSideBar() {
+    if (this.locations && this.locations.length > 0) {
+      return (
+        <div
+          class="ui-col-span-1 lg:ui-col-span-1 ui-bg-gray-100 ui-overflow-scroll ui-border-2 ui-border-gray-400"
+          data-testId="sidebar"
+        >
+          {this.locations?.map((location, index) =>
+            this.$scopedSlots.locationItem ? (
+              this.$scopedSlots.locationItem({
+                location,
+                selected: index === this.selectedIndex,
+                handleItemClick: this.selectLocation.bind(this, index),
+              })
+            ) : (
+              <div
+                class={`ui-w-full ui-py-1 ui-px-2 ui-border-b-2 ui-border-gray-400 ui-cursor-pointer ui-overflow-hidden ${
+                  index === this.selectedIndex ? "ui-bg-white" : ""
+                }`}
+                on-click={this.selectLocation.bind(this, index)}
+                data-testId="rendered-location"
+              >
+                <h3 class="ui-text-lg ui-font-bold ui-text-highlight ui-break-words">
+                  {location.name}
+                </h3>
+
+                <div class="ui-mt-2 ui-text-sm">
+                  {location.description && <p>{location.description}</p>}
+                  <p class="ui-mt-2">{location.street}</p>
+                  <p>{location.city}</p>
+                </div>
+              </div>
+            ),
+          )}
+        </div>
+      );
+    }
+    return null;
+  }
   render() {
+    const mapColSpan =
+      this.locations && this.locations.length > 0
+        ? "lg:ui-col-span-3"
+        : "lg:ui-col-span-4";
+    const containerRows =
+      this.locations && this.locations.length > 0
+        ? "ui-grid-rows-2"
+        : "ui-grid-rows-1";
     return (
       <div class="ui-w-full ui-h-full ui-p-8">
         {this.$scopedSlots.title && this.title
@@ -318,41 +379,14 @@ class GoogleMapsSection extends BaseComponent<
           : this.title
           ? this.renderDefaultTitle()
           : null}
-        <div class="ui-grid ui-grid-cols-1 ui-grid-rows-2 lg:ui-grid-cols-4 lg:ui-grid-rows-1 ui-h-full">
+        <div
+          class={`ui-grid ui-grid-cols-1 ${containerRows} lg:ui-grid-cols-4 lg:ui-grid-rows-1 ui-h-full`}
+        >
           <div
-            class="ui-col-span-1 lg:ui-col-span-3 ui-border-2 ui-border-gray-400"
+            class={`ui-col-span-1 ${mapColSpan} ui-border-2 ui-border-gray-400`}
             id="map"
           ></div>
-          <div class="ui-col-span-1 lg:ui-col-span-1 ui-bg-gray-100 ui-overflow-scroll ui-border-2 ui-border-gray-400">
-            {this.locations &&
-              this.locations?.map((location, index) =>
-                this.$scopedSlots.locationItem ? (
-                  this.$scopedSlots.locationItem({
-                    location,
-                    selected: index === this.selectedIndex,
-                    handleItemClick: this.selectLocation.bind(this, index),
-                  })
-                ) : (
-                  <div
-                    class={`ui-w-full ui-py-1 ui-px-2 ui-border-b-2 ui-border-gray-400 ui-cursor-pointer ui-overflow-hidden ${
-                      index === this.selectedIndex ? "bg-white" : ""
-                    }`}
-                    on-click={this.selectLocation.bind(this, index)}
-                    data-testId="rendered-location"
-                  >
-                    <h3 class="ui-text-lg ui-font-bold ui-text-highlight ui-break-words">
-                      {location.name}
-                    </h3>
-
-                    <div class="ui-mt-2 ui-text-sm">
-                      {location.description && <p>{location.description}</p>}
-                      <p class="ui-mt-2">{location.street}</p>
-                      <p>{location.city}</p>
-                    </div>
-                  </div>
-                ),
-              )}
-          </div>
+          {this.renderSideBar()}
         </div>
       </div>
     );

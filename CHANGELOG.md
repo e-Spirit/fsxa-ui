@@ -1,23 +1,64 @@
-## [2.3.9](https://github.com/e-Spirit/fsxa-ui/compare/v2.3.8...v2.3.9) (2021-01-25)
+# [4.0.0](https://github.com/e-Spirit/fsxa-ui/compare/v3.0.1...v4.0.0) (2021-03-11)
 
+- Release to fix release errors and adjust changelog
+
+
+## [3.0.1](https://github.com/e-Spirit/fsxa-ui/compare/v3.0.0...v3.0.1) (2021-02-26)
 
 ### Bug Fixes
 
-* **package-lock:** fixed registry for git-cz ([7a9b966](https://github.com/e-Spirit/fsxa-ui/commit/7a9b9660cd93d1820ea81185af25824c67804655))
+- **GoogleMapsSection:** Removed default value for language prop
+
+# [3.0.0](https://github.com/e-Spirit/fsxa-ui/compare/v2.3.9...v3.0.0) (2021-02-25)
+
+### Features
+
+- **Import sections:** Added new way to import sections directly
+
+### Bugfixes
+
+- **Accordion:** Property `open` now works as intended
+
+- **GoogleMapsSection:** removed default value for language
+
+- **ImageSlider and Slider:** added missing exports
+
+- **LineSeparator:** fixed LineSeparator to be working properly
+
+- **NewsDetail:** Image in NewsDetail now uses the Image properties and minor styling changes
+
+- **InterestingFactsSection:** Counters in InterestingFactsSection is now optional
+
+- **FullWidthImageSlider:** fixed FullWidthImageSlider when only one slide is given
+
+- **GoogleMapsSection:** fixed issue where undefined values would appear
+
+### BREAKING CHANGES
+
+- **ProductDetailSection:** The property date has been changed from Date to string. The property socialText
+  does not exist anymore and is transformed into an object.
+
+- **ProductDetailSection:** The property `foldableContentList` was removed and instead a slot `additionalContent` was added.
+
+- **Component Validation:** Invalid strings or numbers in properties now causes an error in the console, and the component will not be rendered anymore.
+
+## [2.3.9](https://github.com/e-Spirit/fsxa-ui/compare/v2.3.8...v2.3.9) (2021-01-25)
+
+### Bug Fixes
+
+- **package-lock:** fixed registry for git-cz ([7a9b966](https://github.com/e-Spirit/fsxa-ui/commit/7a9b9660cd93d1820ea81185af25824c67804655))
 
 ## [2.3.8](https://github.com/e-Spirit/fsxa-ui/compare/v2.3.7...v2.3.8) (2021-01-21)
 
-
 ### Bug Fixes
 
-* 🐛 Remove unused files, extract doc components from bundle ([49e9f4c](https://github.com/e-Spirit/fsxa-ui/commit/49e9f4c3e7afe9f630a82a3be6ac176f38e0225c))
+- 🐛 Remove unused files, extract doc components from bundle ([49e9f4c](https://github.com/e-Spirit/fsxa-ui/commit/49e9f4c3e7afe9f630a82a3be6ac176f38e0225c))
 
 ## [2.3.7](https://github.com/e-Spirit/fsxa-ui/compare/v2.3.6...v2.3.7) (2021-01-20)
 
-
 ### Bug Fixes
 
-* 🐛 Remove unused dependency and bump version ([ac615aa](https://github.com/e-Spirit/fsxa-ui/commit/ac615aaaeb1d1b75c67f447021bf216fd7a43a16))
+- 🐛 Remove unused dependency and bump version ([ac615aa](https://github.com/e-Spirit/fsxa-ui/commit/ac615aaaeb1d1b75c67f447021bf216fd7a43a16))
 
 ## [2.3.6](https://github.com/e-Spirit/fsxa-ui/compare/v2.3.5...v2.3.6) (2021-01-20)
 

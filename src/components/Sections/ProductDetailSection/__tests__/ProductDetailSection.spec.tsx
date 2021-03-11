@@ -42,12 +42,6 @@ const propertyList: ProductProperty[] = [
   },
 ];
 
-const foldableContentList: Record<string, string> = {
-  Delivery: `delivery`,
-  "Installation instructions": "instructions",
-  Compatibility: `compatibility`,
-};
-
 const componentProperties = {
   description,
   headline,
@@ -59,7 +53,6 @@ const componentProperties = {
     { src: src2, dimensions: { width: 5, height: 2 } },
   ],
   propertyList,
-  foldableContentList,
 };
 
 const expectToExist = (container: HTMLElement, elements: string[]) => {
@@ -104,7 +97,6 @@ describe("components/sections/ProductDetailSection", () => {
     expectToExistNTimes(container, [
       { key: "ProductDetail--Property--Headline", expectedInstanceCount: 2 },
       { key: "ProductDetail--Property--List", expectedInstanceCount: 2 },
-      { key: "ProductDetail--Accordion", expectedInstanceCount: 3 },
     ]);
 
     expect(getByTestId(`ProductDetail--Headline`)?.textContent).toEqual(
@@ -132,17 +124,6 @@ describe("components/sections/ProductDetailSection", () => {
     expect(propertyNodes[0].textContent).toEqual("Door Locks");
     expect(propertyNodes[1].textContent).toEqual(
       "Google HomeAmazon AlexaBosch Smart Home",
-    );
-
-    const accordionNodes = container.querySelectorAll(
-      `.ProductDetail--Accordion .Accordion--Text-Box`,
-    );
-    expect(accordionNodes[0].textContent).toEqual(foldableContentList.Delivery);
-    expect(accordionNodes[1].textContent).toEqual(
-      foldableContentList["Installation instructions"],
-    );
-    expect(accordionNodes[2].textContent).toEqual(
-      foldableContentList.Compatibility,
     );
   });
 
