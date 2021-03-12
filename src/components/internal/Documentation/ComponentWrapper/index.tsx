@@ -1,5 +1,5 @@
 import BaseComponent from "@/components/BaseComponent";
-import { Component } from "vue-property-decorator";
+import { Component, Prop } from "vue-property-decorator";
 import "vue-tsx-support/enable-check";
 import ResponsiveButton from "../ResponsiveButton";
 import TableLegend from "@/components/internal/Documentation/TableLegend";
@@ -8,11 +8,19 @@ interface ComponentWrapperSlots {
   infoSlot: void;
   codeSlot: void;
 }
+interface ComponentWrapperProps {
+  url: string;
+}
 
 @Component({
   name: "ComponentWrapper",
 })
-class ComponentWrapper extends BaseComponent<{}, {}, ComponentWrapperSlots> {
+class ComponentWrapper extends BaseComponent<
+  ComponentWrapperProps,
+  {},
+  ComponentWrapperSlots
+> {
+  @Prop() url: ComponentWrapperProps["url"];
   state = 2;
   render() {
     return (
@@ -37,6 +45,11 @@ class ComponentWrapper extends BaseComponent<{}, {}, ComponentWrapperSlots> {
             >
               <i class="fas fa-code" /> Example
             </ResponsiveButton>
+            <a href={this.url} target="_blank">
+              <ResponsiveButton class={`ui-rounded`} title="codesandbox">
+                <i class="fas fa-code" /> Code Sandbox
+              </ResponsiveButton>
+            </a>
           </div>
         </div>
         {this.state === 1 ? (

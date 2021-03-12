@@ -3,7 +3,7 @@ import { Component, Prop } from "vue-property-decorator";
 import BaseComponent from "@/components/BaseComponent";
 
 interface ResponsiveButtonProps {
-  handleOnClick: () => void;
+  handleOnClick?: () => void;
   pressed?: boolean;
   dark?: boolean;
   title?: string;
@@ -13,7 +13,7 @@ interface ResponsiveButtonProps {
   name: "ResponsiveButton",
 })
 class ResponsiveButton extends BaseComponent<ResponsiveButtonProps> {
-  @Prop({ required: true })
+  @Prop({ required: false })
   handleOnClick!: ResponsiveButtonProps["handleOnClick"];
   @Prop({ default: false }) pressed!: ResponsiveButtonProps["pressed"];
   @Prop({ default: false }) dark!: ResponsiveButtonProps["dark"];
