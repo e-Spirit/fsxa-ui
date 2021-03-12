@@ -29,7 +29,11 @@ class AccordionSection extends BaseComponent<AccordionSectionProps> {
             open={index === this.selectedIndex}
             on-toggleCollapse={this.toggleCollapse.bind(this, index)}
           >
-            <p>{item.text}</p>
+            {typeof item.text === "string" ? (
+              <span>{item.text}</span>
+            ) : (
+              item.text
+            )}
           </Accordion>
         ))}
       </div>
