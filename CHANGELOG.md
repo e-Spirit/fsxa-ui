@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/e-Spirit/fsxa-ui/compare/v4.0.0...v4.0.1) (2021-03-12)
+
+
+### Bug Fixes
+
+* **accordionsection:** fixed accordionSection ([41ff3fe](https://github.com/e-Spirit/fsxa-ui/commit/41ff3fec02a3198f52d0fcaacd8d0e35eebcf9aa))
+
 # [4.0.0](https://github.com/e-Spirit/fsxa-ui/compare/v3.0.1...v4.0.0) (2021-03-11)
 
 - Release to fix release errors and adjust changelog
