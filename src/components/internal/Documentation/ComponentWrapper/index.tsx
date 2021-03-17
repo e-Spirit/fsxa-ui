@@ -20,7 +20,7 @@ class ComponentWrapper extends BaseComponent<
   {},
   ComponentWrapperSlots
 > {
-  @Prop() url: ComponentWrapperProps["url"];
+  @Prop() url!: ComponentWrapperProps["url"];
   state = 2;
   render() {
     return (
