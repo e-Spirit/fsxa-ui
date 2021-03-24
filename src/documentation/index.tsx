@@ -77,26 +77,26 @@ class Documentation extends BaseComponent {
           </div>
         </div>
         <footer class="ui-text-center ui-text-sm ui-bg-gray-300 ui-py-2">
-          © 2005 - 2021 e-Spirit AG | Alle Rechte vorbehalten. |{" "}
+          © 2005 - 2021 e-Spirit AG | All rights reserved. |{" "}
           <a
             class="ui-text-espirit ui-underline"
-            href="https://www.e-spirit.com/de/datenschutzerklaerung/"
+            href="https://www.e-spirit.com/en/data-privacy/"
           >
-            Datenschutz
+            Data privacy
           </a>{" "}
           |{" "}
           <a
             class="ui-text-espirit ui-underline"
-            href="https://www.e-spirit.com/de/impressum/"
+            href="https://www.e-spirit.com/en/legal-notice/"
           >
-            Impressum
+            Imprint
           </a>{" "}
           |{" "}
           <a
             class="ui-text-espirit ui-underline"
-            href="https://www.e-spirit.com/de/kontakt/"
+            href="https://www.e-spirit.com/en/contact-us/"
           >
-            Kontakt
+            Contact us
           </a>
         </footer>
       </div>
