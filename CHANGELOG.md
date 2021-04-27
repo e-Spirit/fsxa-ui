@@ -1,3 +1,10 @@
+# [4.1.0-alpha.1](https://github.com/e-Spirit/fsxa-ui/compare/v4.0.1...v4.1.0-alpha.1) (2021-04-27)
+
+
+### Features
+
+* **navigation:** added scopedSlots for navigation for custom components ([5438696](https://github.com/e-Spirit/fsxa-ui/commit/5438696c12344943f19e7e5da2f9ff52e7d445f5))
+
 ## [4.0.1](https://github.com/e-Spirit/fsxa-ui/compare/v4.0.0...v4.0.1) (2021-03-12)
 
 
