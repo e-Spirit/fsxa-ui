@@ -6,6 +6,7 @@ import {
   NavigationEventsWithOn,
   NavigationItem,
   NavigationProps,
+  NavigationSlots,
 } from "@/types/fsxa-ui";
 
 @Component({
@@ -13,7 +14,8 @@ import {
 })
 class BaseNavigation extends BaseComponent<
   NavigationProps,
-  NavigationEventsWithOn
+  NavigationEventsWithOn,
+  NavigationSlots
 > {
   @Prop({
     required: true,

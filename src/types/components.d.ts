@@ -1,3 +1,4 @@
+import Vue from "*.vue";
 import { VNode } from "vue";
 import { Component } from "vue-tsx-support";
 
@@ -271,26 +272,15 @@ export interface LayoutProps {
   wrap?: boolean;
 }
 export class Layout extends Component<LayoutProps> {}
-export interface NavItem {
-  key: string | number;
-  label: any;
-}
-export interface NavProps {
-  items: (NavItem & {
-    childPlacement?: "left" | "right" | "center";
-    children: NavItem[];
-  })[];
-}
-
 export interface NavigationItem {
   key: string | number;
   label: any;
   path: string;
+  children?: NavigationItem[];
 }
 
 export interface FirstLevelNavigationItem extends NavigationItem {
   childPlacement?: "left" | "right";
-  children: NavigationItem[];
 }
 export interface NavigationProps {
   /**
@@ -305,9 +295,15 @@ export interface NavigationProps {
 export interface NavigationEventsWithOn {
   onItemClicked: NavigationItem | FirstLevelNavigationItem;
 }
+
+export interface NavigationSlots {
+  topLevel?: any;
+  children?: any;
+}
 export class Navigation extends Component<
   NavigationProps,
-  NavigationEventsWithOn
+  NavigationEventsWithOn,
+  NavigationSlots
 > {}
 export class MobileNavigation extends Component<
   NavigationProps,

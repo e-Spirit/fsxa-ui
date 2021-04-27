@@ -31,7 +31,7 @@ class MobileNavigation extends BaseNavigation {
                 >
                   {item.label}
                 </span>
-                {item.children.length ? (
+                {item.children && item.children.length ? (
                   <span
                     class="ui-absolute ui-top-1/2 ui-right-0 ui--mt-4 ui-mr-3 ui-p-1 hover:ui-bg-white hover:ui-shadow ui-rounded-full"
                     onClick={event => {
@@ -70,7 +70,8 @@ class MobileNavigation extends BaseNavigation {
                   </span>
                 ) : null}
               </a>
-              {item.children.length > 0 &&
+              {item.children &&
+              item.children.length > 0 &&
               this.collapsedItems.includes(item.key) ? (
                 <div class="ui-block ui-border-t ui-border-gray-300">
                   {item.children.map(child => (

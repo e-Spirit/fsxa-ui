@@ -24,6 +24,13 @@ export default class App extends Vue {
             key: "products.interior",
             path: "/products",
             label: "Interior Equipment",
+            children: [
+              {
+                key: "test",
+                path: "/test",
+                label: "Test",
+              },
+            ],
           },
           {
             key: "products.indoor_cams",
@@ -109,6 +116,21 @@ export default class App extends Vue {
             items={navItems}
             activeItemKeys={["products"]}
             onItemClicked={item => console.log(item)}
+            scopedSlots={{
+              children: item => (
+                <div>
+                  {item.children && item.children.length > 0 ? (
+                    <div>
+                      {item.children.map((child: any) => (
+                        <div class="ui-absolute ui-right-0 ui-top-0 ui-bg-red-500">
+                          {child.label}
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+              ),
+            }}
           />
         </div>
       </div>
