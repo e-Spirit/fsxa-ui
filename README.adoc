@@ -1,16 +1,16 @@
-= FSXA-UI
+== FSXA-UI
 
-== About the FSXA
+=== About the FSXA
 
 The FirstSpirit Experience Accelerator (FSXA) is the hybrid solution of a digital
 experience platform, combining a headless approach with enterprise capabilities.
 If you are interested in the FSXA check this https://docs.e-spirit.com/module/fsxa/overview/benefits-hybrid/index.html[Overview].
 
-== FSXA-UI Component Library
+=== FSXA-UI Component Library
 
 The https://enterprise-fsxa-ui.e-spirit.cloud/[FSXA-UI Component Library (documentation)] is a vue.js project providing basic components and complete paragraphs used by the https://github.com/e-Spirit/fsxa-pwa[FSXA-PWA].
 
-== Project setup
+=== Project setup
 
 FSXA-UI is really easy to get started with. Make sure to follow the guide below to get a better understanding about some of the decisions behind FSXA-UI and how to use it to kick-off your next project.
 
@@ -49,7 +49,7 @@ import "fsxa-ui/dist/fsxa-ui.css";
 />
 ----
 
-== Usage
+=== Usage
 
 Now you can use the components in your project.
 In the navigation you will find all available components with a detailed description of all properties and usage examples.
@@ -67,44 +67,44 @@ import { Button } from "fsxa-ui";
 
 Please make sure that your component is registered correctly.
 
-=== Compiles and hot-reloads for development
+==== Compiles and hot-reloads for development
 
 ....
 npm run serve
 ....
 
-=== Compiles and minifies for production
+==== Compiles and minifies for production
 
 ....
 npm run build
 ....
 
-=== Run your unit tests
+==== Run your unit tests
 
 ....
 npm run test:unit
 ....
 
-=== Lints and fixes files
+==== Lints and fixes files
 
 ....
 npm run lint
 ....
 
-=== Customize configuration
+==== Customize configuration
 
 See https://cli.vuejs.org/config/[Configuration Reference].
 
-=== Existing CSS-Variables:
+==== Existing CSS-Variables:
 
 * –fsxa-text-highlight-color
 
-== Legal Notices
+=== Legal Notices
 
 FSXA-UI is a product of http://www.e-spirit.com[e-Spirit AG], Dortmund, Germany.
 The FSXA-UI is subject to the Apache-2.0 license.
 
-== Disclaimer
+=== Disclaimer
 
 This document is provided for information purposes only.
 e-Spirit may change the contents hereof without notice.
