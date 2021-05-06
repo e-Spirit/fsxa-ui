@@ -1,3 +1,5 @@
 name: fsxa-ui
 title: FSXA-UI
 version: '4.1.0'
+nav:
+- modules/ROOT/nav.adoc
