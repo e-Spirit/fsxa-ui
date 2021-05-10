@@ -1,3 +1,10 @@
+## [4.0.2](https://github.com/e-Spirit/fsxa-ui/compare/v4.0.1...v4.0.2) (2021-05-10)
+
+
+### Bug Fixes
+
+* **headersection:** moved padding in title of header section to h1 ([3f03391](https://github.com/e-Spirit/fsxa-ui/commit/3f03391506efcbd16d0b3ac49a499e2fc06c7736))
+
 ## [4.0.1](https://github.com/e-Spirit/fsxa-ui/compare/v4.0.0...v4.0.1) (2021-03-12)
 
 
