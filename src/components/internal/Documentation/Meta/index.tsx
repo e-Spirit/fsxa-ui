@@ -19,7 +19,7 @@ class Meta extends BaseComponent<MetaProps> {
   created() {
     if (this.component) {
       const getElementInTree: any = (label: string[], tree: any[]) => {
-        const item = tree.find(item => item.label === label[0]);
+        const item = tree.find((item) => item.label === label[0]);
         if (item?.children?.length > 0 && label.length > 1) {
           label.shift();
           return getElementInTree(label, item.children);

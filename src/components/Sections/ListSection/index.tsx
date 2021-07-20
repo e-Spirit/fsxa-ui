@@ -10,7 +10,7 @@ import Button from "@/components/Button";
 })
 class ListSection<Item = any> extends BaseComponent<
   ListSectionProps<Item>,
-  {},
+  unknown,
   ListSectionSlots<Item>
 > {
   @Prop() headline: ListSectionProps<Item>["headline"];
@@ -46,9 +46,9 @@ class ListSection<Item = any> extends BaseComponent<
           </div>
         ) : null}
         {this.filters
-          ? this.filters.map(filterList => (
+          ? this.filters.map((filterList) => (
               <div class="ui-space-x-1 ui-mb-3">
-                {filterList.map(filter =>
+                {filterList.map((filter) =>
                   this.$scopedSlots.filter ? (
                     this.$scopedSlots.filter({
                       ...filter,
@@ -77,7 +77,9 @@ class ListSection<Item = any> extends BaseComponent<
           this.$slots.default
         ) : (
           <div class="ui-grid ui-grid-cols-1 ui-gap-4 sm:ui-grid-cols-2 md:ui-grid-cols-3 lg:ui-grid-cols-4 xl:ui-gap-8">
-            {this.items.map(item => this.$scopedSlots.item(item))}
+            {this.items.map((item) => {
+              return this.$scopedSlots.item(item as Exclude<Item, undefined>);
+            })}
           </div>
         )}
       </div>

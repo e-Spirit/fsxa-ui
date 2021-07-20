@@ -18,7 +18,7 @@
 }
 .Accordion--Header.Accordion--Light {
   background-color: #f5f5f5;
-  @apply text-black;
+  @apply ui-text-black;
 }
 .Accordion .Accordion--Indicator {
   transition: all 250ms linear;

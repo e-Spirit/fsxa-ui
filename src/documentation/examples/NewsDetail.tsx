@@ -5,8 +5,7 @@ import Component from "vue-class-component";
 
 const tags = [{ label: "Mobility" }, { label: "Technology" }];
 const image = {
-  src:
-    "https://enterprisedev.e-spirit.cloud/media/img/Bötzow-Brauerei_Gelände_1900.jpg",
+  src: "https://enterprisedev.e-spirit.cloud/media/img/Bötzow-Brauerei_Gelände_1900.jpg",
 };
 @Component
 export default class App extends Vue {
@@ -20,7 +19,7 @@ export default class App extends Vue {
           date={new Date(2020, 0, 18).toLocaleDateString()}
           author="Max Mustermann"
           tags={tags}
-          handleTagClick={tag => console.log("clicked: " + tag.label)}
+          handleTagClick={(tag) => console.log("clicked: " + tag.label)}
           handleReturnClick={() => console.log("return")}
           returnText="Return"
           social={{

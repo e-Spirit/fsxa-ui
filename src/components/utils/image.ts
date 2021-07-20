@@ -20,7 +20,7 @@ export const determineCorrectResolution = (
 
   let foundResolution: ResolutionMeta | null = null;
 
-  Object.keys(resolutions).forEach(key => {
+  Object.keys(resolutions).forEach((key) => {
     const resolution = resolutions[key];
     const resolutionOrientation =
       resolution.width > resolution.height ? "landscape" : "portrait";

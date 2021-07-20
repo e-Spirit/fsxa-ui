@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 const path = require("path");
 module.exports = {
-  chainWebpack: config => {
+  chainWebpack: (config) => {
     config.resolve.symlinks(false);
     config.resolve.alias.set("vue", path.resolve("./node_modules/vue"));
     config.resolve.alias.set("fsxa-ui", path.resolve("./src/index.ts"));
@@ -18,6 +18,6 @@ module.exports = {
       .rule("images")
       .use("url-loader")
       .loader("url-loader")
-      .tap(options => Object.assign(options, { limit: Infinity }));
+      .tap((options) => Object.assign(options, { limit: Infinity }));
   },
 };

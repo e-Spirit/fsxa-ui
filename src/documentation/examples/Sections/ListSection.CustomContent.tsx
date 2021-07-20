@@ -34,12 +34,12 @@ export default class App extends Vue {
           headline={headline}
           items={[{ headline: "test" }]}
           filters={filters}
-          handleFilterChange={selectedFilters =>
+          handleFilterChange={(selectedFilters) =>
             (this.selectedFilters = selectedFilters)
           }
           selectedFilters={this.selectedFilters}
           scopedSlots={{
-            item: props => <div>{props.headline}</div>,
+            item: (props: any) => <div>{props.headline}</div>,
           }}
         >
           <div class="ui-w-full ui-h-64 ui-relative ui-flex ui-justify-center ui-items-center">

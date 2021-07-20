@@ -31,7 +31,7 @@ class ProductListItem extends BaseComponent<ProductListItemProps> {
         />
         <a
           href={`${this.url}`}
-          onClick={event => {
+          onClick={(event) => {
             event.preventDefault();
             this.handleClick();
           }}

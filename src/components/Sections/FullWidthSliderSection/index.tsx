@@ -22,13 +22,11 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
   FullWidthSliderSectionEventsWithOn<MediaType>,
   FullWidthSliderSectionSlots<MediaType>
 > {
-  @Prop({ required: true }) slides!: FullWidthSliderSectionProps<
-    MediaType
-  >["slides"];
+  @Prop({ required: true })
+  slides!: FullWidthSliderSectionProps<MediaType>["slides"];
 
-  @Prop({ default: false }) removeDefaultPadding: FullWidthSliderSectionProps<
-    MediaType
-  >["removeDefaultPadding"];
+  @Prop({ default: false })
+  removeDefaultPadding: FullWidthSliderSectionProps<MediaType>["removeDefaultPadding"];
 
   handleClick(
     slide: FullWidthSliderSectionSlide<MediaType>,
@@ -44,12 +42,14 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
     return (
       <div class="ui-w-full ui-h-full ui-bg-black ui-overflow-hidden ui-relative">
         <div class="FullWidthImageSliderSection--Media ui-w-full ui-h-full ui-transition-opacity ui-duration-250 ui-transform">
-          {this.$scopedSlots.media ? (
-            this.$scopedSlots.media(slide.media)
+          {this.$scopedSlots.media && slide.media ? (
+            this.$scopedSlots.media(
+              slide.media as Exclude<MediaType, undefined>,
+            )
           ) : (
             <Image
-              src={((slide.media as unknown) as ImageRef).src}
-              resolutions={((slide.media as unknown) as ImageRef).resolutions}
+              src={(slide.media as unknown as ImageRef).src}
+              resolutions={(slide.media as unknown as ImageRef).resolutions}
               sizes={"100vw"}
             />
           )}
@@ -57,7 +57,7 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
         <div class="ui-absolute ui-w-full ui-h-full ui-top-0 ui-left-0 ui-pointer-events-none ui-bg-gradient-to-b ui-to-gray-900 ui-from-transparent ui-z-10"></div>
         <div class="ui-absolute ui-bottom-0 ui-left-0 FullWidthSliderSection--Content ui-ui-w-full ui-transform ui-transition-transform ui-translate-y-full ui-px-6 ui-pb-16 md:ui-px-12 md:ui-pb-12 lg:ui-px-16 ui-origin-top ui-duration-250 ui-text-white ui-z-20">
           <div class="FullWidthSliderSection--Title ui-block ui-transform ui-transition-transform ui-duration-250 ui-w-full ui-mb-2 md:ui-mb-4 lg:ui-mb-6">
-            {this.$scopedSlots.title ? (
+            {this.$scopedSlots.title && slide.title ? (
               this.$scopedSlots.title(slide.title)
             ) : (
               <div class="ui-font-extrabold ui-text-3xl lg:ui-text-4xl xl:ui-text-6xl ui-uppercase">
@@ -67,7 +67,7 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
           </div>
           <div class="ui-w-full ui-flex ui-items-start ui-justify-start ui-flex-col lg:ui-flex-row">
             <div class="FullWidthSliderSection--Teaser ui-duration-250 ui-transform ui-transition-transform ui-translate-y-32 ui-origin-top lg:ui-mr-5 ui-max-w-xl">
-              {this.$scopedSlots.teaser ? (
+              {this.$scopedSlots.teaser && slide.teaser ? (
                 this.$scopedSlots.teaser(slide.teaser)
               ) : (
                 <div class="ui-text-sm md:ui-text-base xl:ui-text-lg">
@@ -166,7 +166,7 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
         key={position}
         href="#"
         class={`ui-hidden md:ui-block md:ui-w-16 md:ui-h-16 md:ui--mt-8 lg:ui-w-20 lg:ui-h-20 lg:ui--mt-10 xl:ui-w-24 xl:ui-h-24 xl:ui--mt-12 ui-absolute ui-top-1/2 ui-${positioning} ui-bg-white hover:ui-bg-black hover:ui-text-white ui-duration-300 ui-transform ui-transition-colors ui-group ui-pointer-events-auto`}
-        onClick={event => {
+        onClick={(event) => {
           event.preventDefault();
           handleClick();
         }}
@@ -190,10 +190,11 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
         ) : (
           <li class="ui-inline-block ui-px-1 ui-pointer-events-auto">
             <a
-              class={`ui-block md:ui-hidden ui-w-5 ui-h-5 ui-rounded-full ui-border-white ui-border hover:ui-bg-white active:ui-bg-white ui-transition-colors ui-transform ui-duration-300 ${params.currentSlideIndex ===
-                i && "ui-bg-white"}`}
+              class={`ui-block md:ui-hidden ui-w-5 ui-h-5 ui-rounded-full ui-border-white ui-border hover:ui-bg-white active:ui-bg-white ui-transition-colors ui-transform ui-duration-300 ${
+                params.currentSlideIndex === i && "ui-bg-white"
+              }`}
               href="#"
-              onClick={event => {
+              onClick={(event) => {
                 event.preventDefault();
                 params.showSlide(i);
               }}
@@ -239,17 +240,17 @@ class FullWidthSliderSection<MediaType = ImageRef> extends BaseComponent<
                 : "FullWidthSliderSection--Slide--animate-out";
             if (!element.classList.contains(classToRemove)) {
               element.classList.add(classToRemove);
-              await new Promise(resolve => window.setTimeout(resolve, 0));
+              await new Promise((resolve) => window.setTimeout(resolve, 0));
             }
             element.classList.remove(classToRemove);
             element.classList.add(classToAdd);
             // we will resolve after 750 ms so the slider component will wait until the animation is finished
-            return new Promise(resolve => {
+            return new Promise((resolve) => {
               window.setTimeout(resolve, 750);
             });
           }}
           scopedSlots={{
-            controls: params => {
+            controls: (params) => {
               return this.$scopedSlots.controls ? (
                 this.$scopedSlots.controls(params)
               ) : (

@@ -15,9 +15,8 @@ describe("components/sections/accordion-section", () => {
           ],
         },
       });
-      const darkAccordionClassList = container.querySelector(
-        ".Accordion--Header",
-      )?.classList;
+      const darkAccordionClassList =
+        container.querySelector(".Accordion--Header")?.classList;
       expect(darkAccordionClassList).toContain("Accordion--Dark");
     });
     it("renders a div with its class list containing Accordion--Light when the dark property is set to false", () => {
@@ -34,9 +33,8 @@ describe("components/sections/accordion-section", () => {
       const { container } = render(AccordionSection, {
         props: lightProps,
       });
-      const lightAccordionClassList = container.querySelector(
-        ".Accordion--Header",
-      )?.classList;
+      const lightAccordionClassList =
+        container.querySelector(".Accordion--Header")?.classList;
       expect(lightAccordionClassList).toContain("Accordion--Light");
     });
     it("renders a div with its class list containing Accordion--Light when the dark property is not set", () => {
@@ -51,8 +49,8 @@ describe("components/sections/accordion-section", () => {
       const { container } = render(AccordionSection, {
         props: darkNotSetProps,
       });
-      const darkNotSetClassList = container.querySelector(".Accordion--Header")
-        ?.classList;
+      const darkNotSetClassList =
+        container.querySelector(".Accordion--Header")?.classList;
       expect(darkNotSetClassList).toContain("Accordion--Light");
     });
   });
@@ -146,7 +144,7 @@ describe("components/sections/accordion-section", () => {
         expect(accordion?.classList).toContain("Accordion--Open");
       });
     });
-    it("should close when another accordion opens", done => {
+    it("should close when another accordion opens", (done) => {
       const { container } = render(AccordionSection, {
         props: {
           items: [
@@ -161,12 +159,10 @@ describe("components/sections/accordion-section", () => {
           ],
         },
       });
-      const [header, theOtherHeader] = container.querySelectorAll(
-        ".Accordion--Header",
-      );
-      const [accordion, theOtherAccordion] = container.querySelectorAll(
-        ".Accordion",
-      );
+      const [header, theOtherHeader] =
+        container.querySelectorAll(".Accordion--Header");
+      const [accordion, theOtherAccordion] =
+        container.querySelectorAll(".Accordion");
       fireEvent(header, new MouseEvent("click"))
         .then(() => {
           expect(accordion.classList).toContain("Accordion--Open");

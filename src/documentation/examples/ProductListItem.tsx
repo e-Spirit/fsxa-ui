@@ -8,8 +8,7 @@ const product = {
     "The D1R7-TR4P cleaning robot helps you keeping your house free of dirt. It's low height and ui-flexible design means no space will be left out.",
   price: "$99",
   image: {
-    src:
-      "https://images.pexels.com/photos/4013157/pexels-photo-4013157.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    src: "https://images.pexels.com/photos/4013157/pexels-photo-4013157.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
   },
   url: "#",
 };

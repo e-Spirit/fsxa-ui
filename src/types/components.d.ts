@@ -476,12 +476,12 @@ export interface NewsDetailSlots {
    * You can override the social area rendering of this component by specifying the slot social
    * It will receive the social-area-data as parameter
    */
-  social: SocialArea;
+  social?: SocialArea;
 }
 
 export class NewsDetail extends Component<
   NewsDetailProps,
-  {},
+  unknown,
   NewsDetailSlots
 > {}
 
@@ -621,7 +621,7 @@ export interface SliderSlots {
     params: SliderControlParams;
   };
 }
-export class Slider extends Component<SliderProps, {}, SliderSlots> {}
+export class Slider extends Component<SliderProps, unknown, SliderSlots> {}
 
 export interface ImageSliderProps<ImageType> {
   /**
@@ -651,6 +651,6 @@ export interface ImageSliderSlots<ImageType> {
 }
 export class ImageSlider<ImageType = ImageRef> extends Component<
   ImageSliderProps<ImageType>,
-  {},
+  unknown,
   ImageSliderSlots<ImageType>
 > {}

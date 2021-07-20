@@ -22,7 +22,7 @@ class Breadcrumbs extends BaseComponent<BreadcrumbsProps> {
                 href={item.path}
                 class="ui-inline-flex ui-group ui-justify-center ui-items-center"
                 aria-current={index === this.items.length - 1 ? "page" : ""}
-                onClick={event => {
+                onClick={(event) => {
                   event.preventDefault();
                   this.handleItemClick && this.handleItemClick(item);
                 }}

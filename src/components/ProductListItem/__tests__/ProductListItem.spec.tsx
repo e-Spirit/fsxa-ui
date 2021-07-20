@@ -17,8 +17,7 @@ describe("components/ProductListItem", () => {
           width: 1950,
         },
       },
-      src:
-        "https://images.pexels.com/photos/4013157/pexels-photo-4013157.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+      src: "https://images.pexels.com/photos/4013157/pexels-photo-4013157.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
     },
     url: "https://www.pexels.com/photo/blue-and-yellow-robot-toy-4013157/",
     handleClick: {},

@@ -12,7 +12,7 @@ const checkPassedValue = (
   valueName?: string,
 ) => {
   if (!actualValue) return;
-  const stringifiedOptions = possibleOptions.map(option => option.toString());
+  const stringifiedOptions = possibleOptions.map((option) => option.toString());
   if (!stringifiedOptions.includes(actualValue.toString())) {
     vueElement.remove();
     throw new Error(

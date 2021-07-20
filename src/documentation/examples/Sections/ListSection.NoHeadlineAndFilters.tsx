@@ -11,8 +11,7 @@ const items = [
       "The D1R7-TR4P cleaning robot helps you keeping your house free of dirt. It's low height and flexible design means no space will be left out.",
     price: "$99",
     image: {
-      src:
-        "https://images.pexels.com/photos/4013157/pexels-photo-4013157.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+      src: "https://images.pexels.com/photos/4013157/pexels-photo-4013157.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
     },
     url: "#",
   },
@@ -21,8 +20,7 @@ const items = [
     description: "p2 description",
     price: "9.99 €",
     image: {
-      src:
-        "https://images.pexels.com/photos/1068349/pexels-photo-1068349.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+      src: "https://images.pexels.com/photos/1068349/pexels-photo-1068349.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
     },
     url: "#",
   },
@@ -30,8 +28,7 @@ const items = [
     title: "Product 3",
     description: "p3 description",
     image: {
-      src:
-        "https://images.pexels.com/photos/4065624/pexels-photo-4065624.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+      src: "https://images.pexels.com/photos/4065624/pexels-photo-4065624.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
     },
     url: "#",
     price: "free",
@@ -41,8 +38,7 @@ const items = [
     description: "p4 is a great product",
     price: "999",
     image: {
-      src:
-        "https://images.pexels.com/photos/1269930/pexels-photo-1269930.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+      src: "https://images.pexels.com/photos/1269930/pexels-photo-1269930.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
     },
     url: "#",
   },
@@ -61,7 +57,7 @@ export default class App extends Vue {
       <ListSection
         items={items}
         scopedSlots={{
-          item: item => (
+          item: (item: any) => (
             <ProductListItem
               title={item.title}
               description={item.description}

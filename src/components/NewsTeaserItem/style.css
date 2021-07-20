@@ -70,7 +70,7 @@
   .NewsTeaserItem.is-latest {
     @apply ui-p-12 ui-py-16 ui-pr-4;
     .NewsTeaserItem--InfoBox {
-      @apply ui-relative ui-m-0 w-auto;
+      @apply ui-relative ui-m-0 ui-w-auto;
     }
 
     .NewsTeaserItem--Date {

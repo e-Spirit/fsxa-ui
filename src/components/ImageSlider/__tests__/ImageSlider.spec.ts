@@ -11,7 +11,7 @@ describe("components/ImageSlider", () => {
   it("renders passed images as image slider", () => {
     const { container, getByTestId } = render(ImageSlider, {
       props: {
-        images: IMAGES_URLS.map(url => ({ src: url })),
+        images: IMAGES_URLS.map((url) => ({ src: url })),
       },
     });
     expect(container).toBeTruthy();
@@ -31,7 +31,7 @@ describe("components/ImageSlider", () => {
     const { getByTestId } = render(ImageSlider, {
       props: {
         animate: false,
-        images: IMAGES_URLS.map(url => ({
+        images: IMAGES_URLS.map((url) => ({
           type: "image",
           src: url,
         })),
@@ -45,18 +45,18 @@ describe("components/ImageSlider", () => {
     const buttonNextSlide = getByTestId("button-next-slide");
     await fireEvent(buttonNextSlide, new Event("click"));
     // the transitions are animated, so we have to wait a little before the translateX value is updated
-    await new Promise(r => setTimeout(r, 300));
+    await new Promise((r) => setTimeout(r, 300));
     expect(imageContainerParent?.style.transform).toEqual("translateX(-100%)");
     const buttonPrevSlide = getByTestId("button-prev-slide");
     await fireEvent(buttonPrevSlide, new Event("click"));
-    await new Promise(r => setTimeout(r, 300));
+    await new Promise((r) => setTimeout(r, 300));
     expect(imageContainerParent?.style.transform).toEqual("translateX(-0%)");
   });
 
   it("should replace the default rendering of the image when the scopedSlot is being used", () => {
     const { getByTestId, container } = render(ImageSlider, {
       props: {
-        images: IMAGES_URLS.map(url => ({ src: url })),
+        images: IMAGES_URLS.map((url) => ({ src: url })),
       },
       scopedSlots: {
         image: `<img class="scoped-slot-image" src="imageSrc" />`,

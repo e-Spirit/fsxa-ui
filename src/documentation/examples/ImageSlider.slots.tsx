@@ -15,13 +15,14 @@ export default class App extends Vue {
   render() {
     return (
       <div class="ui-px-24 ui-w-full" style="height: 400px">
-        <ImageSlider
+        <ImageSlider<Image>
           images={[{ src: imageOne }, { src: imageTwo }]}
           scopedSlots={{
-            image: props => (
+            image: (props: any) => (
               <Image
-                props={props.image}
+                src={props.image.src}
                 style="border:#CCC 0.5rem inset;transform: rotate(11deg);"
+                {...props.image}
               />
             ),
           }}

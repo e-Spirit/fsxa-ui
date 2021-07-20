@@ -13,7 +13,7 @@ class Dropdown extends BaseComponent<DropdownProps> {
 
   render() {
     const currentOptionIndex = this.value
-      ? this.options.findIndex(option => option.key === this.value)
+      ? this.options.findIndex((option) => option.key === this.value)
       : 0;
     const currentOption =
       currentOptionIndex !== -1
@@ -23,11 +23,11 @@ class Dropdown extends BaseComponent<DropdownProps> {
       <div class="Dropdown">
         <div class="ui-mx-8">{this.$slots.default || currentOption?.label}</div>
         <ul>
-          {this.options.map(option => (
+          {this.options.map((option) => (
             <li>
               <a
                 href={option.path || undefined}
-                onClick={event => {
+                onClick={(event) => {
                   event.preventDefault();
                   this.handleChange(option);
                 }}

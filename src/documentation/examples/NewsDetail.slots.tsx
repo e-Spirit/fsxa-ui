@@ -6,20 +6,17 @@ import Component from "vue-class-component";
 const image: ImageProps = {
   resolutions: {
     ORIGINAL: {
-      url:
-        "https://images.pexels.com/photos/2564028/pexels-photo-2564028.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=500",
+      url: "https://images.pexels.com/photos/2564028/pexels-photo-2564028.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=500",
       width: 500,
       height: 1,
     },
     LARGE: {
-      url:
-        "https://images.pexels.com/photos/911758/pexels-photo-911758.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1000",
+      url: "https://images.pexels.com/photos/911758/pexels-photo-911758.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1000",
       width: 1000,
       height: 1,
     },
   },
-  src:
-    "https://images.pexels.com/photos/911758/pexels-photo-911758.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1000",
+  src: "https://images.pexels.com/photos/911758/pexels-photo-911758.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1000",
 };
 @Component
 export default class App extends Vue {
@@ -63,7 +60,7 @@ export default class App extends Vue {
             ],
           }}
           scopedSlots={{
-            social: socialElement => {
+            social: (socialElement) => {
               return (
                 <div class="ui-mx-auto lg:ui-mx-px ui-text-center lg:ui-text-left">
                   {socialElement.title ? (
@@ -73,7 +70,7 @@ export default class App extends Vue {
                   ) : null}
                   {socialElement.items && socialElement.items.length > 0 ? (
                     <div class="ui-space-x-2">
-                      {socialElement.items.map(element => (
+                      {socialElement.items.map((element) => (
                         <Button
                           handleClick={() => {
                             if (socialElement.handleSocialClick)

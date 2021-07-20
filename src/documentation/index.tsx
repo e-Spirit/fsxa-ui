@@ -9,7 +9,7 @@ import routes from "./routes";
 })
 class Documentation extends BaseComponent {
   render() {
-    return this.$route.meta.singleView ? (
+    return this.$route.meta?.singleView ? (
       <router-view />
     ) : (
       <div class="ui-w-full ui-min-h-full ui-flex ui-flex-col">

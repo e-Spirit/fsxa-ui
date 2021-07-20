@@ -40,8 +40,8 @@ describe("components/Dropdown", () => {
         options: optionItems,
       },
     });
-    optionItems.forEach(element => {
-      expect(getByText(container, element.label)).toBeTruthy();
+    optionItems.forEach((element) => {
+      expect(getByText(container as HTMLElement, element.label)).toBeTruthy();
     });
   });
 });

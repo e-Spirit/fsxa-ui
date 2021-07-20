@@ -9,7 +9,7 @@ const defaultAnimation = () => {
 @Component({
   name: "Slider",
 })
-class Slider extends BaseComponent<SliderProps, {}, SliderSlots> {
+class Slider extends BaseComponent<SliderProps, unknown, SliderSlots> {
   @Prop({ default: false })
   animateSlideTransition!: SliderProps["animateSlideTransition"];
   @Prop({ required: true }) slideCount!: SliderProps["slideCount"];
@@ -38,8 +38,9 @@ class Slider extends BaseComponent<SliderProps, {}, SliderSlots> {
     const currentWidthClass = widthClasses[this.visibleElements!];
     return (
       <div
-        class={`${currentWidthClass ||
-          "ui-w-full"} ui-h-full ui-flex ui-items-center ui-justify-center ui-flex-shrink-0`}
+        class={`${
+          currentWidthClass || "ui-w-full"
+        } ui-h-full ui-flex ui-items-center ui-justify-center ui-flex-shrink-0`}
         ref={`slide_${index}`}
         data-testid="slide-wrapper"
       >
@@ -49,7 +50,7 @@ class Slider extends BaseComponent<SliderProps, {}, SliderSlots> {
             currentSlideIndex: this.currentSlideIndex,
             prevSlideIndex: this.prevSlideIndex,
             nextSlideIndex: this.nextSlideIndex,
-            showSlide: index => (this.nextSlideIndexToShow = index),
+            showSlide: (index) => (this.nextSlideIndexToShow = index),
           },
         })}
       </div>
@@ -76,7 +77,7 @@ class Slider extends BaseComponent<SliderProps, {}, SliderSlots> {
     const slide = (this.$refs[`slide_${this.currentSlideIndex}`] as HTMLElement)
       ?.children[0];
 
-    if (slide && animateOut) {
+    if (slide) {
       await animateOut("animateOut", {
         element: slide,
         slideIndex: this.currentSlideIndex,
@@ -147,7 +148,7 @@ class Slider extends BaseComponent<SliderProps, {}, SliderSlots> {
               currentSlideIndex: this.currentSlideIndex,
               prevSlideIndex: this.prevSlideIndex,
               nextSlideIndex: this.nextSlideIndex,
-              showSlide: index => (this.nextSlideIndexToShow = index),
+              showSlide: (index) => (this.nextSlideIndexToShow = index),
             })
           : null}
       </div>

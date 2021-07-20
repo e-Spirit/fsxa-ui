@@ -17,7 +17,7 @@ import ImageSlider from "@/components/ImageSlider";
 })
 class ProductDetailSection extends BaseComponent<
   ProductDetailSectionProps,
-  {},
+  unknown,
   ProductDetailSectionSlots
 > {
   @Prop({ required: true })

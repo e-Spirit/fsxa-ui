@@ -73,7 +73,7 @@ class Accordion extends BaseComponent<AccordionProps> {
           class={`ui-flex ui-flex-row ui-items-center ui-justify-start ui-cursor-pointer ${
             this.dark ? "Accordion--Dark" : "Accordion--Light"
           } Accordion--Header`}
-          onClick={event => {
+          onClick={(event) => {
             event.preventDefault();
             typeof this.$listeners?.toggleCollapse === "function"
               ? this.$emit("toggleCollapse")

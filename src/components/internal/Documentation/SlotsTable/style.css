@@ -13,7 +13,7 @@
         @apply ui-pl-4 ui-relative;
   
         &:before {
-          @apply ui-absolute ui-top-1/2 ui-left-0 font-awesome;
+          @apply ui-absolute ui-top-1/2 ui-left-0 ui-font-awesome;
           content: "\f111";
           margin-top: -13px;
           font-size: 8px;

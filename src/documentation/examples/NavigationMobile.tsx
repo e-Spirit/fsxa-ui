@@ -94,7 +94,7 @@ export default class App extends Vue {
         <MobileNavigation
           items={navItems}
           activeItemKeys={["language"]}
-          onItemClicked={item => console.log(item)}
+          onItemClicked={(item) => console.log(item)}
         />
       </div>
     );

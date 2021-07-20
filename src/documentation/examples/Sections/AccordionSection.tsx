@@ -24,8 +24,7 @@ export default class App extends Vue {
               },
               {
                 title: "You can add as many Accordions as you want.",
-                text:
-                  "And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be.",
+                text: "And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be. And this text can be as long as you want it to be.",
               },
             ]}
           />
@@ -41,8 +40,7 @@ export default class App extends Vue {
               {
                 title:
                   "The width of the Accordion depends on the width of the container, the title does not break...",
-                text:
-                  "And the overflow is hidden. So choose your words carefully. (The expanded text can be longer, as seen in the previous example).",
+                text: "And the overflow is hidden. So choose your words carefully. (The expanded text can be longer, as seen in the previous example).",
               },
               {
                 title: "By using brackets...",

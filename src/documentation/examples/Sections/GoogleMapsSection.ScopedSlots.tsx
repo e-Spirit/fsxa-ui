@@ -68,10 +68,10 @@ export default class App extends Vue {
           }}
           markerIcon="https://dummyimage.com/50x50/8f008f/fff"
           scopedSlots={{
-            title: title => (
+            title: (title) => (
               <h2 class="ui-text-3xl ui-font-bold ui-text-espirit">{title}</h2>
             ),
-            locationItem: props => (
+            locationItem: (props) => (
               <div
                 class={`${
                   props.selected ? "ui-text-gray-500" : ""

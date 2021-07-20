@@ -11,13 +11,13 @@ class MobileNavigation extends BaseNavigation {
   render() {
     return (
       <div class="ui-w-full ui-max-h-full ui-border-t ui-border-b ui-border-gray-300 ui-flex ui-items-stretch ui-justify-start ui-font-sans ui-flex-col ui-overflow-y-auto">
-        {this.items.map(item => {
+        {this.items.map((item) => {
           const isActive = this.activeItemKeys?.includes(item.key);
           return (
             <div class="last:ui-border-b-0 ui-relative ui-border-b ui-border-gray-300 ui-bg-white">
               <a
                 href="#"
-                onClick={event => {
+                onClick={(event) => {
                   event.preventDefault();
                   this.triggerItemClick(item);
                 }}
@@ -34,7 +34,7 @@ class MobileNavigation extends BaseNavigation {
                 {item.children.length ? (
                   <span
                     class="ui-absolute ui-top-1/2 ui-right-0 ui--mt-4 ui-mr-3 ui-p-1 hover:ui-bg-white hover:ui-shadow ui-rounded-full"
-                    onClick={event => {
+                    onClick={(event) => {
                       event.preventDefault();
                       event.stopImmediatePropagation();
                       const currentIndex = this.collapsedItems.indexOf(
@@ -73,10 +73,10 @@ class MobileNavigation extends BaseNavigation {
               {item.children.length > 0 &&
               this.collapsedItems.includes(item.key) ? (
                 <div class="ui-block ui-border-t ui-border-gray-300">
-                  {item.children.map(child => (
+                  {item.children.map((child) => (
                     <a
                       href={child.path}
-                      onClick={event => {
+                      onClick={(event) => {
                         event?.preventDefault();
                         event.stopImmediatePropagation();
                         this.triggerItemClick(child);
@@ -89,9 +89,7 @@ class MobileNavigation extends BaseNavigation {
                     </a>
                   ))}
                 </div>
-              ) : (
-                undefined
-              )}
+              ) : undefined}
             </div>
           );
         })}

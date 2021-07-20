@@ -4,7 +4,7 @@
     @apply ui-mt-4 ui-px-3 ui-py-2 ui-bg-pink-200 ui-rounded-lg ui-text-sm ui-relative ui-pl-8 ui-text-gray-700;
 
     &:before {
-      @apply ui-absolute ui-top-1/2 ui-left-0 ui-text-gray-700 ui-text-sm ui-ml-3 font-awesome;
+      @apply ui-absolute ui-top-1/2 ui-left-0 ui-text-gray-700 ui-text-sm ui-ml-3 ui-font-awesome;
       content: "\f129";
       margin-top: -10px;
     }

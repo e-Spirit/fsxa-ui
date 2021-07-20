@@ -5,9 +5,9 @@ const breakpoints = require("tailwindcss/defaultTheme");
 
 @Component
 class BaseComponent<
-  Props = {},
-  EventsWithOn = {},
-  Slots = {}
+  Props = unknown,
+  EventsWithOn = unknown,
+  Slots = unknown,
 > extends TsxComponent<Props, EventsWithOn, Slots> {
   get breakpoints(): Record<"sm" | "md" | "lg" | "xl", string> {
     return breakpoints;

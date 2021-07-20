@@ -13,9 +13,9 @@ describe("utils/PropertyChecker/checkPassedValue", () => {
     testingArray = ["a", "b", "c"];
     testingValue = "d";
     mockedFunction = jest.fn();
-    mockedVueElement = ({
+    mockedVueElement = {
       remove: mockedFunction,
-    } as unknown) as Element;
+    } as unknown as Element;
   });
 
   afterEach(() => {

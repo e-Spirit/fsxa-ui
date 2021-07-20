@@ -89,7 +89,7 @@ class Image extends BaseComponent<ImageProps> {
     if (!this.resolutions) return undefined;
     return Object.values(this.resolutions)
       .map(
-        resolution =>
+        (resolution) =>
           `${resolution.url} ${resolution.width}w ${resolution.height}h`,
       )
       .join(", ");

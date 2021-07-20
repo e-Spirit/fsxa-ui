@@ -9,7 +9,7 @@ export interface TextInputProps {
 @Component({
   name: "TextInput",
 })
-class TextInput<T> extends BaseComponent<TextInputProps> {
+class TextInput extends BaseComponent<TextInputProps> {
   @Prop({ required: true, type: Function })
   handleChange!: TextInputProps["handleChange"];
   @Prop({ required: true }) value!: TextInputProps["value"];

@@ -16,27 +16,25 @@ import "./style.css";
 @Component({
   name: "TeaserSection",
 })
-class TeaserSection<MediaType = ImageRef> extends BaseComponent<
-  TeaserSectionProps<MediaType>,
+class TeaserSection extends BaseComponent<
+  TeaserSectionProps,
   TeaserSectionEventsWithOn,
-  TeaserSectionSlots<MediaType>
+  TeaserSectionSlots
 > {
-  @Prop({ required: true }) headline!: TeaserSectionProps<
-    MediaType
-  >["headline"];
-  @Prop({ required: true }) kicker!: TeaserSectionProps<MediaType>["kicker"];
-  @Prop({ required: true }) text!: TeaserSectionProps<MediaType>["text"];
-  @Prop({ required: false }) tagline!: TeaserSectionProps<MediaType>["tagline"];
-  @Prop({ required: false }) buttonText: TeaserSectionProps<
-    MediaType
-  >["buttonText"];
-  @Prop({ required: false }) media: TeaserSectionProps<MediaType>["media"];
+  @Prop({ required: true }) headline!: TeaserSectionProps["headline"];
+  @Prop({ required: true }) kicker!: TeaserSectionProps["kicker"];
+  @Prop({ required: true }) text!: TeaserSectionProps["text"];
+  @Prop({ required: false }) tagline?: TeaserSectionProps["tagline"];
+  @Prop({ required: false }) buttonText?: TeaserSectionProps["buttonText"];
+  @Prop({ required: false }) media?: TeaserSectionProps["media"];
 
   renderMedia() {
     if (this.$scopedSlots.media) {
-      return this.$scopedSlots.media(this.media);
+      if (this.media) {
+        return this.$scopedSlots.media(this.media);
+      }
     }
-    const typedImage = (this.media as any) as ImageRef;
+    const typedImage = this.media as any as ImageRef;
     return (
       <div class="teasersection-media ui-relative md:ui-mx-8 ui-mt-4 md:ui-mt-0 lg:ui-pl-0">
         <Image
@@ -93,7 +91,7 @@ class TeaserSection<MediaType = ImageRef> extends BaseComponent<
                   {this.text}
                 </div>
               )}
-              {this.$scopedSlots.button
+              {this.$scopedSlots.button && this.buttonText
                 ? this.$scopedSlots.button(this.buttonText)
                 : this.buttonText && (
                     <Button
@@ -112,7 +110,7 @@ class TeaserSection<MediaType = ImageRef> extends BaseComponent<
               xl={{ width: "7/12" }}
             >
               {this.media && this.renderMedia()}
-              {this.$scopedSlots.tagline ? (
+              {this.$scopedSlots.tagline && this.tagline ? (
                 this.$scopedSlots.tagline(this.tagline)
               ) : this.tagline ? (
                 <div class="ui-mt-10 ui-text-2xl  md:ui-text-6xl ui-text-gray-400 ui-text-right ui-border-black ui-border-r-8 ui-pr-4 ui--ml-20 ui-uppercase">

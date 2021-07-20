@@ -29,7 +29,7 @@ class SelectInput extends BaseComponent<SelectInputProps> {
           value={this.value}
         >
           <option value=""></option>
-          {this.options.map(option => (
+          {this.options.map((option) => (
             <option value={option}>{option}</option>
           ))}
         </select>

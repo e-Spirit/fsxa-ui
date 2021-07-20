@@ -162,7 +162,7 @@ describe("components/sections/google-maps-section", () => {
           "scoped-slot-rendered-location",
         );
         expect(renderedLocations.length).toBe(locations.length);
-        renderedLocations.forEach(renderedLocation => {
+        renderedLocations.forEach((renderedLocation) => {
           expect(renderedLocation).toBeInTheDocument();
           expect(renderedLocation.innerHTML).toContain(name);
         });

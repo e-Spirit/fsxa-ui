@@ -17,7 +17,7 @@ import {
 })
 class InterestingFactsSection extends BaseComponent<
   InterestingFactsSectionProps,
-  {},
+  unknown,
   InterestingFactsSectionSlots
 > {
   @Prop({ required: true })
@@ -46,7 +46,7 @@ class InterestingFactsSection extends BaseComponent<
           <Layout wrap>
             <LayoutItem width="full" lg={{ width: "6/12" }}>
               <div class="InterestingFactsSection--Content">
-                {this.$scopedSlots.tagline ? (
+                {this.$scopedSlots.tagline && this.tagline ? (
                   this.$scopedSlots.tagline(this.tagline)
                 ) : (
                   <Headline
@@ -71,7 +71,7 @@ class InterestingFactsSection extends BaseComponent<
                   </Headline>
                 )}
 
-                {this.$scopedSlots.text ? (
+                {this.$scopedSlots.text && this.text ? (
                   this.$scopedSlots.text(this.text)
                 ) : (
                   <Paragraph

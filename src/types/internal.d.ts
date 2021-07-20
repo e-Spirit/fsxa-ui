@@ -28,4 +28,4 @@ export interface DevInfoProps {
 }
 export class DevInfo extends Component<DevInfoProps> {}
 
-export class DevInfoTarget extends Component<{}> {}
+export class DevInfoTarget extends Component<unknown> {}

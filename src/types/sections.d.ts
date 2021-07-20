@@ -121,7 +121,7 @@ export interface ProductDetailSectionSlots {
 
 export class ProductDetailSection extends Component<
   ProductDetailSectionProps,
-  {},
+  unknown,
   ProductDetailSectionSlots
 > {}
 
@@ -182,11 +182,11 @@ export interface InterestingFactsSectionProps {
 }
 export class InterestingFactsSection extends Component<
   InterestingFactsSectionProps,
-  {},
+  unknown,
   InterestingFactsSectionSlots
 > {}
 
-export interface TeaserSectionProps<MediaType = ImageRef> {
+export interface TeaserSectionProps {
   /**
    * The headline of the Section
    */
@@ -212,7 +212,7 @@ export interface TeaserSectionProps<MediaType = ImageRef> {
   /**
    * Optional media that is displayed on the right side of the section
    */
-  media?: MediaType;
+  media?: ImageRef;
 }
 export interface TeaserSectionEventsWithOn {
   /**
@@ -221,7 +221,7 @@ export interface TeaserSectionEventsWithOn {
   onButtonClick?: () => void;
 }
 
-export interface TeaserSectionSlots<MediaType> {
+export interface TeaserSectionSlots {
   /**
    * You can override the headline rendering of this component by specifying the slot headline
    * It will receive the headline as its first parameter
@@ -251,12 +251,12 @@ export interface TeaserSectionSlots<MediaType> {
    * You can override the media rendering of this component by specifying the slot media
    * It will receive an Object of type ImageRef as its first parameter
    */
-  media?: MediaType;
+  media?: ImageRef;
 }
-export class TeaserSection<MediaType> extends Component<
+export class TeaserSection extends Component<
   TeaserSectionProps,
   TeaserSectionEventsWithOn,
-  TeaserSectionSlots<MediaType>
+  TeaserSectionSlots
 > {}
 
 export interface Breadcrumb {

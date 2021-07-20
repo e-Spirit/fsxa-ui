@@ -34,22 +34,22 @@ export default class App extends Vue {
             previewId: "1000",
           }}
           scopedSlots={{
-            tagline: tagline => (
+            tagline: (tagline) => (
               <span class="ui-text-2xl ui-font-thin">{tagline}</span>
             ),
-            headline: headline => (
+            headline: (headline) => (
               <h3 class="ui-bg-gray-200 ui-bg-opacity-25 ui-pl-4 ui-rounded ui-text-gray-100 ui-text-4xl">
                 {headline}
               </h3>
             ),
-            text: text => {
+            text: (text) => {
               if (typeof text === "string") {
                 const splitText = text.split("\n");
-                return splitText.map(item => <p class="ui-my-4">{item}</p>);
+                return splitText.map((item) => <p class="ui-my-4">{item}</p>);
               }
               return <div>{text}</div>;
             },
-            counter: counter => (
+            counter: (counter) => (
               <div class="ui-bg-gray-200 ui-bg-opacity-25 ui-p-4 ui-rounded ui-text-center ui-flex ui-flex-row ui-justify-center ui-items-center">
                 <div class="ui-text-3xl ui-text-gray-100">{counter.value}</div>
                 <div class="ui-uppercase ui-text-gray-300 ui-ml-2">

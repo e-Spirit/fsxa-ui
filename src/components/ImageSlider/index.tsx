@@ -7,7 +7,7 @@ import Slider from "../Slider";
 @Component({ name: "ImageSlider" })
 class ImageSlider<Type = any> extends BaseComponent<
   ImageSliderProps<Type>,
-  {},
+  unknown,
   ImageSliderSlots<Type>
 > {
   @Prop({ default: true }) animate: ImageSliderProps<Type>["animate"];
@@ -17,8 +17,8 @@ class ImageSlider<Type = any> extends BaseComponent<
     if (this.$scopedSlots.image) {
       return this.$scopedSlots.image({ image });
     }
-    const typedImage = (image as any) as ImageRef;
-    return <Image data-testid={`image-${index}`} props={{ ...typedImage }} />;
+    const typedImage = image as any as ImageRef;
+    return <Image data-testid={`image-${index}`} {...typedImage} />;
   }
 
   render() {
@@ -31,7 +31,7 @@ class ImageSlider<Type = any> extends BaseComponent<
         slideCount={this.images.length}
         scopedSlots={{
           slide: ({ index }) => this.renderImage(this.images[index], index),
-          controls: params => {
+          controls: (params) => {
             return this.$scopedSlots.controls ? (
               this.$scopedSlots.controls(params)
             ) : this.images.length > 1 ? (
@@ -44,7 +44,7 @@ class ImageSlider<Type = any> extends BaseComponent<
                       ? `ui-bg-black ui-text-white`
                       : `ui-bg-gray-300 ui-text-gray-900`
                   } hover:ui-bg-opacity-90 ui-p-3`}
-                  onClick={event => {
+                  onClick={(event) => {
                     event.preventDefault();
                     params.prevSlideIndex !== null &&
                       params.showSlide(params.prevSlideIndex);
@@ -73,7 +73,7 @@ class ImageSlider<Type = any> extends BaseComponent<
                       ? `ui-bg-black ui-text-white`
                       : `ui-bg-gray-300 ui-text-gray-900`
                   } hover:ui-bg-opacity-90 ui-p-3`}
-                  onClick={event => {
+                  onClick={(event) => {
                     event.preventDefault();
                     params.nextSlideIndex !== null &&
                       params.showSlide(params.nextSlideIndex);

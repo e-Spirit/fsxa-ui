@@ -26,7 +26,7 @@ class HeaderSection extends BaseComponent<
   render() {
     return (
       <div class="ui-w-full ui-relative ui-text-white ui-text-left">
-        {this.$scopedSlots.backgroundImage
+        {this.$scopedSlots.backgroundImage && this.backgroundImage
           ? this.$scopedSlots.backgroundImage(this.backgroundImage)
           : this.backgroundImage && (
               <Image
@@ -54,7 +54,7 @@ class HeaderSection extends BaseComponent<
               )}
             </div>
           </div>
-          {this.$scopedSlots.breadcrumbs ? (
+          {this.$scopedSlots.breadcrumbs && this.breadcrumbs ? (
             this.$scopedSlots.breadcrumbs(this.breadcrumbs)
           ) : this.breadcrumbs ? (
             <Breadcrumbs

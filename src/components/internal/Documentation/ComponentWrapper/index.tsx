@@ -12,7 +12,11 @@ interface ComponentWrapperSlots {
 @Component({
   name: "ComponentWrapper",
 })
-class ComponentWrapper extends BaseComponent<{}, {}, ComponentWrapperSlots> {
+class ComponentWrapper extends BaseComponent<
+  unknown,
+  unknown,
+  ComponentWrapperSlots
+> {
   state = 2;
   render() {
     return (

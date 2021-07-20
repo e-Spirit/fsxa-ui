@@ -93,7 +93,7 @@ const DEFAULT_STYLES: google.maps.MapTypeStyle[] = [
 })
 class GoogleMapsSection extends BaseComponent<
   GoogleMapsSectionProps,
-  {},
+  unknown,
   GoogleMapsSectionSlots
 > {
   map: google.maps.Map | null = null;
@@ -162,7 +162,7 @@ class GoogleMapsSection extends BaseComponent<
       const button = `<button class='ui-bg-black ui-text-white hover:ui-bg-gray-300 hover:ui-text-black focus:ui-outline-none ui-p-2 ui-my-4 ui-w-auto ui-overflow-hidden ui-cursor-pointer ui-font-light ui-text-sm'>
       ${this.buttonLabel}
       </button>`;
-      div.querySelector("button")?.addEventListener("click", event => {
+      div.querySelector("button")?.addEventListener("click", (event) => {
         // since we validated this prop in the mounted hook we can safely assume that handleButtonClick is available here
         this.handleButtonClick!(event, location);
       });
@@ -229,7 +229,7 @@ class GoogleMapsSection extends BaseComponent<
   removeApi(): void {
     document
       .querySelectorAll('script[src^="https://maps.googleapis.com"]')
-      .forEach(script => {
+      .forEach((script) => {
         script.remove();
       });
     if (typeof google !== undefined) {
@@ -247,7 +247,7 @@ class GoogleMapsSection extends BaseComponent<
       window.dispatchEvent(event);
     };
 
-    const api = new Promise<void>(resolve => {
+    const api = new Promise<void>((resolve) => {
       window.addEventListener("googleMapsAPILoaded", () => {
         resolve();
       });
@@ -303,7 +303,7 @@ class GoogleMapsSection extends BaseComponent<
     }
     const styles = this.getStyles();
     this.initMap(styles)
-      .then(map => {
+      .then((map) => {
         if (this.locations) {
           this.markers = this.placeMarkers(map, this.locations);
         }

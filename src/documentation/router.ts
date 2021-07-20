@@ -7,7 +7,7 @@ const extractRoute = (route: string) => {
   if (!path) return null;
   const parts = path.replace(/\/index$/g, "").split("/");
   return {
-    path: `/${parts.map(part => kebabCase(part)).join("/")}`,
+    path: `/${parts.map((part) => kebabCase(part)).join("/")}`,
     label: parts[parts.length - 1],
   };
 };
@@ -16,7 +16,7 @@ const extractRoute = (route: string) => {
 const data = require.context("./docs", true, /[a-zA-Z0-9]+\.mdx$/);
 const examples = require.context("./examples", true, /[a-zA-Z0-9]+\.tsx$/);
 
-const exampleRoutes = examples.keys().map(path => {
+const exampleRoutes = examples.keys().map((path) => {
   const parsedPath = path
     .replace(".tsx", "")
     .replace("./", "")
@@ -33,7 +33,7 @@ const exampleRoutes = examples.keys().map(path => {
 
 export const routes: any = data
   .keys()
-  .map(path => {
+  .map((path) => {
     let route = extractRoute(path);
     if (path === "./Index.mdx") {
       route = {
@@ -48,7 +48,7 @@ export const routes: any = data
       ...route,
     };
   })
-  .filter(route => route)
+  .filter((route) => route)
   .concat(exampleRoutes);
 
 const router = new VueRouter({

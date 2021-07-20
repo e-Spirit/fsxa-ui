@@ -57,14 +57,14 @@ const componentProperties = {
 
 const expectToExist = (container: HTMLElement, elements: string[]) => {
   elements
-    .map(item => container.querySelector(`.${item}`))
-    .forEach(node => expect(node).toBeInstanceOf(HTMLElement));
+    .map((item) => container.querySelector(`.${item}`))
+    .forEach((node) => expect(node).toBeInstanceOf(HTMLElement));
 };
 
 const expectToBeNull = (container: HTMLElement, elements: string[]) => {
   elements
-    .map(item => container.querySelector(`.${item}`))
-    .forEach(node => expect(node).toBeNull());
+    .map((item) => container.querySelector(`.${item}`))
+    .forEach((node) => expect(node).toBeNull());
 };
 
 const expectToExistNTimes = (
@@ -72,7 +72,7 @@ const expectToExistNTimes = (
   elements: Array<{ key: string; expectedInstanceCount: number }>,
 ) => {
   elements
-    .map(item => ({
+    .map((item) => ({
       ...item,
       instances: container.querySelectorAll(`.${item.key}`),
     }))
@@ -87,14 +87,14 @@ describe("components/sections/ProductDetailSection", () => {
       props: { ...componentProperties },
     });
     expect(container).toBeTruthy();
-    expectToExist(container, [
+    expectToExist(container as HTMLElement, [
       "ProductDetail--Property--Headline",
       "ProductDetail--Price",
       "ProductDetail--Button",
       "ProductDetail--Image",
     ]);
 
-    expectToExistNTimes(container, [
+    expectToExistNTimes(container as HTMLElement, [
       { key: "ProductDetail--Property--Headline", expectedInstanceCount: 2 },
       { key: "ProductDetail--Property--List", expectedInstanceCount: 2 },
     ]);
@@ -133,12 +133,15 @@ describe("components/sections/ProductDetailSection", () => {
       props: { headline, buttonText, description, price },
     });
     expect(container).toBeTruthy();
-    expectToExist(container, ["ProductDetail--Price", "ProductDetail--Button"]);
+    expectToExist(container as HTMLElement, [
+      "ProductDetail--Price",
+      "ProductDetail--Button",
+    ]);
     expect(getByTestId(`ProductDetail--Headline`)?.textContent).toEqual(
       headline,
     );
 
-    expectToBeNull(container, [
+    expectToBeNull(container as HTMLElement, [
       "ProductDetail--Image",
       "ProductDetail--Property--Headline",
       "ProductDetail--Property--List",

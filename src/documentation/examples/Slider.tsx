@@ -38,7 +38,7 @@ export default class App extends Vue {
       <div class="ui-w-full ui-h-64">
         <Slider
           scopedSlots={{
-            controls: params => {
+            controls: (params) => {
               return this.$scopedSlots.controls ? (
                 this.$scopedSlots.controls(params)
               ) : (

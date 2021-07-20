@@ -14,7 +14,7 @@ const ImageSrc = require("./../../../assets/dots.png");
 })
 class NewsTeaserSection extends BaseComponent<
   NewsTeaserSectionProps,
-  {},
+  unknown,
   {
     headline?: string;
   }

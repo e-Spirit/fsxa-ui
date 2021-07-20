@@ -14,7 +14,7 @@ class Navigation extends BaseNavigation {
             <div class="ui-relative ui-group ui-overflow-hidden hover:ui-overflow-visible">
               <a
                 href={item.path}
-                onClick={event => {
+                onClick={(event) => {
                   event.preventDefault();
                   this.triggerItemClick(item);
                 }}
@@ -33,11 +33,11 @@ class Navigation extends BaseNavigation {
                   data-testId={`childrenContainer-${index}`}
                 >
                   <ul class="ui-translate-y-8 group-hover:ui-translate-y-0 ui-bg-white ui-border ui-border-gray-300 ui-w-56 ui-text-sm ui-shadow ui-transform ui-transition-transform ui-duration-300 ui-leading-5">
-                    {item.children.map(child => (
+                    {item.children.map((child) => (
                       <li class="last:ui-border-b-0 ui-border-b ui-border-gray-300">
                         <a
                           href={child.path}
-                          onClick={event => {
+                          onClick={(event) => {
                             event.preventDefault();
                             this.triggerItemClick(child);
                           }}

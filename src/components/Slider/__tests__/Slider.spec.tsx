@@ -5,7 +5,7 @@ import { Component } from "vue-property-decorator";
 
 describe("components/slider", () => {
   @Component
-  class TestSlide extends BaseComponent<{}> {
+  class TestSlide extends BaseComponent<unknown> {
     render() {
       return <h1>Render me</h1>;
     }
@@ -44,7 +44,7 @@ describe("components/slider", () => {
     expect(() => getByText("Render me")).not.toThrow();
   });
   it("should change the width-class of the slide-wrapper according to the number of visible elements", () => {
-    [2, 3, 4, 5].forEach(numOfVisibleElements => {
+    [2, 3, 4, 5].forEach((numOfVisibleElements) => {
       const { getAllByTestId, unmount } = render(Slider, {
         props: {
           initialSlideIndex: 1,
@@ -56,7 +56,7 @@ describe("components/slider", () => {
         },
       });
       const slideWrappers = getAllByTestId("slide-wrapper");
-      slideWrappers.forEach(slideWrapper => {
+      slideWrappers.forEach((slideWrapper) => {
         expect(slideWrapper.classList).toContain(
           `ui-w-1/${numOfVisibleElements}`,
         );
@@ -101,9 +101,12 @@ describe("components/slider", () => {
       currentSlideIndex: number;
       prevSlideIndex: number;
       nextSlideIndex: number;
-      showSlide: Function;
+      showSlide: () => void;
     }
-    const controlFunction = (props: ControlProps, expectCb: Function) => {
+    const controlFunction = (
+      props: ControlProps,
+      expectCb: (props: ControlProps) => void,
+    ) => {
       expectCb(props);
     };
     it("should pass in the correct indices", () => {

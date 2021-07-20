@@ -89,7 +89,7 @@ class InteractiveComponent extends BaseComponent<InteractiveComponentProps> {
                 <Toggle
                   labels={{ on: "Light", off: "Dark" }}
                   active={this.viewMode === "light"}
-                  handleToggle={value =>
+                  handleToggle={(value) =>
                     this.handleViewModeChange(value ? "light" : "dark")
                   }
                 />

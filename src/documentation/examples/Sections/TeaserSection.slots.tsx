@@ -2,6 +2,7 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import TeaserSection from "@/components/Sections/TeaserSection";
 import { LineSeparator, Button } from "@/components";
+import { ImageRef } from "@/types/components";
 const imageSrc =
   "https://images.pexels.com/photos/5592596/pexels-photo-5592596.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
 
@@ -25,13 +26,13 @@ export default class App extends Vue {
           alt: "Security Solution",
         }}
         scopedSlots={{
-          kicker: kicker => (
+          kicker: (kicker: string) => (
             <div>
               <h3 class="ui-text-3xl ui-font-hairline ">{kicker}</h3>
               <LineSeparator height="1" />
             </div>
           ),
-          headline: headline => {
+          headline: (headline: string) => {
             const [firstWord, ...rest] = headline.split(" ");
             return (
               <h1 class="ui-text-3xl">
@@ -40,18 +41,22 @@ export default class App extends Vue {
               </h1>
             );
           },
-          text: text => (
+          text: (text: string) => (
             <div class="md:ui-border-l-8 md:ui-pl-4 ui-border-gray-300">
               {text}
             </div>
           ),
-          tagline: tagline => (
+          tagline: (tagline: string) => (
             <div class="ui-text-3xl ui-font-hairline ui-text-right ui-tracking-widest ui-text-gray-700">
               {tagline}
             </div>
           ),
-          button: buttonText => <Button class="ui-mt-6">{buttonText}!</Button>,
-          media: imageRef => <img src={imageRef.src} alt={imageRef.alt} />,
+          button: (buttonText: string) => (
+            <Button class="ui-mt-6">{buttonText}!</Button>
+          ),
+          media: (imageRef: ImageRef) => (
+            <img src={imageRef.src} alt={imageRef.alt} />
+          ),
         }}
       />
     );
