@@ -109,7 +109,7 @@ describe("components/ListSection", () => {
     expect(container.querySelectorAll(".Button").length).toBe(6);
   });
 
-  it("should optionally render filter buttons using the scopedSlot template", () => {
+  it("should optionally render filter buttons using the scopedSlot template", async () => {
     const { getAllByTestId } = render(ListSection, {
       scopedSlots: scopedSlotsWithFilter,
       props: defaultProps,
@@ -142,7 +142,7 @@ describe("components/ListSection", () => {
     await executeTest(scopedSlotsWithFilter);
   });
 
-  it("should render passed content as default content", () => {
+  it("should render passed content as default content", async () => {
     const content = "This is my test";
     const { getByText } = render(ListSection, {
       ...testSetup,
@@ -151,7 +151,7 @@ describe("components/ListSection", () => {
     expect(getByText(content)).toBeTruthy();
   });
 
-  it("should override headline rendering when a scoped slot is passed", () => {
+  it("should override headline rendering when a scoped slot is passed", async () => {
     const { getByText, getByTestId } = render(ListSection, {
       ...testSetup,
       scopedSlots: scopedSlotsWithHeadline,

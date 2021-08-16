@@ -20,6 +20,9 @@ const defaultTitle = "This is a title";
  * If it can't get a geolocation it will print a warning and continue.
  */
 describe("components/sections/google-maps-section", () => {
+  let spyError: jest.SpyInstance;
+  let spyWarn: jest.SpyInstance;
+
   beforeEach(() => {
     requiredProps = {
       apikey,
@@ -29,8 +32,17 @@ describe("components/sections/google-maps-section", () => {
         lng: 10,
       },
     };
+
+    spyError = jest.spyOn(console, "error");
+    spyError.mockImplementation(() => null);
+    spyWarn = jest.spyOn(console, "warn");
+    spyWarn.mockImplementation(() => null);
   });
 
+  afterEach(() => {
+    spyError.mockRestore();
+    spyWarn.mockRestore();
+  });
   describe("given a title prop", () => {
     it("should render a title", () => {
       const propsWithTitle = requiredProps;

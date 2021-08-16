@@ -41,7 +41,7 @@ describe("components/Dropdown", () => {
       },
     });
     optionItems.forEach(element => {
-      expect(getByText(container, element.label)).toBeTruthy();
+      expect(getByText(container as HTMLElement, element.label)).toBeTruthy();
     });
   });
 });
