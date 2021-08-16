@@ -82,19 +82,28 @@ const expectToExistNTimes = (
 };
 
 describe("components/sections/ProductDetailSection", () => {
+  let spy: jest.SpyInstance;
+  beforeEach(() => {
+    spy = jest.spyOn(console, "error");
+    spy.mockImplementation(() => null);
+  });
+
+  afterEach(() => {
+    spy.mockRestore();
+  });
   it("should render all elements", () => {
     const { container, getByTestId } = render(ProductDetailSection, {
       props: { ...componentProperties },
     });
     expect(container).toBeTruthy();
-    expectToExist(container, [
+    expectToExist(container as HTMLElement, [
       "ProductDetail--Property--Headline",
       "ProductDetail--Price",
       "ProductDetail--Button",
       "ProductDetail--Image",
     ]);
 
-    expectToExistNTimes(container, [
+    expectToExistNTimes(container as HTMLElement, [
       { key: "ProductDetail--Property--Headline", expectedInstanceCount: 2 },
       { key: "ProductDetail--Property--List", expectedInstanceCount: 2 },
     ]);
@@ -133,12 +142,15 @@ describe("components/sections/ProductDetailSection", () => {
       props: { headline, buttonText, description, price },
     });
     expect(container).toBeTruthy();
-    expectToExist(container, ["ProductDetail--Price", "ProductDetail--Button"]);
+    expectToExist(container as HTMLElement, [
+      "ProductDetail--Price",
+      "ProductDetail--Button",
+    ]);
     expect(getByTestId(`ProductDetail--Headline`)?.textContent).toEqual(
       headline,
     );
 
-    expectToBeNull(container, [
+    expectToBeNull(container as HTMLElement, [
       "ProductDetail--Image",
       "ProductDetail--Property--Headline",
       "ProductDetail--Property--List",

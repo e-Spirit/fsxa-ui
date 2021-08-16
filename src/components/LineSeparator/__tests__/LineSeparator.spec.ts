@@ -2,6 +2,16 @@ import { render } from "@testing-library/vue";
 import LineSeparator from "./../";
 
 describe("components/LineSeparator", () => {
+  let spy: jest.SpyInstance;
+  beforeEach(() => {
+    spy = jest.spyOn(console, "error");
+    spy.mockImplementation(() => null);
+  });
+
+  afterEach(() => {
+    spy.mockRestore();
+  });
+
   it("renders the correct default", () => {
     const { getByTestId } = render(LineSeparator);
     const separator = getByTestId("separator-test");

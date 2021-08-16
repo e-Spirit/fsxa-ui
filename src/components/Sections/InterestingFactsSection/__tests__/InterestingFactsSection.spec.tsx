@@ -2,6 +2,15 @@ import { render } from "@testing-library/vue";
 import InterestingFactsSection from "..";
 
 describe("components/InterestingFactsSection", () => {
+  let spy: jest.SpyInstance;
+  beforeEach(() => {
+    spy = jest.spyOn(console, "error");
+    spy.mockImplementation(() => null);
+  });
+
+  afterEach(() => {
+    spy.mockRestore();
+  });
   const content = "this is my headline";
   const textContent = "this is my text";
   const testTagline = "testtag";

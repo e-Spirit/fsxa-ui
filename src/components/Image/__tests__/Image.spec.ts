@@ -60,6 +60,11 @@ describe("components/Image", () => {
     it("should throw an error if the darken prop does not have one of the preset values", () => {
       //it should suffice to use shallowMount here, as the validation happens in the mount hook but for some reason shallow mount
       //didn't accept the options object
+
+      // we mock the console.error method to avoid logs when running the test
+      const spy = jest.spyOn(console, "error");
+      spy.mockImplementation(() => null);
+
       expect(() =>
         render(Image, {
           props: {
@@ -68,6 +73,8 @@ describe("components/Image", () => {
           },
         }),
       ).toThrow();
+
+      spy.mockRestore();
     });
   });
 });
