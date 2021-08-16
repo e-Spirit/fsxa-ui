@@ -1,3 +1,10 @@
+## [4.0.3](https://github.com/e-Spirit/fsxa-ui/compare/v4.0.2...v4.0.3) (2021-08-16)
+
+
+### Bug Fixes
+
+* 🐛 update dependencies ([#83](https://github.com/e-Spirit/fsxa-ui/issues/83)) ([89e2612](https://github.com/e-Spirit/fsxa-ui/commit/89e261254cb076a270b5ce9d98c40c2fe26580c5))
+
 ## [4.0.2](https://github.com/e-Spirit/fsxa-ui/compare/v4.0.1...v4.0.2) (2021-05-10)
 
 
