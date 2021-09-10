@@ -14,6 +14,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name fsxa-ui src/index.ts",
+    "build:local": "rimraf fsxa-ui-*.tgz && npm version prerelease --no-git-tag-version --preid alpha && npm run build && npm pack",
     "build:app": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
