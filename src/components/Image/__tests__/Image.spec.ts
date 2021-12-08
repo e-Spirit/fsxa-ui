@@ -2,6 +2,11 @@ import { render } from "@testing-library/vue";
 import Image from "./../";
 
 const testImage = "[image location]";
+const testResolutions = {
+  ORIGINAL: { url: "[image location ORIGINAL]", width: 678, height: 345 },
+  landscape: { url: "[image location landscape]", width: 800, height: 480 },
+  portrait: { url: "[image location portrait]", width: 480, height: 800 },
+};
 
 describe("components/Image", () => {
   it("should have an img tag with class 'zoom' when the zoom property is set", () => {
@@ -76,5 +81,19 @@ describe("components/Image", () => {
 
       spy.mockRestore();
     });
+  });
+
+  it("should have an img tag with multiple resolutions and a 'data-tpp-context-image-resolution' attribute", () => {
+    const { getByTestId } = render(Image, {
+      props: {
+        src: testImage,
+        resolutions: testResolutions,
+      },
+    });
+    const imageContainer = getByTestId("imageDiv");
+
+    expect(
+      imageContainer.getAttribute("data-tpp-context-image-resolution"),
+    ).toEqual(Object.keys(testResolutions).join(","));
   });
 });
