@@ -95,8 +95,12 @@ class Image extends BaseComponent<ImageProps> {
       .join(", ");
   }
 
+  get hasPreviewId() {
+    return !!(this.previewId || this.$attrs["data-preview-id"]);
+  }
+
   get resolutionNames() {
-    if (this.resolutions) {
+    if (this.hasPreviewId && this.resolutions) {
       const resolutionNames = Object.keys(this.resolutions);
       if (resolutionNames.length > 0) {
         return resolutionNames.join(",");
