@@ -1,6 +1,7 @@
 import { render } from "@testing-library/vue";
 import Image from "./../";
 
+const testPreviewId = "[preview id]";
 const testImage = "[image location]";
 const testResolutions = {
   ORIGINAL: { url: "[image location ORIGINAL]", width: 678, height: 345 },
@@ -88,6 +89,7 @@ describe("components/Image", () => {
       props: {
         src: testImage,
         resolutions: testResolutions,
+        previewId: testPreviewId,
       },
     });
     const imageContainer = getByTestId("imageDiv");
