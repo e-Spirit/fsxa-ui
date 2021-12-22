@@ -1,3 +1,10 @@
+# [4.1.0](https://github.com/e-Spirit/fsxa-ui/compare/v4.0.3...v4.1.0) (2021-12-22)
+
+
+### Features
+
+* **image:** render `data-tpp-context-image-resolution` attribute ([#85](https://github.com/e-Spirit/fsxa-ui/issues/85)) ([bf3ad6a](https://github.com/e-Spirit/fsxa-ui/commit/bf3ad6a43b84c48b671566f6a0833c73ca062cdc))
+
 ## [4.0.3](https://github.com/e-Spirit/fsxa-ui/compare/v4.0.2...v4.0.3) (2021-08-16)
 
 
