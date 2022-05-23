@@ -1,3 +1,10 @@
+## [4.1.1](https://github.com/e-Spirit/fsxa-ui/compare/v4.1.0...v4.1.1) (2022-05-23)
+
+
+### Bug Fixes
+
+* **deps:** update vue/cli-service to 4.5.17 ([a20cc71](https://github.com/e-Spirit/fsxa-ui/commit/a20cc7122e6eadc1b6b61e649bee5e97fc5befc1))
+
 # [4.1.0](https://github.com/e-Spirit/fsxa-ui/compare/v4.0.3...v4.1.0) (2021-12-22)
 
 
