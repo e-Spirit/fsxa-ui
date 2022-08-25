@@ -77,7 +77,7 @@ class Documentation extends BaseComponent {
           </div>
         </div>
         <footer class="ui-text-center ui-text-sm ui-bg-gray-300 ui-py-2">
-          © 2005 - 2021 e-Spirit AG | All rights reserved. |{" "}
+          © 2005 - 2021 Crownpeak Technology GmbH | All rights reserved. |{" "}
           <a
             class="ui-text-espirit ui-underline"
             href="https://www.e-spirit.com/en/data-privacy/"
