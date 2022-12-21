@@ -1,3 +1,10 @@
+# [4.2.0](https://github.com/e-Spirit/fsxa-ui/compare/v4.1.1...v4.2.0) (2022-12-21)
+
+
+### Features
+
+* **fonts:** include poppins and font_awesome as local files ([#110](https://github.com/e-Spirit/fsxa-ui/issues/110)) ([4fae719](https://github.com/e-Spirit/fsxa-ui/commit/4fae719ba63577267490ae64a95a5e056bc0ee02))
+
 ## [4.1.1](https://github.com/e-Spirit/fsxa-ui/compare/v4.1.0...v4.1.1) (2022-05-23)
 
 
