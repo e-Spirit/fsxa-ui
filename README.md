@@ -4,23 +4,9 @@
 
 The FirstSpirit Experience Accelerator (FSXA) is the hybrid solution of a digital
 experience platform, combining a headless approach with enterprise capabilities.
-The FSXA stack consists of five repositories:
-
-- [FSXA-PWA](https://github.com/e-Spirit/fsxa-pwa)
-- [FSXA-UI](https://github.com/e-Spirit/fsxa-ui)/ Component Library
-- [FSXA-Nuxt-Module](https://github.com/e-Spirit/fsxa-nuxt-module)
-- [FSXA-Pattern-Library](https://github.com/e-Spirit/fsxa-pattern-library)
-- [FSXA-API](https://github.com/e-Spirit/fsxa-api)
-
-While the FSXA-API is a maintained product with a life cycle, the FSXA-PWA, FSXA-UI, FSXA-Nuxt-Module and FSXA-Pattern-Library are merely best practices examples how a project could be set up and integrate the FSXA-API.
-The latter repositories can be forked to speed up the startup time of a frontend project or to understand how common use cases can be solved in headless projects.
-The code itself can therefore also be used as documentation of best practices.
-
-The following image illustrates the product cut:
-![fsxa-stack product cut overview](docs/assets/fsxa-stack-product-status.png)
-
-> **_Attention_**
-> Since the reference implementation does not represent a maintained product, we do not guarantee support for its use.
+If you are interested in the FSXA check this
+[Overview](https://docs.e-spirit.com/module/fsxa/overview/benefits-hybrid/index.html). You can order
+a demo [online](https://www.e-spirit.com/us/specialpages/forms/on-demand-demo/).
 
 ## Project setup
 
@@ -38,7 +24,7 @@ yarn add fsxa-ui
 
 <br />
 
-Please make sure that the **main CSS file** is imported from the FSXA UI package.
+Please make sure that the **main CSS file**  is imported from the FSXA UI package.
 
 ```typescript
 // directly importing the css into your main component
@@ -59,6 +45,7 @@ import "fsxa-ui/dist/fsxa-ui.css";
 />
 ```
 
+
 ## Usage
 
 Now you can use the components in your project.
@@ -71,7 +58,7 @@ import { Button } from "fsxa-ui";
 
 <Button variant="animated" handleClick={handleClick}>
   This is my Button
-</Button>;
+</Button>
 ```
 
 Please make sure that your component is registered correctly.
@@ -111,7 +98,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Legal Notices
 
-FSXA-UI is an example solution of [Crownpeak Technology GmbH](http://www.e-spirit.com), Dortmund, Germany.
+FSXA-UI is a product of [Crownpeak Technology GmbH](http://www.e-spirit.com), Dortmund, Germany.
 The FSXA-UI is subject to the Apache-2.0 license.
 
 ## Disclaimer
