@@ -81,7 +81,7 @@
     "postcss-nested": "^4.2.1",
     "prettier": "^1.19.1",
     "raw-loader": "^4.0.2",
-    "semantic-release": "^17.4.5",
+    "semantic-release": "^19.0.3",
     "tailwindcss": "^1.9.6",
     "typescript": "~4.1.0",
     "vue-prismjs": "^1.2.0",
